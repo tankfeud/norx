@@ -1,5 +1,5 @@
 # Norx
-Nors is a Nim wrapper of the [ORX game engine](http://orx-project.org/) library. ORX is written in C99 and highly performant and cross platform.
+Norx is a Nim wrapper of the [ORX game engine](http://orx-project.org/) library. ORX is written in C99 and highly performant and cross platform.
 The wrapper basically consists of one Nim module per ORX C header, almost 80 of them.
 
 The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path.
