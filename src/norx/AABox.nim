@@ -168,5 +168,3 @@ proc orxAABox_GetCenter*(pstOp: ptr orxAABOX; pvRes: ptr orxVECTOR): ptr orxVECT
   orxVector_Mulf(pvRes, pvRes, orx2F(0.5))
   ##  Done!
   return pvRes
-
-## * @}

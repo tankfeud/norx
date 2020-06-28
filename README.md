@@ -44,3 +44,12 @@ These are notes to "self". We track any changes to the `include` directory, for 
 3. Using your IDE, reapply modifications that was overwritten :) - this should be handled better of course.
 4. `c2nim common.c2nim object/orxObject.h` to reproduce `orxObject.nim`
 5. Merge parts into `obj.nim` that should be there using `meld object/orxObject.nim ../src/norx/obj.nim`
+
+
+# Todos
+
+* Do we add higher level wrappers on top? Or do we add highlevel wrap procs inside the modules?
+* orxBOOL, orxFLOAT, orxU32 etc etc... Nicer with Nim types
+* cstring vs string
+* Put argc/argc handling inside Norx
+* Demangle all the orxYadda_xxx into xxx?
