@@ -1,4 +1,11 @@
-import norx/[incl, param, module, event, clock, memory]
+import norx/[incl, param, module, event, clock, memory, oobject, viewport]
+
+proc createFromConfig*[T: orxOBJECT | orxVIEWPORT](zConfigID: string): ptr T =
+  ## Creates an object from config
+  when T is orxOBJECT:
+    result = orxObject_CreateFromConfig(zConfigID)
+  when T is orxVIEWPORT:
+    result = orxViewport_CreateFromConfig(zConfigID)
 
 when not defined(PLUGIN):
   ## Should stop execution by default event handling?

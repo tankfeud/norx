@@ -1,5 +1,4 @@
-import
-  incl, vector, texture, obj, structure, linkList
+import incl, vector, texture, structure, linkList
 
 
 ## * Shader parameter type
