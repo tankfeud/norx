@@ -1,7 +1,7 @@
 import lib, decl
 
 ##  Windows
-when defined(WINDOWS):
+when defined(Windows):
   type
     orxHANDLE* = pointer
   when defined(X86_64):
@@ -48,7 +48,7 @@ when defined(WINDOWS):
       orxS64* = clonglong
 else:
   ##  Linux / Mac / iOS / Android
-  when defined(LINUX) or defined(MAC) or defined(IOS) or defined(ANDROID) or
+  when defined(Linux) or defined(MacOSX) or defined(iOS) or defined(Android) or
       defined(ANDROID_NATIVE):
     type
       orxHANDLE* = pointer
@@ -163,10 +163,10 @@ const
   orxCHAR_DIRECTORY_SEPARATOR_WINDOWS* = '\b'
   orxCHAR_DIRECTORY_SEPARATOR_LINUX* = '/'
 
-when defined(WINDOWS):
+when defined(Windows):
   const
     orxCHAR_DIRECTORY_SEPARATOR* = '\b'
-elif defined(LINUX) or defined(MAC) or defined(IOS) or defined(ANDROID) or
+elif defined(Linux) or defined(MacOSX) or defined(iOS) or defined(Android) or
     defined(ANDROID_NATIVE):
   const
     orxCHAR_DIRECTORY_SEPARATOR* = '/'

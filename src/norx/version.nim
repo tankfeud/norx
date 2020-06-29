@@ -38,7 +38,7 @@
 
 import typ
 
-when not defined(ANDROID) and not defined(ANDROID_NATIVE) and not defined(IOS):
+when not defined(Android) and not defined(ANDROID_NATIVE) and not defined(iOS):
   when not defined(VERSION_BUILD):
     import build
 

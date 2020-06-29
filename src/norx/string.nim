@@ -450,7 +450,7 @@ proc orxString_ICompare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
-  when defined(WINDOWS):
+  when defined(Windows):
     ##  Done!
     return stricmp(zString1, zString2)
   else:
@@ -471,7 +471,7 @@ proc orxString_NICompare*(zString1: cstring; zString2: cstring;
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
-  when defined(WINDOWS):
+  when defined(Windows):
     ##  Done!
     return strnicmp(zString1, zString2, cast[csize](u32CharNumber))
   else:
@@ -760,8 +760,8 @@ proc orxString_ToFloat*(zString: cstring; pfOutValue: ptr orxFLOAT;
   assert(pfOutValue != nil)
   assert(zString != nil)
   ##  Linux / Mac / iOS / Android / MSVC?
-  when defined(LINUX) or defined(MAC) or defined(IOS) or defined(MSVC) or
-      defined(ANDROID):
+  when defined(Linux) or defined(MacOSX) or defined(iOS) or defined(MSVC) or
+      defined(Android):
     ##  Converts it
     pfOutValue[] = cast[orxFLOAT](strtod(zString, addr(pcEnd)))
   else:

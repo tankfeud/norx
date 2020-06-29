@@ -79,8 +79,8 @@ else:
     orx32* = true
 ##  No platform defines?
 
-when not defined(WINDOWS) and not defined(MAC) and not defined(LINUX) and
-    not defined(IOS) and not defined(ANDROID) and not defined(ANDROID_NATIVE):
+when not defined(Windows) and not defined(MacOSX) and not defined(Linux) and
+    not defined(iOS) and not defined(Android) and not defined(ANDROID_NATIVE):
   ##  Windows?
   when defined(WIN32) or defined(WIN32):
     const
@@ -98,7 +98,7 @@ when not defined(WINDOWS) and not defined(MAC) and not defined(LINUX) and
     const
       ANDROID_NATIVE* = true
     ##  Linux?
-  elif defined(linux) or defined(linux):
+  elif defined(Linux) or defined(Linux):
     const
       LINUX* = true
     ##  Mac?

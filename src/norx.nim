@@ -38,10 +38,10 @@ when not defined(PLUGIN):
     orxModule_AddOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PROFILER)
     orxModule_AddOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_SCREENSHOT)
 
-  when defined(IOS):
+  when defined(iOS):
     discard
   else:
-    when defined(ANDROID) or defined(ANDROID_NATIVE):
+    when defined(Android) or defined(ANDROID_NATIVE):
       import
         main/orxAndroid
 

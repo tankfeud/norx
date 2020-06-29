@@ -5,10 +5,10 @@ elif defined(profile):
 else:
   const suffix = "d"
 
-when defined(windows):
+when defined(Windows):
   const
     libORX* = "liborx" & suffix & ".dll"
-elif defined(macosx):
+elif defined(MacOSX):
   const
     libORX* = "liborx" & suffix & ".dylib"
 else:
