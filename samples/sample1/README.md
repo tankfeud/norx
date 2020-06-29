@@ -9,4 +9,4 @@ Then run `nimble install` in this directory which will compile and install the b
 After that you can run `sample1`. ESC quits. Pressing the key below ESC (may be different depending on your keyboard, on mine it's "§" but evidently "`" on others I guess) opens the ORX console.
 
 # Compiling
-A Nim debug build will use `liborxd.so`, a release build will use `liborx.so` and if you build with `nim c -d:profile` it will use `liborxp.so`.
+A Nim debug build will use `liborxd.so|dylib|dll`, a release build will use `liborx.so|dylib|dll` and if you build with `nim c -d:profile` it will use `liborxp.so|dylib|dll`.

@@ -13,8 +13,8 @@ This works on my Ubuntu 64 bit (after installing normal C tools needed):
 
 0. Clone ORX with `git clone https://github.com/orx/orx.git`.
 1. Run `setup.sh` in top level first, this pulls down more dependencies.
-2. Build with `cd code/build/linux/gmake && make config=release64` (build also `debug64` and `profile64` to get those extra libraries)
-3. Copy libraries **to a library path** with for example `cp -a ../../../bin/liborx*.so /usr/lib/` 
+2. Build with `cd code/build/linux/gmake && make config=release64` (build also `debug64` and `profile64` to get those extra libraries). Same on OSX but in `code/build/mac`. 
+3. Copy libraries **to a library path** with for example `sudo cp -a ../../../bin/liborx*.so /usr/lib/` on Linux and `sudo cp -a ../../../bin/liborx*.dylib /usr/local/lib/` on OSX.
 
 For other platforms, or if you get into trouble, follow [official ORX instructions](https://wiki.orx-project.org/en/guides/beginners/downloading_orx) that give much more details!
 
