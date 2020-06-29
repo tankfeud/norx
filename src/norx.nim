@@ -1,4 +1,13 @@
-import norx/[incl, param, module, event, clock, memory]
+import os
+
+import norx/[incl, param, module, event, clock, memory, oobject, viewport]
+
+proc createFromConfig*[T: orxOBJECT | orxVIEWPORT](zConfigID: string): ptr T =
+  ## Creates an object from config
+  when T is orxOBJECT:
+    result = orxObject_CreateFromConfig(zConfigID)
+  when T is orxVIEWPORT:
+    result = orxViewport_CreateFromConfig(zConfigID)
 
 when not defined(PLUGIN):
   ## Should stop execution by default event handling?
@@ -108,20 +117,27 @@ when not defined(PLUGIN):
       ##  @param[in]   _pfnRun                       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
       ##  @param[in]   _pfnExit                      Main exit function (should clean all the main stuff)
       ##
-      proc orx_Execute*(u32NbParams: orxU32; azParams: cstringArray;
-                       pfnInit: orxMODULE_INIT_FUNCTION;
-                       pfnRun: orxMODULE_RUN_FUNCTION;
-                       pfnExit: orxMODULE_EXIT_FUNCTION) {.inline, cdecl.} =
-        ##  Inits the Debug System
+      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
+                       runProc: proc(): orxSTATUS {.cdecl.};
+                       exitProc: proc() {.cdecl.}) {.inline} =
+        ## Inits the Debug System
         orxDEBUG_INIT_MACRO()
-        ##  Checks
-        assert(u32NbParams > 0)
-        assert(azParams != nil)
-        assert(pfnRun != nil)
+        ## Checks
+        assert(runProc != nil)
         ##  Registers main module
-        orxModule_Register(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, pfnInit, pfnExit)
+        orxModule_Register(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, initProc, exitProc)
+        # Hack to produce C style argc/argv to pass on
+        var argc = paramCount()
+        var nargv = newSeq[string](argc + 1)
+        nargv[0] = getAppFilename()  # Better than paramStr(0)
+        var x = 1
+        while x <= argc:
+          nargv[x] = paramStr(x)
+          inc(x)
+        var argv: cstringArray = nargv.allocCStringArray()
+        inc(argc)
         ##  Sends the command line arguments to orxParam module
-        if orxParam_SetArgs(u32NbParams, azParams) != orxSTATUS_FAILURE:
+        if orxParam_SetArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
           ##  Inits the engine
           if orxModule_Init(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
             var
@@ -139,7 +155,7 @@ when not defined(PLUGIN):
               ##  Sends frame start event
               orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
               ##  Runs the engine
-              eMainStatus = pfnRun()
+              eMainStatus = runProc()
               ##  Updates clock system
               eClockStatus = orxClock_Update()
               ##  Sends frame stop event

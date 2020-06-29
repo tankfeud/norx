@@ -1,10 +1,14 @@
 # Norx
-Norx is a Nim wrapper of the [ORX game engine](http://orx-project.org/) library. ORX is written in C99 and highly performant and cross platform.
-The wrapper basically consists of one Nim module per ORX C header, almost 80 of them.
+Norx is a Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform.
+The wrapper consists of two parts:
 
-The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path.
+* The low level wrapper with basically one Nim module per ORX C header, almost 80 of them. All these are named o-xxx, like `oinput` or `oobject`.
+* The high level wrapper with one Nim module per low level wrapper. Currently each high level wrapper also exports the low level wrapper.
 
-However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
+The low level wrapper uses "C types" and is automatically generated as much as possible from the C header files.
+The high level tries to use Nim style and Nim types as much as possible.
+
+The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path. However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
 
 # Build and install ORX
 First install ORX dlls. At the moment best is to build them from a master git clone of ORX since it is in sync with the wrapper.

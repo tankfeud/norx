@@ -1,4 +1,4 @@
-import incl, font, input
+import incl, font, oinput
 
 ## * Inputs
 ##
