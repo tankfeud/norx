@@ -8,7 +8,7 @@ import norx, norx/[incl, clock, event, system, config, resource, input, viewport
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
-  if (isActive("Quit")):
+  if isActive("Quit"):
     # Send close event
     echo "User quitting"
     discard orxEvent_SendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
