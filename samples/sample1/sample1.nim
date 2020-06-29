@@ -8,7 +8,7 @@ import norx, norx/[incl, clock, event, system, config, resource, input, viewport
 proc Update(pstClockInfo: ptr orxCLOCK_INFO, pContext: pointer) =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
-  if (orxInput_IsActive("Quit").bool):
+  if (isActive("Quit")):
     # Send close event
     echo "User quitting"
     discard orxEvent_SendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
@@ -18,12 +18,12 @@ proc Init(): orxSTATUS =
   orxLOG("Sample1 starting")
 
   # Create the viewport
-  var v = orxViewport_CreateFromConfig("MainViewport")
+  var v = createFromConfig[orxVIEWPORT]("MainViewport")
   if not v.isNil:
     echo "Viewport created"
   
   # Create the scene
-  var s = orxObject_CreateFromConfig("Scene")
+  var s = createFromConfig[orxOBJECT]("Scene")
   if not s.isNil:
     echo "Scene created"
 
