@@ -51,7 +51,7 @@ proc bootstrap(): orxSTATUS =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = orxResource_AddStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", orxFALSE)
+  var status = orxResource_AddStorage(KZ_RESOURCE_GROUP, $dir & "/data/config", orxFALSE)
   if status == orxSTATUS_SUCCESS:
     echo "Added storage"
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
@@ -59,7 +59,7 @@ proc bootstrap(): orxSTATUS =
 
 when isMainModule:
   # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = orxConfig_SetBootstrap(cast[orxCONFIG_BOOTSTRAP_FUNCTION](bootstrap))
+  var status = SetBootstrap(cast[BOOTSTRAP_FUNCTION](bootstrap))
   if status == orxSTATUS_SUCCESS:
     echo "Bootstrap was set"
 
