@@ -1,74 +1,13 @@
 import pure/math, lib, typ, system
 
-## * Lerps between two values given a parameter T [0, 1]
-##  @param[in]   A                               First value (will be selected for T = 0)
-##  @param[in]   B                               Second value (will be selected for T = 1)
-##  @param[in]   T                               Lerp coefficient parameter [0, 1]
-##  @return      Lerped value
-##
+template lerp*(a, b, t: untyped): untyped =
+  ## Lerps between two values given a coefficient t [0, 1]
+  ## For t = 1 the result is b and for t = 0 the result is a.  
+  a + (t * (b - a))
 
-template orxLERP*(A, B, T: untyped): untyped =
-  ((A) + ((T) * ((B) - (A))))
-
-## * Gets minimum between two values
-##  @param[in]   A                               First value
-##  @param[in]   B                               Second value
-##  @return      Minimum between A & B
-##
-
-template orxMIN*(A, B: untyped): untyped =
-  (if ((A) > (B)): (B) else: (A))
-
-## * Gets maximum between two values
-##  @param[in]   A                               First value
-##  @param[in]   B                               Second value
-##  @return      Maximum between A & B
-##
-
-template orxMAX*(A, B: untyped): untyped =
-  (if ((A) < (B)): (B) else: (A))
-
-## * Gets clamped value between two boundaries
-##  @param[in]   V                               Value to clamp
-##  @param[in]   MIN                             Minimum boundary
-##  @param[in]   MAX                             Maximum boundary
-##  @return      Clamped value between MIN & MAX
-##
-
-template orxCLAMP*(V, MIN, MAX: untyped): untyped =
-  orxMAX(orxMIN(V, MAX), MIN)
-
-## * Converts an orxFLOAT to an orxU32
-##  @param[in]   V                               Value to convert
-##  @return      Converted value
-##
-
-template orxF2U*(V: untyped): untyped =
-  ((orxU32)(V))
-
-## * Converts an orxFLOAT to an orxS32
-##  @param[in]   V                               Value to convert
-##  @return      Converted value
-##
-
-template orxF2S*(V: untyped): untyped =
-  ((orxS32)(V))
-
-## * Converts an orxU32 to an orxFLOAT
-##  @param[in]   V                               Value to convert
-##  @return      Converted value
-##
-
-template orxU2F*(V: untyped): untyped =
-  ((orxFLOAT)(V))
-
-## * Converts an orxS32 to an orxFLOAT
-##  @param[in]   V                               Value to convert
-##  @return      Converted value
-##
-
-template orxS2F*(V: untyped): untyped =
-  ((orxFLOAT)(V))
+template clamp*(v, mn, mx: untyped): untyped =
+  ## Gets clamped value between two boundaries
+  max(min(v, mx), mn)
 
 ## ** Module functions ***
 ## * Inits the random seed
@@ -274,7 +213,7 @@ proc orxMath_SmoothStep*(fMin: orxFLOAT; fMax: orxFLOAT; fValue: orxFLOAT): orxF
     fResult: orxFLOAT
   ##  Gets normalized and clamped value
   fTemp = (fValue - fMin) / (fMax - fMin)
-  fTemp = orxCLAMP(fTemp, orxFLOAT_0, orxFLOAT_1)
+  fTemp = clamp(fTemp, orxFLOAT_0, orxFLOAT_1)
   ##  Gets smoothed result
   fResult = fTemp * fTemp * (orx2F(3.0) - (orx2F(2.0) * fTemp))
   ##  Done!
@@ -294,7 +233,7 @@ proc orxMath_SmootherStep*(fMin: orxFLOAT; fMax: orxFLOAT; fValue: orxFLOAT): or
     fResult: orxFLOAT
   ##  Gets normalized and clamped value
   fTemp = (fValue - fMin) / (fMax - fMin)
-  fTemp = orxCLAMP(fTemp, orxFLOAT_0, orxFLOAT_1)
+  fTemp = clamp(fTemp, orxFLOAT_0, orxFLOAT_1)
   ##  Gets smoothed result
   fResult = fTemp * fTemp * fTemp *
       (fTemp * ((fTemp * orx2F(6.0)) - orx2F(15.0)) + orx2F(10.0))
@@ -315,116 +254,9 @@ const
 const
   orxMATH_KF_DEG_TO_RAD* = orx2F(3.141592654 / 180.0) ## *< Degree to radian conversion constant
   orxMATH_KF_RAD_TO_DEG* = orx2F(180.0 / 3.141592654) ## *< Radian to degree conversion constant
-## ** Trigonometric function **
-## * Gets a sine
-##  @param[in]   _fOp                            Input radian angle value
-##  @return      Sine of the given angle
-##
 
-proc orxMath_Sin*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = sin(fOp)
-  ##  Done!
-  return fResult
 
-## * Gets a cosine
-##  @param[in]   _fOp                            Input radian angle value
-##  @return      Cosine of the given angle
-##
 
-proc orxMath_Cos*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = cos(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets a tangent
-##  @param[in]   _fOp                            Input radian angle value
-##  @return      Tangent of the given angle
-##
-
-proc orxMath_Tan*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = tan(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets an arccosine
-##  @param[in]   _fOp                            Input radian angle value
-##  @return      Arccosine of the given angle
-##
-
-proc orxMath_ACos*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = arccos(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets an arcsine
-##  @param[in]   _fOp                            Input radian angle value
-##  @return      Arcsine of the given angle
-##
-
-proc orxMath_ASin*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = arcsin(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets an arctangent
-##  @param[in]   _fOp1                           First operand
-##  @param[in]   _fOp2                           Second operand
-##  @return      Arctangent of the given angle
-##
-
-proc orxMath_ATan*(fOp1: orxFLOAT; fOp2: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = arctan2(fOp1, fOp2)
-  ##  Done!
-  return fResult
-
-## ** Misc functions **
-## * Gets a square root
-##  @param[in]   _fOp                            Input value
-##  @return      Square root of the given value
-##
-
-proc orxMath_Sqrt*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = sqrt(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets a floored value
-##  @param[in]   _fOp                            Input value
-##  @return      Floored value
-##
-
-proc orxMath_Floor*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = floor(fOp)
-  ##  Done!
-  return fResult
-
-## * Gets a ceiled value
-##  @param[in]   _fOp                            Input value
-##  @return      Ceiled value
-##
-
-proc orxMath_Ceil*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = ceil(fOp)
-  ##  Done!
-  return fResult
 
 ## * Gets a rounded value
 ##  @param[in]   _fOp                            Input value
@@ -441,43 +273,3 @@ proc orxMath_Round*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
     fResult = round(fOp)
   ##  Done!
   return fResult
-
-## * Gets a modulo value
-##  @param[in]   _fOp1                           Input value
-##  @param[in]   _fOp2                           Modulo value
-##  @return      Modulo value
-##
-
-proc orxMath_Mod*(fOp1: orxFLOAT; fOp2: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = fmod(fOp1, fOp2)
-  ##  Done!
-  return fResult
-
-## * Gets a powed value
-##  @param[in]   _fOp                            Input value
-##  @param[in]   _fExp                           Exponent value
-##  @return      Powed value
-##
-
-proc orxMath_Pow*(fOp: orxFLOAT; fExp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = pow(fOp, fExp)
-  ##  Done!
-  return fResult
-
-## * Gets an absolute value
-##  @param[in]   _fOp                            Input value
-##  @return      Absolute value
-##
-
-proc orxMath_Abs*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =
-  var fResult: orxFLOAT
-  ##  Updates result
-  fResult = abs(fOp)
-  ##  Done!
-  return fResult
-
-## * @}

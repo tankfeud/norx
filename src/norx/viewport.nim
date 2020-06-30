@@ -296,4 +296,4 @@ proc orxViewport_GetName*(pstViewport: ptr orxVIEWPORT): cstring {.cdecl,
 
 proc orxViewport_Get*(zName: cstring): ptr orxVIEWPORT {.cdecl,
     importc: "orxViewport_Get", dynlib: libORX.}
-## * @}
+

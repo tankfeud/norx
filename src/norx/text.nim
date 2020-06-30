@@ -1,4 +1,3 @@
-
 import incl,font
 
 ## * Internal text structure
