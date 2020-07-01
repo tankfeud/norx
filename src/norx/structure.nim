@@ -434,14 +434,16 @@ proc getID*(pStructure: pointer): orxSTRUCTURE_ID {.inline, cdecl.} =
   return (orxSTRUCTURE_ID)((orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
       orxSTRUCTURE_GUID_MASK_STRUCTURE_ID.uint64) shr
       orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID)
+
+#TODO: Removed these for now
+#[
+
 proc testFlags*(pStructure: pointer; u32Flags: orxU32): orxBOOL {.inline,
     cdecl.} =
   ## Tests flags against structure ones
   ##  @param[in]   _pStructure    Concerned structure
   ##  @param[in]   _u32Flags      Flags to test
   ##  @return      orxTRUE / orxFALSE
-  #TODO: Removed these for now
-  #[
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
@@ -480,3 +482,4 @@ proc setFlags*(pStructure: pointer; u32AddFlags: orxU32;
   orxFLAG_SET(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32AddFlags, u32RemoveFlags)
   ##  Done!
   return
+]#

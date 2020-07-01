@@ -27,6 +27,8 @@ var saau32CRCTable* {.importc: "saau32CRCTable", dynlib: libORX.}: array[8,
 
 ##  *** String inlined functions ***
 
+# TODO: Do we need this? I guess Nim has other stuff
+#[
 proc skipWhiteSpaces*(zString: cstring): cstring {.inline, cdecl.} =
   ## Skips all white spaces
   ##  @param[in] _zString        Concerned string
@@ -78,6 +80,7 @@ proc skipPath*(zString: cstring): cstring {.inline, cdecl.} =
     zResult = nil
   ##  Done!
   return zResult
+
 
 proc getLength*(zString: cstring): orxU32 {.inline, cdecl.} =
   ## Returns the number of orxCHAR in the string (for non-ASCII UTF-8 string, it won't be the actual number of unicode characters)
@@ -352,6 +355,7 @@ proc nCopy*(zDstString: cstring; zSrcString: cstring;
   assert(zSrcString != nil)
   ##  Done!
   return strncpy(zDstString, zSrcString, cast[csize](u32CharNumber))
+
 
 proc duplicate*(zSrcString: cstring): cstring {.inline, cdecl.} =
   ## Duplicate a string.
@@ -728,6 +732,7 @@ proc toFloat*(zString: cstring; pfOutValue: ptr orxFLOAT;
     pzRemaining[] = pcEnd
   return eResult
 
+
 proc toVector*(zString: cstring; pvOutValue: ptr orxVECTOR;
                         pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
   ## Convert a string to a vector
@@ -872,6 +877,7 @@ proc upperCase*(zString: cstring): cstring {.inline, cdecl.} =
     inc(pc)
   return zString
 
+
 proc searchString*(zString1: cstring; zString2: cstring): cstring {.
     inline, cdecl.} =
   ## Returns the first occurrence of _zString2 in _zString1
@@ -965,9 +971,10 @@ proc nPrint*(zDstString: cstring; u32CharNumber: orxU32;
       ##  Updates result
       s32Result = u32CharNumber
   ##  Clamps result
-  s32Result = orxCLAMP(s32Result, 0, cast[orxS32](u32CharNumber))
+  s32Result = clamp(s32Result, 0, cast[orxS32](u32CharNumber))
   ##  Done!
   return s32Result
+
 
 proc getExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
   ## Gets the extension from a file name
@@ -988,6 +995,8 @@ proc getExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
   zResult = if (s32Index >= 0): zFileName + s32Index + 1 else: orxSTRING_EMPTY
   ##  Done!
   return zResult
+
+]#
 
 ##  *** String module functions ***
 

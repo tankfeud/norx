@@ -1,30 +1,23 @@
 import incl, structure
 
-## * Anim flags
-##
-
 const
+  ## Anim flags
   orxANIM_KU32_FLAG_NONE* = 0x00000000
   orxANIM_KU32_FLAG_2D* = 0x00000001
   orxANIM_KU32_MASK_USER_ALL* = 0x0000000F
   orxANIM_KU32_MASK_ALL* = 0xFFFFFFFF
 
-## * Anim defines
-##
-
 const
   orxANIM_KU32_KEY_MAX_NUMBER* = 65535
   orxANIM_KU32_EVENT_MAX_NUMBER* = 65535
 
-## * Internal Anim structure
-##
 
 type orxANIM* = object
-## * Event enum
-##
+  ## Internal Anim structure
 
 type
   orxANIM_EVENT* {.size: sizeof(cint).} = enum
+    ## Event enum
     orxANIM_EVENT_START = 0,    ## *< Event sent when an animation starts
     orxANIM_EVENT_STOP,       ## *< Event sent when an animation stops
     orxANIM_EVENT_CUT,        ## *< Event sent when an animation is cut
@@ -32,10 +25,6 @@ type
     orxANIM_EVENT_UPDATE,     ## *< Event sent when an animation has been updated (current key)
     orxANIM_EVENT_CUSTOM_EVENT, ## *< Event sent when a custom event is reached
     orxANIM_EVENT_NUMBER, orxANIM_EVENT_NONE = orxENUM_NONE
-
-
-## * Anim event payload
-##
 
 type
   INNER_C_STRUCT_orxAnim_115* {.bycopy.} = object
@@ -56,16 +45,14 @@ type
     stCustom*: INNER_C_STRUCT_orxAnim_127
 
   orxANIM_EVENT_PAYLOAD* {.bycopy.} = object
+    ## Anim event payload
     pstAnim*: ptr orxANIM       ## *< Animation reference : 4
     zAnimName*: cstring     ## *< Animation name : 8
     ano_orxAnim_131*: INNER_C_UNION_orxAnim_113
 
-
-## * Anim custom event
-##
-
 type
   orxANIM_CUSTOM_EVENT* {.bycopy.} = object
+    ## Anim custom event
     zName*: cstring         ## *< Event name : 4
     fValue*: orxFLOAT          ## *< Event value : 8
     fTimeStamp*: orxFLOAT      ## *< Timestamp : 12

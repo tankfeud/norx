@@ -2,6 +2,6 @@ import oinput #, incl, joystick, keyboard, mouse
 
 export oinput
 
-template isActive*(zInputName: cstring): bool =
+template isActive*(zInputName: string): bool =
     ## Has input been newly activated since last frame?
-    orxInput_IsActive(zInputName).bool
+    oinput.isActive(zInputName).bool

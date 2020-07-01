@@ -207,7 +207,7 @@ proc isInCombineMode*(zName: cstring): orxBOOL {.cdecl,
   ##  @param[in] _zName            Concerned input name
   ##  @return orxTRUE if the input is in combine mode, orxFALSE otherwise
 
-proc bind*(zName: cstring; eType: orxINPUT_TYPE; eID: orxENUM;
+proc inputBind*(zName: cstring; eType: orxINPUT_TYPE; eID: orxENUM;
                    eMode: orxINPUT_MODE; s32BindingIndex: orxS32): orxSTATUS {.cdecl,
     importc: "orxInput_Bind", dynlib: libORX.}
   ## Binds an input to a mouse/joystick button, keyboard key or joystick axis
@@ -218,7 +218,7 @@ proc bind*(zName: cstring; eType: orxINPUT_TYPE; eID: orxENUM;
   ##  @param[in] _s32BindingIndex  Index of the desired binding, if < 0 the oldest binding will be replaced
   ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc unbind*(zName: cstring; s32BindingIndex: orxS32): orxSTATUS {.cdecl,
+proc inputUnbind*(zName: cstring; s32BindingIndex: orxS32): orxSTATUS {.cdecl,
     importc: "orxInput_Unbind", dynlib: libORX.}
   ## Unbinds an input
   ##  @param[in] _zName            Concerned input name

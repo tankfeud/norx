@@ -1,13 +1,9 @@
-import pure/math, lib, typ, system
+import lib, typ
 
 template lerp*(a, b, t: untyped): untyped =
   ## Lerps between two values given a coefficient t [0, 1]
   ## For t = 1 the result is b and for t = 0 the result is a.  
   a + (t * (b - a))
-
-template clamp*(v, mn, mx: untyped): untyped =
-  ## Gets clamped value between two boundaries
-  max(min(v, mx), mn)
 
 ## ** Module functions ***
 

@@ -11,27 +11,27 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   if isActive("Quit"):
     # Send close event
     echo "User quitting"
-    discard orxEvent_SendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
+    discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
 
 proc init(): orxSTATUS {.cdecl.} =
   ## Init function, it is called when all orx's modules have been initialized
   orxLOG("Sample1 starting")
 
   # Create the viewport
-  var v = createFromConfig[orxVIEWPORT]("MainViewport")
+  var v = viewportCreateFromConfig("MainViewport")
   if not v.isNil:
     echo "Viewport created"
   
   # Create the scene
-  var s = createFromConfig[orxOBJECT]("Scene")
+  var s = objectCreateFromConfig("Scene")
   if not s.isNil:
     echo "Scene created"
 
   # Register the Update function to the core clock
-  let clock = orxClock_Get(orxCLOCK_KZ_CORE)
+  let clock = clockGet(orxCLOCK_KZ_CORE)
   if not clock.isNil:
     echo "Clock gotten"
-  var status = orxClock_Register(clock, cast[orxCLOCK_FUNCTION](Update), nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  var status = clock.register(cast[orxCLOCK_FUNCTION](Update), nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
   if status == orxSTATUS_SUCCESS:
     echo "Clock registered"
 
@@ -51,7 +51,7 @@ proc bootstrap(): orxSTATUS =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = orxResource_AddStorage(KZ_RESOURCE_GROUP, $dir & "/data/config", orxFALSE)
+  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", orxFALSE)
   if status == orxSTATUS_SUCCESS:
     echo "Added storage"
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
@@ -59,7 +59,7 @@ proc bootstrap(): orxSTATUS =
 
 when isMainModule:
   # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = setBootstrap(cast[BOOTSTRAP_FUNCTION](bootstrap))
+  var status = setBootstrap(cast[orxCONFIG_BOOTSTRAP_FUNCTION](bootstrap))
   if status == orxSTATUS_SUCCESS:
     echo "Bootstrap was set"
 

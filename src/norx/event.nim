@@ -11,7 +11,7 @@ template orxEVENT_SEND_MACRO*(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): vo
   stEvent.hSender = cast[orxHANDLE](SENDER)
   stEvent.hRecipient = cast[orxHANDLE](RECIPIENT)
   stEvent.pstPayload = cast[pointer](PAYLOAD)
-  discard orxEvent_Send(addr(stEvent))
+  discard event.send(addr(stEvent))
 
 template orxEVENT_GET_FLAG*(ID: untyped): untyped =
   ((orxU32)(1 shl (orxU32)(ID)))

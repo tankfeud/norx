@@ -1,22 +1,18 @@
 
-import incl, vector, math, memory, decl
-
-## * Public oriented box structure
-##
+import incl, vector, pure/math, memory, decl
 
 type
   orxOBOX* {.bycopy.} = object
+    ## Public oriented box structure
     vPosition*: orxVECTOR      ## *< Position vector  : 12
     vPivot*: orxVECTOR         ## *< Pivot vector     : 24
     vX*: orxVECTOR             ## *< X axis vector    : 36
     vY*: orxVECTOR             ## *< Y axis vector    : 48
     vZ*: orxVECTOR             ## *< Z axis vector    : 60
 
-
-proc 2DSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
+proc twoDSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
                    pvPivot: ptr orxVECTOR; pvSize: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxOBOX {.
     inline, cdecl.} =
-  ##  *** OBox inlined functions ***
   ## Sets 2D oriented box values
   ##  @param[out]  _pstRes                       OBox to set
   ##  @param[in]   _pvWorldPosition              World space position vector
@@ -36,17 +32,17 @@ proc 2DSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
     fCos = orxFLOAT_1
     fSin = orxFLOAT_0
   else:
-    fCos = orxMath_Cos(fAngle)
-    fSin = orxMath_Sin(fAngle)
+    fCos = cos(fAngle)
+    fSin = sin(fAngle)
   ##  Sets axis
-  orxVector_Set(addr((pstRes.vX)), fCos * pvSize.fX, fSin * pvSize.fX, orxFLOAT_0)
-  orxVector_Set(addr((pstRes.vY)), -(fSin * pvSize.fY), fCos * pvSize.fY, orxFLOAT_0)
-  orxVector_Set(addr((pstRes.vZ)), orxFLOAT_0, orxFLOAT_0, pvSize.fZ)
+  set(addr((pstRes.vX)), fCos * pvSize.fX, fSin * pvSize.fX, orxFLOAT_0)
+  set(addr((pstRes.vY)), -(fSin * pvSize.fY), fCos * pvSize.fY, orxFLOAT_0)
+  set(addr((pstRes.vZ)), orxFLOAT_0, orxFLOAT_0, pvSize.fZ)
   ##  Sets pivot
-  orxVector_Set(addr((pstRes.vPivot)), (fCos * pvPivot.fX) - (fSin * pvPivot.fY),
+  set(addr((pstRes.vPivot)), (fCos * pvPivot.fX) - (fSin * pvPivot.fY),
                 (fSin * pvPivot.fX) + (fCos * pvPivot.fY), pvPivot.fZ)
   ##  Sets box position
-  orxVector_Copy(addr((pstRes.vPosition)), pvWorldPosition)
+  copy(addr((pstRes.vPosition)), pvWorldPosition)
   ##  Done!
   return pstRes
 
@@ -59,7 +55,7 @@ proc copy*(pstDst: ptr orxOBOX; pstSrc: ptr orxOBOX): ptr orxOBOX {.inline, cdec
   assert(pstDst != nil)
   assert(pstSrc != nil)
   ##  Copies it
-  orxMemory_Copy(pstDst, pstSrc, sizeof((orxOBOX)).orxU32)
+  memory.copy(pstDst, pstSrc, sizeof((orxOBOX)).orxU32)
   ##  Done!
   return pstDst
 
@@ -73,11 +69,9 @@ proc getCenter*(pstOp: ptr orxOBOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
   assert(pstOp != nil)
   assert(pvRes != nil)
   ##  Gets box center
-  orxVector_Add(pvRes, orxVector_Add(pvRes, addr((pstOp.vX)), addr((pstOp.vY))),
-                addr((pstOp.vZ)))
-  orxVector_Mulf(pvRes, pvRes, orx2F(0.5))
-  orxVector_Sub(pvRes, orxVector_Add(pvRes, pvRes, addr((pstOp.vPosition))),
-                addr((pstOp.vPivot)))
+  add(pvRes, add(pvRes, addr((pstOp.vX)), addr((pstOp.vY))), addr((pstOp.vZ)))
+  mulf(pvRes, pvRes, orx2F(0.5))
+  sub(pvRes, add(pvRes, pvRes, addr((pstOp.vPosition))), addr((pstOp.vPivot)))
   ##  Done!
   return pvRes
 
@@ -93,11 +87,11 @@ proc move*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; pvMove: ptr orxVECTOR): ptr 
   assert(pstOp != nil)
   assert(pvMove != nil)
   ##  Updates result
-  orxVector_Add(addr((pstRes.vPosition)), addr((pstOp.vPosition)), pvMove)
+  add(addr((pstRes.vPosition)), addr((pstOp.vPosition)), pvMove)
   ##  Done!
   return pstRes
 
-proc 2DRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr orxOBOX {.
+proc twoDRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr orxOBOX {.
     inline, cdecl.} =
   ## Rotates in 2D an OBox
   ##  @param[out]  _pstRes                       OBox where to store result
@@ -115,15 +109,15 @@ proc 2DRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr o
     fCos = orxFLOAT_1
     fSin = orxFLOAT_0
   else:
-    fCos = orxMath_Cos(fAngle)
-    fSin = orxMath_Sin(fAngle)
+    fCos = cos(fAngle)
+    fSin = sin(fAngle)
   ##  Updates axis
-  orxVector_Set(addr((pstRes.vX)), (fCos * pstOp.vX.fX) - (fSin * pstOp.vX.fY),
+  set(addr((pstRes.vX)), (fCos * pstOp.vX.fX) - (fSin * pstOp.vX.fY),
                 (fSin * pstOp.vX.fX) + (fCos * pstOp.vX.fY), pstOp.vX.fZ)
-  orxVector_Set(addr((pstRes.vY)), (fCos * pstOp.vY.fX) - (fSin * pstOp.vY.fY),
+  set(addr((pstRes.vY)), (fCos * pstOp.vY.fX) - (fSin * pstOp.vY.fY),
                 (fSin * pstOp.vY.fX) + (fCos * pstOp.vY.fY), pstOp.vY.fZ)
   ##  Updates pivot
-  orxVector_Set(addr((pstRes.vPivot)),
+  set(addr((pstRes.vPivot)),
                 (fCos * pstOp.vPivot.fX) - (fSin * pstOp.vPivot.fY),
                 (fSin * pstOp.vPivot.fX) + (fCos * pstOp.vPivot.fY), pstOp.vPivot.fZ)
   ##  Done!
@@ -141,25 +135,25 @@ proc isInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
   assert(pstBox != nil)
   assert(pvPosition != nil)
   ##  Gets origin to position vector
-  orxVector_Sub(addr(vToPos), pvPosition, orxVector_Sub(addr(vToPos),
+  sub(addr(vToPos), pvPosition, sub(addr(vToPos),
       addr((pstBox.vPosition)), addr((pstBox.vPivot))))
   ##  Z-axis test
-  fProj = orxVector_Dot(addr(vToPos), addr(pstBox.vZ))
+  fProj = dot(addr(vToPos), addr(pstBox.vZ))
   if (fProj >= orxFLOAT_0) and
-      (fProj <= orxVector_GetSquareSize(addr((pstBox.vZ)))):
+      (fProj <= getSquareSize(addr((pstBox.vZ)))):
     ##  X-axis test
-    fProj = orxVector_Dot(addr(vToPos), addr(pstBox.vX))
+    fProj = dot(addr(vToPos), addr(pstBox.vX))
     if (fProj >= orxFLOAT_0) and
-        (fProj <= orxVector_GetSquareSize(addr((pstBox.vX)))):
+        (fProj <= getSquareSize(addr((pstBox.vX)))):
       ##  Y-axis test
-      fProj = orxVector_Dot(addr(vToPos), addr(pstBox.vY))
+      fProj = dot(addr(vToPos), addr(pstBox.vY))
       if (fProj >= orxFLOAT_0) and
-          (fProj <= orxVector_GetSquareSize(addr((pstBox.vY)))):
+          (fProj <= getSquareSize(addr((pstBox.vY)))):
         ##  Updates result
         return true
   return false
 
-proc 2DIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
+proc twoDIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
     inline, cdecl.} =
   ## Is 2D position inside oriented box test
   ##  @param[in]   _pstBox                       Box to test against position
@@ -173,17 +167,17 @@ proc 2DIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
   assert(pstBox != nil)
   assert(pvPosition != nil)
   ##  Gets origin to position vector
-  orxVector_Sub(addr(vToPos), pvPosition, orxVector_Sub(addr(vToPos),
+  sub(addr(vToPos), pvPosition, sub(addr(vToPos),
       addr((pstBox.vPosition)), addr((pstBox.vPivot))))
   ##  X-axis test
-  fProj = orxVector_Dot(addr(vToPos), addr(pstBox.vX))
+  fProj = dot(addr(vToPos), addr(pstBox.vX))
   if fProj >= orxFLOAT_0:
-    fSize = orxVector_GetSquareSize(addr(pstBox.vX))
+    fSize = getSquareSize(addr(pstBox.vX))
     if fSize > orxFLOAT_0 and fProj <= fSize:
       ##  Y-axis test
-      fProj = orxVector_Dot(addr(vToPos), addr(pstBox.vY))
+      fProj = dot(addr(vToPos), addr(pstBox.vY))
       if fProj >= orxFLOAT_0:
-        fSize = orxVector_GetSquareSize(addr(pstBox.vY))
+        fSize = getSquareSize(addr(pstBox.vY))
         if fSize > orxFLOAT_0 and fProj <= fSize:
           return true
   return false
@@ -246,14 +240,14 @@ proc zAlignedTestIntersection*(pstBox1: ptr orxOBOX; pstBox2: ptr orxOBOX): orxB
           fProj: orxFLOAT
         var k: orxU32
         ##  Gets initial projected values
-        fMin =  orxVector_2DDot(addr(vToCorner[0]), pvAxis)
+        fMin = twoDDot(addr(vToCorner[0]), pvAxis)
         fMax = fMin
         fProj = fMin
         ##  For all remaining corners
         k = 1
         while k < 4:
           ##  Gets projected value
-          fProj = orxVector_2DDot(addr(vToCorner[k]), pvAxis)
+          fProj = twoDDot(addr(vToCorner[k]), pvAxis)
           ##  Updates extrema
           if fProj > fMax:
             fMax = fProj
@@ -261,7 +255,7 @@ proc zAlignedTestIntersection*(pstBox1: ptr orxOBOX; pstBox2: ptr orxOBOX): orxB
             fMin = fProj
           inc(k)
         ##  Not intersecting?
-        if (fMax < orxFLOAT_0) or (fMin > orxVector_GetSquareSize(pvAxis)):
+        if (fMax < orxFLOAT_0) or (fMin > getSquareSize(pvAxis)):
           ##  Updates result
           bResult = orxFALSE
           break

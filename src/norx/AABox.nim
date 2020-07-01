@@ -45,10 +45,10 @@ proc set*(pstRes: ptr orxAABOX; pvTL: ptr orxVECTOR; pvBR: ptr orxVECTOR): ptr o
   assert(pvTL != nil)
   assert(pvBR != nil)
   ##  Sets values
-  orxVector_Copy(addr((pstRes.vTL)), pvTL)
-  orxVector_Copy(addr((pstRes.vBR)), pvBR)
+  copy(addr((pstRes.vTL)), pvTL)
+  copy(addr((pstRes.vBR)), pvBR)
   ##  Reorders corners
-  orxAABox_Reorder(pstRes)
+  reorder(pstRes)
 
 proc isInside*(pstBox: ptr orxAABOX; pvPosition: ptr orxVECTOR): orxBOOL {.
     inline, cdecl.} =
@@ -119,7 +119,7 @@ proc copy*(pstDst: ptr orxAABOX; pstSrc: ptr orxAABOX): ptr orxAABOX {.inline,
   assert(pstDst != nil)
   assert(pstSrc != nil)
   ##  Copies it
-  discard orxMemory_Copy(pstDst, pstSrc, sizeof((orxAABOX)).orxU32)
+  discard copy(pstDst, pstSrc, sizeof((orxAABOX)).orxU32)
   ##  Done!
   return pstDst
 
@@ -135,8 +135,8 @@ proc move*(pstRes: ptr orxAABOX; pstOp: ptr orxAABOX; pvMove: ptr orxVECTOR): pt
   assert(pstOp != nil)
   assert(pvMove != nil)
   ##  Updates result
-  discard orxVector_Add(addr((pstRes.vTL)), addr((pstOp.vTL)), pvMove)
-  discard orxVector_Add(addr((pstRes.vBR)), addr((pstOp.vBR)), pvMove)
+  discard add(addr((pstRes.vTL)), addr((pstOp.vTL)), pvMove)
+  discard add(addr((pstRes.vBR)), addr((pstOp.vBR)), pvMove)
   ##  Done!
   return pstRes
 
@@ -150,7 +150,7 @@ proc getCenter*(pstOp: ptr orxAABOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
   assert(pstOp != nil)
   assert(pvRes != nil)
   ##  Gets box center
-  discard orxVector_Add(pvRes, addr((pstOp.vTL)), addr((pstOp.vBR)))
-  orxVector_Mulf(pvRes, pvRes, orx2F(0.5))
+  discard add(pvRes, addr((pstOp.vTL)), addr((pstOp.vBR)))
+  mulf(pvRes, pvRes, orx2F(0.5))
   ##  Done!
   return pvRes

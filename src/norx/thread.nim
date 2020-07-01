@@ -67,7 +67,7 @@ proc getCurrent*(): orxU32 {.cdecl, importc: "orxThread_GetCurrent",
   ## Gets current thread ID
   ##  @return      Current thread ID
 
-proc yield*() {.cdecl, importc: "orxThread_Yield", dynlib: libORX.}
+proc threadYield*() {.cdecl, importc: "orxThread_Yield", dynlib: libORX.}
   ## Yields to other threads
 
 proc createSemaphore*(u32Value: orxU32): ptr orxTHREAD_SEMAPHORE {.cdecl,

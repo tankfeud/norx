@@ -70,31 +70,31 @@ type
 ##  *** Debug Macros ***
 
 template orxDEBUG_ENABLE_LEVEL_MACRO*(LEVEL, ENABLE: untyped): untyped =
-  orxDebug_EnableLevel(LEVEL, ENABLE)
+  debug.enableLevel(LEVEL, ENABLE)
 
 template orxDEBUG_IS_LEVEL_ENABLED_MACRO*(LEVEL: untyped): untyped =
-  orxDebug_IsLevelEnabled(LEVEL)
+  debug.isLevelEnabled(LEVEL)
 
 template orxDEBUG_SET_FLAGS_MACRO*(SET, UNSET: untyped): untyped =
-  orxDebug_SetFlags(SET, UNSET)
+  debug.setFlags(SET, UNSET)
 
 template orxDEBUG_GET_FLAGS_MACRO*(): untyped =
-  orxDebug_GetFlags()
+  debug.getFlags()
 
 template orxDEBUG_SET_LOG_CALLBACK*(CALLBACK: untyped): untyped =
-  orxDebug_SetLogCallback(CALLBACK)
+  debug.setLogCallback(CALLBACK)
 
 template orxDEBUG_SETLOGFILE*(FILE: untyped): untyped =
-  orxDebug_SetLogFile(FILE)
+  debug.setLogFile(FILE)
 
 when defined(DEBUG):
   ##  Break
   template orxBREAK*(): untyped =
-    orxDebug_Break()
+    debugBreak()
 
   ##  Files
   template orxDEBUG_SETDEBUGFILE*(FILE: untyped): untyped =
-    orxDebug_SetDebugFile(FILE)
+    debug.setDebugFile(FILE)
 
   template orxDEBUG_SETBASEFILENAME*(FILE: untyped): void =
     var zBuffer: array[512, orxCHAR]
@@ -192,17 +192,17 @@ proc setLogCallback*(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION) {.cdecl,
 
 template orxDEBUG_INIT_MACRO*(): void =
   var u32DebugFlags: orxU32
-  discard orxDebug_Init()
-  u32DebugFlags = orxDebug_GetFlags()
-  orxDebug_SetFlags(orxDEBUG_KU32_STATIC_MASK_DEBUG, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
-  if orxSystem_GetVersionNumeric().int64 < VERSION:
-    orxLOG("The version of the runtime library [" & $orxSystem_GetVersionFullString() &
+  discard debugInit()
+  u32DebugFlags = getFlags()
+  setFlags(orxDEBUG_KU32_STATIC_MASK_DEBUG, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
+  if getVersionNumeric().int64 < VERSION:
+    orxLOG("The version of the runtime library [" & $getVersionFullString() &
       "] is older than the version used when compiling this program [" & VERSION_FULL_STRING & "].\n\nProblems will likely ensue!")
-  elif orxSystem_GetVersionNumeric().int64 > VERSION:
-    orxLOG("The version of the runtime library [" & $orxSystem_GetVersionFullString() &
+  elif getVersionNumeric().int64 > VERSION:
+    orxLOG("The version of the runtime library [" & $getVersionFullString() &
       "] is more recent than the version used when compiling this program [" & VERSION_FULL_STRING & "].\n\nProblems may arise due to possible incompatibilities!")
-  orxDebug_SetFlags(u32DebugFlags, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
+  setFlags(u32DebugFlags, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
 
 template orxDEBUG_EXIT_MACRO*(): untyped =
-  orxDebug_Exit()
+  debugExit()
 

@@ -1,4 +1,4 @@
-import incl, texture, vector, isplay
+import incl, texture, vector, display
 
 ## * Misc defines
 ##
