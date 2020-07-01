@@ -1,23 +1,21 @@
 import incl
 
 
-## * Setups FPS module
+proc FPSSetup*() {.cdecl, importc: "orxFPS_Setup", dynlib: libORX.}
+  ## Setups FPS module
 
-proc orxFPS_Setup*() {.cdecl, importc: "orxFPS_Setup", dynlib: libORX.}
-## * Inits the FPS module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc FPSInit*(): orxSTATUS {.cdecl, importc: "orxFPS_Init", dynlib: libORX.}
+  ## Inits the FPS module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFPS_Init*(): orxSTATUS {.cdecl, importc: "orxFPS_Init", dynlib: libORX.}
-## * Exits from the FPS module
+proc FPSExit*() {.cdecl, importc: "orxFPS_Exit", dynlib: libORX.}
+  ## Exits from the FPS module
 
-proc orxFPS_Exit*() {.cdecl, importc: "orxFPS_Exit", dynlib: libORX.}
-## * Increases internal frame count
-
-proc orxFPS_IncreaseFrameCount*() {.cdecl, importc: "orxFPS_IncreaseFrameCount",
+proc increaseFrameCount*() {.cdecl, importc: "orxFPS_IncreaseFrameCount",
                                   dynlib: libORX.}
-## * Gets current FTP value
-##  @return orxU32
-##
+  ## Increases internal frame count
 
-proc orxFPS_GetFPS*(): orxU32 {.cdecl, importc: "orxFPS_GetFPS", dynlib: libORX.}
+proc getFPS*(): orxU32 {.cdecl, importc: "orxFPS_GetFPS", dynlib: libORX.}
+  ## Gets current FTP value
+  ##  @return orxU32
+

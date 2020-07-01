@@ -6,11 +6,10 @@ type
     vTL*: orxVECTOR            ## *< Top left corner vector : 12
     vBR*: orxVECTOR            ## *< Bottom right corner vector : 24
 
-##  Reorders AABox corners
-##  @param[in]   pstBox                       Box to reorder
-##  @return      Reordered AABox
-
-proc orxAABox_Reorder*(pstBox: ptr orxAABOX): ptr orxAABOX {.inline, cdecl.} =
+proc reorder*(pstBox: ptr orxAABOX): ptr orxAABOX {.inline, cdecl.} =
+  ##  Reorders AABox corners
+  ##  @param[in]   pstBox                       Box to reorder
+  ##  @return      Reordered AABox
   assert(pstBox != nil)
   ##  Reorders coordinates so as to have upper left & bottom right box corners
   ##  X coord
@@ -34,15 +33,13 @@ proc orxAABox_Reorder*(pstBox: ptr orxAABOX): ptr orxAABOX {.inline, cdecl.} =
     pstBox.vBR.fZ = fTemp
   return pstBox
 
-## * Sets axis aligned box values
-##  @param[out]  _pstRes                       AABox to set
-##  @param[in]   _pvTL                         Top left corner
-##  @param[in]   _pvBR                         Bottom right corner
-##  @return      orxAABOX / nil
-##
-
-proc orxAABox_Set*(pstRes: ptr orxAABOX; pvTL: ptr orxVECTOR; pvBR: ptr orxVECTOR): ptr orxAABOX {.
+proc set*(pstRes: ptr orxAABOX; pvTL: ptr orxVECTOR; pvBR: ptr orxVECTOR): ptr orxAABOX {.
     inline, cdecl.} =
+  ## Sets axis aligned box values
+  ##  @param[out]  _pstRes                       AABox to set
+  ##  @param[in]   _pvTL                         Top left corner
+  ##  @param[in]   _pvBR                         Bottom right corner
+  ##  @return      orxAABOX / nil
   ##  Checks
   assert(pstRes != nil)
   assert(pvTL != nil)
@@ -53,14 +50,12 @@ proc orxAABox_Set*(pstRes: ptr orxAABOX; pvTL: ptr orxVECTOR; pvBR: ptr orxVECTO
   ##  Reorders corners
   orxAABox_Reorder(pstRes)
 
-## * Is position inside axis aligned box test
-##  @param[in]   _pstBox                       Box to test against position
-##  @param[in]   _pvPosition                   Position to test against the box
-##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
-##
-
-proc orxAABox_IsInside*(pstBox: ptr orxAABOX; pvPosition: ptr orxVECTOR): orxBOOL {.
+proc isInside*(pstBox: ptr orxAABOX; pvPosition: ptr orxVECTOR): orxBOOL {.
     inline, cdecl.} =
+  ## Is position inside axis aligned box test
+  ##  @param[in]   _pstBox                       Box to test against position
+  ##  @param[in]   _pvPosition                   Position to test against the box
+  ##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pstBox != nil)
@@ -75,14 +70,12 @@ proc orxAABox_IsInside*(pstBox: ptr orxAABOX; pvPosition: ptr orxVECTOR): orxBOO
         bResult = orxTRUE
   return bResult
 
-## * Tests axis aligned box intersection
-##  @param[in]   _pstBox1                      First box operand
-##  @param[in]   _pstBox2                      Second box operand
-##  @return      orxTRUE if boxes intersect, orxFALSE otherwise
-##
-
-proc orxAABox_TestIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL {.
+proc testIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL {.
     inline, cdecl.} =
+  ## Tests axis aligned box intersection
+  ##  @param[in]   _pstBox1                      First box operand
+  ##  @param[in]   _pstBox2                      Second box operand
+  ##  @return      orxTRUE if boxes intersect, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pstBox1 != nil)
@@ -98,14 +91,12 @@ proc orxAABox_TestIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): o
         bResult = orxTRUE
   return bResult
 
-## * Tests axis aligned box 2D intersection (no Z-axis test)
-##  @param[in]   _pstBox1                      First box operand
-##  @param[in]   _pstBox2                      Second box operand
-##  @return      orxTRUE if boxes intersect in 2D, orxFALSE otherwise
-##
-
-proc orxAABox_Test2DIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL {.
+proc test2DIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL {.
     inline, cdecl.} =
+  ## Tests axis aligned box 2D intersection (no Z-axis test)
+  ##  @param[in]   _pstBox1                      First box operand
+  ##  @param[in]   _pstBox2                      Second box operand
+  ##  @return      orxTRUE if boxes intersect in 2D, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pstBox1 != nil)
@@ -118,14 +109,12 @@ proc orxAABox_Test2DIntersection*(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX):
       bResult = orxTRUE
   return bResult
 
-## * Copies an AABox onto another one
-##  @param[out]   _pstDst                      AABox to copy to (destination)
-##  @param[in]   _pstSrc                       AABox to copy from (destination)
-##  @return      Destination AABox
-##
-
-proc orxAABox_Copy*(pstDst: ptr orxAABOX; pstSrc: ptr orxAABOX): ptr orxAABOX {.inline,
+proc copy*(pstDst: ptr orxAABOX; pstSrc: ptr orxAABOX): ptr orxAABOX {.inline,
     cdecl.} =
+  ## Copies an AABox onto another one
+  ##  @param[out]   _pstDst                      AABox to copy to (destination)
+  ##  @param[in]   _pstSrc                       AABox to copy from (destination)
+  ##  @return      Destination AABox
   ##  Checks
   assert(pstDst != nil)
   assert(pstSrc != nil)
@@ -134,15 +123,13 @@ proc orxAABox_Copy*(pstDst: ptr orxAABOX; pstSrc: ptr orxAABOX): ptr orxAABOX {.
   ##  Done!
   return pstDst
 
-## * Moves an AABox
-##  @param[out]  _pstRes                       AABox where to store result
-##  @param[in]   _pstOp                        AABox to move
-##  @param[in]   _pvMove                       Move vector
-##  @return      Moved AABox
-##
-
-proc orxAABox_Move*(pstRes: ptr orxAABOX; pstOp: ptr orxAABOX; pvMove: ptr orxVECTOR): ptr orxAABOX {.
+proc move*(pstRes: ptr orxAABOX; pstOp: ptr orxAABOX; pvMove: ptr orxVECTOR): ptr orxAABOX {.
     inline, cdecl.} =
+  ## Moves an AABox
+  ##  @param[out]  _pstRes                       AABox where to store result
+  ##  @param[in]   _pstOp                        AABox to move
+  ##  @param[in]   _pvMove                       Move vector
+  ##  @return      Moved AABox
   ##  Checks
   assert(pstRes != nil)
   assert(pstOp != nil)
@@ -153,14 +140,12 @@ proc orxAABox_Move*(pstRes: ptr orxAABOX; pstOp: ptr orxAABOX; pvMove: ptr orxVE
   ##  Done!
   return pstRes
 
-## * Gets AABox center position
-##  @param[in]   _pstOp                        Concerned AABox
-##  @param[out]  _pvRes                        Center position
-##  @return      Center position vector
-##
-
-proc orxAABox_GetCenter*(pstOp: ptr orxAABOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
+proc getCenter*(pstOp: ptr orxAABOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Gets AABox center position
+  ##  @param[in]   _pstOp                        Concerned AABox
+  ##  @param[out]  _pvRes                        Center position
+  ##  @return      Center position vector
   ##  Checks
   assert(pstOp != nil)
   assert(pvRes != nil)

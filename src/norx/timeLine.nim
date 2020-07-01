@@ -29,82 +29,70 @@ type
     fTimeStamp*: orxFLOAT      ## *< Event time : 16
 
 
-## * TimeLine module setup
-##
+proc timeLineSetup*() {.cdecl, importc: "orxTimeLine_Setup", dynlib: libORX.}
+  ## TimeLine module setup
 
-proc orxTimeLine_Setup*() {.cdecl, importc: "orxTimeLine_Setup", dynlib: libORX.}
-## * Inits the TimeLine module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxTimeLine_Init*(): orxSTATUS {.cdecl, importc: "orxTimeLine_Init",
+proc timeLineInit*(): orxSTATUS {.cdecl, importc: "orxTimeLine_Init",
                                    dynlib: libORX.}
-## * Exits from the TimeLine module
-##
+  ## Inits the TimeLine module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTimeLine_Exit*() {.cdecl, importc: "orxTimeLine_Exit", dynlib: libORX.}
-## * Creates an empty TimeLine
-##  @return orxTIMELINE / nil
-##
+proc timeLineExit*() {.cdecl, importc: "orxTimeLine_Exit", dynlib: libORX.}
+  ## Exits from the TimeLine module
 
-proc orxTimeLine_Create*(): ptr orxTIMELINE {.cdecl, importc: "orxTimeLine_Create",
+proc timeLineCreate*(): ptr orxTIMELINE {.cdecl, importc: "orxTimeLine_Create",
     dynlib: libORX.}
-## * Deletes a TimeLine
-##  @param[in] _pstTimeLine            Concerned TimeLine
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates an empty TimeLine
+  ##  @return orxTIMELINE / nil
 
-proc orxTimeLine_Delete*(pstTimeLine: ptr orxTIMELINE): orxSTATUS {.cdecl,
+proc delete*(pstTimeLine: ptr orxTIMELINE): orxSTATUS {.cdecl,
     importc: "orxTimeLine_Delete", dynlib: libORX.}
-## * Clears cache (if any TimeLine track is still in active use, it'll remain in memory until not referenced anymore)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Deletes a TimeLine
+  ##  @param[in] _pstTimeLine            Concerned TimeLine
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTimeLine_ClearCache*(): orxSTATUS {.cdecl,
+proc clearCache*(): orxSTATUS {.cdecl,
     importc: "orxTimeLine_ClearCache", dynlib: libORX.}
-## * Enables/disables a TimeLine
-##  @param[in]   _pstTimeLine          Concerned TimeLine
-##  @param[in]   _bEnable              Enable / disable
-##
+  ## Clears cache (if any TimeLine track is still in active use, it'll remain in memory until not referenced anymore)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTimeLine_Enable*(pstTimeLine: ptr orxTIMELINE; bEnable: orxBOOL) {.cdecl,
+proc enable*(pstTimeLine: ptr orxTIMELINE; bEnable: orxBOOL) {.cdecl,
     importc: "orxTimeLine_Enable", dynlib: libORX.}
-## * Is TimeLine enabled?
-##  @param[in]   _pstTimeLine          Concerned TimeLine
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables a TimeLine
+  ##  @param[in]   _pstTimeLine          Concerned TimeLine
+  ##  @param[in]   _bEnable              Enable / disable
 
-proc orxTimeLine_IsEnabled*(pstTimeLine: ptr orxTIMELINE): orxBOOL {.cdecl,
+proc isEnabled*(pstTimeLine: ptr orxTIMELINE): orxBOOL {.cdecl,
     importc: "orxTimeLine_IsEnabled", dynlib: libORX.}
-## * Adds a track to a TimeLine from config
-##  @param[in]   _pstTimeLine          Concerned TimeLine
-##  @param[in]   _zTrackID             Config ID
-##  return       orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is TimeLine enabled?
+  ##  @param[in]   _pstTimeLine          Concerned TimeLine
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxTimeLine_AddTrackFromConfig*(pstTimeLine: ptr orxTIMELINE;
+proc addTrackFromConfig*(pstTimeLine: ptr orxTIMELINE;
                                     zTrackID: cstring): orxSTATUS {.cdecl,
     importc: "orxTimeLine_AddTrackFromConfig", dynlib: libORX.}
-## * Removes a track using its config ID
-##  @param[in]   _pstTimeLine          Concerned TimeLine
-##  @param[in]   _zTrackID             Config ID of the track to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a track to a TimeLine from config
+  ##  @param[in]   _pstTimeLine          Concerned TimeLine
+  ##  @param[in]   _zTrackID             Config ID
+  ##  return       orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTimeLine_RemoveTrackFromConfig*(pstTimeLine: ptr orxTIMELINE;
+proc removeTrackFromConfig*(pstTimeLine: ptr orxTIMELINE;
                                        zTrackID: cstring): orxSTATUS {.cdecl,
     importc: "orxTimeLine_RemoveTrackFromConfig", dynlib: libORX.}
-## * Gets how many tracks are currently in use
-##  @param[in]   _pstTimeLine          Concerned TimeLine
-##  @return      orxU32
-##
+  ## Removes a track using its config ID
+  ##  @param[in]   _pstTimeLine          Concerned TimeLine
+  ##  @param[in]   _zTrackID             Config ID of the track to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTimeLine_GetCount*(pstTimeLine: ptr orxTIMELINE): orxU32 {.cdecl,
+proc getCount*(pstTimeLine: ptr orxTIMELINE): orxU32 {.cdecl,
     importc: "orxTimeLine_GetCount", dynlib: libORX.}
-## * Gets a track duration using its config ID
-##  @param[in]   _zTrackID             Config ID of the concerned track
-##  @return      Duration if found, -orxFLOAT_1 otherwise
-##
+  ## Gets how many tracks are currently in use
+  ##  @param[in]   _pstTimeLine          Concerned TimeLine
+  ##  @return      orxU32
 
-proc orxTimeLine_GetTrackDuration*(zTrackID: cstring): orxFLOAT {.cdecl,
+proc getTrackDuration*(zTrackID: cstring): orxFLOAT {.cdecl,
     importc: "orxTimeLine_GetTrackDuration", dynlib: libORX.}
+  ## Gets a track duration using its config ID
+  ##  @param[in]   _zTrackID             Config ID of the concerned track
+  ##  @return      Duration if found, -orxFLOAT_1 otherwise
+

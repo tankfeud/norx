@@ -44,324 +44,299 @@ type
     zFXName*: cstring       ## *< FX name : 8
 
 
-## * FX module setup
-##
+proc FXSetup*() {.cdecl, importc: "orxFX_Setup", dynlib: libORX.}
+  ## FX module setup
 
-proc orxFX_Setup*() {.cdecl, importc: "orxFX_Setup", dynlib: libORX.}
-## * Inits the FX module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc FXInit*(): orxSTATUS {.cdecl, importc: "orxFX_Init", dynlib: libORX.}
+  ## Inits the FX module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_Init*(): orxSTATUS {.cdecl, importc: "orxFX_Init", dynlib: libORX.}
-## * Exits from the FX module
-##
+proc FXExit*() {.cdecl, importc: "orxFX_Exit", dynlib: libORX.}
+  ## Exits from the FX module
 
-proc orxFX_Exit*() {.cdecl, importc: "orxFX_Exit", dynlib: libORX.}
-## * Creates an empty FX
-##  @return orxFX / nil
-##
+proc FXCreate*(): ptr orxFX {.cdecl, importc: "orxFX_Create", dynlib: libORX.}
+  ## Creates an empty FX
+  ##  @return orxFX / nil
 
-proc orxFX_Create*(): ptr orxFX {.cdecl, importc: "orxFX_Create", dynlib: libORX.}
-## * Creates an FX from config
-##  @param[in]   _zConfigID    Config ID
-##  @ return orxFX / nil
-##
-
-proc orxFX_CreateFromConfig*(zConfigID: cstring): ptr orxFX {.cdecl,
+proc FXCreateFromConfig*(zConfigID: cstring): ptr orxFX {.cdecl,
     importc: "orxFX_CreateFromConfig", dynlib: libORX.}
-## * Deletes an FX
-##  @param[in] _pstFX            Concerned FX
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates an FX from config
+  ##  @param[in]   _zConfigID    Config ID
+  ##  @ return orxFX / nil
 
-proc orxFX_Delete*(pstFX: ptr orxFX): orxSTATUS {.cdecl, importc: "orxFX_Delete",
+proc delete*(pstFX: ptr orxFX): orxSTATUS {.cdecl, importc: "orxFX_Delete",
     dynlib: libORX.}
-## * Clears cache (if any FX is still in active use, it'll remain in memory until not referenced anymore)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Deletes an FX
+  ##  @param[in] _pstFX            Concerned FX
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_ClearCache*(): orxSTATUS {.cdecl, importc: "orxFX_ClearCache",
+proc clearCache*(): orxSTATUS {.cdecl, importc: "orxFX_ClearCache",
                                    dynlib: libORX.}
-## * Applies FX on object
-##  @param[in] _pstFX            FX to apply
-##  @param[in] _pstObject        Object on which to apply the FX
-##  @param[in] _fStartTime       FX local application start time
-##  @param[in] _fEndTime         FX local application end time
-##  @return    orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Clears cache (if any FX is still in active use, it'll remain in memory until not referenced anymore)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_Apply*(pstFX: ptr orxFX; pstObject: ptr orxOBJECT; fStartTime: orxFLOAT;
+proc apply*(pstFX: ptr orxFX; pstObject: ptr orxOBJECT; fStartTime: orxFLOAT;
                  fEndTime: orxFLOAT): orxSTATUS {.cdecl, importc: "orxFX_Apply",
     dynlib: libORX.}
-## * Enables/disables an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _bEnable        Enable / disable
-##
+  ## Applies FX on object
+  ##  @param[in] _pstFX            FX to apply
+  ##  @param[in] _pstObject        Object on which to apply the FX
+  ##  @param[in] _fStartTime       FX local application start time
+  ##  @param[in] _fEndTime         FX local application end time
+  ##  @return    orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_Enable*(pstFX: ptr orxFX; bEnable: orxBOOL) {.cdecl,
+proc enable*(pstFX: ptr orxFX; bEnable: orxBOOL) {.cdecl,
     importc: "orxFX_Enable", dynlib: libORX.}
-## * Is FX enabled?
-##  @param[in]   _pstFX          Concerned FX
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _bEnable        Enable / disable
 
-proc orxFX_IsEnabled*(pstFX: ptr orxFX): orxBOOL {.cdecl, importc: "orxFX_IsEnabled",
+proc isEnabled*(pstFX: ptr orxFX): orxBOOL {.cdecl, importc: "orxFX_IsEnabled",
     dynlib: libORX.}
-## * Adds alpha to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _fStartAlpha    Starting alpha value
-##  @param[in]   _fEndAlpha      Ending alpha value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is FX enabled?
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxFX_AddAlpha*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addAlpha*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                     fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                     fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                     fStartAlpha: orxFLOAT; fEndAlpha: orxFLOAT; eCurve: orxFX_CURVE;
                     fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.cdecl,
     importc: "orxFX_AddAlpha", dynlib: libORX.}
-## * Adds RGB color to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartColor   Starting color value
-##  @param[in]   _pvEndColor     Ending color value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds alpha to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _fStartAlpha    Starting alpha value
+  ##  @param[in]   _fEndAlpha      Ending alpha value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddRGB*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addRGB*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                   fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                   fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                   pvStartColor: ptr orxVECTOR; pvEndColor: ptr orxVECTOR;
                   eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddRGB", dynlib: libORX.}
-## * Adds HSL color to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartColor   Starting color value
-##  @param[in]   _pvEndColor     Ending color value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds RGB color to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartColor   Starting color value
+  ##  @param[in]   _pvEndColor     Ending color value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddHSL*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addHSL*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                   fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                   fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                   pvStartColor: ptr orxVECTOR; pvEndColor: ptr orxVECTOR;
                   eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddHSL", dynlib: libORX.}
-## * Adds HSV color to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartColor   Starting color value
-##  @param[in]   _pvEndColor     Ending color value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds HSL color to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartColor   Starting color value
+  ##  @param[in]   _pvEndColor     Ending color value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddHSV*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addHSV*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                   fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                   fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                   pvStartColor: ptr orxVECTOR; pvEndColor: ptr orxVECTOR;
                   eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddHSV", dynlib: libORX.}
-## * Adds rotation to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _fStartRotation Starting rotation value (radians)
-##  @param[in]   _fEndRotation   Ending rotation value (radians)
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds HSV color to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartColor   Starting color value
+  ##  @param[in]   _pvEndColor     Ending color value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddRotation*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addRotation*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                        fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                        fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                        fStartRotation: orxFLOAT; fEndRotation: orxFLOAT;
                        eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddRotation", dynlib: libORX.}
-## * Adds scale to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartScale   Starting scale value
-##  @param[in]   _pvEndScale     Ending scale value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds rotation to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _fStartRotation Starting rotation value (radians)
+  ##  @param[in]   _fEndRotation   Ending rotation value (radians)
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddScale*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addScale*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                     fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                     fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                     pvStartScale: ptr orxVECTOR; pvEndScale: ptr orxVECTOR;
                     eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddScale", dynlib: libORX.}
-## * Adds position to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartTranslation Starting position value
-##  @param[in]   _pvEndTranslation Ending position value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds scale to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartScale   Starting scale value
+  ##  @param[in]   _pvEndScale     Ending scale value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddPosition*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addPosition*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                        fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                        fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                        pvStartTranslation: ptr orxVECTOR;
                        pvEndTranslation: ptr orxVECTOR; eCurve: orxFX_CURVE;
                        fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.cdecl,
     importc: "orxFX_AddPosition", dynlib: libORX.}
-## * Adds speed to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _pvStartSpeed   Starting speed value
-##  @param[in]   _pvEndSpeed     Ending speed value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds position to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartTranslation Starting position value
+  ##  @param[in]   _pvEndTranslation Ending position value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddSpeed*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addSpeed*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                     fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                     fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                     pvStartSpeed: ptr orxVECTOR; pvEndSpeed: ptr orxVECTOR;
                     eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddSpeed", dynlib: libORX.}
-## * Adds volume to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _fStartVolume   Starting volume value
-##  @param[in]   _fEndVolume     Ending volume value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds speed to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _pvStartSpeed   Starting speed value
+  ##  @param[in]   _pvEndSpeed     Ending speed value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddVolume*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addVolume*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                      fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                      fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                      fStartVolume: orxFLOAT; fEndVolume: orxFLOAT;
                      eCurve: orxFX_CURVE; fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.
     cdecl, importc: "orxFX_AddVolume", dynlib: libORX.}
-## * Adds pitch to an FX
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _fStartTime     Time start
-##  @param[in]   _fEndTime       Time end
-##  @param[in]   _fCyclePeriod   Cycle period
-##  @param[in]   _fCyclePhase    Cycle phase (at start)
-##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
-##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
-##  @param[in]   _fStartPitch    Starting pitch value
-##  @param[in]   _fEndPitch      Ending pitch value
-##  @param[in]   _eCurve         Blending curve type
-##  @param[in]   _fPow           Blending curve exponent
-##  @param[in]   _u32Flags       Param flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds volume to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _fStartVolume   Starting volume value
+  ##  @param[in]   _fEndVolume     Ending volume value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddPitch*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
+proc addPitch*(pstFX: ptr orxFX; fStartTime: orxFLOAT; fEndTime: orxFLOAT;
                     fCyclePeriod: orxFLOAT; fCyclePhase: orxFLOAT;
                     fAmplification: orxFLOAT; fAcceleration: orxFLOAT;
                     fStartPitch: orxFLOAT; fEndPitch: orxFLOAT; eCurve: orxFX_CURVE;
                     fPow: orxFLOAT; u32Flags: orxU32): orxSTATUS {.cdecl,
     importc: "orxFX_AddPitch", dynlib: libORX.}
-## * Adds a slot to an FX from config
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _zSlotID        Config ID
-##  return       orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds pitch to an FX
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _fStartTime     Time start
+  ##  @param[in]   _fEndTime       Time end
+  ##  @param[in]   _fCyclePeriod   Cycle period
+  ##  @param[in]   _fCyclePhase    Cycle phase (at start)
+  ##  @param[in]   _fAmplification Curve linear amplification over time (1.0 for none)
+  ##  @param[in]   _fAcceleration  Curve linear acceleration over time (1.0 for none)
+  ##  @param[in]   _fStartPitch    Starting pitch value
+  ##  @param[in]   _fEndPitch      Ending pitch value
+  ##  @param[in]   _eCurve         Blending curve type
+  ##  @param[in]   _fPow           Blending curve exponent
+  ##  @param[in]   _u32Flags       Param flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_AddSlotFromConfig*(pstFX: ptr orxFX; zSlotID: cstring): orxSTATUS {.
+proc addSlotFromConfig*(pstFX: ptr orxFX; zSlotID: cstring): orxSTATUS {.
     cdecl, importc: "orxFX_AddSlotFromConfig", dynlib: libORX.}
-## * Gets FX duration
-##  @param[in]   _pstFX          Concerned FX
-##  @return      orxFLOAT
-##
+  ## Adds a slot to an FX from config
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _zSlotID        Config ID
+  ##  return       orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_GetDuration*(pstFX: ptr orxFX): orxFLOAT {.cdecl,
+proc getDuration*(pstFX: ptr orxFX): orxFLOAT {.cdecl,
     importc: "orxFX_GetDuration", dynlib: libORX.}
-## * Gets FX name
-##  @param[in]   _pstFX          Concerned FX
-##  @return      orxSTRING / orxSTRING_EMPTY
-##
+  ## Gets FX duration
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @return      orxFLOAT
 
-proc orxFX_GetName*(pstFX: ptr orxFX): cstring {.cdecl, importc: "orxFX_GetName",
+proc getName*(pstFX: ptr orxFX): cstring {.cdecl, importc: "orxFX_GetName",
     dynlib: libORX.}
-## * Set FX loop property
-##  @param[in]   _pstFX          Concerned FX
-##  @param[in]   _bLoop          Loop / don't loop
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets FX name
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @return      orxSTRING / orxSTRING_EMPTY
 
-proc orxFX_Loop*(pstFX: ptr orxFX; bLoop: orxBOOL): orxSTATUS {.cdecl,
+proc loop*(pstFX: ptr orxFX; bLoop: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxFX_Loop", dynlib: libORX.}
-## * Is FX looping
-##  @param[in]   _pstFX          Concerned FX
-##  @return      orxTRUE if looping, orxFALSE otherwise
-##
+  ## Set FX loop property
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @param[in]   _bLoop          Loop / don't loop
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFX_IsLooping*(pstFX: ptr orxFX): orxBOOL {.cdecl, importc: "orxFX_IsLooping",
+proc isLooping*(pstFX: ptr orxFX): orxBOOL {.cdecl, importc: "orxFX_IsLooping",
     dynlib: libORX.}
+  ## Is FX looping
+  ##  @param[in]   _pstFX          Concerned FX
+  ##  @return      orxTRUE if looping, orxFALSE otherwise
+

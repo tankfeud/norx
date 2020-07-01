@@ -60,139 +60,123 @@ type
 ## * Command registration helpers
 ##
 
-## * Command module setup
-##
+proc commandSetup*() {.cdecl, importc: "orxCommand_Setup", dynlib: libORX.}
+  ## Command module setup
 
-proc orxCommand_Setup*() {.cdecl, importc: "orxCommand_Setup", dynlib: libORX.}
-## * Inits the command module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxCommand_Init*(): orxSTATUS {.cdecl, importc: "orxCommand_Init",
+proc commandInit*(): orxSTATUS {.cdecl, importc: "orxCommand_Init",
                                   dynlib: libORX.}
-## * Exits from the command module
-##
+  ## Inits the command module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxCommand_Exit*() {.cdecl, importc: "orxCommand_Exit", dynlib: libORX.}
-## * Registers a command
-##  @param[in]   _zCommand      Command name
-##  @param[in]   _pfnFunction   Associated function
-##  @param[in]   _u32RequiredParamNumber Number of required parameters of the command
-##  @param[in]   _u32OptionalParamNumber Number of optional parameters of the command
-##  @param[in]   _astParamList  List of parameters of the command
-##  @param[in]   _pstResult     Result
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc commandExit*() {.cdecl, importc: "orxCommand_Exit", dynlib: libORX.}
+  ## Exits from the command module
 
-proc orxCommand_Register*(zCommand: cstring; pfnFunction: orxCOMMAND_FUNCTION;
+proc register*(zCommand: cstring; pfnFunction: orxCOMMAND_FUNCTION;
                          u32RequiredParamNumber: orxU32;
                          u32OptionalParamNumber: orxU32;
                          astParamList: ptr orxCOMMAND_VAR_DEF;
                          pstResult: ptr orxCOMMAND_VAR_DEF): orxSTATUS {.cdecl,
     importc: "orxCommand_Register", dynlib: libORX.}
-## * Unregisters a command
-##  @param[in]   _zCommand      Command name
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Registers a command
+  ##  @param[in]   _zCommand      Command name
+  ##  @param[in]   _pfnFunction   Associated function
+  ##  @param[in]   _u32RequiredParamNumber Number of required parameters of the command
+  ##  @param[in]   _u32OptionalParamNumber Number of optional parameters of the command
+  ##  @param[in]   _astParamList  List of parameters of the command
+  ##  @param[in]   _pstResult     Result
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxCommand_Unregister*(zCommand: cstring): orxSTATUS {.cdecl,
+proc unregister*(zCommand: cstring): orxSTATUS {.cdecl,
     importc: "orxCommand_Unregister", dynlib: libORX.}
-## * Is a command registered?
-##  @param[in]   _zCommand      Command name
-##  @return      orxTRUE / orxFALSE
-##
+  ## Unregisters a command
+  ##  @param[in]   _zCommand      Command name
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxCommand_IsRegistered*(zCommand: cstring): orxBOOL {.cdecl,
+proc isRegistered*(zCommand: cstring): orxBOOL {.cdecl,
     importc: "orxCommand_IsRegistered", dynlib: libORX.}
-## * Adds a command alias
-##  @param[in]   _zAlias        Command alias
-##  @param[in]   _zCommand      Command name
-##  @param[in]   _zArgs         Command argument, nil for none
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is a command registered?
+  ##  @param[in]   _zCommand      Command name
+  ##  @return      orxTRUE / orxFALSE
 
-proc orxCommand_AddAlias*(zAlias: cstring; zCommand: cstring;
+proc addAlias*(zAlias: cstring; zCommand: cstring;
                          zArgs: cstring): orxSTATUS {.cdecl,
     importc: "orxCommand_AddAlias", dynlib: libORX.}
-## * Removes a command alias
-##  @param[in]   _zAlias        Command alias
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a command alias
+  ##  @param[in]   _zAlias        Command alias
+  ##  @param[in]   _zCommand      Command name
+  ##  @param[in]   _zArgs         Command argument, nil for none
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxCommand_RemoveAlias*(zAlias: cstring): orxSTATUS {.cdecl,
+proc removeAlias*(zAlias: cstring): orxSTATUS {.cdecl,
     importc: "orxCommand_RemoveAlias", dynlib: libORX.}
-## * Is a command alias?
-##  @param[in]   _zAlias        Command alias
-##  @return      orxTRUE / orxFALSE
-##
+  ## Removes a command alias
+  ##  @param[in]   _zAlias        Command alias
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxCommand_IsAlias*(zAlias: cstring): orxBOOL {.cdecl,
+proc isAlias*(zAlias: cstring): orxBOOL {.cdecl,
     importc: "orxCommand_IsAlias", dynlib: libORX.}
-## * Gets a command's (text) prototype (beware: result won't persist from one call to the other)
-##  @param[in]   _zCommand      Command name
-##  @return      Command prototype / orxSTRING_EMPTY
-##
+  ## Is a command alias?
+  ##  @param[in]   _zAlias        Command alias
+  ##  @return      orxTRUE / orxFALSE
 
-proc orxCommand_GetPrototype*(zCommand: cstring): cstring {.cdecl,
+proc getPrototype*(zCommand: cstring): cstring {.cdecl,
     importc: "orxCommand_GetPrototype", dynlib: libORX.}
-## * Gets next command using an optional base
-##  @param[in]   _zBase             Base name, can be set to nil for no base
-##  @param[in]   _zPrevious         Previous command, nil to get the first command
-##  @param[out]  _pu32CommonLength  Length of the common prefix of all potential results, nil to ignore
-##  @return      Next command found, nil if none
-##
+  ## Gets a command's (text) prototype (beware: result won't persist from one call to the other)
+  ##  @param[in]   _zCommand      Command name
+  ##  @return      Command prototype / orxSTRING_EMPTY
 
-proc orxCommand_GetNext*(zBase: cstring; zPrevious: cstring;
+proc getNext*(zBase: cstring; zPrevious: cstring;
                         pu32CommonLength: ptr orxU32): cstring {.cdecl,
     importc: "orxCommand_GetNext", dynlib: libORX.}
-## * Evaluates a command
-##  @param[in]   _zCommandLine  Command name + arguments
-##  @param[out]  _pstResult     Variable that will contain the result
-##  @return      Command result if found, nil otherwise
-##
+  ## Gets next command using an optional base
+  ##  @param[in]   _zBase             Base name, can be set to nil for no base
+  ##  @param[in]   _zPrevious         Previous command, nil to get the first command
+  ##  @param[out]  _pu32CommonLength  Length of the common prefix of all potential results, nil to ignore
+  ##  @return      Next command found, nil if none
 
-proc orxCommand_Evaluate*(zCommandLine: cstring; pstResult: ptr orxCOMMAND_VAR): ptr orxCOMMAND_VAR {.
+proc evaluate*(zCommandLine: cstring; pstResult: ptr orxCOMMAND_VAR): ptr orxCOMMAND_VAR {.
     cdecl, importc: "orxCommand_Evaluate", dynlib: libORX.}
-## * Evaluates a command with a specific GUID
-##  @param[in]   _zCommandLine  Command name + arguments
-##  @param[in]   _u64GUID       GUID to use in place of the GUID markers in the command
-##  @param[out]  _pstResult     Variable that will contain the result
-##  @return      Command result if found, nil otherwise
-##
+  ## Evaluates a command
+  ##  @param[in]   _zCommandLine  Command name + arguments
+  ##  @param[out]  _pstResult     Variable that will contain the result
+  ##  @return      Command result if found, nil otherwise
 
-proc orxCommand_EvaluateWithGUID*(zCommandLine: cstring; u64GUID: orxU64;
+proc evaluateWithGUID*(zCommandLine: cstring; u64GUID: orxU64;
                                  pstResult: ptr orxCOMMAND_VAR): ptr orxCOMMAND_VAR {.
     cdecl, importc: "orxCommand_EvaluateWithGUID", dynlib: libORX.}
-## * Executes a command
-##  @param[in]   _zCommand      Command name
-##  @param[in]   _u32ArgNumber  Number of arguments sent to the command
-##  @param[in]   _astArgList    List of arguments sent to the command
-##  @param[out]  _pstResult     Variable that will contain the result
-##  @return      Command result if found, nil otherwise
-##
+  ## Evaluates a command with a specific GUID
+  ##  @param[in]   _zCommandLine  Command name + arguments
+  ##  @param[in]   _u64GUID       GUID to use in place of the GUID markers in the command
+  ##  @param[out]  _pstResult     Variable that will contain the result
+  ##  @return      Command result if found, nil otherwise
 
-proc orxCommand_Execute*(zCommand: cstring; u32ArgNumber: orxU32;
+proc execute*(zCommand: cstring; u32ArgNumber: orxU32;
                         astArgList: ptr orxCOMMAND_VAR;
                         pstResult: ptr orxCOMMAND_VAR): ptr orxCOMMAND_VAR {.cdecl,
     importc: "orxCommand_Execute", dynlib: libORX.}
-## * Parses numerical arguments, string arguments will be evaluated to vectors or float when possible
-##  @param[in]   _u32ArgNumber  Number of arguments to parse
-##  @param[in]   _astArgList    List of arguments to parse
-##  @param[out]  _astOperandList List of parsed arguments
-##  @return orxSTATUS_SUCCESS if all numerical arguments have been correctly interpreted, orxSTATUS_FAILURE otherwise
-##
+  ## Executes a command
+  ##  @param[in]   _zCommand      Command name
+  ##  @param[in]   _u32ArgNumber  Number of arguments sent to the command
+  ##  @param[in]   _astArgList    List of arguments sent to the command
+  ##  @param[out]  _pstResult     Variable that will contain the result
+  ##  @return      Command result if found, nil otherwise
 
-proc orxCommand_ParseNumericalArguments*(u32ArgNumber: orxU32;
+proc parseNumericalArguments*(u32ArgNumber: orxU32;
                                         astArgList: ptr orxCOMMAND_VAR;
                                         astOperandList: ptr orxCOMMAND_VAR): orxSTATUS {.
     cdecl, importc: "orxCommand_ParseNumericalArguments", dynlib: libORX.}
-## * Prints a variable to a buffer, according to its type (and ignoring any bloc/special character)
-##  @param[out]  _zDstString    Destination string
-##  @param[in]   _u32Size       String available size
-##  @param[in]   _pstVar        Variable to print
-##  @return Number of written characters (excluding trailing orxCHAR_NULL)
-##
+  ## Parses numerical arguments, string arguments will be evaluated to vectors or float when possible
+  ##  @param[in]   _u32ArgNumber  Number of arguments to parse
+  ##  @param[in]   _astArgList    List of arguments to parse
+  ##  @param[out]  _astOperandList List of parsed arguments
+  ##  @return orxSTATUS_SUCCESS if all numerical arguments have been correctly interpreted, orxSTATUS_FAILURE otherwise
 
-proc orxCommand_PrintVar*(zDstString: cstring; u32Size: orxU32;
+proc printVar*(zDstString: cstring; u32Size: orxU32;
                          pstVar: ptr orxCOMMAND_VAR): orxU32 {.cdecl,
     importc: "orxCommand_PrintVar", dynlib: libORX.}
+  ## Prints a variable to a buffer, according to its type (and ignoring any bloc/special character)
+  ##  @param[out]  _zDstString    Destination string
+  ##  @param[in]   _u32Size       String available size
+  ##  @param[in]   _pstVar        Variable to print
+  ##  @return Number of written characters (excluding trailing orxCHAR_NULL)
+

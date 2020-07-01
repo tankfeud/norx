@@ -33,204 +33,178 @@ type orxANIMSET* = object
 
 type orxANIMSET_LINK_TABLE* = object
 
-## * AnimSet module setup
-##
+proc animSetSetup*() {.cdecl, importc: "orxAnimSet_Setup", dynlib: libORX.}
+  ## AnimSet module setup
 
-proc orxAnimSet_Setup*() {.cdecl, importc: "orxAnimSet_Setup", dynlib: libORX.}
-## * Inits the AnimSet module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxAnimSet_Init*(): orxSTATUS {.cdecl, importc: "orxAnimSet_Init",
+proc animSetInit*(): orxSTATUS {.cdecl, importc: "orxAnimSet_Init",
                                   dynlib: libORX.}
-## * Exits from the AnimSet module
-##
+  ## Inits the AnimSet module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_Exit*() {.cdecl, importc: "orxAnimSet_Exit", dynlib: libORX.}
-## * Creates an empty AnimSet
-##  @param[in]   _u32Size                            Storage size
-##  return       Created orxANIMSET / nil
-##
+proc animSetExit*() {.cdecl, importc: "orxAnimSet_Exit", dynlib: libORX.}
+  ## Exits from the AnimSet module
 
-proc orxAnimSet_Create*(u32Size: orxU32): ptr orxANIMSET {.cdecl,
+proc animSetCreate*(u32Size: orxU32): ptr orxANIMSET {.cdecl,
     importc: "orxAnimSet_Create", dynlib: libORX.}
-## * Creates an animation set from config
-##  @param[in]   _zConfigID                    Config ID
-##  @return      orxANIMSET / nil
-##
+  ## Creates an empty AnimSet
+  ##  @param[in]   _u32Size                            Storage size
+  ##  return       Created orxANIMSET / nil
 
-proc orxAnimSet_CreateFromConfig*(zConfigID: cstring): ptr orxANIMSET {.cdecl,
+proc animSetCreateFromConfig*(zConfigID: cstring): ptr orxANIMSET {.cdecl,
     importc: "orxAnimSet_CreateFromConfig", dynlib: libORX.}
-## * Deletes an AnimSet
-##  @param[in]   _pstAnimSet                         AnimSet to delete
-##
+  ## Creates an animation set from config
+  ##  @param[in]   _zConfigID                    Config ID
+  ##  @return      orxANIMSET / nil
 
-proc orxAnimSet_Delete*(pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
+proc delete*(pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
     importc: "orxAnimSet_Delete", dynlib: libORX.}
-## * Clears cache (if any animset is still in active use, it'll remain in memory until not referenced anymore)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Deletes an AnimSet
+  ##  @param[in]   _pstAnimSet                         AnimSet to delete
 
-proc orxAnimSet_ClearCache*(): orxSTATUS {.cdecl, importc: "orxAnimSet_ClearCache",
+proc clearCache*(): orxSTATUS {.cdecl, importc: "orxAnimSet_ClearCache",
                                         dynlib: libORX.}
-## * Adds a reference to an AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##
+  ## Clears cache (if any animset is still in active use, it'll remain in memory until not referenced anymore)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_AddReference*(pstAnimSet: ptr orxANIMSET) {.cdecl,
+proc addReference*(pstAnimSet: ptr orxANIMSET) {.cdecl,
     importc: "orxAnimSet_AddReference", dynlib: libORX.}
-## * Removes a reference from an AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##
+  ## Adds a reference to an AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
 
-proc orxAnimSet_RemoveReference*(pstAnimSet: ptr orxANIMSET) {.cdecl,
+proc removeReference*(pstAnimSet: ptr orxANIMSET) {.cdecl,
     importc: "orxAnimSet_RemoveReference", dynlib: libORX.}
-## * Clones an AnimSet Link Table
-##  @param[in]   _pstAnimSet                         AnimSet to clone
-##  @return An internally allocated clone of the AnimSet
-##
+  ## Removes a reference from an AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
 
-proc orxAnimSet_CloneLinkTable*(pstAnimSet: ptr orxANIMSET): ptr orxANIMSET_LINK_TABLE {.
+proc cloneLinkTable*(pstAnimSet: ptr orxANIMSET): ptr orxANIMSET_LINK_TABLE {.
     cdecl, importc: "orxAnimSet_CloneLinkTable", dynlib: libORX.}
-## * Deletes a Link table
-##  @param[in]   _pstLinkTable                       Link table to delete (should have been created using the clone function)
-##
+  ## Clones an AnimSet Link Table
+  ##  @param[in]   _pstAnimSet                         AnimSet to clone
+  ##  @return An internally allocated clone of the AnimSet
 
-proc orxAnimSet_DeleteLinkTable*(pstLinkTable: ptr orxANIMSET_LINK_TABLE) {.cdecl,
+proc deleteLinkTable*(pstLinkTable: ptr orxANIMSET_LINK_TABLE) {.cdecl,
     importc: "orxAnimSet_DeleteLinkTable", dynlib: libORX.}
-## * Adds an Anim to an AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _pstAnim                            Anim to add
-##  @return Anim ID in the specified AnimSet
-##
+  ## Deletes a Link table
+  ##  @param[in]   _pstLinkTable                       Link table to delete (should have been created using the clone function)
 
-proc orxAnimSet_AddAnim*(pstAnimSet: ptr orxANIMSET; pstAnim: ptr orxANIM): orxU32 {.
+proc addAnim*(pstAnimSet: ptr orxANIMSET; pstAnim: ptr orxANIM): orxU32 {.
     cdecl, importc: "orxAnimSet_AddAnim", dynlib: libORX.}
-## * Removes an Anim from an AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32AnimID                          ID of the anim to remove
-##  @return      orxSTATUS_SUCESS / orxSTATUS_FAILURE
-##
+  ## Adds an Anim to an AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _pstAnim                            Anim to add
+  ##  @return Anim ID in the specified AnimSet
 
-proc orxAnimSet_RemoveAnim*(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): orxSTATUS {.
+proc removeAnim*(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): orxSTATUS {.
     cdecl, importc: "orxAnimSet_RemoveAnim", dynlib: libORX.}
-## * Removes all Anim from the AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes an Anim from an AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32AnimID                          ID of the anim to remove
+  ##  @return      orxSTATUS_SUCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_RemoveAllAnims*(pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
+proc removeAllAnims*(pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
     importc: "orxAnimSet_RemoveAllAnims", dynlib: libORX.}
-## * Adds a link between two Anims of the AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32SrcAnim                         Source Anim of the link
-##  @param[in]   _u32DstAnim                         Destination Anim of the link
-##  @return      ID of the created link / orxU32_UNDEFINED
-##
+  ## Removes all Anim from the AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_AddLink*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
+proc addLink*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
                         u32DstAnim: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_AddLink", dynlib: libORX.}
-## * Removes a link from the AnimSet
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32LinkID                          ID of the link
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a link between two Anims of the AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32SrcAnim                         Source Anim of the link
+  ##  @param[in]   _u32DstAnim                         Destination Anim of the link
+  ##  @return      ID of the created link / orxU32_UNDEFINED
 
-proc orxAnimSet_RemoveLink*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32): orxSTATUS {.
+proc removeLink*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32): orxSTATUS {.
     cdecl, importc: "orxAnimSet_RemoveLink", dynlib: libORX.}
-## * Gets a direct link between two Anims, if exists
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32SrcAnim                         ID of the source Anim
-##  @param[in]   _u32DstAnim                         ID of the destination Anim
-##  @return      ID of the direct link, orxU32_UNDEFINED if none
-##
+  ## Removes a link from the AnimSet
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32LinkID                          ID of the link
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_GetLink*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
+proc getLink*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
                         u32DstAnim: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_GetLink", dynlib: libORX.}
-## * Sets a link property
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32LinkID                          ID of the concerned link
-##  @param[in]   _u32Property                        ID of the property to set
-##  @param[in]   _u32Value                           Value of the property to set
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets a direct link between two Anims, if exists
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32SrcAnim                         ID of the source Anim
+  ##  @param[in]   _u32DstAnim                         ID of the destination Anim
+  ##  @return      ID of the direct link, orxU32_UNDEFINED if none
 
-proc orxAnimSet_SetLinkProperty*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32;
+proc setLinkProperty*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32;
                                 u32Property: orxU32; u32Value: orxU32): orxSTATUS {.
     cdecl, importc: "orxAnimSet_SetLinkProperty", dynlib: libORX.}
-## * Gets a link property
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32LinkID                          ID of the concerned link
-##  @param[in]   _u32Property                        ID of the property to get
-##  @return      Property value / orxU32_UNDEFINED
-##
+  ## Sets a link property
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32LinkID                          ID of the concerned link
+  ##  @param[in]   _u32Property                        ID of the property to set
+  ##  @param[in]   _u32Value                           Value of the property to set
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxAnimSet_GetLinkProperty*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32;
+proc getLinkProperty*(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32;
                                 u32Property: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_GetLinkProperty", dynlib: libORX.}
-## * Computes active Anim given current and destination Anim IDs & a relative timestamp
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32SrcAnim                         Source (current) Anim ID
-##  @param[in]   _u32DstAnim                         Destination Anim ID, if none (auto mode) set it to orxU32_UNDEFINED
-##  @param[in,out] _pfTime                           Pointer to the current timestamp relative to the source Anim (time elapsed since the beginning of this anim)
-##  @param[in,out] _pstLinkTable                     Anim Pointer link table (updated if AnimSet link table isn't static, when using loop counts for example)
-##  @param[out] _pbCut                               Animation has been cut
-##  @param[out] _pbClearTarget                       Animation has requested a target clearing
-##  @return Current Anim ID. If it's not the source one, _pu32Time will contain the new timestamp, relative to the new Anim
-##
+  ## Gets a link property
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32LinkID                          ID of the concerned link
+  ##  @param[in]   _u32Property                        ID of the property to get
+  ##  @return      Property value / orxU32_UNDEFINED
 
-proc orxAnimSet_ComputeAnim*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
+proc computeAnim*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
                             u32DstAnim: orxU32; pfTime: ptr orxFLOAT;
                             pstLinkTable: ptr orxANIMSET_LINK_TABLE;
                             pbCut: ptr orxBOOL; pbClearTarget: ptr orxBOOL): orxU32 {.
     cdecl, importc: "orxAnimSet_ComputeAnim", dynlib: libORX.}
-## * Finds next Anim given current and destination Anim IDs
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32SrcAnim                         Source (current) Anim ID
-##  @param[in]   _u32DstAnim                         Destination Anim ID, if none (auto mode) set it to orxU32_UNDEFINED
-##  @return Next Anim ID if found, orxU32_UNDEFINED otherwise
-##
+  ## Computes active Anim given current and destination Anim IDs & a relative timestamp
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32SrcAnim                         Source (current) Anim ID
+  ##  @param[in]   _u32DstAnim                         Destination Anim ID, if none (auto mode) set it to orxU32_UNDEFINED
+  ##  @param[in,out] _pfTime                           Pointer to the current timestamp relative to the source Anim (time elapsed since the beginning of this anim)
+  ##  @param[in,out] _pstLinkTable                     Anim Pointer link table (updated if AnimSet link table isn't static, when using loop counts for example)
+  ##  @param[out] _pbCut                               Animation has been cut
+  ##  @param[out] _pbClearTarget                       Animation has requested a target clearing
+  ##  @return Current Anim ID. If it's not the source one, _pu32Time will contain the new timestamp, relative to the new Anim
 
-proc orxAnimSet_FindNextAnim*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
+proc findNextAnim*(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32;
                              u32DstAnim: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_FindNextAnim", dynlib: libORX.}
-## * AnimSet Anim get accessor
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _u32AnimID                          Anim ID
-##  @return Anim pointer / nil
-##
+  ## Finds next Anim given current and destination Anim IDs
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32SrcAnim                         Source (current) Anim ID
+  ##  @param[in]   _u32DstAnim                         Destination Anim ID, if none (auto mode) set it to orxU32_UNDEFINED
+  ##  @return Next Anim ID if found, orxU32_UNDEFINED otherwise
 
-proc orxAnimSet_GetAnim*(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): ptr orxANIM {.
+proc getAnim*(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): ptr orxANIM {.
     cdecl, importc: "orxAnimSet_GetAnim", dynlib: libORX.}
-## * AnimSet Anim storage size get accessor
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @return      AnimSet Storage size / orxU32_UNDEFINED
-##
+  ## AnimSet Anim get accessor
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _u32AnimID                          Anim ID
+  ##  @return Anim pointer / nil
 
-proc orxAnimSet_GetAnimStorageSize*(pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
+proc getAnimStorageSize*(pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
     importc: "orxAnimSet_GetAnimStorageSize", dynlib: libORX.}
-## * AnimSet Anim count get accessor
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @return      Anim count / orxU32_UNDEFINED
-##
+  ## AnimSet Anim storage size get accessor
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @return      AnimSet Storage size / orxU32_UNDEFINED
 
-proc orxAnimSet_GetAnimCount*(pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
+proc getAnimCount*(pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
     importc: "orxAnimSet_GetAnimCount", dynlib: libORX.}
-## * Gets animation ID from name
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @param[in]   _zAnimName                          Animation name (config's section)
-##  @return Anim ID / orxU32_UNDEFINED
-##
+  ## AnimSet Anim count get accessor
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @return      Anim count / orxU32_UNDEFINED
 
-proc orxAnimSet_GetAnimIDFromName*(pstAnimSet: ptr orxANIMSET;
+proc getAnimIDFromName*(pstAnimSet: ptr orxANIMSET;
                                   zAnimName: cstring): orxU32 {.cdecl,
     importc: "orxAnimSet_GetAnimIDFromName", dynlib: libORX.}
-## * AnimSet name get accessor
-##  @param[in]   _pstAnimSet                         Concerned AnimSet
-##  @return      orxSTRING / orxSTRING_EMPTY
-##
+  ## Gets animation ID from name
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @param[in]   _zAnimName                          Animation name (config's section)
+  ##  @return Anim ID / orxU32_UNDEFINED
 
-proc orxAnimSet_GetName*(pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
+proc getName*(pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
     importc: "orxAnimSet_GetName", dynlib: libORX.}
+  ## AnimSet name get accessor
+  ##  @param[in]   _pstAnimSet                         Concerned AnimSet
+  ##  @return      orxSTRING / orxSTRING_EMPTY
+

@@ -70,43 +70,38 @@ type
 ##  Functions directly implemented by orx core
 ## *************************************************************************
 
-## * Render module setup
-##
+proc renderSetup*() {.cdecl, importc: "orxRender_Setup", dynlib: libORX.}
+  ## Render module setup
 
-proc orxRender_Setup*() {.cdecl, importc: "orxRender_Setup", dynlib: libORX.}
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
 
-## * Inits the render module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxRender_Init*(): orxSTATUS {.cdecl, importc: "orxRender_Init",
+proc renderInit*(): orxSTATUS {.cdecl, importc: "orxRender_Init",
                                  dynlib: libORX.}
-## * Exits from the render module
-##
+  ## Inits the render module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxRender_Exit*() {.cdecl, importc: "orxRender_Exit", dynlib: libORX.}
-## * Get a world position given a screen one (absolute picking)
-##  @param[in]   _pvScreenPosition                     Concerned screen position
-##  @param[in]   _pstViewport                          Concerned viewport, if nil then either the last viewport that contains the position (if any), or the last viewport with a camera in the list if none contains the position
-##  @param[out]  _pvWorldPosition                      Corresponding world position
-##  @return      orxVECTOR if found *inside* the display surface, nil otherwise
-##
+proc renderExit*() {.cdecl, importc: "orxRender_Exit", dynlib: libORX.}
+  ## Exits from the render module
 
-proc orxRender_GetWorldPosition*(pvScreenPosition: ptr orxVECTOR;
+proc getWorldPosition*(pvScreenPosition: ptr orxVECTOR;
                                 pstViewport: ptr orxVIEWPORT;
                                 pvWorldPosition: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxRender_GetWorldPosition", dynlib: libORX.}
-## * Get a screen position given a world one and a viewport (rendering position)
-##  @param[in]   _pvWorldPosition                      Concerned world position
-##  @param[in]   _pstViewport                          Concerned viewport, if nil then the last viewport with a camera will be used
-##  @param[out]  _pvScreenPosition                     Corresponding screen position
-##  @return      orxVECTOR if found (can be off-screen), nil otherwise
-##
+  ## Get a world position given a screen one (absolute picking)
+  ##  @param[in]   _pvScreenPosition                     Concerned screen position
+  ##  @param[in]   _pstViewport                          Concerned viewport, if nil then either the last viewport that contains the position (if any), or the last viewport with a camera in the list if none contains the position
+  ##  @param[out]  _pvWorldPosition                      Corresponding world position
+  ##  @return      orxVECTOR if found *inside* the display surface, nil otherwise
 
-proc orxRender_GetScreenPosition*(pvWorldPosition: ptr orxVECTOR;
+proc getScreenPosition*(pvWorldPosition: ptr orxVECTOR;
                                  pstViewport: ptr orxVIEWPORT;
                                  pvScreenPosition: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxRender_GetScreenPosition", dynlib: libORX.}
+  ## Get a screen position given a world one and a viewport (rendering position)
+  ##  @param[in]   _pvWorldPosition                      Concerned world position
+  ##  @param[in]   _pstViewport                          Concerned viewport, if nil then the last viewport with a camera will be used
+  ##  @param[out]  _pvScreenPosition                     Corresponding screen position
+  ##  @return      orxVECTOR if found (can be off-screen), nil otherwise
+

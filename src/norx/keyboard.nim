@@ -51,66 +51,56 @@ type
 ##  Functions directly implemented by orx core
 ## *************************************************************************
 
-## * Keyboard module setup
-##
+proc keyboardSetup*() {.cdecl, importc: "orxKeyboard_Setup", dynlib: libORX.}
+  ## Keyboard module setup
 
-proc orxKeyboard_Setup*() {.cdecl, importc: "orxKeyboard_Setup", dynlib: libORX.}
 
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
 
-## * Inits the keyboard module
-##
-
-proc orxKeyboard_Init*(): orxSTATUS {.cdecl, importc: "orxKeyboard_Init",
+proc keyboardInit*(): orxSTATUS {.cdecl, importc: "orxKeyboard_Init",
                                    dynlib: libORX.}
-## * Exits from the keyboard module
-##
+  ## Inits the keyboard module
 
-proc orxKeyboard_Exit*() {.cdecl, importc: "orxKeyboard_Exit", dynlib: libORX.}
-## * Is key pressed?
-##  @param[in] _eKey       Key to check
-##  @return orxTRUE if pressed / orxFALSE otherwise
-##
+proc keyboardExit*() {.cdecl, importc: "orxKeyboard_Exit", dynlib: libORX.}
+  ## Exits from the keyboard module
 
-proc orxKeyboard_IsKeyPressed*(eKey: orxKEYBOARD_KEY): orxBOOL {.cdecl,
+proc isKeyPressed*(eKey: orxKEYBOARD_KEY): orxBOOL {.cdecl,
     importc: "orxKeyboard_IsKeyPressed", dynlib: libORX.}
-## * Gets key display name, layout-dependent
-##  @param[in] _eKey       Concerned key
-##  @return UTF-8 encoded key's name if valid, orxSTRING_EMPTY otherwise
-##
+  ## Is key pressed?
+  ##  @param[in] _eKey       Key to check
+  ##  @return orxTRUE if pressed / orxFALSE otherwise
 
-proc orxKeyboard_GetKeyDisplayName*(eKey: orxKEYBOARD_KEY): cstring {.cdecl,
+proc getKeyDisplayName*(eKey: orxKEYBOARD_KEY): cstring {.cdecl,
     importc: "orxKeyboard_GetKeyDisplayName", dynlib: libORX.}
-## * Gets the next key from the keyboard buffer and removes it from there
-##  @return orxKEYBOARD_KEY, orxKEYBOARD_KEY_NONE if the buffer is empty
-##
+  ## Gets key display name, layout-dependent
+  ##  @param[in] _eKey       Concerned key
+  ##  @return UTF-8 encoded key's name if valid, orxSTRING_EMPTY otherwise
 
-proc orxKeyboard_ReadKey*(): orxKEYBOARD_KEY {.cdecl,
+proc readKey*(): orxKEYBOARD_KEY {.cdecl,
     importc: "orxKeyboard_ReadKey", dynlib: libORX.}
-## * Gets the next UTF-8 encoded string from the keyboard buffer and removes it from there
-##  @return UTF-8 encoded string
-##
+  ## Gets the next key from the keyboard buffer and removes it from there
+  ##  @return orxKEYBOARD_KEY, orxKEYBOARD_KEY_NONE if the buffer is empty
 
-proc orxKeyboard_ReadString*(): cstring {.cdecl,
+proc readString*(): cstring {.cdecl,
     importc: "orxKeyboard_ReadString", dynlib: libORX.}
-## * Empties the keyboard buffer (both keys and chars)
-##
+  ## Gets the next UTF-8 encoded string from the keyboard buffer and removes it from there
+  ##  @return UTF-8 encoded string
 
-proc orxKeyboard_ClearBuffer*() {.cdecl, importc: "orxKeyboard_ClearBuffer",
+proc clearBuffer*() {.cdecl, importc: "orxKeyboard_ClearBuffer",
                                 dynlib: libORX.}
-## * Gets key literal name
-##  @param[in] _eKey       Concerned key
-##  @return Key's name
-##
+  ## Empties the keyboard buffer (both keys and chars)
 
-proc orxKeyboard_GetKeyName*(eKey: orxKEYBOARD_KEY): cstring {.cdecl,
+proc getKeyName*(eKey: orxKEYBOARD_KEY): cstring {.cdecl,
     importc: "orxKeyboard_GetKeyName", dynlib: libORX.}
-## * Show/Hide the virtual keyboard
-##  @param[in]   _bShow          Show/hide virtual keyboard
-##  @return orxSTATUS_SUCCESS if supported by platform, orxSTATUS_FAILURE otherwise
-##
+  ## Gets key literal name
+  ##  @param[in] _eKey       Concerned key
+  ##  @return Key's name
 
-proc orxKeyboard_Show*(bShow: orxBOOL): orxSTATUS {.cdecl,
+proc show*(bShow: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxKeyboard_Show", dynlib: libORX.}
+  ## Show/Hide the virtual keyboard
+  ##  @param[in]   _bShow          Show/hide virtual keyboard
+  ##  @return orxSTATUS_SUCCESS if supported by platform, orxSTATUS_FAILURE otherwise
+

@@ -27,12 +27,10 @@ var saau32CRCTable* {.importc: "saau32CRCTable", dynlib: libORX.}: array[8,
 
 ##  *** String inlined functions ***
 
-## * Skips all white spaces
-##  @param[in] _zString        Concerned string
-##  @return    Sub string located after all leading white spaces, including EOL characters
-##
-
-proc orxString_SkipWhiteSpaces*(zString: cstring): cstring {.inline, cdecl.} =
+proc skipWhiteSpaces*(zString: cstring): cstring {.inline, cdecl.} =
+  ## Skips all white spaces
+  ##  @param[in] _zString        Concerned string
+  ##  @return    Sub string located after all leading white spaces, including EOL characters
   var zResult: cstring
   ##  Non null?
   if zString != nil:
@@ -51,12 +49,10 @@ proc orxString_SkipWhiteSpaces*(zString: cstring): cstring {.inline, cdecl.} =
   ##  Done!
   return zResult
 
-## * Skips path
-##  @param[in] _zString        Concerned string
-##  @return    Sub string located after all non-terminal directory separators
-##
-
-proc orxString_SkipPath*(zString: cstring): cstring {.inline, cdecl.} =
+proc skipPath*(zString: cstring): cstring {.inline, cdecl.} =
+  ## Skips path
+  ##  @param[in] _zString        Concerned string
+  ##  @return    Sub string located after all non-terminal directory separators
   var zResult: cstring
   ##  Non null?
   if zString != nil:
@@ -83,46 +79,38 @@ proc orxString_SkipPath*(zString: cstring): cstring {.inline, cdecl.} =
   ##  Done!
   return zResult
 
-## * Returns the number of orxCHAR in the string (for non-ASCII UTF-8 string, it won't be the actual number of unicode characters)
-##  @param[in] _zString                  String used for length computation
-##  @return                              Length of the string (doesn't count final orxCHAR_NULL)
-##
-
-proc orxString_GetLength*(zString: cstring): orxU32 {.inline, cdecl.} =
+proc getLength*(zString: cstring): orxU32 {.inline, cdecl.} =
+  ## Returns the number of orxCHAR in the string (for non-ASCII UTF-8 string, it won't be the actual number of unicode characters)
+  ##  @param[in] _zString                  String used for length computation
+  ##  @return                              Length of the string (doesn't count final orxCHAR_NULL)
   ##  Checks
   assert(zString != nil)
   ##  Done!
   return cast[orxU32](strlen(zString))
 
-## * Tells if a character is ASCII from its ID
-##  @param[in] _u32CharacterCodePoint    Concerned character code
-##  @return                              orxTRUE is it's a non-extended ASCII character, orxFALSE otherwise
-##
-
-proc orxString_IsCharacterASCII*(u32CharacterCodePoint: orxU32): orxBOOL {.inline,
+proc isCharacterASCII*(u32CharacterCodePoint: orxU32): orxBOOL {.inline,
     cdecl.} =
+  ## Tells if a character is ASCII from its ID
+  ##  @param[in] _u32CharacterCodePoint    Concerned character code
+  ##  @return                              orxTRUE is it's a non-extended ASCII character, orxFALSE otherwise
   ##  Done!
   return if (u32CharacterCodePoint < 0x00000080): orxTRUE else: orxFALSE
 
-## * Tells if a character is alpha-numeric from its ID
-##  @param[in] _u32CharacterCodePoint    Concerned character code
-##  @return                              orxTRUE is it's a non-extended ASCII alpha-numerical character, orxFALSE otherwise
-##
-
-proc orxString_IsCharacterAlphaNumeric*(u32CharacterCodePoint: orxU32): orxBOOL {.
+proc isCharacterAlphaNumeric*(u32CharacterCodePoint: orxU32): orxBOOL {.
     inline, cdecl.} =
+  ## Tells if a character is alpha-numeric from its ID
+  ##  @param[in] _u32CharacterCodePoint    Concerned character code
+  ##  @return                              orxTRUE is it's a non-extended ASCII alpha-numerical character, orxFALSE otherwise
   ##  Done!
   return if (((u32CharacterCodePoint >= 'a') and (u32CharacterCodePoint <= 'z')) or
       ((u32CharacterCodePoint >= 'A') and (u32CharacterCodePoint <= 'Z')) or
       ((u32CharacterCodePoint >= '0') and (u32CharacterCodePoint <= '9'))): orxTRUE else: orxFALSE
 
-## * Gets the UTF-8 encoding length of given character
-##  @param[in] _u32CharacterCodePoint    Concerned character code
-##  @return                              Encoding length in UTF-8 for given character if valid, orxU32_UNDEFINED otherwise
-##
-
-proc orxString_GetUTF8CharacterLength*(u32CharacterCodePoint: orxU32): orxU32 {.
+proc getUTF8CharacterLength*(u32CharacterCodePoint: orxU32): orxU32 {.
     inline, cdecl.} =
+  ## Gets the UTF-8 encoding length of given character
+  ##  @param[in] _u32CharacterCodePoint    Concerned character code
+  ##  @return                              Encoding length in UTF-8 for given character if valid, orxU32_UNDEFINED otherwise
   var u32Result: orxU32
   ##  1-byte long?
   if u32CharacterCodePoint < 0x00000080:
@@ -143,15 +131,13 @@ proc orxString_GetUTF8CharacterLength*(u32CharacterCodePoint: orxU32): orxU32 {.
   ##  Done!
   return u32Result
 
-## * Prints a unicode character encoded with UTF-8 to an orxSTRING
-##  @param[in] _zDstString               Destination string
-##  @param[in] _u32Size                  Available size on the string
-##  @param[in] _u32CharacterCodePoint    Unicode code point of the character to print
-##  @return                              Length of the encoded UTF-8 character (1, 2, 3 or 4) if valid, orxU32_UNDEFINED otherwise
-##
-
-proc orxString_PrintUTF8Character*(zDstString: cstring; u32Size: orxU32;
+proc printUTF8Character*(zDstString: cstring; u32Size: orxU32;
                                   u32CharacterCodePoint: orxU32): orxU32 {.cdecl.} =
+  ## Prints a unicode character encoded with UTF-8 to an orxSTRING
+  ##  @param[in] _zDstString               Destination string
+  ##  @param[in] _u32Size                  Available size on the string
+  ##  @param[in] _u32CharacterCodePoint    Unicode code point of the character to print
+  ##  @return                              Length of the encoded UTF-8 character (1, 2, 3 or 4) if valid, orxU32_UNDEFINED otherwise
   var u32Result: orxU32
   ##  Gets character's encoded length
   u32Result = orxString_GetUTF8CharacterLength(u32CharacterCodePoint)
@@ -212,14 +198,12 @@ proc orxString_PrintUTF8Character*(zDstString: cstring; u32Size: orxU32;
   ##  Done!
   return u32Result
 
-## * Returns the code of the first character of the UTF-8 string
-##  @param[in] _zString                  Concerned string
-##  @param[out] _pzRemaining             If non null, will contain the remaining string after the first UTF-8 character
-##  @return                              Code of the first UTF-8 character of the string, orxU32_UNDEFINED if it's an invalid character
-##
-
-proc orxString_GetFirstCharacterCodePoint*(zString: cstring;
+proc getFirstCharacterCodePoint*(zString: cstring;
     pzRemaining: cstringArray): orxU32 {.cdecl.} =
+  ## Returns the code of the first character of the UTF-8 string
+  ##  @param[in] _zString                  Concerned string
+  ##  @param[out] _pzRemaining             If non null, will contain the remaining string after the first UTF-8 character
+  ##  @return                              Code of the first UTF-8 character of the string, orxU32_UNDEFINED if it's an invalid character
   var pu8Byte: ptr orxU8
   var u32Result: orxU32
   ##  Checks
@@ -332,12 +316,10 @@ proc orxString_GetFirstCharacterCodePoint*(zString: cstring;
     pzRemaining[] = cast[cstring]((pu8Byte + 1))
   return u32Result
 
-## * Returns the number of valid unicode characters (UTF-8) in the string (for ASCII string, it will be the same result as orxString_GetLength())
-##  @param[in] _zString                  Concerned string
-##  @return                              Number of valid unicode characters contained in the string, orxU32_UNDEFINED for an invalid UTF-8 string
-##
-
-proc orxString_GetCharacterCount*(zString: cstring): orxU32 {.inline, cdecl.} =
+proc getCharacterCount*(zString: cstring): orxU32 {.inline, cdecl.} =
+  ## Returns the number of valid unicode characters (UTF-8) in the string (for ASCII string, it will be the same result as orxString_GetLength())
+  ##  @param[in] _zString                  Concerned string
+  ##  @return                              Number of valid unicode characters contained in the string, orxU32_UNDEFINED for an invalid UTF-8 string
   var pc: cstring
   var u32Result: orxU32
   ##  Checks
@@ -358,27 +340,23 @@ proc orxString_GetCharacterCount*(zString: cstring): orxU32 {.inline, cdecl.} =
   ##  Done!
   return u32Result
 
-## * Copies up to N characters from a string
-##  @param[in] _zDstString       Destination string
-##  @param[in] _zSrcString       Source string
-##  @param[in] _u32CharNumber    Number of characters to copy
-##  @return Copied string
-##
-
-proc orxString_NCopy*(zDstString: cstring; zSrcString: cstring;
+proc nCopy*(zDstString: cstring; zSrcString: cstring;
                      u32CharNumber: orxU32): cstring {.inline, cdecl.} =
+  ## Copies up to N characters from a string
+  ##  @param[in] _zDstString       Destination string
+  ##  @param[in] _zSrcString       Source string
+  ##  @param[in] _u32CharNumber    Number of characters to copy
+  ##  @return Copied string
   ##  Checks
   assert(zDstString != nil)
   assert(zSrcString != nil)
   ##  Done!
   return strncpy(zDstString, zSrcString, cast[csize](u32CharNumber))
 
-## * Duplicate a string.
-##  @param[in] _zSrcString  String to duplicate.
-##  @return Duplicated string.
-##
-
-proc orxString_Duplicate*(zSrcString: cstring): cstring {.inline, cdecl.} =
+proc duplicate*(zSrcString: cstring): cstring {.inline, cdecl.} =
+  ## Duplicate a string.
+  ##  @param[in] _zSrcString  String to duplicate.
+  ##  @return Duplicated string.
   var u32Size: orxU32
   var zResult: cstring
   ##  Checks
@@ -393,11 +371,9 @@ proc orxString_Duplicate*(zSrcString: cstring): cstring {.inline, cdecl.} =
     orxMemory_Copy(zResult, zSrcString, u32Size)
   return zResult
 
-## * Deletes a string
-##  @param[in] _zString                  String to delete
-##
-
-proc orxString_Delete*(zString: cstring): orxSTATUS {.inline, cdecl.} =
+proc delete*(zString: cstring): orxSTATUS {.inline, cdecl.} =
+  ## Deletes a string
+  ##  @param[in] _zString                  String to delete
   ##  Checks
   assert(zString != nil)
   assert(zString != orxSTRING_EMPTY)
@@ -406,47 +382,41 @@ proc orxString_Delete*(zString: cstring): orxSTATUS {.inline, cdecl.} =
   ##  Done!
   return orxSTATUS_SUCCESS
 
-## * Compare two strings, case sensitive. If the first one is smaller than the second it returns -1,
-##  1 if the second one is bigger than the first, and 0 if they are equals
-##  @param[in] _zString1    First String to compare
-##  @param[in] _zString2    Second string to compare
-##  @return -1, 0 or 1 as indicated in the description.
-##
-
-proc orxString_Compare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
+proc compare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
     cdecl.} =
+  ## Compare two strings, case sensitive. If the first one is smaller than the second it returns -1,
+  ##  1 if the second one is bigger than the first, and 0 if they are equals
+  ##  @param[in] _zString1    First String to compare
+  ##  @param[in] _zString2    Second string to compare
+  ##  @return -1, 0 or 1 as indicated in the description.
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
   ##  Done!
   return strcmp(zString1, zString2)
 
-## * Compare N first character from two strings, case sensitive. If the first one is smaller
-##  than the second it returns -1, 1 if the second one is bigger than the first
-##  and 0 if they are equals.
-##  @param[in] _zString1       First String to compare
-##  @param[in] _zString2       Second string to compare
-##  @param[in] _u32CharNumber  Number of character to compare
-##  @return -1, 0 or 1 as indicated in the description.
-##
-
-proc orxString_NCompare*(zString1: cstring; zString2: cstring;
+proc nCompare*(zString1: cstring; zString2: cstring;
                         u32CharNumber: orxU32): orxS32 {.inline, cdecl.} =
+  ## Compare N first character from two strings, case sensitive. If the first one is smaller
+  ##  than the second it returns -1, 1 if the second one is bigger than the first
+  ##  and 0 if they are equals.
+  ##  @param[in] _zString1       First String to compare
+  ##  @param[in] _zString2       Second string to compare
+  ##  @param[in] _u32CharNumber  Number of character to compare
+  ##  @return -1, 0 or 1 as indicated in the description.
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
   ##  Done!
   return strncmp(zString1, zString2, cast[csize](u32CharNumber))
 
-## * Compare two strings, case insensitive. If the first one is smaller than the second, it returns -1,
-##  If the second one is bigger than the first, and 0 if they are equals
-##  @param[in] _zString1    First String to compare
-##  @param[in] _zString2    Second string to compare
-##  @return -1, 0 or 1 as indicated in the description.
-##
-
-proc orxString_ICompare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
+proc iCompare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
     cdecl.} =
+  ## Compare two strings, case insensitive. If the first one is smaller than the second, it returns -1,
+  ##  If the second one is bigger than the first, and 0 if they are equals
+  ##  @param[in] _zString1    First String to compare
+  ##  @param[in] _zString2    Second string to compare
+  ##  @return -1, 0 or 1 as indicated in the description.
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
@@ -457,17 +427,15 @@ proc orxString_ICompare*(zString1: cstring; zString2: cstring): orxS32 {.inline,
     ##  Done!
     return strcasecmp(zString1, zString2)
 
-## * Compare N first character from two strings, case insensitive. If the first one is smaller
-##  than the second, it returns -1, If the second one is bigger than the first,
-##  and 0 if they are equals.
-##  @param[in] _zString1       First String to compare
-##  @param[in] _zString2       Second string to compare
-##  @param[in] _u32CharNumber  Number of character to compare
-##  @return -1, 0 or 1 as indicated in the description.
-##
-
-proc orxString_NICompare*(zString1: cstring; zString2: cstring;
+proc nICompare*(zString1: cstring; zString2: cstring;
                          u32CharNumber: orxU32): orxS32 {.inline, cdecl.} =
+  ## Compare N first character from two strings, case insensitive. If the first one is smaller
+  ##  than the second, it returns -1, If the second one is bigger than the first,
+  ##  and 0 if they are equals.
+  ##  @param[in] _zString1       First String to compare
+  ##  @param[in] _zString2       Second string to compare
+  ##  @param[in] _u32CharNumber  Number of character to compare
+  ##  @return -1, 0 or 1 as indicated in the description.
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
@@ -478,14 +446,12 @@ proc orxString_NICompare*(zString1: cstring; zString2: cstring;
     ##  Done!
     return strncasecmp(zString1, zString2, u32CharNumber)
 
-## * Extracts the base (2, 8, 10 or 16) from a literal number
-##  @param[in]   _zString        String from which to extract the base
-##  @param[out]  _pzRemaining    If non null, will contain the remaining literal number, right after the base prefix (0x, 0b or 0)
-##  @return  Base or the numerical value, defaults to 10 (decimal) when no prefix is found or the literal value couldn't be identified
-##
-
-proc orxString_ExtractBase*(zString: cstring; pzRemaining: cstringArray): orxU32 {.
+proc extractBase*(zString: cstring; pzRemaining: cstringArray): orxU32 {.
     inline, cdecl.} =
+  ## Extracts the base (2, 8, 10 or 16) from a literal number
+  ##  @param[in]   _zString        String from which to extract the base
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining literal number, right after the base prefix (0x, 0b or 0)
+  ##  @return  Base or the numerical value, defaults to 10 (decimal) when no prefix is found or the literal value couldn't be identified
   var zString: cstring
   var
     u32Result: orxU32
@@ -533,17 +499,15 @@ proc orxString_ExtractBase*(zString: cstring; pzRemaining: cstringArray): orxU32
     pzRemaining[] = zString + u32Offset
   return u32Result
 
-## * Converts a String to a signed int value using the given base
-##  @param[in]   _zString        String To convert
-##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
-##  @param[out]  _ps32OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToS32Base*(zString: cstring; u32Base: orxU32;
+proc toS32Base*(zString: cstring; u32Base: orxU32;
                          ps32OutValue: ptr orxS32; pzRemaining: cstringArray): orxSTATUS {.
     inline, cdecl.} =
+  ## Converts a String to a signed int value using the given base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
+  ##  @param[out]  _ps32OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var pcEnd: cstring
   var eResult: orxSTATUS
   ##  Checks
@@ -564,15 +528,13 @@ proc orxString_ToS32Base*(zString: cstring; u32Base: orxU32;
     pzRemaining[] = pcEnd
   return eResult
 
-## * Converts a String to a signed int value, guessing the base
-##  @param[in]   _zString        String To convert
-##  @param[out]  _ps32OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToS32*(zString: cstring; ps32OutValue: ptr orxS32;
+proc toS32*(zString: cstring; ps32OutValue: ptr orxS32;
                      pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Converts a String to a signed int value, guessing the base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _ps32OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var zValue: cstring
   var u32Base: orxU32
   var eResult: orxSTATUS
@@ -586,17 +548,15 @@ proc orxString_ToS32*(zString: cstring; ps32OutValue: ptr orxS32;
   ##  Done!
   return eResult
 
-## * Converts a String to an unsigned int value using the given base
-##  @param[in]   _zString        String To convert
-##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
-##  @param[out]  _pu32OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToU32Base*(zString: cstring; u32Base: orxU32;
+proc toU32Base*(zString: cstring; u32Base: orxU32;
                          pu32OutValue: ptr orxU32; pzRemaining: cstringArray): orxSTATUS {.
     inline, cdecl.} =
+  ## Converts a String to an unsigned int value using the given base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
+  ##  @param[out]  _pu32OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var pcEnd: cstring
   var eResult: orxSTATUS
   ##  Checks
@@ -617,15 +577,13 @@ proc orxString_ToU32Base*(zString: cstring; u32Base: orxU32;
     pzRemaining[] = pcEnd
   return eResult
 
-## * Converts a String to an unsigned int value, guessing the base
-##  @param[in]   _zString        String To convert
-##  @param[out]  _pu32OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToU32*(zString: cstring; pu32OutValue: ptr orxU32;
+proc toU32*(zString: cstring; pu32OutValue: ptr orxU32;
                      pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Converts a String to an unsigned int value, guessing the base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _pu32OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var zValue: cstring
   var u32Base: orxU32
   var eResult: orxSTATUS
@@ -639,17 +597,15 @@ proc orxString_ToU32*(zString: cstring; pu32OutValue: ptr orxU32;
   ##  Done!
   return eResult
 
-## * Converts a String to a signed int value using the given base
-##  @param[in]   _zString        String To convert
-##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
-##  @param[out]  _ps64OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToS64Base*(zString: cstring; u32Base: orxU32;
+proc toS64Base*(zString: cstring; u32Base: orxU32;
                          ps64OutValue: ptr orxS64; pzRemaining: cstringArray): orxSTATUS {.
     inline, cdecl.} =
+  ## Converts a String to a signed int value using the given base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
+  ##  @param[out]  _ps64OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var pcEnd: cstring
   var eResult: orxSTATUS
   ##  Checks
@@ -670,15 +626,13 @@ proc orxString_ToS64Base*(zString: cstring; u32Base: orxU32;
     pzRemaining[] = pcEnd
   return eResult
 
-## * Converts a String to a signed int value, guessing the base
-##  @param[in]   _zString        String To convert
-##  @param[out]  _ps64OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToS64*(zString: cstring; ps64OutValue: ptr orxS64;
+proc toS64*(zString: cstring; ps64OutValue: ptr orxS64;
                      pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Converts a String to a signed int value, guessing the base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _ps64OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var zValue: cstring
   var u32Base: orxU32
   var eResult: orxSTATUS
@@ -692,17 +646,15 @@ proc orxString_ToS64*(zString: cstring; ps64OutValue: ptr orxS64;
   ##  Done!
   return eResult
 
-## * Converts a String to an unsigned int value using the given base
-##  @param[in]   _zString        String To convert
-##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
-##  @param[out]  _pu64OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToU64Base*(zString: cstring; u32Base: orxU32;
+proc toU64Base*(zString: cstring; u32Base: orxU32;
                          pu64OutValue: ptr orxU64; pzRemaining: cstringArray): orxSTATUS {.
     inline, cdecl.} =
+  ## Converts a String to an unsigned int value using the given base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[in]   _u32Base        Base of the read value (generally 10, but can be 16 to read hexa)
+  ##  @param[out]  _pu64OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var pcEnd: cstring
   var eResult: orxSTATUS
   ##  Checks
@@ -723,15 +675,13 @@ proc orxString_ToU64Base*(zString: cstring; u32Base: orxU32;
     pzRemaining[] = pcEnd
   return eResult
 
-## * Converts a String to an unsigned int value, guessing the base
-##  @param[in]   _zString        String To convert
-##  @param[out]  _pu64OutValue   Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToU64*(zString: cstring; pu64OutValue: ptr orxU64;
+proc toU64*(zString: cstring; pu64OutValue: ptr orxU64;
                      pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Converts a String to an unsigned int value, guessing the base
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _pu64OutValue   Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var zValue: cstring
   var u32Base: orxU32
   var eResult: orxSTATUS
@@ -745,15 +695,13 @@ proc orxString_ToU64*(zString: cstring; pu64OutValue: ptr orxU64;
   ##  Done!
   return eResult
 
-## * Convert a string to a value
-##  @param[in]   _zString        String To convert
-##  @param[out]  _pfOutValue     Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToFloat*(zString: cstring; pfOutValue: ptr orxFLOAT;
+proc toFloat*(zString: cstring; pfOutValue: ptr orxFLOAT;
                        pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Convert a string to a value
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _pfOutValue     Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var pcEnd: cstring
   var eResult: orxSTATUS
   ##  Checks
@@ -780,15 +728,13 @@ proc orxString_ToFloat*(zString: cstring; pfOutValue: ptr orxFLOAT;
     pzRemaining[] = pcEnd
   return eResult
 
-## * Convert a string to a vector
-##  @param[in]   _zString        String To convert
-##  @param[out]  _pvOutValue     Converted value. N.B.: if only two components (x, y) are defined, the z component will be set to zero
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToVector*(zString: cstring; pvOutValue: ptr orxVECTOR;
+proc toVector*(zString: cstring; pvOutValue: ptr orxVECTOR;
                         pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Convert a string to a vector
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _pvOutValue     Converted value. N.B.: if only two components (x, y) are defined, the z component will be set to zero
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the number conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var stValue: orxVECTOR
   var zString: cstring
   var eResult: orxSTATUS
@@ -846,15 +792,13 @@ proc orxString_ToVector*(zString: cstring; pvOutValue: ptr orxVECTOR;
       pzRemaining[] = zString + 1
   return eResult
 
-## * Convert a string to a boolean
-##  @param[in]   _zString        String To convert
-##  @param[out]  _pbOutValue     Converted value
-##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the boolean conversion
-##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_ToBool*(zString: cstring; pbOutValue: ptr orxBOOL;
+proc toBool*(zString: cstring; pbOutValue: ptr orxBOOL;
                       pzRemaining: cstringArray): orxSTATUS {.inline, cdecl.} =
+  ## Convert a string to a boolean
+  ##  @param[in]   _zString        String To convert
+  ##  @param[out]  _pbOutValue     Converted value
+  ##  @param[out]  _pzRemaining    If non null, will contain the remaining string after the boolean conversion
+  ##  @return  orxSTATUS_SUCCESS / orxSTATUS_FAILURE
   var s32Value: orxS32
   var eResult: orxSTATUS
   ##  Checks
@@ -894,12 +838,10 @@ proc orxString_ToBool*(zString: cstring; pbOutValue: ptr orxBOOL;
   ##  Done!
   return eResult
 
-## * Lowercase a string
-##  @param[in] _zString          String To convert
-##  @return The converted string.
-##
-
-proc orxString_LowerCase*(zString: cstring): cstring {.inline, cdecl.} =
+proc lowerCase*(zString: cstring): cstring {.inline, cdecl.} =
+  ## Lowercase a string
+  ##  @param[in] _zString          String To convert
+  ##  @return The converted string.
   var pc: cstring
   ##  Checks
   assert(zString != nil)
@@ -913,12 +855,10 @@ proc orxString_LowerCase*(zString: cstring): cstring {.inline, cdecl.} =
     inc(pc)
   return zString
 
-## * Uppercase a string
-##  @param[in] _zString          String To convert
-##  @return The converted string.
-##
-
-proc orxString_UpperCase*(zString: cstring): cstring {.inline, cdecl.} =
+proc upperCase*(zString: cstring): cstring {.inline, cdecl.} =
+  ## Uppercase a string
+  ##  @param[in] _zString          String To convert
+  ##  @return The converted string.
   var pc: cstring
   ##  Checks
   assert(zString != nil)
@@ -932,42 +872,36 @@ proc orxString_UpperCase*(zString: cstring): cstring {.inline, cdecl.} =
     inc(pc)
   return zString
 
-## * Returns the first occurrence of _zString2 in _zString1
-##  @param[in] _zString1 String to analyze
-##  @param[in] _zString2 String that must be inside _zString1
-##  @return The pointer of the first occurrence of _zString2, or nil if not found
-##
-
-proc orxString_SearchString*(zString1: cstring; zString2: cstring): cstring {.
+proc searchString*(zString1: cstring; zString2: cstring): cstring {.
     inline, cdecl.} =
+  ## Returns the first occurrence of _zString2 in _zString1
+  ##  @param[in] _zString1 String to analyze
+  ##  @param[in] _zString2 String that must be inside _zString1
+  ##  @return The pointer of the first occurrence of _zString2, or nil if not found
   ##  Checks
   assert(zString1 != nil)
   assert(zString2 != nil)
   ##  Returns result
   return strstr(zString1, zString2)
 
-## * Returns the first occurrence of _cChar in _zString
-##  @param[in] _zString String to analyze
-##  @param[in] _cChar   The character to find
-##  @return The pointer of the first occurrence of _cChar, or nil if not found
-##
-
-proc orxString_SearchChar*(zString: cstring; cChar: orxCHAR): cstring {.inline,
+proc searchChar*(zString: cstring; cChar: orxCHAR): cstring {.inline,
     cdecl.} =
+  ## Returns the first occurrence of _cChar in _zString
+  ##  @param[in] _zString String to analyze
+  ##  @param[in] _cChar   The character to find
+  ##  @return The pointer of the first occurrence of _cChar, or nil if not found
   ##  Checks
   assert(zString != nil)
   ##  Returns result
   return strchr(zString, cChar)
 
-## * Returns the first occurrence of _cChar in _zString
-##  @param[in] _zString      String to analyze
-##  @param[in] _cChar        The character to find
-##  @param[in] _s32Position  Search begin position
-##  @return The index of the next occurrence of requested character, starting at given position / -1 if not found
-##
-
-proc orxString_SearchCharIndex*(zString: cstring; cChar: orxCHAR;
+proc searchCharIndex*(zString: cstring; cChar: orxCHAR;
                                s32Position: orxS32): orxS32 {.inline, cdecl.} =
+  ## Returns the first occurrence of _cChar in _zString
+  ##  @param[in] _zString      String to analyze
+  ##  @param[in] _cChar        The character to find
+  ##  @param[in] _s32Position  Search begin position
+  ##  @return The index of the next occurrence of requested character, starting at given position / -1 if not found
   var
     s32Index: orxS32
     s32Result: orxS32
@@ -989,14 +923,12 @@ proc orxString_SearchCharIndex*(zString: cstring; cChar: orxCHAR;
   ##  Done!
   return s32Result
 
-## * Prints a formated string to a memory buffer
-##  @param[out] _zDstString  Destination string
-##  @param[in]  _zSrcString  Source formated string
-##  @return The number of written characters
-##
-
-proc orxString_Print*(zDstString: cstring; zSrcString: cstring): orxS32 {.
+proc print*(zDstString: cstring; zSrcString: cstring): orxS32 {.
     inline, varargs, cdecl.} =
+  ## Prints a formated string to a memory buffer
+  ##  @param[out] _zDstString  Destination string
+  ##  @param[in]  _zSrcString  Source formated string
+  ##  @return The number of written characters
   var stArgs: va_list
   var s32Result: orxS32
   ##  Checks
@@ -1011,15 +943,13 @@ proc orxString_Print*(zDstString: cstring; zSrcString: cstring): orxS32 {.
   ##  Done!
   return s32Result
 
-## * Prints a formated string to a memory buffer using a max size
-##  @param[out] _zDstString    Destination string
-##  @param[in]  _zSrcString    Source formated string
-##  @param[in]  _u32CharNumber Max number of character to print
-##  @return The number of written characters
-##
-
-proc orxString_NPrint*(zDstString: cstring; u32CharNumber: orxU32;
+proc nPrint*(zDstString: cstring; u32CharNumber: orxU32;
                       zSrcString: cstring): orxS32 {.inline, varargs, cdecl.} =
+  ## Prints a formated string to a memory buffer using a max size
+  ##  @param[out] _zDstString    Destination string
+  ##  @param[in]  _zSrcString    Source formated string
+  ##  @param[in]  _u32CharNumber Max number of character to print
+  ##  @return The number of written characters
   var stArgs: va_list
   var s32Result: orxS32
   ##  Checks
@@ -1039,12 +969,10 @@ proc orxString_NPrint*(zDstString: cstring; u32CharNumber: orxU32;
   ##  Done!
   return s32Result
 
-## * Gets the extension from a file name
-##  @param[in]  _zFileName     Concerned file name
-##  @return Extension if exists, orxSTRING_EMPTY otherwise
-##
-
-proc orxString_GetExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
+proc getExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
+  ## Gets the extension from a file name
+  ##  @param[in]  _zFileName     Concerned file name
+  ##  @return Extension if exists, orxSTRING_EMPTY otherwise
   var
     s32Index: orxS32
     s32NextIndex: orxS32
@@ -1063,38 +991,32 @@ proc orxString_GetExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
 
 ##  *** String module functions ***
 
-## * Structure module setup
-##
+proc stringSetup*() {.cdecl, importc: "orxString_Setup", dynlib: libORX.}
+  ## Structure module setup
 
-proc orxString_Setup*() {.cdecl, importc: "orxString_Setup", dynlib: libORX.}
-## * Initializess the structure module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxString_Init*(): orxSTATUS {.cdecl, importc: "orxString_Init",
+proc stringInit*(): orxSTATUS {.cdecl, importc: "orxString_Init",
                                  dynlib: libORX.}
-## * Exits from the structure module
-##
+  ## Initializess the structure module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxString_Exit*() {.cdecl, importc: "orxString_Exit", dynlib: libORX.}
-## * Gets a string's ID (and stores the string internally to prevent duplication)
-##  @param[in]   _zString        Concerned string
-##  @return      String's ID
-##
+proc stringExit*() {.cdecl, importc: "orxString_Exit", dynlib: libORX.}
+  ## Exits from the structure module
 
-proc orxString_GetID*(zString: cstring): orxSTRINGID {.cdecl,
+proc getID*(zString: cstring): orxSTRINGID {.cdecl,
     importc: "orxString_GetID", dynlib: libORX.}
-## * Gets a string from an ID (it should have already been stored internally with a call to orxString_GetID)
-##  @param[in]   _u32ID          Concerned string ID
-##  @return      orxSTRING if ID's found, orxSTRING_EMPTY otherwise
-##
+  ## Gets a string's ID (and stores the string internally to prevent duplication)
+  ##  @param[in]   _zString        Concerned string
+  ##  @return      String's ID
 
-proc orxString_GetFromID*(u32ID: orxSTRINGID): cstring {.cdecl,
+proc getFromID*(u32ID: orxSTRINGID): cstring {.cdecl,
     importc: "orxString_GetFromID", dynlib: libORX.}
-## * Stores a string internally: equivalent to an optimized call to orxString_GetFromID(orxString_GetID(_zString))
-##  @param[in]   _zString        Concerned string
-##  @return      Stored orxSTRING
-##
+  ## Gets a string from an ID (it should have already been stored internally with a call to orxString_GetID)
+  ##  @param[in]   _u32ID          Concerned string ID
+  ##  @return      orxSTRING if ID's found, orxSTRING_EMPTY otherwise
 
-proc orxString_Store*(zString: cstring): cstring {.cdecl,
+proc store*(zString: cstring): cstring {.cdecl,
     importc: "orxString_Store", dynlib: libORX.}
+  ## Stores a string internally: equivalent to an optimized call to orxString_GetFromID(orxString_GetID(_zString))
+  ##  @param[in]   _zString        Concerned string
+  ##  @return      Stored orxSTRING
+

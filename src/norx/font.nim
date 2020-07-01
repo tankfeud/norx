@@ -10,168 +10,145 @@ const
 
 type orxFONT* = object
 
-## * Setups the font module
-##
+proc fontSetup*() {.cdecl, importc: "orxFont_Setup", dynlib: libORX.}
+  ## Setups the font module
 
-proc orxFont_Setup*() {.cdecl, importc: "orxFont_Setup", dynlib: libORX.}
-## * Inits the font module
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc fontInit*(): orxSTATUS {.cdecl, importc: "orxFont_Init", dynlib: libORX.}
+  ## Inits the font module
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_Init*(): orxSTATUS {.cdecl, importc: "orxFont_Init", dynlib: libORX.}
-## * Exits from the font module
-##
+proc fontExit*() {.cdecl, importc: "orxFont_Exit", dynlib: libORX.}
+  ## Exits from the font module
 
-proc orxFont_Exit*() {.cdecl, importc: "orxFont_Exit", dynlib: libORX.}
-## * Creates an empty font
-##  @return      orxFONT / nil
-##
-
-proc orxFont_Create*(): ptr orxFONT {.cdecl, importc: "orxFont_Create",
+proc fontCreate*(): ptr orxFONT {.cdecl, importc: "orxFont_Create",
                                   dynlib: libORX.}
-## * Creates a font from config
-##  @param[in]   _zConfigID    Config ID
-##  @return      orxFONT / nil
-##
+  ## Creates an empty font
+  ##  @return      orxFONT / nil
 
-proc orxFont_CreateFromConfig*(zConfigID: cstring): ptr orxFONT {.cdecl,
+proc fontCreateFromConfig*(zConfigID: cstring): ptr orxFONT {.cdecl,
     importc: "orxFont_CreateFromConfig", dynlib: libORX.}
-## * Deletes a font
-##  @param[in]   _pstFont      Concerned font
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates a font from config
+  ##  @param[in]   _zConfigID    Config ID
+  ##  @return      orxFONT / nil
 
-proc orxFont_Delete*(pstFont: ptr orxFONT): orxSTATUS {.cdecl,
+proc delete*(pstFont: ptr orxFONT): orxSTATUS {.cdecl,
     importc: "orxFont_Delete", dynlib: libORX.}
-## * Gets default font
-##  @return      Default font / nil
-##
+  ## Deletes a font
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_GetDefaultFont*(): ptr orxFONT {.cdecl,
+proc getDefaultFont*(): ptr orxFONT {.cdecl,
     importc: "orxFont_GetDefaultFont", dynlib: libORX.}
-## * Sets font's texture
-##  @param[in]   _pstFont      Concerned font
-##  @param[in]   _pstTexture   Texture to set
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets default font
+  ##  @return      Default font / nil
 
-proc orxFont_SetTexture*(pstFont: ptr orxFONT; pstTexture: ptr orxTEXTURE): orxSTATUS {.
+proc setTexture*(pstFont: ptr orxFONT; pstTexture: ptr orxTEXTURE): orxSTATUS {.
     cdecl, importc: "orxFont_SetTexture", dynlib: libORX.}
-## * Sets font's character list
-##  @param[in]   _pstFont      Concerned font
-##  @param[in]   _zList        Character list
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's texture
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[in]   _pstTexture   Texture to set
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetCharacterList*(pstFont: ptr orxFONT; zList: cstring): orxSTATUS {.
+proc setCharacterList*(pstFont: ptr orxFONT; zList: cstring): orxSTATUS {.
     cdecl, importc: "orxFont_SetCharacterList", dynlib: libORX.}
-## * Sets font's character height
-##  @param[in]   _pstFont              Concerned font
-##  @param[in]   _fCharacterHeight     Character's height
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's character list
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[in]   _zList        Character list
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetCharacterHeight*(pstFont: ptr orxFONT; fCharacterHeight: orxFLOAT): orxSTATUS {.
+proc setCharacterHeight*(pstFont: ptr orxFONT; fCharacterHeight: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxFont_SetCharacterHeight", dynlib: libORX.}
-## * Sets font's character width list
-##  @param[in]   _pstFont              Concerned font
-##  @param[in]   _u32CharacterNumber   Character's number
-##  @param[in]   _afCharacterWidthList List of widths for all the characters
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's character height
+  ##  @param[in]   _pstFont              Concerned font
+  ##  @param[in]   _fCharacterHeight     Character's height
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetCharacterWidthList*(pstFont: ptr orxFONT;
+proc setCharacterWidthList*(pstFont: ptr orxFONT;
                                    u32CharacterNumber: orxU32;
                                    afCharacterWidthList: ptr orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxFont_SetCharacterWidthList", dynlib: libORX.}
-## * Sets font's character spacing
-##  @param[in]   _pstFont      Concerned font
-##  @param[in]   _pvSpacing    Character's spacing
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's character width list
+  ##  @param[in]   _pstFont              Concerned font
+  ##  @param[in]   _u32CharacterNumber   Character's number
+  ##  @param[in]   _afCharacterWidthList List of widths for all the characters
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetCharacterSpacing*(pstFont: ptr orxFONT; pvSpacing: ptr orxVECTOR): orxSTATUS {.
+proc setCharacterSpacing*(pstFont: ptr orxFONT; pvSpacing: ptr orxVECTOR): orxSTATUS {.
     cdecl, importc: "orxFont_SetCharacterSpacing", dynlib: libORX.}
-## * Sets font's origin
-##  @param[in]   _pstFont      Concerned font
-##  @param[in]   _pvOrigin     Font's origin
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's character spacing
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[in]   _pvSpacing    Character's spacing
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetOrigin*(pstFont: ptr orxFONT; pvOrigin: ptr orxVECTOR): orxSTATUS {.
+proc setOrigin*(pstFont: ptr orxFONT; pvOrigin: ptr orxVECTOR): orxSTATUS {.
     cdecl, importc: "orxFont_SetOrigin", dynlib: libORX.}
-## * Sets font's size
-##  @param[in]   _pstFont      Concerned font
-##  @param[in]   _pvSize       Font's size
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets font's origin
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[in]   _pvOrigin     Font's origin
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_SetSize*(pstFont: ptr orxFONT; pvSize: ptr orxVECTOR): orxSTATUS {.cdecl,
+proc setSize*(pstFont: ptr orxFONT; pvSize: ptr orxVECTOR): orxSTATUS {.cdecl,
     importc: "orxFont_SetSize", dynlib: libORX.}
-## * Gets font's texture
-##  @param[in]   _pstFont      Concerned font
-##  @return      Font texture / nil
-##
+  ## Sets font's size
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[in]   _pvSize       Font's size
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFont_GetTexture*(pstFont: ptr orxFONT): ptr orxTEXTURE {.cdecl,
+proc getTexture*(pstFont: ptr orxFONT): ptr orxTEXTURE {.cdecl,
     importc: "orxFont_GetTexture", dynlib: libORX.}
-## * Gets font's character list
-##  @param[in]   _pstFont      Concerned font
-##  @return      Font's character list / nil
-##
+  ## Gets font's texture
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @return      Font texture / nil
 
-proc orxFont_GetCharacterList*(pstFont: ptr orxFONT): cstring {.cdecl,
+proc getCharacterList*(pstFont: ptr orxFONT): cstring {.cdecl,
     importc: "orxFont_GetCharacterList", dynlib: libORX.}
-## * Gets font's character height
-##  @param[in]   _pstFont                Concerned font
-##  @return      orxFLOAT
-##
+  ## Gets font's character list
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @return      Font's character list / nil
 
-proc orxFont_GetCharacterHeight*(pstFont: ptr orxFONT): orxFLOAT {.cdecl,
+proc getCharacterHeight*(pstFont: ptr orxFONT): orxFLOAT {.cdecl,
     importc: "orxFont_GetCharacterHeight", dynlib: libORX.}
-## * Gets font's character width
-##  @param[in]   _pstFont                Concerned font
-##  @param[in]   _u32CharacterCodePoint  Character code point
-##  @return      orxFLOAT
-##
+  ## Gets font's character height
+  ##  @param[in]   _pstFont                Concerned font
+  ##  @return      orxFLOAT
 
-proc orxFont_GetCharacterWidth*(pstFont: ptr orxFONT; u32CharacterCodePoint: orxU32): orxFLOAT {.
+proc getCharacterWidth*(pstFont: ptr orxFONT; u32CharacterCodePoint: orxU32): orxFLOAT {.
     cdecl, importc: "orxFont_GetCharacterWidth", dynlib: libORX.}
-## * Gets font's character spacing
-##  @param[in]   _pstFont      Concerned font
-##  @param[out]  _pvSpacing    Character's spacing
-##  @return      orxVECTOR / nil
-##
+  ## Gets font's character width
+  ##  @param[in]   _pstFont                Concerned font
+  ##  @param[in]   _u32CharacterCodePoint  Character code point
+  ##  @return      orxFLOAT
 
-proc orxFont_GetCharacterSpacing*(pstFont: ptr orxFONT; pvSpacing: ptr orxVECTOR): ptr orxVECTOR {.
+proc getCharacterSpacing*(pstFont: ptr orxFONT; pvSpacing: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxFont_GetCharacterSpacing", dynlib: libORX.}
-## * Gets font's origin
-##  @param[in]   _pstFont      Concerned font
-##  @param[out]  _pvOrigin     Font's origin
-##  @return      orxVECTOR / nil
-##
+  ## Gets font's character spacing
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[out]  _pvSpacing    Character's spacing
+  ##  @return      orxVECTOR / nil
 
-proc orxFont_GetOrigin*(pstFont: ptr orxFONT; pvOrigin: ptr orxVECTOR): ptr orxVECTOR {.
+proc getOrigin*(pstFont: ptr orxFONT; pvOrigin: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxFont_GetOrigin", dynlib: libORX.}
-## * Gets font's size
-##  @param[in]   _pstFont      Concerned font
-##  @param[out]  _pvSize       Font's size
-##  @return      orxVECTOR / nil
-##
+  ## Gets font's origin
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[out]  _pvOrigin     Font's origin
+  ##  @return      orxVECTOR / nil
 
-proc orxFont_GetSize*(pstFont: ptr orxFONT; pvSize: ptr orxVECTOR): ptr orxVECTOR {.
+proc getSize*(pstFont: ptr orxFONT; pvSize: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxFont_GetSize", dynlib: libORX.}
-## * Gets font's map
-##  @param[in]   _pstFont      Concerned font
-##  @return      orxCHARACTER_MAP / nil
-##
+  ## Gets font's size
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @param[out]  _pvSize       Font's size
+  ##  @return      orxVECTOR / nil
 
-proc orxFont_GetMap*(pstFont: ptr orxFONT): ptr orxCHARACTER_MAP {.cdecl,
+proc getMap*(pstFont: ptr orxFONT): ptr orxCHARACTER_MAP {.cdecl,
     importc: "orxFont_GetMap", dynlib: libORX.}
-## * Gets font name
-##  @param[in]   _pstFont      Concerned font
-##  @return      Font name / orxSTRING_EMPTY
-##
+  ## Gets font's map
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @return      orxCHARACTER_MAP / nil
 
-proc orxFont_GetName*(pstFont: ptr orxFONT): cstring {.cdecl,
+proc getName*(pstFont: ptr orxFONT): cstring {.cdecl,
     importc: "orxFont_GetName", dynlib: libORX.}
+  ## Gets font name
+  ##  @param[in]   _pstFont      Concerned font
+  ##  @return      Font name / orxSTRING_EMPTY
+

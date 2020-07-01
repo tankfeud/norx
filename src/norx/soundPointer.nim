@@ -12,142 +12,123 @@ const
 
 type orxSOUNDPOINTER* = object
 
-## * SoundPointer module setup
-##
-
-proc orxSoundPointer_Setup*() {.cdecl, importc: "orxSoundPointer_Setup",
+proc soundPointerSetup*() {.cdecl, importc: "orxSoundPointer_Setup",
                               dynlib: libORX.}
-## * Inits the SoundPointer module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## SoundPointer module setup
 
-proc orxSoundPointer_Init*(): orxSTATUS {.cdecl, importc: "orxSoundPointer_Init",
+proc soundPointerInit*(): orxSTATUS {.cdecl, importc: "orxSoundPointer_Init",
                                        dynlib: libORX.}
-## * Exits from the SoundPointer module
-##
+  ## Inits the SoundPointer module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_Exit*() {.cdecl, importc: "orxSoundPointer_Exit",
+proc soundPointerExit*() {.cdecl, importc: "orxSoundPointer_Exit",
                              dynlib: libORX.}
-## * Creates an empty SoundPointer
-##  @return orxSOUNDPOINTER / nil
-##
+  ## Exits from the SoundPointer module
 
-proc orxSoundPointer_Create*(): ptr orxSOUNDPOINTER {.cdecl,
+proc soundPointerCreate*(): ptr orxSOUNDPOINTER {.cdecl,
     importc: "orxSoundPointer_Create", dynlib: libORX.}
-## * Deletes a SoundPointer
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates an empty SoundPointer
+  ##  @return orxSOUNDPOINTER / nil
 
-proc orxSoundPointer_Delete*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
+proc delete*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_Delete", dynlib: libORX.}
-## * Enables/disables a SoundPointer
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @param[in]   _bEnable        Enable / disable
-##
+  ## Deletes a SoundPointer
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_Enable*(pstSoundPointer: ptr orxSOUNDPOINTER; bEnable: orxBOOL) {.
+proc enable*(pstSoundPointer: ptr orxSOUNDPOINTER; bEnable: orxBOOL) {.
     cdecl, importc: "orxSoundPointer_Enable", dynlib: libORX.}
-## * Is SoundPointer enabled?
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables a SoundPointer
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @param[in]   _bEnable        Enable / disable
 
-proc orxSoundPointer_IsEnabled*(pstSoundPointer: ptr orxSOUNDPOINTER): orxBOOL {.
+proc isEnabled*(pstSoundPointer: ptr orxSOUNDPOINTER): orxBOOL {.
     cdecl, importc: "orxSoundPointer_IsEnabled", dynlib: libORX.}
-## * Sets volume of all related sounds
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @param[in] _fVolume        Desired volume (0.0 - 1.0)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is SoundPointer enabled?
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxSoundPointer_SetVolume*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc setVolume*(pstSoundPointer: ptr orxSOUNDPOINTER;
                                fVolume: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_SetVolume", dynlib: libORX.}
-## * Sets pitch of all related sounds
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @param[in] _fPitch         Desired pitch
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets volume of all related sounds
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @param[in] _fVolume        Desired volume (0.0 - 1.0)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_SetPitch*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc setPitch*(pstSoundPointer: ptr orxSOUNDPOINTER;
                               fPitch: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_SetPitch", dynlib: libORX.}
-## * Plays all related sounds
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets pitch of all related sounds
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @param[in] _fPitch         Desired pitch
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_Play*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+proc play*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_Play", dynlib: libORX.}
-## * Pauses all related sounds
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Plays all related sounds
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_Pause*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+proc pause*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_Pause", dynlib: libORX.}
-## * Stops all related sounds
-##  @param[in] _pstSoundPointer      Concerned SoundPointer
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Pauses all related sounds
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_Stop*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+proc stop*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_Stop", dynlib: libORX.}
-## * Adds a sound
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @param[in]   _pstSound           Sound to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Stops all related sounds
+  ##  @param[in] _pstSoundPointer      Concerned SoundPointer
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_AddSound*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc addSound*(pstSoundPointer: ptr orxSOUNDPOINTER;
                               pstSound: ptr orxSOUND): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_AddSound", dynlib: libORX.}
-## * Removes a sound
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @param[in]   _pstSound           Sound to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a sound
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @param[in]   _pstSound           Sound to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_RemoveSound*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc removeSound*(pstSoundPointer: ptr orxSOUNDPOINTER;
                                  pstSound: ptr orxSOUND): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_RemoveSound", dynlib: libORX.}
-## * Removes all sounds
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes a sound
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @param[in]   _pstSound           Sound to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_RemoveAllSounds*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
+proc removeAllSounds*(pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_RemoveAllSounds", dynlib: libORX.}
-## * Adds a sound using its config ID
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @param[in]   _zSoundConfigID     Config ID of the sound to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes all sounds
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_AddSoundFromConfig*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc addSoundFromConfig*(pstSoundPointer: ptr orxSOUNDPOINTER;
                                         zSoundConfigID: cstring): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_AddSoundFromConfig", dynlib: libORX.}
-## * Removes a sound using its config ID
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @param[in]   _zSoundConfigID     Config ID of the sound to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a sound using its config ID
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @param[in]   _zSoundConfigID     Config ID of the sound to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_RemoveSoundFromConfig*(pstSoundPointer: ptr orxSOUNDPOINTER;
+proc removeSoundFromConfig*(pstSoundPointer: ptr orxSOUNDPOINTER;
     zSoundConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_RemoveSoundFromConfig", dynlib: libORX.}
-## * Gets last added sound (Do *NOT* destroy it directly before removing it!!!)
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @return      orxSOUND / nil
-##
+  ## Removes a sound using its config ID
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @param[in]   _zSoundConfigID     Config ID of the sound to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSoundPointer_GetLastAddedSound*(pstSoundPointer: ptr orxSOUNDPOINTER): ptr orxSOUND {.
+proc getLastAddedSound*(pstSoundPointer: ptr orxSOUNDPOINTER): ptr orxSOUND {.
     cdecl, importc: "orxSoundPointer_GetLastAddedSound", dynlib: libORX.}
-## * Gets how many sounds are currently in use
-##  @param[in]   _pstSoundPointer    Concerned SoundPointer
-##  @return      orxU32
-##
+  ## Gets last added sound (Do *NOT* destroy it directly before removing it!!!)
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @return      orxSOUND / nil
 
-proc orxSoundPointer_GetCount*(pstSoundPointer: ptr orxSOUNDPOINTER): orxU32 {.cdecl,
+proc getCount*(pstSoundPointer: ptr orxSOUNDPOINTER): orxU32 {.cdecl,
     importc: "orxSoundPointer_GetCount", dynlib: libORX.}
+  ## Gets how many sounds are currently in use
+  ##  @param[in]   _pstSoundPointer    Concerned SoundPointer
+  ##  @return      orxU32
+

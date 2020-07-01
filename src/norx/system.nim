@@ -44,79 +44,66 @@ type
     stDrop*: INNER_C_STRUCT_orxSystem_109 ##  Clipboard event
     stClipboard*: INNER_C_STRUCT_orxSystem_117
 
-## * System module setup
-##
+proc systemSetup*() {.cdecl, importc: "orxSystem_Setup", dynlib: libORX.}
+  ## System module setup
 
-proc orxSystem_Setup*() {.cdecl, importc: "orxSystem_Setup", dynlib: libORX.}
-## * Inits the system module
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxSystem_Init*(): orxSTATUS {.cdecl, importc: "orxSystem_Init",
+proc systemInit*(): orxSTATUS {.cdecl, importc: "orxSystem_Init",
                                  dynlib: libORX.}
-## * Exits from the system module
-##
+  ## Inits the system module
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxSystem_Exit*() {.cdecl, importc: "orxSystem_Exit", dynlib: libORX.}
-## * Gets current time (elapsed from the beginning of the application, in seconds)
-##  @return Current time
-##
+proc systemExit*() {.cdecl, importc: "orxSystem_Exit", dynlib: libORX.}
+  ## Exits from the system module
 
-proc orxSystem_GetTime*(): orxDOUBLE {.cdecl, importc: "orxSystem_GetTime",
+proc getTime*(): orxDOUBLE {.cdecl, importc: "orxSystem_GetTime",
                                     dynlib: libORX.}
-## * Gets real time (in seconds)
-##  @return Returns the amount of seconds elapsed since reference time (epoch)
-##
+  ## Gets current time (elapsed from the beginning of the application, in seconds)
+  ##  @return Current time
 
-proc orxSystem_GetRealTime*(): orxU64 {.cdecl, importc: "orxSystem_GetRealTime",
+proc getRealTime*(): orxU64 {.cdecl, importc: "orxSystem_GetRealTime",
                                      dynlib: libORX.}
-## * Gets current internal system time (in seconds)
-##  @return Current internal system time
-##
+  ## Gets real time (in seconds)
+  ##  @return Returns the amount of seconds elapsed since reference time (epoch)
 
-proc orxSystem_GetSystemTime*(): orxDOUBLE {.cdecl,
+proc getSystemTime*(): orxDOUBLE {.cdecl,
     importc: "orxSystem_GetSystemTime", dynlib: libORX.}
-## * Delay the program for given number of seconds
-##  @param[in] _fSeconds             Number of seconds to wait
-##
+  ## Gets current internal system time (in seconds)
+  ##  @return Current internal system time
 
-proc orxSystem_Delay*(fSeconds: orxFLOAT) {.cdecl, importc: "orxSystem_Delay",
+proc delay*(fSeconds: orxFLOAT) {.cdecl, importc: "orxSystem_Delay",
     dynlib: libORX.}
-## * Gets orx version (compiled)
-##  @param[out] _pstVersion          Structure to fill with current version
-##  @return Compiled version
-##
+  ## Delay the program for given number of seconds
+  ##  @param[in] _fSeconds             Number of seconds to wait
 
-proc orxSystem_GetVersion*(pstVersion: ptr orxVERSION): ptr orxVERSION {.cdecl,
+proc getVersion*(pstVersion: ptr orxVERSION): ptr orxVERSION {.cdecl,
     importc: "orxSystem_GetVersion", dynlib: libORX.}
-## * Gets orx version literal (compiled), excluding build number
-##  @return Compiled version literal
-##
+  ## Gets orx version (compiled)
+  ##  @param[out] _pstVersion          Structure to fill with current version
+  ##  @return Compiled version
 
-proc orxSystem_GetVersionString*(): cstring {.cdecl,
+proc getVersionString*(): cstring {.cdecl,
     importc: "orxSystem_GetVersionString", dynlib: libORX.}
-## * Gets orx version literal (compiled), including build number
-##  @return Compiled version literal
-##
+  ## Gets orx version literal (compiled), excluding build number
+  ##  @return Compiled version literal
 
-proc orxSystem_GetVersionFullString*(): cstring {.cdecl,
+proc getVersionFullString*(): cstring {.cdecl,
     importc: "orxSystem_GetVersionFullString", dynlib: libORX.}
-## * Gets orx version absolute numeric value (compiled)
-##  @return Absolute numeric value of compiled version
-##
+  ## Gets orx version literal (compiled), including build number
+  ##  @return Compiled version literal
 
-proc orxSystem_GetVersionNumeric*(): orxU32 {.cdecl,
+proc getVersionNumeric*(): orxU32 {.cdecl,
     importc: "orxSystem_GetVersionNumeric", dynlib: libORX.}
-## * Gets clipboard's content
-##  @return Clipboard's content / nil, valid until next call to orxSystem_GetClipboard/orxSystem_SetClipboard
-##
+  ## Gets orx version absolute numeric value (compiled)
+  ##  @return Absolute numeric value of compiled version
 
-proc orxSystem_GetClipboard*(): cstring {.cdecl,
+proc getClipboard*(): cstring {.cdecl,
     importc: "orxSystem_GetClipboard", dynlib: libORX.}
-## * Sets clipboard's content
-##  @param[in] _zValue               Value to set in the clipboard, nil to clear
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets clipboard's content
+  ##  @return Clipboard's content / nil, valid until next call to orxSystem_GetClipboard/orxSystem_SetClipboard
 
-proc orxSystem_SetClipboard*(zValue: cstring): orxSTATUS {.cdecl,
+proc setClipboard*(zValue: cstring): orxSTATUS {.cdecl,
     importc: "orxSystem_SetClipboard", dynlib: libORX.}
+  ## Sets clipboard's content
+  ##  @param[in] _zValue               Value to set in the clipboard, nil to clear
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+

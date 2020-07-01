@@ -13,19 +13,17 @@ type
     vZ*: orxVECTOR             ## *< Z axis vector    : 60
 
 
-##  *** OBox inlined functions ***
-## * Sets 2D oriented box values
-##  @param[out]  _pstRes                       OBox to set
-##  @param[in]   _pvWorldPosition              World space position vector
-##  @param[in]   _pvPivot                      Pivot vector
-##  @param[in]   _pvSize                       Size vector
-##  @param[in]   _fAngle                       Z-axis angle (radians)
-##  @return      orxOBOX / nil
-##
-
-proc orxOBox_2DSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
+proc 2DSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
                    pvPivot: ptr orxVECTOR; pvSize: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxOBOX {.
     inline, cdecl.} =
+  ##  *** OBox inlined functions ***
+  ## Sets 2D oriented box values
+  ##  @param[out]  _pstRes                       OBox to set
+  ##  @param[in]   _pvWorldPosition              World space position vector
+  ##  @param[in]   _pvPivot                      Pivot vector
+  ##  @param[in]   _pvSize                       Size vector
+  ##  @param[in]   _fAngle                       Z-axis angle (radians)
+  ##  @return      orxOBOX / nil
   var
     fCos: orxFLOAT
     fSin: orxFLOAT
@@ -52,13 +50,11 @@ proc orxOBox_2DSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
   ##  Done!
   return pstRes
 
-## * Copies an OBox onto another one
-##  @param[out]  _pstDst                       OBox to copy to (destination)
-##  @param[in]   _pstSrc                       OBox to copy from (destination)
-##  @return      Destination OBox
-##
-
-proc orxOBox_Copy*(pstDst: ptr orxOBOX; pstSrc: ptr orxOBOX): ptr orxOBOX {.inline, cdecl.} =
+proc copy*(pstDst: ptr orxOBOX; pstSrc: ptr orxOBOX): ptr orxOBOX {.inline, cdecl.} =
+  ## Copies an OBox onto another one
+  ##  @param[out]  _pstDst                       OBox to copy to (destination)
+  ##  @param[in]   _pstSrc                       OBox to copy from (destination)
+  ##  @return      Destination OBox
   ##  Checks
   assert(pstDst != nil)
   assert(pstSrc != nil)
@@ -67,14 +63,12 @@ proc orxOBox_Copy*(pstDst: ptr orxOBOX; pstSrc: ptr orxOBOX): ptr orxOBOX {.inli
   ##  Done!
   return pstDst
 
-## * Gets OBox center position
-##  @param[in]   _pstOp                        Concerned OBox
-##  @param[out]  _pvRes                        Center position
-##  @return      Center position vector
-##
-
-proc orxOBox_GetCenter*(pstOp: ptr orxOBOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
+proc getCenter*(pstOp: ptr orxOBOX; pvRes: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Gets OBox center position
+  ##  @param[in]   _pstOp                        Concerned OBox
+  ##  @param[out]  _pvRes                        Center position
+  ##  @return      Center position vector
   ##  Checks
   assert(pstOp != nil)
   assert(pvRes != nil)
@@ -87,15 +81,13 @@ proc orxOBox_GetCenter*(pstOp: ptr orxOBOX; pvRes: ptr orxVECTOR): ptr orxVECTOR
   ##  Done!
   return pvRes
 
-## * Moves an OBox
-##  @param[out]  _pstRes                       OBox where to store result
-##  @param[in]   _pstOp                        OBox to move
-##  @param[in]   _pvMove                       Move vector
-##  @return      Moved OBox
-##
-
-proc orxOBox_Move*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; pvMove: ptr orxVECTOR): ptr orxOBOX {.
+proc move*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; pvMove: ptr orxVECTOR): ptr orxOBOX {.
     inline, cdecl.} =
+  ## Moves an OBox
+  ##  @param[out]  _pstRes                       OBox where to store result
+  ##  @param[in]   _pstOp                        OBox to move
+  ##  @param[in]   _pvMove                       Move vector
+  ##  @return      Moved OBox
   ##  Checks
   assert(pstRes != nil)
   assert(pstOp != nil)
@@ -105,15 +97,13 @@ proc orxOBox_Move*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; pvMove: ptr orxVECTO
   ##  Done!
   return pstRes
 
-## * Rotates in 2D an OBox
-##  @param[out]  _pstRes                       OBox where to store result
-##  @param[in]   _pstOp                        OBox to rotate (its Z-axis vector will be unchanged)
-##  @param[in]   _fAngle                       Z-axis rotation angle (radians)
-##  @return      Rotated OBox
-##
-
-proc orxOBox_2DRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr orxOBOX {.
+proc 2DRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr orxOBOX {.
     inline, cdecl.} =
+  ## Rotates in 2D an OBox
+  ##  @param[out]  _pstRes                       OBox where to store result
+  ##  @param[in]   _pstOp                        OBox to rotate (its Z-axis vector will be unchanged)
+  ##  @param[in]   _fAngle                       Z-axis rotation angle (radians)
+  ##  @return      Rotated OBox
   var
     fSin: orxFLOAT
     fCos: orxFLOAT
@@ -139,14 +129,12 @@ proc orxOBox_2DRotate*(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT
   ##  Done!
   return pstRes
 
-## * Is position inside oriented box test
-##  @param[in]   _pstBox                       Box to test against position
-##  @param[in]   _pvPosition                   Position to test against the box
-##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
-##
-
-proc orxOBox_IsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
+proc isInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
     inline, cdecl.} =
+  ## Is position inside oriented box test
+  ##  @param[in]   _pstBox                       Box to test against position
+  ##  @param[in]   _pvPosition                   Position to test against the box
+  ##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
   var fProj: orxFLOAT
   var vToPos: orxVECTOR
   ##  Checks
@@ -171,14 +159,12 @@ proc orxOBox_IsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
         return true
   return false
 
-## * Is 2D position inside oriented box test
-##  @param[in]   _pstBox                       Box to test against position
-##  @param[in]   _pvPosition                   Position to test against the box (no Z-test)
-##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
-##
-
-proc orxOBox_2DIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
+proc 2DIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {.
     inline, cdecl.} =
+  ## Is 2D position inside oriented box test
+  ##  @param[in]   _pstBox                       Box to test against position
+  ##  @param[in]   _pvPosition                   Position to test against the box (no Z-test)
+  ##  @return      orxTRUE if position is inside the box, orxFALSE otherwise
   var
     fProj: orxFLOAT
     fSize: orxFLOAT
@@ -202,14 +188,12 @@ proc orxOBox_2DIsInside*(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool {
           return true
   return false
 
-## * Tests oriented box intersection (simple Z-axis test, to use with Z-axis aligned orxOBOX)
-##  @param[in]   _pstBox1                      First box operand
-##  @param[in]   _pstBox2                      Second box operand
-##  @return      orxTRUE if boxes intersect, orxFALSE otherwise
-##
-
-proc orxOBox_ZAlignedTestIntersection*(pstBox1: ptr orxOBOX; pstBox2: ptr orxOBOX): orxBOOL {.
+proc zAlignedTestIntersection*(pstBox1: ptr orxOBOX; pstBox2: ptr orxOBOX): orxBOOL {.
     inline, cdecl.} =
+  ## Tests oriented box intersection (simple Z-axis test, to use with Z-axis aligned orxOBOX)
+  ##  @param[in]   _pstBox1                      First box operand
+  ##  @param[in]   _pstBox2                      Second box operand
+  ##  @return      orxTRUE if boxes intersect, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pstBox1 != nil)

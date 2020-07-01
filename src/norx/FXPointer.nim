@@ -10,149 +10,130 @@ const
 
 type orxFXPOINTER* = object
 
-## * FXPointer module setup
-##
-
-proc orxFXPointer_Setup*() {.cdecl, importc: "orxFXPointer_Setup",
+proc FXPointerSetup*() {.cdecl, importc: "orxFXPointer_Setup",
                            dynlib: libORX.}
-## * Inits the FXPointer module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## FXPointer module setup
 
-proc orxFXPointer_Init*(): orxSTATUS {.cdecl, importc: "orxFXPointer_Init",
+proc FXPointerInit*(): orxSTATUS {.cdecl, importc: "orxFXPointer_Init",
                                     dynlib: libORX.}
-## * Exits from the FXPointer module
-##
+  ## Inits the FXPointer module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_Exit*() {.cdecl, importc: "orxFXPointer_Exit", dynlib: libORX.}
-## * Creates an empty FXPointer
-##  @return orxFXPOINTER / nil
-##
+proc FXPointerExit*() {.cdecl, importc: "orxFXPointer_Exit", dynlib: libORX.}
+  ## Exits from the FXPointer module
 
-proc orxFXPointer_Create*(): ptr orxFXPOINTER {.cdecl,
+proc FXPointerCreate*(): ptr orxFXPOINTER {.cdecl,
     importc: "orxFXPointer_Create", dynlib: libORX.}
-## * Deletes an FXPointer
-##  @param[in] _pstFXPointer     Concerned FXPointer
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates an empty FXPointer
+  ##  @return orxFXPOINTER / nil
 
-proc orxFXPointer_Delete*(pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.cdecl,
+proc delete*(pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.cdecl,
     importc: "orxFXPointer_Delete", dynlib: libORX.}
-## * Enables/disables an FXPointer
-##  @param[in]   _pstFXPointer   Concerned FXPointer
-##  @param[in]   _bEnable        Enable / disable
-##
+  ## Deletes an FXPointer
+  ##  @param[in] _pstFXPointer     Concerned FXPointer
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_Enable*(pstFXPointer: ptr orxFXPOINTER; bEnable: orxBOOL) {.cdecl,
+proc enable*(pstFXPointer: ptr orxFXPOINTER; bEnable: orxBOOL) {.cdecl,
     importc: "orxFXPointer_Enable", dynlib: libORX.}
-## * Is FXPointer enabled?
-##  @param[in]   _pstFXPointer   Concerned FXPointer
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables an FXPointer
+  ##  @param[in]   _pstFXPointer   Concerned FXPointer
+  ##  @param[in]   _bEnable        Enable / disable
 
-proc orxFXPointer_IsEnabled*(pstFXPointer: ptr orxFXPOINTER): orxBOOL {.cdecl,
+proc isEnabled*(pstFXPointer: ptr orxFXPOINTER): orxBOOL {.cdecl,
     importc: "orxFXPointer_IsEnabled", dynlib: libORX.}
-## * Adds an FX
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _pstFX        FX to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is FXPointer enabled?
+  ##  @param[in]   _pstFXPointer   Concerned FXPointer
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxFXPointer_AddFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX): orxSTATUS {.
+proc addFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX): orxSTATUS {.
     cdecl, importc: "orxFXPointer_AddFX", dynlib: libORX.}
-## * Adds a delayed FX
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _pstFX        FX to add
-##  @param[in]   _fDelay       Delay time
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds an FX
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _pstFX        FX to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_AddDelayedFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX;
+proc addDelayedFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX;
                                fDelay: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddDelayedFX", dynlib: libORX.}
-## * Removes an FX
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _pstFX        FX to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a delayed FX
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _pstFX        FX to add
+  ##  @param[in]   _fDelay       Delay time
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_RemoveFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX): orxSTATUS {.
+proc removeFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX): orxSTATUS {.
     cdecl, importc: "orxFXPointer_RemoveFX", dynlib: libORX.}
-## * Adds an FX using its config ID
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _zFXConfigID  Config ID of the FX to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes an FX
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _pstFX        FX to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_AddFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
+proc addFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
                                   zFXConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddFXFromConfig", dynlib: libORX.}
-## * Adds a unique FX using its config ID
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _zFXConfigID  Config ID of the FX to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds an FX using its config ID
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _zFXConfigID  Config ID of the FX to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_AddUniqueFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
+proc addUniqueFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
                                         zFXConfigID: cstring): orxSTATUS {.
     cdecl, importc: "orxFXPointer_AddUniqueFXFromConfig", dynlib: libORX.}
-## * Adds a delayed FX using its config ID
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _zFXConfigID  Config ID of the FX to add
-##  @param[in]   _fDelay       Delay time
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a unique FX using its config ID
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _zFXConfigID  Config ID of the FX to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_AddDelayedFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
+proc addDelayedFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
     zFXConfigID: cstring; fDelay: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddDelayedFXFromConfig", dynlib: libORX.}
-## * Adds a unique delayed FX using its config ID
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _zFXConfigID  Config ID of the FX to add
-##  @param[in]   _fDelay       Delay time
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a delayed FX using its config ID
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _zFXConfigID  Config ID of the FX to add
+  ##  @param[in]   _fDelay       Delay time
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_AddUniqueDelayedFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
+proc addUniqueDelayedFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
     zFXConfigID: cstring; fDelay: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddUniqueDelayedFXFromConfig", dynlib: libORX.}
-## * Removes an FX using its config ID
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _zFXConfigID  Config ID of the FX to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a unique delayed FX using its config ID
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _zFXConfigID  Config ID of the FX to add
+  ##  @param[in]   _fDelay       Delay time
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_RemoveFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
+proc removeFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
                                      zFXConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxFXPointer_RemoveFXFromConfig", dynlib: libORX.}
-## * Synchronizes FX times with an other orxFXPointer if they share common FXs
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _pstModel     Model FX pointer to use for synchronization
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes an FX using its config ID
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _zFXConfigID  Config ID of the FX to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_Synchronize*(pstFXPointer: ptr orxFXPOINTER;
+proc synchronize*(pstFXPointer: ptr orxFXPOINTER;
                               pstModel: ptr orxFXPOINTER): orxSTATUS {.cdecl,
     importc: "orxFXPointer_Synchronize", dynlib: libORX.}
-## * FXPointer time get accessor
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @return      orxFLOAT
-##
+  ## Synchronizes FX times with an other orxFXPointer if they share common FXs
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _pstModel     Model FX pointer to use for synchronization
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFXPointer_GetTime*(pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.cdecl,
+proc getTime*(pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.cdecl,
     importc: "orxFXPointer_GetTime", dynlib: libORX.}
-## * Gets how many FXs are currently in use
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @return      orxU32
-##
+  ## FXPointer time get accessor
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @return      orxFLOAT
 
-proc orxFXPointer_GetCount*(pstFXPointer: ptr orxFXPOINTER): orxU32 {.cdecl,
+proc getCount*(pstFXPointer: ptr orxFXPOINTER): orxU32 {.cdecl,
     importc: "orxFXPointer_GetCount", dynlib: libORX.}
-## * FXPointer time set accessor
-##  @param[in]   _pstFXPointer Concerned FXPointer
-##  @param[in]   _fTime        Time to set
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets how many FXs are currently in use
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @return      orxU32
 
-proc orxFXPointer_SetTime*(pstFXPointer: ptr orxFXPOINTER; fTime: orxFLOAT): orxSTATUS {.
+proc setTime*(pstFXPointer: ptr orxFXPOINTER; fTime: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxFXPointer_SetTime", dynlib: libORX.}
+  ## FXPointer time set accessor
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @param[in]   _fTime        Time to set
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+

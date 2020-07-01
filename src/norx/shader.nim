@@ -53,165 +53,145 @@ type
     ano_orxShader_127*: INNER_C_UNION_orxShader_124
 
 
-## * Shader module setup
-##
+proc shaderSetup*() {.cdecl, importc: "orxShader_Setup", dynlib: libORX.}
+  ## Shader module setup
 
-proc orxShader_Setup*() {.cdecl, importc: "orxShader_Setup", dynlib: libORX.}
-## * Inits the shader module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxShader_Init*(): orxSTATUS {.cdecl, importc: "orxShader_Init",
+proc shaderInit*(): orxSTATUS {.cdecl, importc: "orxShader_Init",
                                  dynlib: libORX.}
-## * Exits from the shader module
-##
+  ## Inits the shader module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_Exit*() {.cdecl, importc: "orxShader_Exit", dynlib: libORX.}
-## * Creates an empty shader
-##  @return orxSHADER / nil
-##
+proc shaderExit*() {.cdecl, importc: "orxShader_Exit", dynlib: libORX.}
+  ## Exits from the shader module
 
-proc orxShader_Create*(): ptr orxSHADER {.cdecl, importc: "orxShader_Create",
+proc shaderCreate*(): ptr orxSHADER {.cdecl, importc: "orxShader_Create",
                                       dynlib: libORX.}
-## * Creates a shader from config
-##  @param[in]   _zConfigID            Config ID
-##  @ return orxSHADER / nil
-##
+  ## Creates an empty shader
+  ##  @return orxSHADER / nil
 
-proc orxShader_CreateFromConfig*(zConfigID: cstring): ptr orxSHADER {.cdecl,
+proc shaderCreateFromConfig*(zConfigID: cstring): ptr orxSHADER {.cdecl,
     importc: "orxShader_CreateFromConfig", dynlib: libORX.}
-## * Deletes a shader
-##  @param[in] _pstShader              Concerned Shader
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates a shader from config
+  ##  @param[in]   _zConfigID            Config ID
+  ##  @ return orxSHADER / nil
 
-proc orxShader_Delete*(pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+proc delete*(pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
     importc: "orxShader_Delete", dynlib: libORX.}
-## * Clears cache (if any shader is still in active use, it'll remain in memory until not referenced anymore)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Deletes a shader
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_ClearCache*(): orxSTATUS {.cdecl, importc: "orxShader_ClearCache",
+proc clearCache*(): orxSTATUS {.cdecl, importc: "orxShader_ClearCache",
                                        dynlib: libORX.}
-## * Starts a shader
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _pstOwner               Owner structure (orxOBJECT / orxVIEWPORT / nil)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Clears cache (if any shader is still in active use, it'll remain in memory until not referenced anymore)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_Start*(pstShader: ptr orxSHADER; pstOwner: ptr orxSTRUCTURE): orxSTATUS {.
+proc start*(pstShader: ptr orxSHADER; pstOwner: ptr orxSTRUCTURE): orxSTATUS {.
     cdecl, importc: "orxShader_Start", dynlib: libORX.}
-## * Stops a shader
-##  @param[in] _pstShader              Concerned Shader
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Starts a shader
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _pstOwner               Owner structure (orxOBJECT / orxVIEWPORT / nil)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_Stop*(pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+proc stop*(pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
     importc: "orxShader_Stop", dynlib: libORX.}
-## * Adds a float parameter definition to a shader (parameters need to be set before compiling the shader code)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable
-##  @param[in] _afValueList            Parameter's float value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Stops a shader
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_AddFloatParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc addFloatParam*(pstShader: ptr orxSHADER; zName: cstring;
                              u32ArraySize: orxU32; afValueList: ptr orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxShader_AddFloatParam", dynlib: libORX.}
-## * Adds a texture parameter definition to a shader (parameters need to be set before compiling the shader code)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 simple variable
-##  @param[in] _apstValueList          Parameter's texture value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a float parameter definition to a shader (parameters need to be set before compiling the shader code)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable
+  ##  @param[in] _afValueList            Parameter's float value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_AddTextureParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc addTextureParam*(pstShader: ptr orxSHADER; zName: cstring;
                                u32ArraySize: orxU32;
                                apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.cdecl,
     importc: "orxShader_AddTextureParam", dynlib: libORX.}
-## * Adds a vector parameter definition to a shader (parameters need to be set before compiling the shader code)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable
-##  @param[in] _avValueList            Parameter's vector value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a texture parameter definition to a shader (parameters need to be set before compiling the shader code)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 simple variable
+  ##  @param[in] _apstValueList          Parameter's texture value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_AddVectorParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc addVectorParam*(pstShader: ptr orxSHADER; zName: cstring;
                               u32ArraySize: orxU32; avValueList: ptr orxVECTOR): orxSTATUS {.
     cdecl, importc: "orxShader_AddVectorParam", dynlib: libORX.}
-## * Adds a time parameter definition to a shader (parameters need to be set before compiling the shader code)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a vector parameter definition to a shader (parameters need to be set before compiling the shader code)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable
+  ##  @param[in] _avValueList            Parameter's vector value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_AddTimeParam*(pstShader: ptr orxSHADER; zName: cstring): orxSTATUS {.
+proc addTimeParam*(pstShader: ptr orxSHADER; zName: cstring): orxSTATUS {.
     cdecl, importc: "orxShader_AddTimeParam", dynlib: libORX.}
-## * Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
-##  @param[in] _afValueList            Parameter's float value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a time parameter definition to a shader (parameters need to be set before compiling the shader code)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_SetFloatParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc setFloatParam*(pstShader: ptr orxSHADER; zName: cstring;
                              u32ArraySize: orxU32; afValueList: ptr orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxShader_SetFloatParam", dynlib: libORX.}
-## * Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
-##  @param[in] _apstValueList          Parameter's texture value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
+  ##  @param[in] _afValueList            Parameter's float value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_SetTextureParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc setTextureParam*(pstShader: ptr orxSHADER; zName: cstring;
                                u32ArraySize: orxU32;
                                apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.cdecl,
     importc: "orxShader_SetTextureParam", dynlib: libORX.}
-## * Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _zName                  Parameter's literal name
-##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
-##  @param[in] _avValueList            Parameter's vector value list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
+  ##  @param[in] _apstValueList          Parameter's texture value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_SetVectorParam*(pstShader: ptr orxSHADER; zName: cstring;
+proc setVectorParam*(pstShader: ptr orxSHADER; zName: cstring;
                               u32ArraySize: orxU32; avValueList: ptr orxVECTOR): orxSTATUS {.
     cdecl, importc: "orxShader_SetVectorParam", dynlib: libORX.}
-## * Sets shader code & compiles it (parameters need to be set before compiling the shader code)
-##  @param[in] _pstShader              Concerned Shader
-##  @param[in] _azCodeList             List of shader codes to compile (parameters need to be set beforehand), will be processed in order
-##  @param[in] _u32Size                Size of the shader code list
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets the default value for a given float parameter in a shader (parameters need to be added beforehand)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _zName                  Parameter's literal name
+  ##  @param[in] _u32ArraySize           Parameter's array size, 0 for simple variable, has to match the size used when declaring the parameter
+  ##  @param[in] _avValueList            Parameter's vector value list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_CompileCode*(pstShader: ptr orxSHADER; azCodeList: cstringArray;
+proc compileCode*(pstShader: ptr orxSHADER; azCodeList: cstringArray;
                            u32Size: orxU32): orxSTATUS {.cdecl,
     importc: "orxShader_CompileCode", dynlib: libORX.}
-## * Enables/disables a shader
-##  @param[in]   _pstShader            Concerned Shader
-##  @param[in]   _bEnable              Enable / disable
-##
+  ## Sets shader code & compiles it (parameters need to be set before compiling the shader code)
+  ##  @param[in] _pstShader              Concerned Shader
+  ##  @param[in] _azCodeList             List of shader codes to compile (parameters need to be set beforehand), will be processed in order
+  ##  @param[in] _u32Size                Size of the shader code list
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxShader_Enable*(pstShader: ptr orxSHADER; bEnable: orxBOOL) {.cdecl,
+proc enable*(pstShader: ptr orxSHADER; bEnable: orxBOOL) {.cdecl,
     importc: "orxShader_Enable", dynlib: libORX.}
-## * Is shader enabled?
-##  @param[in]   _pstShader            Concerned Shader
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables a shader
+  ##  @param[in]   _pstShader            Concerned Shader
+  ##  @param[in]   _bEnable              Enable / disable
 
-proc orxShader_IsEnabled*(pstShader: ptr orxSHADER): orxBOOL {.cdecl,
+proc isEnabled*(pstShader: ptr orxSHADER): orxBOOL {.cdecl,
     importc: "orxShader_IsEnabled", dynlib: libORX.}
-## * Gets shader name
-##  @param[in]   _pstShader            Concerned Shader
-##  @return      orxSTRING / orxSTRING_EMPTY
-##
+  ## Is shader enabled?
+  ##  @param[in]   _pstShader            Concerned Shader
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxShader_GetName*(pstShader: ptr orxSHADER): cstring {.cdecl,
+proc getName*(pstShader: ptr orxSHADER): cstring {.cdecl,
     importc: "orxShader_GetName", dynlib: libORX.}
+  ## Gets shader name
+  ##  @param[in]   _pstShader            Concerned Shader
+  ##  @return      orxSTRING / orxSTRING_EMPTY
+

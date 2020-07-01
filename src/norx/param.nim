@@ -32,38 +32,32 @@ type
     pfnParser*: orxPARAM_INIT_FUNCTION
 
 
-## * Setups param module
-##
+proc paramSetup*() {.cdecl, importc: "orxParam_Setup", dynlib: libORX.}
+  ## Setups param module
 
-proc orxParam_Setup*() {.cdecl, importc: "orxParam_Setup", dynlib: libORX.}
-## * Inits the param Module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxParam_Init*(): orxSTATUS {.cdecl, importc: "orxParam_Init",
+proc paramInit*(): orxSTATUS {.cdecl, importc: "orxParam_Init",
                                 dynlib: libORX.}
-## * Exits from the param module
-##
+  ## Inits the param Module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxParam_Exit*() {.cdecl, importc: "orxParam_Exit", dynlib: libORX.}
-## * Registers a new parameter
-##  @param[in] _pstParam Information about the option to register
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc paramExit*() {.cdecl, importc: "orxParam_Exit", dynlib: libORX.}
+  ## Exits from the param module
 
-proc orxParam_Register*(pstParam: ptr orxPARAM): orxSTATUS {.cdecl,
+proc register*(pstParam: ptr orxPARAM): orxSTATUS {.cdecl,
     importc: "orxParam_Register", dynlib: libORX.}
-## * Displays help if requested
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Registers a new parameter
+  ##  @param[in] _pstParam Information about the option to register
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxParam_DisplayHelp*(): orxSTATUS {.cdecl, importc: "orxParam_DisplayHelp",
+proc displayHelp*(): orxSTATUS {.cdecl, importc: "orxParam_DisplayHelp",
                                        dynlib: libORX.}
-## * Sets the command line arguments
-##  @param[in] _u32NbParams  Number of read parameters
-##  @param[in] _azParams     List of parameters
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Displays help if requested
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxParam_SetArgs*(u32NbParams: orxU32; azParams: cstringArray): orxSTATUS {.
+proc setArgs*(u32NbParams: orxU32; azParams: cstringArray): orxSTATUS {.
     cdecl, importc: "orxParam_SetArgs", dynlib: libORX.}
+  ## Sets the command line arguments
+  ##  @param[in] _u32NbParams  Number of read parameters
+  ##  @param[in] _azParams     List of parameters
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+

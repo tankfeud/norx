@@ -45,165 +45,144 @@ type
 
 type orxFRAME* = object
 
-## * Get ignore flag values
-##  @param[in]   _zFlags         Literal ignore flags
-##  @return Ignore flags
-##
-
-proc orxFrame_GetIgnoreFlagValues*(zFlags: cstring): orxU32 {.cdecl,
+proc getIgnoreFlagValues*(zFlags: cstring): orxU32 {.cdecl,
     importc: "orxFrame_GetIgnoreFlagValues", dynlib: libORX.}
-## * Get ignore flag names (beware: result won't persist from one call to the other)
-##  @param[in]   _zFlags         Literal ignore flags
-##  @return Ignore flags names
-##
+  ## Get ignore flag values
+  ##  @param[in]   _zFlags         Literal ignore flags
+  ##  @return Ignore flags
 
-proc orxFrame_GetIgnoreFlagNames*(u32Flags: orxU32): cstring {.cdecl,
+proc getIgnoreFlagNames*(u32Flags: orxU32): cstring {.cdecl,
     importc: "orxFrame_GetIgnoreFlagNames", dynlib: libORX.}
-## * Setups the frame module
-##
+  ## Get ignore flag names (beware: result won't persist from one call to the other)
+  ##  @param[in]   _zFlags         Literal ignore flags
+  ##  @return Ignore flags names
 
-proc orxFrame_Setup*() {.cdecl, importc: "orxFrame_Setup", dynlib: libORX.}
-## * Inits the frame module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc frameSetup*() {.cdecl, importc: "orxFrame_Setup", dynlib: libORX.}
+  ## Setups the frame module
 
-proc orxFrame_Init*(): orxSTATUS {.cdecl, importc: "orxFrame_Init",
+proc frameInit*(): orxSTATUS {.cdecl, importc: "orxFrame_Init",
                                 dynlib: libORX.}
-## * Exits from the frame module
-##
+  ## Inits the frame module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFrame_Exit*() {.cdecl, importc: "orxFrame_Exit", dynlib: libORX.}
-## * Creates a frame
-##  @param[in]   _u32Flags       Flags for created animation
-##  @return      Created orxFRAME / nil
-##
+proc frameExit*() {.cdecl, importc: "orxFrame_Exit", dynlib: libORX.}
+  ## Exits from the frame module
 
-proc orxFrame_Create*(u32Flags: orxU32): ptr orxFRAME {.cdecl,
+proc frameCreate*(u32Flags: orxU32): ptr orxFRAME {.cdecl,
     importc: "orxFrame_Create", dynlib: libORX.}
-## * Deletes a frame
-##  @param[in]   _pstFrame       Frame to delete
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates a frame
+  ##  @param[in]   _u32Flags       Flags for created animation
+  ##  @return      Created orxFRAME / nil
 
-proc orxFrame_Delete*(pstFrame: ptr orxFRAME): orxSTATUS {.cdecl,
+proc delete*(pstFrame: ptr orxFRAME): orxSTATUS {.cdecl,
     importc: "orxFrame_Delete", dynlib: libORX.}
-## * Sets frame parent
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _pstParent      Parent frame to set
-##
+  ## Deletes a frame
+  ##  @param[in]   _pstFrame       Frame to delete
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFrame_SetParent*(pstFrame: ptr orxFRAME; pstParent: ptr orxFRAME) {.cdecl,
+proc setParent*(pstFrame: ptr orxFRAME; pstParent: ptr orxFRAME) {.cdecl,
     importc: "orxFrame_SetParent", dynlib: libORX.}
-## * Get frame parent
-##  @param[in]   _pstFrame       Concerned frame
-##  @return orxFRAME / nil
-##
+  ## Sets frame parent
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _pstParent      Parent frame to set
 
-proc orxFrame_GetParent*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
+proc getParent*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
     importc: "orxFrame_GetParent", dynlib: libORX.}
-## * Gets frame first child
-##  @param[in]   _pstFrame       Concerned frame
-##  @return orxFRAME / nil
-##
+  ## Get frame parent
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @return orxFRAME / nil
 
-proc orxFrame_GetChild*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
+proc getChild*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
     importc: "orxFrame_GetChild", dynlib: libORX.}
-## * Gets frame next sibling
-##  @param[in]   _pstFrame       Concerned frame
-##  @return orxFRAME / nil
-##
+  ## Gets frame first child
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @return orxFRAME / nil
 
-proc orxFrame_GetSibling*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
+proc getSibling*(pstFrame: ptr orxFRAME): ptr orxFRAME {.cdecl,
     importc: "orxFrame_GetSibling", dynlib: libORX.}
-## * Is a root child?
-##  @param[in]   _pstFrame       Concerned frame
-##  @return orxTRUE if its parent is root, orxFALSE otherwise
-##
+  ## Gets frame next sibling
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @return orxFRAME / nil
 
-proc orxFrame_IsRootChild*(pstFrame: ptr orxFRAME): orxBOOL {.cdecl,
+proc isRootChild*(pstFrame: ptr orxFRAME): orxBOOL {.cdecl,
     importc: "orxFrame_IsRootChild", dynlib: libORX.}
-## * Sets frame position
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @param[in]   _pvPos          Position to set
-##
+  ## Is a root child?
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @return orxTRUE if its parent is root, orxFALSE otherwise
 
-proc orxFrame_SetPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc setPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                           pvPos: ptr orxVECTOR) {.cdecl,
     importc: "orxFrame_SetPosition", dynlib: libORX.}
-## * Sets frame rotation
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @param[in]   _fRotation      Rotation angle to set (radians)
-##
+  ## Sets frame position
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @param[in]   _pvPos          Position to set
 
-proc orxFrame_SetRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc setRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                           fRotation: orxFLOAT) {.cdecl,
     importc: "orxFrame_SetRotation", dynlib: libORX.}
-## * Sets frame scale
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @param[in]   _pvScale        Scale to set
-##
+  ## Sets frame rotation
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @param[in]   _fRotation      Rotation angle to set (radians)
 
-proc orxFrame_SetScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc setScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                        pvScale: ptr orxVECTOR) {.cdecl,
     importc: "orxFrame_SetScale", dynlib: libORX.}
-## * Gets frame position
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @param[out]  _pvPos          Position of the given frame
-##  @return orxVECTOR / nil
-##
+  ## Sets frame scale
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @param[in]   _pvScale        Scale to set
 
-proc orxFrame_GetPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc getPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                           pvPos: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
     importc: "orxFrame_GetPosition", dynlib: libORX.}
-## * Gets frame rotation
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @return Rotation of the given frame (radians)
-##
+  ## Gets frame position
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @param[out]  _pvPos          Position of the given frame
+  ##  @return orxVECTOR / nil
 
-proc orxFrame_GetRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE): orxFLOAT {.
+proc getRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE): orxFLOAT {.
     cdecl, importc: "orxFrame_GetRotation", dynlib: libORX.}
-## * Gets frame scale
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Coordinate space system to use
-##  @param[out]  _pvScale        Scale
-##  @return      orxVECTOR / nil
-##
+  ## Gets frame rotation
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @return Rotation of the given frame (radians)
 
-proc orxFrame_GetScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc getScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                        pvScale: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
     importc: "orxFrame_GetScale", dynlib: libORX.}
-## * Transforms a position given its input space (local -> global or global -> local)
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Input coordinate space system to use
-##  @param[out]  _pvPos          Concerned position
-##  @return orxVECTOR / nil
-##
+  ## Gets frame scale
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Coordinate space system to use
+  ##  @param[out]  _pvScale        Scale
+  ##  @return      orxVECTOR / nil
 
-proc orxFrame_TransformPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc transformPosition*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                                 pvPos: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
     importc: "orxFrame_TransformPosition", dynlib: libORX.}
-## * Transforms a rotation given its input space (local -> global or global -> local)
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Input coordinate space system to use
-##  @param[out]  _fRotation      Concerned rotation
-##  @return Transformed rotation (radians)
-##
+  ## Transforms a position given its input space (local -> global or global -> local)
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Input coordinate space system to use
+  ##  @param[out]  _pvPos          Concerned position
+  ##  @return orxVECTOR / nil
 
-proc orxFrame_TransformRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc transformRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                                 fRotation: orxFLOAT): orxFLOAT {.cdecl,
     importc: "orxFrame_TransformRotation", dynlib: libORX.}
-## * Transforms a scale given its input space (local -> global or global -> local)
-##  @param[in]   _pstFrame       Concerned frame
-##  @param[in]   _eSpace         Input coordinate space system to use
-##  @param[out]  _pvScale        Concerned scale
-##  @return      orxVECTOR / nil
-##
+  ## Transforms a rotation given its input space (local -> global or global -> local)
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Input coordinate space system to use
+  ##  @param[out]  _fRotation      Concerned rotation
+  ##  @return Transformed rotation (radians)
 
-proc orxFrame_TransformScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
+proc transformScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                              pvScale: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
     importc: "orxFrame_TransformScale", dynlib: libORX.}
+  ## Transforms a scale given its input space (local -> global or global -> local)
+  ##  @param[in]   _pstFrame       Concerned frame
+  ##  @param[in]   _eSpace         Input coordinate space system to use
+  ##  @param[out]  _pvScale        Concerned scale
+  ##  @return      orxVECTOR / nil
+

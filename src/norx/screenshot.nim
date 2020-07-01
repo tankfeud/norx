@@ -23,25 +23,21 @@ else:
     orxSCREENSHOT_KZ_DEFAULT_EXTENSION* = "tga"
     orxSCREENSHOT_KU32_DEFAULT_DIGITS* = 4
 
-## * Screenshot module setup
-##
-
-proc orxScreenshot_Setup*() {.cdecl, importc: "orxScreenshot_Setup",
+proc screenshotSetup*() {.cdecl, importc: "orxScreenshot_Setup",
                             dynlib: libORX.}
-## * Inits the screenshot module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Screenshot module setup
 
-proc orxScreenshot_Init*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Init",
+proc screenshotInit*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Init",
                                      dynlib: libORX.}
-## * Exits from the screenshot module
-##
+  ## Inits the screenshot module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxScreenshot_Exit*() {.cdecl, importc: "orxScreenshot_Exit",
+proc screenshotExit*() {.cdecl, importc: "orxScreenshot_Exit",
                            dynlib: libORX.}
-## * Captures a screenshot
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Exits from the screenshot module
 
-proc orxScreenshot_Capture*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Capture",
+proc capture*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Capture",
                                         dynlib: libORX.}
+  ## Captures a screenshot
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+

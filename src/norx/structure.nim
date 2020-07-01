@@ -160,14 +160,12 @@ type
                                      pstClockInfo: ptr orxCLOCK_INFO): orxSTATUS {.
       cdecl.}
 
-## * Gets structure pointer / debug mode
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _eStructureID   ID to test the structure against
-##  @return      Valid orxSTRUCTURE, nil otherwise
-##
-
-proc orxStructure_GetPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.
+proc getPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.
     inline, cdecl.} =
+  ## Gets structure pointer / debug mode
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _eStructureID   ID to test the structure against
+  ##  @return      Valid orxSTRUCTURE, nil otherwise
   let uid: int64 = (cast[ptr orxSTRUCTURE](pStructure)).u64GUID.int64
   if (pStructure != nil and ((uid and orxSTRUCTURE_GUID_MASK_STRUCTURE_ID) shr orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID) == eStructureID.int64):
     return cast[ptr orxSTRUCTURE](pStructure)
@@ -175,12 +173,10 @@ proc orxStructure_GetPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID
     return cast[ptr orxSTRUCTURE](nil)
 
 
-## * Gets structure ID string
-##  @param[in]   _eID                       Concerned ID
-##  @return      Corresponding literal string
-##
-
-proc orxStructure_GetIDString*(eID: orxSTRUCTURE_ID): string {.inline, cdecl.} =
+proc getIDString*(eID: orxSTRUCTURE_ID): string {.inline, cdecl.} =
+  ## Gets structure ID string
+  ##  @param[in]   _eID                       Concerned ID
+  ##  @return      Corresponding literal string
   ##  Depending on ID
   case eID
   of orxSTRUCTURE_ID_ANIMPOINTER:
@@ -226,174 +222,150 @@ proc orxStructure_GetIDString*(eID: orxSTRUCTURE_ID): string {.inline, cdecl.} =
   else:
     return "INVALID STRUCTURE ID"
 
-## * Structure module setup
-##
-
-proc orxStructure_Setup*() {.cdecl, importc: "orxStructure_Setup",
+proc structureSetup*() {.cdecl, importc: "orxStructure_Setup",
                            dynlib: libORX.}
-## * Initializess the structure module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Structure module setup
 
-proc orxStructure_Init*(): orxSTATUS {.cdecl, importc: "orxStructure_Init",
+proc structureInit*(): orxSTATUS {.cdecl, importc: "orxStructure_Init",
                                     dynlib: libORX.}
-## * Exits from the structure module
-##
+  ## Initializess the structure module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_Exit*() {.cdecl, importc: "orxStructure_Exit", dynlib: libORX.}
-## * Registers a given ID
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @param[in]   _eStorageType   Storage type to use for this structure type
-##  @param[in]   _eMemoryType    Memory type to store this structure type
-##  @param[in]   _u32Size        Structure size
-##  @param[in]   _u32BankSize    Bank (segment) size
-##  @param[in]   _pfnUpdate      Structure update function
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc structureExit*() {.cdecl, importc: "orxStructure_Exit", dynlib: libORX.}
+  ## Exits from the structure module
 
-proc orxStructure_Register*(eStructureID: orxSTRUCTURE_ID;
+proc register*(eStructureID: orxSTRUCTURE_ID;
                            eStorageType: orxSTRUCTURE_STORAGE_TYPE;
                            eMemoryType: orxMEMORY_TYPE; u32Size: orxU32;
                            u32BankSize: orxU32;
                            pfnUpdate: orxSTRUCTURE_UPDATE_FUNCTION): orxSTATUS {.
     cdecl, importc: "orxStructure_Register", dynlib: libORX.}
-## * Unregisters a given ID
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Registers a given ID
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @param[in]   _eStorageType   Storage type to use for this structure type
+  ##  @param[in]   _eMemoryType    Memory type to store this structure type
+  ##  @param[in]   _u32Size        Structure size
+  ##  @param[in]   _u32BankSize    Bank (segment) size
+  ##  @param[in]   _pfnUpdate      Structure update function
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_Unregister*(eStructureID: orxSTRUCTURE_ID): orxSTATUS {.cdecl,
+proc unregister*(eStructureID: orxSTRUCTURE_ID): orxSTATUS {.cdecl,
     importc: "orxStructure_Unregister", dynlib: libORX.}
-## * Creates a clean structure for given type
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxSTRUCTURE / nil
-##
+  ## Unregisters a given ID
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_Create*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
+proc structureCreate*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_Create", dynlib: libORX.}
-## * Deletes a structure (needs to be cleaned beforehand)
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates a clean structure for given type
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxSTRUCTURE / nil
 
-proc orxStructure_Delete*(pStructure: pointer): orxSTATUS {.cdecl,
+proc delete*(pStructure: pointer): orxSTATUS {.cdecl,
     importc: "orxStructure_Delete", dynlib: libORX.}
-## * Gets structure storage type
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxSTRUCTURE_STORAGE_TYPE
-##
+  ## Deletes a structure (needs to be cleaned beforehand)
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_GetStorageType*(eStructureID: orxSTRUCTURE_ID): orxSTRUCTURE_STORAGE_TYPE {.
+proc getStorageType*(eStructureID: orxSTRUCTURE_ID): orxSTRUCTURE_STORAGE_TYPE {.
     cdecl, importc: "orxStructure_GetStorageType", dynlib: libORX.}
-## * Gets given type structure count
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxU32 / orxU32_UNDEFINED
-##
+  ## Gets structure storage type
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxSTRUCTURE_STORAGE_TYPE
 
-proc orxStructure_GetCount*(eStructureID: orxSTRUCTURE_ID): orxU32 {.cdecl,
+proc getCount*(eStructureID: orxSTRUCTURE_ID): orxU32 {.cdecl,
     importc: "orxStructure_GetCount", dynlib: libORX.}
-## * Updates structure if update function was registered for the structure type
-##  @param[in]   _pStructure     Concerned structure
-##  @param[in]   _phCaller       Caller structure
-##  @param[in]   _pstClockInfo   Update associated clock info
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets given type structure count
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxU32 / orxU32_UNDEFINED
 
-proc orxStructure_Update*(pStructure: pointer; phCaller: pointer;
+proc update*(pStructure: pointer; phCaller: pointer;
                          pstClockInfo: ptr orxCLOCK_INFO): orxSTATUS {.cdecl,
     importc: "orxStructure_Update", dynlib: libORX.}
-## * *** Structure storage accessors ***
-## * Gets structure given its GUID
-##  @param[in]   _u64GUID        Structure's GUID
-##  @return      orxSTRUCTURE / nil if not found/alive
-##
+  ## Updates structure if update function was registered for the structure type
+  ##  @param[in]   _pStructure     Concerned structure
+  ##  @param[in]   _phCaller       Caller structure
+  ##  @param[in]   _pstClockInfo   Update associated clock info
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_Get*(u64GUID: orxU64): ptr orxSTRUCTURE {.cdecl,
+proc get*(u64GUID: orxU64): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_Get", dynlib: libORX.}
-## * Gets structure's owner
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE / nil if not found/alive
-##
+  ## *** Structure storage accessors ***
+  ## Gets structure given its GUID
+  ##  @param[in]   _u64GUID        Structure's GUID
+  ##  @return      orxSTRUCTURE / nil if not found/alive
 
-proc orxStructure_GetOwner*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getOwner*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetOwner", dynlib: libORX.}
-## * Sets structure owner
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _pOwner        Structure to set as owner
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets structure's owner
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE / nil if not found/alive
 
-proc orxStructure_SetOwner*(pStructure: pointer; pOwner: pointer): orxSTATUS {.cdecl,
+proc setOwner*(pStructure: pointer; pOwner: pointer): orxSTATUS {.cdecl,
     importc: "orxStructure_SetOwner", dynlib: libORX.}
-## * Gets first stored structure (first list cell or tree root depending on storage type)
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxSTRUCTURE
-##
+  ## Sets structure owner
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _pOwner        Structure to set as owner
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_GetFirst*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
+proc getFirst*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetFirst", dynlib: libORX.}
-## * Gets last stored structure (last list cell or tree root depending on storage type)
-##  @param[in]   _eStructureID   Concerned structure ID
-##  @return      orxSTRUCTURE
-##
+  ## Gets first stored structure (first list cell or tree root depending on storage type)
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetLast*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
+proc getLast*(eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetLast", dynlib: libORX.}
-## * Gets structure tree parent
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE
-##
+  ## Gets last stored structure (last list cell or tree root depending on storage type)
+  ##  @param[in]   _eStructureID   Concerned structure ID
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetParent*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getParent*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetParent", dynlib: libORX.}
-## * Gets structure tree child
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE
-##
+  ## Gets structure tree parent
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetChild*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getChild*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetChild", dynlib: libORX.}
-## * Gets structure tree sibling
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE
-##
+  ## Gets structure tree child
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetSibling*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getSibling*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetSibling", dynlib: libORX.}
-## * Gets structure list previous
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE
-##
+  ## Gets structure tree sibling
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetPrevious*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getPrevious*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetPrevious", dynlib: libORX.}
-## * Gets structure list next
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE
-##
+  ## Gets structure list previous
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_GetNext*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
+proc getNext*(pStructure: pointer): ptr orxSTRUCTURE {.cdecl,
     importc: "orxStructure_GetNext", dynlib: libORX.}
-## * Sets structure tree parent
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _phParent       Structure to set as parent
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets structure list next
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE
 
-proc orxStructure_SetParent*(pStructure: pointer; phParent: pointer): orxSTATUS {.
+proc setParent*(pStructure: pointer; phParent: pointer): orxSTATUS {.
     cdecl, importc: "orxStructure_SetParent", dynlib: libORX.}
-## * Logs all user-generated active structures
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets structure tree parent
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _phParent       Structure to set as parent
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_LogAll*(): orxSTATUS {.cdecl, importc: "orxStructure_LogAll",
+proc logAll*(): orxSTATUS {.cdecl, importc: "orxStructure_LogAll",
                                       dynlib: libORX.}
-## * *** Inlined structure accessors ***
-## * Increases structure reference count
-##  @param[in]   _pStructure    Concerned structure
-##
+  ## Logs all user-generated active structures
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxStructure_IncreaseCount*(pStructure: pointer) {.inline, cdecl.} =
+proc increaseCount*(pStructure: pointer) {.inline, cdecl.} =
+  ## *** Inlined structure accessors ***
+  ## Increases structure reference count
+  ##  @param[in]   _pStructure    Concerned structure
   var u64Count: orxU64
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
@@ -412,11 +384,9 @@ proc orxStructure_IncreaseCount*(pStructure: pointer) {.inline, cdecl.} =
   ##  Done!
   return
 
-## * Decreases structure reference count
-##  @param[in]   _pStructure    Concerned structure
-##
-
-proc orxStructure_DecreaseCount*(pStructure: pointer) {.inline, cdecl.} =
+proc decreaseCount*(pStructure: pointer) {.inline, cdecl.} =
+  ## Decreases structure reference count
+  ##  @param[in]   _pStructure    Concerned structure
   var u64Count: orxU64
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
@@ -434,91 +404,77 @@ proc orxStructure_DecreaseCount*(pStructure: pointer) {.inline, cdecl.} =
   ##  Done!
   return
 
-## * Gets structure reference count
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxU32
-##
-
-proc orxStructure_GetRefCount*(pStructure: pointer): orxU32 {.inline, cdecl.} =
+proc getRefCount*(pStructure: pointer): orxU32 {.inline, cdecl.} =
+  ## Gets structure reference count
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxU32
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return (orxU32)((orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
       orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) shr orxSTRUCTURE_GUID_SHIFT_REF_COUNT)
 
-## * Gets structure GUID
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxU64
-##
-
-proc orxStructure_GetGUID*(pStructure: pointer): orxU64 {.inline, cdecl.} =
+proc getGUID*(pStructure: pointer): orxU64 {.inline, cdecl.} =
+  ## Gets structure GUID
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxU64
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
       not orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64
 
-## * Gets structure ID
-##  @param[in]   _pStructure    Concerned structure
-##  @return      orxSTRUCTURE_ID
-##
-
-proc orxStructure_GetID*(pStructure: pointer): orxSTRUCTURE_ID {.inline, cdecl.} =
+proc getID*(pStructure: pointer): orxSTRUCTURE_ID {.inline, cdecl.} =
+  ## Gets structure ID
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @return      orxSTRUCTURE_ID
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return (orxSTRUCTURE_ID)((orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
       orxSTRUCTURE_GUID_MASK_STRUCTURE_ID.uint64) shr
       orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID)
-
-## * Tests flags against structure ones
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _u32Flags      Flags to test
-##  @return      orxTRUE / orxFALSE
-##
-#TODO: Removed these for now
-#[
-proc orxStructure_TestFlags*(pStructure: pointer; u32Flags: orxU32): orxBOOL {.inline,
+proc testFlags*(pStructure: pointer; u32Flags: orxU32): orxBOOL {.inline,
     cdecl.} =
+  ## Tests flags against structure ones
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _u32Flags      Flags to test
+  ##  @return      orxTRUE / orxFALSE
+  #TODO: Removed these for now
+  #[
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return orxFLAG_TEST(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32Flags)
 
-## * Tests all flags against structure ones
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _u32Flags      Flags to test
-##  @return      orxTRUE / orxFALSE
-##
-
-proc orxStructure_TestAllFlags*(pStructure: pointer; u32Flags: orxU32): orxBOOL {.
+proc testAllFlags*(pStructure: pointer; u32Flags: orxU32): orxBOOL {.
     inline, cdecl.} =
+  ## Tests all flags against structure ones
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _u32Flags      Flags to test
+  ##  @return      orxTRUE / orxFALSE
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return orxFLAG_TEST_ALL(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32Flags)
 
-## * Gets structure flags
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _u32Mask       Mask to use for getting flags
-##  @return      orxU32
-##
-
-proc orxStructure_GetFlags*(pStructure: pointer; u32Mask: orxU32): orxU32 {.inline,
+proc getFlags*(pStructure: pointer; u32Mask: orxU32): orxU32 {.inline,
     cdecl.} =
+  ## Gets structure flags
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _u32Mask       Mask to use for getting flags
+  ##  @return      orxU32
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
   return orxFLAG_GET(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32Mask)
 
-## * Sets structure flags
-##  @param[in]   _pStructure    Concerned structure
-##  @param[in]   _u32AddFlags    Flags to add
-##  @param[in]   _u32RemoveFlags Flags to remove
-##
-
-proc orxStructure_SetFlags*(pStructure: pointer; u32AddFlags: orxU32;
+proc setFlags*(pStructure: pointer; u32AddFlags: orxU32;
                            u32RemoveFlags: orxU32) {.inline, cdecl.} =
+  ## Sets structure flags
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _u32AddFlags    Flags to add
+  ##  @param[in]   _u32RemoveFlags Flags to remove
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   orxFLAG_SET(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32AddFlags, u32RemoveFlags)

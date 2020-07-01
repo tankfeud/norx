@@ -36,17 +36,15 @@ type
   orxHSVVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fV: orxFLOAT]
 
 
-##  *** Vector inlined functions ***
-## * Sets vector XYZ values (also work for other coordinate system)
-##  @param[in]   _pvVec                        Concerned vector
-##  @param[in]   _fX                           First coordinate value
-##  @param[in]   _fY                           Second coordinate value
-##  @param[in]   _fZ                           Third coordinate value
-##  @return      Vector
-##
-
-proc orxVector_Set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.
+proc set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.
     inline, discardable, cdecl.} =
+  ##  *** Vector inlined functions ***
+  ## Sets vector XYZ values (also work for other coordinate system)
+  ##  @param[in]   _pvVec                        Concerned vector
+  ##  @param[in]   _fX                           First coordinate value
+  ##  @param[in]   _fY                           Second coordinate value
+  ##  @param[in]   _fZ                           Third coordinate value
+  ##  @return      Vector
   ##  Checks
   assert(pvVec != nil)
   ##  Stores values
@@ -56,25 +54,21 @@ proc orxVector_Set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLO
   ##  Done !
   return pvVec
 
-## * Sets all the vector coordinates with the given value
-##  @param[in]   _pvVec                        Concerned vector
-##  @param[in]   _fValue                       Value to set
-##  @return      Vector
-##
-
-proc orxVector_SetAll*(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR {.inline,
+proc setAll*(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR {.inline,
     cdecl.} =
+  ## Sets all the vector coordinates with the given value
+  ##  @param[in]   _pvVec                        Concerned vector
+  ##  @param[in]   _fValue                       Value to set
+  ##  @return      Vector
   ##  Done !
   return orxVector_Set(pvVec, fValue, fValue, fValue)
 
-## * Copies a vector onto another one
-##  @param[in]   _pvDst                        Vector to copy to (destination)
-##  @param[in]   _pvSrc                        Vector to copy from (source)
-##  @return      Destination vector
-##
-
-proc orxVector_Copy*(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR {.inline, discardable,
+proc copy*(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR {.inline, discardable,
     cdecl.} =
+  ## Copies a vector onto another one
+  ##  @param[in]   _pvDst                        Vector to copy to (destination)
+  ##  @param[in]   _pvSrc                        Vector to copy from (source)
+  ##  @return      Destination vector
   ##  Checks
   assert(pvDst != nil)
   assert(pvSrc != nil)
@@ -83,15 +77,13 @@ proc orxVector_Copy*(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR 
   ##  Done!
   return pvDst
 
-## * Adds vectors and stores result in a third one
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector (Op1 + Op2)
-##
-
-proc orxVector_Add*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc add*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, discardable, cdecl.} =
+  ## Adds vectors and stores result in a third one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector (Op1 + Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -103,15 +95,13 @@ proc orxVector_Add*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Substracts vectors and stores result in a third one
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector (Op1 - Op2)
-##
-
-proc orxVector_Sub*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc sub*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, discardable, cdecl.} =
+  ## Substracts vectors and stores result in a third one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector (Op1 - Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -123,15 +113,13 @@ proc orxVector_Sub*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Multiplies a vector by an orxFLOAT and stores result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _fOp2                         Second operand
-##  @return      Resulting vector
-##
-
-proc orxVector_Mulf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR {.
+proc mulf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR {.
     inline, discardable, cdecl.} =
+  ## Multiplies a vector by an orxFLOAT and stores result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _fOp2                         Second operand
+  ##  @return      Resulting vector
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -142,15 +130,13 @@ proc orxVector_Mulf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT)
   ##  Done!
   return pvRes
 
-## * Multiplies a vector by another vector and stores result in a third one
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector (Op1 * Op2)
-##
-
-proc orxVector_Mul*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc mul*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Multiplies a vector by another vector and stores result in a third one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector (Op1 * Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -162,15 +148,13 @@ proc orxVector_Mul*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Divides a vector by an orxFLOAT and stores result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _fOp2                         Second operand
-##  @return      Resulting vector
-##
-
-proc orxVector_Divf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR {.
+proc divf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Divides a vector by an orxFLOAT and stores result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _fOp2                         Second operand
+  ##  @return      Resulting vector
   var fRecCoef: orxFLOAT
   ##  Checks
   assert(pvRes != nil)
@@ -185,15 +169,13 @@ proc orxVector_Divf*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT)
   ##  Done!
   return pvRes
 
-## * Divides a vector by another vector and stores result in a third one
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector (Op1 / Op2)
-##
-
-proc orxVector_Div*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc div*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Divides a vector by another vector and stores result in a third one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector (Op1 / Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -205,16 +187,14 @@ proc orxVector_Div*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Lerps from one vector to another one using a coefficient
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @param[in]   _fOp                          Lerp coefficient parameter
-##  @return      Resulting vector
-##
-
-proc orxVector_Lerp*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;
+proc lerp*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;
                     fOp: orxFLOAT): ptr orxVECTOR {.inline, cdecl.} =
+  ## Lerps from one vector to another one using a coefficient
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @param[in]   _fOp                          Lerp coefficient parameter
+  ##  @return      Resulting vector
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -227,15 +207,13 @@ proc orxVector_Lerp*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxV
   ##  Done!
   return pvRes
 
-## * Gets minimum between two vectors
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector MIN(Op1, Op2)
-##
-
-proc orxVector_Min*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc min*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Gets minimum between two vectors
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector MIN(Op1, Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -247,15 +225,13 @@ proc orxVector_Min*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Gets maximum between two vectors
-##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
-##  @param[in]   _pvOp1                        First operand
-##  @param[in]   _pvOp2                        Second operand
-##  @return      Resulting vector MAX(Op1, Op2)
-##
-
-proc orxVector_Max*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc max*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Gets maximum between two vectors
+  ##  @param[out]  _pvRes                        Vector where to store result (can be one of the two operands)
+  ##  @param[in]   _pvOp1                        First operand
+  ##  @param[in]   _pvOp2                        Second operand
+  ##  @return      Resulting vector MAX(Op1, Op2)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp1 != nil)
@@ -267,16 +243,14 @@ proc orxVector_Max*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Clamps a vector between two others
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to clamp
-##  @param[in]   _pvMin                        Minimum boundary
-##  @param[in]   _pvMax                        Maximum boundary
-##  @return      Resulting vector CLAMP(Op, MIN, MAX)
-##
-
-proc orxVector_Clamp*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;
+proc clamp*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;
                      pvMax: ptr orxVECTOR): ptr orxVECTOR {.inline, discardable, cdecl.} =
+  ## Clamps a vector between two others
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to clamp
+  ##  @param[in]   _pvMin                        Minimum boundary
+  ##  @param[in]   _pvMax                        Maximum boundary
+  ##  @return      Resulting vector CLAMP(Op, MIN, MAX)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -289,14 +263,12 @@ proc orxVector_Clamp*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxV
   ##  Done!
   return pvRes
 
-## * Negates a vector and stores result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to negates
-##  @return      Resulting vector (-Op)
-##
-
-proc orxVector_Neg*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
+proc neg*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
     cdecl.} =
+  ## Negates a vector and stores result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to negates
+  ##  @return      Resulting vector (-Op)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -307,14 +279,12 @@ proc orxVector_Neg*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.
   ##  Done!
   return pvRes
 
-## * Gets reciprocal (1.0 /) vector and stores the result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Input value
-##  @return      Resulting vector (1 / Op)
-##
-
-proc orxVector_Rec*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
+proc rec*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
     cdecl.} =
+  ## Gets reciprocal (1.0 /) vector and stores the result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Input value
+  ##  @return      Resulting vector (1 / Op)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -325,14 +295,12 @@ proc orxVector_Rec*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.
   ##  Done!
   return pvRes
 
-## * Gets floored vector and stores the result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Input value
-##  @return      Resulting vector Floor(Op)
-##
-
-proc orxVector_Floor*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
+proc floor*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
     cdecl.} =
+  ## Gets floored vector and stores the result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Input value
+  ##  @return      Resulting vector Floor(Op)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -343,14 +311,12 @@ proc orxVector_Floor*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR 
   ##  Done!
   return pvRes
 
-## * Gets rounded vector and stores the result in another one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Input value
-##  @return      Resulting vector Round(Op)
-##
-
-proc orxVector_Round*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
+proc round*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
     cdecl.} =
+  ## Gets rounded vector and stores the result in another one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Input value
+  ##  @return      Resulting vector Round(Op)
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -361,12 +327,10 @@ proc orxVector_Round*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR 
   ##  Done!
   return pvRes
 
-## * Gets vector squared size
-##  @param[in]   _pvOp                         Input vector
-##  @return      Vector's squared size
-##
-
-proc orxVector_GetSquareSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+proc getSquareSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+  ## Gets vector squared size
+  ##  @param[in]   _pvOp                         Input vector
+  ##  @return      Vector's squared size
   var fResult: orxFLOAT
   ##  Checks
   assert(pvOp != nil)
@@ -375,12 +339,10 @@ proc orxVector_GetSquareSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
   ##  Done!
   return fResult
 
-## * Gets vector size
-##  @param[in]   _pvOp                         Input vector
-##  @return      Vector's size
-##
-
-proc orxVector_GetSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+proc getSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+  ## Gets vector size
+  ##  @param[in]   _pvOp                         Input vector
+  ##  @return      Vector's size
   var fResult: orxFLOAT
   ##  Checks
   assert(pvOp != nil)
@@ -389,14 +351,12 @@ proc orxVector_GetSize*(pvOp: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
   ##  Done!
   return fResult
 
-## * Gets squared distance between 2 positions
-##  @param[in]   _pvOp1                        First position
-##  @param[in]   _pvOp2                        Second position
-##  @return      Squared distance
-##
-
-proc orxVector_GetSquareDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.
+proc getSquareDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.
     inline, cdecl.} =
+  ## Gets squared distance between 2 positions
+  ##  @param[in]   _pvOp1                        First position
+  ##  @param[in]   _pvOp2                        Second position
+  ##  @return      Squared distance
   var vTemp: orxVECTOR
   var fResult: orxFLOAT
   ##  Checks
@@ -409,14 +369,12 @@ proc orxVector_GetSquareDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): o
   ##  Done!
   return fResult
 
-## * Gets distance between 2 positions
-##  @param[in]   _pvOp1                        First position
-##  @param[in]   _pvOp2                        Second position
-##  @return      Distance
-##
-
-proc orxVector_GetDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.
+proc getDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.
     inline, cdecl.} =
+  ## Gets distance between 2 positions
+  ##  @param[in]   _pvOp1                        First position
+  ##  @param[in]   _pvOp2                        Second position
+  ##  @return      Distance
   var vTemp: orxVECTOR
   var fResult: orxFLOAT
   ##  Checks
@@ -429,14 +387,12 @@ proc orxVector_GetDistance*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOA
   ##  Done!
   return fResult
 
-## * Normalizes a vector
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to normalize
-##  @return      Normalized vector
-##
-
-proc orxVector_Normalize*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.
+proc normalize*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Normalizes a vector
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to normalize
+  ##  @return      Normalized vector
   var fOp: orxFLOAT
   ##  Checks
   assert(pvRes != nil)
@@ -452,15 +408,13 @@ proc orxVector_Normalize*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVEC
   ##  Done!
   return pvRes
 
-## * Rotates a 2D vector (along Z-axis)
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to rotate
-##  @param[in]   _fAngle                       Angle of rotation (radians)
-##  @return      Rotated vector
-##
-
-proc orxVector_2DRotate*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxVECTOR {.
+proc 2DRotate*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Rotates a 2D vector (along Z-axis)
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to rotate
+  ##  @param[in]   _fAngle                       Angle of rotation (radians)
+  ##  @return      Rotated vector
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -484,12 +438,10 @@ proc orxVector_2DRotate*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxF
   ##  Done!
   return pvRes
 
-## * Is vector null?
-##  @param[in]   _pvOp                         Vector to test
-##  @return      orxTRUE if vector's null, orxFALSE otherwise
-##
-
-proc orxVector_IsNull*(pvOp: ptr orxVECTOR): orxBOOL {.inline, cdecl.} =
+proc isNull*(pvOp: ptr orxVECTOR): orxBOOL {.inline, cdecl.} =
+  ## Is vector null?
+  ##  @param[in]   _pvOp                         Vector to test
+  ##  @return      orxTRUE if vector's null, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pvOp != nil)
@@ -499,14 +451,12 @@ proc orxVector_IsNull*(pvOp: ptr orxVECTOR): orxBOOL {.inline, cdecl.} =
   ##  Done!
   return bResult
 
-## * Are vectors equal?
-##  @param[in]   _pvOp1                        First vector to compare
-##  @param[in]   _pvOp2                        Second vector to compare
-##  @return      orxTRUE if both vectors are equal, orxFALSE otherwise
-##
-
-proc orxVector_AreEqual*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL {.inline,
+proc areEqual*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL {.inline,
     cdecl.} =
+  ## Are vectors equal?
+  ##  @param[in]   _pvOp1                        First vector to compare
+  ##  @param[in]   _pvOp2                        Second vector to compare
+  ##  @return      orxTRUE if both vectors are equal, orxFALSE otherwise
   var bResult: orxBOOL
   ##  Checks
   assert(pvOp1 != nil)
@@ -517,14 +467,12 @@ proc orxVector_AreEqual*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL {.
   ##  Done!
   return bResult
 
-## * Transforms a cartesian vector into a spherical one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to transform
-##  @return      Transformed vector
-##
-
-proc orxVector_FromCartesianToSpherical*(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr orxSPVECTOR {.
+proc fromCartesianToSpherical*(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr orxSPVECTOR {.
     inline, cdecl.} =
+  ## Transforms a cartesian vector into a spherical one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to transform
+  ##  @return      Transformed vector
   ##  Checks
   assert(pvRes != nil)
   assert(pvOp != nil)
@@ -581,14 +529,12 @@ proc orxVector_FromCartesianToSpherical*(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVE
   ##  Done!
   return pvRes
 
-## * Transforms a spherical vector into a cartesian one
-##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
-##  @param[in]   _pvOp                         Vector to transform
-##  @return      Transformed vector
-##
-
-proc orxVector_FromSphericalToCartesian*(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVECTOR): ptr orxVECTOR {.
+proc fromSphericalToCartesian*(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Transforms a spherical vector into a cartesian one
+  ##  @param[out]  _pvRes                        Vector where to store result (can be the operand)
+  ##  @param[in]   _pvOp                         Vector to transform
+  ##  @return      Transformed vector
   var
     fSinPhi: orxFLOAT
     fCosPhi: orxFLOAT
@@ -619,13 +565,11 @@ proc orxVector_FromSphericalToCartesian*(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVE
   ##  Done!
   return pvRes
 
-## * Gets dot product of two vectors
-##  @param[in]   _pvOp1                      First operand
-##  @param[in]   _pvOp2                      Second operand
-##  @return      Dot product
-##
-
-proc orxVector_Dot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+proc dot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.inline, cdecl.} =
+  ## Gets dot product of two vectors
+  ##  @param[in]   _pvOp1                      First operand
+  ##  @param[in]   _pvOp2                      Second operand
+  ##  @return      Dot product
   var fResult: orxFLOAT
   ##  Checks
   assert(pvOp1 != nil)
@@ -635,14 +579,12 @@ proc orxVector_Dot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.inli
   ##  Done!
   return fResult
 
-## * Gets 2D dot product of two vectors
-##  @param[in]   _pvOp1                      First operand
-##  @param[in]   _pvOp2                      Second operand
-##  @return      2D dot product
-##
-
-proc orxVector_2DDot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.inline,
+proc 2DDot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.inline,
     cdecl.} =
+  ## Gets 2D dot product of two vectors
+  ##  @param[in]   _pvOp1                      First operand
+  ##  @param[in]   _pvOp2                      Second operand
+  ##  @return      2D dot product
   var fResult: orxFLOAT
   ##  Checks
   assert(pvOp1 != nil)
@@ -652,15 +594,13 @@ proc orxVector_2DDot*(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT {.in
   ##  Done!
   return fResult
 
-## * Gets cross product of two vectors
-##  @param[out]  _pvRes                       Vector where to store result
-##  @param[in]   _pvOp1                      First operand
-##  @param[in]   _pvOp2                      Second operand
-##  @return      Cross product orxVECTOR / nil
-##
-
-proc orxVector_Cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
+proc cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.
     inline, cdecl.} =
+  ## Gets cross product of two vectors
+  ##  @param[out]  _pvRes                       Vector where to store result
+  ##  @param[in]   _pvOp1                      First operand
+  ##  @param[in]   _pvOp2                      Second operand
+  ##  @return      Cross product orxVECTOR / nil
   var
     fTemp1: orxFLOAT
     fTemp2: orxFLOAT
@@ -677,35 +617,33 @@ proc orxVector_Cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orx
   ##  Done!
   return pvRes
 
-##  *** Vector functions ***
-## * Computes an interpolated point on a cubic Bezier curve segment for a given parameter
-##  @param[out]  _pvRes                      Vector where to store result
-##  @param[in]   _pvPoint1                   First point for this curve segment
-##  @param[in]   _pvPoint2                   First control point for this curve segment
-##  @param[in]   _pvPoint3                   Second control point for this curve segment
-##  @param[in]   _pvPoint4                   Last point for this curve segment
-##  @param[in]   _fT                         Interpolation parameter in [0.0, 1.0]
-##  @return      Interpolated point on the cubic Bezier curve segment
-##
-
-proc orxVector_Bezier*(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;
+proc bezier*(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;
                       pvPoint2: ptr orxVECTOR; pvPoint3: ptr orxVECTOR;
                       pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR {.cdecl,
     importc: "orxVector_Bezier", dynlib: libORX.}
-## * Computes an interpolated point on a Catmull-Rom curve segment for a given parameter
-##  @param[out]  _pvRes                      Vector where to store result
-##  @param[in]   _pvPoint1                   First control point for this curve segment
-##  @param[in]   _pvPoint2                   Second control point for this curve segment
-##  @param[in]   _pvPoint3                   Third control point for this curve segment
-##  @param[in]   _pvPoint4                   Fourth control point for this curve segment
-##  @param[in]   _fT                         Interpolation parameter in [0.0, 1.0]
-##  @return      Interpolated point on the Catmull-Rom curve segment
-##
+  ##  *** Vector functions ***
+  ## Computes an interpolated point on a cubic Bezier curve segment for a given parameter
+  ##  @param[out]  _pvRes                      Vector where to store result
+  ##  @param[in]   _pvPoint1                   First point for this curve segment
+  ##  @param[in]   _pvPoint2                   First control point for this curve segment
+  ##  @param[in]   _pvPoint3                   Second control point for this curve segment
+  ##  @param[in]   _pvPoint4                   Last point for this curve segment
+  ##  @param[in]   _fT                         Interpolation parameter in [0.0, 1.0]
+  ##  @return      Interpolated point on the cubic Bezier curve segment
 
-proc orxVector_CatmullRom*(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;
+proc catmullRom*(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;
                           pvPoint2: ptr orxVECTOR; pvPoint3: ptr orxVECTOR;
                           pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR {.
     cdecl, importc: "orxVector_CatmullRom", dynlib: libORX.}
+  ## Computes an interpolated point on a Catmull-Rom curve segment for a given parameter
+  ##  @param[out]  _pvRes                      Vector where to store result
+  ##  @param[in]   _pvPoint1                   First control point for this curve segment
+  ##  @param[in]   _pvPoint2                   Second control point for this curve segment
+  ##  @param[in]   _pvPoint3                   Third control point for this curve segment
+  ##  @param[in]   _pvPoint4                   Fourth control point for this curve segment
+  ##  @param[in]   _fT                         Interpolation parameter in [0.0, 1.0]
+  ##  @return      Interpolated point on the Catmull-Rom curve segment
+
 ##  *** Vector constants ***
 
 var orxVECTOR_X* {.importc: "orxVECTOR_X", dynlib: libORX.}: orxVECTOR
@@ -759,5 +697,3 @@ var orxVECTOR_BLACK* {.importc: "orxVECTOR_BLACK", dynlib: libORX.}: orxVECTOR
 var orxVECTOR_WHITE* {.importc: "orxVECTOR_WHITE", dynlib: libORX.}: orxVECTOR
 
 ## *< White color vector
-
-## * @}

@@ -21,114 +21,97 @@ const
   orxCONSOLE_KZ_INPUT_SCROLL_DOWN* = "ScrollDown"
   orxCONSOLE_KZ_INPUT_SCROLL_UP* = "ScrollUp"
 
-## * Console module setup
-##
+proc consoleSetup*() {.cdecl, importc: "orxConsole_Setup", dynlib: libORX.}
+  ## Console module setup
 
-proc orxConsole_Setup*() {.cdecl, importc: "orxConsole_Setup", dynlib: libORX.}
-## * Inits the console module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxConsole_Init*(): orxSTATUS {.cdecl, importc: "orxConsole_Init",
+proc consoleInit*(): orxSTATUS {.cdecl, importc: "orxConsole_Init",
                                   dynlib: libORX.}
-## * Exits from the console module
-##
+  ## Inits the console module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxConsole_Exit*() {.cdecl, importc: "orxConsole_Exit", dynlib: libORX.}
-## * Enables/disables the console
-##  @param[in]   _bEnable      Enable / disable
-##
+proc consoleExit*() {.cdecl, importc: "orxConsole_Exit", dynlib: libORX.}
+  ## Exits from the console module
 
-proc orxConsole_Enable*(bEnable: orxBOOL) {.cdecl, importc: "orxConsole_Enable",
+proc enable*(bEnable: orxBOOL) {.cdecl, importc: "orxConsole_Enable",
     dynlib: libORX.}
-## * Is the console enabled?
-##  @return orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables/disables the console
+  ##  @param[in]   _bEnable      Enable / disable
 
-proc orxConsole_IsEnabled*(): orxBOOL {.cdecl, importc: "orxConsole_IsEnabled",
+proc isEnabled*(): orxBOOL {.cdecl, importc: "orxConsole_IsEnabled",
                                      dynlib: libORX.}
-## * Is the console input in insert mode?
-##  @return orxTRUE if insert mode, orxFALSE otherwise (overwrite mode)
-##
+  ## Is the console enabled?
+  ##  @return orxTRUE if enabled, orxFALSE otherwise
 
-proc orxConsole_IsInsertMode*(): orxBOOL {.cdecl,
+proc isInsertMode*(): orxBOOL {.cdecl,
                                         importc: "orxConsole_IsInsertMode",
                                         dynlib: libORX.}
-## * Sets the console toggle
-##  @param[in] _eInputType      Type of input peripheral
-##  @param[in] _eInputID        ID of button/key/axis
-##  @param[in] _eInputMode      Mode of input
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Is the console input in insert mode?
+  ##  @return orxTRUE if insert mode, orxFALSE otherwise (overwrite mode)
 
-proc orxConsole_SetToggle*(eInputType: orxINPUT_TYPE; eInputID: orxENUM;
+proc setToggle*(eInputType: orxINPUT_TYPE; eInputID: orxENUM;
                           eInputMode: orxINPUT_MODE): orxSTATUS {.cdecl,
     importc: "orxConsole_SetToggle", dynlib: libORX.}
-## * Logs to the console
-##  @param[in]   _zText        Text to log
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets the console toggle
+  ##  @param[in] _eInputType      Type of input peripheral
+  ##  @param[in] _eInputID        ID of button/key/axis
+  ##  @param[in] _eInputMode      Mode of input
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxConsole_Log*(zText: cstring): orxSTATUS {.cdecl,
+proc log*(zText: cstring): orxSTATUS {.cdecl,
     importc: "orxConsole_Log", dynlib: libORX.}
-## * Sets the console font
-##  @param[in]   _pstFont      Font to use
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Logs to the console
+  ##  @param[in]   _zText        Text to log
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxConsole_SetFont*(pstFont: ptr orxFONT): orxSTATUS {.cdecl,
+proc setFont*(pstFont: ptr orxFONT): orxSTATUS {.cdecl,
     importc: "orxConsole_SetFont", dynlib: libORX.}
-## * Gets the console font
-##  @return Current in-use font, nil
-##
+  ## Sets the console font
+  ##  @param[in]   _pstFont      Font to use
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxConsole_GetFont*(): ptr orxFONT {.cdecl, importc: "orxConsole_GetFont",
+proc getFont*(): ptr orxFONT {.cdecl, importc: "orxConsole_GetFont",
                                       dynlib: libORX.}
-## * Sets the console log line length
-##  @param[in]   _u32LineLength Line length to use
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets the console font
+  ##  @return Current in-use font, nil
 
-proc orxConsole_SetLogLineLength*(u32LineLength: orxU32): orxSTATUS {.cdecl,
+proc setLogLineLength*(u32LineLength: orxU32): orxSTATUS {.cdecl,
     importc: "orxConsole_SetLogLineLength", dynlib: libORX.}
-## * Gets the console log line length
-##  @return Console log line length
-##
+  ## Sets the console log line length
+  ##  @param[in]   _u32LineLength Line length to use
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxConsole_GetLogLineLength*(): orxU32 {.cdecl,
+proc getLogLineLength*(): orxU32 {.cdecl,
     importc: "orxConsole_GetLogLineLength", dynlib: libORX.}
-## * Gets current completions count
-##  @param[out]  _pu32MaxLength Max completion length, nil to ignore
-##  @return Current completions count
-##
+  ## Gets the console log line length
+  ##  @return Console log line length
 
-proc orxConsole_GetCompletionCount*(pu32MaxLength: ptr orxU32): orxU32 {.cdecl,
+proc getCompletionCount*(pu32MaxLength: ptr orxU32): orxU32 {.cdecl,
     importc: "orxConsole_GetCompletionCount", dynlib: libORX.}
-## * Gets completion
-##  @param[in]   _u32Index     Index of the active completion
-##  @param[out]  _pbActive     Is completion active, nil to ignore
-##  @return Completion string if found, orxSTRING_EMPTY otherwise
-##
+  ## Gets current completions count
+  ##  @param[out]  _pu32MaxLength Max completion length, nil to ignore
+  ##  @return Current completions count
 
-proc orxConsole_GetCompletion*(u32Index: orxU32; pbActive: ptr orxBOOL): cstring {.
+proc getCompletion*(u32Index: orxU32; pbActive: ptr orxBOOL): cstring {.
     cdecl, importc: "orxConsole_GetCompletion", dynlib: libORX.}
-## * Gets log line from the end (trail), using internal offset
-##  @param[in]   _u32TrailLineIndex Index of the line starting from end
-##  @return orxTRING / orxSTRING_EMPTY
-##
+  ## Gets completion
+  ##  @param[in]   _u32Index     Index of the active completion
+  ##  @param[out]  _pbActive     Is completion active, nil to ignore
+  ##  @return Completion string if found, orxSTRING_EMPTY otherwise
 
-proc orxConsole_GetTrailLogLine*(u32TrailLineIndex: orxU32): cstring {.cdecl,
+proc getTrailLogLine*(u32TrailLineIndex: orxU32): cstring {.cdecl,
     importc: "orxConsole_GetTrailLogLine", dynlib: libORX.}
-## * Gets log line offset from the end
-##  @return Log line offset from the end
-##
+  ## Gets log line from the end (trail), using internal offset
+  ##  @param[in]   _u32TrailLineIndex Index of the line starting from end
+  ##  @return orxTRING / orxSTRING_EMPTY
 
-proc orxConsole_GetTrailLogLineOffset*(): orxU32 {.cdecl,
+proc getTrailLogLineOffset*(): orxU32 {.cdecl,
     importc: "orxConsole_GetTrailLogLineOffset", dynlib: libORX.}
-## * Gets input text
-##  @param[out]  _pu32CursorIndex Index (ie. character position) of the cursor (any character past it has not been validated)
-##  @return orxTRING / orxSTRING_EMPTY
-##
+  ## Gets log line offset from the end
+  ##  @return Log line offset from the end
 
-proc orxConsole_GetInput*(pu32CursorIndex: ptr orxU32): cstring {.cdecl,
+proc getInput*(pu32CursorIndex: ptr orxU32): cstring {.cdecl,
     importc: "orxConsole_GetInput", dynlib: libORX.}
+  ## Gets input text
+  ##  @param[out]  _pu32CursorIndex Index (ie. character position) of the cursor (any character past it has not been validated)
+  ##  @return orxTRING / orxSTRING_EMPTY
+

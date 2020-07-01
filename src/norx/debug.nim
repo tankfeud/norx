@@ -131,73 +131,63 @@ const
 ## ***************************************************************************
 ##  *** Functions ***
 
-## * Inits the debug module
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxDebug_Init*(): orxSTATUS {.cdecl, importc: "_orxDebug_Init",
+proc debugInit*(): orxSTATUS {.cdecl, importc: "_orxDebug_Init",
                                 dynlib: libORX.}
-## * Exits from the debug module
+  ## Inits the debug module
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxDebug_Exit*() {.cdecl, importc: "_orxDebug_Exit", dynlib: libORX.}
-## * Logs given debug text
-##  @param[in]   _eLevel                       Debug level associated with this output
-##  @param[in]   _zFunction                    Calling function name
-##  @param[in]   _zFile                        Calling file name
-##  @param[in]   _u32Line                      Calling file line
-##  @param[in]   _zFormat                      Printf formatted text
-##
+proc debugExit*() {.cdecl, importc: "_orxDebug_Exit", dynlib: libORX.}
+  ## Exits from the debug module
 
-proc orxDebug_Log*(eLevel: orxDEBUG_LEVEL; zFunction: cstring; zFile: cstring;
+proc log*(eLevel: orxDEBUG_LEVEL; zFunction: cstring; zFile: cstring;
                   u32Line: orxU32; zFormat: cstring) {.varargs, cdecl,
     importc: "_orxDebug_Log", dynlib: libORX.}
-## * Enables/disables a given log level
-##  @param[in]   _eLevel                       Debug level to enable/disable
-##  @param[in]   _bEnable                      Enable / disable
-##
+  ## Logs given debug text
+  ##  @param[in]   _eLevel                       Debug level associated with this output
+  ##  @param[in]   _zFunction                    Calling function name
+  ##  @param[in]   _zFile                        Calling file name
+  ##  @param[in]   _u32Line                      Calling file line
+  ##  @param[in]   _zFormat                      Printf formatted text
 
-proc orxDebug_EnableLevel*(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL) {.cdecl,
+proc enableLevel*(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL) {.cdecl,
     importc: "_orxDebug_EnableLevel", dynlib: libORX.}
-## * Is a given log level enabled?
-##  @param[in]   _eLevel                       Concerned debug level
-##
+  ## Enables/disables a given log level
+  ##  @param[in]   _eLevel                       Debug level to enable/disable
+  ##  @param[in]   _bEnable                      Enable / disable
 
-proc orxDebug_IsLevelEnabled*(eLevel: orxDEBUG_LEVEL): orxBOOL {.cdecl,
+proc isLevelEnabled*(eLevel: orxDEBUG_LEVEL): orxBOOL {.cdecl,
     importc: "_orxDebug_IsLevelEnabled", dynlib: libORX.}
-## * Sets current debug flags
-##  @param[in]   _u32Add                       Flags to add
-##  @param[in]   _u32Remove                    Flags to remove
-##
+  ## Is a given log level enabled?
+  ##  @param[in]   _eLevel                       Concerned debug level
 
-proc orxDebug_SetFlags*(u32Add: orxU32; u32Remove: orxU32) {.cdecl,
+proc setFlags*(u32Add: orxU32; u32Remove: orxU32) {.cdecl,
     importc: "_orxDebug_SetFlags", dynlib: libORX.}
-## * Gets current debug flags
-##  @return Current debug flags
-##
+  ## Sets current debug flags
+  ##  @param[in]   _u32Add                       Flags to add
+  ##  @param[in]   _u32Remove                    Flags to remove
 
-proc orxDebug_GetFlags*(): orxU32 {.cdecl, importc: "_orxDebug_GetFlags",
+proc getFlags*(): orxU32 {.cdecl, importc: "_orxDebug_GetFlags",
                                  dynlib: libORX.}
-## * Software break function
+  ## Gets current debug flags
+  ##  @return Current debug flags
 
-proc orxDebug_Break*() {.cdecl, importc: "_orxDebug_Break", dynlib: libORX.}
-## * Sets debug file name
-##  @param[in]   _zFileName                    Debug file name
-##
+proc debugBreak*() {.cdecl, importc: "_orxDebug_Break", dynlib: libORX.}
+  ## Software break function
 
-proc orxDebug_SetDebugFile*(zFileName: cstring) {.cdecl,
+proc setDebugFile*(zFileName: cstring) {.cdecl,
     importc: "_orxDebug_SetDebugFile", dynlib: libORX.}
-## * Sets log file name
-##  @param[in]   _zFileName                    Log file name
-##
+  ## Sets debug file name
+  ##  @param[in]   _zFileName                    Debug file name
 
-proc orxDebug_SetLogFile*(zFileName: cstring) {.cdecl,
+proc setLogFile*(zFileName: cstring) {.cdecl,
     importc: "_orxDebug_SetLogFile", dynlib: libORX.}
-## * Sets log callback function, if the callback returns orxSTATUS_FAILURE, the log entry will be entirely inhibited
-##  @param[in]   _pfnLogCallback                Log callback function, nil to remove it
-##
+  ## Sets log file name
+  ##  @param[in]   _zFileName                    Log file name
 
-proc orxDebug_SetLogCallback*(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION) {.cdecl,
+proc setLogCallback*(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION) {.cdecl,
     importc: "_orxDebug_SetLogCallback", dynlib: libORX.}
+  ## Sets log callback function, if the callback returns orxSTATUS_FAILURE, the log entry will be entirely inhibited
+  ##  @param[in]   _pfnLogCallback                Log callback function, nil to remove it
 
 
 template orxDEBUG_INIT_MACRO*(): void =

@@ -21,98 +21,84 @@ type
 
 type orxTEXTURE* = object
 
-## * Setups the texture module
-##
+proc textureSetup*() {.cdecl, importc: "orxTexture_Setup", dynlib: libORX.}
+  ## Setups the texture module
 
-proc orxTexture_Setup*() {.cdecl, importc: "orxTexture_Setup", dynlib: libORX.}
-## * Inits the texture module
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxTexture_Init*(): orxSTATUS {.cdecl, importc: "orxTexture_Init",
+proc textureInit*(): orxSTATUS {.cdecl, importc: "orxTexture_Init",
                                   dynlib: libORX.}
-## * Exits from the texture module
-##
+  ## Inits the texture module
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_Exit*() {.cdecl, importc: "orxTexture_Exit", dynlib: libORX.}
-## * Creates an empty texture
-##  @return      orxTEXTURE / nil
-##
+proc textureExit*() {.cdecl, importc: "orxTexture_Exit", dynlib: libORX.}
+  ## Exits from the texture module
 
-proc orxTexture_Create*(): ptr orxTEXTURE {.cdecl, importc: "orxTexture_Create",
+proc textureCreate*(): ptr orxTEXTURE {.cdecl, importc: "orxTexture_Create",
                                         dynlib: libORX.}
-## * Creates a texture from a bitmap file
-##  @param[in]   _zFileName      Name of the bitmap
-##  @param[in]   _bKeepInCache   Should be kept in cache after no more references exist?
-##  @return      orxTEXTURE / nil
-##
+  ## Creates an empty texture
+  ##  @return      orxTEXTURE / nil
 
-proc orxTexture_CreateFromFile*(zFileName: cstring; bKeepInCache: orxBOOL): ptr orxTEXTURE {.
+proc createFromFile*(zFileName: cstring; bKeepInCache: orxBOOL): ptr orxTEXTURE {.
     cdecl, importc: "orxTexture_CreateFromFile", dynlib: libORX.}
-## * Deletes a texture (and its referenced bitmap)
-##  @param[in]   _pstTexture     Concerned texture
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Creates a texture from a bitmap file
+  ##  @param[in]   _zFileName      Name of the bitmap
+  ##  @param[in]   _bKeepInCache   Should be kept in cache after no more references exist?
+  ##  @return      orxTEXTURE / nil
 
-proc orxTexture_Delete*(pstTexture: ptr orxTEXTURE): orxSTATUS {.cdecl,
+proc delete*(pstTexture: ptr orxTEXTURE): orxSTATUS {.cdecl,
     importc: "orxTexture_Delete", dynlib: libORX.}
-## * Clears cache (if any texture is still in active use, it'll remain in memory until not referenced anymore)
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Deletes a texture (and its referenced bitmap)
+  ##  @param[in]   _pstTexture     Concerned texture
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_ClearCache*(): orxSTATUS {.cdecl, importc: "orxTexture_ClearCache",
+proc clearCache*(): orxSTATUS {.cdecl, importc: "orxTexture_ClearCache",
                                         dynlib: libORX.}
-## * Links a bitmap
-##  @param[in]   _pstTexture     Concerned texture
-##  @param[in]   _pstBitmap      Bitmap to link
-##  @param[in]   _zDataName      Name associated with the bitmap (usually filename)
-##  @param[in]   _bTransferOwnership If set to true, the texture will become the bitmap's owner and will have it deleted upon its own deletion
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Clears cache (if any texture is still in active use, it'll remain in memory until not referenced anymore)
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_LinkBitmap*(pstTexture: ptr orxTEXTURE; pstBitmap: ptr orxBITMAP;
+proc linkBitmap*(pstTexture: ptr orxTEXTURE; pstBitmap: ptr orxBITMAP;
                            zDataName: cstring; bTransferOwnership: orxBOOL): orxSTATUS {.
     cdecl, importc: "orxTexture_LinkBitmap", dynlib: libORX.}
-## * Unlinks (and deletes if not used anymore) a bitmap
-##  @param[in]   _pstTexture     Concerned texture
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Links a bitmap
+  ##  @param[in]   _pstTexture     Concerned texture
+  ##  @param[in]   _pstBitmap      Bitmap to link
+  ##  @param[in]   _zDataName      Name associated with the bitmap (usually filename)
+  ##  @param[in]   _bTransferOwnership If set to true, the texture will become the bitmap's owner and will have it deleted upon its own deletion
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_UnlinkBitmap*(pstTexture: ptr orxTEXTURE): orxSTATUS {.cdecl,
+proc unlinkBitmap*(pstTexture: ptr orxTEXTURE): orxSTATUS {.cdecl,
     importc: "orxTexture_UnlinkBitmap", dynlib: libORX.}
-## * Gets texture bitmap
-##  @param[in]   _pstTexture     Concerned texture
-##  @return      orxBITMAP / nil
-##
+  ## Unlinks (and deletes if not used anymore) a bitmap
+  ##  @param[in]   _pstTexture     Concerned texture
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_GetBitmap*(pstTexture: ptr orxTEXTURE): ptr orxBITMAP {.cdecl,
+proc getBitmap*(pstTexture: ptr orxTEXTURE): ptr orxBITMAP {.cdecl,
     importc: "orxTexture_GetBitmap", dynlib: libORX.}
-## * Gets texture size
-##  @param[in]   _pstTexture     Concerned texture
-##  @param[out]  _pfWidth        Texture's width
-##  @param[out]  _pfHeight       Texture's height
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets texture bitmap
+  ##  @param[in]   _pstTexture     Concerned texture
+  ##  @return      orxBITMAP / nil
 
-proc orxTexture_GetSize*(pstTexture: ptr orxTEXTURE; pfWidth: ptr orxFLOAT;
+proc getSize*(pstTexture: ptr orxTEXTURE; pfWidth: ptr orxFLOAT;
                         pfHeight: ptr orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxTexture_GetSize", dynlib: libORX.}
-## * Gets texture name
-##  @param[in]   _pstTexture   Concerned texture
-##  @return      Texture name / orxSTRING_EMPTY
-##
+  ## Gets texture size
+  ##  @param[in]   _pstTexture     Concerned texture
+  ##  @param[out]  _pfWidth        Texture's width
+  ##  @param[out]  _pfHeight       Texture's height
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxTexture_GetName*(pstTexture: ptr orxTEXTURE): cstring {.cdecl,
+proc getName*(pstTexture: ptr orxTEXTURE): cstring {.cdecl,
     importc: "orxTexture_GetName", dynlib: libORX.}
-## * Gets screen texture
-##  @return      Screen texture / nil
-##
+  ## Gets texture name
+  ##  @param[in]   _pstTexture   Concerned texture
+  ##  @return      Texture name / orxSTRING_EMPTY
 
-proc orxTexture_GetScreenTexture*(): ptr orxTEXTURE {.cdecl,
+proc getScreenTexture*(): ptr orxTEXTURE {.cdecl,
     importc: "orxTexture_GetScreenTexture", dynlib: libORX.}
-## * Gets pending load count
-##  @return      Pending load count
-##
+  ## Gets screen texture
+  ##  @return      Screen texture / nil
 
-proc orxTexture_GetLoadCount*(): orxU32 {.cdecl, importc: "orxTexture_GetLoadCount",
+proc getLoadCount*(): orxU32 {.cdecl, importc: "orxTexture_GetLoadCount",
                                        dynlib: libORX.}
+  ## Gets pending load count
+  ##  @return      Pending load count
+

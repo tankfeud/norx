@@ -57,91 +57,80 @@ type
 type
   orxEVENT_HANDLER* = proc (pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.}
 
-## * Event module setup
-##
+proc eventSetup*() {.cdecl, importc: "orxEvent_Setup", dynlib: libORX.}
+  ## Event module setup
 
-proc orxEvent_Setup*() {.cdecl, importc: "orxEvent_Setup", dynlib: libORX.}
-## * Initializes the event Module
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-
-proc orxEvent_Init*(): orxSTATUS {.cdecl, importc: "orxEvent_Init",
+proc eventInit*(): orxSTATUS {.cdecl, importc: "orxEvent_Init",
                                 dynlib: libORX.}
-## * Exits from the event Module
-##
+  ## Initializes the event Module
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_Exit*() {.cdecl, importc: "orxEvent_Exit", dynlib: libORX.}
-## * Adds an event handler
-##  @param[in] _eEventType           Concerned type of event
-##  @param[in] _pfnEventHandler      Event handler to add
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+proc eventExit*() {.cdecl, importc: "orxEvent_Exit", dynlib: libORX.}
+  ## Exits from the event Module
 
-proc orxEvent_AddHandler*(eEventType: orxEVENT_TYPE;
+proc addHandler*(eEventType: orxEVENT_TYPE;
                          pfnEventHandler: orxEVENT_HANDLER): orxSTATUS {.cdecl,
     importc: "orxEvent_AddHandler", dynlib: libORX.}
-## * Adds an event handler with user-defined context
-##  @param[in] _eEventType           Concerned type of event
-##  @param[in] _pfnEventHandler      Event handler to add
-##  @param[in] _pContext             Context that will be stored in events sent to this handler
-##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds an event handler
+  ##  @param[in] _eEventType           Concerned type of event
+  ##  @param[in] _pfnEventHandler      Event handler to add
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_AddHandlerWithContext*(eEventType: orxEVENT_TYPE;
+proc addHandlerWithContext*(eEventType: orxEVENT_TYPE;
                                     pfnEventHandler: orxEVENT_HANDLER;
                                     pContext: pointer): orxSTATUS {.cdecl,
     importc: "orxEvent_AddHandlerWithContext", dynlib: libORX.}
-## * Removes an event handler
-##  @param[in] _eEventType           Concerned type of event
-##  @param[in] _pfnEventHandler      Event handler to remove
-##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds an event handler with user-defined context
+  ##  @param[in] _eEventType           Concerned type of event
+  ##  @param[in] _pfnEventHandler      Event handler to add
+  ##  @param[in] _pContext             Context that will be stored in events sent to this handler
+  ##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_RemoveHandler*(eEventType: orxEVENT_TYPE;
+proc removeHandler*(eEventType: orxEVENT_TYPE;
                             pfnEventHandler: orxEVENT_HANDLER): orxSTATUS {.cdecl,
     importc: "orxEvent_RemoveHandler", dynlib: libORX.}
-## * Removes an event handler which matches given context
-##  @param[in] _eEventType           Concerned type of event
-##  @param[in] _pfnEventHandler      Event handler to remove
-##  @param[in] _pContext             Context of the handler to remove, nil for removing all occurrences regardless of their context
-##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes an event handler
+  ##  @param[in] _eEventType           Concerned type of event
+  ##  @param[in] _pfnEventHandler      Event handler to remove
+  ##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_RemoveHandlerWithContext*(eEventType: orxEVENT_TYPE;
+proc removeHandlerWithContext*(eEventType: orxEVENT_TYPE;
                                        pfnEventHandler: orxEVENT_HANDLER;
                                        pContext: pointer): orxSTATUS {.cdecl,
     importc: "orxEvent_RemoveHandlerWithContext", dynlib: libORX.}
-## * Sets an event handler's ID flags (use orxEVENT_GET_FLAG(ID) in order to get the flag that matches an ID)
-##  @param[in] _pfnEventHandler      Concerned event handler, must have been previously added for the given type
-##  @param[in] _eEventType           Concerned type of event
-##  @param[in] _pContext             Context of the handler to update, nil for updating all occurrences regardless of their context
-##  @param[in] _u32AddIDFlags        ID flags to add
-##  @param[in] _u32RemoveIDFlags     ID flags to remove
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes an event handler which matches given context
+  ##  @param[in] _eEventType           Concerned type of event
+  ##  @param[in] _pfnEventHandler      Event handler to remove
+  ##  @param[in] _pContext             Context of the handler to remove, nil for removing all occurrences regardless of their context
+  ##  return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_SetHandlerIDFlags*(pfnEventHandler: orxEVENT_HANDLER;
+proc setHandlerIDFlags*(pfnEventHandler: orxEVENT_HANDLER;
                                 eEventType: orxEVENT_TYPE; pContext: pointer;
                                 u32AddIDFlags: orxU32; u32RemoveIDFlags: orxU32): orxSTATUS {.
     cdecl, importc: "orxEvent_SetHandlerIDFlags", dynlib: libORX.}
-## * Sends an event
-##  @param[in] _pstEvent             Event to send
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets an event handler's ID flags (use orxEVENT_GET_FLAG(ID) in order to get the flag that matches an ID)
+  ##  @param[in] _pfnEventHandler      Concerned event handler, must have been previously added for the given type
+  ##  @param[in] _eEventType           Concerned type of event
+  ##  @param[in] _pContext             Context of the handler to update, nil for updating all occurrences regardless of their context
+  ##  @param[in] _u32AddIDFlags        ID flags to add
+  ##  @param[in] _u32RemoveIDFlags     ID flags to remove
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_Send*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl,
+proc send*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl,
     importc: "orxEvent_Send", dynlib: libORX.}
-## * Sends a simple event
-##  @param[in] _eEventType           Event type
-##  @param[in] _eEventID             Event ID
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sends an event
+  ##  @param[in] _pstEvent             Event to send
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_SendShort*(eEventType: orxEVENT_TYPE; eEventID: orxENUM): orxSTATUS {.
+proc sendShort*(eEventType: orxEVENT_TYPE; eEventID: orxENUM): orxSTATUS {.
     cdecl, importc: "orxEvent_SendShort", dynlib: libORX.}
-## * Is currently sending an event?
-##  @return orxTRUE / orxFALSE
-##
+  ## Sends a simple event
+  ##  @param[in] _eEventType           Event type
+  ##  @param[in] _eEventID             Event ID
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxEvent_IsSending*(): orxBOOL {.cdecl, importc: "orxEvent_IsSending",
+proc isSending*(): orxBOOL {.cdecl, importc: "orxEvent_IsSending",
                                    dynlib: libORX.}
+  ## Is currently sending an event?
+  ##  @return orxTRUE / orxFALSE
+

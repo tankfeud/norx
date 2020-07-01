@@ -29,161 +29,140 @@ type
 
 type orxFILE* = object
 
-## * File module setup
+proc fileSetup*() {.cdecl, importc: "orxFile_Setup", dynlib: libORX.}
+  ## File module setup
 
-proc orxFile_Setup*() {.cdecl, importc: "orxFile_Setup", dynlib: libORX.}
-## * Inits the File Module
-##
+proc fileInit*(): orxSTATUS {.cdecl, importc: "orxFile_Init", dynlib: libORX.}
+  ## Inits the File Module
 
-proc orxFile_Init*(): orxSTATUS {.cdecl, importc: "orxFile_Init", dynlib: libORX.}
-## * Exits from the File Module
-##
+proc fileExit*() {.cdecl, importc: "orxFile_Exit", dynlib: libORX.}
+  ## Exits from the File Module
 
-proc orxFile_Exit*() {.cdecl, importc: "orxFile_Exit", dynlib: libORX.}
-## * Gets current user's home directory using linux separators (without trailing separator)
-##  @param[in] _zSubPath                     Sub-path to append to the home directory, nil for none
-##  @return Current user's home directory, use it immediately or copy it as will be modified by the next call to orxFile_GetHomeDirectory() or orxFile_GetApplicationSaveDirectory()
-##
-
-proc orxFile_GetHomeDirectory*(zSubPath: cstring): cstring {.cdecl,
+proc getHomeDirectory*(zSubPath: cstring): cstring {.cdecl,
     importc: "orxFile_GetHomeDirectory", dynlib: libORX.}
-## * Gets current user's application save directory using linux separators (without trailing separator)
-##  @param[in] _zSubPath                     Sub-path to append to the application save directory, nil for none
-##  @return Current user's application save directory, use it immediately or copy it as it will be modified by the next call to orxFile_GetHomeDirectory() or orxFile_GetApplicationSaveDirectory()
-##
+  ## Gets current user's home directory using linux separators (without trailing separator)
+  ##  @param[in] _zSubPath                     Sub-path to append to the home directory, nil for none
+  ##  @return Current user's home directory, use it immediately or copy it as will be modified by the next call to orxFile_GetHomeDirectory() or orxFile_GetApplicationSaveDirectory()
 
-proc orxFile_GetApplicationSaveDirectory*(zSubPath: cstring): cstring {.cdecl,
+proc getApplicationSaveDirectory*(zSubPath: cstring): cstring {.cdecl,
     importc: "orxFile_GetApplicationSaveDirectory", dynlib: libORX.}
-## * Checks if a file/directory exists
-##  @param[in] _zFileName           Concerned file/directory
-##  @return orxFALSE if _zFileName doesn't exist, orxTRUE otherwise
-##
+  ## Gets current user's application save directory using linux separators (without trailing separator)
+  ##  @param[in] _zSubPath                     Sub-path to append to the application save directory, nil for none
+  ##  @return Current user's application save directory, use it immediately or copy it as it will be modified by the next call to orxFile_GetHomeDirectory() or orxFile_GetApplicationSaveDirectory()
 
-proc orxFile_Exists*(zFileName: cstring): orxBOOL {.cdecl,
+proc exists*(zFileName: cstring): orxBOOL {.cdecl,
     importc: "orxFile_Exists", dynlib: libORX.}
-## * Starts a new file search: finds the first file/directory that will match to the given pattern (ex: /bin/foo*)
-##  @param[in] _zSearchPattern      Pattern used for file/directory search
-##  @param[out] _pstFileInfo        Information about the first file found
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Checks if a file/directory exists
+  ##  @param[in] _zFileName           Concerned file/directory
+  ##  @return orxFALSE if _zFileName doesn't exist, orxTRUE otherwise
 
-proc orxFile_FindFirst*(zSearchPattern: cstring; pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.
+proc findFirst*(zSearchPattern: cstring; pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.
     cdecl, importc: "orxFile_FindFirst", dynlib: libORX.}
-## * Continues a file search: finds the next occurrence of a pattern, the search has to be started with orxFile_FindFirst
-##  @param[in,out] _pstFileInfo      Information about the last found file/directory
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Starts a new file search: finds the first file/directory that will match to the given pattern (ex: /bin/foo*)
+  ##  @param[in] _zSearchPattern      Pattern used for file/directory search
+  ##  @param[out] _pstFileInfo        Information about the first file found
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFile_FindNext*(pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.cdecl,
+proc findNext*(pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.cdecl,
     importc: "orxFile_FindNext", dynlib: libORX.}
-## * Closes a search (frees the memory allocated for this search)
-##  @param[in] _pstFileInfo         Information returned during search
-##
+  ## Continues a file search: finds the next occurrence of a pattern, the search has to be started with orxFile_FindFirst
+  ##  @param[in,out] _pstFileInfo      Information about the last found file/directory
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFile_FindClose*(pstFileInfo: ptr orxFILE_INFO) {.cdecl,
+proc findClose*(pstFileInfo: ptr orxFILE_INFO) {.cdecl,
     importc: "orxFile_FindClose", dynlib: libORX.}
-## * Retrieves a file/directory information
-##  @param[in] _zFileName            Concerned file/directory name
-##  @param[out] _pstFileInfo         Information of the file/directory
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Closes a search (frees the memory allocated for this search)
+  ##  @param[in] _pstFileInfo         Information returned during search
 
-proc orxFile_GetInfo*(zFileName: cstring; pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.
+proc getInfo*(zFileName: cstring; pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.
     cdecl, importc: "orxFile_GetInfo", dynlib: libORX.}
-## * Removes a file or an empty directory
-##  @param[in] _zFileName            Concerned file / directory
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Retrieves a file/directory information
+  ##  @param[in] _zFileName            Concerned file/directory name
+  ##  @param[out] _pstFileInfo         Information of the file/directory
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFile_Remove*(zFileName: cstring): orxSTATUS {.cdecl,
+proc remove*(zFileName: cstring): orxSTATUS {.cdecl,
     importc: "orxFile_Remove", dynlib: libORX.}
-## * Makes a directory, works recursively if needed
-##  @param[in] _zName                Name of the directory to make
-##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Removes a file or an empty directory
+  ##  @param[in] _zFileName            Concerned file / directory
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFile_MakeDirectory*(zName: cstring): orxSTATUS {.cdecl,
+proc makeDirectory*(zName: cstring): orxSTATUS {.cdecl,
     importc: "orxFile_MakeDirectory", dynlib: libORX.}
-## * Opens a file for later read or write operation
-##  @param[in] _zFileName           Full file's path to open
-##  @param[in] _u32OpenFlags        List of used flags when opened
-##  @return a File pointer (or nil if an error has occurred)
-##
+  ## Makes a directory, works recursively if needed
+  ##  @param[in] _zName                Name of the directory to make
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxFile_Open*(zFileName: cstring; u32OpenFlags: orxU32): ptr orxFILE {.cdecl,
+proc open*(zFileName: cstring; u32OpenFlags: orxU32): ptr orxFILE {.cdecl,
     importc: "orxFile_Open", dynlib: libORX.}
-## * Reads data from a file
-##  @param[out] _pReadData          Buffer that will contain read data
-##  @param[in] _s64ElemSize         Size of 1 element
-##  @param[in] _s64NbElem           Number of elements
-##  @param[in] _pstFile             Pointer to the file descriptor
-##  @return Returns the number of read elements (not bytes)
-##
+  ## Opens a file for later read or write operation
+  ##  @param[in] _zFileName           Full file's path to open
+  ##  @param[in] _u32OpenFlags        List of used flags when opened
+  ##  @return a File pointer (or nil if an error has occurred)
 
-proc orxFile_Read*(pReadData: pointer; s64ElemSize: orxS64; s64NbElem: orxS64;
+proc read*(pReadData: pointer; s64ElemSize: orxS64; s64NbElem: orxS64;
                   pstFile: ptr orxFILE): orxS64 {.cdecl, importc: "orxFile_Read",
     dynlib: libORX.}
-## * Writes data to a file
-##  @param[in] _pDataToWrite        Buffer that contains the data to write
-##  @param[in] _s64ElemSize         Size of 1 element
-##  @param[in] _s64NbElem           Number of elements
-##  @param[in] _pstFile             Pointer to the file descriptor
-##  @return Returns the number of written elements (not bytes)
-##
+  ## Reads data from a file
+  ##  @param[out] _pReadData          Buffer that will contain read data
+  ##  @param[in] _s64ElemSize         Size of 1 element
+  ##  @param[in] _s64NbElem           Number of elements
+  ##  @param[in] _pstFile             Pointer to the file descriptor
+  ##  @return Returns the number of read elements (not bytes)
 
-proc orxFile_Write*(pDataToWrite: pointer; s64ElemSize: orxS64; s64NbElem: orxS64;
+proc write*(pDataToWrite: pointer; s64ElemSize: orxS64; s64NbElem: orxS64;
                    pstFile: ptr orxFILE): orxS64 {.cdecl, importc: "orxFile_Write",
     dynlib: libORX.}
-## * Deletes a file
-##  @param[in] _zFileName           Full file's path to delete
-##  @return orxSTATUS_SUCCESS upon success, orxSTATUS_FAILURE otherwise
-##
+  ## Writes data to a file
+  ##  @param[in] _pDataToWrite        Buffer that contains the data to write
+  ##  @param[in] _s64ElemSize         Size of 1 element
+  ##  @param[in] _s64NbElem           Number of elements
+  ##  @param[in] _pstFile             Pointer to the file descriptor
+  ##  @return Returns the number of written elements (not bytes)
 
-proc orxFile_Delete*(zFileName: cstring): orxSTATUS {.cdecl,
+proc delete*(zFileName: cstring): orxSTATUS {.cdecl,
     importc: "orxFile_Delete", dynlib: libORX.}
-## * Seeks to a position in the given file
-##  @param[in] _pstFile              Concerned file
-##  @param[in] _s64Position          Position (from start) where to set the indicator
-##  @param[in] _eWhence              Starting point for the offset computation (start, current position or end)
-##  @return Absolute cursor position if successful, -1 otherwise
-##
+  ## Deletes a file
+  ##  @param[in] _zFileName           Full file's path to delete
+  ##  @return orxSTATUS_SUCCESS upon success, orxSTATUS_FAILURE otherwise
 
-proc orxFile_Seek*(pstFile: ptr orxFILE; s64Position: orxS64;
+proc seek*(pstFile: ptr orxFILE; s64Position: orxS64;
                   eWhence: orxSEEK_OFFSET_WHENCE): orxS64 {.cdecl,
     importc: "orxFile_Seek", dynlib: libORX.}
-## * Tells the current position of the indicator in a file
-##  @param[in] _pstFile              Concerned file
-##  @return Returns the current position of the file indicator, -1 is invalid
-##
+  ## Seeks to a position in the given file
+  ##  @param[in] _pstFile              Concerned file
+  ##  @param[in] _s64Position          Position (from start) where to set the indicator
+  ##  @param[in] _eWhence              Starting point for the offset computation (start, current position or end)
+  ##  @return Absolute cursor position if successful, -1 otherwise
 
-proc orxFile_Tell*(pstFile: ptr orxFILE): orxS64 {.cdecl, importc: "orxFile_Tell",
+proc tell*(pstFile: ptr orxFILE): orxS64 {.cdecl, importc: "orxFile_Tell",
     dynlib: libORX.}
-## * Retrieves a file's size
-##  @param[in] _pstFile              Concerned file
-##  @return Returns the length of the file, <= 0 if invalid
-##
+  ## Tells the current position of the indicator in a file
+  ##  @param[in] _pstFile              Concerned file
+  ##  @return Returns the current position of the file indicator, -1 is invalid
 
-proc orxFile_GetSize*(pstFile: ptr orxFILE): orxS64 {.cdecl,
+proc getSize*(pstFile: ptr orxFILE): orxS64 {.cdecl,
     importc: "orxFile_GetSize", dynlib: libORX.}
-## * Retrieves a file's time of last modification
-##  @param[in] _pstFile              Concerned file
-##  @return Returns the time of the last modification, in seconds, since epoch
-##
+  ## Retrieves a file's size
+  ##  @param[in] _pstFile              Concerned file
+  ##  @return Returns the length of the file, <= 0 if invalid
 
-proc orxFile_GetTime*(pstFile: ptr orxFILE): orxS64 {.cdecl,
+proc getTime*(pstFile: ptr orxFILE): orxS64 {.cdecl,
     importc: "orxFile_GetTime", dynlib: libORX.}
-## * Prints a formatted string to a file
-##  @param[in] _pstFile             Pointer to the file descriptor
-##  @param[in] _zString             Formatted string
-##  @return Returns the number of written characters
-##
+  ## Retrieves a file's time of last modification
+  ##  @param[in] _pstFile              Concerned file
+  ##  @return Returns the time of the last modification, in seconds, since epoch
 
-proc orxFile_Print*(pstFile: ptr orxFILE; zString: cstring): orxS32 {.varargs, cdecl,
+proc print*(pstFile: ptr orxFILE; zString: cstring): orxS32 {.varargs, cdecl,
     importc: "orxFile_Print", dynlib: libORX.}
-## * Closes an oppened file
-##  @param[in] _pstFile             File's pointer to close
-##  @return Returns the status of the operation
-##
+  ## Prints a formatted string to a file
+  ##  @param[in] _pstFile             Pointer to the file descriptor
+  ##  @param[in] _zString             Formatted string
+  ##  @return Returns the number of written characters
 
-proc orxFile_Close*(pstFile: ptr orxFILE): orxSTATUS {.cdecl,
+proc close*(pstFile: ptr orxFILE): orxSTATUS {.cdecl,
     importc: "orxFile_Close", dynlib: libORX.}
+  ## Closes an oppened file
+  ##  @param[in] _pstFile             File's pointer to close
+  ##  @return Returns the status of the operation
+

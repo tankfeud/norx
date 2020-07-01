@@ -32,58 +32,51 @@ type
   orxMODULE_RUN_FUNCTION* = proc(): orxSTATUS {.cdecl.}
   orxMODULE_SETUP_FUNCTION* = proc() {.cdecl.}
 
-## * Registers a module
-##  @param[in]   _eModuleID                Concerned module ID
-##  @param[in]   _zModuleName              Module name
-##  @param[in]   _pfnSetup                 Module setup callback
-##  @param[in]   _pfnInit                  Module init callback
-##  @param[in]   _pfnExit                  Module exit callback
-##
-
-proc orxModule_Register*(eModuleID: orxMODULE_ID; zModuleName: cstring;
+proc register*(eModuleID: orxMODULE_ID; zModuleName: cstring;
                         pfnSetup: orxMODULE_SETUP_FUNCTION;
                         pfnInit: orxMODULE_INIT_FUNCTION;
                         pfnExit: orxMODULE_EXIT_FUNCTION) {.cdecl,
     importc: "orxModule_Register", dynlib: libORX.}
-## * Adds dependencies between 2 modules
-##  @param[in]   _eModuleID                Concerned module ID
-##  @param[in]   _eDependID                Module ID of the needed module
-##
+  ## Registers a module
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @param[in]   _zModuleName              Module name
+  ##  @param[in]   _pfnSetup                 Module setup callback
+  ##  @param[in]   _pfnInit                  Module init callback
+  ##  @param[in]   _pfnExit                  Module exit callback
 
-proc orxModule_AddDependency*(eModuleID: orxMODULE_ID; eDependID: orxMODULE_ID) {.
+proc addDependency*(eModuleID: orxMODULE_ID; eDependID: orxMODULE_ID) {.
     cdecl, importc: "orxModule_AddDependency", dynlib: libORX.}
-## * Adds optional dependencies between 2 modules
-##  @param[in]   _eModuleID                Concerned module ID
-##  @param[in]   _eDependID                Module ID of the optionally needed module
-##
+  ## Adds dependencies between 2 modules
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @param[in]   _eDependID                Module ID of the needed module
 
-proc orxModule_AddOptionalDependency*(eModuleID: orxMODULE_ID;
+proc addOptionalDependency*(eModuleID: orxMODULE_ID;
                                      eDependID: orxMODULE_ID) {.cdecl,
     importc: "orxModule_AddOptionalDependency", dynlib: libORX.}
-## * Inits a module
-##  @param[in]   _eModuleID                Concerned module ID
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds optional dependencies between 2 modules
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @param[in]   _eDependID                Module ID of the optionally needed module
 
-proc orxModule_Init*(eModuleID: orxMODULE_ID): orxSTATUS {.cdecl,
+proc moduleInit*(eModuleID: orxMODULE_ID): orxSTATUS {.cdecl,
     importc: "orxModule_Init", dynlib: libORX.}
-## * Exits from a module
-##  @param[in]   _eModuleID                Concerned module ID
-##
+  ## Inits a module
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxModule_Exit*(eModuleID: orxMODULE_ID) {.cdecl, importc: "orxModule_Exit",
+proc moduleExit*(eModuleID: orxMODULE_ID) {.cdecl, importc: "orxModule_Exit",
     dynlib: libORX.}
-## * Is module initialized?
-##  @param[in]   _eModuleID                Concerned module ID
-##  @return      orxTRUE / orxFALSE
-##
+  ## Exits from a module
+  ##  @param[in]   _eModuleID                Concerned module ID
 
-proc orxModule_IsInitialized*(eModuleID: orxMODULE_ID): orxBOOL {.cdecl,
+proc isInitialized*(eModuleID: orxMODULE_ID): orxBOOL {.cdecl,
     importc: "orxModule_IsInitialized", dynlib: libORX.}
-## * Gets module name
-##  @param[in]   _eModuleID                Concerned module ID
-##  @return Module name / orxSTRING_EMPTY
-##
+  ## Is module initialized?
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @return      orxTRUE / orxFALSE
 
-proc orxModule_GetName*(eModuleID: orxMODULE_ID): cstring {.cdecl,
+proc getName*(eModuleID: orxMODULE_ID): cstring {.cdecl,
     importc: "orxModule_GetName", dynlib: libORX.}
+  ## Gets module name
+  ##  @param[in]   _eModuleID                Concerned module ID
+  ##  @return Module name / orxSTRING_EMPTY
+

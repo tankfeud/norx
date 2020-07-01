@@ -29,271 +29,236 @@ type
     orxVIEWPORT_EVENT_NUMBER, orxVIEWPORT_EVENT_NONE = orxENUM_NONE
 
 
-## * Viewport module setup
-##
+proc viewportSetup*() {.cdecl, importc: "orxViewport_Setup", dynlib: libORX.}
+  ## Viewport module setup
 
-proc orxViewport_Setup*() {.cdecl, importc: "orxViewport_Setup", dynlib: libORX.}
-## * Inits the viewport module
-##
-
-proc orxViewport_Init*(): orxSTATUS {.cdecl, importc: "orxViewport_Init",
+proc viewportInit*(): orxSTATUS {.cdecl, importc: "orxViewport_Init",
                                    dynlib: libORX.}
-## * Exits from the viewport module
-##
+  ## Inits the viewport module
 
-proc orxViewport_Exit*() {.cdecl, importc: "orxViewport_Exit", dynlib: libORX.}
-## * Creates a viewport
-##  @return      Created orxVIEWPORT / nil
-##
+proc viewportExit*() {.cdecl, importc: "orxViewport_Exit", dynlib: libORX.}
+  ## Exits from the viewport module
 
-proc orxViewport_Create*(): ptr orxVIEWPORT {.cdecl, importc: "orxViewport_Create",
+proc viewportCreate*(): ptr orxVIEWPORT {.cdecl, importc: "orxViewport_Create",
     dynlib: libORX.}
+  ## Creates a viewport
+  ##  @return      Created orxVIEWPORT / nil
 
-## * Creates a viewport from config
-##  @param[in]   _zConfigID    Config ID
-##  @ return orxVIEWPORT / nil
-##
-proc orxViewport_CreateFromConfig*(zConfigID: cstring): ptr orxVIEWPORT {.cdecl,
+proc viewportCreateFromConfig*(zConfigID: cstring): ptr orxVIEWPORT {.cdecl,
     importc: "orxViewport_CreateFromConfig", dynlib: libORX.}
+  ## Creates a viewport from config
+  ##  @param[in]   _zConfigID    Config ID
+  ##  @ return orxVIEWPORT / nil
 
-## * Deletes a viewport
-##  @param[in]   _pstViewport    Viewport to delete
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
-proc orxViewport_Delete*(pstViewport: ptr orxVIEWPORT): orxSTATUS {.cdecl,
+proc delete*(pstViewport: ptr orxVIEWPORT): orxSTATUS {.cdecl,
     importc: "orxViewport_Delete", dynlib: libORX.}
+  ## Deletes a viewport
+  ##  @param[in]   _pstViewport    Viewport to delete
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-## * Sets a viewport texture list
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _u32TextureNumber Number of textures to associate with the viewport
-##  @param[in]   _apstTextureList List of textures to associate with the viewport
-##
-proc orxViewport_SetTextureList*(pstViewport: ptr orxVIEWPORT;
+proc setTextureList*(pstViewport: ptr orxVIEWPORT;
                                 u32TextureNumber: orxU32;
                                 apstTextureList: ptr ptr orxTEXTURE) {.cdecl,
     importc: "orxViewport_SetTextureList", dynlib: libORX.}
-## * Gets a viewport texture list
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _u32TextureNumber Number of textures to be retrieved
-##  @param[out]  _apstTextureList List of textures associated with the viewport
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets a viewport texture list
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _u32TextureNumber Number of textures to associate with the viewport
+  ##  @param[in]   _apstTextureList List of textures to associate with the viewport
 
-proc orxViewport_GetTextureList*(pstViewport: ptr orxVIEWPORT;
+proc getTextureList*(pstViewport: ptr orxVIEWPORT;
                                 u32TextureNumber: orxU32;
                                 apstTextureList: ptr ptr orxTEXTURE): orxSTATUS {.
     cdecl, importc: "orxViewport_GetTextureList", dynlib: libORX.}
-## * Gets a viewport texture count
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      Number of textures associated with the viewport
-##
+  ## Gets a viewport texture list
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _u32TextureNumber Number of textures to be retrieved
+  ##  @param[out]  _apstTextureList List of textures associated with the viewport
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_GetTextureCount*(pstViewport: ptr orxVIEWPORT): orxU32 {.cdecl,
+proc getTextureCount*(pstViewport: ptr orxVIEWPORT): orxU32 {.cdecl,
     importc: "orxViewport_GetTextureCount", dynlib: libORX.}
-## * Sets a viewport background color
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _pstColor        Color to use for background
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets a viewport texture count
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      Number of textures associated with the viewport
 
-proc orxViewport_SetBackgroundColor*(pstViewport: ptr orxVIEWPORT;
+proc setBackgroundColor*(pstViewport: ptr orxVIEWPORT;
                                     pstColor: ptr orxCOLOR): orxSTATUS {.cdecl,
     importc: "orxViewport_SetBackgroundColor", dynlib: libORX.}
-## * Clears viewport background color
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets a viewport background color
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _pstColor        Color to use for background
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_ClearBackgroundColor*(pstViewport: ptr orxVIEWPORT): orxSTATUS {.
+proc clearBackgroundColor*(pstViewport: ptr orxVIEWPORT): orxSTATUS {.
     cdecl, importc: "orxViewport_ClearBackgroundColor", dynlib: libORX.}
-## * Viewport has background color accessor
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      orxTRUE / orxFALSE
-##
+  ## Clears viewport background color
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_HasBackgroundColor*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
+proc hasBackgroundColor*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
     importc: "orxViewport_HasBackgroundColor", dynlib: libORX.}
-## * Gets a viewport background color
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[out]  _pstColor       Viewport's color
-##  @return      Current background color
-##
+  ## Viewport has background color accessor
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      orxTRUE / orxFALSE
 
-proc orxViewport_GetBackgroundColor*(pstViewport: ptr orxVIEWPORT;
+proc getBackgroundColor*(pstViewport: ptr orxVIEWPORT;
                                     pstColor: ptr orxCOLOR): ptr orxCOLOR {.cdecl,
     importc: "orxViewport_GetBackgroundColor", dynlib: libORX.}
-## * Enables / disables a viewport
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _bEnable        Enable / disable
-##
+  ## Gets a viewport background color
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[out]  _pstColor       Viewport's color
+  ##  @return      Current background color
 
-proc orxViewport_Enable*(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL) {.cdecl,
+proc enable*(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL) {.cdecl,
     importc: "orxViewport_Enable", dynlib: libORX.}
-## * Is a viewport enabled?
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      orxTRUE / orxFALSE
-##
+  ## Enables / disables a viewport
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _bEnable        Enable / disable
 
-proc orxViewport_IsEnabled*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
+proc isEnabled*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
     importc: "orxViewport_IsEnabled", dynlib: libORX.}
-## * Sets a viewport camera
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _pstCamera      Associated camera
-##
+  ## Is a viewport enabled?
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      orxTRUE / orxFALSE
 
-proc orxViewport_SetCamera*(pstViewport: ptr orxVIEWPORT; pstCamera: ptr orxCAMERA) {.
+proc setCamera*(pstViewport: ptr orxVIEWPORT; pstCamera: ptr orxCAMERA) {.
     cdecl, importc: "orxViewport_SetCamera", dynlib: libORX.}
-## * Gets a viewport camera
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      Associated camera / nil
-##
+  ## Sets a viewport camera
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _pstCamera      Associated camera
 
-proc orxViewport_GetCamera*(pstViewport: ptr orxVIEWPORT): ptr orxCAMERA {.cdecl,
+proc getCamera*(pstViewport: ptr orxVIEWPORT): ptr orxCAMERA {.cdecl,
     importc: "orxViewport_GetCamera", dynlib: libORX.}
-## * Adds a shader to a viewport using its config ID
-##  @param[in]   _pstViewport      Concerned viewport
-##  @param[in]   _zShaderConfigID  Config ID of the shader to add
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Gets a viewport camera
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      Associated camera / nil
 
-proc orxViewport_AddShader*(pstViewport: ptr orxVIEWPORT;
+proc addShader*(pstViewport: ptr orxVIEWPORT;
                            zShaderConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxViewport_AddShader", dynlib: libORX.}
-## * Removes a shader using its config ID
-##  @param[in]   _pstViewport      Concerned viewport
-##  @param[in]   _zShaderConfigID Config ID of the shader to remove
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Adds a shader to a viewport using its config ID
+  ##  @param[in]   _pstViewport      Concerned viewport
+  ##  @param[in]   _zShaderConfigID  Config ID of the shader to add
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_RemoveShader*(pstViewport: ptr orxVIEWPORT;
+proc removeShader*(pstViewport: ptr orxVIEWPORT;
                               zShaderConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxViewport_RemoveShader", dynlib: libORX.}
-## * Enables a viewport's shader
-##  @param[in]   _pstViewport      Concerned viewport
-##  @param[in]   _bEnable          Enable / disable
-##
+  ## Removes a shader using its config ID
+  ##  @param[in]   _pstViewport      Concerned viewport
+  ##  @param[in]   _zShaderConfigID Config ID of the shader to remove
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_EnableShader*(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL) {.
+proc enableShader*(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL) {.
     cdecl, importc: "orxViewport_EnableShader", dynlib: libORX.}
-## * Is a viewport's shader enabled?
-##  @param[in]   _pstViewport      Concerned viewport
-##  @return      orxTRUE if enabled, orxFALSE otherwise
-##
+  ## Enables a viewport's shader
+  ##  @param[in]   _pstViewport      Concerned viewport
+  ##  @param[in]   _bEnable          Enable / disable
 
-proc orxViewport_IsShaderEnabled*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
+proc isShaderEnabled*(pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
     importc: "orxViewport_IsShaderEnabled", dynlib: libORX.}
-## * Gets a viewport's shader pointer
-##  @param[in]   _pstViewport      Concerned viewport
-##  @return      orxSHADERPOINTER / nil
-##
+  ## Is a viewport's shader enabled?
+  ##  @param[in]   _pstViewport      Concerned viewport
+  ##  @return      orxTRUE if enabled, orxFALSE otherwise
 
-proc orxViewport_GetShaderPointer*(pstViewport: ptr orxVIEWPORT): ptr orxSHADERPOINTER {.
+proc getShaderPointer*(pstViewport: ptr orxVIEWPORT): ptr orxSHADERPOINTER {.
     cdecl, importc: "orxViewport_GetShaderPointer", dynlib: libORX.}
-## * Sets a viewport blend mode (only used when has active shaders attached)
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _eBlendMode     Blend mode to set
-##
+  ## Gets a viewport's shader pointer
+  ##  @param[in]   _pstViewport      Concerned viewport
+  ##  @return      orxSHADERPOINTER / nil
 
-proc orxViewport_SetBlendMode*(pstViewport: ptr orxVIEWPORT;
+proc setBlendMode*(pstViewport: ptr orxVIEWPORT;
                               eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS {.
     cdecl, importc: "orxViewport_SetBlendMode", dynlib: libORX.}
-## * Gets a viewport blend mode
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return orxDISPLAY_BLEND_MODE
-##
+  ## Sets a viewport blend mode (only used when has active shaders attached)
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _eBlendMode     Blend mode to set
 
-proc orxViewport_GetBlendMode*(pstViewport: ptr orxVIEWPORT): orxDISPLAY_BLEND_MODE {.
+proc getBlendMode*(pstViewport: ptr orxVIEWPORT): orxDISPLAY_BLEND_MODE {.
     cdecl, importc: "orxViewport_GetBlendMode", dynlib: libORX.}
-## * Sets a viewport position
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _fX             X axis position (top left corner)
-##  @param[in]   _fY             Y axis position (top left corner)
-##
+  ## Gets a viewport blend mode
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return orxDISPLAY_BLEND_MODE
 
-proc orxViewport_SetPosition*(pstViewport: ptr orxVIEWPORT; fX: orxFLOAT; fY: orxFLOAT) {.
+proc setPosition*(pstViewport: ptr orxVIEWPORT; fX: orxFLOAT; fY: orxFLOAT) {.
     cdecl, importc: "orxViewport_SetPosition", dynlib: libORX.}
-## * Sets a viewport relative position
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _u32AlignFlags  Alignment flags
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets a viewport position
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _fX             X axis position (top left corner)
+  ##  @param[in]   _fY             Y axis position (top left corner)
 
-proc orxViewport_SetRelativePosition*(pstViewport: ptr orxVIEWPORT;
+proc setRelativePosition*(pstViewport: ptr orxVIEWPORT;
                                      u32AlignFlags: orxU32): orxSTATUS {.cdecl,
     importc: "orxViewport_SetRelativePosition", dynlib: libORX.}
-## * Gets a viewport position
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[out]  _pfX            X axis position (top left corner)
-##  @param[out]  _pfY            Y axis position (top left corner)
-##
+  ## Sets a viewport relative position
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _u32AlignFlags  Alignment flags
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_GetPosition*(pstViewport: ptr orxVIEWPORT; pfX: ptr orxFLOAT;
+proc getPosition*(pstViewport: ptr orxVIEWPORT; pfX: ptr orxFLOAT;
                              pfY: ptr orxFLOAT) {.cdecl,
     importc: "orxViewport_GetPosition", dynlib: libORX.}
-## * Sets a viewport size
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _fWidth         Width
-##  @param[in]   _fHeight        Height
-##
+  ## Gets a viewport position
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[out]  _pfX            X axis position (top left corner)
+  ##  @param[out]  _pfY            Y axis position (top left corner)
 
-proc orxViewport_SetSize*(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT;
+proc setSize*(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT;
                          fHeight: orxFLOAT) {.cdecl,
     importc: "orxViewport_SetSize", dynlib: libORX.}
-## * Sets a viewport relative size
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[in]   _fWidth         Relative width (0.0f - 1.0f)
-##  @param[in]   _fHeight        Relative height (0.0f - 1.0f)
-##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-##
+  ## Sets a viewport size
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _fWidth         Width
+  ##  @param[in]   _fHeight        Height
 
-proc orxViewport_SetRelativeSize*(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT;
+proc setRelativeSize*(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT;
                                  fHeight: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxViewport_SetRelativeSize", dynlib: libORX.}
-## * Gets a viewport size
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[out]  _pfWidth        Width
-##  @param[out]  _pfHeight       Height
-##
+  ## Sets a viewport relative size
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[in]   _fWidth         Relative width (0.0f - 1.0f)
+  ##  @param[in]   _fHeight        Relative height (0.0f - 1.0f)
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc orxViewport_GetSize*(pstViewport: ptr orxVIEWPORT; pfWidth: ptr orxFLOAT;
+proc getSize*(pstViewport: ptr orxVIEWPORT; pfWidth: ptr orxFLOAT;
                          pfHeight: ptr orxFLOAT) {.cdecl,
     importc: "orxViewport_GetSize", dynlib: libORX.}
-## * Gets a viewport relative size
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[out]  _pfWidth        Relative width
-##  @param[out]  _pfHeight       Relative height
-##
+  ## Gets a viewport size
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[out]  _pfWidth        Width
+  ##  @param[out]  _pfHeight       Height
 
-proc orxViewport_GetRelativeSize*(pstViewport: ptr orxVIEWPORT;
+proc getRelativeSize*(pstViewport: ptr orxVIEWPORT;
                                  pfWidth: ptr orxFLOAT; pfHeight: ptr orxFLOAT) {.
     cdecl, importc: "orxViewport_GetRelativeSize", dynlib: libORX.}
-## * Gets an axis aligned box of viewport
-##  @param[in]   _pstViewport    Concerned viewport
-##  @param[out]  _pstBox         Output box
-##  @return orxAABOX / nil
-##
+  ## Gets a viewport relative size
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[out]  _pfWidth        Relative width
+  ##  @param[out]  _pfHeight       Relative height
 
-proc orxViewport_GetBox*(pstViewport: ptr orxVIEWPORT; pstBox: ptr orxAABOX): ptr orxAABOX {.
+proc getBox*(pstViewport: ptr orxVIEWPORT; pstBox: ptr orxAABOX): ptr orxAABOX {.
     cdecl, importc: "orxViewport_GetBox", dynlib: libORX.}
-## * Get viewport correction ratio
-##  @param[in]   _pstViewport  Concerned viewport
-##  @return      Correction ratio value
-##
+  ## Gets an axis aligned box of viewport
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @param[out]  _pstBox         Output box
+  ##  @return orxAABOX / nil
 
-proc orxViewport_GetCorrectionRatio*(pstViewport: ptr orxVIEWPORT): orxFLOAT {.cdecl,
+proc getCorrectionRatio*(pstViewport: ptr orxVIEWPORT): orxFLOAT {.cdecl,
     importc: "orxViewport_GetCorrectionRatio", dynlib: libORX.}
-## * Gets viewport config name
-##  @param[in]   _pstViewport    Concerned viewport
-##  @return      orxSTRING / orxSTRING_EMPTY
-##
+  ## Get viewport correction ratio
+  ##  @param[in]   _pstViewport  Concerned viewport
+  ##  @return      Correction ratio value
 
-proc orxViewport_GetName*(pstViewport: ptr orxVIEWPORT): cstring {.cdecl,
+proc getName*(pstViewport: ptr orxVIEWPORT): cstring {.cdecl,
     importc: "orxViewport_GetName", dynlib: libORX.}
-## * Gets viewport given its name
-##  @param[in]   _zName          Camera name
-##  @return      orxVIEWPORT / nil
-##
+  ## Gets viewport config name
+  ##  @param[in]   _pstViewport    Concerned viewport
+  ##  @return      orxSTRING / orxSTRING_EMPTY
 
-proc orxViewport_Get*(zName: cstring): ptr orxVIEWPORT {.cdecl,
+proc viewportGet*(zName: cstring): ptr orxVIEWPORT {.cdecl,
     importc: "orxViewport_Get", dynlib: libORX.}
+  ## Gets viewport given its name
+  ##  @param[in]   _zName          Camera name
+  ##  @return      orxVIEWPORT / nil
+
 
