@@ -145,4 +145,3 @@ proc orxEvent_SendShort*(eEventType: orxEVENT_TYPE; eEventID: orxENUM): orxSTATU
 
 proc orxEvent_IsSending*(): orxBOOL {.cdecl, importc: "orxEvent_IsSending",
                                    dynlib: libORX.}
-## * @}

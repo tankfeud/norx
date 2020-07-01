@@ -9,6 +9,7 @@ const
 ## * Internal font structure
 
 type orxFONT* = object
+
 ## * Setups the font module
 ##
 
@@ -174,4 +175,3 @@ proc orxFont_GetMap*(pstFont: ptr orxFONT): ptr orxCHARACTER_MAP {.cdecl,
 
 proc orxFont_GetName*(pstFont: ptr orxFONT): cstring {.cdecl,
     importc: "orxFont_GetName", dynlib: libORX.}
-## * @}

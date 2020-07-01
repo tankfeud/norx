@@ -120,4 +120,3 @@ proc orxSystem_GetClipboard*(): cstring {.cdecl,
 
 proc orxSystem_SetClipboard*(zValue: cstring): orxSTATUS {.cdecl,
     importc: "orxSystem_SetClipboard", dynlib: libORX.}
-## * @}

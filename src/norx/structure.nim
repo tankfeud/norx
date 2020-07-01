@@ -524,6 +524,3 @@ proc orxStructure_SetFlags*(pStructure: pointer; u32AddFlags: orxU32;
   orxFLAG_SET(orxSTRUCTURE_MACRO(pStructure).u32Flags, u32AddFlags, u32RemoveFlags)
   ##  Done!
   return
-
-## * @}
-]#

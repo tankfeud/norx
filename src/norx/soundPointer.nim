@@ -11,6 +11,7 @@ const
 ## * Internal SoundPointer structure
 
 type orxSOUNDPOINTER* = object
+
 ## * SoundPointer module setup
 ##
 
@@ -150,4 +151,3 @@ proc orxSoundPointer_GetLastAddedSound*(pstSoundPointer: ptr orxSOUNDPOINTER): p
 
 proc orxSoundPointer_GetCount*(pstSoundPointer: ptr orxSOUNDPOINTER): orxU32 {.cdecl,
     importc: "orxSoundPointer_GetCount", dynlib: libORX.}
-## * @}

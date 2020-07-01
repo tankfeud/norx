@@ -447,4 +447,3 @@ proc orxSound_GetBusGlobalVolume*(stBusID: orxSTRINGID): orxFLOAT {.cdecl,
 
 proc orxSound_GetBusGlobalPitch*(stBusID: orxSTRINGID): orxFLOAT {.cdecl,
     importc: "orxSound_GetBusGlobalPitch", dynlib: libORX.}
-## * @}

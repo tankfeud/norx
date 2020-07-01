@@ -135,4 +135,3 @@ proc orxThread_GetTaskCount*(): orxU32 {.cdecl, importc: "orxThread_GetTaskCount
 proc orxThread_SetCallbacks*(pfnStart: orxTHREAD_FUNCTION;
                             pfnStop: orxTHREAD_FUNCTION; pContext: pointer): orxSTATUS {.
     cdecl, importc: "orxThread_SetCallbacks", dynlib: libORX.}
-## * @}

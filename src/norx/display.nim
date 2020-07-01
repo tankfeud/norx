@@ -237,6 +237,7 @@ type
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * Display module setup
 ##
 
@@ -969,4 +970,3 @@ proc orxDisplay_SetVideoMode*(pstVideoMode: ptr orxDISPLAY_VIDEO_MODE): orxSTATU
 
 proc orxDisplay_IsVideoModeAvailable*(pstVideoMode: ptr orxDISPLAY_VIDEO_MODE): orxBOOL {.
     cdecl, importc: "orxDisplay_IsVideoModeAvailable", dynlib: libORX.}
-## * @}

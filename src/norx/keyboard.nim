@@ -50,13 +50,16 @@ type
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * Keyboard module setup
 ##
 
 proc orxKeyboard_Setup*() {.cdecl, importc: "orxKeyboard_Setup", dynlib: libORX.}
+
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the keyboard module
 ##
 

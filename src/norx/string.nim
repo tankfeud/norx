@@ -25,8 +25,8 @@ const
 var saau32CRCTable* {.importc: "saau32CRCTable", dynlib: libORX.}: array[8,
     array[256, orxU32]]
 
-#[
 ##  *** String inlined functions ***
+
 ## * Skips all white spaces
 ##  @param[in] _zString        Concerned string
 ##  @return    Sub string located after all leading white spaces, including EOL characters
@@ -1062,6 +1062,7 @@ proc orxString_GetExtension*(zFileName: cstring): cstring {.inline, cdecl.} =
   return zResult
 
 ##  *** String module functions ***
+
 ## * Structure module setup
 ##
 
@@ -1097,5 +1098,3 @@ proc orxString_GetFromID*(u32ID: orxSTRINGID): cstring {.cdecl,
 
 proc orxString_Store*(zString: cstring): cstring {.cdecl,
     importc: "orxString_Store", dynlib: libORX.}
-## * @}
-]#

@@ -12,6 +12,7 @@ type orxBODY_PART* = object
 ##
 
 type orxBODY_JOINT* = object
+
 ## * Body module setup
 ##
 
@@ -572,4 +573,3 @@ proc orxBody_BoxPick*(pstBox: ptr orxAABOX; u16SelfFlags: orxU16;
                      u16CheckMask: orxU16; apstBodyList: ptr ptr orxBODY;
                      u32Number: orxU32): orxU32 {.cdecl, importc: "orxBody_BoxPick",
     dynlib: libORX.}
-## * @}

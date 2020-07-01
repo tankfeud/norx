@@ -119,4 +119,3 @@ when defined(DEBUG):
   ##
   proc orxBank_DebugPrint*(pstBank: ptr orxBANK) {.cdecl,
       importc: "orxBank_DebugPrint", dynlib: libORX.}
-## * @}

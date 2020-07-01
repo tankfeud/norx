@@ -295,4 +295,3 @@ proc orxResource_GetTypeTag*(u32Index: orxU32): cstring {.cdecl,
 
 proc orxResource_ClearCache*(): orxSTATUS {.cdecl,
     importc: "orxResource_ClearCache", dynlib: libORX.}
-## * @}

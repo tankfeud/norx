@@ -59,7 +59,7 @@ proc bootstrap(): orxSTATUS =
 
 when isMainModule:
   # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = SetBootstrap(cast[BOOTSTRAP_FUNCTION](bootstrap))
+  var status = setBootstrap(cast[BOOTSTRAP_FUNCTION](bootstrap))
   if status == orxSTATUS_SUCCESS:
     echo "Bootstrap was set"
 

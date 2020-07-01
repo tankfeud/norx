@@ -28,6 +28,7 @@ type
 ##
 
 type orxFILE* = object
+
 ## * File module setup
 
 proc orxFile_Setup*() {.cdecl, importc: "orxFile_Setup", dynlib: libORX.}
@@ -186,4 +187,3 @@ proc orxFile_Print*(pstFile: ptr orxFILE; zString: cstring): orxS32 {.varargs, c
 
 proc orxFile_Close*(pstFile: ptr orxFILE): orxSTATUS {.cdecl,
     importc: "orxFile_Close", dynlib: libORX.}
-## * @}

@@ -10,6 +10,7 @@ const
 ## * Internal ShaderPointer structure
 
 type orxSHADERPOINTER* = object
+
 ## * ShaderPointer module setup
 ##
 
@@ -113,4 +114,3 @@ proc orxShaderPointer_AddShaderFromConfig*(
 proc orxShaderPointer_RemoveShaderFromConfig*(
     pstShaderPointer: ptr orxSHADERPOINTER; zShaderConfigID: cstring): orxSTATUS {.
     cdecl, importc: "orxShaderPointer_RemoveShaderFromConfig", dynlib: libORX.}
-## * @}

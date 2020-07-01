@@ -45,6 +45,7 @@ const
 ##
 
 type orxGRAPHIC* = object
+
 ## * Graphic module setup
 ##
 
@@ -278,4 +279,3 @@ proc orxGraphic_HasBlendMode*(pstGraphic: ptr orxGRAPHIC): orxBOOL {.cdecl,
 
 proc orxGraphic_GetBlendMode*(pstGraphic: ptr orxGRAPHIC): orxDISPLAY_BLEND_MODE {.
     cdecl, importc: "orxGraphic_GetBlendMode", dynlib: libORX.}
-## * @}

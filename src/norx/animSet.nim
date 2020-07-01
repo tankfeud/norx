@@ -32,6 +32,7 @@ type orxANIMSET* = object
 ##
 
 type orxANIMSET_LINK_TABLE* = object
+
 ## * AnimSet module setup
 ##
 
@@ -233,4 +234,3 @@ proc orxAnimSet_GetAnimIDFromName*(pstAnimSet: ptr orxANIMSET;
 
 proc orxAnimSet_GetName*(pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
     importc: "orxAnimSet_GetName", dynlib: libORX.}
-## * @}

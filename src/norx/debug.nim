@@ -130,6 +130,7 @@ const
 
 ## ***************************************************************************
 ##  *** Functions ***
+
 ## * Inits the debug module
 ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 ##
@@ -197,8 +198,6 @@ proc orxDebug_SetLogFile*(zFileName: cstring) {.cdecl,
 
 proc orxDebug_SetLogCallback*(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION) {.cdecl,
     importc: "_orxDebug_SetLogCallback", dynlib: libORX.}
-## * @}
-
 
 
 template orxDEBUG_INIT_MACRO*(): void =

@@ -22,6 +22,7 @@ else:
     orxSCREENSHOT_KZ_DEFAULT_BASE_NAME* = "screenshot-"
     orxSCREENSHOT_KZ_DEFAULT_EXTENSION* = "tga"
     orxSCREENSHOT_KU32_DEFAULT_DIGITS* = 4
+
 ## * Screenshot module setup
 ##
 
@@ -44,4 +45,3 @@ proc orxScreenshot_Exit*() {.cdecl, importc: "orxScreenshot_Exit",
 
 proc orxScreenshot_Capture*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Capture",
                                         dynlib: libORX.}
-## * @}

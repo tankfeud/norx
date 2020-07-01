@@ -6,10 +6,11 @@ type
     vTL*: orxVECTOR            ## *< Top left corner vector : 12
     vBR*: orxVECTOR            ## *< Bottom right corner vector : 24
 
+##  Reorders AABox corners
+##  @param[in]   pstBox                       Box to reorder
+##  @return      Reordered AABox
+
 proc orxAABox_Reorder*(pstBox: ptr orxAABOX): ptr orxAABOX {.inline, cdecl.} =
-  ##  Reorders AABox corners
-  ##  @param[in]   pstBox                       Box to reorder
-  ##  @return      Reordered AABox
   assert(pstBox != nil)
   ##  Reorders coordinates so as to have upper left & bottom right box corners
   ##  X coord

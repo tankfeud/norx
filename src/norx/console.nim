@@ -132,4 +132,3 @@ proc orxConsole_GetTrailLogLineOffset*(): orxU32 {.cdecl,
 
 proc orxConsole_GetInput*(pu32CursorIndex: ptr orxU32): cstring {.cdecl,
     importc: "orxConsole_GetInput", dynlib: libORX.}
-## * @}

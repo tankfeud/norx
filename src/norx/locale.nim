@@ -101,4 +101,3 @@ proc orxLocale_GetKeyCount*(): orxU32 {.cdecl, importc: "orxLocale_GetKeyCount",
 
 proc orxLocale_GetKey*(u32KeyIndex: orxU32): cstring {.cdecl,
     importc: "orxLocale_GetKey", dynlib: libORX.}
-## * @}

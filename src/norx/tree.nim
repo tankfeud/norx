@@ -10,6 +10,7 @@ type
   orxTREE* {.bycopy.} = object
     pstRoot*: ptr orxTREE_NODE  ## *< Root node pointer : 4/8
     u32Count*: orxU32          ## *< Node count : 8/12
+
 ## * Cleans a tree
 ##  @param[in]   _pstTree                        Concerned tree
 ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
@@ -141,5 +142,3 @@ proc orxTree_GetCount*(pstTree: ptr orxTREE): orxU32 {.inline, cdecl.} =
   assert(pstTree != nil)
   ##  Returns it
   return pstTree.u32Count
-
-## * @}

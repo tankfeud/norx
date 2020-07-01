@@ -21,8 +21,7 @@ type
 ## * Internal object structure
 
 type orxOBJECT* = object
-## * @name Internal module function
-##  @{
+
 ## * Object module setup
 ##
 
@@ -38,9 +37,6 @@ proc orxObject_Init*(): orxSTATUS {.cdecl, importc: "orxObject_Init",
 
 proc orxObject_Exit*() {.cdecl, importc: "orxObject_Exit", dynlib: libORX.}
 
-## * @}
-## * @name Basic handling
-##  @{
 ## * Creates an empty object.
 ##  @return orxOBJECT / nil
 ##
@@ -1267,6 +1263,3 @@ proc orxObject_Pick*(pvPosition: ptr orxVECTOR; stGroupID: orxSTRINGID): ptr orx
 
 proc orxObject_BoxPick*(pstBox: ptr orxOBOX; stGroupID: orxSTRINGID): ptr orxOBJECT {.
     cdecl, importc: "orxObject_BoxPick", dynlib: libORX.}
-## * @}
-
-## * @}

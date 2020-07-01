@@ -18,6 +18,7 @@ const
 ##
 
 type orxCAMERA* = object
+
 ## * Camera module setup
 ##
 
@@ -187,4 +188,3 @@ proc orxCamera_SetParent*(pstCamera: ptr orxCAMERA; pParent: pointer): orxSTATUS
 
 proc orxCamera_GetParent*(pstCamera: ptr orxCAMERA): ptr orxSTRUCTURE {.cdecl,
     importc: "orxCamera_GetParent", dynlib: libORX.}
-## * @}

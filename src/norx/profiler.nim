@@ -201,4 +201,3 @@ proc orxProfiler_GetUniqueMarkerStartTime*(s32MarkerID: orxS32): orxDOUBLE {.cde
 
 proc orxProfiler_GetUniqueMarkerDepth*(s32MarkerID: orxS32): orxU32 {.cdecl,
     importc: "orxProfiler_GetUniqueMarkerDepth", dynlib: libORX.}
-## * @}

@@ -241,6 +241,7 @@ const
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * Physics module setup
 ##
 
@@ -262,6 +263,7 @@ proc orxPhysics_GetCollisionFlagValue*(zFlag: cstring): orxU32 {.cdecl,
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the physics module
 ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 ##
@@ -713,4 +715,3 @@ proc orxPhysics_BoxPick*(pstBox: ptr orxAABOX; u16SelfFlags: orxU16;
 
 proc orxPhysics_EnableSimulation*(bEnable: orxBOOL) {.cdecl,
     importc: "orxPhysics_EnableSimulation", dynlib: libORX.}
-## * @}

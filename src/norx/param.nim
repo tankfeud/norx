@@ -67,4 +67,3 @@ proc orxParam_DisplayHelp*(): orxSTATUS {.cdecl, importc: "orxParam_DisplayHelp"
 
 proc orxParam_SetArgs*(u32NbParams: orxU32; azParams: cstringArray): orxSTATUS {.
     cdecl, importc: "orxParam_SetArgs", dynlib: libORX.}
-## * @}

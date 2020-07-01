@@ -32,6 +32,7 @@ type
 ## * Internal spawner structure
 
 type orxSPAWNER* = object
+
 ## * Spawner module setup
 ##
 
@@ -295,4 +296,3 @@ proc orxSpawner_GetParent*(pstSpawner: ptr orxSPAWNER): ptr orxSTRUCTURE {.cdecl
 
 proc orxSpawner_GetName*(pstSpawner: ptr orxSPAWNER): cstring {.cdecl,
     importc: "orxSpawner_GetName", dynlib: libORX.}
-## * @}

@@ -196,4 +196,3 @@ proc orxCommand_ParseNumericalArguments*(u32ArgNumber: orxU32;
 proc orxCommand_PrintVar*(zDstString: cstring; u32Size: orxU32;
                          pstVar: ptr orxCOMMAND_VAR): orxU32 {.cdecl,
     importc: "orxCommand_PrintVar", dynlib: libORX.}
-## * @}

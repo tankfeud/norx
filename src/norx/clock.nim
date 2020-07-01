@@ -304,4 +304,3 @@ proc orxClock_AddGlobalTimer*(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
 proc orxClock_RemoveGlobalTimer*(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
                                 pContext: pointer): orxSTATUS {.cdecl,
     importc: "orxClock_RemoveGlobalTimer", dynlib: libORX.}
-## * @}

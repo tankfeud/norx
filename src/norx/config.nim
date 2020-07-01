@@ -549,4 +549,3 @@ proc orxConfig_GetKeyCount*(): orxU32 {.cdecl, importc: "orxConfig_GetKeyCount",
 
 proc orxConfig_GetKey*(u32KeyIndex: orxU32): cstring {.cdecl,
     importc: "orxConfig_GetKey", dynlib: libORX.}
-## * @}

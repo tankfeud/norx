@@ -212,4 +212,3 @@ proc orxAnim_GetLength*(pstAnim: ptr orxANIM): orxFLOAT {.cdecl,
 
 proc orxAnim_GetName*(pstAnim: ptr orxANIM): cstring {.cdecl,
     importc: "orxAnim_GetName", dynlib: libORX.}
-## * @}

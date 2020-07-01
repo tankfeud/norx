@@ -10,6 +10,7 @@ template clamp*(v, mn, mx: untyped): untyped =
   max(min(v, mx), mn)
 
 ## ** Module functions ***
+
 ## * Inits the random seed
 ##  @param[in]   _u32Seed                        Value to use as seed for random number generation
 ##

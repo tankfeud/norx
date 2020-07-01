@@ -16,13 +16,14 @@ const
   orxMOUSE_KZ_CONFIG_SECTION* = "Mouse"
   orxMOUSE_KZ_CONFIG_SHOW_CURSOR* = "ShowCursor"
 
+
 ## Mouse module setup
 proc orxMouse_Setup*() {.cdecl, importc: "orxMouse_Setup", dynlib: libORX.}
-
 
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the mouse module
 ##  @return Returns the status of the operation
 ##
@@ -95,4 +96,3 @@ proc orxMouse_GetButtonName*(eButton: orxMOUSE_BUTTON): cstring {.cdecl,
 
 proc orxMouse_GetAxisName*(eAxis: orxMOUSE_AXIS): cstring {.cdecl,
     importc: "orxMouse_GetAxisName", dynlib: libORX.}
-## * @}

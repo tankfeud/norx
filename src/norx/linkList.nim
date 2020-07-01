@@ -9,6 +9,7 @@ type
     pstFirst*: ptr orxLINKLIST_NODE ## *< First node pointer : 4/8
     pstLast*: ptr orxLINKLIST_NODE ## *< Last node pointer : 8/16
     u32Count*: orxU32          ## *< Node count : 12/20
+
 ## * Cleans a linklist
 ##  @param[in]   _pstList                        Concerned list
 ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
@@ -128,5 +129,3 @@ proc orxLinkList_GetCount*(pstList: ptr orxLINKLIST): orxU32 {.inline, cdecl.} =
   assert(pstList != nil)
   ##  Returns it
   return pstList.u32Count
-
-## * @}

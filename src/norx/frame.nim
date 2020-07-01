@@ -44,6 +44,7 @@ type
 ##
 
 type orxFRAME* = object
+
 ## * Get ignore flag values
 ##  @param[in]   _zFlags         Literal ignore flags
 ##  @return Ignore flags
@@ -206,4 +207,3 @@ proc orxFrame_TransformRotation*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
 proc orxFrame_TransformScale*(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;
                              pvScale: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
     importc: "orxFrame_TransformScale", dynlib: libORX.}
-## * @}

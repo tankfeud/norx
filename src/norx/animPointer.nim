@@ -159,4 +159,3 @@ proc orxAnimPointer_SetFrequency*(pstAnimPointer: ptr orxANIMPOINTER;
 
 proc orxAnimPointer_Pause*(pstAnimPointer: ptr orxANIMPOINTER; bPause: orxBOOL): orxSTATUS {.
     cdecl, importc: "orxAnimPointer_Pause", dynlib: libORX.}
-## * @}

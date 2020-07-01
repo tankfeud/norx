@@ -69,6 +69,7 @@ type
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * Render module setup
 ##
 
@@ -76,6 +77,7 @@ proc orxRender_Setup*() {.cdecl, importc: "orxRender_Setup", dynlib: libORX.}
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the render module
 ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 ##
@@ -108,4 +110,3 @@ proc orxRender_GetScreenPosition*(pvWorldPosition: ptr orxVECTOR;
                                  pstViewport: ptr orxVIEWPORT;
                                  pvScreenPosition: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxRender_GetScreenPosition", dynlib: libORX.}
-## * @}

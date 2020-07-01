@@ -21,4 +21,3 @@ proc orxFPS_IncreaseFrameCount*() {.cdecl, importc: "orxFPS_IncreaseFrameCount",
 ##
 
 proc orxFPS_GetFPS*(): orxU32 {.cdecl, importc: "orxFPS_GetFPS", dynlib: libORX.}
-## * @}

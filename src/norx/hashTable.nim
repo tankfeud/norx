@@ -108,4 +108,3 @@ proc orxHashTable_GetNext*(pstHashTable: ptr orxHASHTABLE; hIterator: orxHANDLE;
 
 proc orxHashTable_Optimize*(pstHashTable: ptr orxHASHTABLE): orxSTATUS {.cdecl,
     importc: "orxHashTable_Optimize", dynlib: libORX.}
-## * @}

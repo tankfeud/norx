@@ -215,4 +215,3 @@ proc orxShader_IsEnabled*(pstShader: ptr orxSHADER): orxBOOL {.cdecl,
 
 proc orxShader_GetName*(pstShader: ptr orxSHADER): cstring {.cdecl,
     importc: "orxShader_GetName", dynlib: libORX.}
-## * @}

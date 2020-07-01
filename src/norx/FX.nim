@@ -365,4 +365,3 @@ proc orxFX_Loop*(pstFX: ptr orxFX; bLoop: orxBOOL): orxSTATUS {.cdecl,
 
 proc orxFX_IsLooping*(pstFX: ptr orxFX): orxBOOL {.cdecl, importc: "orxFX_IsLooping",
     dynlib: libORX.}
-## * @}

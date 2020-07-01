@@ -9,6 +9,7 @@ const
 ## * Internal FXPointer structure
 
 type orxFXPOINTER* = object
+
 ## * FXPointer module setup
 ##
 
@@ -155,4 +156,3 @@ proc orxFXPointer_GetCount*(pstFXPointer: ptr orxFXPOINTER): orxU32 {.cdecl,
 
 proc orxFXPointer_SetTime*(pstFXPointer: ptr orxFXPOINTER; fTime: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxFXPointer_SetTime", dynlib: libORX.}
-## * @}

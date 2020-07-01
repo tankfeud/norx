@@ -3,6 +3,7 @@ import incl,font
 ## * Internal text structure
 
 type orxTEXT* = object
+
 ## * Setups the text module
 ##
 
@@ -119,4 +120,3 @@ proc orxText_SetString*(pstText: ptr orxTEXT; zString: cstring): orxSTATUS {.cde
 
 proc orxText_SetFont*(pstText: ptr orxTEXT; pstFont: ptr orxFONT): orxSTATUS {.cdecl,
     importc: "orxText_SetFont", dynlib: libORX.}
-## * @}

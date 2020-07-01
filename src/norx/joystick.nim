@@ -100,16 +100,20 @@ const
   orxJOYSTICK_KU32_MIN_ID* = 1
 
 const orxJOYSTICK_KU32_MAX_ID* = (ord(orxJOYSTICK_BUTTON_NUMBER) / ord(orxJOYSTICK_BUTTON_SINGLE_NUMBER))
+
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * JOYSTICK module setup
 ##
 
 proc orxJoystick_Setup*() {.cdecl, importc: "orxJoystick_Setup", dynlib: libORX.}
+
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the joystick module
 ##  @return Returns the status of the operation
 ##
@@ -155,4 +159,3 @@ proc orxJoystick_GetAxisName*(eAxis: orxJOYSTICK_AXIS): cstring {.cdecl,
 
 proc orxJoystick_IsConnected*(u32ID: orxU32): orxBOOL {.cdecl,
     importc: "orxJoystick_IsConnected", dynlib: libORX.}
-## * @}

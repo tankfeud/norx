@@ -108,4 +108,3 @@ proc orxTimeLine_GetCount*(pstTimeLine: ptr orxTIMELINE): orxU32 {.cdecl,
 
 proc orxTimeLine_GetTrackDuration*(zTrackID: cstring): orxFLOAT {.cdecl,
     importc: "orxTimeLine_GetTrackDuration", dynlib: libORX.}
-## * @}

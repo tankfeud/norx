@@ -4,6 +4,7 @@ import incl, pluginType
 ## ********************************************
 ##  Function prototypes
 ## *******************************************
+
 ## * Plugin module setup
 ##
 
@@ -63,4 +64,3 @@ proc orxPlugin_GetHandle*(zPluginName: cstring): orxHANDLE {.cdecl,
 
 proc orxPlugin_GetName*(hPluginHandle: orxHANDLE): cstring {.cdecl,
     importc: "orxPlugin_GetName", dynlib: libORX.}
-## * @}

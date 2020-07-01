@@ -33,6 +33,7 @@ const
 ## **************************************************************************
 ##  Functions directly implemented by orx core
 ## *************************************************************************
+
 ## * Sound system module setup
 ##
 
@@ -41,6 +42,7 @@ proc orxSoundSystem_Setup*() {.cdecl, importc: "orxSoundSystem_Setup",
 ## **************************************************************************
 ##  Functions extended by plugins
 ## *************************************************************************
+
 ## * Inits the sound system module
 ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 ##
@@ -326,4 +328,3 @@ proc orxSoundSystem_SetListenerPosition*(pvPosition: ptr orxVECTOR): orxSTATUS {
 
 proc orxSoundSystem_GetListenerPosition*(pvPosition: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxSoundSystem_GetListenerPosition", dynlib: libORX.}
-## * @}

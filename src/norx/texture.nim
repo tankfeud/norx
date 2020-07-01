@@ -20,6 +20,7 @@ type
 ## * Internal texture structure
 
 type orxTEXTURE* = object
+
 ## * Setups the texture module
 ##
 
@@ -115,4 +116,3 @@ proc orxTexture_GetScreenTexture*(): ptr orxTEXTURE {.cdecl,
 
 proc orxTexture_GetLoadCount*(): orxU32 {.cdecl, importc: "orxTexture_GetLoadCount",
                                        dynlib: libORX.}
-## * @}
