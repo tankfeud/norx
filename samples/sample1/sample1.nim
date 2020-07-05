@@ -1,11 +1,10 @@
 ## This is a port of the trivial sample that ORX comes with.
-## Things can be fixed and cleaned, but it runs!
 
 import os
 
 import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj]
 
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):
@@ -31,7 +30,7 @@ proc init(): orxSTATUS {.cdecl.} =
   let clock = clockGet(orxCLOCK_KZ_CORE)
   if not clock.isNil:
     echo "Clock gotten"
-  var status = clock.register(cast[orxCLOCK_FUNCTION](Update), nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  var status = clock.register(Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
   if status == orxSTATUS_SUCCESS:
     echo "Clock registered"
 
@@ -47,11 +46,11 @@ proc exit() {.cdecl.} =
   ## Exit function, it is called before exiting from orx
   echo "Exit called"
 
-proc bootstrap(): orxSTATUS =
+proc bootstrap(): orxSTATUS {.cdecl.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", orxFALSE)
+  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", false)
   if status == orxSTATUS_SUCCESS:
     echo "Added storage"
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
@@ -59,7 +58,7 @@ proc bootstrap(): orxSTATUS =
 
 when isMainModule:
   # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = setBootstrap(cast[orxCONFIG_BOOTSTRAP_FUNCTION](bootstrap))
+  var status = setBootstrap(bootstrap)
   if status == orxSTATUS_SUCCESS:
     echo "Bootstrap was set"
 

@@ -12,7 +12,7 @@ when defined(Windows):
       orxS32* = cint
       orxS16* = cshort
       orxS8* = cchar
-      orxBOOL* = cuint
+      orxBOOL* = distinct cuint
   else:
     type
       orxU32* = culong
@@ -21,7 +21,7 @@ when defined(Windows):
       orxS32* = clong
       orxS16* = cshort
       orxS8* = cchar
-      orxBOOL* = culong
+      orxBOOL* = distinct culong
   type
     orxFLOAT* = cfloat
     orxDOUBLE* = cdouble
@@ -62,7 +62,7 @@ else:
         orxS32* = cint
         orxS16* = cshort
         orxS8* = cchar
-        orxBOOL* = cuint
+        orxBOOL* = distinct cuint
     else:
       type
         orxU64* = culonglong
@@ -73,7 +73,7 @@ else:
         orxS32* = clong
         orxS16* = cshort
         orxS8* = cchar
-        orxBOOL* = culong
+        orxBOOL* = distinct culong
     type
       orxFLOAT* = cfloat
       orxDOUBLE* = cdouble
@@ -102,8 +102,16 @@ type
 
 ##  *** Boolean constants ***
 const
-  orxFALSE* = ((orxBOOL)(1 != 1))
-  orxTRUE* = ((orxBOOL)(1 == 1))
+  orxFALSE* = 0.orxBOOL
+  orxTRUE* = 1.orxBOOL
+
+
+converter toBool*(x: orxBOOL): bool = cint(x) != 0
+  ## Converts orxBOOL to bool
+
+converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
+  ## Converts bool to orxBOOL
+
 
 ##  *** Float constants ***
 

@@ -69,7 +69,7 @@ type
     stInfo*: orxSOUND_STREAM_INFO ## *< Sound record info : 12
     stPacket*: orxSOUND_STREAM_PACKET ## *< Sound record packet : 32
 
-  INNER_C_UNION_orxSound_135* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxSound_135* {.bycopy, union.} = object
     pstSound*: ptr orxSOUND     ## *< Sound reference : 4
     stStream*: INNER_C_STRUCT_orxSound_139
 

@@ -140,7 +140,7 @@ type
 ##
 
 type
-  INNER_C_UNION_orxStructure_209* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxStructure_209* {.bycopy, union.} = object
     stLinkListNode*: orxLINKLIST_NODE ## *< Linklist node : 28/40
     stTreeNode*: orxTREE_NODE  ## *< Tree node : 36/56
 

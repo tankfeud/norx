@@ -39,7 +39,7 @@ type
 ##
 
 type
-  INNER_C_UNION_orxShader_124* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxShader_124* {.bycopy, union.} = object
     fValue*: orxFLOAT          ## *< Float value : 24
     pstValue*: ptr orxTEXTURE   ## *< Texture value : 24
     vValue*: orxVECTOR         ## *< Vector value : 32

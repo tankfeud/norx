@@ -36,7 +36,7 @@ type
 ## * Variable structure
 
 type
-  INNER_C_UNION_orxCommand_95* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxCommand_95* {.bycopy, union.} = object
     vValue*: orxVECTOR         ## *< Vector value : 12
     zValue*: cstring        ## *< String value : 4
     u32Value*: orxU32          ## *< U32 value : 4

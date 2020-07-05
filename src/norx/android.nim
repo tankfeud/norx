@@ -46,11 +46,11 @@ type
     fRTRIGGER*: orxFLOAT
     fLTRIGGER*: orxFLOAT
 
-  INNER_C_UNION_orxAndroid_113* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxAndroid_113* {.bycopy, union.} = object
     ano_orxAndroid_123*: INNER_C_STRUCT_orxAndroid_115
     afValues*: array[8, orxFLOAT]
 
-  INNER_C_UNION_orxAndroid_137* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxAndroid_137* {.bycopy, union.} = object
     u32KeyCode*: orxU32
     stAxisData*: orxANDROID_AXIS_DATA
 

@@ -5,19 +5,19 @@ import lib, typ, memory, pure/math, math as orxMath
 ##
 
 type
-  #INNER_C_UNION_orxVector_72* {.bycopy.} = object {.union.}
+  #INNER_C_UNION_orxVector_72* {.bycopy, union.} = object
   #  fX*: orxFLOAT              ## *< First coordinate in the cartesian space
   #  fRho*: orxFLOAT            ## *< First coordinate in the spherical space
   #  fR*: orxFLOAT              ## *< First coordinate in the RGB color space
   #  fH*: orxFLOAT              ## *< First coordinate in the HSL/HSV color spaces
 
-  #INNER_C_UNION_orxVector_80* {.bycopy.} = object {.union.}
+  #INNER_C_UNION_orxVector_80* {.bycopy, union.} = object
   #  fY*: orxFLOAT              ## *< Second coordinate in the cartesian space
   #  fTheta*: orxFLOAT          ## *< Second coordinate in the spherical space
   #  fG*: orxFLOAT              ## *< Second coordinate in the RGB color space
   #  fS*: orxFLOAT              ## *< Second coordinate in the HSL/HSV color spaces
 
-  #INNER_C_UNION_orxVector_88* {.bycopy.} = object {.union.}
+  #INNER_C_UNION_orxVector_88* {.bycopy, union.} = object
   #  fZ*: orxFLOAT              ## *< Third coordinate in the cartesian space
   #  fPhi*: orxFLOAT            ## *< Third coordinate in the spherical space
   #  fB*: orxFLOAT              ## *< Third coordinate in the RGB color space

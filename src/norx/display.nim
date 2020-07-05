@@ -12,7 +12,7 @@ type
   #  u8B*: orxU8
   #  u8A*: orxU8
   # 
-  #INNER_C_UNION_orxDisplay_66* {.bycopy.} = object {.union.}
+  #INNER_C_UNION_orxDisplay_66* {.bycopy, union.} = object
   #  ano_orxDisplay_69*: INNER_C_STRUCT_orxDisplay_68
   #  u32RGBA*: orxU32
 
@@ -226,7 +226,7 @@ type
     stFilenameID*: orxSTRINGID ## *< File name ID : 44
     u32ID*: orxU32             ## *< Bitmap (hardware texture) ID : 48
 
-  INNER_C_UNION_orxDisplay_282* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxDisplay_282* {.bycopy, union.} = object
     stVideoMode*: INNER_C_STRUCT_orxDisplay_284
     stBitmap*: INNER_C_STRUCT_orxDisplay_298
 

@@ -99,7 +99,7 @@ type
     bHasPrevious*: orxBOOL     ## *< Has previous vertex : 72
     bHasNext*: orxBOOL         ## *< Has next vertex : 76
 
-  INNER_C_UNION_orxPhysics_142* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxPhysics_142* {.bycopy, union.} = object
     stSphere*: INNER_C_STRUCT_orxPhysics_144 ## *< Sphere : 48
     stAABox*: INNER_C_STRUCT_orxPhysics_150 ## *< Box : 56
     stMesh*: INNER_C_STRUCT_orxPhysics_155
@@ -172,7 +172,7 @@ type
     zDstJointName*: cstring ## *< Destination joint name : 60
     fJointRatio*: orxFLOAT     ## *< Joint ratio : 64
 
-  INNER_C_UNION_orxPhysics_197* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxPhysics_197* {.bycopy, union.} = object
     stRevolute*: INNER_C_STRUCT_orxPhysics_199 ## *< Revolute : 68
     stPrismatic*: INNER_C_STRUCT_orxPhysics_209 ## *< Prismatic : 80
     stSpring*: INNER_C_STRUCT_orxPhysics_220 ## *< Spring : 60

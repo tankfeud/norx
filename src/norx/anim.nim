@@ -38,7 +38,7 @@ type
     fValue*: orxFLOAT          ## *< Custom event value : 16
     fTime*: orxFLOAT           ## *< Custom event time : 20
 
-  INNER_C_UNION_orxAnim_113* {.bycopy.} = object {.union.}
+  INNER_C_UNION_orxAnim_113* {.bycopy, union.} = object
     stLoop*: INNER_C_STRUCT_orxAnim_115 ##  Loop event
     ##  Cut event
     stCut*: INNER_C_STRUCT_orxAnim_121 ##  Custom event
