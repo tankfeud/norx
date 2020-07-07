@@ -1,18 +1,7 @@
 
 import incl
 
-## * Helper defines
-##
-
-template orxEVENT_SEND_MACRO*(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): void =
-  var stEvent: orxEVENT
-  stEvent.eType = cast[orxEVENT_TYPE](TYPE)
-  stEvent.eID = cast[orxENUM](ID)
-  stEvent.hSender = cast[orxHANDLE](SENDER)
-  stEvent.hRecipient = cast[orxHANDLE](RECIPIENT)
-  stEvent.pstPayload = cast[pointer](PAYLOAD)
-  discard event.send(addr(stEvent))
-
+## Helper defines
 template orxEVENT_GET_FLAG*(ID: untyped): untyped =
   ((orxU32)(1 shl (orxU32)(ID)))
 
@@ -20,11 +9,9 @@ const
   orxEVENT_KU32_FLAG_ID_NONE* = 0x00000000
   orxEVENT_KU32_MASK_ID_ALL* = 0xFFFFFFFF
 
-## * Event type enum
-##
-
 type
   orxEVENT_TYPE* {.size: sizeof(cint).} = enum
+    ## Event type enum
     orxEVENT_TYPE_ANIM = 0, orxEVENT_TYPE_CLOCK, orxEVENT_TYPE_CONFIG,
     orxEVENT_TYPE_DISPLAY, orxEVENT_TYPE_FX, orxEVENT_TYPE_INPUT,
     orxEVENT_TYPE_LOCALE, orxEVENT_TYPE_OBJECT, orxEVENT_TYPE_RENDER,
@@ -37,11 +24,9 @@ type
 const
   orxEVENT_TYPE_FIRST_RESERVED = orxEVENT_TYPE_CORE_NUMBER
 
-## * Public event structure
-##
-
 type
   orxEVENT* {.bycopy.} = object
+    ## Public event structure
     eType*: orxEVENT_TYPE      ## *< Event type : 4
     eID*: orxENUM              ## *< Event ID : 8
     hSender*: orxHANDLE        ## *< Sender handle : 12
@@ -49,13 +34,9 @@ type
     pstPayload*: pointer       ## *< Event payload : 20
     pContext*: pointer         ## *< Optional user-provided context : 24
 
-
-## *
-##  Event handler type / return orxSTATUS_FAILURE if events processing should be stopped for the current event, orxSTATUS_FAILURE otherwise
-##
-
 type
   orxEVENT_HANDLER* = proc (pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.}
+  ##  Event handler type / return orxSTATUS_FAILURE if events processing should be stopped for the current event, orxSTATUS_FAILURE otherwise
 
 proc eventSetup*() {.cdecl, importc: "orxEvent_Setup", dynlib: libORX.}
   ## Event module setup
@@ -134,3 +115,11 @@ proc isSending*(): orxBOOL {.cdecl, importc: "orxEvent_IsSending",
   ## Is currently sending an event?
   ##  @return orxTRUE / orxFALSE
 
+template orxEVENT_SEND_MACRO*(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): void =
+  var stEvent: orxEVENT
+  stEvent.eType = cast[orxEVENT_TYPE](TYPE)
+  stEvent.eID = cast[orxENUM](ID)
+  stEvent.hSender = cast[orxHANDLE](SENDER)
+  stEvent.hRecipient = cast[orxHANDLE](RECIPIENT)
+  stEvent.pstPayload = cast[pointer](PAYLOAD)
+  discard send(addr(stEvent))
