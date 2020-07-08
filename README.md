@@ -28,7 +28,22 @@ Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | 
 # Install Norx
 Install the Norx wrapper by running  `nimble install` in this directory.
 
-See `samples` directory for some samples using it!
+See `samples` directory or [norxsample](https.//github.com/gokr/norxsample) examples, I hope to make some more.
+
+# Norx vs Orx
+These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:
+
+* Norx wrappers have been stripped of "module prefixes", so in ORX you have `orxObject_SetSpeed` but in Norx it's `setSpeed`.
+* Some names have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` in basically all modules but... you normally don't call those yourself.
+* `orxCHAR *` has been mapped to `cstring` so you can pass Nim strings into all ORX functions just fine, since they are compatible with `cstring`.
+* If you get a `cstring` back you can either keep it as such, or convert it to a Nim string using `$` but that will cause a copy of course.
+* All memory allocation/deallocation of ORX things are done by ORX.
+* Generally all ORX things are `ptr orxBLABLA` and not wrapped or such. If you keep such around, remember that they may disappear on you when ORX deallocates!
+* Passing procs as callbacks to ORX works fine, as long as they are marked with `{.cdecl.}`, this can be seen in the examples where the update, run, exit procs are marked that way.
+* The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`.
+* Vectors are represented as Nim tuples right now.
+* Some ORX structs use anonymous unions, this doesn't really work in Nim so... for example in Vector, which has 3 floats, I created in Nim different types depending on what kind of Vector it is. They are all tuple of three floats however, so should be compatible.
+* ...and well, I will add to this list as things come up.
 
 
 # How it was made
@@ -48,12 +63,3 @@ These are notes to "self". We track any changes to the `include` directory, for 
 3. Using your IDE, reapply modifications that was overwritten :) - this should be handled better of course.
 4. `c2nim common.c2nim object/orxObject.h` to reproduce `orxObject.nim`
 5. Merge parts into `obj.nim` that should be there using `meld object/orxObject.nim ../src/norx/obj.nim`
-
-
-# Todos
-
-* Do we add higher level wrappers on top? Or do we add highlevel wrap procs inside the modules?
-* orxBOOL, orxFLOAT, orxU32 etc etc... Nicer with Nim types
-* cstring vs string
-* Put argc/argc handling inside Norx
-* Demangle all the orxYadda_xxx into xxx?
