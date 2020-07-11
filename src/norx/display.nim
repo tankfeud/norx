@@ -290,8 +290,8 @@ proc set*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR; fAlpha: orxFLOAT): ptr o
   ##  Checks
   assert(pstColor != nil)
   ##  Stores RGB
-  let v: orxVECTOR = cast[orxVECTOR](pstColor.vRGB)
-  copy(unsafeaddr(v), pvRGB)
+  let pvDest: ptr orxVECTOR = cast[ptr orxVECTOR](unsafeaddr(pstColor.vRGB))
+  copy(pvDest, pvRGB)
   ##  Stores alpha
   pstColor.fAlpha = fAlpha
   ##  Done!
@@ -308,8 +308,9 @@ proc setRGB*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR): ptr orxCOLOR {.
   assert(pstColor != nil)
   assert(pvRGB != nil)
   ##  Stores components
-  let v: orxVECTOR = cast[orxVECTOR](pstColor.vRGB)
-  copy(unsafeaddr(v), pvRGB)
+  let pvDest: ptr orxVECTOR = cast[ptr orxVECTOR](unsafeaddr(pstColor.vRGB))
+  copy(pvDest, pvRGB)
+
   ##  Done!
   return pstResult
 
@@ -425,7 +426,7 @@ proc fromHSLToRGB*(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
   ##  @param[in]   _pstSrc         Source color
   ##  @return      orxCOLOR
   # TODO: Fix these too!
-  #[ 
+  #[
   var pstResult: ptr orxCOLOR
   var
     fH: orxFLOAT
