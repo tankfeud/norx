@@ -11,7 +11,7 @@ type
   #  u8G*: orxU8
   #  u8B*: orxU8
   #  u8A*: orxU8
-  # 
+  #
   #INNER_C_UNION_orxDisplay_66* {.bycopy, union.} = object
   #  ano_orxDisplay_69*: INNER_C_STRUCT_orxDisplay_68
   #  u32RGBA*: orxU32
