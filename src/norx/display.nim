@@ -259,74 +259,59 @@ proc orxRGBA_Set*(u8R: orxU8; u8G: orxU8; u8B: orxU8; u8A: orxU8): orxRGBA {.inl
   ##  Done!
   return stResult
 
-proc setRGBA*(pstColor: ptr orxCOLOR; stRGBA: orxRGBA): ptr orxCOLOR {.inline,
+proc setRGBA*(pstColor: ptr orxCOLOR; stRGBA: orxRGBA) {.inline,
     cdecl.} =
   ## Sets all components from an orxRGBA
   ##  @param[in]   _pstColor       Concerned color
   ##  @param[in]   _stRGBA         RGBA values to set
   ##  @return      orxCOLOR
-  var pstResult: ptr orxCOLOR
   ##  Checks
   assert(pstColor != nil)
   ##  Stores RGB
-  let v: orxVECTOR = cast[orxVECTOR](pstColor.vRGB)
-  set(unsafeaddr(v),
-                orxCOLOR_NORMALIZER * orxRGBA_R(stRGBA).orxFLOAT,
-                orxCOLOR_NORMALIZER * orxRGBA_G(stRGBA).orxFLOAT,
-                orxCOLOR_NORMALIZER * orxRGBA_B(stRGBA).orxFLOAT)
+  #let v: orxVECTOR = cast[orxVECTOR](pstColor.vRGB)
+  pstColor.vRGB.fR = orxCOLOR_NORMALIZER * orxRGBA_R(stRGBA).orxFLOAT
+  pstColor.vRGB.fG = orxCOLOR_NORMALIZER * orxRGBA_G(stRGBA).orxFLOAT
+  pstColor.vRGB.fB = orxCOLOR_NORMALIZER * orxRGBA_B(stRGBA).orxFLOAT
+  #set(unsafeaddr(v),
+  #              orxCOLOR_NORMALIZER * orxRGBA_R(stRGBA).orxFLOAT,
+  #              orxCOLOR_NORMALIZER * orxRGBA_G(stRGBA).orxFLOAT,
+  #              orxCOLOR_NORMALIZER * orxRGBA_B(stRGBA).orxFLOAT)
   ##  Stores alpha
   pstColor.fAlpha = orxCOLOR_NORMALIZER * orxRGBA_A(stRGBA).orxFLOAT
-  ##  Done!
-  return pstResult
 
-proc set*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR; fAlpha: orxFLOAT): ptr orxCOLOR {.
+proc set*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR; fAlpha: orxFLOAT) {.
     inline, cdecl.} =
   ## Sets all components
   ##  @param[in]   _pstColor       Concerned color
   ##  @param[in]   _pvRGB          RGB components
   ##  @param[in]   _fAlpha         Normalized alpha component
-  ##  @return      orxCOLOR
-  var pstResult: ptr orxCOLOR
-  ##  Checks
   assert(pstColor != nil)
+  assert(pvRGB != nil)
   ##  Stores RGB
-  let pvDest: ptr orxVECTOR = cast[ptr orxVECTOR](unsafeaddr(pstColor.vRGB))
-  copy(pvDest, pvRGB)
+  pstColor.vRGB = cast[orxRGBVECTOR](pvRGB[])
   ##  Stores alpha
   pstColor.fAlpha = fAlpha
-  ##  Done!
-  return pstResult
 
-proc setRGB*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR): ptr orxCOLOR {.
+proc setRGB*(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR) {.
     inline, cdecl.} =
   ## Sets RGB components
   ##  @param[in]   _pstColor       Concerned color
   ##  @param[in]   _pvRGB          RGB components
-  ##  @return      orxCOLOR
-  var pstResult: ptr orxCOLOR
   ##  Checks
   assert(pstColor != nil)
   assert(pvRGB != nil)
-  ##  Stores components
-  let pvDest: ptr orxVECTOR = cast[ptr orxVECTOR](unsafeaddr(pstColor.vRGB))
-  copy(pvDest, pvRGB)
+  ##  Stores RGB
+  pstColor.vRGB = cast[orxRGBVECTOR](pvRGB[])
 
-  ##  Done!
-  return pstResult
-
-proc setAlpha*(pstColor: ptr orxCOLOR; fAlpha: orxFLOAT): ptr orxCOLOR {.
+proc setAlpha*(pstColor: ptr orxCOLOR; fAlpha: orxFLOAT) {.
     inline, cdecl.} =
   ## Sets alpha component
   ##  @param[in]   _pstColor       Concerned color
   ##  @param[in]   _fAlpha         Normalized alpha component
-  ##  @return      orxCOLOR / nil
-  var pstResult: ptr orxCOLOR
   ##  Checks
   assert(pstColor != nil)
   ##  Stores it
   pstColor.fAlpha = fAlpha
-  ##  Done!
-  return pstResult
 
 proc toRGBA*(pstColor: ptr orxCOLOR): orxRGBA {.inline, cdecl.} =
   ## Gets orxRGBA from an orxCOLOR
