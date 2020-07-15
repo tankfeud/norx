@@ -28,7 +28,7 @@ Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | 
 # Install Norx
 Install the Norx wrapper by running  `nimble install` in this directory.
 
-See `samples` directory or [norxsample](https.//github.com/gokr/norxsample) examples, I hope to make some more.
+See `samples` directory or [norxsample](https://github.com/gokr/norxsample) examples, I hope to make some more.
 
 # Norx vs Orx
 These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:
