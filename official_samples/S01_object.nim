@@ -1,17 +1,45 @@
-## This is a port of the trivial sample that ORX comes with.
+## This is an adaptation to Nim of the C tutorial creating a viewport and an object.
+## comments: jseb at finiderire.com
 
-import os
+#[
+  Debug compilation
+  nim c S01_object
+  (it will use S01_object.nim.cfg and liborxd.so loaded at runtime)
+  
+  Release compilation
+  nim c -d:release --skipProjcfg S01_object
+  (skip nim project cfg, liborx.so loaded at runtime)
 
-import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj]
+  Note from gokr:
+  The choice of the lib is made in lib.nim
+  It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
+
+]#
+
+
+import norx, norx/[incl, config, viewport, obj, input] 
 
 proc init(): orxSTATUS {.cdecl.} =
+  result = orxSTATUS_SUCCESS
+  # for getting logs in a file , as well as terminal output, compile in debug.
   orxLOG("""* This tutorial creates a viewport/camera couple and an object
 * You can play with the config parameters in S01_object.ini
 * After changing them, relaunch the tutorial to see their effects""");
-  return orxSTATUS_SUCCESS
+  
+  # Creates viewport
+  #orxViewport_CreateFromConfig("Viewport");
+  var vres = viewportCreateFromConfig("Viewport");
+  if vres.isNil:
+    result = orxSTATUS_FAILURE
+
+  # Creates object
+  var ores = objectCreateFromConfig("Object");
+  if ores.isNil:
+    result = orxSTATUS_FAILURE
+
 
 proc run(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS;
+  result = orxSTATUS_SUCCESS
 
   # Should quit?
   if (input.isActive("Quit")):
@@ -19,86 +47,18 @@ proc run(): orxSTATUS {.cdecl.} =
     result = orxSTATUS_FAILURE;
 
 
-# are init, run and exit implementations of pre-declarated functions ?
 proc exit() {.cdecl.} =
   quit(0)
 
-#[ execute is declared in norx.nim :
-  proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                runProc: proc(): orxSTATUS {.cdecl.};
-                exitProc: proc() {.cdecl.}
-               )
-]#
+
 proc Main =
+  #[ execute is declared in norx.nim , and needs 3 functions:
+      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
+                    runProc: proc(): orxSTATUS {.cdecl.};
+                    exitProc: proc() {.cdecl.}
+                   )
+  ]#
   execute(init, run, exit)
-
-
 
 Main()
 
-
-#[
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  ## Update function, it has been registered to be called every tick of the core clock
-  # Should we quit due to user pressing ESC?
-  if isActive("Quit"):
-    # Send close event
-    echo "User quitting"
-    discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
-
-proc init(): orxSTATUS {.cdecl.} =
-  ## Init function, it is called when all orx's modules have been initialized
-  orxLOG("Sample1 starting")
-
-  # Create the viewport
-  var v = viewportCreateFromConfig("MainViewport")
-  if not v.isNil:
-    echo "Viewport created"
-  
-  # Create the scene
-  var s = objectCreateFromConfig("Scene")
-  if not s.isNil:
-    echo "Scene created"
-
-  # Register the Update function to the core clock
-  let clock = clockGet(orxCLOCK_KZ_CORE)
-  if not clock.isNil:
-    echo "Clock gotten"
-  var status = clock.register(Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-  if status == orxSTATUS_SUCCESS:
-    echo "Clock registered"
-
-  # Done!
-  return orxSTATUS_SUCCESS
-
-proc run(): orxSTATUS {.cdecl.} =
-  ## Run function, it should not contain any game logic
-  # Return orxSTATUS_FAILURE to instruct orx to quit
-  return orxSTATUS_SUCCESS
-
-proc exit() {.cdecl.} =
-  ## Exit function, it is called before exiting from orx
-  echo "Exit called"
-
-proc bootstrap(): orxSTATUS {.cdecl.} =
-  ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
-  # Add a config storage to find the initial config file
-  var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", false)
-  if status == orxSTATUS_SUCCESS:
-    echo "Added storage"
-  # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
-  return orxSTATUS_SUCCESS
-
-when isMainModule:
-  # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = setBootstrap(bootstrap)
-  if status == orxSTATUS_SUCCESS:
-    echo "Bootstrap was set"
-
-  # Execute our game
-  execute(init, run, exit)
-
-  # Done!
-  quit(0)
-]#
