@@ -10,7 +10,7 @@ import norx/[incl, param, clock, event, system, config, resource, input, viewpor
 ## Should stop execution by default event handling?
 var sbStopByEvent* = false
 
-##  Orx default basic event handler.
+##  Event handler.
 ##  @param[in]   pstEvent                     Sent event
 ##  @return      orxSTATUS_SUCCESS if handled / orxSTATUS_FAILURE otherwise
 proc eventHandler(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
@@ -111,9 +111,7 @@ if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
       eClockStatus: orxSTATUS
       eMainStatus: orxSTATUS
     #  Registers default event handler
-    var st = addHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-    #  Clears payload, hmm, is this needed in Nim?
-    discard zero(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
+    discard addHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
     
     # Main loop
     var bStop = false
@@ -130,7 +128,8 @@ if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
       #  Updates frame count
       stPayload.u32FrameCount += 1
       bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
-  discard removeHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
+  
+    discard removeHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
   
   # Exits from engine
   moduleExit(orxMODULE_ID_MAIN)
