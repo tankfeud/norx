@@ -1,9 +1,5 @@
 import incl, pluginCore
 
-
-## * Helpers
-##
-
 template orxJOYSTICK_GET_AXIS*(AXIS, ID: untyped): untyped =
   (((cast[orxU32](AXIS)) mod orxJOYSTICK_AXIS_SINGLE_NUMBER) +
       ((ID - 1) * orxJOYSTICK_AXIS_SINGLE_NUMBER))
@@ -18,11 +14,9 @@ template orxJOYSTICK_GET_ID_FROM_AXIS*(AXIS: untyped): untyped =
 template orxJOYSTICK_GET_ID_FROM_BUTTON*(BUTTON: untyped): untyped =
   (((cast[orxU32](BUTTON)) div orxJOYSTICK_BUTTON_SINGLE_NUMBER) + 1)
 
-## * Button enum
-##
-
 type
   orxJOYSTICK_BUTTON* {.size: sizeof(cint).} = enum
+    ## Joystick button enum
     orxJOYSTICK_1_BUTTON_A = 0,
     orxJOYSTICK_1_BUTTON_B,
     orxJOYSTICK_1_BUTTON_X,
@@ -525,33 +519,107 @@ type
 const
   orxJOYSTICK_BUTTON_A_2 = orxJOYSTICK_BUTTON_SINGLE_NUMBER
 
-## * Axis enum
-##
-
 type
   orxJOYSTICK_AXIS* {.size: sizeof(cint).} = enum
-    orxJOYSTICK_AXIS_LX_1 = 0, orxJOYSTICK_AXIS_LY_1, orxJOYSTICK_AXIS_RX_1,
-    orxJOYSTICK_AXIS_RY_1, orxJOYSTICK_AXIS_LTRIGGER_1,
-    orxJOYSTICK_AXIS_RTRIGGER_1, orxJOYSTICK_AXIS_SINGLE_NUMBER,
-    orxJOYSTICK_AXIS_LY_2, orxJOYSTICK_AXIS_RX_2, orxJOYSTICK_AXIS_RY_2,
-    orxJOYSTICK_AXIS_LTRIGGER_2, orxJOYSTICK_AXIS_RTRIGGER_2,
-    orxJOYSTICK_AXIS_LX_3, orxJOYSTICK_AXIS_LY_3, orxJOYSTICK_AXIS_RX_3,
-    orxJOYSTICK_AXIS_RY_3, orxJOYSTICK_AXIS_LTRIGGER_3,
-    orxJOYSTICK_AXIS_RTRIGGER_3, orxJOYSTICK_AXIS_LX_4, orxJOYSTICK_AXIS_LY_4,
-    orxJOYSTICK_AXIS_RX_4, orxJOYSTICK_AXIS_RY_4, orxJOYSTICK_AXIS_LTRIGGER_4,
-    orxJOYSTICK_AXIS_RTRIGGER_4, orxJOYSTICK_AXIS_LX_5, orxJOYSTICK_AXIS_LY_5,
-    orxJOYSTICK_AXIS_RX_5, orxJOYSTICK_AXIS_RY_5, orxJOYSTICK_AXIS_LTRIGGER_5, orxJOYSTICK_AXIS_RTRIGGER_5, ##  TODO orxJOYSTICK_DECLARE_AXIS_ENUM(6),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(7),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(8),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(9),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(10),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(11),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(12),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(13),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(14),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(15),
-                                                                                                        ##   orxJOYSTICK_DECLARE_AXIS_ENUM(16),
-    orxJOYSTICK_AXIS_NUMBER, orxJOYSTICK_AXIS_NONE = orxENUM_NONE
+    ## Axis enum
+    orxJOYSTICK_1_AXIS_LX = 0,
+    orxJOYSTICK_1_AXIS_LY,
+    orxJOYSTICK_1_AXIS_RX,
+    orxJOYSTICK_1_AXIS_RY,
+    orxJOYSTICK_1_AXIS_LTRIGGER,
+    orxJOYSTICK_1_AXIS_RTRIGGER,
+    orxJOYSTICK_AXIS_SINGLE_NUMBER, # Marker
+    orxJOYSTICK_2_AXIS_LY,
+    orxJOYSTICK_2_AXIS_RX,
+    orxJOYSTICK_2_AXIS_RY,
+    orxJOYSTICK_2_AXIS_LTRIGGER,
+    orxJOYSTICK_2_AXIS_RTRIGGER,
+    orxJOYSTICK_3_AXIS_LX,
+    orxJOYSTICK_3_AXIS_LY,
+    orxJOYSTICK_3_AXIS_RX,
+    orxJOYSTICK_3_AXIS_RY,
+    orxJOYSTICK_3_AXIS_LTRIGGER,
+    orxJOYSTICK_3_AXIS_RTRIGGER,
+    orxJOYSTICK_4_AXIS_LX,
+    orxJOYSTICK_4_AXIS_LY,
+    orxJOYSTICK_4_AXIS_RX,
+    orxJOYSTICK_4_AXIS_RY,
+    orxJOYSTICK_4_AXIS_LTRIGGER,
+    orxJOYSTICK_4_AXIS_RTRIGGER,
+    orxJOYSTICK_5_AXIS_LX,
+    orxJOYSTICK_5_AXIS_LY,
+    orxJOYSTICK_5_AXIS_RX,
+    orxJOYSTICK_5_AXIS_RY,
+    orxJOYSTICK_5_AXIS_LTRIGGER,
+    orxJOYSTICK_5_AXIS_RTRIGGER,
+    orxJOYSTICK_6_AXIS_LX,
+    orxJOYSTICK_6_AXIS_LY,
+    orxJOYSTICK_6_AXIS_RX,
+    orxJOYSTICK_6_AXIS_RY,
+    orxJOYSTICK_6_AXIS_LTRIGGER,
+    orxJOYSTICK_6_AXIS_RTRIGGER,
+    orxJOYSTICK_7_AXIS_LX,
+    orxJOYSTICK_7_AXIS_LY,
+    orxJOYSTICK_7_AXIS_RX,
+    orxJOYSTICK_7_AXIS_RY,
+    orxJOYSTICK_7_AXIS_LTRIGGER,
+    orxJOYSTICK_7_AXIS_RTRIGGER,
+    orxJOYSTICK_8_AXIS_LX,
+    orxJOYSTICK_8_AXIS_LY,
+    orxJOYSTICK_8_AXIS_RX,
+    orxJOYSTICK_8_AXIS_RY,
+    orxJOYSTICK_8_AXIS_LTRIGGER,
+    orxJOYSTICK_8_AXIS_RTRIGGER,
+    orxJOYSTICK_9_AXIS_LX,
+    orxJOYSTICK_9_AXIS_LY,
+    orxJOYSTICK_9_AXIS_RX,
+    orxJOYSTICK_9_AXIS_RY,
+    orxJOYSTICK_9_AXIS_LTRIGGER,
+    orxJOYSTICK_9_AXIS_RTRIGGER,
+    orxJOYSTICK_10_AXIS_LX,
+    orxJOYSTICK_10_AXIS_LY,
+    orxJOYSTICK_10_AXIS_RX,
+    orxJOYSTICK_10_AXIS_RY,
+    orxJOYSTICK_10_AXIS_LTRIGGER,
+    orxJOYSTICK_10_AXIS_RTRIGGER,
+    orxJOYSTICK_11_AXIS_LX,
+    orxJOYSTICK_11_AXIS_LY,
+    orxJOYSTICK_11_AXIS_RX,
+    orxJOYSTICK_11_AXIS_RY,
+    orxJOYSTICK_11_AXIS_LTRIGGER,
+    orxJOYSTICK_11_AXIS_RTRIGGER,
+    orxJOYSTICK_12_AXIS_LX,
+    orxJOYSTICK_12_AXIS_LY,
+    orxJOYSTICK_12_AXIS_RX,
+    orxJOYSTICK_12_AXIS_RY,
+    orxJOYSTICK_12_AXIS_LTRIGGER,
+    orxJOYSTICK_12_AXIS_RTRIGGER,
+    orxJOYSTICK_13_AXIS_LX,
+    orxJOYSTICK_13_AXIS_LY,
+    orxJOYSTICK_13_AXIS_RX,
+    orxJOYSTICK_13_AXIS_RY,
+    orxJOYSTICK_13_AXIS_LTRIGGER,
+    orxJOYSTICK_13_AXIS_RTRIGGER,
+    orxJOYSTICK_14_AXIS_LX,
+    orxJOYSTICK_14_AXIS_LY,
+    orxJOYSTICK_14_AXIS_RX,
+    orxJOYSTICK_14_AXIS_RY,
+    orxJOYSTICK_14_AXIS_LTRIGGER,
+    orxJOYSTICK_14_AXIS_RTRIGGER,
+    orxJOYSTICK_15_AXIS_LX,
+    orxJOYSTICK_15_AXIS_LY,
+    orxJOYSTICK_15_AXIS_RX,
+    orxJOYSTICK_15_AXIS_RY,
+    orxJOYSTICK_15_AXIS_LTRIGGER,
+    orxJOYSTICK_15_AXIS_RTRIGGER,
+    orxJOYSTICK_16_AXIS_LX,
+    orxJOYSTICK_16_AXIS_LY,
+    orxJOYSTICK_16_AXIS_RX,
+    orxJOYSTICK_16_AXIS_RY,
+    orxJOYSTICK_16_AXIS_LTRIGGER,
+    orxJOYSTICK_16_AXIS_RTRIGGER,
+    orxJOYSTICK_AXIS_NUMBER,
+    orxJOYSTICK_AXIS_NONE = orxENUM_NONE
 
 const
   orxJOYSTICK_AXIS_LX_2 = orxJOYSTICK_AXIS_SINGLE_NUMBER
