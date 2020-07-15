@@ -33,16 +33,20 @@ See `samples` directory or [norxsample](https.//github.com/gokr/norxsample) exam
 # Norx vs Orx
 These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:
 
-* Norx wrappers have been stripped of "module prefixes", so in ORX you have `orxObject_SetSpeed` but in Norx it's `setSpeed`.
-* Some names have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` in basically all modules but... you normally don't call those yourself.
-* `orxCHAR *` has been mapped to `cstring` so you can pass Nim strings into all ORX functions just fine, since they are compatible with `cstring`.
-* If you get a `cstring` back you can either keep it as such, or convert it to a Nim string using `$` but that will cause a copy of course.
-* All memory allocation/deallocation of ORX things are done by ORX.
-* Generally all ORX things are `ptr orxBLABLA` and not wrapped or such. If you keep such around, remember that they may disappear on you when ORX deallocates!
-* Passing procs as callbacks to ORX works fine, as long as they are marked with `{.cdecl.}`, this can be seen in the examples where the update, run, exit procs are marked that way.
-* The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`.
-* Vectors are represented as Nim tuples right now.
-* Some ORX structs use anonymous unions, this doesn't really work in Nim so... for example in Vector, which has 3 floats, I created in Nim different types depending on what kind of Vector it is. They are all tuple of three floats however, so should be compatible.
+* Norx wrappers have been stripped of "module prefixes", so in ORX you have `orxObject_SetSpeed` but in Norx it's `setSpeed`, first character lower case.
+* Some very common function names (that lots of modules share) have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` and `Get` in basically all modules. Of those you normally would only use `Get` yourself.
+* All memory allocation/deallocation of ORX things are done by ORX. If you stick to "normal" Nim code, all Nim memory is garbage collected by Nim.
+* `orxCHAR *` has been mapped to `cstring` so you can pass Nim strings into all ORX functions just fine, since they are compatible with `cstring`. Remember that Nim strings are garbage collected by Nim so passing temporary strings into ORX can be dangerous if ORX keeps that pointer around. I haven't looked at ORX source to see if that is a common pattern, I suspect not.
+* If you get a `cstring` from ORX you can either keep it as such, but then beware that ORX decides when to deallocate it, or convert it to a Nim string using `$` but that will cause a copy of course. The positive is that you are then safe.
+* Generally all ORX things are `ptr orxBLABLA` and not wrapped by Norx. If you keep such around, remember that they may disappear on you when ORX deallocates!
+* Passing procs as callbacks to ORX works fine, as long as they are marked with the Nim pragma `{.cdecl.}`, this can be seen in the examples where the update, run, exit, update procs are marked that way.
+* The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`. See `sample2` which does that. Note that this style is NOT the recommended ORX style, since that loop varies depending on platform (Android has some special parts) and normally that loop is in the ORX codebase so if ORX evolves it may change how it is supposed to work.
+* Vectors are represented as Nim tuples right now. **We are still considering how to best handle these, and Colors too**.
+* Some ORX structs use anonymous unions, this doesn't really work in Nim so... for example in Vector, which has 3 floats, I created in Nim different types depending on what kind of Vector it is. They are all tuple of three floats however, so should be compatible. Again, this may change.
+* ORX builds three libraries. `liborx.so[dll|dylib]` is the release version of ORX. `liborxd.so[dll|dylib]` is the debug version. `liborxp.so[dll|dylib]` is the profile version. Norx will pick which one to dynamically load according to:
+  * Pass `-d:release` to load the release version. This is the normal way to build a release binary with Nim.
+  * Pass `-d:debug` to load the debug version. This is the normal way to build a debug binary with Nim.
+  * Pass `-d:profile` to load the profile version.
 * ...and well, I will add to this list as things come up.
 
 
