@@ -18,6 +18,11 @@
 
 #[
   See tutorial S01_object.nim for more info about the basic object creation.
+  
+  For details about Orx side , please refer to the tutorial of the C++ sample:
+  https://wiki.orx-project.org/en/tutorials/clock
+
+  Summary is:
   Here we register our callback on 2 different clocks for didactic purpose only.
   All objects can of course be updated with only one clock, and the given clock context is also
   used here for demonstration only.
@@ -34,20 +39,80 @@
   of tick size = 1 second.
 ]#
 
-import norx, norx/[incl, config, viewport, obj, input]
+import strformat
+import norx, norx/[incl, config, viewport, obj, input, keyboard]
+
+
+#[
+  orxCLOCK       *pstClock1, *pstClock2, *pstMainClock;
+  orxOBJECT      *pstObject1, *pstObject2;
+  orxINPUT_TYPE   eType;
+  orxENUM         eID;
+  orxINPUT_MODE   eMode;
+  const orxSTRING zInputLog;
+  const orxSTRING zInputFaster;
+  const orxSTRING zInputSlower;
+  const orxSTRING zInputNormal;
+
+  /* Gets input binding names */
+  orxInput_GetBinding("Log", 0, &eType, &eID, &eMode);
+  zInputLog     = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Faster", 0, &eType, &eID, &eMode);
+  zInputFaster  = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Slower", 0, &eType, &eID, &eMode);
+  zInputSlower  = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Normal", 0, &eType, &eID, &eMode);
+  zInputNormal  = orxInput_GetBindingName(eType, eID, eMode);
+]#
+
+proc get_binding_name( input_name:string) :cstring =
+  # C++ : orxInput_GetBinding , Nim : getBinding (in « oinput.nim » )
+  var eType :orxINPUT_TYPE
+  var eID :orxENUM
+  var eMode :orxINPUT_MODE
+
+  var is_ok = getBinding( input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
+  if is_ok == orxSTATUS_SUCCESS:
+    echo getKeyDisplayName( (orxKEYBOARD_KEY) eID)
+    return getKeyDisplayName( (orxKEYBOARD_KEY) eID)
+
+  return fmt"key {input_name} not found"
 
 
 proc init(): orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
+
+#[
+proc getBinding*(
+zName: cstring; u32BindingIndex: orxU32;
+peType: ptr orxINPUT_TYPE; peID: ptr orxENUM; peMode: ptr orxINPUT_MODE)
+: orxSTATUS
+{.cdecl, importc: "orxInput_GetBinding", dynlib: libORX.}
+  ## Gets an input binding (mouse/joystick button, keyboard key or joystick axis) at a given index
+  ##  @param[in]   _zName            Concerned input name
+  ##  @param[in]   _u32BindingIndex  Index of the desired binding, should be less than orxINPUT_KU32_BINDING_NUMBER
+  ##  @param[out]  _peType           Binding type (if a slot is not bound, its value is orxINPUT_TYPE_NONE)
+  ##  @param[out]  _peID             Binding ID (button/key/axis)
+  ##  @param[out]  _peMode           Mode (only used for axis inputs)
+  ##  @return orxSTATUS_SUCCESS if input exists, orxSTATUS_FAILURE otherwise
+]#
+
+
+
+#  echo (eType, getKeyDisplayName((orxKEYBOARD_KEY) eID),eMode)
+
   # for getting logs in a file , as well as terminal output, compile in debug.
   # Displays a small hint in console.
-  orxLOG("""
-* Press '%s' to toggle log display
+  orxLOG(fmt"""
+* Press {get_binding_name("Log")} to toggle log display
 
 * To stretch time for the first clock (updating the box):
-* Press key '%s' to set it 4 times faster
-* Press key '%s' to set it 4 times slower
-* Press key '%s' to set it back to normal""")
+* Press key {get_binding_name("Faster")} to set it 4 times faster
+* Press key {get_binding_name("Slower")} to set it 4 times slower
+* Press key {get_binding_name("Normal")} to set it back to normal""")
          #, zInputLog,  zInputFaster, zInputSlower, zInputNormal);
 
 
@@ -58,7 +123,7 @@ proc init(): orxSTATUS {.cdecl.} =
     result = orxSTATUS_FAILURE
 
   # Creates object
-  var ores = objectCreateFromConfig("Object");
+  var ores = objectCreateFromConfig("Object1");
   if ores.isNil:
     result = orxSTATUS_FAILURE
 
@@ -90,6 +155,71 @@ Main()
 
 
 #[
+
+/** Inits the tutorial
+ */
+orxSTATUS orxFASTCALL Init()
+{
+  orxCLOCK       *pstClock1, *pstClock2, *pstMainClock;
+  orxOBJECT      *pstObject1, *pstObject2;
+  orxINPUT_TYPE   eType;
+  orxENUM         eID;
+  orxINPUT_MODE   eMode;
+  const orxSTRING zInputLog;
+  const orxSTRING zInputFaster;
+  const orxSTRING zInputSlower;
+  const orxSTRING zInputNormal;
+
+  /* Gets input binding names */
+  orxInput_GetBinding("Log", 0, &eType, &eID, &eMode);
+  zInputLog     = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Faster", 0, &eType, &eID, &eMode);
+  zInputFaster  = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Slower", 0, &eType, &eID, &eMode);
+  zInputSlower  = orxInput_GetBindingName(eType, eID, eMode);
+
+  orxInput_GetBinding("Normal", 0, &eType, &eID, &eMode);
+  zInputNormal  = orxInput_GetBindingName(eType, eID, eMode);
+
+  /* Displays a small hint in console */
+  orxLOG("\n- Press '%s' to toggle log display"
+         "\n- To stretch time for the first clock (updating the box):"
+         "\n . Press numpad '%s' to set it 4 times faster"
+         "\n . Press numpad '%s' to set it 4 times slower"
+         "\n . Press numpad '%s' to set it back to normal", zInputLog,  zInputFaster, zInputSlower, zInputNormal);
+
+  /* Creates viewport */
+  orxViewport_CreateFromConfig("Viewport");
+
+  /* Creates objects */
+  pstObject1 = orxObject_CreateFromConfig("Object1");
+  pstObject2 = orxObject_CreateFromConfig("Object2");
+
+  /* Creates two user clocks: a 100Hz and a 5Hz */
+  pstClock1 = orxClock_CreateFromConfig("Clock1");
+  pstClock2 = orxClock_CreateFromConfig("Clock2");
+
+  /* Registers our update callback to these clocks with both object as context.
+   * The module ID is used to skip the call to this callback if the corresponding module
+   * is either not loaded or paused, which won't happen in this tutorial.
+   */
+  orxClock_Register(pstClock1, Update, pstObject1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  orxClock_Register(pstClock2, Update, pstObject2, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+
+  /* Gets main clock */
+  pstMainClock = orxClock_Get(orxCLOCK_KZ_CORE);
+
+  /* Registers our input update callback to it
+   * !!IMPORTANT!! *DO NOT* handle inputs in clock callbacks that are *NOT* registered to the main clock
+   * you might miss input status updates if the user clock runs slower than the main one
+   */
+  orxClock_Register(pstMainClock, InputUpdate, orxNULL, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+
+  /* Done! */
+  return orxSTATUS_SUCCESS;
+}
 
 
 /** Update callback
@@ -177,70 +307,6 @@ void orxFASTCALL InputUpdate(const orxCLOCK_INFO *_pstClockInfo, void *_pstConte
 }
 
 
-/** Inits the tutorial
- */
-orxSTATUS orxFASTCALL Init()
-{
-  orxCLOCK       *pstClock1, *pstClock2, *pstMainClock;
-  orxOBJECT      *pstObject1, *pstObject2;
-  orxINPUT_TYPE   eType;
-  orxENUM         eID;
-  orxINPUT_MODE   eMode;
-  const orxSTRING zInputLog;
-  const orxSTRING zInputFaster;
-  const orxSTRING zInputSlower;
-  const orxSTRING zInputNormal;
-
-  /* Gets input binding names */
-  orxInput_GetBinding("Log", 0, &eType, &eID, &eMode);
-  zInputLog     = orxInput_GetBindingName(eType, eID, eMode);
-
-  orxInput_GetBinding("Faster", 0, &eType, &eID, &eMode);
-  zInputFaster  = orxInput_GetBindingName(eType, eID, eMode);
-
-  orxInput_GetBinding("Slower", 0, &eType, &eID, &eMode);
-  zInputSlower  = orxInput_GetBindingName(eType, eID, eMode);
-
-  orxInput_GetBinding("Normal", 0, &eType, &eID, &eMode);
-  zInputNormal  = orxInput_GetBindingName(eType, eID, eMode);
-
-  /* Displays a small hint in console */
-  orxLOG("\n- Press '%s' to toggle log display"
-         "\n- To stretch time for the first clock (updating the box):"
-         "\n . Press numpad '%s' to set it 4 times faster"
-         "\n . Press numpad '%s' to set it 4 times slower"
-         "\n . Press numpad '%s' to set it back to normal", zInputLog,  zInputFaster, zInputSlower, zInputNormal);
-
-  /* Creates viewport */
-  orxViewport_CreateFromConfig("Viewport");
-
-  /* Creates objects */
-  pstObject1 = orxObject_CreateFromConfig("Object1");
-  pstObject2 = orxObject_CreateFromConfig("Object2");
-
-  /* Creates two user clocks: a 100Hz and a 5Hz */
-  pstClock1 = orxClock_CreateFromConfig("Clock1");
-  pstClock2 = orxClock_CreateFromConfig("Clock2");
-
-  /* Registers our update callback to these clocks with both object as context.
-   * The module ID is used to skip the call to this callback if the corresponding module
-   * is either not loaded or paused, which won't happen in this tutorial.
-   */
-  orxClock_Register(pstClock1, Update, pstObject1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
-  orxClock_Register(pstClock2, Update, pstObject2, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
-
-  /* Gets main clock */
-  pstMainClock = orxClock_Get(orxCLOCK_KZ_CORE);
-
-  /* Registers our input update callback to it
-   * !!IMPORTANT!! *DO NOT* handle inputs in clock callbacks that are *NOT* registered to the main clock
-   * you might miss input status updates if the user clock runs slower than the main one
-   */
-  orxClock_Register(pstMainClock, InputUpdate, orxNULL, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
-
-  /* Done! */
-  return orxSTATUS_SUCCESS;
-}
 
 /** Run function
  */
