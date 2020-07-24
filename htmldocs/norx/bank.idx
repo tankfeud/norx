@@ -1,0 +1,18 @@
+orxBANK	norx/bank.html#orxBANK	bank: orxBANK	
+orxBANK_KU32_FLAG_NONE	norx/bank.html#orxBANK_KU32_FLAG_NONE	bank: orxBANK_KU32_FLAG_NONE	
+orxBANK_KU32_FLAG_NOT_EXPANDABLE	norx/bank.html#orxBANK_KU32_FLAG_NOT_EXPANDABLE	bank: orxBANK_KU32_FLAG_NOT_EXPANDABLE	
+bankSetup	norx/bank.html#bankSetup	bank: bankSetup()	
+bankInit	norx/bank.html#bankInit	bank: bankInit(): orxSTATUS	
+bankExit	norx/bank.html#bankExit	bank: bankExit()	
+bankCreate	norx/bank.html#bankCreate,orxU16,orxU32,orxU32,orxMEMORY_TYPE	bank: bankCreate(u16NbElem: orxU16; u32Size: orxU32; u32Flags: orxU32;\n           eMemType: orxMEMORY_TYPE): ptr orxBANK	
+delete	norx/bank.html#delete,ptr.orxBANK	bank: delete(pstBank: ptr orxBANK)	
+allocate	norx/bank.html#allocate,ptr.orxBANK	bank: allocate(pstBank: ptr orxBANK): pointer	
+allocateIndexed	norx/bank.html#allocateIndexed,ptr.orxBANK,ptr.orxU32,ptr.pointer	bank: allocateIndexed(pstBank: ptr orxBANK; pu32ItemIndex: ptr orxU32;\n                ppPrevious: ptr pointer): pointer	
+free	norx/bank.html#free,ptr.orxBANK,pointer	bank: free(pstBank: ptr orxBANK; pCell: pointer)	
+clear	norx/bank.html#clear,ptr.orxBANK	bank: clear(pstBank: ptr orxBANK)	
+compact	norx/bank.html#compact,ptr.orxBANK	bank: compact(pstBank: ptr orxBANK)	
+compactAll	norx/bank.html#compactAll	bank: compactAll()	
+getNext	norx/bank.html#getNext,ptr.orxBANK,pointer	bank: getNext(pstBank: ptr orxBANK; pCell: pointer): pointer	
+getIndex	norx/bank.html#getIndex,ptr.orxBANK,pointer	bank: getIndex(pstBank: ptr orxBANK; pCell: pointer): orxU32	
+getAtIndex	norx/bank.html#getAtIndex,ptr.orxBANK,orxU32	bank: getAtIndex(pstBank: ptr orxBANK; u32Index: orxU32): pointer	
+getCount	norx/bank.html#getCount,ptr.orxBANK	bank: getCount(pstBank: ptr orxBANK): orxU32	

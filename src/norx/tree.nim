@@ -2,14 +2,14 @@ import incl, debug
 
 type
   orxTREE_NODE* {.bycopy.} = object
-    pstParent*: ptr orxTREE_NODE ## *< Parent node pointer : 4/8
-    pstChild*: ptr orxTREE_NODE  ## *< First child node pointer : 8/16
-    pstSibling*: ptr orxTREE_NODE ## *< Next sibling node pointer : 12/24
-    pstPrevious*: ptr orxTREE_NODE ## *< Previous sibling node pointer : 16/32
-    pstTree*: ptr orxTREE        ## *< Associated tree pointer : 20/40
+    pstParent*: ptr orxTREE_NODE ## Parent node pointer : 4/8
+    pstChild*: ptr orxTREE_NODE  ## First child node pointer : 8/16
+    pstSibling*: ptr orxTREE_NODE ## Next sibling node pointer : 12/24
+    pstPrevious*: ptr orxTREE_NODE ## Previous sibling node pointer : 16/32
+    pstTree*: ptr orxTREE        ## Associated tree pointer : 20/40
   orxTREE* {.bycopy.} = object
-    pstRoot*: ptr orxTREE_NODE  ## *< Root node pointer : 4/8
-    u32Count*: orxU32          ## *< Node count : 8/12
+    pstRoot*: ptr orxTREE_NODE  ## Root node pointer : 4/8
+    u32Count*: orxU32          ## Node count : 8/12
 
 proc clean*(pstTree: ptr orxTREE): orxSTATUS {.cdecl,
     importc: "orxTree_Clean", dynlib: libORX.}

@@ -9,12 +9,12 @@ type orxTIMELINE* = object
 
 type
   orxTIMELINE_EVENT* {.size: sizeof(cint).} = enum
-    orxTIMELINE_EVENT_TRACK_START = 0, ## *< Event sent when a track starts
-    orxTIMELINE_EVENT_TRACK_STOP, ## *< Event sent when a track stops
-    orxTIMELINE_EVENT_TRACK_ADD, ## *< Event sent when a track is added
-    orxTIMELINE_EVENT_TRACK_REMOVE, ## *< Event sent when a track is removed
-    orxTIMELINE_EVENT_LOOP,   ## *< Event sent when a track is looping
-    orxTIMELINE_EVENT_TRIGGER, ## *< Event sent when an event is triggered
+    orxTIMELINE_EVENT_TRACK_START = 0, ## Event sent when a track starts
+    orxTIMELINE_EVENT_TRACK_STOP, ## Event sent when a track stops
+    orxTIMELINE_EVENT_TRACK_ADD, ## Event sent when a track is added
+    orxTIMELINE_EVENT_TRACK_REMOVE, ## Event sent when a track is removed
+    orxTIMELINE_EVENT_LOOP,   ## Event sent when a track is looping
+    orxTIMELINE_EVENT_TRIGGER, ## Event sent when an event is triggered
     orxTIMELINE_EVENT_NUMBER, orxTIMELINE_EVENT_NONE = orxENUM_NONE
 
 
@@ -23,10 +23,10 @@ type
 
 type
   orxTIMELINE_EVENT_PAYLOAD* {.bycopy.} = object
-    pstTimeLine*: ptr orxTIMELINE ## *< TimeLine reference : 4
-    zTrackName*: cstring    ## *< Track name : 8
-    zEvent*: cstring        ## *< Event text : 12
-    fTimeStamp*: orxFLOAT      ## *< Event time : 16
+    pstTimeLine*: ptr orxTIMELINE ## TimeLine reference : 4
+    zTrackName*: cstring    ## Track name : 8
+    zEvent*: cstring        ## Event text : 12
+    fTimeStamp*: orxFLOAT      ## Event time : 16
 
 
 proc timeLineSetup*() {.cdecl, importc: "orxTimeLine_Setup", dynlib: libORX.}

@@ -1,0 +1,49 @@
+orxFRAME_KU32_FLAG_NONE	norx/frame.html#orxFRAME_KU32_FLAG_NONE	frame: orxFRAME_KU32_FLAG_NONE	
+orxFRAME_KU32_FLAG_SCROLL_X	norx/frame.html#orxFRAME_KU32_FLAG_SCROLL_X	frame: orxFRAME_KU32_FLAG_SCROLL_X	
+orxFRAME_KU32_FLAG_SCROLL_Y	norx/frame.html#orxFRAME_KU32_FLAG_SCROLL_Y	frame: orxFRAME_KU32_FLAG_SCROLL_Y	
+orxFRAME_KU32_MASK_SCROLL_BOTH	norx/frame.html#orxFRAME_KU32_MASK_SCROLL_BOTH	frame: orxFRAME_KU32_MASK_SCROLL_BOTH	
+orxFRAME_KU32_FLAG_DEPTH_SCALE	norx/frame.html#orxFRAME_KU32_FLAG_DEPTH_SCALE	frame: orxFRAME_KU32_FLAG_DEPTH_SCALE	
+orxFRAME_KU32_FLAG_FLIP_X	norx/frame.html#orxFRAME_KU32_FLAG_FLIP_X	frame: orxFRAME_KU32_FLAG_FLIP_X	
+orxFRAME_KU32_FLAG_FLIP_Y	norx/frame.html#orxFRAME_KU32_FLAG_FLIP_Y	frame: orxFRAME_KU32_FLAG_FLIP_Y	
+orxFRAME_KU32_MASK_FLIP_BOTH	norx/frame.html#orxFRAME_KU32_MASK_FLIP_BOTH	frame: orxFRAME_KU32_MASK_FLIP_BOTH	
+orxFRAME_KU32_FLAG_IGNORE_NONE	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_NONE	frame: orxFRAME_KU32_FLAG_IGNORE_NONE	
+orxFRAME_KU32_FLAG_IGNORE_ROTATION	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_ROTATION	frame: orxFRAME_KU32_FLAG_IGNORE_ROTATION	
+orxFRAME_KU32_FLAG_IGNORE_SCALE_X	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_SCALE_X	frame: orxFRAME_KU32_FLAG_IGNORE_SCALE_X	
+orxFRAME_KU32_FLAG_IGNORE_SCALE_Y	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_SCALE_Y	frame: orxFRAME_KU32_FLAG_IGNORE_SCALE_Y	
+orxFRAME_KU32_FLAG_IGNORE_SCALE_Z	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_SCALE_Z	frame: orxFRAME_KU32_FLAG_IGNORE_SCALE_Z	
+orxFRAME_KU32_MASK_IGNORE_SCALE	norx/frame.html#orxFRAME_KU32_MASK_IGNORE_SCALE	frame: orxFRAME_KU32_MASK_IGNORE_SCALE	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_ROTATION	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_ROTATION	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_ROTATION	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_X	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_X	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_X	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Y	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Y	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Y	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Z	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Z	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_SCALE_Z	
+orxFRAME_KU32_MASK_IGNORE_POSITION_SCALE	norx/frame.html#orxFRAME_KU32_MASK_IGNORE_POSITION_SCALE	frame: orxFRAME_KU32_MASK_IGNORE_POSITION_SCALE	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_X	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_X	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_X	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Y	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Y	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Y	
+orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Z	norx/frame.html#orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Z	frame: orxFRAME_KU32_FLAG_IGNORE_POSITION_POSITION_Z	
+orxFRAME_KU32_MASK_IGNORE_POSITION_POSITION	norx/frame.html#orxFRAME_KU32_MASK_IGNORE_POSITION_POSITION	frame: orxFRAME_KU32_MASK_IGNORE_POSITION_POSITION	
+orxFRAME_KU32_MASK_IGNORE_POSITION	norx/frame.html#orxFRAME_KU32_MASK_IGNORE_POSITION	frame: orxFRAME_KU32_MASK_IGNORE_POSITION	
+orxFRAME_KU32_MASK_IGNORE_ALL	norx/frame.html#orxFRAME_KU32_MASK_IGNORE_ALL	frame: orxFRAME_KU32_MASK_IGNORE_ALL	
+orxFRAME_KU32_MASK_USER_ALL	norx/frame.html#orxFRAME_KU32_MASK_USER_ALL	frame: orxFRAME_KU32_MASK_USER_ALL	
+orxFRAME_SPACE	norx/frame.html#orxFRAME_SPACE	frame: orxFRAME_SPACE	
+orxFRAME	norx/frame.html#orxFRAME	frame: orxFRAME	
+getIgnoreFlagValues	norx/frame.html#getIgnoreFlagValues,cstring	frame: getIgnoreFlagValues(zFlags: cstring): orxU32	
+getIgnoreFlagNames	norx/frame.html#getIgnoreFlagNames,orxU32	frame: getIgnoreFlagNames(u32Flags: orxU32): cstring	
+frameSetup	norx/frame.html#frameSetup	frame: frameSetup()	
+frameInit	norx/frame.html#frameInit	frame: frameInit(): orxSTATUS	
+frameExit	norx/frame.html#frameExit	frame: frameExit()	
+frameCreate	norx/frame.html#frameCreate,orxU32	frame: frameCreate(u32Flags: orxU32): ptr orxFRAME	
+delete	norx/frame.html#delete,ptr.orxFRAME	frame: delete(pstFrame: ptr orxFRAME): orxSTATUS	
+setParent	norx/frame.html#setParent,ptr.orxFRAME,ptr.orxFRAME	frame: setParent(pstFrame: ptr orxFRAME; pstParent: ptr orxFRAME)	
+getParent	norx/frame.html#getParent,ptr.orxFRAME	frame: getParent(pstFrame: ptr orxFRAME): ptr orxFRAME	
+getChild	norx/frame.html#getChild,ptr.orxFRAME	frame: getChild(pstFrame: ptr orxFRAME): ptr orxFRAME	
+getSibling	norx/frame.html#getSibling,ptr.orxFRAME	frame: getSibling(pstFrame: ptr orxFRAME): ptr orxFRAME	
+isRootChild	norx/frame.html#isRootChild,ptr.orxFRAME	frame: isRootChild(pstFrame: ptr orxFRAME): orxBOOL	
+setPosition	norx/frame.html#setPosition,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: setPosition(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; pvPos: ptr orxVECTOR)	
+setRotation	norx/frame.html#setRotation,ptr.orxFRAME,orxFRAME_SPACE,orxFLOAT	frame: setRotation(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; fRotation: orxFLOAT)	
+setScale	norx/frame.html#setScale,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: setScale(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; pvScale: ptr orxVECTOR)	
+getPosition	norx/frame.html#getPosition,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: getPosition(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; pvPos: ptr orxVECTOR): ptr orxVECTOR	
+getRotation	norx/frame.html#getRotation,ptr.orxFRAME,orxFRAME_SPACE	frame: getRotation(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE): orxFLOAT	
+getScale	norx/frame.html#getScale,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: getScale(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; pvScale: ptr orxVECTOR): ptr orxVECTOR	
+transformPosition	norx/frame.html#transformPosition,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: transformPosition(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE;\n                  pvPos: ptr orxVECTOR): ptr orxVECTOR	
+transformRotation	norx/frame.html#transformRotation,ptr.orxFRAME,orxFRAME_SPACE,orxFLOAT	frame: transformRotation(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; fRotation: orxFLOAT): orxFLOAT	
+transformScale	norx/frame.html#transformScale,ptr.orxFRAME,orxFRAME_SPACE,ptr.orxVECTOR	frame: transformScale(pstFrame: ptr orxFRAME; eSpace: orxFRAME_SPACE; pvScale: ptr orxVECTOR): ptr orxVECTOR	

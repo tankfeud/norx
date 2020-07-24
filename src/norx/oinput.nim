@@ -56,12 +56,12 @@ type
 
 type
   orxINPUT_EVENT_PAYLOAD* {.bycopy.} = object
-    zSetName*: cstring      ## *< Set name : 4/8
-    zInputName*: cstring    ## *< Input name : 8/16
-    aeType*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## *< Input binding type : 40/48
-    aeID*: array[orxINPUT_KU32_BINDING_NUMBER, orxENUM] ## *< Input binding ID : 72/80
-    aeMode*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_MODE] ## *< Input binding Mode : 104/112
-    afValue*: array[orxINPUT_KU32_BINDING_NUMBER, orxFLOAT] ## *< Input binding value : 136/144
+    zSetName*: cstring      ## Set name : 4/8
+    zInputName*: cstring    ## Input name : 8/16
+    aeType*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## Input binding type : 40/48
+    aeID*: array[orxINPUT_KU32_BINDING_NUMBER, orxENUM] ## Input binding ID : 72/80
+    aeMode*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_MODE] ## Input binding Mode : 104/112
+    afValue*: array[orxINPUT_KU32_BINDING_NUMBER, orxFLOAT] ## Input binding value : 136/144
 
 
 proc inputSetup*() {.cdecl, importc: "orxInput_Setup", dynlib: libORX.}

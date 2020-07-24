@@ -25,7 +25,7 @@ type orxVIEWPORT* = object
 
 type
   orxVIEWPORT_EVENT* {.size: sizeof(cint).} = enum
-    orxVIEWPORT_EVENT_RESIZE = 0, ## *< Event sent when a viewport has been resized
+    orxVIEWPORT_EVENT_RESIZE = 0, ## Event sent when a viewport has been resized
     orxVIEWPORT_EVENT_NUMBER, orxVIEWPORT_EVENT_NONE = orxENUM_NONE
 
 

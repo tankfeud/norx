@@ -40,17 +40,17 @@ type
 
 type
   orxRESOURCE_TYPE_INFO* {.bycopy.} = object
-    zTag*: cstring          ## *< Unique tag, mandatory
-    pfnLocate*: orxRESOURCE_FUNCTION_LOCATE ## *< Locate function, mandatory
-    pfnGetTime*: orxRESOURCE_FUNCTION_GET_TIME ## *< GetTime function, optional, for hotload support
-    pfnOpen*: orxRESOURCE_FUNCTION_OPEN ## *< Open function, mandatory
-    pfnClose*: orxRESOURCE_FUNCTION_CLOSE ## *< Close function, mandatory
-    pfnGetSize*: orxRESOURCE_FUNCTION_GET_SIZE ## *< GetSize function, mandatory
-    pfnSeek*: orxRESOURCE_FUNCTION_SEEK ## *< Seek function, mandatory
-    pfnTell*: orxRESOURCE_FUNCTION_TELL ## *< Tell function, mandatory
-    pfnRead*: orxRESOURCE_FUNCTION_READ ## *< Read function, mandatory
-    pfnWrite*: orxRESOURCE_FUNCTION_WRITE ## *< Write function, optional, for write support
-    pfnDelete*: orxRESOURCE_FUNCTION_DELETE ## *< Delete function, optional, for deletion support
+    zTag*: cstring          ## Unique tag, mandatory
+    pfnLocate*: orxRESOURCE_FUNCTION_LOCATE ## Locate function, mandatory
+    pfnGetTime*: orxRESOURCE_FUNCTION_GET_TIME ## GetTime function, optional, for hotload support
+    pfnOpen*: orxRESOURCE_FUNCTION_OPEN ## Open function, mandatory
+    pfnClose*: orxRESOURCE_FUNCTION_CLOSE ## Close function, mandatory
+    pfnGetSize*: orxRESOURCE_FUNCTION_GET_SIZE ## GetSize function, mandatory
+    pfnSeek*: orxRESOURCE_FUNCTION_SEEK ## Seek function, mandatory
+    pfnTell*: orxRESOURCE_FUNCTION_TELL ## Tell function, mandatory
+    pfnRead*: orxRESOURCE_FUNCTION_READ ## Read function, mandatory
+    pfnWrite*: orxRESOURCE_FUNCTION_WRITE ## Write function, optional, for write support
+    pfnDelete*: orxRESOURCE_FUNCTION_DELETE ## Delete function, optional, for deletion support
 
 
 ## * Event enum
@@ -67,11 +67,11 @@ type
 
 type
   orxRESOURCE_EVENT_PAYLOAD* {.bycopy.} = object
-    s64Time*: orxS64           ## *< New resource time : 8
-    zLocation*: cstring     ## *< Resource location : 12 / 16
-    pstTypeInfo*: ptr orxRESOURCE_TYPE_INFO ## *< Type info : 16 / 24
-    stGroupID*: orxSTRINGID    ## *< Group ID : 20 / 28
-    stNameID*: orxSTRINGID     ## *< Name ID : 24 / 32
+    s64Time*: orxS64           ## New resource time : 8
+    zLocation*: cstring     ## Resource location : 12 / 16
+    pstTypeInfo*: ptr orxRESOURCE_TYPE_INFO ## Type info : 16 / 24
+    stGroupID*: orxSTRINGID    ## Group ID : 20 / 28
+    stNameID*: orxSTRINGID     ## Name ID : 24 / 32
 
 
 proc resourceSetup*() {.cdecl, importc: "orxResource_Setup", dynlib: libORX.}

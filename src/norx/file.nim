@@ -14,14 +14,14 @@ const
 
 type
   orxFILE_INFO* {.bycopy.} = object
-    s64Size*: orxS64           ## *< File's size (in bytes)
-    s64TimeStamp*: orxS64      ## *< Timestamp of the last modification
-    u32Flags*: orxU32          ## *< File attributes (cf. list of available flags)
-    hInternal*: orxHANDLE      ## *< Internal use handle
-    zName*: array[256, orxCHAR] ## *< File's name
-    zPattern*: array[256, orxCHAR] ## *< Search pattern
-    zPath*: array[1024, orxCHAR] ## *< Directory's name where is stored the file
-    zFullName*: array[1280, orxCHAR] ## *< Full file name
+    s64Size*: orxS64           ## File's size (in bytes)
+    s64TimeStamp*: orxS64      ## Timestamp of the last modification
+    u32Flags*: orxU32          ## File attributes (cf. list of available flags)
+    hInternal*: orxHANDLE      ## Internal use handle
+    zName*: array[256, orxCHAR] ## File's name
+    zPattern*: array[256, orxCHAR] ## Search pattern
+    zPath*: array[1024, orxCHAR] ## Directory's name where is stored the file
+    zFullName*: array[1280, orxCHAR] ## Full file name
 
 
 ## * Internal File structure

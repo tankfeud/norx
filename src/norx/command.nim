@@ -29,26 +29,26 @@ type
 
 type
   orxCOMMAND_VAR_DEF* {.bycopy.} = object
-    zName*: cstring         ## *< Name : 4
-    eType*: orxCOMMAND_VAR_TYPE ## *< Type : 8
+    zName*: cstring         ## Name : 4
+    eType*: orxCOMMAND_VAR_TYPE ## Type : 8
 
 
 ## * Variable structure
 
 type
   INNER_C_UNION_orxCommand_95* {.bycopy, union.} = object
-    vValue*: orxVECTOR         ## *< Vector value : 12
-    zValue*: cstring        ## *< String value : 4
-    u32Value*: orxU32          ## *< U32 value : 4
-    s32Value*: orxS32          ## *< S32 value : 4
-    u64Value*: orxU64          ## *< U64 value : 8
-    s64Value*: orxS64          ## *< S64 value : 8
-    fValue*: orxFLOAT          ## *< Float value : 4
-    bValue*: orxBOOL           ## *< Bool value : 4
+    vValue*: orxVECTOR         ## Vector value : 12
+    zValue*: cstring        ## String value : 4
+    u32Value*: orxU32          ## U32 value : 4
+    s32Value*: orxS32          ## S32 value : 4
+    u64Value*: orxU64          ## U64 value : 8
+    s64Value*: orxS64          ## S64 value : 8
+    fValue*: orxFLOAT          ## Float value : 4
+    bValue*: orxBOOL           ## Bool value : 4
 
   orxCOMMAND_VAR* {.bycopy.} = object
     ano_orxCommand_103*: INNER_C_UNION_orxCommand_95
-    eType*: orxCOMMAND_VAR_TYPE ## *< Type : 16
+    eType*: orxCOMMAND_VAR_TYPE ## Type : 16
 
 
 ## * Command function type

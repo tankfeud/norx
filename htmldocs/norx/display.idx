@@ -1,0 +1,111 @@
+Functions directly implemented by orx core	norx/display.html
+orxRGBA	norx/display.html#orxRGBA	display: orxRGBA	
+orx2RGBA	norx/display.html#orx2RGBA.t,untyped,untyped,untyped,untyped	display: orx2RGBA(R, G, B, A: untyped): untyped	
+orxRGBA_R	norx/display.html#orxRGBA_R.t,untyped	display: orxRGBA_R(RGBA: untyped): untyped	
+orxRGBA_G	norx/display.html#orxRGBA_G.t,untyped	display: orxRGBA_G(RGBA: untyped): untyped	
+orxRGBA_B	norx/display.html#orxRGBA_B.t,untyped	display: orxRGBA_B(RGBA: untyped): untyped	
+orxRGBA_A	norx/display.html#orxRGBA_A.t,untyped	display: orxRGBA_A(RGBA: untyped): untyped	
+orxCOLOR_NORMALIZER	norx/display.html#orxCOLOR_NORMALIZER	display: orxCOLOR_NORMALIZER	
+orxCOLOR_DENORMALIZER	norx/display.html#orxCOLOR_DENORMALIZER	display: orxCOLOR_DENORMALIZER	
+orxBITMAP	norx/display.html#orxBITMAP	display: orxBITMAP	
+orxDISPLAY_VERTEX	norx/display.html#orxDISPLAY_VERTEX	display: orxDISPLAY_VERTEX	
+orxDISPLAY_TRANSFORM	norx/display.html#orxDISPLAY_TRANSFORM	display: orxDISPLAY_TRANSFORM	
+orxDISPLAY_PRIMITIVE	norx/display.html#orxDISPLAY_PRIMITIVE	display: orxDISPLAY_PRIMITIVE	
+orxDISPLAY_MESH	norx/display.html#orxDISPLAY_MESH	display: orxDISPLAY_MESH	
+orxDISPLAY_VIDEO_MODE	norx/display.html#orxDISPLAY_VIDEO_MODE	display: orxDISPLAY_VIDEO_MODE	
+orxCHARACTER_GLYPH	norx/display.html#orxCHARACTER_GLYPH	display: orxCHARACTER_GLYPH	
+orxCHARACTER_MAP	norx/display.html#orxCHARACTER_MAP	display: orxCHARACTER_MAP	
+orxDISPLAY_SMOOTHING	norx/display.html#orxDISPLAY_SMOOTHING	display: orxDISPLAY_SMOOTHING	
+orxDISPLAY_BLEND_MODE	norx/display.html#orxDISPLAY_BLEND_MODE	display: orxDISPLAY_BLEND_MODE	
+orxCOLOR	norx/display.html#orxCOLOR	display: orxCOLOR	
+orxHSLCOLOR	norx/display.html#orxHSLCOLOR	display: orxHSLCOLOR	
+orxHSVCOLOR	norx/display.html#orxHSVCOLOR	display: orxHSVCOLOR	
+orxDISPLAY_KZ_CONFIG_SECTION	norx/display.html#orxDISPLAY_KZ_CONFIG_SECTION	display: orxDISPLAY_KZ_CONFIG_SECTION	
+orxDISPLAY_KZ_CONFIG_WIDTH	norx/display.html#orxDISPLAY_KZ_CONFIG_WIDTH	display: orxDISPLAY_KZ_CONFIG_WIDTH	
+orxDISPLAY_KZ_CONFIG_HEIGHT	norx/display.html#orxDISPLAY_KZ_CONFIG_HEIGHT	display: orxDISPLAY_KZ_CONFIG_HEIGHT	
+orxDISPLAY_KZ_CONFIG_DEPTH	norx/display.html#orxDISPLAY_KZ_CONFIG_DEPTH	display: orxDISPLAY_KZ_CONFIG_DEPTH	
+orxDISPLAY_KZ_CONFIG_POSITION	norx/display.html#orxDISPLAY_KZ_CONFIG_POSITION	display: orxDISPLAY_KZ_CONFIG_POSITION	
+orxDISPLAY_KZ_CONFIG_REFRESH_RATE	norx/display.html#orxDISPLAY_KZ_CONFIG_REFRESH_RATE	display: orxDISPLAY_KZ_CONFIG_REFRESH_RATE	
+orxDISPLAY_KZ_CONFIG_FULLSCREEN	norx/display.html#orxDISPLAY_KZ_CONFIG_FULLSCREEN	display: orxDISPLAY_KZ_CONFIG_FULLSCREEN	
+orxDISPLAY_KZ_CONFIG_ALLOW_RESIZE	norx/display.html#orxDISPLAY_KZ_CONFIG_ALLOW_RESIZE	display: orxDISPLAY_KZ_CONFIG_ALLOW_RESIZE	
+orxDISPLAY_KZ_CONFIG_DECORATION	norx/display.html#orxDISPLAY_KZ_CONFIG_DECORATION	display: orxDISPLAY_KZ_CONFIG_DECORATION	
+orxDISPLAY_KZ_CONFIG_TITLE	norx/display.html#orxDISPLAY_KZ_CONFIG_TITLE	display: orxDISPLAY_KZ_CONFIG_TITLE	
+orxDISPLAY_KZ_CONFIG_SMOOTH	norx/display.html#orxDISPLAY_KZ_CONFIG_SMOOTH	display: orxDISPLAY_KZ_CONFIG_SMOOTH	
+orxDISPLAY_KZ_CONFIG_VSYNC	norx/display.html#orxDISPLAY_KZ_CONFIG_VSYNC	display: orxDISPLAY_KZ_CONFIG_VSYNC	
+orxDISPLAY_KZ_CONFIG_DEPTHBUFFER	norx/display.html#orxDISPLAY_KZ_CONFIG_DEPTHBUFFER	display: orxDISPLAY_KZ_CONFIG_DEPTHBUFFER	
+orxDISPLAY_KZ_CONFIG_SHADER_VERSION	norx/display.html#orxDISPLAY_KZ_CONFIG_SHADER_VERSION	display: orxDISPLAY_KZ_CONFIG_SHADER_VERSION	
+orxDISPLAY_KZ_CONFIG_SHADER_EXTENSION_LIST	norx/display.html#orxDISPLAY_KZ_CONFIG_SHADER_EXTENSION_LIST	display: orxDISPLAY_KZ_CONFIG_SHADER_EXTENSION_LIST	
+orxDISPLAY_KZ_CONFIG_MONITOR	norx/display.html#orxDISPLAY_KZ_CONFIG_MONITOR	display: orxDISPLAY_KZ_CONFIG_MONITOR	
+orxDISPLAY_KZ_CONFIG_CURSOR	norx/display.html#orxDISPLAY_KZ_CONFIG_CURSOR	display: orxDISPLAY_KZ_CONFIG_CURSOR	
+orxDISPLAY_KZ_CONFIG_ICON_LIST	norx/display.html#orxDISPLAY_KZ_CONFIG_ICON_LIST	display: orxDISPLAY_KZ_CONFIG_ICON_LIST	
+orxDISPLAY_KZ_CONFIG_FRAMEBUFFER_SIZE	norx/display.html#orxDISPLAY_KZ_CONFIG_FRAMEBUFFER_SIZE	display: orxDISPLAY_KZ_CONFIG_FRAMEBUFFER_SIZE	
+orxDISPLAY_KZ_CONFIG_TEXTURE_UNIT_NUMBER	norx/display.html#orxDISPLAY_KZ_CONFIG_TEXTURE_UNIT_NUMBER	display: orxDISPLAY_KZ_CONFIG_TEXTURE_UNIT_NUMBER	
+orxDISPLAY_KZ_CONFIG_DRAW_BUFFER_NUMBER	norx/display.html#orxDISPLAY_KZ_CONFIG_DRAW_BUFFER_NUMBER	display: orxDISPLAY_KZ_CONFIG_DRAW_BUFFER_NUMBER	
+orxDISPLAY_KZ_SHADER_SUFFIX_TOP	norx/display.html#orxDISPLAY_KZ_SHADER_SUFFIX_TOP	display: orxDISPLAY_KZ_SHADER_SUFFIX_TOP	
+orxDISPLAY_KZ_SHADER_SUFFIX_LEFT	norx/display.html#orxDISPLAY_KZ_SHADER_SUFFIX_LEFT	display: orxDISPLAY_KZ_SHADER_SUFFIX_LEFT	
+orxDISPLAY_KZ_SHADER_SUFFIX_BOTTOM	norx/display.html#orxDISPLAY_KZ_SHADER_SUFFIX_BOTTOM	display: orxDISPLAY_KZ_SHADER_SUFFIX_BOTTOM	
+orxDISPLAY_KZ_SHADER_SUFFIX_RIGHT	norx/display.html#orxDISPLAY_KZ_SHADER_SUFFIX_RIGHT	display: orxDISPLAY_KZ_SHADER_SUFFIX_RIGHT	
+orxDISPLAY_KC_SHADER_EXTENSION_ADD	norx/display.html#orxDISPLAY_KC_SHADER_EXTENSION_ADD	display: orxDISPLAY_KC_SHADER_EXTENSION_ADD	
+orxDISPLAY_KC_SHADER_EXTENSION_REMOVE	norx/display.html#orxDISPLAY_KC_SHADER_EXTENSION_REMOVE	display: orxDISPLAY_KC_SHADER_EXTENSION_REMOVE	
+orxDISPLAY_EVENT	norx/display.html#orxDISPLAY_EVENT	display: orxDISPLAY_EVENT	
+INNER_C_STRUCT_orxDisplay_284	norx/display.html#INNER_C_STRUCT_orxDisplay_284	display: INNER_C_STRUCT_orxDisplay_284	
+INNER_C_STRUCT_orxDisplay_298	norx/display.html#INNER_C_STRUCT_orxDisplay_298	display: INNER_C_STRUCT_orxDisplay_298	
+INNER_C_UNION_orxDisplay_282	norx/display.html#INNER_C_UNION_orxDisplay_282	display: INNER_C_UNION_orxDisplay_282	
+orxDISPLAY_EVENT_PAYLOAD	norx/display.html#orxDISPLAY_EVENT_PAYLOAD	display: orxDISPLAY_EVENT_PAYLOAD	
+displaySetup	norx/display.html#displaySetup	display: displaySetup()	
+orxRGBA_Set	norx/display.html#orxRGBA_Set,orxU8,orxU8,orxU8,orxU8	display: orxRGBA_Set(u8R: orxU8; u8G: orxU8; u8B: orxU8; u8A: orxU8): orxRGBA	
+setRGBA	norx/display.html#setRGBA,ptr.orxCOLOR,orxRGBA	display: setRGBA(pstColor: ptr orxCOLOR; stRGBA: orxRGBA)	
+set	norx/display.html#set,ptr.orxCOLOR,ptr.orxVECTOR,orxFLOAT	display: set(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR; fAlpha: orxFLOAT)	
+setRGB	norx/display.html#setRGB,ptr.orxCOLOR,ptr.orxVECTOR	display: setRGB(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR)	
+setAlpha	norx/display.html#setAlpha,ptr.orxCOLOR,orxFLOAT	display: setAlpha(pstColor: ptr orxCOLOR; fAlpha: orxFLOAT)	
+toRGBA	norx/display.html#toRGBA,ptr.orxCOLOR	display: toRGBA(pstColor: ptr orxCOLOR): orxRGBA	
+copy	norx/display.html#copy,ptr.orxCOLOR,ptr.orxCOLOR	display: copy(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR	
+fromRGBToHSL	norx/display.html#fromRGBToHSL,ptr.orxCOLOR,ptr.orxCOLOR	display: fromRGBToHSL(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR	
+fromHSLToRGB	norx/display.html#fromHSLToRGB,ptr.orxCOLOR,ptr.orxCOLOR	display: fromHSLToRGB(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR	
+fromHSVToRGB	norx/display.html#fromHSVToRGB,ptr.orxCOLOR,ptr.orxCOLOR	display: fromHSVToRGB(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR	
+getBlendModeFromString	norx/display.html#getBlendModeFromString,cstring	display: getBlendModeFromString(zBlendMode: cstring): orxDISPLAY_BLEND_MODE	
+displayInit	norx/display.html#displayInit	display: displayInit(): orxSTATUS	
+displayExit	norx/display.html#displayExit	display: displayExit()	
+swap	norx/display.html#swap	display: swap(): orxSTATUS	
+getScreenBitmap	norx/display.html#getScreenBitmap	display: getScreenBitmap(): ptr orxBITMAP	
+getScreenSize	norx/display.html#getScreenSize,ptr.orxFLOAT,ptr.orxFLOAT	display: getScreenSize(pfWidth: ptr orxFLOAT; pfHeight: ptr orxFLOAT): orxSTATUS	
+createBitmap	norx/display.html#createBitmap,orxU32,orxU32	display: createBitmap(u32Width: orxU32; u32Height: orxU32): ptr orxBITMAP	
+deleteBitmap	norx/display.html#deleteBitmap,ptr.orxBITMAP	display: deleteBitmap(pstBitmap: ptr orxBITMAP)	
+loadBitmap	norx/display.html#loadBitmap,cstring	display: loadBitmap(zFileName: cstring): ptr orxBITMAP	
+saveBitmap	norx/display.html#saveBitmap,ptr.orxBITMAP,cstring	display: saveBitmap(pstBitmap: ptr orxBITMAP; zFileName: cstring): orxSTATUS	
+setTempBitmap	norx/display.html#setTempBitmap,ptr.orxBITMAP	display: setTempBitmap(pstBitmap: ptr orxBITMAP): orxSTATUS	
+getTempBitmap	norx/display.html#getTempBitmap	display: getTempBitmap(): ptr orxBITMAP	
+setDestinationBitmaps	norx/display.html#setDestinationBitmaps,ptr.ptr.orxBITMAP,orxU32	display: setDestinationBitmaps(apstBitmapList: ptr ptr orxBITMAP; u32Number: orxU32): orxSTATUS	
+clearBitmap	norx/display.html#clearBitmap,ptr.orxBITMAP,orxRGBA	display: clearBitmap(pstBitmap: ptr orxBITMAP; stColor: orxRGBA): orxSTATUS	
+setBlendMode	norx/display.html#setBlendMode,orxDISPLAY_BLEND_MODE	display: setBlendMode(eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS	
+setBitmapClipping	norx/display.html#setBitmapClipping,ptr.orxBITMAP,orxU32,orxU32,orxU32,orxU32	display: setBitmapClipping(pstBitmap: ptr orxBITMAP; u32TLX: orxU32; u32TLY: orxU32;\n                  u32BRX: orxU32; u32BRY: orxU32): orxSTATUS	
+setBitmapData	norx/display.html#setBitmapData,ptr.orxBITMAP,ptr.orxU8,orxU32	display: setBitmapData(pstBitmap: ptr orxBITMAP; au8Data: ptr orxU8; u32ByteNumber: orxU32): orxSTATUS	
+getBitmapData	norx/display.html#getBitmapData,ptr.orxBITMAP,ptr.orxU8,orxU32	display: getBitmapData(pstBitmap: ptr orxBITMAP; au8Data: ptr orxU8; u32ByteNumber: orxU32): orxSTATUS	
+setPartialBitmapData	norx/display.html#setPartialBitmapData,ptr.orxBITMAP,ptr.orxU8,orxU32,orxU32,orxU32,orxU32	display: setPartialBitmapData(pstBitmap: ptr orxBITMAP; au8Data: ptr orxU8; u32X: orxU32;\n                     u32Y: orxU32; u32Width: orxU32; u32Height: orxU32): orxSTATUS	
+getBitmapSize	norx/display.html#getBitmapSize,ptr.orxBITMAP,ptr.orxFLOAT,ptr.orxFLOAT	display: getBitmapSize(pstBitmap: ptr orxBITMAP; pfWidth: ptr orxFLOAT; pfHeight: ptr orxFLOAT): orxSTATUS	
+getBitmapID	norx/display.html#getBitmapID,ptr.orxBITMAP	display: getBitmapID(pstBitmap: ptr orxBITMAP): orxU32	
+transformBitmap	norx/display.html#transformBitmap,ptr.orxBITMAP,ptr.orxDISPLAY_TRANSFORM,orxRGBA,orxDISPLAY_SMOOTHING,orxDISPLAY_BLEND_MODE	display: transformBitmap(pstSrc: ptr orxBITMAP; pstTransform: ptr orxDISPLAY_TRANSFORM;\n                stColor: orxRGBA; eSmoothing: orxDISPLAY_SMOOTHING;\n                eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS	
+transformText	norx/display.html#transformText,cstring,ptr.orxBITMAP,ptr.orxCHARACTER_MAP,ptr.orxDISPLAY_TRANSFORM,orxRGBA,orxDISPLAY_SMOOTHING,orxDISPLAY_BLEND_MODE	display: transformText(zString: cstring; pstFont: ptr orxBITMAP; pstMap: ptr orxCHARACTER_MAP;\n              pstTransform: ptr orxDISPLAY_TRANSFORM; stColor: orxRGBA;\n              eSmoothing: orxDISPLAY_SMOOTHING; eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS	
+drawLine	norx/display.html#drawLine,ptr.orxVECTOR,ptr.orxVECTOR,orxRGBA	display: drawLine(pvStart: ptr orxVECTOR; pvEnd: ptr orxVECTOR; stColor: orxRGBA): orxSTATUS	
+drawPolyline	norx/display.html#drawPolyline,ptr.orxVECTOR,orxU32,orxRGBA	display: drawPolyline(avVertexList: ptr orxVECTOR; u32VertexNumber: orxU32; stColor: orxRGBA): orxSTATUS	
+drawPolygon	norx/display.html#drawPolygon,ptr.orxVECTOR,orxU32,orxRGBA,orxBOOL	display: drawPolygon(avVertexList: ptr orxVECTOR; u32VertexNumber: orxU32; stColor: orxRGBA;\n            bFill: orxBOOL): orxSTATUS	
+drawCircle	norx/display.html#drawCircle,ptr.orxVECTOR,orxFLOAT,orxRGBA,orxBOOL	display: drawCircle(pvCenter: ptr orxVECTOR; fRadius: orxFLOAT; stColor: orxRGBA; bFill: orxBOOL): orxSTATUS	
+drawOBox	norx/display.html#drawOBox,ptr.orxOBOX,orxRGBA,orxBOOL	display: drawOBox(pstBox: ptr orxOBOX; stColor: orxRGBA; bFill: orxBOOL): orxSTATUS	
+drawMesh	norx/display.html#drawMesh,ptr.orxDISPLAY_MESH,ptr.orxBITMAP,orxDISPLAY_SMOOTHING,orxDISPLAY_BLEND_MODE	display: drawMesh(pstMesh: ptr orxDISPLAY_MESH; pstBitmap: ptr orxBITMAP;\n         eSmoothing: orxDISPLAY_SMOOTHING; eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS	
+hasShaderSupport	norx/display.html#hasShaderSupport	display: hasShaderSupport(): orxBOOL	
+createShader	norx/display.html#createShader,cstringArray,orxU32,ptr.orxLINKLIST,orxBOOL	display: createShader(azCodeList: cstringArray; u32Size: orxU32;\n             pstParamList: ptr orxLINKLIST; bUseCustomParam: orxBOOL): orxHANDLE	
+deleteShader	norx/display.html#deleteShader,orxHANDLE	display: deleteShader(hShader: orxHANDLE)	
+startShader	norx/display.html#startShader,orxHANDLE	display: startShader(hShader: orxHANDLE): orxSTATUS	
+stopShader	norx/display.html#stopShader,orxHANDLE	display: stopShader(hShader: orxHANDLE): orxSTATUS	
+getParameterID	norx/display.html#getParameterID,orxHANDLE,cstring,orxS32,orxBOOL	display: getParameterID(hShader: orxHANDLE; zParam: cstring; s32Index: orxS32;\n               bIsTexture: orxBOOL): orxS32	
+setShaderBitmap	norx/display.html#setShaderBitmap,orxHANDLE,orxS32,ptr.orxBITMAP	display: setShaderBitmap(hShader: orxHANDLE; s32ID: orxS32; pstValue: ptr orxBITMAP): orxSTATUS	
+setShaderFloat	norx/display.html#setShaderFloat,orxHANDLE,orxS32,orxFLOAT	display: setShaderFloat(hShader: orxHANDLE; s32ID: orxS32; fValue: orxFLOAT): orxSTATUS	
+setShaderVector	norx/display.html#setShaderVector,orxHANDLE,orxS32,ptr.orxVECTOR	display: setShaderVector(hShader: orxHANDLE; s32ID: orxS32; pvValue: ptr orxVECTOR): orxSTATUS	
+enableVSync	norx/display.html#enableVSync,orxBOOL	display: enableVSync(bEnable: orxBOOL): orxSTATUS	
+isVSyncEnabled	norx/display.html#isVSyncEnabled	display: isVSyncEnabled(): orxBOOL	
+setFullScreen	norx/display.html#setFullScreen,orxBOOL	display: setFullScreen(bFullScreen: orxBOOL): orxSTATUS	
+isFullScreen	norx/display.html#isFullScreen	display: isFullScreen(): orxBOOL	
+getVideoModeCount	norx/display.html#getVideoModeCount	display: getVideoModeCount(): orxU32	
+getVideoMode	norx/display.html#getVideoMode,orxU32,ptr.orxDISPLAY_VIDEO_MODE	display: getVideoMode(u32Index: orxU32; pstVideoMode: ptr orxDISPLAY_VIDEO_MODE): ptr orxDISPLAY_VIDEO_MODE	
+setVideoMode	norx/display.html#setVideoMode,ptr.orxDISPLAY_VIDEO_MODE	display: setVideoMode(pstVideoMode: ptr orxDISPLAY_VIDEO_MODE): orxSTATUS	
+isVideoModeAvailable	norx/display.html#isVideoModeAvailable,ptr.orxDISPLAY_VIDEO_MODE	display: isVideoModeAvailable(pstVideoMode: ptr orxDISPLAY_VIDEO_MODE): orxBOOL	

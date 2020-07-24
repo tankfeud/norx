@@ -141,14 +141,14 @@ type
 
 type
   INNER_C_UNION_orxStructure_209* {.bycopy, union.} = object
-    stLinkListNode*: orxLINKLIST_NODE ## *< Linklist node : 28/40
-    stTreeNode*: orxTREE_NODE  ## *< Tree node : 36/56
+    stLinkListNode*: orxLINKLIST_NODE ## Linklist node : 28/40
+    stTreeNode*: orxTREE_NODE  ## Tree node : 36/56
 
   orxSTRUCTURE* {.bycopy.} = object
-    u64GUID*: orxU64           ## *< Structure GUID : 8
-    u64OwnerGUID*: orxU64      ## *< Owner's GUID : 16
-    stStorage*: INNER_C_UNION_orxStructure_209 ## *< Storage node union : 36/56
-    u32Flags*: orxU32          ## *< Flags : 40/64
+    u64GUID*: orxU64           ## Structure GUID : 8
+    u64OwnerGUID*: orxU64      ## Owner's GUID : 16
+    stStorage*: INNER_C_UNION_orxStructure_209 ## Storage node union : 36/56
+    u32Flags*: orxU32          ## Flags : 40/64
 
 
 ## * Structure update callback function type

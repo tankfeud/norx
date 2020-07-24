@@ -8,19 +8,19 @@ import
 
 type
   orxPLUGIN_CORE_FUNCTION* {.bycopy.} = object
-    eFunctionID*: orxPLUGIN_FUNCTION_ID ## *< Function ID : 4
-    pfnFunction*: ptr orxPLUGIN_FUNCTION ## *< Function Address : 8
-    pfnDefaultFunction*: orxPLUGIN_FUNCTION ## *< Default Function : 12
+    eFunctionID*: orxPLUGIN_FUNCTION_ID ## Function ID : 4
+    pfnFunction*: ptr orxPLUGIN_FUNCTION ## Function Address : 8
+    pfnDefaultFunction*: orxPLUGIN_FUNCTION ## Default Function : 12
 
 
 ##  Structure
 
 type
   orxPLUGIN_USER_FUNCTION_INFO* {.bycopy.} = object
-    eFunctionID*: orxPLUGIN_FUNCTION_ID ## *< Function ID
-    pfnFunction*: orxPLUGIN_FUNCTION ## *< Function Address
-    zFunctionArgs*: array[orxPLUGIN_KU32_FUNCTION_ARG_SIZE, orxCHAR] ## *< Function Argument Types
-    zFunctionName*: cstring ## *< Function Name
+    eFunctionID*: orxPLUGIN_FUNCTION_ID ## Function ID
+    pfnFunction*: orxPLUGIN_FUNCTION ## Function Address
+    zFunctionArgs*: array[orxPLUGIN_KU32_FUNCTION_ARG_SIZE, orxCHAR] ## Function Argument Types
+    zFunctionName*: cstring ## Function Name
 
 
 ## * Plugin init function prototype

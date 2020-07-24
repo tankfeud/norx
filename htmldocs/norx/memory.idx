@@ -1,0 +1,16 @@
+orxMEMORY_BARRIER	norx/memory.html#orxMEMORY_BARRIER.t	memory: orxMEMORY_BARRIER(): untyped	
+orxHAS_MEMORY_BARRIER	norx/memory.html#orxHAS_MEMORY_BARRIER	memory: orxHAS_MEMORY_BARRIER	
+orxMEMORY_TYPE	norx/memory.html#orxMEMORY_TYPE	memory: orxMEMORY_TYPE	
+memorySetup	norx/memory.html#memorySetup	memory: memorySetup()	
+memoryInit	norx/memory.html#memoryInit	memory: memoryInit(): orxSTATUS	
+memoryExit	norx/memory.html#memoryExit	memory: memoryExit()	
+allocate	norx/memory.html#allocate,orxU32,orxMEMORY_TYPE	memory: allocate(u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer	
+reallocate	norx/memory.html#reallocate,pointer,orxU32	memory: reallocate(pMem: pointer; u32Size: orxU32): pointer	
+free	norx/memory.html#free,pointer	memory: free(pMem: pointer)	
+copy	norx/memory.html#copy,pointer,pointer,orxU32	memory: copy(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer	
+move	norx/memory.html#move,pointer,pointer,orxU32	memory: move(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer	
+compare	norx/memory.html#compare,pointer,pointer,orxU32	memory: compare(pMem1: pointer; pMem2: pointer; u32Size: orxU32): orxU32	
+set	norx/memory.html#set,pointer,orxU8,orxU32	memory: set(pDest: pointer; u8Data: orxU8; u32Size: orxU32): pointer	
+zero	norx/memory.html#zero,pointer,orxU32	memory: zero(pDest: pointer; u32Size: orxU32): pointer	
+getTypeName	norx/memory.html#getTypeName,orxMEMORY_TYPE	memory: getTypeName(eMemType: orxMEMORY_TYPE): cstring	
+getCacheLineSize	norx/memory.html#getCacheLineSize	memory: getCacheLineSize(): orxU32	

@@ -3,8 +3,8 @@ import incl, vector, memory, typ
 ## Public structure definition
 type
   orxAABOX* {.bycopy.} = object
-    vTL*: orxVECTOR            ## *< Top left corner vector : 12
-    vBR*: orxVECTOR            ## *< Bottom right corner vector : 24
+    vTL*: orxVECTOR            ## Top left corner vector : 12
+    vBR*: orxVECTOR            ## Bottom right corner vector : 24
 
 proc reorder*(pstBox: ptr orxAABOX): ptr orxAABOX {.inline, cdecl.} =
   ##  Reorders AABox corners

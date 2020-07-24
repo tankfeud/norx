@@ -4,11 +4,11 @@ import incl, vector, pure/math, memory, decl
 type
   orxOBOX* {.bycopy.} = object
     ## Public oriented box structure
-    vPosition*: orxVECTOR      ## *< Position vector  : 12
-    vPivot*: orxVECTOR         ## *< Pivot vector     : 24
-    vX*: orxVECTOR             ## *< X axis vector    : 36
-    vY*: orxVECTOR             ## *< Y axis vector    : 48
-    vZ*: orxVECTOR             ## *< Z axis vector    : 60
+    vPosition*: orxVECTOR      ## Position vector  : 12
+    vPivot*: orxVECTOR         ## Pivot vector     : 24
+    vX*: orxVECTOR             ## X axis vector    : 36
+    vY*: orxVECTOR             ## Y axis vector    : 48
+    vZ*: orxVECTOR             ## Z axis vector    : 60
 
 proc twoDSet*(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR;
                    pvPivot: ptr orxVECTOR; pvSize: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxOBOX {.
