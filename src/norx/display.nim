@@ -211,20 +211,20 @@ type
 
 type
   INNER_C_STRUCT_orxDisplay_284* {.bycopy.} = object
-    u32Width*: orxU32          ## *< Screen width : 4
-    u32Height*: orxU32         ## *< Screen height : 8
-    u32Depth*: orxU32          ## *< Screen depth : 12
-    u32RefreshRate*: orxU32    ## *< Refresh rate: 16
-    u32PreviousWidth*: orxU32  ## *< Previous screen width : 20
-    u32PreviousHeight*: orxU32 ## *< Previous screen height : 24
-    u32PreviousDepth*: orxU32  ## *< Previous screen depth : 28
-    u32PreviousRefreshRate*: orxU32 ## *< Previous refresh rate : 32
-    bFullScreen*: orxBOOL      ## *< FullScreen? : 36
+    u32Width*: orxU32          ## Screen width : 4
+    u32Height*: orxU32         ## Screen height : 8
+    u32Depth*: orxU32          ## Screen depth : 12
+    u32RefreshRate*: orxU32    ## Refresh rate: 16
+    u32PreviousWidth*: orxU32  ## Previous screen width : 20
+    u32PreviousHeight*: orxU32 ## Previous screen height : 24
+    u32PreviousDepth*: orxU32  ## Previous screen depth : 28
+    u32PreviousRefreshRate*: orxU32 ## Previous refresh rate : 32
+    bFullScreen*: orxBOOL      ## FullScreen? : 36
 
   INNER_C_STRUCT_orxDisplay_298* {.bycopy.} = object
-    zLocation*: cstring     ## *< File location : 40
-    stFilenameID*: orxSTRINGID ## *< File name ID : 44
-    u32ID*: orxU32             ## *< Bitmap (hardware texture) ID : 48
+    zLocation*: cstring     ## File location : 40
+    stFilenameID*: orxSTRINGID ## File name ID : 44
+    u32ID*: orxU32             ## Bitmap (hardware texture) ID : 48
 
   INNER_C_UNION_orxDisplay_282* {.bycopy, union.} = object
     stVideoMode*: INNER_C_STRUCT_orxDisplay_284

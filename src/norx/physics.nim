@@ -59,13 +59,13 @@ const
 
 type
   orxBODY_DEF* {.bycopy.} = object
-    vPosition*: orxVECTOR      ## *< Position : 12
-    fRotation*: orxFLOAT       ## *< Rotation : 16
-    fInertia*: orxFLOAT        ## *< Inertia : 20
-    fMass*: orxFLOAT           ## *< Mass : 24
-    fLinearDamping*: orxFLOAT  ## *< Linear damping : 28
-    fAngularDamping*: orxFLOAT ## *< Angular damping : 32
-    u32Flags*: orxU32          ## *< Control flags : 36
+    vPosition*: orxVECTOR      ## Position : 12
+    fRotation*: orxFLOAT       ## Rotation : 16
+    fInertia*: orxFLOAT        ## Inertia : 20
+    fMass*: orxFLOAT           ## Mass : 24
+    fLinearDamping*: orxFLOAT  ## Linear damping : 28
+    fAngularDamping*: orxFLOAT ## Angular damping : 32
+    u32Flags*: orxU32          ## Control flags : 36
 
 
 ## * Part definition
@@ -73,47 +73,47 @@ type
 
 type
   INNER_C_STRUCT_orxPhysics_144* {.bycopy.} = object
-    vCenter*: orxVECTOR        ## *< Sphere center : 44
-    fRadius*: orxFLOAT         ## *< Sphere radius : 48
+    vCenter*: orxVECTOR        ## Sphere center : 44
+    fRadius*: orxFLOAT         ## Sphere radius : 48
 
   INNER_C_STRUCT_orxPhysics_150* {.bycopy.} = object
-    stBox*: orxAABOX           ## *< Axis aligned Box : 56
+    stBox*: orxAABOX           ## Axis aligned Box : 56
 
   INNER_C_STRUCT_orxPhysics_155* {.bycopy.} = object
-    u32VertexCount*: orxU32    ## *< Mesh vertex count : 36
-    avVertices*: array[orxBODY_PART_DEF_KU32_MESH_VERTEX_NUMBER, orxVECTOR] ## *< Mesh vertices : 132
+    u32VertexCount*: orxU32    ## Mesh vertex count : 36
+    avVertices*: array[orxBODY_PART_DEF_KU32_MESH_VERTEX_NUMBER, orxVECTOR] ## Mesh vertices : 132
 
   INNER_C_STRUCT_orxPhysics_162* {.bycopy.} = object
-    avVertices*: array[2, orxVECTOR] ## *< Edge v2 : 56
-    vPrevious*: orxVECTOR      ## *< Previous vertex (ghost) : 68
-    vNext*: orxVECTOR          ## *< Next vertex (ghost) : 80
-    bHasPrevious*: orxBOOL     ## *< Has previous vertex : 84
-    bHasNext*: orxBOOL         ## *< Has next vertex : 88
+    avVertices*: array[2, orxVECTOR] ## Edge v2 : 56
+    vPrevious*: orxVECTOR      ## Previous vertex (ghost) : 68
+    vNext*: orxVECTOR          ## Next vertex (ghost) : 80
+    bHasPrevious*: orxBOOL     ## Has previous vertex : 84
+    bHasNext*: orxBOOL         ## Has next vertex : 88
 
   INNER_C_STRUCT_orxPhysics_172* {.bycopy.} = object
-    vPrevious*: orxVECTOR      ## *< Chain Previous vertex (ghost) : 44
-    vNext*: orxVECTOR          ## *< Chain Next vertex (ghost) : 56
-    avVertices*: ptr orxVECTOR  ## *< Chain vertices : 60
-    u32VertexCount*: orxU32    ## *< Chain vertex count : 64
-    bIsLoop*: orxBOOL          ## *< Loop chain : 68
-    bHasPrevious*: orxBOOL     ## *< Has previous vertex : 72
-    bHasNext*: orxBOOL         ## *< Has next vertex : 76
+    vPrevious*: orxVECTOR      ## Chain Previous vertex (ghost) : 44
+    vNext*: orxVECTOR          ## Chain Next vertex (ghost) : 56
+    avVertices*: ptr orxVECTOR  ## Chain vertices : 60
+    u32VertexCount*: orxU32    ## Chain vertex count : 64
+    bIsLoop*: orxBOOL          ## Loop chain : 68
+    bHasPrevious*: orxBOOL     ## Has previous vertex : 72
+    bHasNext*: orxBOOL         ## Has next vertex : 76
 
   INNER_C_UNION_orxPhysics_142* {.bycopy, union.} = object
-    stSphere*: INNER_C_STRUCT_orxPhysics_144 ## *< Sphere : 48
-    stAABox*: INNER_C_STRUCT_orxPhysics_150 ## *< Box : 56
+    stSphere*: INNER_C_STRUCT_orxPhysics_144 ## Sphere : 48
+    stAABox*: INNER_C_STRUCT_orxPhysics_150 ## Box : 56
     stMesh*: INNER_C_STRUCT_orxPhysics_155
     stEdge*: INNER_C_STRUCT_orxPhysics_162
     stChain*: INNER_C_STRUCT_orxPhysics_172
 
   orxBODY_PART_DEF* {.bycopy.} = object
-    vScale*: orxVECTOR         ## *< Scale : 12
-    fFriction*: orxFLOAT       ## *< Friction : 16
-    fRestitution*: orxFLOAT    ## *< Restitution : 20
-    fDensity*: orxFLOAT        ## *< Density : 24
-    u16SelfFlags*: orxU16      ## *< Self defining flags : 26
-    u16CheckMask*: orxU16      ## *< Check mask : 28
-    u32Flags*: orxU32          ## *< Control flags : 32
+    vScale*: orxVECTOR         ## Scale : 12
+    fFriction*: orxFLOAT       ## Friction : 16
+    fRestitution*: orxFLOAT    ## Restitution : 20
+    fDensity*: orxFLOAT        ## Density : 24
+    u16SelfFlags*: orxU16      ## Self defining flags : 26
+    u16CheckMask*: orxU16      ## Check mask : 28
+    u32Flags*: orxU32          ## Control flags : 32
     ano_orxPhysics_182*: INNER_C_UNION_orxPhysics_142
 
 
@@ -122,74 +122,74 @@ type
 
 type
   INNER_C_STRUCT_orxPhysics_199* {.bycopy.} = object
-    fDefaultRotation*: orxFLOAT ## *< Default rotation : 52
-    fMinRotation*: orxFLOAT    ## *< Min rotation : 56
-    fMaxRotation*: orxFLOAT    ## *< Max rotation : 60
-    fMotorSpeed*: orxFLOAT     ## *< Motor speed : 64
-    fMaxMotorTorque*: orxFLOAT ## *< Max motor torque : 68
+    fDefaultRotation*: orxFLOAT ## Default rotation : 52
+    fMinRotation*: orxFLOAT    ## Min rotation : 56
+    fMaxRotation*: orxFLOAT    ## Max rotation : 60
+    fMotorSpeed*: orxFLOAT     ## Motor speed : 64
+    fMaxMotorTorque*: orxFLOAT ## Max motor torque : 68
 
   INNER_C_STRUCT_orxPhysics_209* {.bycopy.} = object
-    vTranslationAxis*: orxVECTOR ## *< Translation axis : 60
-    fDefaultRotation*: orxFLOAT ## *< Default rotation : 64
-    fMinTranslation*: orxFLOAT ## *< Min translation : 68
-    fMaxTranslation*: orxFLOAT ## *< Max translation : 72
-    fMotorSpeed*: orxFLOAT     ## *< Motor speed : 76
-    fMaxMotorForce*: orxFLOAT  ## *< Max motor force : 80
+    vTranslationAxis*: orxVECTOR ## Translation axis : 60
+    fDefaultRotation*: orxFLOAT ## Default rotation : 64
+    fMinTranslation*: orxFLOAT ## Min translation : 68
+    fMaxTranslation*: orxFLOAT ## Max translation : 72
+    fMotorSpeed*: orxFLOAT     ## Motor speed : 76
+    fMaxMotorForce*: orxFLOAT  ## Max motor force : 80
 
   INNER_C_STRUCT_orxPhysics_220* {.bycopy.} = object
-    fLength*: orxFLOAT         ## *< Length : 52
-    fFrequency*: orxFLOAT      ## *< Frequency : 56
-    fDamping*: orxFLOAT        ## *< Damping : 60
+    fLength*: orxFLOAT         ## Length : 52
+    fFrequency*: orxFLOAT      ## Frequency : 56
+    fDamping*: orxFLOAT        ## Damping : 60
 
   INNER_C_STRUCT_orxPhysics_228* {.bycopy.} = object
-    fLength*: orxFLOAT         ## *< Length : 52
+    fLength*: orxFLOAT         ## Length : 52
 
   INNER_C_STRUCT_orxPhysics_234* {.bycopy.} = object
-    vSrcGroundAnchor*: orxVECTOR ## *< Source ground anchor : 60
-    vDstGroundAnchor*: orxVECTOR ## *< Destination ground anchor : 72
-    fLengthRatio*: orxFLOAT    ## *< Length ratio : 76
-    fSrcLength*: orxFLOAT      ## *< Source length : 80
-    fMaxSrcLength*: orxFLOAT   ## *< Max source length : 84
-    fDstLength*: orxFLOAT      ## *< Destination length : 88
-    fMaxDstLength*: orxFLOAT   ## *< Max destination length : 92
+    vSrcGroundAnchor*: orxVECTOR ## Source ground anchor : 60
+    vDstGroundAnchor*: orxVECTOR ## Destination ground anchor : 72
+    fLengthRatio*: orxFLOAT    ## Length ratio : 76
+    fSrcLength*: orxFLOAT      ## Source length : 80
+    fMaxSrcLength*: orxFLOAT   ## Max source length : 84
+    fDstLength*: orxFLOAT      ## Destination length : 88
+    fMaxDstLength*: orxFLOAT   ## Max destination length : 92
 
   INNER_C_STRUCT_orxPhysics_246* {.bycopy.} = object
-    vTranslationAxis*: orxVECTOR ## *< Translation axis : 64
-    fFrequency*: orxFLOAT      ## *< Frequency : 68
-    fDamping*: orxFLOAT        ## *< Damping : 72
-    fMotorSpeed*: orxFLOAT     ## *< Motor speed : 76
-    fMaxMotorForce*: orxFLOAT  ## *< Max motor force : 80
+    vTranslationAxis*: orxVECTOR ## Translation axis : 64
+    fFrequency*: orxFLOAT      ## Frequency : 68
+    fDamping*: orxFLOAT        ## Damping : 72
+    fMotorSpeed*: orxFLOAT     ## Motor speed : 76
+    fMaxMotorForce*: orxFLOAT  ## Max motor force : 80
 
   INNER_C_STRUCT_orxPhysics_256* {.bycopy.} = object
-    fDefaultRotation*: orxFLOAT ## *< Default rotation : 56
+    fDefaultRotation*: orxFLOAT ## Default rotation : 56
 
   INNER_C_STRUCT_orxPhysics_262* {.bycopy.} = object
-    fMaxForce*: orxFLOAT       ## *< Max force : 56
-    fMaxTorque*: orxFLOAT      ## *< Max torque : 60
+    fMaxForce*: orxFLOAT       ## Max force : 56
+    fMaxTorque*: orxFLOAT      ## Max torque : 60
 
   INNER_C_STRUCT_orxPhysics_269* {.bycopy.} = object
-    zSrcJointName*: cstring ## *< Source joint name : 56
-    zDstJointName*: cstring ## *< Destination joint name : 60
-    fJointRatio*: orxFLOAT     ## *< Joint ratio : 64
+    zSrcJointName*: cstring ## Source joint name : 56
+    zDstJointName*: cstring ## Destination joint name : 60
+    fJointRatio*: orxFLOAT     ## Joint ratio : 64
 
   INNER_C_UNION_orxPhysics_197* {.bycopy, union.} = object
-    stRevolute*: INNER_C_STRUCT_orxPhysics_199 ## *< Revolute : 68
-    stPrismatic*: INNER_C_STRUCT_orxPhysics_209 ## *< Prismatic : 80
-    stSpring*: INNER_C_STRUCT_orxPhysics_220 ## *< Spring : 60
-    stRope*: INNER_C_STRUCT_orxPhysics_228 ## *< Rope : 52
-    stPulley*: INNER_C_STRUCT_orxPhysics_234 ## *< Pulley : 92
-    stSuspension*: INNER_C_STRUCT_orxPhysics_246 ## *< Suspension : 80
-    stWeld*: INNER_C_STRUCT_orxPhysics_256 ## *< Weld : 56
-    stFriction*: INNER_C_STRUCT_orxPhysics_262 ## *< Friction : 60
-    stGear*: INNER_C_STRUCT_orxPhysics_269 ## *< Gear : 64
+    stRevolute*: INNER_C_STRUCT_orxPhysics_199 ## Revolute : 68
+    stPrismatic*: INNER_C_STRUCT_orxPhysics_209 ## Prismatic : 80
+    stSpring*: INNER_C_STRUCT_orxPhysics_220 ## Spring : 60
+    stRope*: INNER_C_STRUCT_orxPhysics_228 ## Rope : 52
+    stPulley*: INNER_C_STRUCT_orxPhysics_234 ## Pulley : 92
+    stSuspension*: INNER_C_STRUCT_orxPhysics_246 ## Suspension : 80
+    stWeld*: INNER_C_STRUCT_orxPhysics_256 ## Weld : 56
+    stFriction*: INNER_C_STRUCT_orxPhysics_262 ## Friction : 60
+    stGear*: INNER_C_STRUCT_orxPhysics_269 ## Gear : 64
 
   orxBODY_JOINT_DEF* {.bycopy.} = object
-    vSrcScale*: orxVECTOR      ## *< Source scale : 12
-    vDstScale*: orxVECTOR      ## *< Destination scale : 24
-    vSrcAnchor*: orxVECTOR     ## *< Source body anchor : 36
-    vDstAnchor*: orxVECTOR     ## *< Destination body anchor : 48
+    vSrcScale*: orxVECTOR      ## Source scale : 12
+    vDstScale*: orxVECTOR      ## Destination scale : 24
+    vSrcAnchor*: orxVECTOR     ## Source body anchor : 36
+    vDstAnchor*: orxVECTOR     ## Destination body anchor : 48
     ano_orxPhysics_275*: INNER_C_UNION_orxPhysics_197
-    u32Flags*: orxU32          ## *< Control flags : 96
+    u32Flags*: orxU32          ## Control flags : 96
 
 
 ## * Event enum
@@ -206,10 +206,10 @@ type
 
 type
   orxPHYSICS_EVENT_PAYLOAD* {.bycopy.} = object
-    vPosition*: orxVECTOR      ## *< Contact position : 12
-    vNormal*: orxVECTOR        ## *< Contact normal : 24
-    zSenderPartName*: cstring ## *< Sender part name : 28
-    zRecipientPartName*: cstring ## *< Recipient part name : 32
+    vPosition*: orxVECTOR      ## Contact position : 12
+    vNormal*: orxVECTOR        ## Contact normal : 24
+    zSenderPartName*: cstring ## Sender part name : 28
+    zRecipientPartName*: cstring ## Recipient part name : 32
 
 
 ## * Internal physics body structure

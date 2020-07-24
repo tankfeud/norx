@@ -27,11 +27,11 @@ type orxFX* = object
 
 type
   orxFX_EVENT* {.size: sizeof(cint).} = enum
-    orxFX_EVENT_START = 0,      ## *< Event sent when a FX starts
-    orxFX_EVENT_STOP,         ## *< Event sent when a FX stops
-    orxFX_EVENT_ADD,          ## *< Event sent when a FX is added
-    orxFX_EVENT_REMOVE,       ## *< Event sent when a FX is removed
-    orxFX_EVENT_LOOP,         ## *< Event sent when a FX is looping
+    orxFX_EVENT_START = 0,      ## Event sent when a FX starts
+    orxFX_EVENT_STOP,         ## Event sent when a FX stops
+    orxFX_EVENT_ADD,          ## Event sent when a FX is added
+    orxFX_EVENT_REMOVE,       ## Event sent when a FX is removed
+    orxFX_EVENT_LOOP,         ## Event sent when a FX is looping
     orxFX_EVENT_NUMBER, orxFX_EVENT_NONE = orxENUM_NONE
 
 
@@ -40,8 +40,8 @@ type
 
 type
   orxFX_EVENT_PAYLOAD* {.bycopy.} = object
-    pstFX*: ptr orxFX           ## *< FX reference : 4
-    zFXName*: cstring       ## *< FX name : 8
+    pstFX*: ptr orxFX           ## FX reference : 4
+    zFXName*: cstring       ## FX name : 8
 
 
 proc FXSetup*() {.cdecl, importc: "orxFX_Setup", dynlib: libORX.}

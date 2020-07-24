@@ -134,15 +134,16 @@ proc getOwnedChild*(pstObject: ptr orxOBJECT): ptr orxOBJECT {.cdecl,
   ## Gets object's first owned child (only if created with a config ChildList / has an owner set with orxObject_SetOwner)
   ##  see orxObject_SetOwner() and orxObject_SetParent() for a comparison of ownership and parenthood in Orx.
   ##  This function is typically used to iterate over the owned children of an object. For example;
-  ##  @code
-  ##  for(orxOBJECT * pstChild = orxObject_GetOwnedChild(pstObject);
-  ##      pstChild;
-  ##      pstChild = orxObject_GetOwnedSibling(pstChild))
-  ##  {
-  ##      do_something(pstChild);
-  ##  } @endcode
   ##  @param[in]   _pstObject    Concerned object
   ##  @return      First owned child object / nil
+  # TODO: Fix these code block examples
+  #  @code
+  #  for(orxOBJECT * pstChild = orxObject_GetOwnedChild(pstObject);
+  #      pstChild;
+  #      pstChild = orxObject_GetOwnedSibling(pstChild))
+  #  {
+  #      do_something(pstChild);
+  #  } @endcode
 
 proc getOwnedSibling*(pstObject: ptr orxOBJECT): ptr orxOBJECT {.cdecl,
     importc: "orxObject_GetOwnedSibling", dynlib: libORX.}
@@ -386,16 +387,17 @@ proc getChild*(pstObject: ptr orxOBJECT): ptr orxSTRUCTURE {.cdecl,
   ## Gets object's first child. See orxObject_SetOwner() and orxObject_SetParent() for a comparison of
   ##  ownership and parenthood in Orx.
   ##  This function is typically used to iterate over the children of an object. For example:
-  ##  @code
-  ##  for(orxOBJECT *pstChild = orxOBJECT(orxObject_GetChild(pstObject));
-  ##      pstChild != nil;
-  ##      pstChild = orxOBJECT(orxObject_GetSibling(pstChild)))
-  ##  {
-  ##      DoSomething(pstChild);
-  ##  }
-  ##  @endcode
   ##  @param[in]   _pstObject    Concerned object
   ##  @return      First child structure (object, spawner, camera or frame) / nil
+  # TODO: Fix code examples
+  #  @code
+  #  for(orxOBJECT *pstChild = orxOBJECT(orxObject_GetChild(pstObject));
+  #      pstChild != nil;
+  #      pstChild = orxOBJECT(orxObject_GetSibling(pstChild)))
+  #  {
+  #      DoSomething(pstChild);
+  #  }
+  #  @endcode
 
 proc getSibling*(pstObject: ptr orxOBJECT): ptr orxSTRUCTURE {.cdecl,
     importc: "orxObject_GetSibling", dynlib: libORX.}
@@ -867,33 +869,32 @@ proc getName*(pstObject: ptr orxOBJECT): cstring {.cdecl,
 
 proc createNeighborList*(pstCheckBox: ptr orxOBOX; stGroupID: orxSTRINGID): ptr orxBANK {.
     cdecl, importc: "orxObject_CreateNeighborList", dynlib: libORX.}
-  ## @}
-  ## @name Neighboring
-  ##  @{
   ## Creates a list of object at neighboring of the given box (ie. whose bounding volume intersects this box).
   ##  The following is an example for iterating over a neighbor list:
-  ##  @code
-  ##  orxVECTOR vPosition; // The world position of the neighborhood area
-  ##  // set_position(vPosition);
-  ##  orxVECTOR vSize; // The size of the neighborhood area
-  ##  // set_size(vSize);
-  ##  orxVECTOR vPivot; // The pivot of the neighborhood area
-  ##  // set_pivot(vPivot);
-  ##  orxOBOX stBox;
-  ##  orxOBox_2DSet(&stBox, &vPosition, &vPivot, &vSize, 0);
-  ##  orxBANK * pstBank = orxObject_CreateNeighborList(&stBox, orxSTRINGID_UNDEFINED);
-  ##  if(pstBank) {
-  ##      for(int i=0; i < orxBank_GetCount(pstBank); ++i)
-  ##      {
-  ##          orxOBJECT * pstObject = *((orxOBJECT **) orxBank_GetAtIndex(pstBank, i));
-  ##          do_something_with(pstObject);
-  ##      }
-  ##      orxObject_DeleteNeighborList(pstBank);
-  ##  }
-  ##  @endcode
   ##  @param[in]   _pstCheckBox    Box to check intersection with
   ##  @param[in]   _stGroupID      Group ID to consider, orxSTRINGID_UNDEFINED for all
   ##  @return      orxBANK / nil
+  ##
+  # TODO: Fix these code block examples
+  #  ## .. code-block:: nim
+  #    orxVECTOR vPosition # The world position of the neighborhood area
+  #    # set_position(vPosition)
+  #    orxVECTOR vSize; # The size of the neighborhood area
+  #    # set_size(vSize);
+  #    orxVECTOR vPivot; # The pivot of the neighborhood area
+  #    # set_pivot(vPivot);
+  #    orxOBOX stBox;
+  #    orxOBox_2DSet(&stBox, &vPosition, &vPivot, &vSize, 0);
+  #    pstBank: ptr orxBANK = orxObject_CreateNeighborList(&stBox, orxSTRINGID_UNDEFINED);
+  #    if(pstBank) {
+  #        for(int i=0; i < orxBank_GetCount(pstBank); ++i)
+  #        {
+  #            orxOBJECT * pstObject = *((orxOBJECT **) orxBank_GetAtIndex(pstBank, i));
+  #            do_something_with(pstObject);
+  #        }
+  #        orxObject_DeleteNeighborList(pstBank);
+  #    }
+  #
 
 proc deleteNeighborList*(pstObjectList: ptr orxBANK) {.cdecl,
     importc: "orxObject_DeleteNeighborList", dynlib: libORX.}

@@ -6,23 +6,23 @@ import lib, typ, memory, pure/math, math as orxMath
 
 type
   #INNER_C_UNION_orxVector_72* {.bycopy, union.} = object
-  #  fX*: orxFLOAT              ## *< First coordinate in the cartesian space
-  #  fRho*: orxFLOAT            ## *< First coordinate in the spherical space
-  #  fR*: orxFLOAT              ## *< First coordinate in the RGB color space
-  #  fH*: orxFLOAT              ## *< First coordinate in the HSL/HSV color spaces
+  #  fX*: orxFLOAT              ## First coordinate in the cartesian space
+  #  fRho*: orxFLOAT            ## First coordinate in the spherical space
+  #  fR*: orxFLOAT              ## First coordinate in the RGB color space
+  #  fH*: orxFLOAT              ## First coordinate in the HSL/HSV color spaces
 
   #INNER_C_UNION_orxVector_80* {.bycopy, union.} = object
-  #  fY*: orxFLOAT              ## *< Second coordinate in the cartesian space
-  #  fTheta*: orxFLOAT          ## *< Second coordinate in the spherical space
-  #  fG*: orxFLOAT              ## *< Second coordinate in the RGB color space
-  #  fS*: orxFLOAT              ## *< Second coordinate in the HSL/HSV color spaces
+  #  fY*: orxFLOAT              ## Second coordinate in the cartesian space
+  #  fTheta*: orxFLOAT          ## Second coordinate in the spherical space
+  #  fG*: orxFLOAT              ## Second coordinate in the RGB color space
+  #  fS*: orxFLOAT              ## Second coordinate in the HSL/HSV color spaces
 
   #INNER_C_UNION_orxVector_88* {.bycopy, union.} = object
-  #  fZ*: orxFLOAT              ## *< Third coordinate in the cartesian space
-  #  fPhi*: orxFLOAT            ## *< Third coordinate in the spherical space
-  #  fB*: orxFLOAT              ## *< Third coordinate in the RGB color space
-  #  fL*: orxFLOAT              ## *< Third coordinate in the HSL color space
-  #  fV*: orxFLOAT              ## *< Third coordinate in the HSV color space
+  #  fZ*: orxFLOAT              ## Third coordinate in the cartesian space
+  #  fPhi*: orxFLOAT            ## Third coordinate in the spherical space
+  #  fB*: orxFLOAT              ## Third coordinate in the RGB color space
+  #  fL*: orxFLOAT              ## Third coordinate in the HSL color space
+  #  fV*: orxFLOAT              ## Third coordinate in the HSV color space
 
   #orxVECTOR* {.bycopy.} = object
   #  ano_orxVector_76*: INNER_C_UNION_orxVector_72 ## * Coordinates : 12
@@ -643,56 +643,56 @@ proc catmullRom*(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;
   ##  @param[in]   _fT                         Interpolation parameter in [0.0, 1.0]
   ##  @return      Interpolated point on the Catmull-Rom curve segment
 
-##  *** Vector constants ***
+## Vector constants
 
 var orxVECTOR_X* {.importc: "orxVECTOR_X", dynlib: libORX.}: orxVECTOR
 
-## *< X-Axis unit vector
+## < X-Axis unit vector
 
 var orxVECTOR_Y* {.importc: "orxVECTOR_Y", dynlib: libORX.}: orxVECTOR
 
-## *< Y-Axis unit vector
+## < Y-Axis unit vector
 
 var orxVECTOR_Z* {.importc: "orxVECTOR_Z", dynlib: libORX.}: orxVECTOR
 
-## *< Z-Axis unit vector
+## Z-Axis unit vector
 
 var orxVECTOR_0* {.importc: "orxVECTOR_0", dynlib: libORX.}: orxVECTOR
 
-## *< Null vector
+## Null vector
 
 var orxVECTOR_1* {.importc: "orxVECTOR_1", dynlib: libORX.}: orxVECTOR
 
-## *< Vector filled with 1s
+## Vector filled with 1s
 
 var orxVECTOR_RED* {.importc: "orxVECTOR_RED", dynlib: libORX.}: orxVECTOR
 
-## *< Red color vector
+## Red color vector
 
 var orxVECTOR_GREEN* {.importc: "orxVECTOR_GREEN", dynlib: libORX.}: orxVECTOR
 
-## *< Green color vector
+## Green color vector
 
 var orxVECTOR_BLUE* {.importc: "orxVECTOR_BLUE", dynlib: libORX.}: orxVECTOR
 
-## *< Blue color vector
+## Blue color vector
 
 var orxVECTOR_YELLOW* {.importc: "orxVECTOR_YELLOW", dynlib: libORX.}: orxVECTOR
 
-## *< Yellow color vector
+## Yellow color vector
 
 var orxVECTOR_CYAN* {.importc: "orxVECTOR_CYAN", dynlib: libORX.}: orxVECTOR
 
-## *< Cyan color vector
+## Cyan color vector
 
 var orxVECTOR_MAGENTA* {.importc: "orxVECTOR_MAGENTA", dynlib: libORX.}: orxVECTOR
 
-## *< Magenta color vector
+## Magenta color vector
 
 var orxVECTOR_BLACK* {.importc: "orxVECTOR_BLACK", dynlib: libORX.}: orxVECTOR
 
-## *< Black color vector
+## Black color vector
 
 var orxVECTOR_WHITE* {.importc: "orxVECTOR_WHITE", dynlib: libORX.}: orxVECTOR
 
-## *< White color vector
+## White color vector

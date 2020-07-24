@@ -28,30 +28,30 @@ const
 
 type
   orxDEBUG_LEVEL* {.size: sizeof(cint).} = enum
-    orxDEBUG_LEVEL_ANIM = 0,    ## *< Anim Debug
-    orxDEBUG_LEVEL_CONFIG,    ## *< Config Debug
-    orxDEBUG_LEVEL_CLOCK,     ## *< Clock Debug
-    orxDEBUG_LEVEL_DISPLAY,   ## *< Display Debug
-    orxDEBUG_LEVEL_FILE,      ## *< File Debug
-    orxDEBUG_LEVEL_INPUT,     ## *< Input Debug
-    orxDEBUG_LEVEL_JOYSTICK,  ## *< Joystick Debug
-    orxDEBUG_LEVEL_KEYBOARD,  ## *< Keyboard Debug
-    orxDEBUG_LEVEL_MEMORY,    ## *< Memory Debug
-    orxDEBUG_LEVEL_MOUSE,     ## *< Mouse Debug
-    orxDEBUG_LEVEL_OBJECT,    ## *< Object Debug
-    orxDEBUG_LEVEL_PARAM,     ## *< Param Debug
-    orxDEBUG_LEVEL_PHYSICS,   ## *< Physics Debug
-    orxDEBUG_LEVEL_PLUGIN,    ## *< Plug-in Debug
-    orxDEBUG_LEVEL_PROFILER,  ## *< Profiler Debug
-    orxDEBUG_LEVEL_RENDER,    ## *< Render Debug
-    orxDEBUG_LEVEL_SCREENSHOT, ## *< Screenshot Debug
-    orxDEBUG_LEVEL_SOUND,     ## *< Sound Debug
-    orxDEBUG_LEVEL_SYSTEM,    ## *< System Debug
-    orxDEBUG_LEVEL_TIMER,     ## *< Timer Debug
-    orxDEBUG_LEVEL_LOG,       ## *< Log Debug
-    orxDEBUG_LEVEL_ASSERT,    ## *< Assert Debug
-    orxDEBUG_LEVEL_USER,      ## *< User Debug
-    orxDEBUG_LEVEL_NUMBER, orxDEBUG_LEVEL_MAX_NUMBER = 32, orxDEBUG_LEVEL_ALL = 0xFFFFFFFE, ## *< All Debugs
+    orxDEBUG_LEVEL_ANIM = 0,    ## Anim Debug
+    orxDEBUG_LEVEL_CONFIG,    ## Config Debug
+    orxDEBUG_LEVEL_CLOCK,     ## Clock Debug
+    orxDEBUG_LEVEL_DISPLAY,   ## Display Debug
+    orxDEBUG_LEVEL_FILE,      ## File Debug
+    orxDEBUG_LEVEL_INPUT,     ## Input Debug
+    orxDEBUG_LEVEL_JOYSTICK,  ## Joystick Debug
+    orxDEBUG_LEVEL_KEYBOARD,  ## Keyboard Debug
+    orxDEBUG_LEVEL_MEMORY,    ## Memory Debug
+    orxDEBUG_LEVEL_MOUSE,     ## Mouse Debug
+    orxDEBUG_LEVEL_OBJECT,    ## Object Debug
+    orxDEBUG_LEVEL_PARAM,     ## Param Debug
+    orxDEBUG_LEVEL_PHYSICS,   ## Physics Debug
+    orxDEBUG_LEVEL_PLUGIN,    ## Plug-in Debug
+    orxDEBUG_LEVEL_PROFILER,  ## Profiler Debug
+    orxDEBUG_LEVEL_RENDER,    ## Render Debug
+    orxDEBUG_LEVEL_SCREENSHOT, ## Screenshot Debug
+    orxDEBUG_LEVEL_SOUND,     ## Sound Debug
+    orxDEBUG_LEVEL_SYSTEM,    ## System Debug
+    orxDEBUG_LEVEL_TIMER,     ## Timer Debug
+    orxDEBUG_LEVEL_LOG,       ## Log Debug
+    orxDEBUG_LEVEL_ASSERT,    ## Assert Debug
+    orxDEBUG_LEVEL_USER,      ## User Debug
+    orxDEBUG_LEVEL_NUMBER, orxDEBUG_LEVEL_MAX_NUMBER = 32, orxDEBUG_LEVEL_ALL = 0xFFFFFFFE, ## All Debugs
     orxDEBUG_LEVEL_NONE = orxENUM_NONE
 
 

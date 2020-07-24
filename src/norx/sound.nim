@@ -27,14 +27,14 @@ type orxSOUND* = object
 
 type
   orxSOUND_EVENT* {.size: sizeof(cint).} = enum
-    orxSOUND_EVENT_START = 0,   ## *< Event sent when a sound starts
-    orxSOUND_EVENT_STOP,      ## *< Event sent when a sound stops
-    orxSOUND_EVENT_ADD,       ## *< Event sent when a sound is added
-    orxSOUND_EVENT_REMOVE,    ## *< Event sent when a sound is removed
-    orxSOUND_EVENT_PACKET,    ## *< Event sent when a sound packet is streamed. IMPORTANT: this event can be sent from a worker thread, do not call any orx API when handling it
-    orxSOUND_EVENT_RECORDING_START, ## *< Event sent when recording starts
-    orxSOUND_EVENT_RECORDING_STOP, ## *< Event sent when recording stops
-    orxSOUND_EVENT_RECORDING_PACKET, ## *< Event sent when a packet has been recorded
+    orxSOUND_EVENT_START = 0,   ## Event sent when a sound starts
+    orxSOUND_EVENT_STOP,      ## Event sent when a sound stops
+    orxSOUND_EVENT_ADD,       ## Event sent when a sound is added
+    orxSOUND_EVENT_REMOVE,    ## Event sent when a sound is removed
+    orxSOUND_EVENT_PACKET,    ## Event sent when a sound packet is streamed. IMPORTANT: this event can be sent from a worker thread, do not call any orx API when handling it
+    orxSOUND_EVENT_RECORDING_START, ## Event sent when recording starts
+    orxSOUND_EVENT_RECORDING_STOP, ## Event sent when recording stops
+    orxSOUND_EVENT_RECORDING_PACKET, ## Event sent when a packet has been recorded
     orxSOUND_EVENT_NUMBER, orxSOUND_EVENT_NONE = orxENUM_NONE
 
 
@@ -43,8 +43,8 @@ type
 
 type
   orxSOUND_STREAM_INFO* {.bycopy.} = object
-    u32SampleRate*: orxU32     ## *< The sample rate, e.g. 44100 Hertz : 4
-    u32ChannelNumber*: orxU32  ## *< Number of channels, either mono (1) or stereo (2) : 8
+    u32SampleRate*: orxU32     ## The sample rate, e.g. 44100 Hertz : 4
+    u32ChannelNumber*: orxU32  ## Number of channels, either mono (1) or stereo (2) : 8
 
 
 ## * Sound recording packet
@@ -52,12 +52,12 @@ type
 
 type
   orxSOUND_STREAM_PACKET* {.bycopy.} = object
-    u32SampleNumber*: orxU32   ## *< Number of samples contained in this packet : 4
-    as16SampleList*: ptr orxS16 ## *< List of samples for this packet : 8
-    bDiscard*: orxBOOL         ## *< Write/play the packet? : 12
-    fTimeStamp*: orxFLOAT      ## *< Packet's timestamp : 16
-    s32ID*: orxS32             ## *< Packet's ID : 20
-    fTime*: orxFLOAT           ## *< Packet's time (cursor/play position): 24
+    u32SampleNumber*: orxU32   ## Number of samples contained in this packet : 4
+    as16SampleList*: ptr orxS16 ## List of samples for this packet : 8
+    bDiscard*: orxBOOL         ## Write/play the packet? : 12
+    fTimeStamp*: orxFLOAT      ## Packet's timestamp : 16
+    s32ID*: orxS32             ## Packet's ID : 20
+    fTime*: orxFLOAT           ## Packet's time (cursor/play position): 24
 
 
 ## * Sound event payload
@@ -65,12 +65,12 @@ type
 
 type
   INNER_C_STRUCT_orxSound_139* {.bycopy.} = object
-    zSoundName*: cstring    ## *< Sound name : 4
-    stInfo*: orxSOUND_STREAM_INFO ## *< Sound record info : 12
-    stPacket*: orxSOUND_STREAM_PACKET ## *< Sound record packet : 32
+    zSoundName*: cstring    ## Sound name : 4
+    stInfo*: orxSOUND_STREAM_INFO ## Sound record info : 12
+    stPacket*: orxSOUND_STREAM_PACKET ## Sound record packet : 32
 
   INNER_C_UNION_orxSound_135* {.bycopy, union.} = object
-    pstSound*: ptr orxSOUND     ## *< Sound reference : 4
+    pstSound*: ptr orxSOUND     ## Sound reference : 4
     stStream*: INNER_C_STRUCT_orxSound_139
 
   orxSOUND_EVENT_PAYLOAD* {.bycopy.} = object

@@ -5,8 +5,8 @@ import incl
 
 type
   orxLOCALE_EVENT* {.size: sizeof(cint).} = enum
-    orxLOCALE_EVENT_SELECT_LANGUAGE = 0, ## *< Event sent when selecting a language
-    orxLOCALE_EVENT_SET_STRING, ## *< Event sent when setting a string
+    orxLOCALE_EVENT_SELECT_LANGUAGE = 0, ## Event sent when selecting a language
+    orxLOCALE_EVENT_SET_STRING, ## Event sent when setting a string
     orxLOCALE_EVENT_NUMBER, orxLOCALE_EVENT_NONE = orxENUM_NONE
 
 
@@ -15,9 +15,9 @@ type
 
 type
   orxLOCALE_EVENT_PAYLOAD* {.bycopy.} = object
-    zLanguage*: cstring     ## *< Current language : 4
-    zStringKey*: cstring    ## *< String key : 8
-    zStringValue*: cstring  ## *< String value : 12
+    zLanguage*: cstring     ## Current language : 4
+    zStringKey*: cstring    ## String key : 8
+    zStringValue*: cstring  ## String value : 12
 
 
 proc localeSetup*() {.cdecl, importc: "orxLocale_Setup", dynlib: libORX.}

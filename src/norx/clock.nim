@@ -21,9 +21,9 @@ type
 
 type
   orxCLOCK_MOD_TYPE* {.size: sizeof(cint).} = enum
-    orxCLOCK_MOD_TYPE_FIXED = 0, ## *< The given DT will always be constant (= modifier value)
-    orxCLOCK_MOD_TYPE_MULTIPLY, ## *< The given DT will be the real one * modifier
-    orxCLOCK_MOD_TYPE_MAXED,  ## *< The given DT will be the real one maxed by the modifier value
+    orxCLOCK_MOD_TYPE_FIXED = 0, ## The given DT will always be constant (= modifier value)
+    orxCLOCK_MOD_TYPE_MULTIPLY, ## The given DT will be the real one * modifier
+    orxCLOCK_MOD_TYPE_MAXED,  ## The given DT will be the real one maxed by the modifier value
     orxCLOCK_MOD_TYPE_NUMBER, orxCLOCK_MOD_TYPE_NONE = orxENUM_NONE
 
 
@@ -43,12 +43,12 @@ type
 
 type
   orxCLOCK_INFO* {.bycopy.} = object
-    eType*: orxCLOCK_TYPE      ## *< Clock type : 4
-    fTickSize*: orxFLOAT       ## *< Clock tick size (in seconds) : 8
-    eModType*: orxCLOCK_MOD_TYPE ## *< Clock mod type : 12
-    fModValue*: orxFLOAT       ## *< Clock mod value : 16
-    fDT*: orxFLOAT             ## *< Clock DT (time elapsed between 2 clock calls in seconds) : 20
-    fTime*: orxFLOAT           ## *< Clock time : 24
+    eType*: orxCLOCK_TYPE      ## Clock type : 4
+    fTickSize*: orxFLOAT       ## Clock tick size (in seconds) : 8
+    eModType*: orxCLOCK_MOD_TYPE ## Clock mod type : 12
+    fModValue*: orxFLOAT       ## Clock mod value : 16
+    fDT*: orxFLOAT             ## Clock DT (time elapsed between 2 clock calls in seconds) : 20
+    fTime*: orxFLOAT           ## Clock time : 24
 
 
 ## * Event enum
@@ -56,10 +56,10 @@ type
 
 type
   orxCLOCK_EVENT* {.size: sizeof(cint).} = enum
-    orxCLOCK_EVENT_RESTART = 0, ## *< Event sent when a clock restarts
-    orxCLOCK_EVENT_RESYNC,    ## *< Event sent when a clock resyncs
-    orxCLOCK_EVENT_PAUSE,     ## *< Event sent when a clock is paused
-    orxCLOCK_EVENT_UNPAUSE,   ## *< Event sent when a clock is unpaused
+    orxCLOCK_EVENT_RESTART = 0, ## Event sent when a clock restarts
+    orxCLOCK_EVENT_RESYNC,    ## Event sent when a clock resyncs
+    orxCLOCK_EVENT_PAUSE,     ## Event sent when a clock is paused
+    orxCLOCK_EVENT_UNPAUSE,   ## Event sent when a clock is unpaused
     orxCLOCK_EVENT_NUMBER, orxCLOCK_EVENT_NONE = orxENUM_NONE
 
 
