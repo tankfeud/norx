@@ -27,12 +27,12 @@ const
 type
   orxEVENT* {.bycopy.} = object
     ## Public event structure
-    eType*: orxEVENT_TYPE      ## *< Event type : 4
-    eID*: orxENUM              ## *< Event ID : 8
-    hSender*: orxHANDLE        ## *< Sender handle : 12
-    hRecipient*: orxHANDLE     ## *< Recipient handle : 16
-    pstPayload*: pointer       ## *< Event payload : 20
-    pContext*: pointer         ## *< Optional user-provided context : 24
+    eType*: orxEVENT_TYPE      ## Event type : 4
+    eID*: orxENUM              ## Event ID : 8
+    hSender*: orxHANDLE        ## Sender handle : 12
+    hRecipient*: orxHANDLE     ## Recipient handle : 16
+    pstPayload*: pointer       ## Event payload : 20
+    pContext*: pointer         ## Optional user-provided context : 24
 
 type
   orxEVENT_HANDLER* = proc (pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.}

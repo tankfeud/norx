@@ -210,22 +210,19 @@ proc smootherStep*(fMin: orxFLOAT; fMax: orxFLOAT; fValue: orxFLOAT): orxFLOAT {
   ##  Done!
   return fResult
 
-## ** Math Definitions **
+## Math Definitions
+const
+  orxMATH_KF_SQRT_2* = orx2F(1.414213562) ## Sqrt(2) constant
+  orxMATH_KF_EPSILON* = orx2F(0.0001) ## Epsilon constant
+  orxMATH_KF_TINY_EPSILON* = orx2F(1e-37) ## Tiny epsilon
+  orxMATH_KF_2_PI* = orx2F(6.283185307) ## 2 PI constant
+  orxMATH_KF_PI* = orx2F(3.141592654) ## PI constant
+  orxMATH_KF_PI_BY_2* = orx2F(1.570796327) ## PI / 2 constant
+  orxMATH_KF_PI_BY_4* = orx2F(0.785398163) ## PI / 4 constant
 
 const
-  orxMATH_KF_SQRT_2* = orx2F(1.414213562) ## *< Sqrt(2) constant
-  orxMATH_KF_EPSILON* = orx2F(0.0001) ## *< Epsilon constant
-  orxMATH_KF_TINY_EPSILON* = orx2F(1e-37) ## *< Tiny epsilon
-  orxMATH_KF_2_PI* = orx2F(6.283185307) ## *< 2 PI constant
-  orxMATH_KF_PI* = orx2F(3.141592654) ## *< PI constant
-  orxMATH_KF_PI_BY_2* = orx2F(1.570796327) ## *< PI / 2 constant
-  orxMATH_KF_PI_BY_4* = orx2F(0.785398163) ## *< PI / 4 constant
-
-const
-  orxMATH_KF_DEG_TO_RAD* = orx2F(3.141592654 / 180.0) ## *< Degree to radian conversion constant
-  orxMATH_KF_RAD_TO_DEG* = orx2F(180.0 / 3.141592654) ## *< Radian to degree conversion constant
-
-
+  orxMATH_KF_DEG_TO_RAD* = orx2F(3.141592654 / 180.0) ## Degree to radian conversion constant
+  orxMATH_KF_RAD_TO_DEG* = orx2F(180.0 / 3.141592654) ## Radian to degree conversion constant
 
 
 proc round*(fOp: orxFLOAT): orxFLOAT {.inline, cdecl.} =

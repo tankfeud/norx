@@ -8,7 +8,7 @@ const
       not (1 shl orxTHREAD_KU32_MAIN_THREAD_ID)) ##  Mask all (for orxThread_Enable)
 
 template orxTHREAD_GET_FLAG_FROM_ID*(ID: untyped): untyped =
-  (1 shl (ID))                  ## *< Gets thread flag from ID
+  (1 shl (ID))                  ## Gets thread flag from ID
 
 ## * Semaphore structure
 

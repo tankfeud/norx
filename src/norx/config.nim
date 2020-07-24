@@ -11,8 +11,8 @@ const
 
 type
   orxCONFIG_EVENT* {.size: sizeof(cint).} = enum
-    orxCONFIG_EVENT_RELOAD_START = 0, ## *< Event sent when reloading config starts
-    orxCONFIG_EVENT_RELOAD_STOP, ## *< Event sent when reloading config stops
+    orxCONFIG_EVENT_RELOAD_START = 0, ## Event sent when reloading config starts
+    orxCONFIG_EVENT_RELOAD_STOP, ## Event sent when reloading config stops
     orxCONFIG_EVENT_NUMBER, orxCONFIG_EVENT_NONE = orxENUM_NONE
 
 

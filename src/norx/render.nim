@@ -42,16 +42,16 @@ const
 
 type
   orxRENDER_EVENT* {.size: sizeof(cint).} = enum
-    orxRENDER_EVENT_START = 0,  ## *< Event sent when rendering starts
-    orxRENDER_EVENT_STOP,     ## *< Event sent when rendering stops
-    orxRENDER_EVENT_VIEWPORT_START, ## *< Event sent when a viewport rendering starts
-    orxRENDER_EVENT_VIEWPORT_STOP, ## *< Event sent when a viewport rendering stops
-    orxRENDER_EVENT_OBJECT_START, ## *< Event sent when an object rendering starts
-    orxRENDER_EVENT_OBJECT_STOP, ## *< Event sent when an object rendering stops
-    orxRENDER_EVENT_CONSOLE_START, ## *< Event sent when console rendering starts
-    orxRENDER_EVENT_CONSOLE_STOP, ## *< Event sent when console rendering stops
-    orxRENDER_EVENT_PROFILER_START, ## *< Event sent when profiler rendering starts
-    orxRENDER_EVENT_PROFILER_STOP, ## *< Event sent when profiler rendering stops
+    orxRENDER_EVENT_START = 0,  ## Event sent when rendering starts
+    orxRENDER_EVENT_STOP,     ## Event sent when rendering stops
+    orxRENDER_EVENT_VIEWPORT_START, ## Event sent when a viewport rendering starts
+    orxRENDER_EVENT_VIEWPORT_STOP, ## Event sent when a viewport rendering stops
+    orxRENDER_EVENT_OBJECT_START, ## Event sent when an object rendering starts
+    orxRENDER_EVENT_OBJECT_STOP, ## Event sent when an object rendering stops
+    orxRENDER_EVENT_CONSOLE_START, ## Event sent when console rendering starts
+    orxRENDER_EVENT_CONSOLE_STOP, ## Event sent when console rendering stops
+    orxRENDER_EVENT_PROFILER_START, ## Event sent when profiler rendering starts
+    orxRENDER_EVENT_PROFILER_STOP, ## Event sent when profiler rendering stops
     orxRENDER_EVENT_NUMBER, orxRENDER_EVENT_NONE = orxENUM_NONE
 
 
@@ -60,7 +60,7 @@ type
 
 type
   INNER_C_STRUCT_orxRender_124* {.bycopy.} = object
-    pstTransform*: ptr orxDISPLAY_TRANSFORM ## *< Object display transform : 4 / 8
+    pstTransform*: ptr orxDISPLAY_TRANSFORM ## Object display transform : 4 / 8
 
   orxRENDER_EVENT_PAYLOAD* {.bycopy.} = object
     stObject*: INNER_C_STRUCT_orxRender_124

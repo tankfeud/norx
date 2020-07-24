@@ -182,7 +182,7 @@ elif defined(Linux) or defined(MacOSX) or defined(iOS) or defined(Android) or
 ##  *** Status defines ***
 type
   orxSTATUS* {.size: sizeof(cint).} = enum
-    orxSTATUS_FAILURE = 0,      ## *< Failure status, the operation has failed
-    orxSTATUS_SUCCESS,        ## *< Success status, the operation has worked has expected
-    orxSTATUS_NUMBER,         ## *< Sentinel : Number of status
+    orxSTATUS_FAILURE = 0,      ## Failure status, the operation has failed
+    orxSTATUS_SUCCESS,        ## Success status, the operation has worked has expected
+    orxSTATUS_NUMBER,         ## Sentinel : Number of status
     orxSTATUS_NONE = orxENUM_NONE

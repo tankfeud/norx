@@ -16,10 +16,10 @@ type
 
 type
   orxSHADER_PARAM* {.bycopy.} = object
-    stNode*: orxLINKLIST_NODE  ## *< Linklist node : 12
-    zName*: cstring         ## *< Parameter literal name : 26
-    eType*: orxSHADER_PARAM_TYPE ## *< Parameter type : 20
-    u32ArraySize*: orxU32      ## *< Parameter array size : 24
+    stNode*: orxLINKLIST_NODE  ## Linklist node : 12
+    zName*: cstring         ## Parameter literal name : 26
+    eType*: orxSHADER_PARAM_TYPE ## Parameter type : 20
+    u32ArraySize*: orxU32      ## Parameter array size : 24
 
 
 ## * Internal shader structure
@@ -31,7 +31,7 @@ type orxSHADER* = object
 
 type
   orxSHADER_EVENT* {.size: sizeof(cint).} = enum
-    orxSHADER_EVENT_SET_PARAM = 0, ## *< Event sent when setting a parameter
+    orxSHADER_EVENT_SET_PARAM = 0, ## Event sent when setting a parameter
     orxSHADER_EVENT_NUMBER, orxSHADER_EVENT_NONE = orxENUM_NONE
 
 
@@ -40,16 +40,16 @@ type
 
 type
   INNER_C_UNION_orxShader_124* {.bycopy, union.} = object
-    fValue*: orxFLOAT          ## *< Float value : 24
-    pstValue*: ptr orxTEXTURE   ## *< Texture value : 24
-    vValue*: orxVECTOR         ## *< Vector value : 32
+    fValue*: orxFLOAT          ## Float value : 24
+    pstValue*: ptr orxTEXTURE   ## Texture value : 24
+    vValue*: orxVECTOR         ## Vector value : 32
 
   orxSHADER_EVENT_PAYLOAD* {.bycopy.} = object
-    pstShader*: ptr orxSHADER   ## *< Shader reference : 4
-    zShaderName*: cstring   ## *< Shader name : 8
-    zParamName*: cstring    ## *< Parameter name : 12
-    eParamType*: orxSHADER_PARAM_TYPE ## *< Parameter type : 16
-    s32ParamIndex*: orxS32     ## *< Parameter index : 20
+    pstShader*: ptr orxSHADER   ## Shader reference : 4
+    zShaderName*: cstring   ## Shader name : 8
+    zParamName*: cstring    ## Parameter name : 12
+    eParamType*: orxSHADER_PARAM_TYPE ## Parameter type : 16
+    s32ParamIndex*: orxS32     ## Parameter index : 20
     ano_orxShader_127*: INNER_C_UNION_orxShader_124
 
 
