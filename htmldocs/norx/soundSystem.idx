@@ -1,0 +1,46 @@
+Structure declaration                                                   *	norx/soundSystem.html
+orxSOUNDSYSTEM_SOUND	norx/soundSystem.html#orxSOUNDSYSTEM_SOUND	soundSystem: orxSOUNDSYSTEM_SOUND	
+orxSOUNDSYSTEM_SAMPLE	norx/soundSystem.html#orxSOUNDSYSTEM_SAMPLE	soundSystem: orxSOUNDSYSTEM_SAMPLE	
+orxSOUNDSYSTEM_STATUS	norx/soundSystem.html#orxSOUNDSYSTEM_STATUS	soundSystem: orxSOUNDSYSTEM_STATUS	
+orxSOUNDSYSTEM_KZ_CONFIG_SECTION	norx/soundSystem.html#orxSOUNDSYSTEM_KZ_CONFIG_SECTION	soundSystem: orxSOUNDSYSTEM_KZ_CONFIG_SECTION	
+orxSOUNDSYSTEM_KZ_CONFIG_RATIO	norx/soundSystem.html#orxSOUNDSYSTEM_KZ_CONFIG_RATIO	soundSystem: orxSOUNDSYSTEM_KZ_CONFIG_RATIO	
+orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_SIZE	norx/soundSystem.html#orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_SIZE	soundSystem: orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_SIZE	
+orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_NUMBER	norx/soundSystem.html#orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_NUMBER	soundSystem: orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_NUMBER	
+soundSystemSetup	norx/soundSystem.html#soundSystemSetup	soundSystem: soundSystemSetup()	
+soundSystemInit	norx/soundSystem.html#soundSystemInit	soundSystem: soundSystemInit(): orxSTATUS	
+soundSystemExit	norx/soundSystem.html#soundSystemExit	soundSystem: soundSystemExit()	
+createSample	norx/soundSystem.html#createSample,orxU32,orxU32,orxU32	soundSystem: createSample(u32ChannelNumber: orxU32; u32FrameNumber: orxU32; u32SampleRate: orxU32): ptr orxSOUNDSYSTEM_SAMPLE	
+loadSample	norx/soundSystem.html#loadSample,cstring	soundSystem: loadSample(zFilename: cstring): ptr orxSOUNDSYSTEM_SAMPLE	
+deleteSample	norx/soundSystem.html#deleteSample,ptr.orxSOUNDSYSTEM_SAMPLE	soundSystem: deleteSample(pstSample: ptr orxSOUNDSYSTEM_SAMPLE): orxSTATUS	
+getSampleInfo	norx/soundSystem.html#getSampleInfo,ptr.orxSOUNDSYSTEM_SAMPLE,ptr.orxU32,ptr.orxU32,ptr.orxU32	soundSystem: getSampleInfo(pstSample: ptr orxSOUNDSYSTEM_SAMPLE; pu32ChannelNumber: ptr orxU32;\n              pu32FrameNumber: ptr orxU32; pu32SampleRate: ptr orxU32): orxSTATUS	
+setSampleData	norx/soundSystem.html#setSampleData,ptr.orxSOUNDSYSTEM_SAMPLE,ptr.orxS16,orxU32	soundSystem: setSampleData(pstSample: ptr orxSOUNDSYSTEM_SAMPLE; as16Data: ptr orxS16;\n              u32SampleNumber: orxU32): orxSTATUS	
+createFromSample	norx/soundSystem.html#createFromSample,ptr.orxSOUNDSYSTEM_SAMPLE	soundSystem: createFromSample(pstSample: ptr orxSOUNDSYSTEM_SAMPLE): ptr orxSOUNDSYSTEM_SOUND	
+createStream	norx/soundSystem.html#createStream,orxU32,orxU32,cstring	soundSystem: createStream(u32ChannelNumber: orxU32; u32SampleRate: orxU32; zReference: cstring): ptr orxSOUNDSYSTEM_SOUND	
+createStreamFromFile	norx/soundSystem.html#createStreamFromFile,cstring,cstring	soundSystem: createStreamFromFile(zFilename: cstring; zReference: cstring): ptr orxSOUNDSYSTEM_SOUND	
+delete	norx/soundSystem.html#delete,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: delete(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS	
+play	norx/soundSystem.html#play,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: play(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS	
+pause	norx/soundSystem.html#pause,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: pause(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS	
+stop	norx/soundSystem.html#stop,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: stop(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS	
+startRecording	norx/soundSystem.html#startRecording,cstring,orxBOOL,orxU32,orxU32	soundSystem: startRecording(zName: cstring; bWriteToFile: orxBOOL; u32SampleRate: orxU32;\n               u32ChannelNumber: orxU32): orxSTATUS	
+stopRecording	norx/soundSystem.html#stopRecording	soundSystem: stopRecording(): orxSTATUS	
+hasRecordingSupport	norx/soundSystem.html#hasRecordingSupport	soundSystem: hasRecordingSupport(): orxBOOL	
+setVolume	norx/soundSystem.html#setVolume,ptr.orxSOUNDSYSTEM_SOUND,orxFLOAT	soundSystem: setVolume(pstSound: ptr orxSOUNDSYSTEM_SOUND; fVolume: orxFLOAT): orxSTATUS	
+setPitch	norx/soundSystem.html#setPitch,ptr.orxSOUNDSYSTEM_SOUND,orxFLOAT	soundSystem: setPitch(pstSound: ptr orxSOUNDSYSTEM_SOUND; fPitch: orxFLOAT): orxSTATUS	
+setTime	norx/soundSystem.html#setTime,ptr.orxSOUNDSYSTEM_SOUND,orxFLOAT	soundSystem: setTime(pstSound: ptr orxSOUNDSYSTEM_SOUND; fTime: orxFLOAT): orxSTATUS	
+setPosition	norx/soundSystem.html#setPosition,ptr.orxSOUNDSYSTEM_SOUND,ptr.orxVECTOR	soundSystem: setPosition(pstSound: ptr orxSOUNDSYSTEM_SOUND; pvPosition: ptr orxVECTOR): orxSTATUS	
+setAttenuation	norx/soundSystem.html#setAttenuation,ptr.orxSOUNDSYSTEM_SOUND,orxFLOAT	soundSystem: setAttenuation(pstSound: ptr orxSOUNDSYSTEM_SOUND; fAttenuation: orxFLOAT): orxSTATUS	
+setReferenceDistance	norx/soundSystem.html#setReferenceDistance,ptr.orxSOUNDSYSTEM_SOUND,orxFLOAT	soundSystem: setReferenceDistance(pstSound: ptr orxSOUNDSYSTEM_SOUND; fDistance: orxFLOAT): orxSTATUS	
+loop	norx/soundSystem.html#loop,ptr.orxSOUNDSYSTEM_SOUND,orxBOOL	soundSystem: loop(pstSound: ptr orxSOUNDSYSTEM_SOUND; bLoop: orxBOOL): orxSTATUS	
+getVolume	norx/soundSystem.html#getVolume,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getVolume(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+getPitch	norx/soundSystem.html#getPitch,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getPitch(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+getTime	norx/soundSystem.html#getTime,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getTime(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+getPosition	norx/soundSystem.html#getPosition,ptr.orxSOUNDSYSTEM_SOUND,ptr.orxVECTOR	soundSystem: getPosition(pstSound: ptr orxSOUNDSYSTEM_SOUND; pvPosition: ptr orxVECTOR): ptr orxVECTOR	
+getAttenuation	norx/soundSystem.html#getAttenuation,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getAttenuation(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+getReferenceDistance	norx/soundSystem.html#getReferenceDistance,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getReferenceDistance(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+isLooping	norx/soundSystem.html#isLooping,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: isLooping(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxBOOL	
+getDuration	norx/soundSystem.html#getDuration,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getDuration(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT	
+getStatus	norx/soundSystem.html#getStatus,ptr.orxSOUNDSYSTEM_SOUND	soundSystem: getStatus(pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSOUNDSYSTEM_STATUS	
+setGlobalVolume	norx/soundSystem.html#setGlobalVolume,orxFLOAT	soundSystem: setGlobalVolume(fGlobalVolume: orxFLOAT): orxSTATUS	
+getGlobalVolume	norx/soundSystem.html#getGlobalVolume	soundSystem: getGlobalVolume(): orxFLOAT	
+setListenerPosition	norx/soundSystem.html#setListenerPosition,ptr.orxVECTOR	soundSystem: setListenerPosition(pvPosition: ptr orxVECTOR): orxSTATUS	
+getListenerPosition	norx/soundSystem.html#getListenerPosition,ptr.orxVECTOR	soundSystem: getListenerPosition(pvPosition: ptr orxVECTOR): ptr orxVECTOR	

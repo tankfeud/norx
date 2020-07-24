@@ -1,0 +1,37 @@
+orxANIMSET_KU32_FLAG_NONE	norx/animSet.html#orxANIMSET_KU32_FLAG_NONE	animSet: orxANIMSET_KU32_FLAG_NONE	
+orxANIMSET_KU32_FLAG_REFERENCE_LOCK	norx/animSet.html#orxANIMSET_KU32_FLAG_REFERENCE_LOCK	animSet: orxANIMSET_KU32_FLAG_REFERENCE_LOCK	
+orxANIMSET_KU32_FLAG_LINK_STATIC	norx/animSet.html#orxANIMSET_KU32_FLAG_LINK_STATIC	animSet: orxANIMSET_KU32_FLAG_LINK_STATIC	
+orxANIMSET_KU32_LINK_FLAG_NONE	norx/animSet.html#orxANIMSET_KU32_LINK_FLAG_NONE	animSet: orxANIMSET_KU32_LINK_FLAG_NONE	
+orxANIMSET_KU32_LINK_FLAG_LOOP_COUNT	norx/animSet.html#orxANIMSET_KU32_LINK_FLAG_LOOP_COUNT	animSet: orxANIMSET_KU32_LINK_FLAG_LOOP_COUNT	
+orxANIMSET_KU32_LINK_FLAG_PRIORITY	norx/animSet.html#orxANIMSET_KU32_LINK_FLAG_PRIORITY	animSet: orxANIMSET_KU32_LINK_FLAG_PRIORITY	
+orxANIMSET_KU32_LINK_FLAG_IMMEDIATE_CUT	norx/animSet.html#orxANIMSET_KU32_LINK_FLAG_IMMEDIATE_CUT	animSet: orxANIMSET_KU32_LINK_FLAG_IMMEDIATE_CUT	
+orxANIMSET_KU32_LINK_FLAG_CLEAR_TARGET	norx/animSet.html#orxANIMSET_KU32_LINK_FLAG_CLEAR_TARGET	animSet: orxANIMSET_KU32_LINK_FLAG_CLEAR_TARGET	
+orxANIMSET_KU32_MAX_ANIM_NUMBER	norx/animSet.html#orxANIMSET_KU32_MAX_ANIM_NUMBER	animSet: orxANIMSET_KU32_MAX_ANIM_NUMBER	
+orxANIMSET	norx/animSet.html#orxANIMSET	animSet: orxANIMSET	
+orxANIMSET_LINK_TABLE	norx/animSet.html#orxANIMSET_LINK_TABLE	animSet: orxANIMSET_LINK_TABLE	
+animSetSetup	norx/animSet.html#animSetSetup	animSet: animSetSetup()	
+animSetInit	norx/animSet.html#animSetInit	animSet: animSetInit(): orxSTATUS	
+animSetExit	norx/animSet.html#animSetExit	animSet: animSetExit()	
+animSetCreate	norx/animSet.html#animSetCreate,orxU32	animSet: animSetCreate(u32Size: orxU32): ptr orxANIMSET	
+animSetCreateFromConfig	norx/animSet.html#animSetCreateFromConfig,cstring	animSet: animSetCreateFromConfig(zConfigID: cstring): ptr orxANIMSET	
+delete	norx/animSet.html#delete,ptr.orxANIMSET	animSet: delete(pstAnimSet: ptr orxANIMSET): orxSTATUS	
+clearCache	norx/animSet.html#clearCache	animSet: clearCache(): orxSTATUS	
+addReference	norx/animSet.html#addReference,ptr.orxANIMSET	animSet: addReference(pstAnimSet: ptr orxANIMSET)	
+removeReference	norx/animSet.html#removeReference,ptr.orxANIMSET	animSet: removeReference(pstAnimSet: ptr orxANIMSET)	
+cloneLinkTable	norx/animSet.html#cloneLinkTable,ptr.orxANIMSET	animSet: cloneLinkTable(pstAnimSet: ptr orxANIMSET): ptr orxANIMSET_LINK_TABLE	
+deleteLinkTable	norx/animSet.html#deleteLinkTable,ptr.orxANIMSET_LINK_TABLE	animSet: deleteLinkTable(pstLinkTable: ptr orxANIMSET_LINK_TABLE)	
+addAnim	norx/animSet.html#addAnim,ptr.orxANIMSET,ptr.orxANIM	animSet: addAnim(pstAnimSet: ptr orxANIMSET; pstAnim: ptr orxANIM): orxU32	
+removeAnim	norx/animSet.html#removeAnim,ptr.orxANIMSET,orxU32	animSet: removeAnim(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): orxSTATUS	
+removeAllAnims	norx/animSet.html#removeAllAnims,ptr.orxANIMSET	animSet: removeAllAnims(pstAnimSet: ptr orxANIMSET): orxSTATUS	
+addLink	norx/animSet.html#addLink,ptr.orxANIMSET,orxU32,orxU32	animSet: addLink(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32; u32DstAnim: orxU32): orxU32	
+removeLink	norx/animSet.html#removeLink,ptr.orxANIMSET,orxU32	animSet: removeLink(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32): orxSTATUS	
+getLink	norx/animSet.html#getLink,ptr.orxANIMSET,orxU32,orxU32	animSet: getLink(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32; u32DstAnim: orxU32): orxU32	
+setLinkProperty	norx/animSet.html#setLinkProperty,ptr.orxANIMSET,orxU32,orxU32,orxU32	animSet: setLinkProperty(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32; u32Property: orxU32;\n                u32Value: orxU32): orxSTATUS	
+getLinkProperty	norx/animSet.html#getLinkProperty,ptr.orxANIMSET,orxU32,orxU32	animSet: getLinkProperty(pstAnimSet: ptr orxANIMSET; u32LinkID: orxU32; u32Property: orxU32): orxU32	
+computeAnim	norx/animSet.html#computeAnim,ptr.orxANIMSET,orxU32,orxU32,ptr.orxFLOAT,ptr.orxANIMSET_LINK_TABLE,ptr.orxBOOL,ptr.orxBOOL	animSet: computeAnim(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32; u32DstAnim: orxU32;\n            pfTime: ptr orxFLOAT; pstLinkTable: ptr orxANIMSET_LINK_TABLE;\n            pbCut: ptr orxBOOL; pbClearTarget: ptr orxBOOL): orxU32	
+findNextAnim	norx/animSet.html#findNextAnim,ptr.orxANIMSET,orxU32,orxU32	animSet: findNextAnim(pstAnimSet: ptr orxANIMSET; u32SrcAnim: orxU32; u32DstAnim: orxU32): orxU32	
+getAnim	norx/animSet.html#getAnim,ptr.orxANIMSET,orxU32	animSet: getAnim(pstAnimSet: ptr orxANIMSET; u32AnimID: orxU32): ptr orxANIM	
+getAnimStorageSize	norx/animSet.html#getAnimStorageSize,ptr.orxANIMSET	animSet: getAnimStorageSize(pstAnimSet: ptr orxANIMSET): orxU32	
+getAnimCount	norx/animSet.html#getAnimCount,ptr.orxANIMSET	animSet: getAnimCount(pstAnimSet: ptr orxANIMSET): orxU32	
+getAnimIDFromName	norx/animSet.html#getAnimIDFromName,ptr.orxANIMSET,cstring	animSet: getAnimIDFromName(pstAnimSet: ptr orxANIMSET; zAnimName: cstring): orxU32	
+getName	norx/animSet.html#getName,ptr.orxANIMSET	animSet: getName(pstAnimSet: ptr orxANIMSET): cstring	

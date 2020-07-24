@@ -1,0 +1,4 @@
+sbStopByEvent	norx.html#sbStopByEvent	norx: sbStopByEvent	
+orx_DefaultEventHandler	norx.html#orx_DefaultEventHandler,ptr.orxEVENT	norx: orx_DefaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS	
+orx_MainSetup	norx.html#orx_MainSetup	norx: orx_MainSetup()	
+execute	norx.html#execute,proc),proc),proc)	norx: execute(initProc: proc (): orxSTATUS {.cdecl.}; runProc: proc (): orxSTATUS {.cdecl.};\n        exitProc: proc () {.cdecl.})	

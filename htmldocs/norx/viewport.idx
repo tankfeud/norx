@@ -1,0 +1,44 @@
+orxVIEWPORT_KU32_FLAG_ALIGN_CENTER	norx/viewport.html#orxVIEWPORT_KU32_FLAG_ALIGN_CENTER	viewport: orxVIEWPORT_KU32_FLAG_ALIGN_CENTER	
+orxVIEWPORT_KU32_FLAG_ALIGN_LEFT	norx/viewport.html#orxVIEWPORT_KU32_FLAG_ALIGN_LEFT	viewport: orxVIEWPORT_KU32_FLAG_ALIGN_LEFT	
+orxVIEWPORT_KU32_FLAG_ALIGN_RIGHT	norx/viewport.html#orxVIEWPORT_KU32_FLAG_ALIGN_RIGHT	viewport: orxVIEWPORT_KU32_FLAG_ALIGN_RIGHT	
+orxVIEWPORT_KU32_FLAG_ALIGN_TOP	norx/viewport.html#orxVIEWPORT_KU32_FLAG_ALIGN_TOP	viewport: orxVIEWPORT_KU32_FLAG_ALIGN_TOP	
+orxVIEWPORT_KU32_FLAG_ALIGN_BOTTOM	norx/viewport.html#orxVIEWPORT_KU32_FLAG_ALIGN_BOTTOM	viewport: orxVIEWPORT_KU32_FLAG_ALIGN_BOTTOM	
+orxVIEWPORT_KU32_FLAG_NO_DEBUG	norx/viewport.html#orxVIEWPORT_KU32_FLAG_NO_DEBUG	viewport: orxVIEWPORT_KU32_FLAG_NO_DEBUG	
+orxVIEWPORT_KU32_MAX_TEXTURE_NUMBER	norx/viewport.html#orxVIEWPORT_KU32_MAX_TEXTURE_NUMBER	viewport: orxVIEWPORT_KU32_MAX_TEXTURE_NUMBER	
+orxVIEWPORT	norx/viewport.html#orxVIEWPORT	viewport: orxVIEWPORT	
+orxVIEWPORT_EVENT	norx/viewport.html#orxVIEWPORT_EVENT	viewport: orxVIEWPORT_EVENT	
+viewportSetup	norx/viewport.html#viewportSetup	viewport: viewportSetup()	
+viewportInit	norx/viewport.html#viewportInit	viewport: viewportInit(): orxSTATUS	
+viewportExit	norx/viewport.html#viewportExit	viewport: viewportExit()	
+viewportCreate	norx/viewport.html#viewportCreate	viewport: viewportCreate(): ptr orxVIEWPORT	
+viewportCreateFromConfig	norx/viewport.html#viewportCreateFromConfig,cstring	viewport: viewportCreateFromConfig(zConfigID: cstring): ptr orxVIEWPORT	
+delete	norx/viewport.html#delete,ptr.orxVIEWPORT	viewport: delete(pstViewport: ptr orxVIEWPORT): orxSTATUS	
+setTextureList	norx/viewport.html#setTextureList,ptr.orxVIEWPORT,orxU32,ptr.ptr.orxTEXTURE	viewport: setTextureList(pstViewport: ptr orxVIEWPORT; u32TextureNumber: orxU32;\n               apstTextureList: ptr ptr orxTEXTURE)	
+getTextureList	norx/viewport.html#getTextureList,ptr.orxVIEWPORT,orxU32,ptr.ptr.orxTEXTURE	viewport: getTextureList(pstViewport: ptr orxVIEWPORT; u32TextureNumber: orxU32;\n               apstTextureList: ptr ptr orxTEXTURE): orxSTATUS	
+getTextureCount	norx/viewport.html#getTextureCount,ptr.orxVIEWPORT	viewport: getTextureCount(pstViewport: ptr orxVIEWPORT): orxU32	
+setBackgroundColor	norx/viewport.html#setBackgroundColor,ptr.orxVIEWPORT,ptr.orxCOLOR	viewport: setBackgroundColor(pstViewport: ptr orxVIEWPORT; pstColor: ptr orxCOLOR): orxSTATUS	
+clearBackgroundColor	norx/viewport.html#clearBackgroundColor,ptr.orxVIEWPORT	viewport: clearBackgroundColor(pstViewport: ptr orxVIEWPORT): orxSTATUS	
+hasBackgroundColor	norx/viewport.html#hasBackgroundColor,ptr.orxVIEWPORT	viewport: hasBackgroundColor(pstViewport: ptr orxVIEWPORT): orxBOOL	
+getBackgroundColor	norx/viewport.html#getBackgroundColor,ptr.orxVIEWPORT,ptr.orxCOLOR	viewport: getBackgroundColor(pstViewport: ptr orxVIEWPORT; pstColor: ptr orxCOLOR): ptr orxCOLOR	
+enable	norx/viewport.html#enable,ptr.orxVIEWPORT,orxBOOL	viewport: enable(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL)	
+isEnabled	norx/viewport.html#isEnabled,ptr.orxVIEWPORT	viewport: isEnabled(pstViewport: ptr orxVIEWPORT): orxBOOL	
+setCamera	norx/viewport.html#setCamera,ptr.orxVIEWPORT,ptr.orxCAMERA	viewport: setCamera(pstViewport: ptr orxVIEWPORT; pstCamera: ptr orxCAMERA)	
+getCamera	norx/viewport.html#getCamera,ptr.orxVIEWPORT	viewport: getCamera(pstViewport: ptr orxVIEWPORT): ptr orxCAMERA	
+addShader	norx/viewport.html#addShader,ptr.orxVIEWPORT,cstring	viewport: addShader(pstViewport: ptr orxVIEWPORT; zShaderConfigID: cstring): orxSTATUS	
+removeShader	norx/viewport.html#removeShader,ptr.orxVIEWPORT,cstring	viewport: removeShader(pstViewport: ptr orxVIEWPORT; zShaderConfigID: cstring): orxSTATUS	
+enableShader	norx/viewport.html#enableShader,ptr.orxVIEWPORT,orxBOOL	viewport: enableShader(pstViewport: ptr orxVIEWPORT; bEnable: orxBOOL)	
+isShaderEnabled	norx/viewport.html#isShaderEnabled,ptr.orxVIEWPORT	viewport: isShaderEnabled(pstViewport: ptr orxVIEWPORT): orxBOOL	
+getShaderPointer	norx/viewport.html#getShaderPointer,ptr.orxVIEWPORT	viewport: getShaderPointer(pstViewport: ptr orxVIEWPORT): ptr orxSHADERPOINTER	
+setBlendMode	norx/viewport.html#setBlendMode,ptr.orxVIEWPORT,orxDISPLAY_BLEND_MODE	viewport: setBlendMode(pstViewport: ptr orxVIEWPORT; eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS	
+getBlendMode	norx/viewport.html#getBlendMode,ptr.orxVIEWPORT	viewport: getBlendMode(pstViewport: ptr orxVIEWPORT): orxDISPLAY_BLEND_MODE	
+setPosition	norx/viewport.html#setPosition,ptr.orxVIEWPORT,orxFLOAT,orxFLOAT	viewport: setPosition(pstViewport: ptr orxVIEWPORT; fX: orxFLOAT; fY: orxFLOAT)	
+setRelativePosition	norx/viewport.html#setRelativePosition,ptr.orxVIEWPORT,orxU32	viewport: setRelativePosition(pstViewport: ptr orxVIEWPORT; u32AlignFlags: orxU32): orxSTATUS	
+getPosition	norx/viewport.html#getPosition,ptr.orxVIEWPORT,ptr.orxFLOAT,ptr.orxFLOAT	viewport: getPosition(pstViewport: ptr orxVIEWPORT; pfX: ptr orxFLOAT; pfY: ptr orxFLOAT)	
+setSize	norx/viewport.html#setSize,ptr.orxVIEWPORT,orxFLOAT,orxFLOAT	viewport: setSize(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT; fHeight: orxFLOAT)	
+setRelativeSize	norx/viewport.html#setRelativeSize,ptr.orxVIEWPORT,orxFLOAT,orxFLOAT	viewport: setRelativeSize(pstViewport: ptr orxVIEWPORT; fWidth: orxFLOAT; fHeight: orxFLOAT): orxSTATUS	
+getSize	norx/viewport.html#getSize,ptr.orxVIEWPORT,ptr.orxFLOAT,ptr.orxFLOAT	viewport: getSize(pstViewport: ptr orxVIEWPORT; pfWidth: ptr orxFLOAT; pfHeight: ptr orxFLOAT)	
+getRelativeSize	norx/viewport.html#getRelativeSize,ptr.orxVIEWPORT,ptr.orxFLOAT,ptr.orxFLOAT	viewport: getRelativeSize(pstViewport: ptr orxVIEWPORT; pfWidth: ptr orxFLOAT;\n                pfHeight: ptr orxFLOAT)	
+getBox	norx/viewport.html#getBox,ptr.orxVIEWPORT,ptr.orxAABOX	viewport: getBox(pstViewport: ptr orxVIEWPORT; pstBox: ptr orxAABOX): ptr orxAABOX	
+getCorrectionRatio	norx/viewport.html#getCorrectionRatio,ptr.orxVIEWPORT	viewport: getCorrectionRatio(pstViewport: ptr orxVIEWPORT): orxFLOAT	
+getName	norx/viewport.html#getName,ptr.orxVIEWPORT	viewport: getName(pstViewport: ptr orxVIEWPORT): cstring	
+viewportGet	norx/viewport.html#viewportGet,cstring	viewport: viewportGet(zName: cstring): ptr orxVIEWPORT	
