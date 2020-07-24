@@ -1,0 +1,34 @@
+orxANIM_KU32_FLAG_NONE	norx/anim.html#orxANIM_KU32_FLAG_NONE	anim: orxANIM_KU32_FLAG_NONE	
+orxANIM_KU32_FLAG_2D	norx/anim.html#orxANIM_KU32_FLAG_2D	anim: orxANIM_KU32_FLAG_2D	
+orxANIM_KU32_MASK_USER_ALL	norx/anim.html#orxANIM_KU32_MASK_USER_ALL	anim: orxANIM_KU32_MASK_USER_ALL	
+orxANIM_KU32_MASK_ALL	norx/anim.html#orxANIM_KU32_MASK_ALL	anim: orxANIM_KU32_MASK_ALL	
+orxANIM_KU32_KEY_MAX_NUMBER	norx/anim.html#orxANIM_KU32_KEY_MAX_NUMBER	anim: orxANIM_KU32_KEY_MAX_NUMBER	
+orxANIM_KU32_EVENT_MAX_NUMBER	norx/anim.html#orxANIM_KU32_EVENT_MAX_NUMBER	anim: orxANIM_KU32_EVENT_MAX_NUMBER	
+orxANIM	norx/anim.html#orxANIM	anim: orxANIM	
+orxANIM_EVENT	norx/anim.html#orxANIM_EVENT	anim: orxANIM_EVENT	
+INNER_C_STRUCT_orxAnim_115	norx/anim.html#INNER_C_STRUCT_orxAnim_115	anim: INNER_C_STRUCT_orxAnim_115	
+INNER_C_STRUCT_orxAnim_121	norx/anim.html#INNER_C_STRUCT_orxAnim_121	anim: INNER_C_STRUCT_orxAnim_121	
+INNER_C_STRUCT_orxAnim_127	norx/anim.html#INNER_C_STRUCT_orxAnim_127	anim: INNER_C_STRUCT_orxAnim_127	
+INNER_C_UNION_orxAnim_113	norx/anim.html#INNER_C_UNION_orxAnim_113	anim: INNER_C_UNION_orxAnim_113	
+orxANIM_EVENT_PAYLOAD	norx/anim.html#orxANIM_EVENT_PAYLOAD	anim: orxANIM_EVENT_PAYLOAD	
+orxANIM_CUSTOM_EVENT	norx/anim.html#orxANIM_CUSTOM_EVENT	anim: orxANIM_CUSTOM_EVENT	
+animSetup	norx/anim.html#animSetup	anim: animSetup()	
+animInit	norx/anim.html#animInit	anim: animInit(): orxSTATUS	
+animExit	norx/anim.html#animExit	anim: animExit()	
+animCreate	norx/anim.html#animCreate,orxU32,orxU32,orxU32	anim: animCreate(u32Flags: orxU32; u32KeyNumber: orxU32; u32EventNumber: orxU32): ptr orxANIM	
+delete	norx/anim.html#delete,ptr.orxANIM	anim: delete(pstAnim: ptr orxANIM): orxSTATUS	
+addKey	norx/anim.html#addKey,ptr.orxANIM,ptr.orxSTRUCTURE,orxFLOAT	anim: addKey(pstAnim: ptr orxANIM; pstData: ptr orxSTRUCTURE; fTimeStamp: orxFLOAT): orxSTATUS	
+removeLastKey	norx/anim.html#removeLastKey,ptr.orxANIM	anim: removeLastKey(pstAnim: ptr orxANIM): orxSTATUS	
+removeAllKeys	norx/anim.html#removeAllKeys,ptr.orxANIM	anim: removeAllKeys(pstAnim: ptr orxANIM)	
+addEvent	norx/anim.html#addEvent,ptr.orxANIM,cstring,orxFLOAT,orxFLOAT	anim: addEvent(pstAnim: ptr orxANIM; zEventName: cstring; fTimeStamp: orxFLOAT;\n         fValue: orxFLOAT): orxSTATUS	
+removeLastEvent	norx/anim.html#removeLastEvent,ptr.orxANIM	anim: removeLastEvent(pstAnim: ptr orxANIM): orxSTATUS	
+removeAllEvents	norx/anim.html#removeAllEvents,ptr.orxANIM	anim: removeAllEvents(pstAnim: ptr orxANIM)	
+getNextEvent	norx/anim.html#getNextEvent,ptr.orxANIM,orxFLOAT	anim: getNextEvent(pstAnim: ptr orxANIM; fTimeStamp: orxFLOAT): ptr orxANIM_CUSTOM_EVENT	
+getKey	norx/anim.html#getKey,ptr.orxANIM,orxFLOAT	anim: getKey(pstAnim: ptr orxANIM; fTimeStamp: orxFLOAT): orxU32	
+getKeyData	norx/anim.html#getKeyData,ptr.orxANIM,orxU32	anim: getKeyData(pstAnim: ptr orxANIM; u32Index: orxU32): ptr orxSTRUCTURE	
+getKeyStorageSize	norx/anim.html#getKeyStorageSize,ptr.orxANIM	anim: getKeyStorageSize(pstAnim: ptr orxANIM): orxU32	
+getKeyCount	norx/anim.html#getKeyCount,ptr.orxANIM	anim: getKeyCount(pstAnim: ptr orxANIM): orxU32	
+getEventStorageSize	norx/anim.html#getEventStorageSize,ptr.orxANIM	anim: getEventStorageSize(pstAnim: ptr orxANIM): orxU32	
+getEventCount	norx/anim.html#getEventCount,ptr.orxANIM	anim: getEventCount(pstAnim: ptr orxANIM): orxU32	
+getLength	norx/anim.html#getLength,ptr.orxANIM	anim: getLength(pstAnim: ptr orxANIM): orxFLOAT	
+getName	norx/anim.html#getName,ptr.orxANIM	anim: getName(pstAnim: ptr orxANIM): cstring	

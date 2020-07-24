@@ -1,0 +1,16 @@
+orxSHADERPOINTER_KU32_SHADER_NUMBER	norx/shaderPointer.html#orxSHADERPOINTER_KU32_SHADER_NUMBER	shaderPointer: orxSHADERPOINTER_KU32_SHADER_NUMBER	
+orxSHADERPOINTER	norx/shaderPointer.html#orxSHADERPOINTER	shaderPointer: orxSHADERPOINTER	
+shaderPointerSetup	norx/shaderPointer.html#shaderPointerSetup	shaderPointer: shaderPointerSetup()	
+shaderPointerInit	norx/shaderPointer.html#shaderPointerInit	shaderPointer: shaderPointerInit(): orxSTATUS	
+shaderPointerExit	norx/shaderPointer.html#shaderPointerExit	shaderPointer: shaderPointerExit()	
+shaderPointerCreate	norx/shaderPointer.html#shaderPointerCreate	shaderPointer: shaderPointerCreate(): ptr orxSHADERPOINTER	
+delete	norx/shaderPointer.html#delete,ptr.orxSHADERPOINTER	shaderPointer: delete(pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS	
+start	norx/shaderPointer.html#start,ptr.orxSHADERPOINTER	shaderPointer: start(pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS	
+stop	norx/shaderPointer.html#stop,ptr.orxSHADERPOINTER	shaderPointer: stop(pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS	
+enable	norx/shaderPointer.html#enable,ptr.orxSHADERPOINTER,orxBOOL	shaderPointer: enable(pstShaderPointer: ptr orxSHADERPOINTER; bEnable: orxBOOL)	
+isEnabled	norx/shaderPointer.html#isEnabled,ptr.orxSHADERPOINTER	shaderPointer: isEnabled(pstShaderPointer: ptr orxSHADERPOINTER): orxBOOL	
+addShader	norx/shaderPointer.html#addShader,ptr.orxSHADERPOINTER,ptr.orxSHADER	shaderPointer: addShader(pstShaderPointer: ptr orxSHADERPOINTER; pstShader: ptr orxSHADER): orxSTATUS	
+removeShader	norx/shaderPointer.html#removeShader,ptr.orxSHADERPOINTER,ptr.orxSHADER	shaderPointer: removeShader(pstShaderPointer: ptr orxSHADERPOINTER; pstShader: ptr orxSHADER): orxSTATUS	
+getShader	norx/shaderPointer.html#getShader,ptr.orxSHADERPOINTER,orxU32	shaderPointer: getShader(pstShaderPointer: ptr orxSHADERPOINTER; u32Index: orxU32): ptr orxSHADER	
+addShaderFromConfig	norx/shaderPointer.html#addShaderFromConfig,ptr.orxSHADERPOINTER,cstring	shaderPointer: addShaderFromConfig(pstShaderPointer: ptr orxSHADERPOINTER;\n                    zShaderConfigID: cstring): orxSTATUS	
+removeShaderFromConfig	norx/shaderPointer.html#removeShaderFromConfig,ptr.orxSHADERPOINTER,cstring	shaderPointer: removeShaderFromConfig(pstShaderPointer: ptr orxSHADERPOINTER;\n                       zShaderConfigID: cstring): orxSTATUS	

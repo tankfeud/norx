@@ -1,0 +1,13 @@
+orxSTRING_KC_VECTOR_START	norx/string.html#orxSTRING_KC_VECTOR_START	string: orxSTRING_KC_VECTOR_START	
+orxSTRING_KC_VECTOR_START_ALT	norx/string.html#orxSTRING_KC_VECTOR_START_ALT	string: orxSTRING_KC_VECTOR_START_ALT	
+orxSTRING_KC_VECTOR_SEPARATOR	norx/string.html#orxSTRING_KC_VECTOR_SEPARATOR	string: orxSTRING_KC_VECTOR_SEPARATOR	
+orxSTRING_KC_VECTOR_END	norx/string.html#orxSTRING_KC_VECTOR_END	string: orxSTRING_KC_VECTOR_END	
+orxSTRING_KC_VECTOR_END_ALT	norx/string.html#orxSTRING_KC_VECTOR_END_ALT	string: orxSTRING_KC_VECTOR_END_ALT	
+orxSTRING_KU32_CRC_POLYNOMIAL	norx/string.html#orxSTRING_KU32_CRC_POLYNOMIAL	string: orxSTRING_KU32_CRC_POLYNOMIAL	
+saau32CRCTable	norx/string.html#saau32CRCTable	string: saau32CRCTable	
+stringSetup	norx/string.html#stringSetup	string: stringSetup()	
+stringInit	norx/string.html#stringInit	string: stringInit(): orxSTATUS	
+stringExit	norx/string.html#stringExit	string: stringExit()	
+getID	norx/string.html#getID,cstring	string: getID(zString: cstring): orxSTRINGID	
+getFromID	norx/string.html#getFromID,orxSTRINGID	string: getFromID(u32ID: orxSTRINGID): cstring	
+store	norx/string.html#store,cstring	string: store(zString: cstring): cstring	
