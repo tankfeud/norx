@@ -73,10 +73,58 @@ proc getBinding*(
   return fmt"key {input_name} not found"
 
 
+# void orxFASTCALL Update(const orxCLOCK_INFO *_pstClockInfo, void *_pstContext)
+#proc Update( clock_info:orxCLOCK_FUNCTION, context:pointer) =
+# 
+proc Update( clock_info:ptr orxCLOCK_INFO, context:pointer) {.cdecl.} =
+  # push Main on section stack for accessing informations related to this section.
+  var status = pushSection("Main")
+
+  if getBool("DisplayLog"):
+    echo(getName( getFromInfo( clock_info)))
+
+
+#[
+void orxFASTCALL Update(const orxCLOCK_INFO *_pstClockInfo, void *_pstContext)
+{
+  orxOBJECT *pstObject;
+
+  /* *** LOG DISPLAY SECTION *** */
+
+  /* Pushes main config section */
+  orxConfig_PushSection("Main");
+
+  /* Should display log? */
+  if(orxConfig_GetBool("DisplayLog"))
+  {
+    /* Displays info in log and console */
+    orxLOG("<%s>: Time = %.3f / DT = %.3f", orxClock_GetName(orxClock_GetFromInfo(_pstClockInfo)), _pstClockInfo->fTime, _pstClockInfo->fDT);
+  }
+
+  /* Pops config section */
+  orxConfig_PopSection();
+
+  /* *** OBJECT UPDATE SECTION *** */
+
+  /* Gets object from context.
+   * The helper macro orxOBJECT() will verify if the pointer we want to cast
+   * is really an orxOBJECT.
+   */
+  pstObject = orxOBJECT(_pstContext);
+
+  /* Rotates it according to elapsed time (complete rotation every 2 seconds) */
+  orxObject_SetRotation(pstObject, orxMATH_KF_PI * _pstClockInfo->fTime);
+}
+]#
+
+proc inputUpdate( clock_info:ptr orxCLOCK_INFO, context:pointer) {.cdecl.} =
+  # the input management is called by the main clock
+  discard
+
 proc init(): orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
 
-  var clock1,clock2:orxCLOCK
+  var clock1,clock2,clock_main:ptr orxCLOCK
   var object1,object2:ptr orxOBJECT
 
 
@@ -104,17 +152,38 @@ proc init(): orxSTATUS {.cdecl.} =
   if object1.isNil:
     result = orxSTATUS_FAILURE
   object2 = objectCreateFromConfig("Object2");
-  if object1.isNil:
+  if object2.isNil:
     result = orxSTATUS_FAILURE
+  
+  # Creates two user clocks: a 100Hz and a 5Hz
+  clock1 = clockCreateFromConfig("Clock1")
+  clock2 = clockCreateFromConfig("Clock2")
+
+  #[ Registers our update callback to these clocks with both object as context.
+     The module ID is used to skip the call to this callback if the corresponding module
+     is either not loaded or paused, which won't happen in this tutorial. ]#
+#  register( clock1, Update, object1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  var status = register( clock1, Update, object1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  # you can also call register with clock2 as first implicit parameter.
+  status = clock2.register( Update, object2, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  
+  clock_main = clockGet(orxCLOCK_KZ_CORE) #or clock_get if you prefer snake_case
+  
+  #[ Registers our input update callback to it
+    !!IMPORTANT!! *DO NOT* handle inputs in clock callbacks that are *NOT* registered to the main clock
+     you might miss input status updates if the user clock runs slower than the main one ]#
+  status = register( clock_main, inputUpdate, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+
+  # Done !
+  result = orxSTATUS_SUCCESS
 
 
 proc run(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
-
-  # Should quit?
+  result = orxSTATUS_SUCCESS #by default, won't quit
   if (input.isActive("Quit")):
     # Updates result
-    result = orxSTATUS_FAILURE;
+    result = orxSTATUS_FAILURE
+
 
 
 
