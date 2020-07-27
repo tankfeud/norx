@@ -62,7 +62,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     # clock.getName : returns the orxCLOCK name as a cstring
     # cast , convert, use echo directly, or $ which convert cstring to string (safe but slow)
     let clockName = $clockInfo.getFromInfo.getName
-    orxLOG(&"clock time:{clockInfo.fTime:3.2f} delta:{clockInfo.fDT:1.4f}")
+    orxLOG(&"{clockName} time:{clockInfo.fTime:3.2f} delta:{clockInfo.fDT:1.4f}")
 
   # Pop "Main" , still no test on orxStatus.
   status = popSection()
