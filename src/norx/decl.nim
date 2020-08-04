@@ -79,6 +79,7 @@ else:
     orx32* = true
 ##  No platform defines?
 
+
 when not defined(Windows) and not defined(MacOSX) and not defined(Linux) and
     not defined(iOS) and not defined(Android) and not defined(ANDROID_NATIVE):
   ##  Windows?

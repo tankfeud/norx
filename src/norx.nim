@@ -44,72 +44,61 @@ when not defined(PLUGIN):
     discard
   else:
     when defined(Android) or defined(ANDROID_NATIVE):
-      import
-        main/orxAndroid
+      import norx/[android, thread]
 
-      ## * Orx main execution function
-      ##  @param[in]   _u32NbParams                  Main function parameters number (argc)
-      ##  @param[in]   _azParams                     Main function parameter list (argv)
-      ##  @param[in]   _pfnInit                      Main init function (should init all the main stuff and register the main event handler to override the default one)
-      ##  @param[in]   _pfnRun                       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
-      ##  @param[in]   _pfnExit                      Main exit function (should clean all the main stuff)
-      ##
-      proc orx_Execute*(u32NbParams: orxU32; azParams: cstringArray;
-                       pfnInit: orxMODULE_INIT_FUNCTION;
-                       pfnRun: orxMODULE_RUN_FUNCTION;
-                       pfnExit: orxMODULE_EXIT_FUNCTION) {.inline, cdecl.} =
-        ##  Inits the Debug System
+      ## Orx main execution function
+      ##  @param[in]   initProc      Main init function (should init all the main stuff and register the main event handler to override the default one)
+      ##  @param[in]   runProc       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
+      ##  @param[in]   exitProc      Main exit function (should clean all the main stuff)
+      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
+                       runProc: proc(): orxSTATUS {.cdecl.};
+                       exitProc: proc() {.cdecl.}) {.inline} =
+        ## Inits the Debug System
         orxDEBUG_INIT_MACRO()
-        ##  Checks
-        assert(pfnRun != nil)
+        ## Checks
+        assert(runProc != nil)
         ##  Registers main module
-        moduleRegister(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, pfnInit, pfnExit)
-        ##  Sends the command line arguments to orxParam module
-        if setArgs(u32NbParams, azParams) != orxSTATUS_FAILURE:
+        register(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, initProc, exitProc)
+        ## On Android this is 0, null.
+        if setArgs(0, nil) != orxSTATUS_FAILURE:
           ##  Sets thread callbacks
-          setCallbacks(orxAndroid_JNI_SetupThread, nil, nil)
+          discard setCallbacks(orxAndroid_JNI_SetupThread, nil, nil)
           ##  Inits the engine
-          if orxModule_Init(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
-            var stPayload: orxSYSTEM_EVENT_PAYLOAD
+          if moduleInit(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
             var
+              stPayload: orxSYSTEM_EVENT_PAYLOAD
               eClockStatus: orxSTATUS
               eMainStatus: orxSTATUS
+
             ##  Registers default event handler
-            addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
+            var st = addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
             ##  Clears payload
-            zero(addr(stPayload), sizeof((orxSYSTEM_EVENT_PAYLOAD)))
+            zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
             ##  Main loop
             var bStop = false
             sbStopByEvent = false
             while not bStop:
               orxAndroid_PumpEvents()
               ##  Sends frame start event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM,
-                            orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil,
-                            addr(stPayload))
+              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
               ##  Runs the engine
-              eMainStatus = pfnRun()
+              eMainStatus = runProc()
               ##  Updates clock system
-              eClockStatus = orxClock_Update()
+              eClockStatus = update()
               ##  Sends frame stop event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP,
-                            nil, nil, addr(stPayload))
+              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
               ##  Updates frame count
-              inc(stPayload.u32FrameCount)
+              stPayload.u32FrameCount += 1
               bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
-          orxEvent_RemoveHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
+          discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
           ##  Exits from engine
-          orxModule_Exit(orxMODULE_ID_MAIN)
+          moduleExit(orxMODULE_ID_MAIN)
         orxDEBUG_EXIT_MACRO()
-
     else:
-      ## * Orx main execution function
-      ##  @param[in]   _u32NbParams                  Main function parameters number (argc)
-      ##  @param[in]   _azParams                     Main function parameter list (argv)
-      ##  @param[in]   _pfnInit                      Main init function (should init all the main stuff and register the main event handler to override the default one)
-      ##  @param[in]   _pfnRun                       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
-      ##  @param[in]   _pfnExit                      Main exit function (should clean all the main stuff)
-      ##
+      ## Orx main execution function
+      ##  @param[in]   initProc      Main init function (should init all the main stuff and register the main event handler to override the default one)
+      ##  @param[in]   runProc       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
+      ##  @param[in]   exitProc      Main exit function (should clean all the main stuff)
       proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
                        runProc: proc(): orxSTATUS {.cdecl.};
                        exitProc: proc() {.cdecl.}) {.inline} =
@@ -140,7 +129,7 @@ when not defined(PLUGIN):
             ##  Registers default event handler
             var st = addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
             ##  Clears payload
-            discard zero(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
+            zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
             ##  Main loop
             var bStop = false
             sbStopByEvent = false
