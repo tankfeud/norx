@@ -23,6 +23,8 @@ proc init(): orxSTATUS {.cdecl.} =
   ## Main init function (should init all the main stuff and register the main event handler to override the default one)
   orxLOG("Norxdemo starting")
   var v = viewportCreateFromConfig("MainViewport")
+  if v.isNil:
+    echo "Ooops, no viewport! Failed to find ini file??"
   introScene = objectCreateFromConfig("IntroScene")
   music = soundCreateFromConfig("IntroMusic")
   toggleMusic()
@@ -43,8 +45,8 @@ proc exit() {.cdecl.} =
 
 proc bootstrap(): orxSTATUS {.cdecl.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
-  #var dir = getCurrentDir()
-  discard addStorage(orxCONFIG_KZ_RESOURCE_GROUP, "data/config", false)
+  discard setBaseName("norxdemo")
+  discard addStorage(orxCONFIG_KZ_RESOURCE_GROUP, "data", false)
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
   return orxSTATUS_SUCCESS
 
@@ -54,7 +56,6 @@ proc start() =
   # Execute our game
   execute(init, run, exit)
   quit(0)
-
 
 when defined(ANDROID_NATIVE):
   # Declaring NimMain so we can call it below
