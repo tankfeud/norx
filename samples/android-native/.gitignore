@@ -6,4 +6,5 @@ build/android-native/app/src/main/assets/data
 build/android-native/app/src/main/jni/*.c
 build/android-native/app/src/main/jni/*.h
 build/android-native/app/build
+build/android-native/build
 *.log

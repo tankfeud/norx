@@ -15,7 +15,8 @@ public class MainActivity extends NativeActivity {
     private Handler mHandler = new Handler();
     private View mDecorView;
 
-    //static {
+    // Only needed if you compile Nim via cpp.
+    //static { 
     //    System.loadLibrary("c++_shared");
     //}
 
