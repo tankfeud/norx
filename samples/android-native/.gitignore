@@ -1,0 +1,6 @@
+norxdemo-key.jks
+**/.gradle
+**/.cxx
+src/cache
+build/android-native/app/src/main/assets/data
+*.log
