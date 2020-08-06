@@ -15,7 +15,7 @@ mkdir -p cache
 # --noMain:on - since Nim is compiling into a library we do not want a regular main
 # -d:androidnative (ANDROID_NATIVE) - a flag for Norx for conditional Android native code, does not have to do with Nim
 # -d:noSignalHandler - saw in another example for Android, not sure if we need this option
-nim c --compileOnly --dynlibOverride:orxd --dynlibOverride:orx --dynlibOverride:orxp --cpu:arm --os:android -d:androidNDK -d:noSignalHandler --noMain:on -d:androidnative --nimcache:$PWD/cache norxdemo.nim
+nim c --compileOnly  -d:useMalloc --dynlibOverride:orxd --dynlibOverride:orx --dynlibOverride:orxp --cpu:arm64 --os:android -d:androidNDK -d:noSignalHandler --noMain:on -d:androidnative --nimcache:$PWD/cache norxdemo.nim
 
 # Copy C source into Android (do not remove Android.mk, Application.mk)
 rm -f ../build/android-native/app/src/main/jni/*.[ch]*
