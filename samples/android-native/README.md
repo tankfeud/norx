@@ -91,3 +91,11 @@ And all other tasks gradle offers, list them with:
 You can check contents of resulting APK like this:
 
         unzip -l ./build/android-native/app/build/outputs/apk/debug/app-debug.apk
+
+
+# Gotchas
+Making this work I stumbled on several things, too many to recall. Here is a list:
+
+* It took me forever to realize I needed dynlibOverride with the Nim compiler so that we do not try to load liborx.so (with Android we do static linking with orx)
+* The CPU architecture for C code produced by Nim needs to match the target CPU for gradle/ndk-build.
+* You can not use `./` in paths in ORX ini files to refer to sub directories
