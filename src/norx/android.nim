@@ -1,3 +1,7 @@
+import norx/[incl, lib, event]
+
+import android/ndk/anative_window, jnim
+
 const
   KZ_CONFIG_ANDROID* = "Android"
   KZ_CONFIG_SURFACE_SCALE* = "SurfaceScale"
@@ -5,14 +9,15 @@ const
   KZ_CONFIG_USE_JOYSTICK* = "UseJoystick"
 
 when defined(ANDROID_NATIVE):
-when defined(orxANDROID):
-  const ## *
-       ##  Looper data ID of commands coming from the app's main thread, which
-       ##  is returned as an identifier from ALooper_pollOnce().  The data for this
-       ##  identifier is a pointer to an android_poll_source structure.
-       ##  These can be retrieved and processed with android_app_read_cmd()
-       ##  and android_app_exec_cmd().
-       ##
+  import android/ndk/[anative_activity, native_glue]
+
+when defined(ANDROID_NATIVE) or defined(orxANDROID):
+  const
+    ##  Looper data ID of commands coming from the app's main thread, which
+    ##  is returned as an identifier from ALooper_pollOnce().  The data for this
+    ##  identifier is a pointer to an android_poll_source structure.
+    ##  These can be retrieved and processed with android_app_read_cmd()
+    ##  and android_app_exec_cmd().
     LOOPER_ID_MAIN* = 1
     LOOPER_ID_SENSOR* = 2
     LOOPER_ID_KEY_EVENT* = 3
@@ -73,58 +78,56 @@ type
 
 
 proc orxAndroid_GetNativeWindow*(): ptr ANativeWindow {.cdecl,
-    importcpp: "orxAndroid_GetNativeWindow(@)", dynlib: liborxdll.}
-## *
+    importc: "orxAndroid_GetNativeWindow", dynlib: libORX.}
+
+##
 ##   Get the internal storage path
 ##
 
 proc orxAndroid_GetInternalStoragePath*(): cstring {.cdecl,
-    importcpp: "orxAndroid_GetInternalStoragePath(@)", dynlib: liborxdll.}
+    importc: "orxAndroid_GetInternalStoragePath", dynlib: libORX.}
 proc orxAndroid_JNI_GetRotation*(): orxU32 {.cdecl,
-    importcpp: "orxAndroid_JNI_GetRotation(@)", dynlib: liborxdll.}
+    importc: "orxAndroid_JNI_GetRotation", dynlib: libORX.}
 proc orxAndroid_JNI_GetDeviceIds*(devicesId: array[4, orxS32]) {.cdecl,
-    importcpp: "orxAndroid_JNI_GetDeviceIds(@)", dynlib: liborxdll.}
-## *
+    importc: "orxAndroid_JNI_GetDeviceIds", dynlib: libORX.}
+
+##
 ##   Register APK resources IO
 ##
 
 proc orxAndroid_RegisterAPKResource*(): orxSTATUS {.cdecl,
-    importcpp: "orxAndroid_RegisterAPKResource(@)", dynlib: liborxdll.}
-proc orxAndroid_JNI_SetupThread*(_pContext: pointer): orxSTATUS {.cdecl,
-    importcpp: "orxAndroid_JNI_SetupThread(@)", dynlib: liborxdll.}
-proc orxAndroid_PumpEvents*() {.cdecl, importcpp: "orxAndroid_PumpEvents(@)",
-                              dynlib: liborxdll.}
-proc orxAndroid_GetJNIEnv*(): pointer {.cdecl, importcpp: "orxAndroid_GetJNIEnv(@)",
-                                     dynlib: liborxdll.}
+    importc: "orxAndroid_RegisterAPKResource", dynlib: libORX.}
+proc orxAndroid_JNI_SetupThread*(pContext: pointer): orxSTATUS {.cdecl,
+    importc: "orxAndroid_JNI_SetupThread", dynlib: libORX.}
+proc orxAndroid_PumpEvents*() {.cdecl, importc: "orxAndroid_PumpEvents",
+                              dynlib: libORX.}
+proc orxAndroid_GetJNIEnv*(): pointer {.cdecl, importc: "orxAndroid_GetJNIEnv",
+                                     dynlib: libORX.}
 proc orxAndroid_GetActivity*(): jobject {.cdecl,
-                                       importcpp: "orxAndroid_GetActivity(@)",
-                                       dynlib: liborxdll.}
+                                       importc: "orxAndroid_GetActivity",
+                                       dynlib: libORX.}
 when defined(ANDROID_NATIVE):
-  const
-    LOOPER_ID_SENSOR* = LOOPER_ID_USER
+  # TODO: What is this?
+  #const
+  #  LOOPER_ID_SENSOR* = LOOPER_ID_USER
   proc orxAndroid_GetNativeActivity*(): ptr ANativeActivity {.cdecl,
-      importcpp: "orxAndroid_GetNativeActivity(@)", dynlib: liborxdll.}
-  proc orxAndroid_GetAndroidApp*(): ptr android_app {.cdecl,
-      importcpp: "orxAndroid_GetAndroidApp(@)", dynlib: liborxdll.}
+      importc: "orxAndroid_GetNativeActivity", dynlib: libORX.}
+  proc orxAndroid_GetAndroidApp*(): ptr object {.cdecl,
+      importc: "orxAndroid_GetAndroidApp", dynlib: libORX.}
+
 const
-  orxANDROID_EVENT_TYPE_KEYBOARD* = (orxEVENT_TYPE)(
-      orxEVENT_TYPE_FIRST_RESERVED + 0)
+  orxANDROID_EVENT_TYPE_KEYBOARD* = orxEVENT_TYPE_FIRST_RESERVED.ord
   orxANDROID_EVENT_KEYBOARD_DOWN* = 0
   orxANDROID_EVENT_KEYBOARD_UP* = 1
-  orxANDROID_EVENT_TYPE_SURFACE* = (orxEVENT_TYPE)(
-      orxEVENT_TYPE_FIRST_RESERVED + 1)
+  orxANDROID_EVENT_TYPE_SURFACE* = orxEVENT_TYPE_FIRST_RESERVED.ord + 1
   orxANDROID_EVENT_SURFACE_DESTROYED* = 0
   orxANDROID_EVENT_SURFACE_CREATED* = 1
   orxANDROID_EVENT_SURFACE_CHANGED* = 2
-  orxANDROID_EVENT_TYPE_ACCELERATE* = (orxEVENT_TYPE)(
-      orxEVENT_TYPE_FIRST_RESERVED + 2)
-  orxANDROID_EVENT_TYPE_JOYSTICK* = (orxEVENT_TYPE)(
-      orxEVENT_TYPE_FIRST_RESERVED + 3)
+  orxANDROID_EVENT_TYPE_ACCELERATE* = orxEVENT_TYPE_FIRST_RESERVED.ord + 2
+  orxANDROID_EVENT_TYPE_JOYSTICK* = orxEVENT_TYPE_FIRST_RESERVED.ord + 3
   orxANDROID_EVENT_JOYSTICK_ADDED* = 0
   orxANDROID_EVENT_JOYSTICK_REMOVED* = 1
   orxANDROID_EVENT_JOYSTICK_CHANGED* = 2
   orxANDROID_EVENT_JOYSTICK_DOWN* = 3
   orxANDROID_EVENT_JOYSTICK_UP* = 4
   orxANDROID_EVENT_JOYSTICK_MOVE* = 5
-
-## * @}

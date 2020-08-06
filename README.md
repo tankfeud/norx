@@ -49,6 +49,13 @@ These are the "differences" that you should be aware of when you read ORX docume
   * Pass `-d:profile` to load the profile version.
 * ...and well, I will add to this list as things come up.
 
+# How to generate HTML docs
+There is a bash script `generatedocs.sh` that will regenerate the contents of the `htmldocs` directory. The documentation is unfortunately not searchable when viewed through the local filesystem, but you can reach the current docs on:
+
+* https://rawgit.com/gokr/norx/master/htmldocs/norx.html - The top level norx.nim doc. TODO: I need to add better comments!
+* https://rawgit.com/gokr/norx/master/htmldocs/theindex.html - The index of all the docs.
+
+I will investigate hosting docs on a proper website.
 
 # How it was made
 This wrapper was created through the following steps:

@@ -116,27 +116,31 @@ proc compare*(pMem1: pointer; pMem2: pointer; u32Size: orxU32): orxU32 {.
   ##  Done!
   {.emit"return((orxU32)memcmp(pMem1, pMem2, (size_t)u32Size));".}
 
-proc set*(pDest: pointer; u8Data: orxU8; u32Size: orxU32): pointer {.inline,
-    cdecl.} =
+
+# Leaving this one out (get rid of warning)... do we need it?
+#proc set*(pDest: pointer; u8Data: orxU8; u32Size: orxU32): pointer {.inline,
+#    cdecl.} =
   ## Fills a part of memory with _u32Data
   ##  @param[out] _pDest   Destination pointer
   ##  @param[in]  _u8Data  Values of the data that will fill the memory
   ##  @param[in]  _u32Size Size of data
   ##  @return returns a pointer to _pDest
   ##  Checks
-  assert(pDest != nil)
+#  assert(pDest != nil)
   ##  Done!
-  {.emit"return((void *)memset(pDest, u8Data, (size_t)u32Size));".}
+#  {.emit"return((void *)memset(pDest, u8Data, (size_t)u32Size));".}
 
-proc zero*(pDest: pointer; u32Size: orxU32): pointer {.inline, cdecl.} =
+
+# In Nim we have system.zeroMem instead!
+#proc zero*(pDest: pointer; u32Size: orxU32): pointer {.inline, cdecl.} =
   ## Fills a part of memory with zeroes
   ##  @param[out] _pDest   Destination pointer
   ##  @param[in]  _u32Size Size of data
   ##  @return returns a pointer to _pDest
   ##  Checks
-  assert(pDest != nil)
+#  assert(pDest != nil)
   ##  Done!
-  {.emit"return((void *)memset(pDest, 0, (size_t)u32Size));".}
+#  {.emit"return((void *)memset(pDest, 0, (size_t)u32Size));".}
 
 proc getTypeName*(eMemType: orxMEMORY_TYPE): cstring {.cdecl,
     importc: "orxMemory_GetTypeName", dynlib: libORX.}
