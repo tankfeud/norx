@@ -45,10 +45,12 @@
 ]#
 
 import strformat
-import norx, norx/[incl, config, viewport, obj, input, keyboard, clock, math]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render]
 
-var parentObject:orxObject
 
+# global , for storing our invisible object.
+# (used for rotation, the 4 rotating boxes are binded to it).
+var parentObject:ptr orxObject
 
 
 proc run(): orxSTATUS {.cdecl.} =
@@ -70,10 +72,44 @@ proc getBindingName(input_name: string) :cstring =
 
   return fmt"key {input_name} not found"
 
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+  var status:orxSTATUS
+  
+  # when RotateLeft pressed , rotate parent object CCW
+  # the four child objects will follow
+  if isActive("RotateLeft"):
+    var rot:float32 = getRotation( parentObject) - orxMATH_KF_PI * clockInfo.fDT
+    status = setRotation( parentObject, rot)
+  # same principle for RotateRigh, except parent rotates CW
+  if isActive("RotateRight"):
+    var rot:float32 = getRotation( parentObject) + orxMATH_KF_PI * clockInfo.fDT
+    status = setRotation( parentObject, rot)
+
+  # scaling up or down if needed
+  if isActive("ScaleUp"):
+    #the «mulf» function need an initialized pointer
+    # so you can put what you want in the vDummy
+    # it will be initialized at correct value by the getScale function
+    var vDummy:orxVector = (123f, 456f, 789f)
+    # of course, you need the « addr » prefix to convert variable to a ptr on it.
+    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), orx2F(1.02f) )
+    status = setScale( parentObject, vScale)
+  # for scaling down, only scale factor changes, same principles appliy.
+  if isActive("ScaleDown"):
+    var vDummy:orxVector = (123f, 456f, 789f)
+    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), orx2F(0.98f) )
+    status = setScale( parentObject, vScale)
+   
+  # now, if mouse is in viewport, follow the pointer !
+  # like in the scaling, we need a pointer on an initialised vector for getting getWorldPosition to work.
+  var vDummy:orxVECTOR = (1f,2f,3f)
+  var vWorldPosition = getWorldPosition( getPosition( addr vDummy), nil, addr vDummy)
+  # FIXME now… how to know i'm on game screen with that ?
+
 
 proc init(): orxSTATUS {.cdecl.} =
-  var clock:orxClock
-  var obj:orxObject
+  var mainclock:ptr orxClock
+  var childObject:ptr orxObject
   var inputType:orxInputType
  
   let inputRotateLeft = "RotateLeft".getBindingName()
@@ -86,6 +122,37 @@ proc init(): orxSTATUS {.cdecl.} =
   {inputRotateLeft} & {inputRotateRight} will rotate it.
   {inputScaleUp} & {inputScaleDown} will scale it.
   """)
+  
+  # Creates viewport
+  var viewport = viewportCreateFromConfig("Viewport")
+  if viewport.isNil:
+    return orxSTATUS_FAILURE
+
+  # Creates Parent object
+  # it is not shown on the screen
+  # it is used in the config as the father of Object3 and Object4
+  parentObject = objectCreateFromConfig("ParentObject");
+
+  # Creates all 3 test objects and links the last two to our parent object
+  # the Object0 doesn't need to be stored, discard it.
+  # it is the static box which doesn't move.
+  # it is not linked to parentObject.
+  discard objectCreateFromConfig("Object0");
+
+  childObject = objectCreateFromConfig("Object1");
+  var status = setParent( childObject, parentObject);
+  childObject = objectCreateFromConfig("Object2");
+  status = setParent( childObject, parentObject);
+
+  # Object3 and Object4 are created and linked to parentObject with the config file ,
+  # no code is needed for them
+
+  # Gets main clock
+  mainclock = clockGet(orxCLOCK_KZ_CORE);
+
+  # Registers our update callback
+  # nil can replace orxNULL (defined in the C API)
+  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
 
   result = orxSTATUS_SUCCESS
 
