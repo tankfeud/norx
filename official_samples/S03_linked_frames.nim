@@ -59,7 +59,7 @@ proc run(): orxSTATUS {.cdecl.} =
     # Updates result
     result = orxSTATUS_FAILURE
 
-proc getBindingName(input_name: string) :cstring =
+proc get_input_name(input_name: string) :cstring =
   ## Returns the keycode corresponding to the physical key defined in .ini
   var eType: orxINPUT_TYPE
   var eID: orxENUM
@@ -67,8 +67,9 @@ proc getBindingName(input_name: string) :cstring =
 
   var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
   if is_ok == orxSTATUS_SUCCESS:
-    echo fmt"asked for {input_name}, got key: {getKeyDisplayName(eID.orxKEYBOARD_KEY)}"
-    return getKeyDisplayName(eID.orxKEYBOARD_KEY)
+    let binding_name:cstring = getBindingName( eType, eID, eMode)
+    echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
+    return binding_name
 
   return fmt"key {input_name} not found"
 
@@ -130,10 +131,10 @@ proc init(): orxSTATUS {.cdecl.} =
   var childObject:ptr orxObject
   var inputType:orxInputType
  
-  let inputRotateLeft = "RotateLeft".getBindingName()
-  let inputRotateRight = "RotateRight".getBindingName()
-  let inputScaleUp = "ScaleUp".getBindingName()
-  let inputScaleDown = "ScaleDown".getBindingName()
+  let inputRotateLeft = "RotateLeft".get_input_name()
+  let inputRotateRight = "RotateRight".get_input_name()
+  let inputScaleUp = "ScaleUp".get_input_name()
+  let inputScaleDown = "ScaleDown".get_input_name()
 
   orxLOG( fmt"""
   The parent objects will follow the mouse.
