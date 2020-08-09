@@ -102,9 +102,27 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
    
   # now, if mouse is in viewport, follow the pointer !
   # like in the scaling, we need a pointer on an initialised vector for getting getWorldPosition to work.
-  var vDummy:orxVECTOR = (1f,2f,3f)
-  var vWorldPosition = getWorldPosition( getPosition( addr vDummy), nil, addr vDummy)
-  # FIXME now… how to know i'm on game screen with that ?
+  var vWorldPos:orxVECTOR = (1f,2f,3f)
+  # getWorldPosition returns a vector if we are *inside* the display surface, nil otherwise.
+  var vMouse:ptr orxVECTOR
+  vMouse = getWorldPosition( getPosition( addr vWorldPos) #[mouse xy]#, nil, addr vWorldPos #[out]#)
+  if vMouse != nil:
+    # as you can see, vMouse has no other interest than checking we are inside the display surface
+    # echo fmt"vWorldPos{vWorldPos} == vMouse{vMouse[]}"
+    
+    # now get parent position (the invisible one)
+    var vParentPos:orxVECTOR
+    # this time we discard the output (we know we are inside the display, at this step)
+    # note: this call use getWorldPosition overriden in oobject, previous were using
+    #       overrided function in render.nim
+    discard getWorldPosition( parentObject, addr vParentPos)
+
+    # the original tutorial was keeping z value of parent position
+    # i don't see the point here, so i've commented it
+    # vMouse.fZ = vParentPos.fZ
+
+    # and move the parent to the mouse position
+    discard setPosition( parentObject, vMouse)
 
 
 proc init(): orxSTATUS {.cdecl.} =
