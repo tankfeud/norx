@@ -1,5 +1,5 @@
-# Seems we can define this in abiFilters instead, in build.gradle
-#APP_ABI := arm64-v8a
+# Gradle uses abiFilters instead, in build.gradle. But if you run ndk-build manually it needs to be defined here too.
+APP_ABI := arm64-v8a # armeabi-v7a arm64-v8a
 APP_MODULES := norxdemo
 NDK_TOOLCHAIN_VERSION := clang
 APP_PLATFORM := android-19

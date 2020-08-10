@@ -1,5 +1,6 @@
 # Norx
 Norx is a Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform.
+
 The wrapper consists of two parts:
 
 * The low level wrapper with basically one Nim module per ORX C header, almost 80 of them. All these are named o-xxx, like `oinput` or `oobject`.
@@ -28,7 +29,8 @@ Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | 
 # Install Norx
 Install the Norx wrapper by running  `nimble install` in this directory.
 
-See `samples` directory or [norxsample](https://github.com/gokr/norxsample) examples, I hope to make some more.
+# Samples
+See `samples` directory, `official_samples` directory (contributed by @jseb) or [norxsample](https://github.com/gokr/norxsample). The samples should run fine in at least Linux and OSX. The android-native sample can also be built for Android.
 
 # Norx vs Orx
 These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:

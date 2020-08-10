@@ -5,6 +5,8 @@ norxdemo-key.jks
 **/.cxx
 src/cache
 build/android-native/app/src/main/assets/*
+build/android-native/app/src/main/libs
+build/android-native/app/src/main/obj
 build/android-native/app/src/main/jni/*.c
 build/android-native/app/src/main/jni/*.h
 build/android-native/app/build
