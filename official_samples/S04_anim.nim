@@ -48,11 +48,25 @@ We also show how to subscribe to animation events (to know when animations are s
 
 ]#
 
-
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event]
+import strformat
+# this time we add event and anim
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim]
 
 
 var soldierObject:ptr orxObject
+
+proc setSoldierAnimation( animation:cstring) =
+  # Use setCurrentAnim() to switch the animation without using the link graph.
+  var status:orxSTATUS = setTargetAnim( soldierObject, animation)
+  if status == orxSTATUS_FAILURE:
+    echo "error while setting soldier's target animation ", animation
+
+proc setSoldierScale( scalefactor:float) =
+  var vTemp:orxVector
+  var vScale:ptr orxVECTOR = mulf( addr vTemp, getScale( soldierObject, addr vTemp), orx2F(scalefactor) )
+  var status = setScale( soldierObject, vScale)
+  if status == orxSTATUS_FAILURE:
+    echo "error while setting soldier's scale ", scalefactor
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vScale:orxVECTOR
@@ -60,28 +74,63 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   
   # Is walk right active?
   if isActive("GoRight"):
-    # Use setCurrentAnim() to switch the animation without using the link graph.
-    status = setTargetAnim( soldierObject, "WalkRight")
-    if status == orxSTATUS_FAILURE:
-      echo "error while setting target animaiton"
-    elif isActive("GoLeft"):
-      status = setTargetAnim( soldierObject, "WalkLeft")
-      if status == orxSTATUS_FAILURE:
-        echo "error while setting target animaiton"
-    else:
-    # no walk active
-      status = setTargetAnim( soldierObject, nil)
-      if status == orxSTATUS_FAILURE:
-        echo "error while setting target animaiton"
+    setSoldierAnimation( "WalkRight")
+  elif isActive("GoLeft"):
+    setSoldierAnimation( "WalkLeft")
+  else:
+  # no walk active
+    setSoldierAnimation( nil)
 
-    # TODO ScalingUp/Down
+  # we can also scale the little soldier
+  if isActive( "ScaleUp"):
+    setSoldierScale( 1.02f)
+  elif isActive( "ScaleDown"):
+    setSoldierScale( 0.98f)
+
+
+proc get_input_name(input_name: string) :cstring =
+  ## Returns the keycode corresponding to the physical key defined in .ini
+  var eType: orxINPUT_TYPE
+  var eID: orxENUM
+  var eMode: orxINPUT_MODE
+
+  var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
+  if is_ok == orxSTATUS_SUCCESS:
+    let binding_name:cstring = getBindingName( eType, eID, eMode)
+    echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
+    return binding_name
+
+  return fmt"key {input_name} not found"
+
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  echo "EventHandler() called"
-  discard
+  #echo "EventHandler() called"
+
+  var payload:pointer #it is : orx_ANIM_EVENT_PAYLOAD
+  
+  # Gets event payload
+  payload = event.pstPayload;
+  
+  case ord(event.eID): # event.eID = orxENUM
+    of ord(orxANIM_EVENT_START):
+      echo fmt"Animation start {payload[].zAnimName}" #{payload.zAnimName}" #@{GetName(event.hRecipient)} has started!"
+      #, pstPayload->zAnimName, orxObject_GetName(orxOBJECT(_pstEvent->hRecipient)));
+      
+    else:
+      echo "unknown event ", event.eID
 
 
 proc init() :orxSTATUS {.cdecl.} =
+  
+  let inputWalkLeft = "GoLeft".get_input_name()
+  let inputWalkRight = "GoRight".get_input_name()
+  let inputScaleUp = "ScaleUp".get_input_name()
+  let inputScaleDown = "ScaleDown".get_input_name()
+
+  orxLOG( fmt"""
+  {inputWalkLeft} & {inputWalkRight} will change the soldier's animations
+  {inputScaleUp} & {inputScaleDown} will scale the soldier
+  """)
   # Creates viewport
   var viewport = viewportCreateFromConfig( "Viewport")
   if viewport.isNil:
