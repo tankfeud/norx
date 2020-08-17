@@ -1,4 +1,4 @@
-import incl, pluginCore, vector, string, typ
+import incl, vector, typ
 
 type
   ## Button enum
@@ -84,4 +84,3 @@ proc getAxisName*(eAxis: orxMOUSE_AXIS): cstring {.cdecl,
   ## Gets axis literal name
   ##  @param[in] _eAxis            Concerned axis
   ##  @return Axis's name
-

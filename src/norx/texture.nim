@@ -1,25 +1,19 @@
-import incl, display, math
+import incl, display
 
-## * Defines
-##
-
+## Defines
 const
   orxTEXTURE_KZ_RESOURCE_GROUP* = "Texture"
   orxTEXTURE_KZ_SCREEN* = "screen"
   orxTEXTURE_KZ_PIXEL* = "pixel"
 
-## * Event enum
-##
-
 type
   orxTEXTURE_EVENT* {.size: sizeof(cint).} = enum
+    ## Event enum
     orxTEXTURE_EVENT_CREATE = 0, orxTEXTURE_EVENT_DELETE, orxTEXTURE_EVENT_LOAD,
     orxTEXTURE_EVENT_NUMBER, orxTEXTURE_EVENT_NONE = orxENUM_NONE
 
-
-## * Internal texture structure
-
 type orxTEXTURE* = object
+  ## Internal texture structure
 
 proc textureSetup*() {.cdecl, importc: "orxTexture_Setup", dynlib: libORX.}
   ## Setups the texture module
@@ -101,4 +95,3 @@ proc getLoadCount*(): orxU32 {.cdecl, importc: "orxTexture_GetLoadCount",
                                        dynlib: libORX.}
   ## Gets pending load count
   ##  @return      Pending load count
-

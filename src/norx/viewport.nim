@@ -1,8 +1,6 @@
-import incl, clock, camera, shaderPointer, display, texture, AABox
+import incl, camera, shaderPointer, display, texture, AABox
 
-## * Viewport flags
-##
-
+## Viewport flags
 const
   orxVIEWPORT_KU32_FLAG_ALIGN_CENTER* = 0x00000000
   orxVIEWPORT_KU32_FLAG_ALIGN_LEFT* = 0x10000000
@@ -11,23 +9,18 @@ const
   orxVIEWPORT_KU32_FLAG_ALIGN_BOTTOM* = 0x80000000
   orxVIEWPORT_KU32_FLAG_NO_DEBUG* = 0x01000000
 
-## * Misc defined
-##
-
+## Misc defined
 const
   orxVIEWPORT_KU32_MAX_TEXTURE_NUMBER* = 8
 
-## * Internal Viewport structure
-
+## Internal Viewport structure
 type orxVIEWPORT* = object
-## * Event enum
-##
 
+## Event enum
 type
   orxVIEWPORT_EVENT* {.size: sizeof(cint).} = enum
     orxVIEWPORT_EVENT_RESIZE = 0, ## Event sent when a viewport has been resized
     orxVIEWPORT_EVENT_NUMBER, orxVIEWPORT_EVENT_NONE = orxENUM_NONE
-
 
 proc viewportSetup*() {.cdecl, importc: "orxViewport_Setup", dynlib: libORX.}
   ## Viewport module setup
@@ -260,5 +253,3 @@ proc viewportGet*(zName: cstring): ptr orxVIEWPORT {.cdecl,
   ## Gets viewport given its name
   ##  @param[in]   _zName          Camera name
   ##  @return      orxVIEWPORT / nil
-
-

@@ -1,15 +1,12 @@
-import incl, shader, structure
+import incl, shader
 
-
-## * Misc defines
-##
-
+## Misc defines
 const
   orxSHADERPOINTER_KU32_SHADER_NUMBER* = 4
 
-## * Internal ShaderPointer structure
 
 type orxSHADERPOINTER* = object
+  ## Internal ShaderPointer structure
 
 proc shaderPointerSetup*() {.cdecl, importc: "orxShaderPointer_Setup",
                                dynlib: libORX.}
@@ -99,4 +96,3 @@ proc removeShaderFromConfig*(
   ##  @param[in]   _pstShaderPointer Concerned ShaderPointer
   ##  @param[in]   _zShaderConfigID  Config ID of the shader to remove
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-

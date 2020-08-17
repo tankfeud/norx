@@ -1,4 +1,4 @@
-import incl, pluginCore
+import incl
 
 template orxJOYSTICK_GET_AXIS*(AXIS, ID: untyped): untyped =
   (((cast[orxU32](AXIS)) mod orxJOYSTICK_AXIS_SINGLE_NUMBER) +
