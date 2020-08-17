@@ -1,8 +1,10 @@
 import typ
 
-when not defined(Android) and not defined(ANDROID_NATIVE) and not defined(iOS):
-  when not defined(VERSION_BUILD):
-    import build
+# Not sure what to do here...
+
+# when not defined(Android) and not defined(ANDROID_NATIVE) and not defined(iOS):
+#   when not defined(VERSION_BUILD):
+#     import build
 
 ## Version numbers
 const

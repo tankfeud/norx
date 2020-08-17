@@ -1,6 +1,6 @@
 import os
 
-import norx/[incl, param, module, event, clock, memory, oobject, viewport]
+import norx/[incl, param, module, event, clock]
 
 when not defined(PLUGIN):
   ## Should stop execution by default event handling?

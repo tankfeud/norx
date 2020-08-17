@@ -1,9 +1,7 @@
 import
-  incl, pluginCore, vector, OBox, math, bank, memory,
-  hashTable, string, linkList
+  incl, vector, OBox, bank, memory, hashTable, linkList
 
-## * Misc defines
-##
+## Misc defines
 
 type
   #INNER_C_STRUCT_orxDisplay_68* {.bycopy.} = object
@@ -43,23 +41,20 @@ const
   orxCOLOR_DENORMALIZER* = (orx2F(255.0))
 
 type orxBITMAP* = object
-## * Vertex info structure
-##
+
 
 type
   orxDISPLAY_VERTEX* {.bycopy.} = object
+    ## Vertex info structure
     fX*: orxFLOAT
     fY*: orxFLOAT
     fU*: orxFLOAT
     fV*: orxFLOAT
     stRGBA*: orxRGBA
 
-
-## * Transform structure
-##
-
 type
   orxDISPLAY_TRANSFORM* {.bycopy.} = object
+    ## Transform structure
     fSrcX*: orxFLOAT
     fSrcY*: orxFLOAT
     fDstX*: orxFLOAT
@@ -70,12 +65,9 @@ type
     fScaleY*: orxFLOAT
     fRotation*: orxFLOAT
 
-
-## * Primitive enum
-##
-
 type
   orxDISPLAY_PRIMITIVE* {.size: sizeof(cint).} = enum
+    ## Primitive enum
     orxDISPLAY_PRIMITIVE_POINTS = 0, orxDISPLAY_PRIMITIVE_LINES,
     orxDISPLAY_PRIMITIVE_LINE_LOOP, orxDISPLAY_PRIMITIVE_LINE_STRIP,
     orxDISPLAY_PRIMITIVE_TRIANGLES, orxDISPLAY_PRIMITIVE_TRIANGLE_STRIP,

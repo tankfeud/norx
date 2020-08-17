@@ -1,5 +1,4 @@
-import incl, joystick, keyboard, mouse
-
+import incl
 
 ## * Misc defines
 ##
@@ -22,47 +21,35 @@ const
   orxINPUT_KU32_FLAG_TYPE_NONE* = 0x00000000
   orxINPUT_KU32_MASK_TYPE_ALL* = 0x0000FFFF
 
-## * Input type enum
-##
-
 type
   orxINPUT_TYPE* {.size: sizeof(cint).} = enum
+    ## Input type enum
     orxINPUT_TYPE_KEYBOARD_KEY = 0, orxINPUT_TYPE_MOUSE_BUTTON,
     orxINPUT_TYPE_MOUSE_AXIS, orxINPUT_TYPE_JOYSTICK_BUTTON,
     orxINPUT_TYPE_JOYSTICK_AXIS, orxINPUT_TYPE_EXTERNAL, orxINPUT_TYPE_NUMBER,
     orxINPUT_TYPE_NONE = orxENUM_NONE
 
-
-## * Input mode enum
-##
-
 type
   orxINPUT_MODE* {.size: sizeof(cint).} = enum
+    ## Input mode enum
     orxINPUT_MODE_FULL = 0, orxINPUT_MODE_POSITIVE, orxINPUT_MODE_NEGATIVE,
     orxINPUT_MODE_NUMBER, orxINPUT_MODE_NONE = orxENUM_NONE
 
-
-## * Event enum
-##
-
 type
   orxINPUT_EVENT* {.size: sizeof(cint).} = enum
+    ## Event enum
     orxINPUT_EVENT_ON = 0, orxINPUT_EVENT_OFF, orxINPUT_EVENT_SELECT_SET,
     orxINPUT_EVENT_NUMBER, orxINPUT_EVENT_NONE = orxENUM_NONE
 
-
-## * Input event payload
-##
-
 type
   orxINPUT_EVENT_PAYLOAD* {.bycopy.} = object
+    ## Input event payload
     zSetName*: cstring      ## Set name : 4/8
     zInputName*: cstring    ## Input name : 8/16
     aeType*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## Input binding type : 40/48
     aeID*: array[orxINPUT_KU32_BINDING_NUMBER, orxENUM] ## Input binding ID : 72/80
     aeMode*: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_MODE] ## Input binding Mode : 104/112
     afValue*: array[orxINPUT_KU32_BINDING_NUMBER, orxFLOAT] ## Input binding value : 136/144
-
 
 proc inputSetup*() {.cdecl, importc: "orxInput_Setup", dynlib: libORX.}
   ## Input module setup

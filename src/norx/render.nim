@@ -1,5 +1,5 @@
 import
-  incl, pluginCore, display, oobject, frame, viewport, vector
+  incl, display, viewport, vector
 
 ## * Misc defines
 ##

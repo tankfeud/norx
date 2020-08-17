@@ -1,10 +1,9 @@
-import incl, memory, vector  
+import incl
 
 when defined(MSVC):
   const
     strtoll* = strtoi64
     strtoull* = strtoui64
-
 
 const
   orxSTRING_KC_VECTOR_START* = '('
@@ -13,19 +12,13 @@ const
   orxSTRING_KC_VECTOR_END* = ')'
   orxSTRING_KC_VECTOR_END_ALT* = '}'
 
-## * Defines
-##
-
 const
   orxSTRING_KU32_CRC_POLYNOMIAL* = 0xEDB88320
 
-## * CRC Tables (slice-by-8)
-##
-
+## CRC Tables (slice-by-8)
 var saau32CRCTable* {.importc: "saau32CRCTable", dynlib: libORX.}: array[8,
     array[256, orxU32]]
 
-##  *** String inlined functions ***
 
 # TODO: Do we need this? I guess Nim has other stuff
 #[
@@ -1028,4 +1021,3 @@ proc store*(zString: cstring): cstring {.cdecl,
   ## Stores a string internally: equivalent to an optimized call to orxString_GetFromID(orxString_GetID(_zString))
   ##  @param[in]   _zString        Concerned string
   ##  @return      Stored orxSTRING
-
