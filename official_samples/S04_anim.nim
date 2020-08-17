@@ -53,7 +53,7 @@ import strformat
 import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim]
 
 
-var soldierObject:ptr orxObject
+var soldierObject: ptr orxObject
 
 proc setSoldierAnimation( animation:cstring) =
   # Use setCurrentAnim() to switch the animation without using the link graph.
@@ -105,17 +105,13 @@ proc get_input_name(input_name: string) :cstring =
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
   #echo "EventHandler() called"
-
-  var payload:pointer #it is : orx_ANIM_EVENT_PAYLOAD
-  
-  # Gets event payload
-  payload = event.pstPayload;
   
   case ord(event.eID): # event.eID = orxENUM
     of ord(orxANIM_EVENT_START):
-      echo fmt"Animation start {payload[].zAnimName}" #{payload.zAnimName}" #@{GetName(event.hRecipient)} has started!"
-      #, pstPayload->zAnimName, orxObject_GetName(orxOBJECT(_pstEvent->hRecipient)));
-      
+      # Gets event payload
+      var payload = cast[ptr orxANIM_EVENT_PAYLOAD](event.pstPayload)
+      var recipient = cast[ptr orxOBJECT](event.hRecipient)
+      echo fmt"Animation start {payload.zAnimName} @{recipient.getName} has started!"      
     else:
       echo "unknown event ", event.eID
 
