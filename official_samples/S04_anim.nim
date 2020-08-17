@@ -50,62 +50,55 @@ We also show how to subscribe to animation events (to know when animations are s
 
 import strformat
 # this time we add event and anim
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim]
-
+import norx, norx/[incl, viewport, obj, input, clock, vector, event, anim]
 
 var soldierObject: ptr orxObject
 
-proc setSoldierAnimation( animation:cstring) =
+proc setSoldierAnimation(animation: cstring) =
   # Use setCurrentAnim() to switch the animation without using the link graph.
-  var status:orxSTATUS = setTargetAnim( soldierObject, animation)
+  var status = soldierObject.setTargetAnim(animation)
   if status == orxSTATUS_FAILURE:
     echo "error while setting soldier's target animation ", animation
 
-proc setSoldierScale( scalefactor:float) =
-  var vTemp:orxVector
+proc setSoldierScale(scalefactor: float) =
+  var vTemp: orxVector
   var vScale:ptr orxVECTOR = mulf( addr vTemp, getScale( soldierObject, addr vTemp), orx2F(scalefactor) )
-  var status = setScale( soldierObject, vScale)
+  var status = soldierObject.setScale(vScale)
   if status == orxSTATUS_FAILURE:
     echo "error while setting soldier's scale ", scalefactor
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  var vScale:orxVECTOR
-  var status:orxSTATUS
+  var vScale: orxVECTOR
   
   # Is walk right active?
   if isActive("GoRight"):
-    setSoldierAnimation( "WalkRight")
+    setSoldierAnimation("WalkRight")
   elif isActive("GoLeft"):
-    setSoldierAnimation( "WalkLeft")
+    setSoldierAnimation("WalkLeft")
   else:
   # no walk active
-    setSoldierAnimation( nil)
+    setSoldierAnimation(nil)
 
   # we can also scale the little soldier
-  if isActive( "ScaleUp"):
-    setSoldierScale( 1.02f)
+  if isActive("ScaleUp"):
+    setSoldierScale(1.02)
   elif isActive( "ScaleDown"):
-    setSoldierScale( 0.98f)
+    setSoldierScale(0.98)
 
-
-proc get_input_name(input_name: string) :cstring =
+proc getInputName(inputName: string): string =
   ## Returns the keycode corresponding to the physical key defined in .ini
   var eType: orxINPUT_TYPE
   var eID: orxENUM
   var eMode: orxINPUT_MODE
 
-  var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == orxSTATUS_SUCCESS:
-    let binding_name:cstring = getBindingName( eType, eID, eMode)
-    echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
-    return binding_name
+  var status = getBinding(inputName, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
+  if status == orxSTATUS_SUCCESS:
+    result = $getBindingName(eType, eID, eMode)
+    echo fmt"[getInputName] asked for {inputName}, got binding: {result}"
+  else:
+    result = fmt"key {inputName} not found"
 
-  return fmt"key {input_name} not found"
-
-
-proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  #echo "EventHandler() called"
-  
+proc EventHandler(event: ptr orxEVENT) :orxSTATUS {.cdecl.} =
   case ord(event.eID): # event.eID = orxENUM
     of ord(orxANIM_EVENT_START):
       # Gets event payload
@@ -113,40 +106,38 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
       var recipient = cast[ptr orxOBJECT](event.hRecipient)
       echo fmt"Animation start {payload.zAnimName} @{recipient.getName} has started!"      
     else:
-      echo "unknown event ", event.eID
+      discard
 
+proc init(): orxSTATUS {.cdecl.} =
+  let inputWalkLeft = "GoLeft".getInputName()
+  let inputWalkRight = "GoRight".getInputName()
+  let inputScaleUp = "ScaleUp".getInputName()
+  let inputScaleDown = "ScaleDown".getInputName()
 
-proc init() :orxSTATUS {.cdecl.} =
-  
-  let inputWalkLeft = "GoLeft".get_input_name()
-  let inputWalkRight = "GoRight".get_input_name()
-  let inputScaleUp = "ScaleUp".get_input_name()
-  let inputScaleDown = "ScaleDown".get_input_name()
-
-  orxLOG( fmt"""
+  orxLOG(fmt"""
   {inputWalkLeft} & {inputWalkRight} will change the soldier's animations
   {inputScaleUp} & {inputScaleDown} will scale the soldier
   """)
   # Creates viewport
-  var viewport = viewportCreateFromConfig( "Viewport")
+  var viewport = viewportCreateFromConfig("Viewport")
   if viewport.isNil:
     return orxSTATUS_FAILURE
   
   # Registers event handler
-  var status = addHandler( orxEVENT_TYPE_ANIM, EventHandler);
+  var status = addHandler(orxEVENT_TYPE_ANIM, EventHandler);
   if status == orxSTATUS_FAILURE:
     echo "Error while addHandler for animation on proc EventHandler"
 
   # Creates soldier object
-  soldierObject = objectCreateFromConfig( "Soldier")
+  soldierObject = objectCreateFromConfig("Soldier")
 
   # Gets the main clock
-  var mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+  var mainclock = clockGet(orxCLOCK_KZ_CORE);
   
   # Registers our update callback
-  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  status = register(mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
 
-  result = orxSTATUS_SUCCESS
+  return orxSTATUS_SUCCESS
 
 proc run(): orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS #by default, won't quit
@@ -158,15 +149,10 @@ proc exit() {.cdecl.} =
   # We're a bit lazy here so we let orx clean all our mess! :)
   quit(0)
 
-
-
-proc Main =
-  #[ execute is declared in norx.nim , and needs 3 functions:
-      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                    runProc: proc(): orxSTATUS {.cdecl.};
-                    exitProc: proc() {.cdecl.}
-                   )
-  ]#
-  execute(init, run, exit)
-
-Main()
+#[ execute is declared in norx.nim , and needs 3 functions:
+    proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
+                  runProc: proc(): orxSTATUS {.cdecl.};
+                  exitProc: proc() {.cdecl.}
+                  )
+]#
+execute(init, run, exit)
