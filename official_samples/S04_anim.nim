@@ -71,7 +71,7 @@ proc setSoldierScale( scalefactor:float) =
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vScale:orxVECTOR
   var status:orxSTATUS
-  
+
   # Is walk right active?
   if isActive("GoRight"):
     setSoldierAnimation( "WalkRight")
@@ -104,24 +104,42 @@ proc get_input_name(input_name: string) :cstring =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  #echo "EventHandler() called"
 
-  var payload:pointer #it is : orx_ANIM_EVENT_PAYLOAD
-  
-  # Gets event payload
-  payload = event.pstPayload;
-  
-  case ord(event.eID): # event.eID = orxENUM
-    of ord(orxANIM_EVENT_START):
-      echo fmt"Animation start {payload[].zAnimName}" #{payload.zAnimName}" #@{GetName(event.hRecipient)} has started!"
-      #, pstPayload->zAnimName, orxObject_GetName(orxOBJECT(_pstEvent->hRecipient)));
-      
+  # Gets event payload (.pstPayload has type « pointer », must be casted)
+  var payload:ptr orx_ANIM_EVENT_PAYLOAD = cast[ptr orx_ANIM_EVENT_PAYLOAD](event.pstPayload);
+
+  var anim_name:cstring = getName( cast[ptr orxOBJECT]( event.hRecipient))
+  case ord(event.eID): # type(event.eID) : orxENUM
+
+    of ord(orxANIM_EVENT_START): # type(orxANIM_EVENT_START) : orxANIM_EVENT, thus we ord(…) to compare.
+      # hRecipient is an orxHANDLE (pointer) and the sender is an orxOBJECT , thus we cast to get name.
+      echo fmt"Animation {payload.zAnimName}@{anim_name} has started!"
+
+    of ord(orxANIM_EVENT_STOP):
+      echo fmt"Animation {payload.zAnimName}@{anim_name} has stopped!"
+
+    of ord(orxANIM_EVENT_CUT):
+      # getting fTime
+      let fTime = payload.ano_orxAnim_131.stCut.fTime
+      echo fmt"Animation {payload.zAnimName}@{anim_name} has been cut [time: {fTime:1.4f}]"
+
+    of ord(orxANIM_EVENT_LOOP):
+      # getting loop counter
+      let stLoop = payload.ano_orxAnim_131.stLoop.u32Count
+      echo fmt"Animation {payload.zAnimName}@{anim_name} has looped [count: {stLoop}]"
+
+    of ord(orxANIM_EVENT_CUSTOM_EVENT):
+      # getting custom event
+      let stCustom_name = payload.ano_orxAnim_131.stCustom.zName
+      echo fmt"Animation {payload.zAnimName}@{anim_name} has sent the event [{stCustom_name}]"
+
     else:
-      echo "unknown event ", event.eID
+      # unknown event
+      echo "unknown event ", $orxEVENT_TYPE(event.eID)
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  
+
   let inputWalkLeft = "GoLeft".get_input_name()
   let inputWalkRight = "GoRight".get_input_name()
   let inputScaleUp = "ScaleUp".get_input_name()
@@ -135,7 +153,7 @@ proc init() :orxSTATUS {.cdecl.} =
   var viewport = viewportCreateFromConfig( "Viewport")
   if viewport.isNil:
     return orxSTATUS_FAILURE
-  
+
   # Registers event handler
   var status = addHandler( orxEVENT_TYPE_ANIM, EventHandler);
   if status == orxSTATUS_FAILURE:
@@ -146,7 +164,7 @@ proc init() :orxSTATUS {.cdecl.} =
 
   # Gets the main clock
   var mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  
+
   # Registers our update callback
   status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
 
