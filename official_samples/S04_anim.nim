@@ -20,7 +20,7 @@
   See tutorial S03_linked_frame.nim for object hierarchies, rotations and scaling.
 
   For details about Orx side , please refer to the tutorial of the C++ sample:
-  https://wiki.orx-project.org/en/tutorials/anim
+  https://wiki.orx-project.org/en/tutorials/animation/anim
 
   Summary is (mix of text tutorial & C source comments) :
   All animations are stored in a directed graph.
