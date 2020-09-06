@@ -50,10 +50,88 @@
   in a viewport).
 
   Viewports and objects are created with random colors and sizes using the character '~' in config file.
- 
+
   NB: Cameras store their position/zoom/rotation in an orxFRAME structure.
       It allows them to be part of the orxFRAME hierarchy. (cf. tutorial 03_Frame)
   For example, object auto-following can be achieved by setting object's frame as camera's frame parent.
   On the other hand, having a camera as parent of an object will insure that the object will always
   be displayed at the same place. It is very useful for making HUD and UI.
-]
+]#
+
+import strformat
+from strutils import unindent
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera]
+
+# the shared functions
+import S_commons
+
+
+var viewport1:ptr orxVIEWPORT
+var soldier:ptr orxOBJECT
+
+proc display_hints() =
+  let gin = get_input_name
+  var help = fmt"""
+  * Worskpaces 1 & 4 display camera 1 content.
+  * Workspace 2 displays camera 2 (by default it's twice as close as the other cameras).
+  * Workspace 3 displays camera 3.
+  - Soldier will be positioned (in the world) so as to be always displayed under the mouse.
+  {gin("CameraLeft")}, {gin("CameraRight")}, {gin("CameraUp")}, {gin("CameraDown")} : control camera 1 positioning.
+  {gin("CameraRotateLeft")}, {gin("CameraRotateRight")} : control camera 1 rotation.
+  {gin("CameraZoomIn")}, {gin("CameraZoomOut")} : control camera 1 zoom.
+  {gin("ViewportLeft")}, {gin("ViewportRight")}, {gin("ViewportUp")}, {gin("ViewportDown") : control viewport 1 positioning.
+  {gin("ViewportScaleUp"), {gin("ViewportScaleDown")} : control viewport 1 size.
+  """
+
+  help = help.unindent
+  orxlog( help)
+
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+
+  # camera control
+  var camera:ptr orxCAMERA = viewport1.getCamera()
+  if input.isActive("CameraRotateLeft"):
+    discard camera.setRotation( camera.getRotation() + orx2F(-4.0f) * clockInfo.fDT )
+  if input.isActive("CameraRotateRight"):
+    discard camera.setRotation( camera.getRotation() - orx2F(-4.0f) * clockInfo.fDT )
+    
+
+proc init() :orxSTATUS {.cdecl.} =
+  var status:orxSTATUS
+
+  display_hints()
+
+  # Creates all viewport
+  var viewports_names = [ "Viewport4", "Viewport3", "Viewport2", "Viewport1" ]
+
+  for vn in viewports_names:
+    # as Viewport variable is thrashed as we go along the loop iterations,
+    # we will keep only last viewport created ("Viewport1").
+    viewport1 = viewportCreateFromConfig( vn)
+    if viewport1.isNil:
+      echo "couldn't create viewport"
+      return orxSTATUS_FAILURE
+
+  # no need to keep reference on box, so discard it
+  discard objectCreateFromConfig( "Box")
+  # Creates our little soldier object
+  soldier = objectCreateFromConfig( "Soldier")
+
+  # Gets the main clock
+  var mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+
+  # Registers our update callback
+  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  orxSTATUS_SUCCESS
+
+
+proc Main =
+  #[ execute is declared in norx.nim , and needs 3 functions:
+      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
+                    runProc: proc(): orxSTATUS {.cdecl.};
+                    exitProc: proc() {.cdecl.}
+                   )
+  ]#
+  execute(init, run, exit)
+
+Main()
