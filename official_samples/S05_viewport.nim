@@ -88,13 +88,36 @@ proc display_hints() =
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
-  # camera control
+  ### camera control ###
   var camera:ptr orxCAMERA = viewport1.getCamera()
   if input.isActive("CameraRotateLeft"):
     discard camera.setRotation( camera.getRotation() + orx2F(-4.0f) * clockInfo.fDT )
   if input.isActive("CameraRotateRight"):
     discard camera.setRotation( camera.getRotation() - orx2F(-4.0f) * clockInfo.fDT )
-    
+
+  if input.isActive("CameraZoomIn"):
+    discard camera.setZoom( camera.getZoom() * orx2F( 1.02f) )
+  if input.isActive("CameraZoomOut"):
+    discard camera.setZoom( camera.getZoom() * orx2F( 0.98f) )
+
+  var vDummy:orxVECTOR = (0f,0f,0f) # camera.getPosition needs an initialized orxVECTOR as param.
+  var cam_pos:ptr orxVECTOR
+  cam_pos = camera.getPosition( addr vDummy)
+
+  if input.isActive("CameraLeft"):
+    cam_pos.fX -= orx2F(500) * clockInfo.fDT;
+  if input.isActive("CameraRight"):
+    cam_pos.fX += orx2F(500) * clockInfo.fDT;
+  if input.isActive("CameraUp"):
+    cam_pos.fY -= orx2F(500) * clockInfo.fDT;
+  if input.isActive("CameraDown"):
+    cam_pos.fY += orx2F(500) * clockInfo.fDT;
+
+  # we need to update the camera position to see changes
+  discard camera.setPosition( cam_pos)
+  
+  ### viewport control ###
+
 
 proc init() :orxSTATUS {.cdecl.} =
   var status:orxSTATUS
