@@ -60,7 +60,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display]
 
 # the shared functions
 import S_commons
@@ -115,9 +115,54 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   # we need to update the camera position to see changes
   discard camera.setPosition( cam_pos)
-  
+
   ### viewport control ###
 
+#  let color:orxRGBA = orxRGBA(u8R:'1', u8G:'1', u8B:'1', u8A:'1')
+
+#[
+ ; we can add camera location displaying in the ini file
+ ; it's much easier than doing by hand with code
+[Box]
+ChildList     = Marker1
+
+[Marker1]
+ParentCamera  = Camera1
+Graphic       = @
+Texture       = pixel
+Size          = (10, 10)
+Color         = (255, 0, 0)
+Pivot         = center
+
+; the ParentCamera property is quite handy (especially when used along UseParentSpace)
+; for anything UI-related.
+; it makes it easy to adapt to different aspect ratio as well, all in config
+]#
+# but anyway, as it's a tutorial, we're doing by hand in code :)
+
+#[
+/** Get a world position given a screen one (absolute picking)
+ * @param[in]   _pvScreenPosition                     Concerned screen position
+ * @param[in]   _pstViewport                          Concerned viewport, if orxNULL then either the last viewport that contains the position (if any), or the last viewport with a camera in the list if none contains the position
+ * @param[out]  _pvWorldPosition                      Corresponding world position
+ * @return      orxVECTOR if found *inside* the display surface, orxNULL otherwise
+ */
+extern orxDLLAPI orxVECTOR *orxFASTCALL       orxRender_GetWorldPosition(const orxVECTOR *_pvScreenPosition, const orxVIEWPORT *_pstViewport, orxVECTOR *_pvWorldPosition);
+
+/** Get a screen position given a world one and a viewport (rendering position)
+ * @param[in]   _pvWorldPosition                      Concerned world position
+ * @param[in]   _pstViewport                          Concerned viewport, if orxNULL then the last viewport with a camera will be used
+ * @param[out]  _pvScreenPosition                     Corresponding screen position
+ * @return      orxVECTOR if found (can be off-screen), orxNULL otherwise
+ */
+extern orxDLLAPI orxVECTOR *orxFASTCALL       orxRender_GetScreenPosition(const orxVECTOR *_pvWorldPosition, const orxVIEWPORT *_pstViewport, orxVECTOR *_pvScreenPosition);
+]#
+
+  let color = orx2RGBA( 255,255,255, 255)
+  var screen_pos:ptr orxVECTOR
+  var spos_dummy:orxVECTOR = (0f,0f,0f)
+  screen_pos = getScreenPosition( cam_pos, viewport1, addr spos_dummy)
+  discard drawCircle( screen_pos, 10.0f, color, true)
 
 proc init() :orxSTATUS {.cdecl.} =
   var status:orxSTATUS
