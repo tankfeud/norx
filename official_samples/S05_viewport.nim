@@ -33,6 +33,10 @@
   To achieve this, we just need to use the same name in the config file.
   Furthermore, when manipulating this camera using left & right mouse buttons to rotate it,
   arrow keys to move it and '+' & '-' to zoom it, these two viewports will be affected.
+  
+  The camera 1 location will be displayed :
+    a) as as black dot in viewport 1 (defined from code)
+    b) as a blue square in every viewports (defined from ini file)
 
   Viewport (2) is based on another camera (2) which frustum is narrower than the first one,
   resulting in a display twice as big. You can't affect this viewport through keys for this tutorial.
@@ -66,7 +70,7 @@ import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, m
 import S_commons
 
 
-var viewport1:ptr orxVIEWPORT
+var viewports_list:array[4,ptr orxVIEWPORT]
 var soldier:ptr orxOBJECT
 
 proc display_hints() =
@@ -75,6 +79,10 @@ proc display_hints() =
   * Worskpaces 1 & 4 display camera 1 content.
   * Workspace 2 displays camera 2 (by default it's twice as close as the other cameras).
   * Workspace 3 displays camera 3.
+
+  * The camera 1 location will be displayed :
+    a) as as black dot in viewport 1 (defined from code)
+    b) as a blue square in every viewports (defined from ini file)
   - Soldier will be positioned (in the world) so as to be always displayed under the mouse.
   {gin("CameraLeft")}, {gin("CameraRight")}, {gin("CameraUp")}, {gin("CameraDown")} : control camera 1 positioning.
   {gin("CameraRotateLeft")}, {gin("CameraRotateRight")} : control camera 1 rotation.
@@ -86,10 +94,67 @@ proc display_hints() =
   help = help.unindent
   orxlog( help)
 
+proc display_camera_position( cam_pos:ptr orxVECTOR) =
+#[
+ ; we can add camera location symbol displaying in the ini file.
+ ; it's much easier than doing by hand with code
+ ; this will display the Camera1 location as a blue filled square.
+[Box]
+ChildList     = Marker1
+
+[Marker1]
+ParentCamera  = Camera1
+Graphic       = @
+Texture       = pixel
+Size          = (10, 10)
+Color         = (255, 0, 0)
+Pivot         = center
+
+; the ParentCamera property is quite handy (especially when used along UseParentSpace)
+; for anything UI-related.
+; it makes it easy to adapt to different aspect ratio as well, all in config
+
+But anyway, as it's a tutorial, we're doing also by hand in code :)
+We are defhining another camera symbol, visible only in Viewport1 as a black filled circle.
+This symbol will show us the Camera1 location.
+
+There are interesting functions in « render.nim » , for coordinates computing.
+
+proc getWorldPosition*(pvScreenPosition: ptr orxVECTOR;
+                       pstViewport: ptr orxVIEWPORT;
+                       pvWorldPosition: ptr orxVECTOR)
+                       : ptr orxVECTOR {.cdecl, importc: "orxRender_GetWorldPosition", dynlib: libORX.}
+  ## Get a world position given a screen one (absolute picking)
+  ##  @param[in]   _pvScreenPosition        Concerned screen position
+  ##  @param[in]   _pstViewport             Concerned viewport, if nil then either the last viewport
+  ##                                        that contains the position (if any), or the last viewport 
+  ##                                        with a camera in the list if none contains the position
+  ##  @param[out]  _pvWorldPosition         Corresponding world position
+  ##  @return      orxVECTOR if found *inside* the display surface, nil otherwise
+
+proc getScreenPosition*(pvWorldPosition: ptr orxVECTOR;
+                        pstViewport: ptr orxVIEWPORT;
+                        pvScreenPosition: ptr orxVECTOR)
+                        : ptr orxVECTOR {.cdecl, importc: "orxRender_GetScreenPosition", dynlib: libORX.}
+  ## Get a screen position given a world one and a viewport (rendering position)
+  ##  @param[in]   _pvWorldPosition       world position
+  ##  @param[in]   _pstViewport           viewport, (if nil, the last viewport with a camera is used)
+  ##  @param[out]  _pvScreenPosition      Corresponding screen position
+  ##  @return      orxVECTOR if found (can be off-screen), nil otherwise
+]#
+
+  let color = orx2RGBA( 0,0,0, 255)
+  var screen_pos:ptr orxVECTOR
+  var spos_dummy:orxVECTOR = (0f,0f,0f)
+  screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
+  discard drawCircle( screen_pos, 10.0f, color, true)
+
+
+
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   ### camera control ###
-  var camera:ptr orxCAMERA = viewport1.getCamera()
+  var camera:ptr orxCAMERA = viewports_list[0].getCamera()
   if input.isActive("CameraRotateLeft"):
     discard camera.setRotation( camera.getRotation() + orx2F(-4.0f) * clockInfo.fDT )
   if input.isActive("CameraRotateRight"):
@@ -115,54 +180,11 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   # we need to update the camera position to see changes
   discard camera.setPosition( cam_pos)
+  display_camera_position( cam_pos)
 
   ### viewport control ###
 
 #  let color:orxRGBA = orxRGBA(u8R:'1', u8G:'1', u8B:'1', u8A:'1')
-
-#[
- ; we can add camera location displaying in the ini file
- ; it's much easier than doing by hand with code
-[Box]
-ChildList     = Marker1
-
-[Marker1]
-ParentCamera  = Camera1
-Graphic       = @
-Texture       = pixel
-Size          = (10, 10)
-Color         = (255, 0, 0)
-Pivot         = center
-
-; the ParentCamera property is quite handy (especially when used along UseParentSpace)
-; for anything UI-related.
-; it makes it easy to adapt to different aspect ratio as well, all in config
-]#
-# but anyway, as it's a tutorial, we're doing by hand in code :)
-
-#[
-/** Get a world position given a screen one (absolute picking)
- * @param[in]   _pvScreenPosition                     Concerned screen position
- * @param[in]   _pstViewport                          Concerned viewport, if orxNULL then either the last viewport that contains the position (if any), or the last viewport with a camera in the list if none contains the position
- * @param[out]  _pvWorldPosition                      Corresponding world position
- * @return      orxVECTOR if found *inside* the display surface, orxNULL otherwise
- */
-extern orxDLLAPI orxVECTOR *orxFASTCALL       orxRender_GetWorldPosition(const orxVECTOR *_pvScreenPosition, const orxVIEWPORT *_pstViewport, orxVECTOR *_pvWorldPosition);
-
-/** Get a screen position given a world one and a viewport (rendering position)
- * @param[in]   _pvWorldPosition                      Concerned world position
- * @param[in]   _pstViewport                          Concerned viewport, if orxNULL then the last viewport with a camera will be used
- * @param[out]  _pvScreenPosition                     Corresponding screen position
- * @return      orxVECTOR if found (can be off-screen), orxNULL otherwise
- */
-extern orxDLLAPI orxVECTOR *orxFASTCALL       orxRender_GetScreenPosition(const orxVECTOR *_pvWorldPosition, const orxVIEWPORT *_pstViewport, orxVECTOR *_pvScreenPosition);
-]#
-
-  let color = orx2RGBA( 255,255,255, 255)
-  var screen_pos:ptr orxVECTOR
-  var spos_dummy:orxVECTOR = (0f,0f,0f)
-  screen_pos = getScreenPosition( cam_pos, viewport1, addr spos_dummy)
-  discard drawCircle( screen_pos, 10.0f, color, true)
 
 proc init() :orxSTATUS {.cdecl.} =
   var status:orxSTATUS
@@ -170,14 +192,12 @@ proc init() :orxSTATUS {.cdecl.} =
   display_hints()
 
   # Creates all viewport
-  var viewports_names = [ "Viewport4", "Viewport3", "Viewport2", "Viewport1" ]
+  var viewports_names = [ "Viewport1", "Viewport2", "Viewport3", "Viewport4" ]
 
-  for vn in viewports_names:
-    # as Viewport variable is thrashed as we go along the loop iterations,
-    # we will keep only last viewport created ("Viewport1").
-    viewport1 = viewportCreateFromConfig( vn)
-    if viewport1.isNil:
-      echo "couldn't create viewport"
+  for i,vn in viewports_names:
+    viewports_list[i]= viewportCreateFromConfig( vn)
+    if viewports_list[i].isNil:
+      echo &"couldn't create viewport {i+1}"
       return orxSTATUS_FAILURE
 
   # no need to keep reference on box, so discard it

@@ -26,7 +26,7 @@ proc get_input_name*(input_name: string) :cstring =
   var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
   if is_ok == orxSTATUS_SUCCESS:
     let binding_name:cstring = getBindingName( eType, eID, eMode)
-    echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
+    #echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
     return binding_name
 
   return fmt"key {input_name} not found"
