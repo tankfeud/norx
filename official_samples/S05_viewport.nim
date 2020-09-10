@@ -87,8 +87,8 @@ proc display_hints() =
   {gin("CameraLeft")}, {gin("CameraRight")}, {gin("CameraUp")}, {gin("CameraDown")} : control camera 1 positioning.
   {gin("CameraRotateLeft")}, {gin("CameraRotateRight")} : control camera 1 rotation.
   {gin("CameraZoomIn")}, {gin("CameraZoomOut")} : control camera 1 zoom.
-  {gin("ViewportLeft")}, {gin("ViewportRight")}, {gin("ViewportUp")}, {gin("ViewportDown") : control viewport 1 positioning.
-  {gin("ViewportScaleUp"), {gin("ViewportScaleDown")} : control viewport 1 size.
+  {gin("ViewportLeft")}, {gin("ViewportRight")}, {gin("ViewportUp")}, {gin("ViewportDown")} : control viewport 1 positioning.
+  {gin("ViewportScaleUp")}, {gin("ViewportScaleDown")} : control viewport 1 size.
   """
 
   help = help.unindent
@@ -183,8 +183,35 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   display_camera_position( cam_pos)
 
   ### viewport control ###
+  
+  # viewport scale
+  var vp_width, vp_height:orxFLOAT
+  getRelativeSize( viewports_list[0], addr vp_width, addr vp_height)
 
-#  let color:orxRGBA = orxRGBA(u8R:'1', u8G:'1', u8B:'1', u8A:'1')
+  if input.isActive("ViewportScaleUp"):
+    vp_width *= orx2F( 1.02f);
+    vp_height*= orx2F( 1.02f);
+  if input.isActive("ViewportScaleDown"):
+    vp_width *= orx2F( 0.98f);
+    vp_height *= orx2F( 0.98f);
+  # update viewport size.
+  discard setRelativeSize( viewports_list[0], vp_width, vp_height)
+
+  # viewport position
+  var vp_x, vp_y:orxFLOAT
+  getPosition( viewports_list[0], addr vp_x, addr vp_y)
+  if input.isActive("ViewportRight"):
+    vp_x += orx2F(500) * clockInfo.fDT
+  if input.isActive("ViewportLeft"):
+    vp_x -= orx2F(500) * clockInfo.fDT
+  if input.isActive("ViewportDown"):
+    vp_y += orx2F(500) * clockInfo.fDT
+  if input.isActive("ViewportUp"):
+    vp_y -= orx2F(500) * clockInfo.fDT
+  
+  setPosition( viewports_list[0], vp_x, vp_y)
+
+
 
 proc init() :orxSTATUS {.cdecl.} =
   var status:orxSTATUS
