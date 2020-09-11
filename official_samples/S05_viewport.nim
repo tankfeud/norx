@@ -211,7 +211,36 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   
   setPosition( viewports_list[0], vp_x, vp_y)
 
+  ### little soldier position ###
+  var mouse_pos, soldier_pos:orxVECTOR
 
+  # Get mouse position in world coordinates
+  # we can discard result of getWorldPosition, as the same value will be put
+  # in the 3rd parameter of the function. It avoids us a dummy vector def.
+  discard getWorldPosition( getPosition( addr mouse_pos), nil, addr mouse_pos) 
+
+  # get soldier object position in world coordinates
+  discard getWorldPosition( soldier, addr soldier_pos)
+
+  # mouse position is used to solier re-location. We just keep soldier's Z value
+  mouse_pos.fZ = soldier_pos.fZ
+
+  # and put the soldier under the cursor
+  discard setPosition( soldier, addr mouse_pos)
+
+#[
+  /* Gets mouse world position? */
+  orxRender_GetWorldPosition(orxMouse_GetPosition(&vPos), orxNULL, &vPos);
+
+  /* Gets object current position */
+  orxObject_GetWorldPosition(pstSoldier, &vSoldierPos);
+
+  /* Keeps Z value */
+  vPos.fZ = vSoldierPos.fZ;
+
+  /* Moves the soldier under the cursor */
+  orxObject_SetPosition(pstSoldier, &vPos);
+]#
 
 proc init() :orxSTATUS {.cdecl.} =
   var status:orxSTATUS
