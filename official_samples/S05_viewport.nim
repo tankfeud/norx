@@ -248,13 +248,23 @@ proc init() :orxSTATUS {.cdecl.} =
   display_hints()
 
   # Creates all viewport
-  var viewports_names = [ "Viewport1", "Viewport2", "Viewport3", "Viewport4" ]
+  # the order creation of viewports is important: more recently created are above the others.
+  # so here, as Viewport1 is the last created, it will be above.
+  var viewports_names = [ "Viewport4", "Viewport3", "Viewport2", "Viewport1" ]
 
   for i,vn in viewports_names:
-    viewports_list[i]= viewportCreateFromConfig( vn)
-    if viewports_list[i].isNil:
-      echo &"couldn't create viewport {i+1}"
+    viewports_list[3-i]= viewportCreateFromConfig( vn)
+    # the index trick (3-i) is because we create viewports in reverse order.
+    # this is awful. Don't do this at home.
+    if viewports_list[3-i].isNil:
+      # in case of error, we need to adjust the Viewport «real» name.
+      echo &"couldn't create viewport {4-i}"
       return orxSTATUS_FAILURE
+
+  # BTW, since the original tutorial was written, there has been a new function
+  # called « orxViewport_Get » (C API), and « viewportGet » (Nim API).
+  # It returns a ref to a viewport when you give the name of it.
+  # So it's not mandatory to store them at creation
 
   # no need to keep reference on box, so discard it
   discard objectCreateFromConfig( "Box")
