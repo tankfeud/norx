@@ -64,31 +64,128 @@ import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, m
 import S_commons
 
 
-var soldier:orxOBJECT
+var soldier:ptr orxOBJECT
 # Music and sound are both of type orxSOUND.
 # The difference is music is streamed whereas sound is completely loaded into memory.
 # We set this difference in the config file.
-var music:orxSOUND
+var music:ptr orxSOUND
+
+
 
 proc display_hints() =
   let gin = get_input_name
   var help = fmt"""
-  {gin("")} & {gin("")} will change the music volume (+ soldier size).
-  {gin("")} & {gin("")} will change the music pitch (+ soldier rotation).
-  {gin("")} will toggle music (+ soldier display).
-  {gin("")} will play a random SFX on the soldier (+ change its color).
-  {gin("")} will the default SFX on the soldier (+ restore its color).
+  {gin("VolumeUp")} & {gin("VolumeDown")} will change the music volume (+ soldier size).
+  {gin("PitchUp")} & {gin("PitchDown")} will change the music pitch (+ soldier rotation).
+  {gin("ToggleMusic")} will toggle music (+ soldier display).
+  {gin("RandomSFX")} will play a random SFX on the soldier (+ change its color).
+  {gin("DefaultSFX")} will the default SFX on the soldier (+ restore its color).
   The sound effect will be played only if the soldier is active
   """
-#         zInputVolumeUp, zInputVolumeDown, zInputPitchUp, zInputPitchDown, zInputToggleMusic, zInputRandomSFX, zInputDefaultSFX);
 
   help = help.unindent
   orxlog( help)
 
 
+
+proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
+  result = orxSTATUS_SUCCESS
+
+  if event.hRecipient == soldier:
+    # Gets event payload (payload has type « pointer », must be casted)
+    var payload:ptr orx_SOUND_EVENT_PAYLOAD = cast[ptr orx_SOUND_EVENT_PAYLOAD](event.pstPayload)
+
+    let sound_name = getName( payload.ano_orxSound_143.pstSound) # autogen by wrapper, see sound.nim
+    # we have to cast to orxOBJECT, because event.hRecipient is anonymous pointer (an orxHANDLE)
+    let recipient_name = getName( cast[ptr orxOBJECT](event.hRecipient))
+
+    case event.eID:
+      of ord(orxSOUND_EVENT_START):
+        echo fmt"Sound {sound_name} @ {recipient_name} has started !"
+
+      of ord(orxSOUND_EVENT_STOP):
+        echo fmt"Sound {sound_name} @ {recipient_name} has stopped !"
+
+      else:
+        # unknown event
+        echo "unknown event ", $orxEVENT_TYPE(event.eID)
+        result = orxSTATUS_FAILURE
+
+
+
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+  var vect_color:orxVECTOR
+  var color:orxCOLOR = ( cast[orxRGBVector](orxVECTOR_WHITE), 1.0f ) #default color
+  var res:orxSTATUS
+
+  ## SOUND
+
+  if hasBeenActivated("RandomSFX"):
+    # add a sound FX on the soldier
+    res = addSound( soldier, "RandomBip")
+    # sets a random color on soldier
+    # push [Tutorial] section of .ini
+    res = pushSection( "Tutorial")
+    # orxCOLOR {...} = tuple[vRGB: orxRGBVECTOR, fAlpha: orxFLOAT]
+    discard getVector( "RandomColor", addr vect_color)
+    color = ( cast[orxRGBVector](vect_color) , 1.0f)
+    res = setColor( soldier, addr color)
+    res = popSection()
+
+  if hasBeenActivated("DefaultSFX"):
+    res = addSound( soldier, "DefaultBip")
+    # reset color of soldier
+    res = setColor( soldier, addr color)
+
+  ## MUSIC
+  if hasBeenActivated("ToggleMusic"):
+    enable( soldier, not isEnabled(soldier))
+
+  if hasBeenActivated("PitchUp"):
+    res = setPitch( music, getPitch( music) + orx2F(0.01f))
+    res = setRotation( soldier, getRotation( soldier) + orx2F(4.0f) * clockInfo.fDT);
+  if hasBeenActivated("PitchDown"):
+    res = setPitch( music, getPitch( music) - orx2F(0.01f))
+    res = setRotation( soldier, getRotation( soldier) - orx2F(4.0f) * clockInfo.fDT);
+
+  if hasBeenActivated("VolumeDown"):
+    res = setVolume( music, getVolume( music) - orx2F(0.05f))
+    var v:orxVECTOR = (1.0f,1.0f,1.0f)
+    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), orx2F(0.98f)));
+  if hasBeenActivated("VolumeUp"):
+    res = setVolume( music, getVolume( music) + orx2F(0.05f))
+    var v:orxVECTOR = (1.0f,1.0f,1.0f)
+    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), orx2F(1.02f)));
+
+
+
 proc init() :orxSTATUS {.cdecl.} =
+  result = orxSTATUS_SUCCESS
   display_hints()
-  orxSTATUS_SUCCESS
+
+  # create viewport
+  let vp = viewportCreateFromConfig( "Viewport")
+  if vp.isNil:
+    echo "Couldn't create viewport"
+    return orxSTATUS_FAILURE
+
+  # our brave little soldier, always here.
+  soldier = objectCreateFromConfig( "Soldier")
+
+  # Gets the main clock, and register our update callback
+  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+
+  # Registers event handler for the sound
+  result = addHandler( orxEVENT_TYPE_SOUND, EventHandler)
+
+  # add background music to the soldier
+  result = addSound( soldier, "Music")
+  # store a reference to the music
+  music = getLastAddedSound( soldier)
+  # play the music
+  result = play( music)
+
 
 
 proc main() =
