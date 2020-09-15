@@ -63,7 +63,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, memory]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, FX]
 
 # the shared functions
 import S_commons
@@ -71,7 +71,7 @@ import S_commons
 
 var soldier:ptr orxOBJECT
 var box:ptr orxOBJECT
-var selected_fx:string = "WoobleFX"
+var selected_fx:string = "WobbleFX"
 
 # This userdata will be bind to the soldier.
 # It's used as a lock for applying effects
@@ -107,11 +107,24 @@ proc display_hints() =
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
 
+  if event.eType == orxEVENT_TYPE_INPUT:
+    # the input handling part, where we only display which keys have been used for every active input. 
+    if event.eID == ord(orxINPUT_EVENT_ON):
+      var payload = cast[ptr orxINPUT_EVENT_PAYLOAD](event.pstPayload)
+      # has a multi-input info ? (ie: single key or combination ?)
+      # We only use the 2 first input entries (we didn't use combinations > 2 keys in our config file).
+      # However orx supports up to 4 combined keys for a single input.
+      # orxInput_GetBindingName() gives us a string version of an input such as KEY_UP, MOUSE_LEFT or JOY_1 for example.
+      # NB: Those are also the names used in the config file to bind keys, mouse or joystick buttons to inputs.
+    
+
+  else:
+    var payload = cast[ptr orxFX_EVENT_PAYLOAD](event.pstPayload)
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   let key_fx:seq[tuple[key:string,fx:string]] = @[("SelectMultiFX","MultiFX"),
-  ("SelectWobble","WoobleFX"), ("SelectCircle","CircleFX"), ("SelectFade","FadeFX"),
+  ("SelectWobble","WobbleFX"), ("SelectCircle","CircleFX"), ("SelectFade","FadeFX"),
   ("SelectFlash","FlashFX"), ("SelectMove","MoveFX"), ("SelectFlip","FlipFX") ]
 
   for tup in key_fx:
@@ -119,7 +132,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
       selected_fx = tup.fx
       break
 
-  let soldier_userdata:ptr Userdata = cast[ptr Userdata]( soldier.getUserData())
+  let soldier_userdata = cast[ptr Userdata]( soldier.getUserData())
   if hasBeenActivated( "ApplyFX") and not soldier_userdata.is_locked:
     discard soldier.addFX( selected_fx)
 
@@ -155,7 +168,7 @@ proc init() :orxSTATUS {.cdecl.} =
 
   # for modifying the returned allocated object, we need to cast it.
   # because the « pointer » type returned is not directly usable.
-  var userdata_ptr:ptr Userdata = cast[ptr Userdata](userdata_raw_pointer)
+  var userdata_ptr = cast[ptr Userdata](userdata_raw_pointer)
   # « is_locked » is already false, but hey.
   userdata_ptr.is_locked = false
  
@@ -167,7 +180,7 @@ proc init() :orxSTATUS {.cdecl.} =
   # bind userdata : quick and easy method (thank you Gokr for the method)
   # « userdata » is global, so won't be collected by GC at the end of this function,
   # as a local variable would be.
-  soldier.setUserData( cast[pointer](userdata) )
+  soldier.setUserData( cast[pointer](addr userdata) )
   # and later, for pulling the userdata : var userdata = cast[ptr Userdata]( userdata.getUserData())
   
   
