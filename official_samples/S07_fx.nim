@@ -63,7 +63,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, sound]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, memory]
 
 # the shared functions
 import S_commons
@@ -71,7 +71,15 @@ import S_commons
 
 var soldier:ptr orxOBJECT
 var box:ptr orxOBJECT
+var selected_fx:string = "WoobleFX"
 
+# This userdata will be bind to the soldier.
+# It's used as a lock for applying effects
+type Userdata = object
+  is_locked:orxBOOL
+
+# it's global, so wont be collected
+var userdata:Userdata = Userdata(is_locked:false)
 
 proc display_hints() =
   let gin = get_input_name
@@ -102,8 +110,18 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  discard
+  let key_fx:seq[tuple[key:string,fx:string]] = @[("SelectMultiFX","MultiFX"),
+  ("SelectWobble","WoobleFX"), ("SelectCircle","CircleFX"), ("SelectFade","FadeFX"),
+  ("SelectFlash","FlashFX"), ("SelectMove","MoveFX"), ("SelectFlip","FlipFX") ]
 
+  for tup in key_fx:
+    if isActive( tup.key):
+      selected_fx = tup.fx
+      break
+
+  let soldier_userdata:ptr Userdata = cast[ptr Userdata]( soldier.getUserData())
+  if hasBeenActivated( "ApplyFX") and not soldier_userdata.is_locked:
+    discard soldier.addFX( selected_fx)
 
 
 proc init() :orxSTATUS {.cdecl.} =
@@ -128,7 +146,31 @@ proc init() :orxSTATUS {.cdecl.} =
   result = addHandler( orxEVENT_TYPE_FX, EventHandler)
   result = addHandler( orxEVENT_TYPE_INPUT, EventHandler)
 
+  ### bind the userdata object to the soldier
 
+  #[
+  # So … you can do it the Orx way like this:
+  # by following the Orx way, we need to allocate a buffer ( « allocate » returns a raw pointer)
+  let userdata_raw_pointer = allocate( cast[orxU32]( sizeof(userdata)), orxMEMORY_TYPE_MAIN)
+
+  # for modifying the returned allocated object, we need to cast it.
+  # because the « pointer » type returned is not directly usable.
+  var userdata_ptr:ptr Userdata = cast[ptr Userdata](userdata_raw_pointer)
+  # « is_locked » is already false, but hey.
+  userdata_ptr.is_locked = false
+ 
+  # but for binding it, of course we use the returned « pointer » by allocate function.
+  setUserData( soldier, userdata_raw_pointer);
+  # but we have a simplest way to do it
+  ]#
+
+  # bind userdata : quick and easy method (thank you Gokr for the method)
+  # « userdata » is global, so won't be collected by GC at the end of this function,
+  # as a local variable would be.
+  soldier.setUserData( cast[pointer](userdata) )
+  # and later, for pulling the userdata : var userdata = cast[ptr Userdata]( userdata.getUserData())
+  
+  
 
 proc main() =
   #[ execute is declared in norx.nim , and needs 3 functions:
