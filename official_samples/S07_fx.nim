@@ -91,7 +91,7 @@ proc display_hints() =
   {gin("SelectFlash")} : Flash.
   {gin("SelectMove")} : Move.
   {gin("SelectFlip")} : Flip.
-  {gin("SelectMultiFX")} : MultiFX (contains the slots of 4 of the above FXs
+  Left CTRL + m : MultiFX (contains the slots of 4 of the above FXs)
 
   {gin("ApplyFX")} : apply the current select FX on the soldier.
  Only once FX will be applied at a time in this tutorial.
@@ -112,18 +112,25 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
     if event.eID == ord(orxINPUT_EVENT_ON):
       var payload = cast[ptr orxINPUT_EVENT_PAYLOAD](event.pstPayload)
 
-      # has a multi-input info ? (ie: single key or combination ?)
-      # We only use the 2 first input entries (we didn't use combinations > 2 keys in our config file).
-      # However orx supports up to 4 combined keys for a single input.
-      # aeType: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## Input binding type
       if payload.aeType[1] != orxINPUT_TYPE_NONE:
+        # multi-input detected (that is: several key has been pressed at same time).
+        # You can define combinations like this in the .ini file :
+        #   [MyInputs]
+        #   KEY_S = Action # Save
+        #   KEY_LCTRL = Action # Save
+        #   CombineList = Save
+
+        # We only use the 2 first input entries (we didn't use combinations > 2 keys in our config file).
+        # However orx supports up to 4 combined keys for a single input.
+        # aeType: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## Input binding type
         var msg = fmt"""
-          {payload.zInputName} triggered by :
-            \t{getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}
-            \t{getBindingName( payload.aeType[1], payload.aeID[1], payload.aeMode[1])}
+          {payload.zInputName} triggered by combination of:
+           1) {getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}
+           2) {getBindingName( payload.aeType[1], payload.aeID[1], payload.aeMode[1])}
         """
         orxlog( msg.unindent)
       else:
+        # it's a single key press
         orxlog( fmt"{payload.zInputName} triggered by {getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}")
 
   if event.eType == orxEVENT_TYPE_FX:
