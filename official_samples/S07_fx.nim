@@ -108,18 +108,45 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
 
   if event.eType == orxEVENT_TYPE_INPUT:
-    # the input handling part, where we only display which keys have been used for every active input. 
+    # the input handling part, where we only display which keys have been used for every active input.
     if event.eID == ord(orxINPUT_EVENT_ON):
       var payload = cast[ptr orxINPUT_EVENT_PAYLOAD](event.pstPayload)
+
       # has a multi-input info ? (ie: single key or combination ?)
       # We only use the 2 first input entries (we didn't use combinations > 2 keys in our config file).
       # However orx supports up to 4 combined keys for a single input.
-      # orxInput_GetBindingName() gives us a string version of an input such as KEY_UP, MOUSE_LEFT or JOY_1 for example.
-      # NB: Those are also the names used in the config file to bind keys, mouse or joystick buttons to inputs.
-    
+      # aeType: array[orxINPUT_KU32_BINDING_NUMBER, orxINPUT_TYPE] ## Input binding type
+      if payload.aeType[1] != orxINPUT_TYPE_NONE:
+        var msg = fmt"""
+          {payload.zInputName} triggered by :
+            \t{getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}
+            \t{getBindingName( payload.aeType[1], payload.aeID[1], payload.aeMode[1])}
+        """
+        orxlog( msg.unindent)
+      else:
+        orxlog( fmt"{payload.zInputName} triggered by {getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}")
 
-  else:
+  if event.eType == orxEVENT_TYPE_FX:
     var payload = cast[ptr orxFX_EVENT_PAYLOAD](event.pstPayload)
+    var obj_recipient = cast[ptr orxOBJECT]( event.hRecipient)
+
+    case event.eID:
+      of ord(orxFX_EVENT_START):
+        orxlog( fmt"FX {payload.zFXName} {getName( obj_recipient)} has started!")
+        # was it the soldier who trigger the event ?
+        if obj_recipient == soldier:
+          # a new effect has started, lock the soldier to prevent another one to occur.
+           cast[ptr Userdata]( soldier.getUserData()).is_locked = true;
+
+      of ord(orxFX_EVENT_STOP):
+        orxlog( fmt"FX {payload.zFXName} {getName( obj_recipient)} has stopped!")
+        # was it the soldier who trigger the event ?
+        if obj_recipient == soldier:
+          # the effect is over, we can unlock the soldier.
+          cast[ptr Userdata]( soldier.getUserData()).is_locked = false;
+      else:
+        orxlog( fmt"Event type: orxEVENT_TYPE_FX received an uknown event ID {event.eID} (object: {getName(obj_recipient)}")
+
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
@@ -133,8 +160,11 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
       break
 
   let soldier_userdata = cast[ptr Userdata]( soldier.getUserData())
-  if hasBeenActivated( "ApplyFX") and not soldier_userdata.is_locked:
-    discard soldier.addFX( selected_fx)
+  if hasBeenActivated( "ApplyFX"):
+    if not soldier_userdata.is_locked:
+      discard soldier.addFX( selected_fx)
+    else:
+      orxlog( "ApplyFX activated, but soldier is locked: cancel ApplyFX.")
 
 
 proc init() :orxSTATUS {.cdecl.} =
@@ -171,7 +201,7 @@ proc init() :orxSTATUS {.cdecl.} =
   var userdata_ptr = cast[ptr Userdata](userdata_raw_pointer)
   # « is_locked » is already false, but hey.
   userdata_ptr.is_locked = false
- 
+
   # but for binding it, of course we use the returned « pointer » by allocate function.
   setUserData( soldier, userdata_raw_pointer);
   # but we have a simplest way to do it
@@ -182,8 +212,8 @@ proc init() :orxSTATUS {.cdecl.} =
   # as a local variable would be.
   soldier.setUserData( cast[pointer](addr userdata) )
   # and later, for pulling the userdata : var userdata = cast[ptr Userdata]( userdata.getUserData())
-  
-  
+
+
 
 proc main() =
   #[ execute is declared in norx.nim , and needs 3 functions:
