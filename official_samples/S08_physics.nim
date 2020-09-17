@@ -89,9 +89,42 @@ proc display_hints() =
   help = help.unindent
   orxlog( help)
 
+proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
+
+  if event.eID == ord(orxPHYSICS_EVENT_CONTACT_ADD):
+    # it's a new contact
+    # we get the colliding boxes
+    var box1 = cast[ptr orxOBJECT]( event.hRecipient)
+    var box2 = cast[ptr orxOBJECT]( event.hSender)
+
+    # and add a « bump » effect on them
+    discard addFX( box1, "Bump");
+    discard addFX( box2, "Bump");
+
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  discard
+  var deltaRot:orxFLOAT = orxFLOAT_0
+
+  if isActive( "RotateLeft"):
+    deltaRot = orx2F( 4.0f) * clockInfo.fDT;
+  if isActive( "RotateRight"):
+    deltaRot = orx2F( -4.0f) * clockInfo.fDT;
+
+  # has turned ?
+  if deltaRot != orxFLOAT_0:
+    var gravity:orxVECTOR
+    
+    # Rotates camera
+    discard setRotation( cam, getRotation( cam) + deltaRot)
+
+    # Gets gravity
+    discard getGravity( addr gravity)
+    # and updates it
+    discard twoDRotate( addr gravity, addr gravity, deltaRot)
+    # apply new gravity
+    discard setGravity( addr gravity)
+
+
 
 proc init() :orxSTATUS {.cdecl.} =
   ## usual things
@@ -101,12 +134,19 @@ proc init() :orxSTATUS {.cdecl.} =
   if vp.isNil:
     echo "Couldn't create viewport"
     return orxSTATUS_FAILURE
+  
+  # and get the camera attached to this viewport
+  cam = getCamera( vp);
 
   let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
   result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
 
-  ### create the whole scene (see the magic in .ini)
+  ## the event handler (for managing the bump of the boxes)
+  discard addHandler( orxEVENT_TYPE_PHYSICS, EventHandler);
+
+  ## create the whole scene (see the magic in .ini)
   discard objectCreateFromConfig( "Scene")
+  
 
 proc main() =
   #[ execute is declared in norx.nim , and needs 3 functions:
