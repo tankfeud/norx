@@ -51,7 +51,7 @@
   We then spawn boxes in the middle.
   The number of boxes created is tweakable through the config file and is 100 by default.
 
-  The only interaction possible is using left and right keyboard keys or mouse buttons to rotate the camera.
+  Use left and right keyboard keys (or mouse buttons) to rotate the camera.
   As we rotate it, we also update the gravity vector of our simulation.
   It gives the impression that the boxes will be always falling toward the bottom of our screen, no matter
   how the camera is rotated.
@@ -63,8 +63,7 @@
   Updating an object scale (including changing its scale with FXs) will update its physical properties.
   Keep in mind that scaling an object with a physical body is more expensive as we have to delete
   the current shapes and recreate them at the correct size.
-  This is done as our current single physics plugin is based on Box2D which doesn't allow realtime
-  rescaling of shapes.
+  Our current single physics plugin is based on Box2D which doesn't allow realtime rescaling of shapes.
 
   This tutorial does only show basic physics and collision control, but, for example, you can also
   be notified with events for object separating or keeping contact.
@@ -72,15 +71,42 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, FX]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, physics]
 
 # the shared functions
 import S_commons
 
+var cam:ptr orxCAMERA
+
+proc display_hints() =
+  let gin = get_input_name
+  var help = fmt"""
+    {gin("RotateLeft")} and {gin("RotateRight")} will rotate the camera
+    Gravity will follow the camera.
+    A bump visual FX is played on objects that collide.
+ """
+
+  help = help.unindent
+  orxlog( help)
+
+
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+  discard
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  ## usual things
+  display_hints()
 
+  let vp = viewportCreateFromConfig( "Viewport")
+  if vp.isNil:
+    echo "Couldn't create viewport"
+    return orxSTATUS_FAILURE
+
+  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+
+  ### create the whole scene (see the magic in .ini)
+  discard objectCreateFromConfig( "Scene")
 
 proc main() =
   #[ execute is declared in norx.nim , and needs 3 functions:
