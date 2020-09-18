@@ -95,6 +95,16 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   # update scroll speed
   mulf( addr vScrollSpeed, addr vScrollSpeed, clockInfo.fDT)
+  
+  if isActive("CameraLeft"): vMove.fX -= vScrollSpeed.fX
+  if isActive("CameraRight"): vMove.fX += vScrollSpeed.fX
+  if isActive("CameraDown"): vMove.fY += vScrollSpeed.fY
+  if isActive("CameraUp"): vMove.fY -= vScrollSpeed.fY
+  if isActive("CameraZoomIn"): vMove.fZ += vScrollSpeed.fZ
+  if isActive("CameraZoomOut"): vMove.fZ -= vScrollSpeed.fZ
+
+  discard setPosition( cam, vector.add( addr vPosition, getPosition( cam, addr vPosition), addr vMove) )
+
 
 proc init() :orxSTATUS {.cdecl.} =
   ## usual things
