@@ -22,9 +22,9 @@
   See tutorial S05_viewport.nim for viewports mysteriis.
   See tutorial S06_sound.nim for playing sounds.
   See tutorial S07_fx.nim for applying FX to objects.
-  See tutorial S08_fx.nim for an outlook on the physic engine.
+  See tutorial S08_physics.nim for an outlook on the physic engine.
 
-  For details about Orx side , please refer to the physics tutorial (official C++ sample):
+  For details about Orx side , please refer to the scrolling tutorial (official C++ sample):
   https://wiki.orx-project.org/en/tutorials/scrolling
 
  This tutorial shows how to display a parallax scrolling.

@@ -8,7 +8,7 @@
   (it will use S08_physics.nim.cfg and liborxd.so loaded at runtime)
 
   Release compilation
-  nim c -d:release --skipProjcfg S07_fx
+  nim c -d:release --skipProjcfg S08_physics
   (skip nim project cfg, liborx.so is loaded at runtime)
 
   Note from gokr:
