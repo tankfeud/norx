@@ -64,10 +64,43 @@ import S_commons
 var language_index:orxU32 = 0
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  return result 
+  result = orxSTATUS_SUCCESS
+  if event.eID == ord(orxLOCALE_EVENT_SELECT_LANGUAGE):
+    var payload = cast[ptr orxLOCALE_EVENT_PAYLOAD]( event.pstPayload)
+    orxLOG( fmt"Switching to {payload.zLanguage}")
+  return result
+
+
+proc display_hints() =
+  let gin = get_input_name
+  var help = fmt"""
+    {gin("Quit")} will exit from this tutorial
+    {gin("CycleLanguage")} will cycle through all the available languages
+    *** The legend under the logo is always displayed in the current language ***
+ """
+
+  help = help.unindent
+  orxlog( help)
+
 
 proc init() :orxSTATUS {.cdecl.} =
   result = addHandler( orxEVENT_TYPE_LOCALE, EventHandler)
+
+  if result == orxSTATUS_SUCCESS:
+    # create logo object and displays child
+    var logo:ptr orxObject = objectCreateFromConfig( "Logo")
+    orxLOG( fmt"=== We can get child(s) from code: {getChild(logo).repr}")
+
+    # display availables languages
+    var avail_languages:seq[cstring]
+    for i in 0..<getLanguageCount():
+      avail_languages.add( getLanguage(i))
+    orxLOG( fmt"=== Available languages : {avail_languages.repr}")
+
+    discard viewportCreateFromConfig( "Viewport")
+
+    display_hints()
+
 
 
 # in the others tutorials , we were using a generic « run » procedure.
@@ -75,6 +108,7 @@ proc init() :orxSTATUS {.cdecl.} =
 # This time, we don't have callback function , called at a certain rate (Hz) by a clock.
 # The I/O polling will be done entirely in the mainloop.
 proc mainloop() :orxSTATUS {.cdecl.} =
+  result = orxSTATUS_SUCCESS
   # testing both isActive (key detection) and hasNewStatus (for avoiding cycling fast in the languages)
   if isActive("CycleLanguage") and hasNewStatus("CycleLanguage"):
     # update language index
