@@ -26,7 +26,7 @@
   See tutorial S09_scrolling.nim for the world of parallax.
   See tutorial S10_locale.nim for speaking another language than you-know-what.
 
-  For details about Orx side , please refer to the scrolling tutorial (official C++ sample):
+  For details about Orx side , please refer to the spawner tutorial:
   https://wiki.orx-project.org/en/tutorials/spawners/spawner
 
  This tutorial shows how to create and use spawners for particle effects.
