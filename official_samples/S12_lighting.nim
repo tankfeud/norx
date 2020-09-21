@@ -52,13 +52,13 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, memory, hashTable]
+import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, memory, string, hashTable, shader]
 
 # the shared functions
 import S_commons
 
 type light = object
-  color: orxCOLOR
+  color: orxCOLOR # orxCOLOR is a tuple defined in display.nim
   pos: orxVECTOR
   radius: orxFLOAT
 
@@ -73,14 +73,64 @@ var vp:ptr orxVIEWPORT
 var scene:ptr orxOBJECT
 
 
-proc clear_all_lights() =
-  discard
+proc clear_all_lights() :orxSTATUS =
+  # get lighting section
+  result = pushSection( "Lighting")
+
+  # initialization of light array
+  for light in mitems(light_list):
+    light.color.fAlpha = 0
+    light.radius = config.getFloat( "Radius")
+    light.pos = ( 0f, 0f, 0f)
+    
+    # vRBG is of type orxRGBVECTOR and need to be casted to orxVECTOR for getVector
+    var pvRGB:ptr orxVECTOR = cast[ptr orxVECTOR](addr light.color.vRGB)
+    discard config.getVector( "Color", pvRGB)
+  
+  result = popSection()
+  light_index = 0
   
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
+  
+  # set shader param ?
+  if event.eType == orxEVENT_TYPE_SHADER and event.eID == ord(orxSHADER_EVENT_SET_PARAM):
+    var payload = cast[ptr orxSHADER_EVENT_PAYLOAD]( event.pstPayload)
 
+    # is active ?
+    if payload.s32ParamIndex <= light_index:
+      case $payload.zParamName:
+      of "UseBumpMap":
+        result = pushSection( getName( cast[ptr orxOBJECT](event.hSender) ))
+        var is_bumpmap_active = getBool( "UseBumpMap")
+        payload.ano_orxShader_127.fValue = 0
+        if is_bumpmap_active == orxTRUE:
+          payload.ano_orxShader_127.fValue = 1
+        result = popSection()
 
+      of "avLightColor":
+        payload.ano_orxShader_127.vValue = cast[orxVECTOR]( light_list[payload.s32ParamIndex].color.vRGB)
+        
+      of "afLightAlpha":
+        payload.ano_orxShader_127.fValue = light_list[payload.s32ParamIndex].color.fAlpha 
+
+      of "avLightPos":
+        payload.ano_orxShader_127.vValue = light_list[payload.s32ParamIndex].pos
+
+      of "afLightRadius":
+        payload.ano_orxShader_127.fValue = light_list[payload.s32ParamIndex].radius
+      
+      of "NormalMap":
+        # orxString_ToCRC (C) became string.toU64 (Nim), for transforming a string as key for hash lookup.
+        var CRC:orxU64
+        toU64( texture.getName( payload.ano_orxShader_127.pstValue), addr CRC, nil )
+        
+      #payload.ano_orxShader_127.pstValue = hashtable.get( texture_table, string.toU64( getName(payload.ano_orxShader_127.pstValue)))
+#        pstPayload->pstValue = (orxTEXTURE *)orxHashTable_Get(pstTextureTable, orxString_ToCRC(orxTexture_GetName(pstPayload->pstValue)));
+      else:
+        echo fmt"⚠  unknown payload.zParamName: {$payload.zParamName}"
+        
 
 proc display_hints() =
   let gin = get_input_name
@@ -94,6 +144,8 @@ proc display_hints() =
 
   help = help.unindent
   orxlog( help)
+
+
 
 proc init() :orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
@@ -110,7 +162,9 @@ proc init() :orxSTATUS {.cdecl.} =
   scene = objectCreateFromConfig( "Scene")
   vp = viewportCreateFromConfig( "Viewport")
 
-  clear_all_lights()
+  result = clear_all_lights()
+  if result == orxSTATUS_FAILURE:
+    echo "⚠  problem when calling clear_all_lights()"
 
 
   # Creates hash table for storing up to 16 normal maps signatures.
@@ -125,7 +179,27 @@ proc init() :orxSTATUS {.cdecl.} =
 # The I/O polling will be done entirely in the mainloop.
 proc mainloop() :orxSTATUS {.cdecl.} =
   result = orxSTATUS_SUCCESS
+
+  # current light position is the mouse position
+  discard mouse.getPosition( addr light_list[light_index].pos)
   
+  if hasBeenActivated( "CreateLight"):
+    light_index = min( LIGHT_NUMBER - 1, light_index + 1);
+  
+  if hasBeenActivated( "ClearLights"):
+    result = clear_all_lights()
+
+  if hasBeenActivated( "IncreaseRadius"):
+    var increased = input.getValue( "IncreaseRadius") * 0.05f
+    light_list[light_index].radius += increased
+
+  if hasBeenActivated( "DecreaseRadius"):
+    var decreased = max( 0, light_list[light_index].radius - getValue("DecreaseRadius") * 0.05f)
+    light_list[light_index].radius = decreased
+  
+  if hasBeenActivated( "ToggleAlpha"):
+    light_list[light_index].color.fAlpha = 1.5f - light_list[light_index].color.fAlpha
+
   if hasBeenActivated( "Quit"):
     result = orxSTATUS_FAILURE
 
