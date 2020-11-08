@@ -38,6 +38,10 @@ You can [follow instructions at the ORX wiki](https://wiki.orx-project.org/getti
 
         ANDROID_HOME=/home/gokr/Android/Sdk/
 
+If your NDK was packaged as an installer, the environment variable would have been set. If not, set one in the PATH variable to point to folder where the ndk-build command is located:
+
+        /home/gokr/Android/Sdk/ndk/21.3.6528147/build/ndk-build
+        
 You also want PATH set to these sub directories (to have `adb` etc):
 
         /home/gokr/Android/Sdk/platform-tools:/home/gokr/Android/Sdk/tools/bin:/home/gokr/Android/Sdk/build-tools/28.0.0
@@ -67,6 +71,7 @@ That compiles libraries for all binary Android platforms. You shuld be able to v
 
 4. Then go back to norxdemo and build (generate C code and produce debug and release APKs) using:
 
+        cd $OLDPWD
         ./build-android.sh
 
 This will:
