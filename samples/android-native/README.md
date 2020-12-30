@@ -37,12 +37,12 @@ You can [follow instructions at the ORX wiki](https://wiki.orx-project.org/getti
 2. Then make sure you have Android SDKs installed, typically done via Android Studio and `ANDROID_HOME` set to point to your Sdk, like for example:
 
         ANDROID_HOME=/home/gokr/Android/Sdk/
+   
+        Add to PATH variable the folder where the ndk-build command is located:
 
-If your NDK was packaged as an installer, the environment variable would have been set. If not, set one in the PATH variable to point to folder where the ndk-build command is located:
-
-        /home/gokr/Android/Sdk/ndk/21.3.6528147/build/ndk-build
+        /home/gokr/Android/Sdk/ndk/21.3.6528147/build
         
-You also want PATH set to these sub directories (to have `adb` etc):
+        You also want PATH set to these sub directories (to have `adb` etc):
 
         /home/gokr/Android/Sdk/platform-tools:/home/gokr/Android/Sdk/tools/bin:/home/gokr/Android/Sdk/build-tools/28.0.0
 
