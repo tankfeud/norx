@@ -1,14 +1,10 @@
+# Ignore binary (no extension) files in samples
+samples/*/*
+!samples/*/*.*
+
 **/*.log
 **/*.dSYM
-*.iml
-.idea
-tankfeud-key.jks
-**/.gradle
-**/.ndkExternalBuild
-**/.cxx
-local.properties
+**/*.iml
 **/.idea
-tankfeud.AppDir
-*.AppImage
-*.apk
 **/*.elf
+

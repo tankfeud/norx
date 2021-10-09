@@ -1,6 +1,6 @@
 norxdemo
 src/norxdemo
-norxdemo-key.jks
+**/*.jks
 **/.gradle
 **/.cxx
 src/cache
@@ -16,4 +16,8 @@ build/android-native/build
 build/android-native/app/.cxx
 *.log
 **/.idea
+**/.gradle
+**/.ndkExternalBuild
+**/.cxx
+*.apk
 local.properties
