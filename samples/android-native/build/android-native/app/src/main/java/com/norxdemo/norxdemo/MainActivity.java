@@ -1,22 +1,26 @@
 package com.norxdemo.norxdemo;
 
 import android.annotation.TargetApi;
-import android.app.NativeActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.util.Log;
+
+import android.content.Context;
+import android.hardware.input.InputManager;
+import android.view.InputDevice;
+import org.orx.lib.OrxActivity; // base class so that native methods signature match package+method
 
 /**
- * Created by loki on 4/07/14.
+ * Copied from OrxActivity.java in Orx
  */
-public class MainActivity extends NativeActivity {
+public class MainActivity extends OrxActivity {
 
     private Handler mHandler = new Handler();
     private View mDecorView;
 
-    // Only needed if you compile Nim via cpp.
-    //static { 
+    //static {
     //    System.loadLibrary("c++_shared");
     //}
 
@@ -36,6 +40,8 @@ public class MainActivity extends NativeActivity {
                 }
             });
         }
+
+        Log.i("MainActivity", "NorxDemo MainActivity created");
     }
 
     @Override
