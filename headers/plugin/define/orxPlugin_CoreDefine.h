@@ -67,7 +67,7 @@
 /*
  * Defines all core plugin register function
  */
-extern orxDLLAPI void _registerFunction_DISPLAY(); 
+extern orxDLLAPI void _registerFunction_DISPLAY();
 extern orxDLLAPI void _registerFunction_JOYSTICK();
 extern orxDLLAPI void _registerFunction_KEYBOARD();
 extern orxDLLAPI void _registerFunction_MOUSE();

@@ -271,7 +271,7 @@ static orxINLINE orxU32               orxMath_GetTrailingZeroCount(orxU32 _u32Va
 #@
 {.emit"u32Result = (orxU32)__builtin_ctz(u32Value);".}
 @#
-#endif  
+#endif
 
 #endif /* __orxMSVC__ */
 
@@ -313,7 +313,7 @@ static orxINLINE orxU32               orxMath_GetTrailingZeroCount64(orxU64 _u64
 #@
 {.emit"u32Result = (orxU32)__builtin_ctzll(u64Value);".}
 @#
-#endif  
+#endif
 
 #endif /* __orxMSVC__ */
 
