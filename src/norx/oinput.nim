@@ -9,7 +9,8 @@ const
   orxINPUT_KZ_CONFIG_DEFAULT_THRESHOLD* = "DefaultThreshold"
   orxINPUT_KZ_CONFIG_DEFAULT_MULTIPLIER* = "DefaultMultiplier"
   orxINPUT_KZ_CONFIG_COMBINE_LIST* = "CombineList"
-  orxINPUT_KU32_BINDING_NUMBER* = 8
+  orxINPUT_KZ_CONFIG_JOYSTICK_ID_LIST* = "JoyIDList"
+  orxINPUT_KU32_BINDING_NUMBER* = 16
   orxINPUT_KZ_INTERNAL_SET_PREFIX* = "-="
   orxINPUT_KC_MODE_PREFIX_POSITIVE* = '+'
   orxINPUT_KC_MODE_PREFIX_NEGATIVE* = '-'
@@ -172,7 +173,7 @@ proc getMultiplier*(zInputName: cstring): orxFLOAT {.cdecl,
     importc: "orxInput_GetMultiplier", dynlib: libORX.}
   ## Gets input multiplier
   ##  @param[in] _zInputName       Concerned input name
-  ##  @return Input multiplier
+  ##  @return Input multiplier if found, -1.0f otherwise
 
 proc setMultiplier*(zInputName: cstring; fMultiplier: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxInput_SetMultiplier", dynlib: libORX.}

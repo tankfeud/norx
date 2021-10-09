@@ -382,29 +382,55 @@ proc getParent*(pstObject: ptr orxOBJECT): ptr orxSTRUCTURE {.cdecl,
   ##  @param[in]   _pstObject    Concerned object
   ##  @return      Parent (object, spawner, camera or frame) / nil
 
-proc getChild*(pstObject: ptr orxOBJECT): ptr orxSTRUCTURE {.cdecl,
+proc getChild*(pstObject: ptr orxOBJECT): ptr orxOBJECT {.cdecl,
     importc: "orxObject_GetChild", dynlib: libORX.}
-  ## Gets object's first child. See orxObject_SetOwner() and orxObject_SetParent() for a comparison of
+  ## Gets object's first child object. See orxObject_SetOwner() and orxObject_SetParent() for a comparison of
   ##  ownership and parenthood in Orx.
-  ##  This function is typically used to iterate over the children of an object. For example:
+  ##  Note: this function will filter out any camera or spawner and retrieve the first child object.
+  ##  This function is typically used to iterate over the children objects of an object.
   ##  @param[in]   _pstObject    Concerned object
-  ##  @return      First child structure (object, spawner, camera or frame) / nil
+  ##  @return      First child object / nil
   # TODO: Fix code examples
+  #  For example:
   #  @code
   #  for(orxOBJECT *pstChild = orxOBJECT(orxObject_GetChild(pstObject));
   #      pstChild != nil;
   #      pstChild = orxOBJECT(orxObject_GetSibling(pstChild)))
   #  {
-  #      DoSomething(pstChild);
+  #      DoSomething(pstChild); // DoSomething() can recurse into the children of pstChild for a depth-first traversal
   #  }
   #  @endcode
 
 proc getSibling*(pstObject: ptr orxOBJECT): ptr orxSTRUCTURE {.cdecl,
     importc: "orxObject_GetSibling", dynlib: libORX.}
-  ## Gets object's next sibling. This function is typically used for iterating over the children of an object,
+  ## Gets object's next sibling object. This function is typically used for iterating over the children objects of an object,
   ##  see orxObject_GetChild() for an iteration example.
+  ##  Note: this function will filter out any camera or spawner and retrieve the next sibling object.
+  ##  @param[in]   _pstObject      Concerned object
+  ##  @return      Next sibling object / orxNULL
+
+proc getNextChild*(pstObject: ptr orxOBJECT; pChild: pointer;
+                            eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.
+    cdecl, importc: "orxObject_GetNextChild", dynlib: libORX.}
+  ## Gets object's next child structure of a given type (camera, object or spawner).
+  ##  See orxObject_SetOwner() and orxObject_SetParent() for a comparison of
+  ##  ownership and parenthood in Orx.
+  ##  See orxObject_GetChild()/orxObject_GetSibling() if you want to only consider children objects.
+  ##  This function is typically used to iterate over the children of an object.
   ##  @param[in]   _pstObject    Concerned object
-  ##  @return      Next sibling structure (object, spawner, camera or frame) / nil
+  ##  @param[in]   _pChild         Concerned child to retrieve the next sibling, orxNULL to retrieve the first child
+  ##  @param[in]   _eStructureID   ID of the structure to consider (camera, spawner, object or frame)
+  ##  @return      Next child/sibling structure (camera, spawner, object or frame) / nil
+  # TODO: Fix code examples
+  #  For example, iterating over the immediate children cameras:
+  #  @code
+  #  for(orxCAMERA *pstChild = orxCAMERA(orxObject_GetNextChild(pstObject, orxNULL, orxSTRUCTURE_ID_CAMERA));
+  #      pstChild != orxNULL;
+  #      pstChild = orxCAMERA(orxObject_GetNextChild(pstObject, pstChild, orxSTRUCTURE_ID_CAMERA)))
+  #  {
+  #      DoSomethingWithCamera(pstChild);
+  #  }
+  #  @endcode
 
 proc attach*(pstObject: ptr orxOBJECT; pParent: pointer): orxSTATUS {.cdecl,
     importc: "orxObject_Attach", dynlib: libORX.}
@@ -734,6 +760,18 @@ proc removeFX*(pstObject: ptr orxOBJECT; zFXConfigID: cstring): orxSTATUS {.
   ##  @param[in]   _zFXConfigID    Config ID of the FX to remove
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
+proc removeFXRecursive*(pstObject: ptr orxOBJECT; zFXConfigID: ptr orxCHAR) {.
+    cdecl, importc: "orxObject_RemoveFXRecursive", dynlib: libORX.}
+  ## Removes an FX from an object and its children.
+  ##  @param[in]   _pstObject      Concerned object
+  ##  @param[in]   _zFXConfigID    Config ID of the FX to remove
+
+proc removeAllFXs*(pstObject: ptr orxOBJECT): orxSTATUS {.cdecl,
+    importc: "orxObject_RemoveAllFXs", dynlib: libORX.}
+  ## Removes all FXs.
+  ##  @param[in]   _pstObject      Concerned object
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
 proc synchronizeFX*(pstObject: ptr orxOBJECT; pstModel: ptr orxOBJECT): orxSTATUS {.
     cdecl, importc: "orxObject_SynchronizeFX", dynlib: libORX.}
   ## Synchronizes FXs with another object's ones (if FXs are not matching on both objects the behavior is undefined).
@@ -800,12 +838,26 @@ proc addShader*(pstObject: ptr orxOBJECT; zShaderConfigID: cstring): orxSTATUS {
   ##  @param[in]   _zShaderConfigID  Config ID of the shader to add
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
+proc addShaderRecursive*(pstObject: ptr orxOBJECT;
+                                  zShaderConfigID: ptr orxCHAR) {.cdecl,
+    importc: "orxObject_AddShaderRecursive", dynlib: libORX.}
+  ## Adds a shader to an object and its children.
+  ##  @param[in]   _pstObject        Concerned object
+  ##  @param[in]   _zShaderConfigID  Config ID of the shader to add
+
 proc removeShader*(pstObject: ptr orxOBJECT; zShaderConfigID: cstring): orxSTATUS {.
     cdecl, importc: "orxObject_RemoveShader", dynlib: libORX.}
   ## Removes a shader using its config ID.
   ##  @param[in]   _pstObject      Concerned object
   ##  @param[in]   _zShaderConfigID Config ID of the shader to remove
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc removeShaderRecursive*(pstObject: ptr orxOBJECT;
+                                     zShaderConfigID: ptr orxCHAR) {.cdecl,
+    importc: "orxObject_RemoveShaderRecursive", dynlib: libORX.}
+  ## Removes a shader from an object and its children.
+  ##  @param[in]   _pstObject        Concerned object
+  ##  @param[in]   _zShaderConfigID  Config ID of the shader to remove
 
 proc enableShader*(pstObject: ptr orxOBJECT; bEnable: orxBOOL) {.cdecl,
     importc: "orxObject_EnableShader", dynlib: libORX.}
@@ -845,6 +897,13 @@ proc removeTimeLineTrack*(pstObject: ptr orxOBJECT;
   ##  @param[in]   _pstObject      Concerned object
   ##  @param[in]   _zTrackConfigID Config ID of the timeline track to remove
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc removeTimeLineTrackRecursive*(pstObject: ptr orxOBJECT;
+    zTrackConfigID: ptr orxCHAR) {.cdecl, importc: "orxObject_RemoveTimeLineTrackRecursive",
+                                dynlib: libORX.}
+  ## Removes a timeline track from an object and its children.
+  ##  @param[in]   _pstObject        Concerned object
+  ##  @param[in]   _zTrackConfigID   Config ID of the timeline track to remove
 
 proc enableTimeLine*(pstObject: ptr orxOBJECT; bEnable: orxBOOL) {.cdecl,
     importc: "orxObject_EnableTimeLine", dynlib: libORX.}
@@ -1088,12 +1147,19 @@ proc setGroupID*(pstObject: ptr orxOBJECT; stGroupID: orxSTRINGID): orxSTATUS {.
 
 proc setGroupIDRecursive*(pstObject: ptr orxOBJECT; stGroupID: orxSTRINGID) {.
     cdecl, importc: "orxObject_SetGroupIDRecursive", dynlib: libORX.}
-  ## Sets group ID of an object and all its children.
+  ## Sets group ID of an object and all its owned children.
   ##  @param[in]   _pstObject      Concerned object
   ##  @param[in]   _stGroupID      Group ID to set. This is the string ID (see orxString_GetID()) of the object's group name.
 
 proc getNext*(pstObject: ptr orxOBJECT; stGroupID: orxSTRINGID): ptr orxOBJECT {.
     cdecl, importc: "orxObject_GetNext", dynlib: libORX.}
+  ## Gets next object in group.
+  ##  @param[in]   _pstObject      Concerned object, nil to get the first one
+  ##  @param[in]   _stGroupID      Group ID to consider, orxSTRINGID_UNDEFINED for all
+  ##  @return      orxOBJECT / nil
+
+proc getNextEnabled*(pstObject: ptr orxOBJECT; stGroupID: orxSTRINGID): ptr orxOBJECT {.
+    cdecl, importc: "orxObject_GetNextEnabled", dynlib: libORX.}
   ## Gets next object in group.
   ##  @param[in]   _pstObject      Concerned object, nil to get the first one
   ##  @param[in]   _stGroupID      Group ID to consider, orxSTRINGID_UNDEFINED for all

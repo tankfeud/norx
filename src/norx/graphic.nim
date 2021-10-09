@@ -19,6 +19,7 @@ const
   orxGRAPHIC_KU32_FLAG_ALIGN_BOTTOM* = 0x00000080
   orxGRAPHIC_KU32_FLAG_ALIGN_TRUNCATE* = 0x00000100
   orxGRAPHIC_KU32_FLAG_ALIGN_ROUND* = 0x00000200
+  orxGRAPHIC_KU32_MASK_ALIGN* = 0x000003F0
   orxGRAPHIC_KU32_MASK_USER_ALL* = 0x00000FFF
 
 ## * Misc defines
@@ -72,6 +73,12 @@ proc delete*(pstGraphic: ptr orxGRAPHIC): orxSTATUS {.cdecl,
   ## Deletes a graphic
   ##  @param[in]   _pstGraphic     Graphic to delete
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc clone*(pstGraphic: ptr orxGRAPHIC): ptr orxGRAPHIC {.cdecl,
+    importc: "orxGraphic_Clone", dynlib: libORX.}
+  ## Clones a graphic
+  ##  @param[in]   _pstGraphic     Graphic model to clone
+  ##  @return orxGRAPHIC / orxNULL
 
 proc getName*(pstGraphic: ptr orxGRAPHIC): cstring {.cdecl,
     importc: "orxGraphic_GetName", dynlib: libORX.}

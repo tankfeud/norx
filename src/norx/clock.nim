@@ -7,25 +7,16 @@ const
   orxCLOCK_KU32_FUNCTION_BANK_SIZE* = 16
   orxCLOCK_KZ_CORE* = "core"
 
-## * Clock type enum
+## * Clock modifier enum
 ##
 
 type
-  orxCLOCK_TYPE* {.size: sizeof(cint).} = enum
-    orxCLOCK_TYPE_CORE = 0, orxCLOCK_TYPE_USER, orxCLOCK_TYPE_SECOND,
-    orxCLOCK_TYPE_NUMBER, orxCLOCK_TYPE_NONE = orxENUM_NONE
-
-
-## * Clock mod type enum
-##
-
-type
-  orxCLOCK_MOD_TYPE* {.size: sizeof(cint).} = enum
-    orxCLOCK_MOD_TYPE_FIXED = 0, ## The given DT will always be constant (= modifier value)
-    orxCLOCK_MOD_TYPE_MULTIPLY, ## The given DT will be the real one * modifier
-    orxCLOCK_MOD_TYPE_MAXED,  ## The given DT will be the real one maxed by the modifier value
-    orxCLOCK_MOD_TYPE_NUMBER, orxCLOCK_MOD_TYPE_NONE = orxENUM_NONE
-
+  orxCLOCK_MODIFIER* {.size: sizeof(cint).} = enum
+    orxCLOCK_MODIFIER_FIXED = 0, ## The given DT will be constant, set to this modifier value
+    orxCLOCK_MODIFIER_MULTIPLY, ## The given DT will be multiplied by this modifier value
+    orxCLOCK_MODIFIER_MAXED, ## The given DT will be maxed by this modifier value
+    orxCLOCK_MODIFIER_AVERAGE, ## The given DT will be averaged over a number of past updates defined by this modifier value
+    orxCLOCK_MODIFIER_NUMBER, orxCLOCK_MODIFIER_NONE = orxENUM_NONE
 
 ## * Clock priority
 ##
@@ -43,13 +34,10 @@ type
 
 type
   orxCLOCK_INFO* {.bycopy.} = object
-    eType*: orxCLOCK_TYPE      ## Clock type : 4
-    fTickSize*: orxFLOAT       ## Clock tick size (in seconds) : 8
-    eModType*: orxCLOCK_MOD_TYPE ## Clock mod type : 12
-    fModValue*: orxFLOAT       ## Clock mod value : 16
-    fDT*: orxFLOAT             ## Clock DT (time elapsed between 2 clock calls in seconds) : 20
-    fTime*: orxFLOAT           ## Clock time : 24
-
+    fTickSize*: orxFLOAT       ## Clock tick size (in seconds) : 4
+    fDT*: orxFLOAT             ## Clock DT (time elapsed between 2 clock calls in seconds) : 8
+    fTime*: orxFLOAT           ## Clock time : 12
+    afModifierList*: array[orxCLOCK_MODIFIER_NUMBER.ord, orxFLOAT] ## Clock modifiers : 28
 
 ## * Event enum
 ##
@@ -87,11 +75,10 @@ proc update*(): orxSTATUS {.cdecl, importc: "orxClock_Update",
   ## Updates the clock system
   ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
-proc clockCreate*(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK {.cdecl,
+proc clockCreate*(fTickSize: orxFLOAT): ptr orxCLOCK {.cdecl,
     importc: "orxClock_Create", dynlib: libORX.}
   ## Creates a clock
   ##  @param[in]   _fTickSize                            Tick size for the clock (in seconds)
-  ##  @param[in]   _eType                                Type of the clock
   ##  @return      orxCLOCK / nil
 
 proc clockCreateFromConfig*(zConfigID: cstring): ptr orxCLOCK {.cdecl,
@@ -152,20 +139,27 @@ proc getFromInfo*(pstClockInfo: ptr orxCLOCK_INFO): ptr orxCLOCK {.cdecl,
   ##  @param[in]   _pstClockInfo                         Concerned clock info
   ##  @return      orxCLOCK / nil
 
-proc setModifier*(pstClock: ptr orxCLOCK; eModType: orxCLOCK_MOD_TYPE;
-                          fModValue: orxFLOAT): orxSTATUS {.cdecl,
+proc setModifier*(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER;
+                          fValue: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxClock_SetModifier", dynlib: libORX.}
-  ## Sets a clock modifier
+  ## Sets a clock's modifier
   ##  @param[in]   _pstClock                             Concerned clock
-  ##  @param[in]   _eModType                             Modifier type
-  ##  @param[in]   _fModValue                            Modifier value
+  ##  @param[in]   _eModifier                            Concerned modifier
+  ##  @param[in]   _fValue                               Modifier value, orxFLOAT_0 to deactivate the modifier
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc getModifier*(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER): orxFLOAT {.cdecl,
+    importc: "orxClock_GetModifier", dynlib: libORX.}
+  ## Sets a clock's modifier
+  ##  @param[in]   _pstClock                             Concerned clock
+  ##  @param[in]   _eModifier                            Concerned modifier
+  ##  @return      Modifier value / orxFLOAT_0 if deactivated
 
 proc setTickSize*(pstClock: ptr orxCLOCK; fTickSize: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxClock_SetTickSize", dynlib: libORX.}
   ## Sets a clock tick size
   ##  @param[in]   _pstClock                             Concerned clock
-  ##  @param[in]   _fTickSize                            Tick size
+  ##  @param[in]   _fTickSize                            Tick size, -1 for 'display'
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
 proc register*(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
@@ -202,19 +196,6 @@ proc setContext*(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
   ##  @param[in]   _pfnCallback                          Concerned callback
   ##  @param[in]   _pContext                             Context that will be transmitted to the callback when called
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
-
-proc findFirst*(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK {.
-    cdecl, importc: "orxClock_FindFirst", dynlib: libORX.}
-  ## Finds a clock given its tick size and its type
-  ##  @param[in]   _fTickSize                            Tick size of the desired clock (in seconds)
-  ##  @param[in]   _eType                                Type of the desired clock
-  ##  @return      orxCLOCK / nil
-
-proc findNext*(pstClock: ptr orxCLOCK): ptr orxCLOCK {.cdecl,
-    importc: "orxClock_FindNext", dynlib: libORX.}
-  ## Finds next clock of same type/tick size
-  ##  @param[in]   _pstClock                             Concerned clock
-  ##  @return      orxCLOCK / nil
 
 proc getNext*(pstClock: ptr orxCLOCK): ptr orxCLOCK {.cdecl,
     importc: "orxClock_GetNext", dynlib: libORX.}

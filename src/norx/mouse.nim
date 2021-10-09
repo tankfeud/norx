@@ -15,6 +15,7 @@ type
 const
   orxMOUSE_KZ_CONFIG_SECTION* = "Mouse"
   orxMOUSE_KZ_CONFIG_SHOW_CURSOR* = "ShowCursor"
+  orxMOUSE_KZ_CONFIG_GRAB* = "Grab"
 
 proc mouseSetup*() {.cdecl, importc: "orxMouse_Setup", dynlib: libORX.}
   ## Mouse module setup
@@ -64,6 +65,13 @@ proc getWheelDelta*(): orxFLOAT {.cdecl, importc: "orxMouse_GetWheelDelta",
 proc showCursor*(bShow: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxMouse_ShowCursor", dynlib: libORX.}
   ## Shows mouse (hardware) cursor
+  ##  @param[in] _bShow            Show / Hide
+  ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc mouseGrab*(bGrab: orxBOOL): orxSTATUS {.cdecl,
+    importc: "orxMouse_Grab", dynlib: libORX.}
+  ## Grabs the mouse
+  ##  @param[in] _bGrab            Grab / Release
   ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
 proc setCursor*(zName: cstring; pvPivot: ptr orxVECTOR): orxSTATUS {.cdecl,

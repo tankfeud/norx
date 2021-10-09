@@ -12,32 +12,19 @@ when not defined(PLUGIN):
   proc orx_DefaultEventHandler*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
     ##  Checks
     assert(pstEvent.eType == orxEVENT_TYPE_SYSTEM)
+    assert(pstEvent.eID == ord(orxSYSTEM_EVENT_CLOSE))
     #echo "pstEvent.eType: " & $pstEvent.eType
     #echo "pstEvent.eID: " & $pstEvent.eID
-    ##  Depending on event ID
-    case pstEvent.eID:
-      of ord(orxSYSTEM_EVENT_CLOSE):
-        ##  Updates status
-        sbStopByEvent = true
-      else:
-        discard
+    ##  Updates status
+    sbStopByEvent = true
+    ##  Done!
     return orxSTATUS_SUCCESS
 
   ## Default main setup (module dependencies)
   proc orx_MainSetup*() {.cdecl.} =
     ##  Adds module dependencies
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PARAM)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CLOCK)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CONFIG)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_INPUT)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_EVENT)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_FILE)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_LOCALE)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PLUGIN)
     addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_OBJECT)
     addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_RENDER)
-    addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CONSOLE)
-    addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PROFILER)
     addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_SCREENSHOT)
 
   when defined(iOS):
@@ -72,6 +59,7 @@ when not defined(PLUGIN):
 
             ##  Registers default event handler
             var st = addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
+            discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
             ##  Clears payload
             zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
             ##  Main loop
@@ -81,7 +69,7 @@ when not defined(PLUGIN):
               orxAndroid_PumpEvents()
               ##  Sends frame start event
               orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
-              ##  Runs the engine
+              ##  Runs game specific code
               eMainStatus = runProc()
               ##  Updates clock system
               eClockStatus = update()
@@ -90,9 +78,11 @@ when not defined(PLUGIN):
               ##  Updates frame count
               stPayload.u32FrameCount += 1
               bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
-          discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
-          ##  Exits from engine
-          moduleExit(orxMODULE_ID_MAIN)
+
+            ##  Removes event handler
+            discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
+            ##  Exits from the engine
+            moduleExit(orxMODULE_ID_MAIN)
         orxDEBUG_EXIT_MACRO()
     else:
       ## Orx main execution function
@@ -128,6 +118,7 @@ when not defined(PLUGIN):
               eMainStatus: orxSTATUS
             ##  Registers default event handler
             var st = addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
+            discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
             ##  Clears payload
             zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
             ##  Main loop
@@ -136,7 +127,7 @@ when not defined(PLUGIN):
             while not bStop:
               ##  Sends frame start event
               orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
-              ##  Runs the engine
+              ##  Runs game specific code
               eMainStatus = runProc()
               ##  Updates clock system
               eClockStatus = update()
@@ -145,7 +136,9 @@ when not defined(PLUGIN):
               ##  Updates frame count
               stPayload.u32FrameCount += 1
               bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
-          discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
-          ##  Exits from engine
-          moduleExit(orxMODULE_ID_MAIN)
+
+            ##  Removes event handler
+            discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
+            ##  Exits from the engine
+            moduleExit(orxMODULE_ID_MAIN)
         orxDEBUG_EXIT_MACRO()

@@ -22,6 +22,17 @@ when defined(Windows):
       orxS16* = cshort
       orxS8* = cchar
       orxBOOL* = distinct culong
+
+  ##  Compiler specific
+  when defined(GCC):
+    type
+      orxU64* = culonglong
+      orxS64* = clonglong
+  when defined(LLVM):
+    type
+      orxU64* = culonglong
+      orxS64* = clonglong
+
   type
     orxFLOAT* = cfloat
     orxDOUBLE* = cdouble
@@ -37,15 +48,8 @@ when defined(Windows):
 
   const
     orxENUM_NONE* = 0xFFFFFFFF
-  ##  Compiler specific
-  when defined(GCC):
-    type
-      orxU64* = culonglong
-      orxS64* = clonglong
-  when defined(LLVM):
-    type
-      orxU64* = culonglong
-      orxS64* = clonglong
+
+
 else:
   ##  Linux / Mac / iOS / Android
   when defined(Linux) or defined(MacOSX) or defined(iOS) or defined(Android) or
@@ -79,7 +83,7 @@ else:
       orxDOUBLE* = cdouble
       orxCHAR* = char
     type
-      orxSTRINGID* = orxU32
+      orxSTRINGID* = orxU64
       orxENUM* = orxU32
     template orx2F*(V: untyped): untyped =
       ((orxFLOAT)(V))

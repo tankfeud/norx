@@ -195,3 +195,8 @@ proc getName*(pstShader: ptr orxSHADER): cstring {.cdecl,
   ##  @param[in]   _pstShader            Concerned Shader
   ##  @return      orxSTRING / orxSTRING_EMPTY
 
+proc shaderGetID*(pstShader: ptr orxSHADER): orxU32 {.cdecl,
+    importc: "orxShader_GetID", dynlib: libORX.}
+  ## Gets shader (internal) ID
+  ##  @param[in]   _pstShader            Concerned Shader
+  ##  @return      ID

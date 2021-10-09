@@ -6,8 +6,8 @@ template orxEVENT_GET_FLAG*(ID: untyped): untyped =
   ((orxU32)(1 shl (orxU32)(ID)))
 
 const
-  orxEVENT_KU32_FLAG_ID_NONE* = 0x00000000
-  orxEVENT_KU32_MASK_ID_ALL* = 0xFFFFFFFF
+  orxEVENT_KU32_FLAG_ID_NONE* = (orxU32)0x00000000
+  orxEVENT_KU32_MASK_ID_ALL* = (orxU32)0xFFFFFFFF
 
 type
   orxEVENT_TYPE* {.size: sizeof(cint).} = enum

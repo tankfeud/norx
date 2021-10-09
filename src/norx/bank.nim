@@ -17,32 +17,32 @@ proc bankInit*(): orxSTATUS {.cdecl, importc: "orxBank_Init", dynlib: libORX.}
 proc bankExit*() {.cdecl, importc: "orxBank_Exit", dynlib: libORX.}
   ## Exits from the bank module
 
-proc bankCreate*(u16NbElem: orxU16; u32Size: orxU32; u32Flags: orxU32;
+proc bankCreate*(u32Count: orxU32; u32Size: orxU32; u32Flags: orxU32;
                     eMemType: orxMEMORY_TYPE): ptr orxBANK {.cdecl,
     importc: "orxBank_Create", dynlib: libORX.}
   ## Creates a new bank in memory and returns a pointer to it
-  ##  @param[in] _u16NbElem  Number of elements per segments
-  ##  @param[in] _u32Size    Size of an element
-  ##  @param[in] _u32Flags   Flags set for this bank
-  ##  @param[in] _eMemType   Memory type where the data will be allocated
-  ##  @return  returns a pointer to the memory bank
+  ##  @param[in] _u32Count   Number of cells per segments
+  ##  @param[in] _u32Size    Size of a cell
+  ##  @param[in] _u32Flags   Bank flags
+  ##  @param[in] _eMemType   Memory type
+  ##  @return orxBANK / orxNULL
 
 proc delete*(pstBank: ptr orxBANK) {.cdecl, importc: "orxBank_Delete",
     dynlib: libORX.}
-  ## Frees some memory allocated with orxMemory_Allocate
-  ##  @param[in] _pstBank    Pointer to the memory bank allocated by orx
+  ## Deletes a bank
+  ##  @param[in] _pstBank    Concerned bank
 
 proc allocate*(pstBank: ptr orxBANK): pointer {.cdecl,
     importc: "orxBank_Allocate", dynlib: libORX.}
   ## Allocates a new cell from the bank
-  ##  @param[in] _pstBank    Pointer to the memory bank to use
+  ##  @param[in] _pstBank    Concerned bank
   ##  @return a new cell of memory (nil if no allocation possible)
 
 proc allocateIndexed*(pstBank: ptr orxBANK; pu32ItemIndex: ptr orxU32;
                              ppPrevious: ptr pointer): pointer {.cdecl,
     importc: "orxBank_AllocateIndexed", dynlib: libORX.}
   ## Allocates a new cell from the bank and returns its index
-  ##  @param[in] _pstBank        Pointer to the memory bank to use
+  ##  @param[in] _pstBank        Concerned bank
   ##  @param[out] _pu32ItemIndex Will be set with the allocated item index
   ##  @param[out] _ppPrevious    If non-null, will contain previous neighbor if found
   ##  @return a new cell of memory (nil if no allocation possible)
@@ -50,18 +50,24 @@ proc allocateIndexed*(pstBank: ptr orxBANK; pu32ItemIndex: ptr orxU32;
 proc free*(pstBank: ptr orxBANK; pCell: pointer) {.cdecl,
     importc: "orxBank_Free", dynlib: libORX.}
   ## Frees an allocated cell
-  ##  @param[in] _pstBank    Bank of memory from where _pCell has been allocated
+  ##  @param[in] _pstBank    Concerned bank
   ##  @param[in] _pCell      Pointer to the cell to free
+
+proc freeAtIndex*(pstBank: ptr orxBANK; u32Index: orxU32) {.cdecl,
+    importc: "orxBank_FreeAtIndex", dynlib: libORX.}
+  ## Frees an allocated cell at a given index
+  ##  @param[in] _pstBank    Concerned bank
+  ##  @param[in] _u32Index   Index of the cell to free
 
 proc clear*(pstBank: ptr orxBANK) {.cdecl, importc: "orxBank_Clear",
                                         dynlib: libORX.}
   ## Frees all allocated cell from a bank
-  ##  @param[in] _pstBank    Bank of memory to clear
+  ##  @param[in] _pstBank    Concerned bank
 
 proc compact*(pstBank: ptr orxBANK) {.cdecl, importc: "orxBank_Compact",
     dynlib: libORX.}
-  ## Compacts a bank by removing all its unused segments
-  ##  @param[in] _pstBank    Bank of memory to compact
+  ## Compacts a bank by removing all its trailing unused segments
+  ##  @param[in] _pstBank    Concerned bank
 
 proc compactAll*() {.cdecl, importc: "orxBank_CompactAll",
                            dynlib: libORX.}
@@ -70,9 +76,9 @@ proc compactAll*() {.cdecl, importc: "orxBank_CompactAll",
 proc getNext*(pstBank: ptr orxBANK; pCell: pointer): pointer {.cdecl,
     importc: "orxBank_GetNext", dynlib: libORX.}
   ## Gets the next cell
-  ##  @param[in] _pstBank    Bank of memory from where _pCell has been allocated
-  ##  @param[in] _pCell      Pointer to the current cell of memory
-  ##  @return The next cell. If _pCell is nil, the first cell will be returned. Returns nil when no more cell can be returned.
+  ##  @param[in] _pstBank    Concerned bank
+  ##  @param[in] _pCell      Pointer to the current cell of memory, orxNULL to get the first one
+  ##  @return The next cell if found, orxNULL otherwise
 
 proc getIndex*(pstBank: ptr orxBANK; pCell: pointer): orxU32 {.cdecl,
     importc: "orxBank_GetIndex", dynlib: libORX.}
@@ -93,9 +99,3 @@ proc getCount*(pstBank: ptr orxBANK): orxU32 {.cdecl,
   ## Gets the bank allocated cell count
   ##  @param[in] _pstBank    Concerned bank
   ##  @return Number of allocated cells
-
-when defined(DEBUG):
-  proc debugPrint*(pstBank: ptr orxBANK) {.cdecl,
-      importc: "orxBank_DebugPrint", dynlib: libORX.}
-    ## Prints the content of a chunk bank
-    ##  @param[in] _pstBank    Bank's pointer
