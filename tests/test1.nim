@@ -5,8 +5,18 @@
 #
 # To run these tests, simply execute `nimble test`.
 
-import unittest
+import std/unittest
 
-import norx
-test "can add":
-  check add(5, 5) == 10
+import norx/[incl, structure]
+
+suite "Suite 1":
+
+  orxLog("Hello from test")
+
+  test "can add":
+    check 5+5 == 10
+
+  test "ptr orxSTRUCTURE invalid":
+    let a = "aString"
+    let invalidObjectPointer: ptr orxSTRUCTURE = cast[ptr orxSTRUCTURE](unsafeAddr(a))
+    check getPointer(invalidObjectPointer, orxSTRUCTURE_ID_OBJECT) == nil

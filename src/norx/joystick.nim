@@ -1,5 +1,7 @@
 import incl
 
+## TODO: make these usable, such as eButton:orxJOYSTICK_BUTTON = orxJOYSTICK_GET_BUTTON(button, id)
+
 template orxJOYSTICK_GET_AXIS*(AXIS, ID: untyped): untyped =
   (((cast[orxU32](AXIS)) mod orxJOYSTICK_AXIS_SINGLE_NUMBER) +
       ((ID - 1) * orxJOYSTICK_AXIS_SINGLE_NUMBER))
@@ -17,6 +19,7 @@ template orxJOYSTICK_GET_ID_FROM_BUTTON*(BUTTON: untyped): untyped =
 type
   orxJOYSTICK_BUTTON* {.size: sizeof(cint).} = enum
     ## Joystick button enum
+    orxJOYSTICK_BUTTON_NONE = -1,
     orxJOYSTICK_1_BUTTON_A = 0,
     orxJOYSTICK_1_BUTTON_B,
     orxJOYSTICK_1_BUTTON_X,
@@ -57,7 +60,7 @@ type
     orxJOYSTICK_1_BUTTON_23,
     orxJOYSTICK_1_BUTTON_24,
     orxJOYSTICK_1_BUTTON_25,
-    orxJOYSTICK_BUTTON_SINGLE_NUMBER, # Marker, orxJOYSTICK_BUTTON_A_2 defined below
+    orxJOYSTICK_2_BUTTON_A, # Marker, orxJOYSTICK_BUTTON_SINGLE_NUMBER defined below
     orxJOYSTICK_2_BUTTON_B,
     orxJOYSTICK_2_BUTTON_X,
     orxJOYSTICK_2_BUTTON_Y,
@@ -657,22 +660,24 @@ type
     orxJOYSTICK_16_BUTTON_23,
     orxJOYSTICK_16_BUTTON_24,
     orxJOYSTICK_16_BUTTON_25,
-    orxJOYSTICK_BUTTON_NUMBER,
-    orxJOYSTICK_BUTTON_NONE = orxENUM_NONE
+    orxJOYSTICK_BUTTON_NUMBER
 
 const
-  orxJOYSTICK_BUTTON_A_2 = orxJOYSTICK_BUTTON_SINGLE_NUMBER
+  orxJOYSTICK_BUTTON_SINGLE_NUMBER* = orxJOYSTICK_2_BUTTON_A
+#const
+#  orxJOYSTICK_BUTTON_NONE* = orxENUM_NONE
 
 type
   orxJOYSTICK_AXIS* {.size: sizeof(cint).} = enum
     ## Axis enum
+    orxJOYSTICK_AXIS_NONE = -1,
     orxJOYSTICK_1_AXIS_LX = 0,
     orxJOYSTICK_1_AXIS_LY,
     orxJOYSTICK_1_AXIS_RX,
     orxJOYSTICK_1_AXIS_RY,
     orxJOYSTICK_1_AXIS_LTRIGGER,
     orxJOYSTICK_1_AXIS_RTRIGGER,
-    orxJOYSTICK_AXIS_SINGLE_NUMBER, # Marker
+    orxJOYSTICK_2_AXIS_LX, # Marker
     orxJOYSTICK_2_AXIS_LY,
     orxJOYSTICK_2_AXIS_RX,
     orxJOYSTICK_2_AXIS_RY,
@@ -762,11 +767,14 @@ type
     orxJOYSTICK_16_AXIS_RY,
     orxJOYSTICK_16_AXIS_LTRIGGER,
     orxJOYSTICK_16_AXIS_RTRIGGER,
-    orxJOYSTICK_AXIS_NUMBER,
-    orxJOYSTICK_AXIS_NONE = orxENUM_NONE
+    orxJOYSTICK_AXIS_NUMBER
 
 const
-  orxJOYSTICK_AXIS_LX_2 = orxJOYSTICK_AXIS_SINGLE_NUMBER
+  orxJOYSTICK_AXIS_SINGLE_NUMBER* = orxJOYSTICK_2_AXIS_LX
+
+# TODO: This wont work when orxENUM_NONE is 0xFFFFFFFF
+#const
+#  orxJOYSTICK_AXIS_NONE* = orxENUM_NONE.orxJOYSTICK_AXIS
 
 const
   orxJOYSTICK_KU32_MIN_ID* = 1
