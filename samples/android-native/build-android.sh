@@ -4,6 +4,11 @@ cp -a data build/android-native/app/src/main/assets/
 
 # Generate C source from Nim
 cd src
+
+TARGET_NATIVE_BASE=../build/android-native/app/src/main/jni
+
+# ABI: armeabi-7a
+
 rm -rf cache
 mkdir -p cache
 # --compileOnly - only generate C source, don't try to compile it
@@ -15,21 +20,53 @@ mkdir -p cache
 # --noMain:on - since Nim is compiling into a library we do not want a regular main
 # -d:androidnative (ANDROID_NATIVE) - a flag for Norx for conditional Android native code, does not have to do with Nim
 # -d:noSignalHandler - saw in another example for Android, not sure if we need this option
-nim c --compileOnly  -d:useMalloc --dynlibOverride:orxd --dynlibOverride:orx --dynlibOverride:orxp --cpu:arm64 --os:android -d:androidNDK -d:noSignalHandler --noMain:on -d:androidnative --nimcache:$PWD/cache norxdemo.nim
 
-# Copy C source into Android (do not remove Android.mk, Application.mk)
-rm -f ../build/android-native/app/src/main/jni/*.[ch]*
-cp -a cache/*.[ch]* ../build/android-native/app/src/main/jni/
+# TODO: FIXME: Line below will not use the norx version specified in norxdemo.nimble but the latest
+nim c --compileOnly -d:useMalloc --dynlibOverride:orxd --dynlibOverride:orx --dynlibOverride:orxp --cpu:arm --os:android -d:androidNDK -d:noSignalHandler --noMain:on -d:androidnative --nimcache:$PWD/cache norxdemo.nim
+
+# copy only C source and include files to the Android native directory specific to ABI:
+TARGET_ARM32=$TARGET_NATIVE_BASE/arm32
+rm -rf $TARGET_ARM32
+mkdir -p $TARGET_ARM32
+cp -a cache/*.[ch]* $TARGET_ARM32
+
+# ABI: arm64-v8a
+rm -rf cache
+mkdir -p cache
+nim c --compileOnly -d:useMalloc --dynlibOverride:orxd --dynlibOverride:orx --dynlibOverride:orxp --cpu:arm64 --os:android -d:androidNDK -d:noSignalHandler --noMain:on -d:androidnative --nimcache:$PWD/cache norxdemo.nim
+
+# copy only C source and include files to the Android native directory specific to ABI:
+TARGET_ARM64=$TARGET_NATIVE_BASE/arm64
+rm -rf $TARGET_ARM64
+mkdir -p $TARGET_ARM64
+cp -a cache/*.[ch]* $TARGET_ARM64
 
 # Where is lib? Copy nimbase.h from it
-LIBDIR=`nim dump 2>&1 | grep '\/lib$'`
-cp $LIBDIR/nimbase.h ../build/android-native/app/src/main/jni/
+LIBDIR=`nim dump 2>&1 | grep '\/lib$' | uniq`
+#cp $LIBDIR/nimbase.h ../build/android-native/app/src/main/jni/
+cp $LIBDIR/nimbase.h $TARGET_ARM32
+cp $LIBDIR/nimbase.h $TARGET_ARM64
+
 
 # Use Gradle to build
 cd ../build/android-native
-#gradle clean
-gradle build
+
+# clean NDK build stuff that can be problematic if NDK thinks it's up to date but isn't:
+rm -rf build
+rm -rf app/.cxx
+rm -rf app/build
+
+#./gradlew clean
+
+# build all combinations of buildType and ABI_ARCH
+#./gradlew build
+
+# build Debug and Release for armeabi-v7a
+#./gradlew build -Parmeabi-v7a
+
+# build only Debug for armeabi-v7a
+./gradlew assembleDebug -Parmeabi-v7a
 
 # Install on device
-gradle installDebug
-#gradle installRelease
+./gradlew installDebug
+#./gradle installRelease

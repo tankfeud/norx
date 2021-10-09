@@ -9,6 +9,8 @@ build/android-native/app/src/main/libs
 build/android-native/app/src/main/obj
 build/android-native/app/src/main/jni/*.c
 build/android-native/app/src/main/jni/*.h
+build/android-native/app/src/main/jni/arm32
+build/android-native/app/src/main/jni/arm64
 build/android-native/app/build
 build/android-native/build
 *.log

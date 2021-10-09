@@ -2,7 +2,7 @@
 
 import os
 
-import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj]
+import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj, version]
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
@@ -16,11 +16,13 @@ proc init(): orxSTATUS {.cdecl.} =
   ## Init function, it is called when all orx's modules have been initialized
   orxLOG("Sample1 starting")
 
+  orxlog("VERSION_FULL_STRING: " & $ORX_VERSION_FULL_STRING)
+
   # Create the viewport
   var v = viewportCreateFromConfig("MainViewport")
   if not v.isNil:
     echo "Viewport created"
-  
+
   # Create the scene
   var s = objectCreateFromConfig("Scene")
   if not s.isNil:

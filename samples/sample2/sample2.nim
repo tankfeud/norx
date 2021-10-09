@@ -16,31 +16,19 @@ var sbStopByEvent* = false
 proc eventHandler(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
   ##  Checks
   assert(pstEvent.eType == orxEVENT_TYPE_SYSTEM)
-  ##  Depending on event ID
-  case pstEvent.eID:
-    of ord(orxSYSTEM_EVENT_CLOSE):
-      ##  Updates status
-      sbStopByEvent = true
-    else:
-      discard
+  assert(pstEvent.eID == ord(orxSYSTEM_EVENT_CLOSE))
+  ##  Updates status
+  sbStopByEvent = true
+  ##  Done!
   return orxSTATUS_SUCCESS
 
 ## Default main setup (module dependencies)
 proc mainSetup() {.cdecl.} =
   ##  Adds module dependencies
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PARAM)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CLOCK)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CONFIG)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_INPUT)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_EVENT)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_FILE)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_LOCALE)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PLUGIN)
   addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_OBJECT)
   addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_RENDER)
-  addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_CONSOLE)
-  addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_PROFILER)
   addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_SCREENSHOT)
+  ##  Done!
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
@@ -112,14 +100,15 @@ if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
       eMainStatus: orxSTATUS
     #  Registers default event handler
     discard addHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-    
+    discard setHandlerIDFlags(eventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
+
     # Main loop
     var bStop = false
     sbStopByEvent = false
     while not bStop:
       #  Sends frame start event
       orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
-      #  Runs the engine
+      #  Runs game specific code
       eMainStatus = run()
       #  Updates clock system
       eClockStatus = update()
@@ -128,11 +117,12 @@ if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
       #  Updates frame count
       stPayload.u32FrameCount += 1
       bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
-  
+
+    # Removes event handler
     discard removeHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-  
-  # Exits from engine
-  moduleExit(orxMODULE_ID_MAIN)
+
+    # Exits from the engine
+    moduleExit(orxMODULE_ID_MAIN)
 
 orxDEBUG_EXIT_MACRO()
 
