@@ -1,4 +1,14 @@
 **/*.log
 **/*.dSYM
-**/*.iml
+*.iml
+.idea
+tankfeud-key.jks
+**/.gradle
+**/.ndkExternalBuild
+**/.cxx
+local.properties
 **/.idea
+tankfeud.AppDir
+*.AppImage
+*.apk
+**/*.elf
