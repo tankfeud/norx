@@ -1,5 +1,5 @@
 # Package
-version       = "0.1.0"
+version       = "0.2.0"
 author        = "Göran Krampe"
 license       = "MIT"
 description   = "Demo for Android build"
@@ -9,4 +9,4 @@ bin           = @["norxdemo"]
 
 # Dependencies
 requires "nim >= 1.2.0"
-requires "norx 0.4.3"
+requires "norx >= 0.5.0"

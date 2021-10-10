@@ -18,9 +18,9 @@ LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 # This will also pick upp all dependencies of liborx
 ifeq ($(APP_OPTIM),debug)
-  LOCAL_STATIC_LIBRARIES := orxd
+  LOCAL_STATIC_LIBRARIES := android_orxd
 else
-  LOCAL_STATIC_LIBRARIES := orx
+  LOCAL_STATIC_LIBRARIES := android_orx
 endif
 
 # Use for cpp, to get Exceptions support needed by Nim
