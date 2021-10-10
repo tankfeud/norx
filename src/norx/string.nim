@@ -12,14 +12,6 @@ const
   orxSTRING_KC_VECTOR_END* = ')'
   orxSTRING_KC_VECTOR_END_ALT* = '}'
 
-const
-  orxSTRING_KU32_CRC_POLYNOMIAL* = 0xEDB88320
-
-## CRC Tables (slice-by-8)
-var saau32CRCTable* {.importc: "saau32CRCTable", dynlib: libORX.}: array[8,
-    array[256, orxU32]]
-
-
 # TODO: Do we need this? I guess Nim has other stuff
 #[
 proc skipWhiteSpaces*(zString: cstring): cstring {.inline, cdecl.} =
@@ -1004,16 +996,35 @@ proc stringInit*(): orxSTATUS {.cdecl, importc: "orxString_Init",
 proc stringExit*() {.cdecl, importc: "orxString_Exit", dynlib: libORX.}
   ## Exits from the structure module
 
+proc nHash*(zString: cstring, u32CharNumber: orxU32): orxSTRINGID {.cdecl,
+    importc: "orxString_NHash", dynlib: libORX.}
+  ## Gets a string's ID (aka hash), without storing the string internally
+  ##  @param[in]   _zString        Concerned string
+  ##  @param[in]   _u32CharNumber  Number of character to process, should be <= orxString_GetLength(_zString)
+  ##  @return      String's ID/hash
+
+proc hash*(zString: cstring): orxSTRINGID {.cdecl,
+    importc: "orxString_Hash", dynlib: libORX.}
+  ## Gets a string's ID (aka hash), without storing the string internally
+  ##  @param[in]   _zString        Concerned string
+  ##  @return      String's ID/hash
+
+## #define orxString_ToCRC                                   orxString_Hash
+const toCRC* = hash
+
+#proc toCRC*(s: cstring) =
+#  hash(s)
+
 proc getID*(zString: cstring): orxSTRINGID {.cdecl,
     importc: "orxString_GetID", dynlib: libORX.}
   ## Gets a string's ID (and stores the string internally to prevent duplication)
   ##  @param[in]   _zString        Concerned string
   ##  @return      String's ID
 
-proc getFromID*(u32ID: orxSTRINGID): cstring {.cdecl,
+proc getFromID*(stID: orxSTRINGID): cstring {.cdecl,
     importc: "orxString_GetFromID", dynlib: libORX.}
   ## Gets a string from an ID (it should have already been stored internally with a call to orxString_GetID)
-  ##  @param[in]   _u32ID          Concerned string ID
+  ##  @param[in]   _stID          Concerned string ID
   ##  @return      orxSTRING if ID's found, orxSTRING_EMPTY otherwise
 
 proc store*(zString: cstring): cstring {.cdecl,

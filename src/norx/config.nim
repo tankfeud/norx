@@ -309,7 +309,7 @@ proc getVector*(zKey: cstring; pvVector: ptr orxVECTOR): ptr orxVECTOR {.
   ## Reads a vector value from config (will take a random value if a list is provided for this key)
   ##  @param[in]   _zKey             Key name
   ##  @param[out]  _pvVector         Storage for vector value
-  ##  @return The value
+  ##  @return The value if valid, orxNULL otherwise
 
 proc duplicateRawValue*(zKey: cstring): cstring {.cdecl,
     importc: "orxConfig_DuplicateRawValue", dynlib: libORX.}

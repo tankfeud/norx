@@ -62,13 +62,14 @@ proc allocate*(u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer {.cdecl,
   ##  @param[in]  _eMemType Memory zone where data will be allocated
   ##  @return  returns a pointer to the memory allocated, or nil if an error has occurred
 
-proc reallocate*(pMem: pointer; u32Size: orxU32): pointer {.cdecl,
+proc reallocate*(pMem: pointer; u32Size: orxU32, eMemType: orxMEMORY_TYPE): pointer {.cdecl,
     importc: "orxMemory_Reallocate", dynlib: libORX.}
   ## Reallocates a previously allocated memory block, with the given new size and returns a pointer to it
   ##  If possible, it'll keep the current pointer and extend the memory block, if not it'll allocate a new block,
   ##  copy the data over and deallocates the original block
   ##  @param[in]  _pMem      Memory block to reallocate
   ##  @param[in]  _u32Size   Size of the memory to allocate
+  ##  @param[in]  _eMemType  Memory zone where data will be allocated
   ##  @return  returns a pointer to the reallocated memory block or nil if an error has occurred
 
 proc free*(pMem: pointer) {.cdecl, importc: "orxMemory_Free",

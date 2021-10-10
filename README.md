@@ -62,8 +62,9 @@ I will investigate hosting docs on a proper website.
 # How it was made
 This wrapper was created through the following steps:
 
-1. Run `convert.nim` in this directory that uses `common.c2nim`.
+1. Run `convert.nim` in headers directory that uses `common.c2nim`.
 2. Modifications to the original header files using `ifdefs`.
+2b. Run Nim-C2NIM.st to do misc. transformations such as convert names and move comments.
 3. Eventually "abandon all hope" and start editing the generated Nim files manually.
 
 Unfortunately this means that at this moment (due to step 3 above), updates to ORX header files does not mean we can just regenerate this wrapper automagically.
@@ -76,3 +77,12 @@ These are notes to "self". We track any changes to the `include` directory, for 
 3. Using your IDE, reapply modifications that was overwritten :) - this should be handled better of course.
 4. `c2nim common.c2nim object/orxObject.h` to reproduce `orxObject.nim`
 5. Merge parts into `obj.nim` that should be there using `meld object/orxObject.nim ../src/norx/obj.nim`
+
+# norx 0.5.0 - Upgrade to Orx b-release (1.12 release)
+This was not done by the steps above but manually merging corresponding header changes directly into nim files.
+1. Compare orx header changes, between versions 2020-07 and b-release branch.
+2. Added build.nim contaiing value from orxBuild.h after running setup.sh in Orx from b-release branch.
+3. Problematic orxColorList.h was referenced by macro in orxVector.h generating list of colors of the orxVECTOR 
+   This is solved by running new script in scripts/crreateNimColors.sh that generates colors in src/norx/colorList.nim
+4. Verifying all official samples works with Orx library compiled from b-release branch
+

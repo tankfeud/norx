@@ -1,40 +1,8 @@
 
 import lib, typ, memory, pure/math, math as orxMath
 
-## * Public structure definition
-##
-
-type
-  #INNER_C_UNION_orxVector_72* {.bycopy, union.} = object
-  #  fX*: orxFLOAT              ## First coordinate in the cartesian space
-  #  fRho*: orxFLOAT            ## First coordinate in the spherical space
-  #  fR*: orxFLOAT              ## First coordinate in the RGB color space
-  #  fH*: orxFLOAT              ## First coordinate in the HSL/HSV color spaces
-
-  #INNER_C_UNION_orxVector_80* {.bycopy, union.} = object
-  #  fY*: orxFLOAT              ## Second coordinate in the cartesian space
-  #  fTheta*: orxFLOAT          ## Second coordinate in the spherical space
-  #  fG*: orxFLOAT              ## Second coordinate in the RGB color space
-  #  fS*: orxFLOAT              ## Second coordinate in the HSL/HSV color spaces
-
-  #INNER_C_UNION_orxVector_88* {.bycopy, union.} = object
-  #  fZ*: orxFLOAT              ## Third coordinate in the cartesian space
-  #  fPhi*: orxFLOAT            ## Third coordinate in the spherical space
-  #  fB*: orxFLOAT              ## Third coordinate in the RGB color space
-  #  fL*: orxFLOAT              ## Third coordinate in the HSL color space
-  #  fV*: orxFLOAT              ## Third coordinate in the HSV color space
-
-  #orxVECTOR* {.bycopy.} = object
-  #  ano_orxVector_76*: INNER_C_UNION_orxVector_72 ## * Coordinates : 12
-  #  ano_orxVector_84*: INNER_C_UNION_orxVector_80
-  #  ano_orxVector_93*: INNER_C_UNION_orxVector_88
-
-  orxVECTOR* {.bycopy.} = tuple[fX: orxFLOAT, fY: orxFLOAT, fZ: orxFLOAT]
-  orxSPVECTOR* {.bycopy.} = tuple[fRho: orxFLOAT, fTheta: orxFLOAT, fPhi: orxFLOAT]
-  orxRGBVECTOR* {.bycopy.} = tuple[fR: orxFLOAT, fG: orxFLOAT, fB: orxFLOAT]
-  orxHSLVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fL: orxFLOAT]
-  orxHSVVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fV: orxFLOAT]
-
+import vectorType
+export vectorType
 
 proc set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.
     inline, discardable, cdecl.} =
@@ -198,7 +166,6 @@ proc lerp*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;
   assert(pvRes != nil)
   assert(pvOp1 != nil)
   assert(pvOp2 != nil)
-  assert(fOp >= orxFLOAT_0)
   ##  Lerps all
   pvRes.fX = orxMath.lerp(pvOp1.fX, pvOp2.fX, fOp)
   pvRes.fY = orxMath.lerp(pvOp1.fY, pvOp2.fY, fOp)
@@ -499,7 +466,7 @@ proc fromCartesianToSpherical*(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr
         ##  Computes rho
         fRho = sqrt((pvOp.fX * pvOp.fX) + (pvOp.fY * pvOp.fY))
       ##  Sets phi
-      fPhi = orxMATH_KF_PI_BY_2
+      fPhi = orxFLOAT_0
     else:
       ##  X = 0 and Y = 0?
       if (pvOp.fX == orxFLOAT_0) and (pvOp.fY == orxFLOAT_0):
@@ -508,17 +475,17 @@ proc fromCartesianToSpherical*(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr
           ##  Gets absolute value
           fRho = abs(pvOp.fZ)
           ##  Sets phi
-          fPhi = orxMATH_KF_PI
+          fPhi = orxMATH_KF_PI_BY_2
         else:
           ##  Sets rho
           fRho = pvOp.fZ
           ##  Sets phi
-          fPhi = orxFLOAT_0
+          fPhi = -orxMATH_KF_PI_BY_2;
       else:
         ##  Computes rho
         fRho = sqrt(getSquareSize(pvOp))
         ##  Computes phi
-        fPhi = arccos(pvOp.fZ / fRho)
+        fPhi = arccos(pvOp.fZ / fRho) - orxMATH_KF_PI_BY_2;
     ##  Computes theta
     fTheta = arctan2(pvOp.fY, pvOp.fX)
     ##  Updates result
@@ -548,8 +515,8 @@ proc fromSphericalToCartesian*(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVECTOR): ptr
   ##  Gets sine & cosine
   fSinTheta = sin(pvOp.fTheta)
   fCosTheta = cos(pvOp.fTheta)
-  fSinPhi = sin(pvOp.fPhi)
-  fCosPhi = cos(pvOp.fPhi)
+  fSinPhi = sin(pvOp.fPhi + orxMATH_KF_PI_BY_2)
+  fCosPhi = cos(pvOp.fPhi + orxMATH_KF_PI_BY_2)
   if abs(fSinTheta) < orxMATH_KF_EPSILON:
     fSinTheta = orxFLOAT_0
   if abs(fCosTheta) < orxMATH_KF_EPSILON:
@@ -665,34 +632,6 @@ var orxVECTOR_1* {.importc: "orxVECTOR_1", dynlib: libORX.}: orxVECTOR
 
 ## Vector filled with 1s
 
-var orxVECTOR_RED* {.importc: "orxVECTOR_RED", dynlib: libORX.}: orxVECTOR
-
-## Red color vector
-
-var orxVECTOR_GREEN* {.importc: "orxVECTOR_GREEN", dynlib: libORX.}: orxVECTOR
-
-## Green color vector
-
-var orxVECTOR_BLUE* {.importc: "orxVECTOR_BLUE", dynlib: libORX.}: orxVECTOR
-
-## Blue color vector
-
-var orxVECTOR_YELLOW* {.importc: "orxVECTOR_YELLOW", dynlib: libORX.}: orxVECTOR
-
-## Yellow color vector
-
-var orxVECTOR_CYAN* {.importc: "orxVECTOR_CYAN", dynlib: libORX.}: orxVECTOR
-
-## Cyan color vector
-
-var orxVECTOR_MAGENTA* {.importc: "orxVECTOR_MAGENTA", dynlib: libORX.}: orxVECTOR
-
-## Magenta color vector
-
-var orxVECTOR_BLACK* {.importc: "orxVECTOR_BLACK", dynlib: libORX.}: orxVECTOR
-
-## Black color vector
-
-var orxVECTOR_WHITE* {.importc: "orxVECTOR_WHITE", dynlib: libORX.}: orxVECTOR
-
-## White color vector
+#  # Generated from orxColorList.inc by scripts/createNimColors.sh:
+import colorList
+export colorList

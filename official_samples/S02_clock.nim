@@ -15,7 +15,7 @@
   It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
 
   See tutorial S01_object.nim for more info about the basic object creation.
-  
+
   For details about Orx side , please refer to the tutorial of the C++ sample:
   https://wiki.orx-project.org/en/tutorials/clock
 
@@ -70,18 +70,18 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   #### OBJECT UPDATE SECTION ####
   # gets object from the context
   var obj = cast[ptr orxOBJECT](context)
-  
+
   # Rotates it according to elapsed time (complete rotation every 2 seconds)
   status = obj.setRotation(orxMATH_KF_PI * clock_info.fTime)
 
 
 proc inputUpdate(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   # note : the ESC test for exiting is called by the main clock in " run " proc.
-  
+
   #### LOG DISPLAY SECTION ####
   # push Main on section stack for accessing informations related to this section.
   var status = pushSection("Main")
-  
+
   # Is "Log" key has been pressed ?
   if hasBeenActivated("Log"):
     # Toggles logging on / off
@@ -99,15 +99,15 @@ proc inputUpdate(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   if clock1 != nil:
     if isActive("Faster"):
       # Makes this clock go four time faster
-      status = clock1.setModifier(orxCLOCK_MOD_TYPE_MULTIPLY, orx2F(4.0f))
-      
+      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orx2F(4.0f))
+
     elif isActive("Slower"):
       # Makes this clock go four time slower
-      status = clock1.setModifier(orxCLOCK_MOD_TYPE_MULTIPLY, orx2F(0.25f))
+      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orx2F(0.25f))
 
     elif isActive("Normal"):
-      # Removes modifier from this clock
-      status = clock1.setModifier(orxCLOCK_MOD_TYPE_NONE, orxFLOAT_0)
+      # Clears multiply modifier from this clock
+      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orxFLOAT_0)
 
 
 proc init(): orxSTATUS {.cdecl.} =
@@ -134,7 +134,7 @@ proc init(): orxSTATUS {.cdecl.} =
   var object2 = objectCreateFromConfig("Object2")
   if object2.isNil:
     return orxSTATUS_FAILURE
-  
+
   # Creates two user clocks: a 100Hz and a 5Hz
   var clock1 = clockCreateFromConfig("Clock1")
   var clock2 = clockCreateFromConfig("Clock2")
@@ -145,9 +145,9 @@ proc init(): orxSTATUS {.cdecl.} =
   var status = register(clock1, Update, object1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
   # you can also call register with clock2 as first implicit parameter.
   status = clock2.register(Update, object2, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-  
+
   var clockMain = clockGet(orxCLOCK_KZ_CORE) #or clock_get if you prefer snake_case
-  
+
   #[ Registers our input update callback to it
     !!IMPORTANT!! *DO NOT* handle inputs in clock callbacks that are *NOT* registered to the main clock
      you might miss input status updates if the user clock runs slower than the main one ]#

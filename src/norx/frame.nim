@@ -54,7 +54,7 @@ proc getIgnoreFlagValues*(zFlags: cstring): orxU32 {.cdecl,
 proc getIgnoreFlagNames*(u32Flags: orxU32): cstring {.cdecl,
     importc: "orxFrame_GetIgnoreFlagNames", dynlib: libORX.}
   ## Get ignore flag names (beware: result won't persist from one call to the other)
-  ##  @param[in]   _zFlags         Literal ignore flags
+  ##  @param[in]   _u32Flags         Literal ignore flags
   ##  @return Ignore flags names
 
 proc frameSetup*() {.cdecl, importc: "orxFrame_Setup", dynlib: libORX.}

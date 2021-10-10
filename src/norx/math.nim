@@ -2,7 +2,7 @@ import lib, typ
 
 template lerp*(a, b, t: untyped): untyped =
   ## Lerps between two values given a coefficient t [0, 1]
-  ## For t = 1 the result is b and for t = 0 the result is a.  
+  ## For t = 1 the result is b and for t = 0 the result is a.
   a + (t * (b - a))
 
 ## ** Module functions ***
@@ -23,7 +23,7 @@ proc getSteppedRandomFloat*(fMin: orxFLOAT; fMax: orxFLOAT; fStep: orxFLOAT): or
     cdecl, importc: "orxMath_GetSteppedRandomFloat", dynlib: libORX.}
   ## Gets a random orxFLOAT value using step increments
   ##  @param[in]   _fMin                           Minimum boundary (inclusive)
-  ##  @param[in]   _fMax                           Maximum boundary (exclusive)
+  ##  @param[in]   _fMax                           Maximum boundary (inclusive)
   ##  @param[in]   _fStep                          Step value, must be strictly positive
   ##  @return      Random value
 

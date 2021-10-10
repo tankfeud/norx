@@ -134,6 +134,13 @@ proc setWaveDelay*(pstSpawner: ptr orxSPAWNER; fWaveDelay: orxFLOAT): orxSTATUS 
   ##  @param[in]   _fWaveDelay     Delay between two waves / -1 for deactivating wave mode
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
+proc setNextWaveDelay*(pstSpawner: ptr orxSPAWNER; fWaveDelay: orxFLOAT): orxSTATUS {.
+    cdecl, importc: "orxSpawner_SetNextWaveDelay", dynlib: libORX.}
+  ## Sets spawner next wave delay (without affecting the normal wave delay)
+  ##  @param[in]   _pstSpawner     Concerned spawner
+  ##  @param[in]   _fWaveDelay     Delay before next wave / -1 for the current full wave delay
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
 proc getWaveSize*(pstSpawner: ptr orxSPAWNER): orxU32 {.cdecl,
     importc: "orxSpawner_GetWaveSize", dynlib: libORX.}
   ## Gets spawner wave size

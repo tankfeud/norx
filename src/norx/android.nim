@@ -1,6 +1,8 @@
-import norx/[incl, lib, event]
+import norx/[incl, lib, event, joystick]
 
 import android/ndk/anative_window, jnim
+
+const orxANDROID_KU32_MAX_JOYSTICK_NUMBER* = orxJOYSTICK_KU32_MAX_ID
 
 const
   KZ_CONFIG_ANDROID* = "Android"
@@ -76,6 +78,13 @@ type
     u32Width*: orxU32
     u32Height*: orxU32
 
+  orxANDROID_JOYSTICK_INFO* {.bycopy.} = object
+    u32DeviceId*: orxU32
+    u32ProductId: orxU32
+    u32VendorId: orxU32
+    descriptor: cstring # char descriptor[40+1]; # 33c71ad39e5691dc864057cce39f83859bc5b6c1
+    name: cstring # char name[40+1];       # NINTENDO CO.,LTD. Core Controller
+
 
 proc orxAndroid_GetNativeWindow*(): ptr ANativeWindow {.cdecl,
     importc: "orxAndroid_GetNativeWindow", dynlib: libORX.}
@@ -88,8 +97,10 @@ proc orxAndroid_GetInternalStoragePath*(): cstring {.cdecl,
     importc: "orxAndroid_GetInternalStoragePath", dynlib: libORX.}
 proc orxAndroid_JNI_GetRotation*(): orxU32 {.cdecl,
     importc: "orxAndroid_JNI_GetRotation", dynlib: libORX.}
-proc orxAndroid_JNI_GetDeviceIds*(devicesId: array[4, orxS32]) {.cdecl,
+proc orxAndroid_JNI_GetDeviceIds*(devicesId: array[orxANDROID_KU32_MAX_JOYSTICK_NUMBER, orxS32]) {.cdecl,
     importc: "orxAndroid_JNI_GetDeviceIds", dynlib: libORX.}
+proc orxAndroid_JNI_GetInputDevice*(deviceId: orxS32, stJoystickInfo: ptr orxANDROID_JOYSTICK_INFO): orxSTATUS {.cdecl,
+    importc: "orxAndroid_JNI_GetInputDevice", dynlib: libORX.}
 
 ##
 ##   Register APK resources IO

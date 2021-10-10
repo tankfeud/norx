@@ -99,14 +99,12 @@ const
 ##
 
 const
-  orxSTRUCTURE_GUID_MASK_STRUCTURE_ID* = 0x0000000000000000'i64
+  orxSTRUCTURE_GUID_MASK_STRUCTURE_ID* = 0x00000000000000FF'i64
   orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID* = 0
-  orxSTRUCTURE_GUID_MASK_ITEM_ID* = 0x0000000000000000'i64
-  orxSTRUCTURE_GUID_SHIFT_ITEM_ID* = 32
-  orxSTRUCTURE_GUID_MASK_REF_COUNT* = 0x0000000000000000'i64
-  orxSTRUCTURE_GUID_SHIFT_REF_COUNT* = 48
-  orxSTRUCTURE_GUID_MASK_INSTANCE_ID* = 0x0000000000000000'i64
-  orxSTRUCTURE_GUID_SHIFT_INSTANCE_ID* = 5
+  orxSTRUCTURE_GUID_MASK_ITEM_ID* = 0x00000000FFFFFF00'i64
+  orxSTRUCTURE_GUID_SHIFT_ITEM_ID* = 8
+  orxSTRUCTURE_GUID_MASK_INSTANCE_ID* = 0xFFFFFFFF00000000'i64
+  orxSTRUCTURE_GUID_SHIFT_INSTANCE_ID* = 32
 
 ## * Structure IDs
 ##
@@ -141,14 +139,16 @@ type
 
 type
   INNER_C_UNION_orxStructure_209* {.bycopy, union.} = object
-    stLinkListNode*: orxLINKLIST_NODE ## Linklist node : 28/40
-    stTreeNode*: orxTREE_NODE  ## Tree node : 36/56
+    stLinkListNode*: orxLINKLIST_NODE ## Linklist node : 36/48
+    stTreeNode*: orxTREE_NODE  ## Tree node : 44/64
 
   orxSTRUCTURE* {.bycopy.} = object
     u64GUID*: orxU64           ## Structure GUID : 8
     u64OwnerGUID*: orxU64      ## Owner's GUID : 16
-    stStorage*: INNER_C_UNION_orxStructure_209 ## Storage node union : 36/56
-    u32Flags*: orxU32          ## Flags : 40/64
+    u32Flags*: orxU32          ## Flags : 20
+    u32RefCount*: orxU32       ## Ref count : 24
+
+    stStorage*: INNER_C_UNION_orxStructure_209 ## Storage node union : 44/64
 
 
 ## * Structure update callback function type
@@ -366,41 +366,28 @@ proc increaseCount*(pStructure: pointer) {.inline, cdecl.} =
   ## *** Inlined structure accessors ***
   ## Increases structure reference count
   ##  @param[in]   _pStructure    Concerned structure
-  var u64Count: orxU64
+
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
-  ##  Gets current count
-  u64Count = (orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) shr orxSTRUCTURE_GUID_SHIFT_REF_COUNT
-  ##  Updates it
-  inc(u64Count)
-  ##  Checks
-  assert(u64Count <=
-      (orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64 shr orxSTRUCTURE_GUID_SHIFT_REF_COUNT))
-  ##  Stores it
-  orxSTRUCTURE_MACRO(pStructure).u64GUID = (orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      not orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) or
-      (u64Count shl orxSTRUCTURE_GUID_SHIFT_REF_COUNT)
+  assert(orxSTRUCTURE_MACRO(pStructure).u32RefCount < (orxU32)0xFFFFFFFF)
+
+  ##  Increases ref count
+  orxSTRUCTURE_MACRO(pStructure).u32RefCount += 1
+
   ##  Done!
   return
 
 proc decreaseCount*(pStructure: pointer) {.inline, cdecl.} =
   ## Decreases structure reference count
   ##  @param[in]   _pStructure    Concerned structure
-  var u64Count: orxU64
+
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
-  ##  Gets current count
-  u64Count = (orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) shr orxSTRUCTURE_GUID_SHIFT_REF_COUNT
-  ##  Checks
-  assert(u64Count != 0)
-  ##  Updates it
-  dec(u64Count)
-  ##  Stores it
-  orxSTRUCTURE_MACRO(pStructure).u64GUID = (orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      not orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) or
-      (u64Count shl orxSTRUCTURE_GUID_SHIFT_REF_COUNT)
+  assert(orxSTRUCTURE_MACRO(pStructure).u32RefCount != 0)
+
+  ##  Decreases ref count
+  orxSTRUCTURE_MACRO(pStructure).u32RefCount -= 1
+
   ##  Done!
   return
 
@@ -411,8 +398,7 @@ proc getRefCount*(pStructure: pointer): orxU32 {.inline, cdecl.} =
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
-  return (orxU32)((orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64) shr orxSTRUCTURE_GUID_SHIFT_REF_COUNT)
+  return orxSTRUCTURE_MACRO(pStructure).u32RefCount
 
 proc getGUID*(pStructure: pointer): orxU64 {.inline, cdecl.} =
   ## Gets structure GUID
@@ -421,8 +407,7 @@ proc getGUID*(pStructure: pointer): orxU64 {.inline, cdecl.} =
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
-  return orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      not orxSTRUCTURE_GUID_MASK_REF_COUNT.uint64
+  return orxSTRUCTURE_MACRO(pStructure).u64GUID
 
 proc getID*(pStructure: pointer): orxSTRUCTURE_ID {.inline, cdecl.} =
   ## Gets structure ID

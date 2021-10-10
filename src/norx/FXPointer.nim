@@ -68,6 +68,12 @@ proc removeFX*(pstFXPointer: ptr orxFXPOINTER; pstFX: ptr orxFX): orxSTATUS {.
   ##  @param[in]   _pstFX        FX to remove
   ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
 
+proc removeAllFXs*(pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.
+    cdecl, importc: "orxFXPointer_RemoveAllFXs", dynlib: libORX.}
+  ## Removes all FXs
+  ##  @param[in]   _pstFXPointer Concerned FXPointer
+  ##  @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
 proc addFXFromConfig*(pstFXPointer: ptr orxFXPOINTER;
                                   zFXConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddFXFromConfig", dynlib: libORX.}

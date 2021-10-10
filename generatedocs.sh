@@ -8,4 +8,4 @@ fi
 TAG=`git describe --tags`
 echo Generating documentation for commit/tag: $TAG
 rm -rf htmldocs/*
-nim doc --project --outdir:htmldocs --index:on --git.url:https://github.com/gokr/norx --git.commit:$TAG src/norx.nim
+nim doc --project --outdir:htmldocs --index:on --git.url:https://github.com/tankfeud/norx --git.commit:$TAG src/norx.nim

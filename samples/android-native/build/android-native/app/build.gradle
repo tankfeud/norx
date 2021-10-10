@@ -7,17 +7,33 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion sdkVersion.toInteger()
+
+    // NDK: https://developer.android.com/studio/projects/install-ndk#default-ndk-per-agp
+    // Verify result of ndk_locator in android/app/.cxx/ndk_locator_record_*.log
+    //ndkVersion "22.1.7171670"
+
+    lintOptions {
+        abortOnError true
+        warningsAsErrors false
+    }
 
     defaultConfig {
         applicationId "com.norxdemo.norxdemo"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion sdkVersion.toInteger()
         versionCode 1
         versionName "1.0"
+        //vectorDrawables.useSupportLibrary = true
 
         ndk{
-            abiFilters "arm64-v8a" // "arm64-v8a" for 64 bit, "armeabi-v7a" for 32 bit, "x86_64" for 64 bit x86 (useful for emulation), "x86" for 32 bit x86 (hardly useful)
+            if (project.hasProperty("armeabi-v7a")) {
+                abiFilters 'armeabi-v7a'
+            } else if (project.hasProperty("arm64-v8a")) {
+                abiFilters 'arm64-v8a'
+            } else {
+                abiFilters "armeabi-v7a", "arm64-v8a" // "arm64-v8a" for 64 bit, "armeabi-v7a" for 32 bit, "x86_64" for 64 bit x86 (useful for emulation), "x86" for 32 bit x86 (hardly useful)
+            }
         }
 
     }
@@ -35,6 +51,9 @@ android {
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
+            //debuggable false
+            //shrinkResources true
+            //minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {

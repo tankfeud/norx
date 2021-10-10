@@ -172,6 +172,7 @@ const
   orxDISPLAY_KZ_CONFIG_FRAMEBUFFER_SIZE* = "FramebufferSize"
   orxDISPLAY_KZ_CONFIG_TEXTURE_UNIT_NUMBER* = "TextureUnitNumber"
   orxDISPLAY_KZ_CONFIG_DRAW_BUFFER_NUMBER* = "DrawBufferNumber"
+  orxCOLOR_KZ_CONFIG_SECTION* = "Color"
 
 ## * Shader texture suffixes
 ##
@@ -833,6 +834,12 @@ proc setShaderVector*(hShader: orxHANDLE; s32ID: orxS32;
   ##  @param[in]   _s32ID                                ID of parameter to set
   ##  @param[in]   _pvValue                              Value (orxVECTOR) for this parameter
   ##  @return orxSTATUS_SUCCESS / orxSTATUS_FAILURE
+
+proc getShaderID*(hShader: orxHANDLE): orxU32 {.cdecl,
+    importc: "orxDisplay_GetShaderID", dynlib: libORX.}
+  ## Gets a shader (internal) ID
+  ##  @param[in]   _hShader                              Concerned bitmap
+  ##  @return orxU32
 
 proc enableVSync*(bEnable: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxDisplay_EnableVSync", dynlib: libORX.}

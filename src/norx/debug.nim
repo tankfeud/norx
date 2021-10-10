@@ -195,12 +195,12 @@ template orxDEBUG_INIT_MACRO*(): void =
   discard debugInit()
   u32DebugFlags = getFlags()
   setFlags(orxDEBUG_KU32_STATIC_MASK_DEBUG, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
-  if getVersionNumeric().int64 < VERSION:
+  if getVersionNumeric().int64 < ORX_VERSION:
     orxLOG("The version of the runtime library [" & $getVersionFullString() &
-      "] is older than the version used when compiling this program [" & VERSION_FULL_STRING & "].\n\nProblems will likely ensue!")
-  elif getVersionNumeric().int64 > VERSION:
+      "] is older than the version used when compiling this program [" & ORX_VERSION_FULL_STRING & "].\n\nProblems will likely ensue!")
+  elif getVersionNumeric().int64 > ORX_VERSION:
     orxLOG("The version of the runtime library [" & $getVersionFullString() &
-      "] is more recent than the version used when compiling this program [" & VERSION_FULL_STRING & "].\n\nProblems may arise due to possible incompatibilities!")
+      "] is more recent than the version used when compiling this program [" & ORX_VERSION_FULL_STRING & "].\n\nProblems may arise due to possible incompatibilities!")
   setFlags(u32DebugFlags, orxDEBUG_KU32_STATIC_MASK_USER_ALL)
 
 template orxDEBUG_EXIT_MACRO*(): untyped =
