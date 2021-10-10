@@ -52,6 +52,7 @@ cp $LIBDIR/nimbase.h $TARGET_ARM64
 cd ../build/android-native
 
 # clean NDK build stuff that can be problematic if NDK thinks it's up to date but isn't:
+rm -rf build
 rm -rf app/.cxx
 rm -rf app/build
 

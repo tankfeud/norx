@@ -13,5 +13,6 @@ build/android-native/app/src/main/jni/arm32
 build/android-native/app/src/main/jni/arm64
 build/android-native/app/build
 build/android-native/app/.cxx
+build/android-native/app/build
 *.log
 **/.idea
