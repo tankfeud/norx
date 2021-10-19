@@ -16,3 +16,4 @@ build/android-native/build
 build/android-native/app/.cxx
 *.log
 **/.idea
+local.properties

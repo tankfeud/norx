@@ -2,7 +2,7 @@
 
 import os
 
-import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj, version]
+import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj, version, joystick]
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
@@ -12,9 +12,17 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     echo "User quitting"
     discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
 
+# Convert from joyNr:int & buttonIdx:int to orxJOYSTICK_BUTTON
+proc toJoystickButton*(joyNr: int, buttonIdx: int): orxJOYSTICK_BUTTON =
+  var eID: int = buttonIdx + (joyNr-1)*(orxJOYSTICK_BUTTON_SINGLE_NUMBER.ord)
+  return orxJOYSTICK_BUTTON(uint(eID))
+
 proc init(): orxSTATUS {.cdecl.} =
   ## Init function, it is called when all orx's modules have been initialized
   orxLOG("Sample1 starting")
+
+  var btnFromOrd: orxJOYSTICK_BUTTON = toJoystickButton(3, 4); # Verify enum can be constructed from ordinal
+  orxlog("btnFromOrd: " & $btnFromOrd)  # should print orxJOYSTICK_3_BUTTON_LBUMPER
 
   orxlog("VERSION_FULL_STRING: " & $ORX_VERSION_FULL_STRING)
 

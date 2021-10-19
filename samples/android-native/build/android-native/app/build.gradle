@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def orx = System.getenv('ORX') ?: "../../../../../../orx"
+
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
@@ -66,6 +68,17 @@ android {
         path 'src/main/jni/Android.mk'
       }
     }
+
+    sourceSets {
+        main {
+            java.srcDirs += ["${orx}/build/android-native/java"]
+
+            // For custom apps, you should have resources in some parent folder with orx data.
+            // E.g. '../../../data'
+            //assets.srcDirs = ['./src/main/assets']
+        }
+    }
+
 }
 
 dependencies {
