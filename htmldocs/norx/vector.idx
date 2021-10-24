@@ -1,8 +1,3 @@
-orxVECTOR	norx/vector.html#orxVECTOR	vector: orxVECTOR	
-orxSPVECTOR	norx/vector.html#orxSPVECTOR	vector: orxSPVECTOR	
-orxRGBVECTOR	norx/vector.html#orxRGBVECTOR	vector: orxRGBVECTOR	
-orxHSLVECTOR	norx/vector.html#orxHSLVECTOR	vector: orxHSLVECTOR	
-orxHSVVECTOR	norx/vector.html#orxHSVVECTOR	vector: orxHSVVECTOR	
 set	norx/vector.html#set,ptr.orxVECTOR,orxFLOAT,orxFLOAT,orxFLOAT	vector: set(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR	
 setAll	norx/vector.html#setAll,ptr.orxVECTOR,orxFLOAT	vector: setAll(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR	
 copy	norx/vector.html#copy,ptr.orxVECTOR,ptr.orxVECTOR	vector: copy(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR	
@@ -12,7 +7,7 @@ mulf	norx/vector.html#mulf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: mulf(pvR
 mul	norx/vector.html#mul,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: mul(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
 divf	norx/vector.html#divf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: divf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR	
 divv	norx/vector.html#divv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: divv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-lerp	norx/vector.html#lerp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: lerp(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR; fOp: orxFLOAT): ptr orxVECTOR	
+lerp	norx/vector.html#lerp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: lerp(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;\n     fOp: orxFLOAT): ptr orxVECTOR	
 min	norx/vector.html#min,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: min(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
 max	norx/vector.html#max,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: max(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
 clamp	norx/vector.html#clamp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: clamp(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;\n      pvMax: ptr orxVECTOR): ptr orxVECTOR	
@@ -34,17 +29,9 @@ dot	norx/vector.html#dot,ptr.orxVECTOR,ptr.orxVECTOR	vector: dot(pvOp1: ptr orxV
 twoDDot	norx/vector.html#twoDDot,ptr.orxVECTOR,ptr.orxVECTOR	vector: twoDDot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT	
 cross	norx/vector.html#cross,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: cross(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
 bezier	norx/vector.html#bezier,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: bezier(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR; pvPoint2: ptr orxVECTOR;\n       pvPoint3: ptr orxVECTOR; pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR	
-catmullRom	norx/vector.html#catmullRom,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: catmullRom(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR; pvPoint2: ptr orxVECTOR;\n           pvPoint3: ptr orxVECTOR; pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR	
+catmullRom	norx/vector.html#catmullRom,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: catmullRom(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;\n           pvPoint2: ptr orxVECTOR; pvPoint3: ptr orxVECTOR;\n           pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR	
 orxVECTOR_X	norx/vector.html#orxVECTOR_X	vector: orxVECTOR_X	
 orxVECTOR_Y	norx/vector.html#orxVECTOR_Y	vector: orxVECTOR_Y	
 orxVECTOR_Z	norx/vector.html#orxVECTOR_Z	vector: orxVECTOR_Z	
 orxVECTOR_0	norx/vector.html#orxVECTOR_0	vector: orxVECTOR_0	
 orxVECTOR_1	norx/vector.html#orxVECTOR_1	vector: orxVECTOR_1	
-orxVECTOR_RED	norx/vector.html#orxVECTOR_RED	vector: orxVECTOR_RED	
-orxVECTOR_GREEN	norx/vector.html#orxVECTOR_GREEN	vector: orxVECTOR_GREEN	
-orxVECTOR_BLUE	norx/vector.html#orxVECTOR_BLUE	vector: orxVECTOR_BLUE	
-orxVECTOR_YELLOW	norx/vector.html#orxVECTOR_YELLOW	vector: orxVECTOR_YELLOW	
-orxVECTOR_CYAN	norx/vector.html#orxVECTOR_CYAN	vector: orxVECTOR_CYAN	
-orxVECTOR_MAGENTA	norx/vector.html#orxVECTOR_MAGENTA	vector: orxVECTOR_MAGENTA	
-orxVECTOR_BLACK	norx/vector.html#orxVECTOR_BLACK	vector: orxVECTOR_BLACK	
-orxVECTOR_WHITE	norx/vector.html#orxVECTOR_WHITE	vector: orxVECTOR_WHITE	

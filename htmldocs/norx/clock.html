@@ -100,38 +100,37 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#orxCLOCK_TYPE"
-    title="orxCLOCK_TYPE {.size: 4.} = enum
-  orxCLOCK_TYPE_CORE = 0, orxCLOCK_TYPE_USER, orxCLOCK_TYPE_SECOND,
-  orxCLOCK_TYPE_NUMBER, orxCLOCK_TYPE_NONE = 4294967295"><wbr />orx<wbr />CLOCK_<wbr />TYPE<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#orxCLOCK_MOD_TYPE"
-    title="orxCLOCK_MOD_TYPE {.size: 4.} = enum
-  orxCLOCK_MOD_TYPE_FIXED = 0,  ## The given DT will always be constant (= modifier value)
-  orxCLOCK_MOD_TYPE_MULTIPLY, orxCLOCK_MOD_TYPE_MAXED, orxCLOCK_MOD_TYPE_NUMBER,
-  orxCLOCK_MOD_TYPE_NONE = 4294967295"><wbr />orx<wbr />CLOCK_<wbr />MOD_<wbr />TYPE<span class="attachedType"></span></a></li>
+      <li><a class="reference" href="#orxCLOCK_MODIFIER"
+    title="orxCLOCK_MODIFIER {.size: 4.} = enum
+  orxCLOCK_MODIFIER_FIXED = 0, ## The given DT will be constant, set to this modifier value
+  orxCLOCK_MODIFIER_MULTIPLY, ## The given DT will be multiplied by this modifier value
+  orxCLOCK_MODIFIER_MAXED,  ## The given DT will be maxed by this modifier value
+  orxCLOCK_MODIFIER_AVERAGE, ## The given DT will be averaged over a number of past updates defined by this modifier value
+  orxCLOCK_MODIFIER_NUMBER, orxCLOCK_MODIFIER_NONE = 4294967295">orxCLOCK_MODIFIER</a></li>
   <li><a class="reference" href="#orxCLOCK_PRIORITY"
     title="orxCLOCK_PRIORITY {.size: 4.} = enum
   orxCLOCK_PRIORITY_LOWEST = 0, orxCLOCK_PRIORITY_LOWER, orxCLOCK_PRIORITY_LOW,
   orxCLOCK_PRIORITY_NORMAL, orxCLOCK_PRIORITY_HIGH, orxCLOCK_PRIORITY_HIGHER,
   orxCLOCK_PRIORITY_HIGHEST, orxCLOCK_PRIORITY_NUMBER,
-  orxCLOCK_PRIORITY_NONE = 4294967295"><wbr />orx<wbr />CLOCK_<wbr />PRIORITY<span class="attachedType"></span></a></li>
+  orxCLOCK_PRIORITY_NONE = 4294967295">orxCLOCK_PRIORITY</a></li>
   <li><a class="reference" href="#orxCLOCK_INFO"
     title="orxCLOCK_INFO {.bycopy.} = object
-  eType*: orxCLOCK_TYPE        ## Clock type : 4
-  fTickSize*: orxFLOAT         ## Clock tick size (in seconds) : 8
-  eModType*: orxCLOCK_MOD_TYPE ## Clock mod type : 12
-  fModValue*: orxFLOAT         ## Clock mod value : 16
-  fDT*: orxFLOAT               ## Clock DT (time elapsed between 2 clock calls in seconds) : 20
-  fTime*: orxFLOAT             ## Clock time : 24"><wbr />orx<wbr />CLOCK_<wbr />INFO<span class="attachedType"></span></a></li>
+  fTickSize*: orxFLOAT       ## Clock tick size (in seconds) : 4
+  fDT*: orxFLOAT             ## Clock DT (time elapsed between 2 clock calls in seconds) : 8
+  fTime*: orxFLOAT           ## Clock time : 12
+  afModifierList*: array[orxCLOCK_MODIFIER_NUMBER.ord, orxFLOAT] ## Clock modifiers : 28">orxCLOCK_INFO</a></li>
   <li><a class="reference" href="#orxCLOCK_EVENT"
     title="orxCLOCK_EVENT {.size: 4.} = enum
-  orxCLOCK_EVENT_RESTART = 0,   ## Event sent when a clock restarts
-  orxCLOCK_EVENT_RESYNC, orxCLOCK_EVENT_PAUSE, orxCLOCK_EVENT_UNPAUSE,
-  orxCLOCK_EVENT_NUMBER, orxCLOCK_EVENT_NONE = 4294967295"><wbr />orx<wbr />CLOCK_<wbr />EVENT<span class="attachedType"></span></a></li>
+  orxCLOCK_EVENT_RESTART = 0, ## Event sent when a clock restarts
+  orxCLOCK_EVENT_RESYNC,    ## Event sent when a clock resyncs
+  orxCLOCK_EVENT_PAUSE,     ## Event sent when a clock is paused
+  orxCLOCK_EVENT_UNPAUSE,   ## Event sent when a clock is unpaused
+  orxCLOCK_EVENT_NUMBER, orxCLOCK_EVENT_NONE = 4294967295">orxCLOCK_EVENT</a></li>
   <li><a class="reference" href="#orxCLOCK"
-    title="orxCLOCK = object"><wbr />orx<wbr />CLOCK<span class="attachedType"></span></a></li>
+    title="orxCLOCK = object">orxCLOCK</a></li>
   <li><a class="reference" href="#orxCLOCK_FUNCTION"
-    title="orxCLOCK_FUNCTION = proc (pstClockInfo: ptr orxCLOCK_INFO; pContext: pointer) {.cdecl.}"><wbr />orx<wbr />CLOCK_<wbr />FUNCTION<span class="attachedType"></span></a></li>
+    title="orxCLOCK_FUNCTION = proc (pstClockInfo: ptr orxCLOCK_INFO; pContext: pointer) {.
+    cdecl.}">orxCLOCK_FUNCTION</a></li>
 
   </ul>
 </li>
@@ -139,84 +138,172 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxCLOCK_KU32_CLOCK_BANK_SIZE"
-    title="orxCLOCK_KU32_CLOCK_BANK_SIZE = 16"><wbr />orx<wbr />CLOCK_<wbr />KU32_<wbr />CLOCK_<wbr />BANK_<wbr />SIZE<span class="attachedType"></span></a></li>
+    title="orxCLOCK_KU32_CLOCK_BANK_SIZE = 16">orxCLOCK_KU32_CLOCK_BANK_SIZE</a></li>
   <li><a class="reference" href="#orxCLOCK_KU32_TIMER_BANK_SIZE"
-    title="orxCLOCK_KU32_TIMER_BANK_SIZE = 32"><wbr />orx<wbr />CLOCK_<wbr />KU32_<wbr />TIMER_<wbr />BANK_<wbr />SIZE<span class="attachedType"></span></a></li>
+    title="orxCLOCK_KU32_TIMER_BANK_SIZE = 32">orxCLOCK_KU32_TIMER_BANK_SIZE</a></li>
   <li><a class="reference" href="#orxCLOCK_KU32_FUNCTION_BANK_SIZE"
-    title="orxCLOCK_KU32_FUNCTION_BANK_SIZE = 16"><wbr />orx<wbr />CLOCK_<wbr />KU32_<wbr />FUNCTION_<wbr />BANK_<wbr />SIZE<span class="attachedType"></span></a></li>
+    title="orxCLOCK_KU32_FUNCTION_BANK_SIZE = 16">orxCLOCK_KU32_FUNCTION_BANK_SIZE</a></li>
   <li><a class="reference" href="#orxCLOCK_KZ_CORE"
-    title="orxCLOCK_KZ_CORE = &quot;core&quot;"><wbr />orx<wbr />CLOCK_<wbr />KZ_<wbr />CORE<span class="attachedType"></span></a></li>
+    title="orxCLOCK_KZ_CORE = &quot;core&quot;">orxCLOCK_KZ_CORE</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#clockSetup"
-    title="clockSetup()"><wbr />clock<wbr />Setup<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#clockInit"
-    title="clockInit(): orxSTATUS"><wbr />clock<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#clockExit"
-    title="clockExit()"><wbr />clock<wbr />Exit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#update"
-    title="update(): orxSTATUS"><wbr />update<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#clockCreate%2CorxFLOAT%2CorxCLOCK_TYPE"
-    title="clockCreate(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK"><wbr />clock<wbr />Create<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#clockCreateFromConfig%2Ccstring"
-    title="clockCreateFromConfig(zConfigID: cstring): ptr orxCLOCK"><wbr />clock<wbr />Create<wbr />From<wbr />Config<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#delete%2Cptr.orxCLOCK"
-    title="delete(pstClock: ptr orxCLOCK): orxSTATUS"><wbr />delete<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#resync%2Cptr.orxCLOCK"
-    title="resync(pstClock: ptr orxCLOCK): orxSTATUS"><wbr />resync<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#resyncAll"
-    title="resyncAll(): orxSTATUS"><wbr />resync<wbr />All<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#restart%2Cptr.orxCLOCK"
-    title="restart(pstClock: ptr orxCLOCK): orxSTATUS"><wbr />restart<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#pause%2Cptr.orxCLOCK"
-    title="pause(pstClock: ptr orxCLOCK): orxSTATUS"><wbr />pause<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#unpause%2Cptr.orxCLOCK"
-    title="unpause(pstClock: ptr orxCLOCK): orxSTATUS"><wbr />unpause<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#isPaused%2Cptr.orxCLOCK"
-    title="isPaused(pstClock: ptr orxCLOCK): orxBOOL"><wbr />is<wbr />Paused<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#getInfo%2Cptr.orxCLOCK"
-    title="getInfo(pstClock: ptr orxCLOCK): ptr orxCLOCK_INFO"><wbr />get<wbr />Info<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#getFromInfo%2Cptr.orxCLOCK_INFO"
-    title="getFromInfo(pstClockInfo: ptr orxCLOCK_INFO): ptr orxCLOCK"><wbr />get<wbr />From<wbr />Info<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#setModifier%2Cptr.orxCLOCK%2CorxCLOCK_MOD_TYPE%2CorxFLOAT"
-    title="setModifier(pstClock: ptr orxCLOCK; eModType: orxCLOCK_MOD_TYPE; fModValue: orxFLOAT): orxSTATUS"><wbr />set<wbr />Modifier<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#setTickSize%2Cptr.orxCLOCK%2CorxFLOAT"
-    title="setTickSize(pstClock: ptr orxCLOCK; fTickSize: orxFLOAT): orxSTATUS"><wbr />set<wbr />Tick<wbr />Size<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#register%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer%2CorxMODULE_ID%2CorxCLOCK_PRIORITY"
-    title="register(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; pContext: pointer;
-         eModuleID: orxMODULE_ID; ePriority: orxCLOCK_PRIORITY): orxSTATUS"><wbr />register<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#unregister%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION"
-    title="unregister(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): orxSTATUS"><wbr />unregister<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#getContext%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION"
-    title="getContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): pointer"><wbr />get<wbr />Context<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#setContext%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer"
-    title="setContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; pContext: pointer): orxSTATUS"><wbr />set<wbr />Context<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#findFirst%2CorxFLOAT%2CorxCLOCK_TYPE"
-    title="findFirst(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK"><wbr />find<wbr />First<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#findNext%2Cptr.orxCLOCK"
-    title="findNext(pstClock: ptr orxCLOCK): ptr orxCLOCK"><wbr />find<wbr />Next<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#getNext%2Cptr.orxCLOCK"
-    title="getNext(pstClock: ptr orxCLOCK): ptr orxCLOCK"><wbr />get<wbr />Next<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#clockGet%2Ccstring"
-    title="clockGet(zName: cstring): ptr orxCLOCK"><wbr />clock<wbr />Get<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#getName%2Cptr.orxCLOCK"
-    title="getName(pstClock: ptr orxCLOCK): cstring"><wbr />get<wbr />Name<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#addTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"
-    title="addTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
-         s32Repetition: orxS32; pContext: pointer): orxSTATUS"><wbr />add<wbr />Timer<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#removeTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"
-    title="removeTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
-            pContext: pointer): orxSTATUS"><wbr />remove<wbr />Timer<span class="attachedType">orxCLOCK</span></a></li>
-  <li><a class="reference" href="#addGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"
+      <ul class="simple nested-toc-section">isPaused
+      <li><a class="reference" href="#isPaused%2Cptr.orxCLOCK"
+    title="isPaused(pstClock: ptr orxCLOCK): orxBOOL">isPaused,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addGlobalTimer
+      <li><a class="reference" href="#addGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"
     title="addGlobalTimer(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
-               s32Repetition: orxS32; pContext: pointer): orxSTATUS"><wbr />add<wbr />Global<wbr />Timer<span class="attachedType">orxCLOCK_FUNCTION</span></a></li>
-  <li><a class="reference" href="#removeGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"
+               s32Repetition: orxS32; pContext: pointer): orxSTATUS">addGlobalTimer,<wbr>orxCLOCK_FUNCTION,<wbr>orxFLOAT,<wbr>orxS32,<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unpause
+      <li><a class="reference" href="#unpause%2Cptr.orxCLOCK"
+    title="unpause(pstClock: ptr orxCLOCK): orxSTATUS">unpause,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">resyncAll
+      <li><a class="reference" href="#resyncAll"
+    title="resyncAll(): orxSTATUS">resyncAll</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setTickSize
+      <li><a class="reference" href="#setTickSize%2Cptr.orxCLOCK%2CorxFLOAT"
+    title="setTickSize(pstClock: ptr orxCLOCK; fTickSize: orxFLOAT): orxSTATUS">setTickSize,<wbr>ptr.orxCLOCK,<wbr>orxFLOAT</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockCreate
+      <li><a class="reference" href="#clockCreate%2CorxFLOAT"
+    title="clockCreate(fTickSize: orxFLOAT): ptr orxCLOCK">clockCreate,<wbr>orxFLOAT</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">register
+      <li><a class="reference" href="#register%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer%2CorxMODULE_ID%2CorxCLOCK_PRIORITY"
+    title="register(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
+         pContext: pointer; eModuleID: orxMODULE_ID;
+         ePriority: orxCLOCK_PRIORITY): orxSTATUS">register,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION,<wbr>pointer,<wbr>orxMODULE_ID,<wbr>orxCLOCK_PRIORITY</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockExit
+      <li><a class="reference" href="#clockExit"
+    title="clockExit()">clockExit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pause
+      <li><a class="reference" href="#pause%2Cptr.orxCLOCK"
+    title="pause(pstClock: ptr orxCLOCK): orxSTATUS">pause,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFromInfo
+      <li><a class="reference" href="#getFromInfo%2Cptr.orxCLOCK_INFO"
+    title="getFromInfo(pstClockInfo: ptr orxCLOCK_INFO): ptr orxCLOCK">getFromInfo,<wbr>ptr.orxCLOCK_INFO</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addTimer
+      <li><a class="reference" href="#addTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"
+    title="addTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
+         fDelay: orxFLOAT; s32Repetition: orxS32; pContext: pointer): orxSTATUS">addTimer,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION,<wbr>orxFLOAT,<wbr>orxS32,<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockSetup
+      <li><a class="reference" href="#clockSetup"
+    title="clockSetup()">clockSetup</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockInit
+      <li><a class="reference" href="#clockInit"
+    title="clockInit(): orxSTATUS">clockInit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getInfo
+      <li><a class="reference" href="#getInfo%2Cptr.orxCLOCK"
+    title="getInfo(pstClock: ptr orxCLOCK): ptr orxCLOCK_INFO">getInfo,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getContext
+      <li><a class="reference" href="#getContext%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION"
+    title="getContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): pointer">getContext,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setContext
+      <li><a class="reference" href="#setContext%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer"
+    title="setContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
+           pContext: pointer): orxSTATUS">setContext,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION,<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setModifier
+      <li><a class="reference" href="#setModifier%2Cptr.orxCLOCK%2CorxCLOCK_MODIFIER%2CorxFLOAT"
+    title="setModifier(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER;
+            fValue: orxFLOAT): orxSTATUS">setModifier,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_MODIFIER,<wbr>orxFLOAT</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">restart
+      <li><a class="reference" href="#restart%2Cptr.orxCLOCK"
+    title="restart(pstClock: ptr orxCLOCK): orxSTATUS">restart,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">resync
+      <li><a class="reference" href="#resync%2Cptr.orxCLOCK"
+    title="resync(pstClock: ptr orxCLOCK): orxSTATUS">resync,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockGet
+      <li><a class="reference" href="#clockGet%2Ccstring"
+    title="clockGet(zName: cstring): ptr orxCLOCK">clockGet,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unregister
+      <li><a class="reference" href="#unregister%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION"
+    title="unregister(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): orxSTATUS">unregister,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">removeGlobalTimer
+      <li><a class="reference" href="#removeGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"
     title="removeGlobalTimer(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;
-                  pContext: pointer): orxSTATUS"><wbr />remove<wbr />Global<wbr />Timer<span class="attachedType">orxCLOCK_FUNCTION</span></a></li>
+                  pContext: pointer): orxSTATUS">removeGlobalTimer,<wbr>orxCLOCK_FUNCTION,<wbr>orxFLOAT,<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getName
+      <li><a class="reference" href="#getName%2Cptr.orxCLOCK"
+    title="getName(pstClock: ptr orxCLOCK): cstring">getName,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">delete
+      <li><a class="reference" href="#delete%2Cptr.orxCLOCK"
+    title="delete(pstClock: ptr orxCLOCK): orxSTATUS">delete,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clockCreateFromConfig
+      <li><a class="reference" href="#clockCreateFromConfig%2Ccstring"
+    title="clockCreateFromConfig(zConfigID: cstring): ptr orxCLOCK">clockCreateFromConfig,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getNext
+      <li><a class="reference" href="#getNext%2Cptr.orxCLOCK"
+    title="getNext(pstClock: ptr orxCLOCK): ptr orxCLOCK">getNext,<wbr>ptr.orxCLOCK</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">update
+      <li><a class="reference" href="#update"
+    title="update(): orxSTATUS">update</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getModifier
+      <li><a class="reference" href="#getModifier%2Cptr.orxCLOCK%2CorxCLOCK_MODIFIER"
+    title="getModifier(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER): orxFLOAT">getModifier,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_MODIFIER</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">removeTimer
+      <li><a class="reference" href="#removeTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"
+    title="removeTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;
+            fDelay: orxFLOAT; pContext: pointer): orxSTATUS">removeTimer,<wbr>ptr.orxCLOCK,<wbr>orxCLOCK_FUNCTION,<wbr>orxFLOAT,<wbr>pointer</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -227,9 +314,7 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc"><ul class="simple"><li>Clock type enum</li>
-</ul>
-<ul class="simple"><li>Clock mod type enum</li>
+  <p class="module-desc"><ul class="simple"><li>Clock modifier enum</li>
 </ul>
 <ul class="simple"><li>Clock priority</li>
 </ul>
@@ -250,31 +335,20 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<a id="orxCLOCK_TYPE"></a>
-<dt><pre><a href="clock.html#orxCLOCK_TYPE"><span class="Identifier">orxCLOCK_TYPE</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">orxCLOCK_TYPE_CORE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_TYPE_USER</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_TYPE_SECOND</span><span class="Other">,</span>
-  <span class="Identifier">orxCLOCK_TYPE_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_TYPE_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
+<a id="orxCLOCK_MODIFIER"></a>
+<dt><pre><a href="clock.html#orxCLOCK_MODIFIER"><span class="Identifier">orxCLOCK_MODIFIER</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">orxCLOCK_MODIFIER_FIXED</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Comment">## The given DT will be constant, set to this modifier value</span>
+  <span class="Identifier">orxCLOCK_MODIFIER_MULTIPLY</span><span class="Other">,</span> <span class="Comment">## The given DT will be multiplied by this modifier value</span>
+  <span class="Identifier">orxCLOCK_MODIFIER_MAXED</span><span class="Other">,</span>  <span class="Comment">## The given DT will be maxed by this modifier value</span>
+  <span class="Identifier">orxCLOCK_MODIFIER_AVERAGE</span><span class="Other">,</span> <span class="Comment">## The given DT will be averaged over a number of past updates defined by this modifier value</span>
+  <span class="Identifier">orxCLOCK_MODIFIER_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_MODIFIER_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L14"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L14"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<a id="orxCLOCK_MOD_TYPE"></a>
-<dt><pre><a href="clock.html#orxCLOCK_MOD_TYPE"><span class="Identifier">orxCLOCK_MOD_TYPE</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">orxCLOCK_MOD_TYPE_FIXED</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>  <span class="Comment">## The given DT will always be constant (= modifier value)</span>
-  <span class="Identifier">orxCLOCK_MOD_TYPE_MULTIPLY</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_MOD_TYPE_MAXED</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_MOD_TYPE_NUMBER</span><span class="Other">,</span>
-  <span class="Identifier">orxCLOCK_MOD_TYPE_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
-<dd>
-
-
-&nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L23"
-class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_PRIORITY"></a>
@@ -287,41 +361,41 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L34"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L25"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L34" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L25" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_INFO"></a>
 <dt><pre><a href="clock.html#orxCLOCK_INFO"><span class="Identifier">orxCLOCK_INFO</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">bycopy</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">eType</span><span class="Operator">*</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_TYPE"><span class="Identifier">orxCLOCK_TYPE</span></a>        <span class="Comment">## Clock type : 4</span>
-  <span class="Identifier">fTickSize</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>         <span class="Comment">## Clock tick size (in seconds) : 8</span>
-  <span class="Identifier">eModType</span><span class="Operator">*</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_MOD_TYPE"><span class="Identifier">orxCLOCK_MOD_TYPE</span></a> <span class="Comment">## Clock mod type : 12</span>
-  <span class="Identifier">fModValue</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>         <span class="Comment">## Clock mod value : 16</span>
-  <span class="Identifier">fDT</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>               <span class="Comment">## Clock DT (time elapsed between 2 clock calls in seconds) : 20</span>
-  <span class="Identifier">fTime</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>             <span class="Comment">## Clock time : 24</span>
+  <span class="Identifier">fTickSize</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>       <span class="Comment">## Clock tick size (in seconds) : 4</span>
+  <span class="Identifier">fDT</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>             <span class="Comment">## Clock DT (time elapsed between 2 clock calls in seconds) : 8</span>
+  <span class="Identifier">fTime</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a>           <span class="Comment">## Clock time : 12</span>
+  <span class="Identifier">afModifierList</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">orxCLOCK_MODIFIER_NUMBER</span><span class="Other">.</span><span class="Identifier">ord</span><span class="Other">,</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">]</span> <span class="Comment">## Clock modifiers : 28</span>
   </pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L45"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L36"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L45" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_EVENT"></a>
 <dt><pre><a href="clock.html#orxCLOCK_EVENT"><span class="Identifier">orxCLOCK_EVENT</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">orxCLOCK_EVENT_RESTART</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>   <span class="Comment">## Event sent when a clock restarts</span>
-  <span class="Identifier">orxCLOCK_EVENT_RESYNC</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_EVENT_PAUSE</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_EVENT_UNPAUSE</span><span class="Other">,</span>
+  <span class="Identifier">orxCLOCK_EVENT_RESTART</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Comment">## Event sent when a clock restarts</span>
+  <span class="Identifier">orxCLOCK_EVENT_RESYNC</span><span class="Other">,</span>    <span class="Comment">## Event sent when a clock resyncs</span>
+  <span class="Identifier">orxCLOCK_EVENT_PAUSE</span><span class="Other">,</span>     <span class="Comment">## Event sent when a clock is paused</span>
+  <span class="Identifier">orxCLOCK_EVENT_UNPAUSE</span><span class="Other">,</span>   <span class="Comment">## Event sent when a clock is unpaused</span>
   <span class="Identifier">orxCLOCK_EVENT_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxCLOCK_EVENT_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L58"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK"></a>
@@ -330,20 +404,21 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L68"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L56"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L68" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_FUNCTION"></a>
-<dt><pre><a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">pstClockInfo</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK_INFO"><span class="Identifier">orxCLOCK_INFO</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">pstClockInfo</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK_INFO"><span class="Identifier">orxCLOCK_INFO</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L72"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L60"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -357,9 +432,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L5"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L5"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L5" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L5" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_KU32_TIMER_BANK_SIZE"></a>
@@ -368,9 +443,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L6"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L6"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L6" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L6" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_KU32_FUNCTION_BANK_SIZE"></a>
@@ -379,9 +454,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L7"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L7"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCLOCK_KZ_CORE"></a>
@@ -390,9 +465,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L8"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L8"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -406,9 +481,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Clock module setup
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L74"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L62"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L74" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="clockInit"></a>
@@ -420,9 +495,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L77"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L65"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L77" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L65" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="clockExit"></a>
@@ -431,9 +506,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Exits from the clock module
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L82"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L70"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L70" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="update"></a>
@@ -445,24 +520,24 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L85"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L73"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L85" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="clockCreate,orxFLOAT,orxCLOCK_TYPE"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#clockCreate%2CorxFLOAT%2CorxCLOCK_TYPE"><span class="Identifier">clockCreate</span></a><span class="Other">(</span><span class="Identifier">fTickSize</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">eType</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_TYPE"><span class="Identifier">orxCLOCK_TYPE</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="clockCreate,orxFLOAT"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#clockCreate%2CorxFLOAT"><span class="Identifier">clockCreate</span></a><span class="Other">(</span><span class="Identifier">fTickSize</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Create&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Creates a clock</dt>
-<dd>@param[in]   _fTickSize                            Tick size for the clock (in seconds) @param[in]   _eType                                Type of the clock @return      orxCLOCK / nil</dd>
+<dd>@param[in]   _fTickSize                            Tick size for the clock (in seconds) @return      orxCLOCK / nil</dd>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L90"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L78"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="clockCreateFromConfig,cstring"></a>
@@ -475,14 +550,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L97"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L84"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L97" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="delete,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#delete%2Cptr.orxCLOCK"><span class="Identifier">delete</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Delete&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#delete%2Cptr.orxCLOCK"><span class="Identifier">delete</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Delete&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Deletes a clock</dt>
@@ -490,14 +565,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L103"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L90"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L103" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="resync,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#resync%2Cptr.orxCLOCK"><span class="Identifier">resync</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Resync&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#resync%2Cptr.orxCLOCK"><span class="Identifier">resync</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Resync&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Resyncs a clock (accumulated DT =&gt; 0)</dt>
@@ -505,13 +580,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L109"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L96"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L109" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L96" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="resyncAll"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#resyncAll"><span class="Identifier">resyncAll</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_ResyncAll&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#resyncAll"><span class="Identifier">resyncAll</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_ResyncAll&quot;</span><span class="Other">,</span>
+                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Resyncs all clocks (accumulated DT =&gt; 0)</dt>
@@ -519,14 +595,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L114"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L101"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L114" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L101" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="restart,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#restart%2Cptr.orxCLOCK"><span class="Identifier">restart</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Restart&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#restart%2Cptr.orxCLOCK"><span class="Identifier">restart</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Restart&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Restarts a clock</dt>
@@ -534,14 +610,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L119"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L106"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L119" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L106" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="pause,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#pause%2Cptr.orxCLOCK"><span class="Identifier">pause</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Pause&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#pause%2Cptr.orxCLOCK"><span class="Identifier">pause</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Pause&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Pauses a clock</dt>
@@ -549,14 +625,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L125"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L112"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L125" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L112" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="unpause,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#unpause%2Cptr.orxCLOCK"><span class="Identifier">unpause</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Unpause&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#unpause%2Cptr.orxCLOCK"><span class="Identifier">unpause</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Unpause&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Unpauses a clock</dt>
@@ -564,14 +640,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L131"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L118"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L131" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L118" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="isPaused,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#isPaused%2Cptr.orxCLOCK"><span class="Identifier">isPaused</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxBOOL"><span class="Identifier">orxBOOL</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_IsPaused&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#isPaused%2Cptr.orxCLOCK"><span class="Identifier">isPaused</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxBOOL"><span class="Identifier">orxBOOL</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_IsPaused&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Is a clock paused?</dt>
@@ -579,9 +655,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L137"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L124"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L137" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L124" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getInfo,ptr.orxCLOCK"></a>
@@ -594,9 +670,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L143"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L130"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L143" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getFromInfo,ptr.orxCLOCK_INFO"></a>
@@ -609,46 +685,61 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L149"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L136"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L149" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L136" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="setModifier,ptr.orxCLOCK,orxCLOCK_MOD_TYPE,orxFLOAT"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setModifier%2Cptr.orxCLOCK%2CorxCLOCK_MOD_TYPE%2CorxFLOAT"><span class="Identifier">setModifier</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">eModType</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_MOD_TYPE"><span class="Identifier">orxCLOCK_MOD_TYPE</span></a><span class="Other">;</span>
-                <span class="Identifier">fModValue</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setModifier,ptr.orxCLOCK,orxCLOCK_MODIFIER,orxFLOAT"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setModifier%2Cptr.orxCLOCK%2CorxCLOCK_MODIFIER%2CorxFLOAT"><span class="Identifier">setModifier</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">eModifier</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_MODIFIER"><span class="Identifier">orxCLOCK_MODIFIER</span></a><span class="Other">;</span>
+                 <span class="Identifier">fValue</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_SetModifier&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<dl class="docutils"><dt>Sets a clock modifier</dt>
-<dd>@param[in]   _pstClock                             Concerned clock @param[in]   _eModType                             Modifier type @param[in]   _fModValue                            Modifier value @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE</dd>
+<dl class="docutils"><dt>Sets a clock's modifier</dt>
+<dd>@param[in]   _pstClock                             Concerned clock @param[in]   _eModifier                            Concerned modifier @param[in]   _fValue                               Modifier value, orxFLOAT_0 to deactivate the modifier @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE</dd>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L155"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L142"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L155" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="getModifier,ptr.orxCLOCK,orxCLOCK_MODIFIER"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getModifier%2Cptr.orxCLOCK%2CorxCLOCK_MODIFIER"><span class="Identifier">getModifier</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">eModifier</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_MODIFIER"><span class="Identifier">orxCLOCK_MODIFIER</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_GetModifier&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<dl class="docutils"><dt>Sets a clock's modifier</dt>
+<dd>@param[in]   _pstClock                             Concerned clock @param[in]   _eModifier                            Concerned modifier @return      Modifier value / orxFLOAT_0 if deactivated</dd>
+</dl>
+
+&nbsp;&nbsp;<a
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L151"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setTickSize,ptr.orxCLOCK,orxFLOAT"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setTickSize%2Cptr.orxCLOCK%2CorxFLOAT"><span class="Identifier">setTickSize</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">fTickSize</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_SetTickSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setTickSize%2Cptr.orxCLOCK%2CorxFLOAT"><span class="Identifier">setTickSize</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">fTickSize</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_SetTickSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Sets a clock tick size</dt>
-<dd>@param[in]   _pstClock                             Concerned clock @param[in]   _fTickSize                            Tick size @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE</dd>
+<dd>@param[in]   _pstClock                             Concerned clock @param[in]   _fTickSize                            Tick size, -1 for 'display' @return      orxSTATUS_SUCCESS / orxSTATUS_FAILURE</dd>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L164"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L158"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="register,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer,orxMODULE_ID,orxCLOCK_PRIORITY"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#register%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer%2CorxMODULE_ID%2CorxCLOCK_PRIORITY"><span class="Identifier">register</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span>
-             <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">eModuleID</span><span class="Other">:</span> <a href="module.html#orxMODULE_ID"><span class="Identifier">orxMODULE_ID</span></a><span class="Other">;</span>
-             <span class="Identifier">ePriority</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_PRIORITY"><span class="Identifier">orxCLOCK_PRIORITY</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+              <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">eModuleID</span><span class="Other">:</span> <a href="module.html#orxMODULE_ID"><span class="Identifier">orxMODULE_ID</span></a><span class="Other">;</span>
+              <span class="Identifier">ePriority</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_PRIORITY"><span class="Identifier">orxCLOCK_PRIORITY</span></a><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_Register&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -657,9 +748,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L171"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L165"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L171" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L165" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="unregister,ptr.orxCLOCK,orxCLOCK_FUNCTION"></a>
@@ -672,9 +763,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L183"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L177"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getContext,ptr.orxCLOCK,orxCLOCK_FUNCTION"></a>
@@ -687,14 +778,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L190"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L184"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L190" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L184" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setContext,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#setContext%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2Cpointer"><span class="Identifier">setContext</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span>
-               <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+                <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_SetContext&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -703,39 +794,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L197"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L191"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L197" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<a id="findFirst,orxFLOAT,orxCLOCK_TYPE"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#findFirst%2CorxFLOAT%2CorxCLOCK_TYPE"><span class="Identifier">findFirst</span></a><span class="Other">(</span><span class="Identifier">fTickSize</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">eType</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_TYPE"><span class="Identifier">orxCLOCK_TYPE</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_FindFirst&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<dl class="docutils"><dt>Finds a clock given its tick size and its type</dt>
-<dd>@param[in]   _fTickSize                            Tick size of the desired clock (in seconds) @param[in]   _eType                                Type of the desired clock @return      orxCLOCK / nil</dd>
-</dl>
-
-&nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L206"
-class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<a id="findNext,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#findNext%2Cptr.orxCLOCK"><span class="Identifier">findNext</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_FindNext&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<dl class="docutils"><dt>Finds next clock of same type/tick size</dt>
-<dd>@param[in]   _pstClock                             Concerned clock @return      orxCLOCK / nil</dd>
-</dl>
-
-&nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L213"
-class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L213" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L191" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getNext,ptr.orxCLOCK"></a>
@@ -748,9 +809,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L219"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L200"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L219" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L200" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="clockGet,cstring"></a>
@@ -763,14 +824,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L225"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L206"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L225" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getName,ptr.orxCLOCK"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#getName%2Cptr.orxCLOCK"><span class="Identifier">getName</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_GetName&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getName%2Cptr.orxCLOCK"><span class="Identifier">getName</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_GetName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Gets clock config name</dt>
@@ -778,14 +839,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L231"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L212"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L231" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L212" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="addTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,orxS32,pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#addTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"><span class="Identifier">addTimer</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span>
-             <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">s32Repetition</span><span class="Other">:</span> <a href="typ.html#orxS32"><span class="Identifier">orxS32</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+              <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">s32Repetition</span><span class="Other">:</span> <a href="typ.html#orxS32"><span class="Identifier">orxS32</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_AddTimer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -794,14 +855,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L237"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L218"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L237" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="removeTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#removeTimer%2Cptr.orxCLOCK%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"><span class="Identifier">removeTimer</span></a><span class="Other">(</span><span class="Identifier">pstClock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="clock.html#orxCLOCK"><span class="Identifier">orxCLOCK</span></a><span class="Other">;</span> <span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span>
-                <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+                 <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_RemoveTimer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -810,15 +871,15 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L248"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L229"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L248" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L229" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="addGlobalTimer,orxCLOCK_FUNCTION,orxFLOAT,orxS32,pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#addGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2CorxS32%2Cpointer"><span class="Identifier">addGlobalTimer</span></a><span class="Other">(</span><span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span> <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span>
-                   <span class="Identifier">s32Repetition</span><span class="Other">:</span> <a href="typ.html#orxS32"><span class="Identifier">orxS32</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_AddGlobalTimer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+                    <span class="Identifier">s32Repetition</span><span class="Other">:</span> <a href="typ.html#orxS32"><span class="Identifier">orxS32</span></a><span class="Other">;</span> <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_AddGlobalTimer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Adds a global timer function (ie. using the main core clock)</dt>
@@ -826,14 +887,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L258"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L239"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L258" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L239" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="removeGlobalTimer,orxCLOCK_FUNCTION,orxFLOAT,pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#removeGlobalTimer%2CorxCLOCK_FUNCTION%2CorxFLOAT%2Cpointer"><span class="Identifier">removeGlobalTimer</span></a><span class="Other">(</span><span class="Identifier">pfnCallback</span><span class="Other">:</span> <a href="clock.html#orxCLOCK_FUNCTION"><span class="Identifier">orxCLOCK_FUNCTION</span></a><span class="Other">;</span> <span class="Identifier">fDelay</span><span class="Other">:</span> <a href="typ.html#orxFLOAT"><span class="Identifier">orxFLOAT</span></a><span class="Other">;</span>
-                      <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+                       <span class="Identifier">pContext</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxClock_RemoveGlobalTimer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -842,9 +903,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/clock.nim#L268"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/clock.nim#L249"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/clock.nim#L268" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/clock.nim#L249" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -857,7 +918,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-07-24 12:57:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-24 21:08:06 UTC</small>
       </div>
     </div>
   </div>

@@ -102,17 +102,17 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxPARAM_INIT_FUNCTION"
     title="orxPARAM_INIT_FUNCTION = proc (u32NbParam: orxU32; azParams: cstringArray): orxSTATUS {.
-    cdecl.}"><wbr />orx<wbr />PARAM_<wbr />INIT_<wbr />FUNCTION<span class="attachedType"></span></a></li>
+    cdecl.}">orxPARAM_INIT_FUNCTION</a></li>
   <li><a class="reference" href="#orxPARAM"
     title="orxPARAM {.bycopy.} = object
-  u32Flags*: orxU32            ## Flags associated to the parameters&apos; parser
-                  ## Short parameter name (ex: &quot;h&quot; for help (will be -h))
-  zShortName*: cstring         ## Long parameter name (ex: &quot;help&quot; for help (will be --help))
-  zLongName*: cstring          ## Short description (ex: &quot;shows params&apos; list&quot;)
+  u32Flags*: orxU32          ## Flags associated to the parameters&apos; parser
+                             ## Short parameter name (ex: &quot;h&quot; for help (will be -h))
+  zShortName*: cstring       ## Long parameter name (ex: &quot;help&quot; for help (will be --help))
+  zLongName*: cstring        ## Short description (ex: &quot;shows params&apos; list&quot;)
   zShortDesc*: cstring ## Long description (ex: &quot;Display the list of parameters.
-                     ## -help &lt;param&gt; displays the &lt;param&gt; long description&quot;)
-  zLongDesc*: cstring          ## Function called when the parameter is detected in the command line
-  pfnParser*: orxPARAM_INIT_FUNCTION"><wbr />orx<wbr />PARAM<span class="attachedType"></span></a></li>
+                       ## -help &lt;param&gt; displays the &lt;param&gt; long description&quot;)
+  zLongDesc*: cstring        ## Function called when the parameter is detected in the command line
+  pfnParser*: orxPARAM_INIT_FUNCTION">orxPARAM</a></li>
 
   </ul>
 </li>
@@ -120,29 +120,47 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxPARAM_KU32_FLAG_NONE"
-    title="orxPARAM_KU32_FLAG_NONE = 0x00000000"><wbr />orx<wbr />PARAM_<wbr />KU32_<wbr />FLAG_<wbr />NONE<span class="attachedType"></span></a></li>
+    title="orxPARAM_KU32_FLAG_NONE = 0x00000000">orxPARAM_KU32_FLAG_NONE</a></li>
   <li><a class="reference" href="#orxPARAM_KU32_FLAG_MULTIPLE_ALLOWED"
-    title="orxPARAM_KU32_FLAG_MULTIPLE_ALLOWED = 0x00000001"><wbr />orx<wbr />PARAM_<wbr />KU32_<wbr />FLAG_<wbr />MULTIPLE_<wbr />ALLOWED<span class="attachedType"></span></a></li>
+    title="orxPARAM_KU32_FLAG_MULTIPLE_ALLOWED = 0x00000001">orxPARAM_KU32_FLAG_MULTIPLE_ALLOWED</a></li>
   <li><a class="reference" href="#orxPARAM_KU32_FLAG_STOP_ON_ERROR"
-    title="orxPARAM_KU32_FLAG_STOP_ON_ERROR = 0x00000002"><wbr />orx<wbr />PARAM_<wbr />KU32_<wbr />FLAG_<wbr />STOP_<wbr />ON_<wbr />ERROR<span class="attachedType"></span></a></li>
+    title="orxPARAM_KU32_FLAG_STOP_ON_ERROR = 0x00000002">orxPARAM_KU32_FLAG_STOP_ON_ERROR</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">paramSetup
       <li><a class="reference" href="#paramSetup"
-    title="paramSetup()"><wbr />param<wbr />Setup<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#paramInit"
-    title="paramInit(): orxSTATUS"><wbr />param<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#paramExit"
-    title="paramExit()"><wbr />param<wbr />Exit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#register%2Cptr.orxPARAM"
-    title="register(pstParam: ptr orxPARAM): orxSTATUS"><wbr />register<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#displayHelp"
-    title="displayHelp(): orxSTATUS"><wbr />display<wbr />Help<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setArgs%2CorxU32%2CcstringArray"
-    title="setArgs(u32NbParams: orxU32; azParams: cstringArray): orxSTATUS"><wbr />set<wbr />Args<span class="attachedType"></span></a></li>
+    title="paramSetup()">paramSetup</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">register
+      <li><a class="reference" href="#register%2Cptr.orxPARAM"
+    title="register(pstParam: ptr orxPARAM): orxSTATUS">register,<wbr>ptr.orxPARAM</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">displayHelp
+      <li><a class="reference" href="#displayHelp"
+    title="displayHelp(): orxSTATUS">displayHelp</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setArgs
+      <li><a class="reference" href="#setArgs%2CorxU32%2CcstringArray"
+    title="setArgs(u32NbParams: orxU32; azParams: cstringArray): orxSTATUS">setArgs,<wbr>orxU32,<wbr>cstringArray</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">paramInit
+      <li><a class="reference" href="#paramInit"
+    title="paramInit(): orxSTATUS">paramInit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">paramExit
+      <li><a class="reference" href="#paramExit"
+    title="paramExit()">paramExit</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -172,29 +190,29 @@ Parameter's info</p>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L18"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L18"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L18" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L18" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxPARAM"></a>
 <dt><pre><a href="param.html#orxPARAM"><span class="Identifier">orxPARAM</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">bycopy</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">u32Flags</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a>            <span class="Comment">## Flags associated to the parameters' parser</span>
-                  <span class="Comment">## Short parameter name (ex: &quot;h&quot; for help (will be -h))</span>
-  <span class="Identifier">zShortName</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>         <span class="Comment">## Long parameter name (ex: &quot;help&quot; for help (will be --help))</span>
-  <span class="Identifier">zLongName</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>          <span class="Comment">## Short description (ex: &quot;shows params' list&quot;)</span>
+  <span class="Identifier">u32Flags</span><span class="Operator">*</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a>          <span class="Comment">## Flags associated to the parameters' parser</span>
+                             <span class="Comment">## Short parameter name (ex: &quot;h&quot; for help (will be -h))</span>
+  <span class="Identifier">zShortName</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>       <span class="Comment">## Long parameter name (ex: &quot;help&quot; for help (will be --help))</span>
+  <span class="Identifier">zLongName</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>        <span class="Comment">## Short description (ex: &quot;shows params' list&quot;)</span>
   <span class="Identifier">zShortDesc</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Comment">## Long description (ex: &quot;Display the list of parameters.</span>
-                     <span class="Comment">## -help &lt;param&gt; displays the &lt;param&gt; long description&quot;)</span>
-  <span class="Identifier">zLongDesc</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>          <span class="Comment">## Function called when the parameter is detected in the command line</span>
+                       <span class="Comment">## -help &lt;param&gt; displays the &lt;param&gt; long description&quot;)</span>
+  <span class="Identifier">zLongDesc</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>        <span class="Comment">## Function called when the parameter is detected in the command line</span>
   <span class="Identifier">pfnParser</span><span class="Operator">*</span><span class="Other">:</span> <a href="param.html#orxPARAM_INIT_FUNCTION"><span class="Identifier">orxPARAM_INIT_FUNCTION</span></a>
 </pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L24"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L24"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -208,9 +226,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L7"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L7"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxPARAM_KU32_FLAG_MULTIPLE_ALLOWED"></a>
@@ -219,9 +237,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L8"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L8"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxPARAM_KU32_FLAG_STOP_ON_ERROR"></a>
@@ -230,9 +248,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L9"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L9"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L9" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L9" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -246,9 +264,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Setups param module
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L35"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L35"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L35" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L35" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="paramInit"></a>
@@ -260,9 +278,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L38"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L38"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="paramExit"></a>
@@ -271,9 +289,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Exits from the param module
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L43"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L43"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="register,ptr.orxPARAM"></a>
@@ -286,13 +304,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L46"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="displayHelp"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#displayHelp"><span class="Identifier">displayHelp</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxParam_DisplayHelp&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#displayHelp"><span class="Identifier">displayHelp</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;orxParam_DisplayHelp&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Displays help if requested</dt>
@@ -300,9 +319,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L52"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L52"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setArgs,orxU32,cstringArray"></a>
@@ -315,9 +334,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/param.nim#L57"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/param.nim#L57"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/param.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/param.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -330,7 +349,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-07-24 12:57:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-24 21:08:06 UTC</small>
       </div>
     </div>
   </div>

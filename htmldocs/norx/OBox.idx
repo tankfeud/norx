@@ -1,9 +1,0 @@
-orxOBOX	norx/OBox.html#orxOBOX	OBox: orxOBOX	
-twoDSet	norx/OBox.html#twoDSet,ptr.orxOBOX,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	OBox: twoDSet(pstRes: ptr orxOBOX; pvWorldPosition: ptr orxVECTOR; pvPivot: ptr orxVECTOR;\n        pvSize: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxOBOX	
-copy	norx/OBox.html#copy,ptr.orxOBOX,ptr.orxOBOX	OBox: copy(pstDst: ptr orxOBOX; pstSrc: ptr orxOBOX): ptr orxOBOX	
-getCenter	norx/OBox.html#getCenter,ptr.orxOBOX,ptr.orxVECTOR	OBox: getCenter(pstOp: ptr orxOBOX; pvRes: ptr orxVECTOR): ptr orxVECTOR	
-move	norx/OBox.html#move,ptr.orxOBOX,ptr.orxOBOX,ptr.orxVECTOR	OBox: move(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; pvMove: ptr orxVECTOR): ptr orxOBOX	
-twoDRotate	norx/OBox.html#twoDRotate,ptr.orxOBOX,ptr.orxOBOX,orxFLOAT	OBox: twoDRotate(pstRes: ptr orxOBOX; pstOp: ptr orxOBOX; fAngle: orxFLOAT): ptr orxOBOX	
-isInside	norx/OBox.html#isInside,ptr.orxOBOX,ptr.orxVECTOR	OBox: isInside(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool	
-twoDIsInside	norx/OBox.html#twoDIsInside,ptr.orxOBOX,ptr.orxVECTOR	OBox: twoDIsInside(pstBox: ptr orxOBOX; pvPosition: ptr orxVECTOR): bool	
-zAlignedTestIntersection	norx/OBox.html#zAlignedTestIntersection,ptr.orxOBOX,ptr.orxOBOX	OBox: zAlignedTestIntersection(pstBox1: ptr orxOBOX; pstBox2: ptr orxOBOX): orxBOOL	

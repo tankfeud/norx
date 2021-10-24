@@ -2,8 +2,7 @@ orxCLOCK_KU32_CLOCK_BANK_SIZE	norx/clock.html#orxCLOCK_KU32_CLOCK_BANK_SIZE	cloc
 orxCLOCK_KU32_TIMER_BANK_SIZE	norx/clock.html#orxCLOCK_KU32_TIMER_BANK_SIZE	clock: orxCLOCK_KU32_TIMER_BANK_SIZE	
 orxCLOCK_KU32_FUNCTION_BANK_SIZE	norx/clock.html#orxCLOCK_KU32_FUNCTION_BANK_SIZE	clock: orxCLOCK_KU32_FUNCTION_BANK_SIZE	
 orxCLOCK_KZ_CORE	norx/clock.html#orxCLOCK_KZ_CORE	clock: orxCLOCK_KZ_CORE	
-orxCLOCK_TYPE	norx/clock.html#orxCLOCK_TYPE	clock: orxCLOCK_TYPE	
-orxCLOCK_MOD_TYPE	norx/clock.html#orxCLOCK_MOD_TYPE	clock: orxCLOCK_MOD_TYPE	
+orxCLOCK_MODIFIER	norx/clock.html#orxCLOCK_MODIFIER	clock: orxCLOCK_MODIFIER	
 orxCLOCK_PRIORITY	norx/clock.html#orxCLOCK_PRIORITY	clock: orxCLOCK_PRIORITY	
 orxCLOCK_INFO	norx/clock.html#orxCLOCK_INFO	clock: orxCLOCK_INFO	
 orxCLOCK_EVENT	norx/clock.html#orxCLOCK_EVENT	clock: orxCLOCK_EVENT	
@@ -13,7 +12,7 @@ clockSetup	norx/clock.html#clockSetup	clock: clockSetup()
 clockInit	norx/clock.html#clockInit	clock: clockInit(): orxSTATUS	
 clockExit	norx/clock.html#clockExit	clock: clockExit()	
 update	norx/clock.html#update	clock: update(): orxSTATUS	
-clockCreate	norx/clock.html#clockCreate,orxFLOAT,orxCLOCK_TYPE	clock: clockCreate(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK	
+clockCreate	norx/clock.html#clockCreate,orxFLOAT	clock: clockCreate(fTickSize: orxFLOAT): ptr orxCLOCK	
 clockCreateFromConfig	norx/clock.html#clockCreateFromConfig,cstring	clock: clockCreateFromConfig(zConfigID: cstring): ptr orxCLOCK	
 delete	norx/clock.html#delete,ptr.orxCLOCK	clock: delete(pstClock: ptr orxCLOCK): orxSTATUS	
 resync	norx/clock.html#resync,ptr.orxCLOCK	clock: resync(pstClock: ptr orxCLOCK): orxSTATUS	
@@ -24,18 +23,17 @@ unpause	norx/clock.html#unpause,ptr.orxCLOCK	clock: unpause(pstClock: ptr orxCLO
 isPaused	norx/clock.html#isPaused,ptr.orxCLOCK	clock: isPaused(pstClock: ptr orxCLOCK): orxBOOL	
 getInfo	norx/clock.html#getInfo,ptr.orxCLOCK	clock: getInfo(pstClock: ptr orxCLOCK): ptr orxCLOCK_INFO	
 getFromInfo	norx/clock.html#getFromInfo,ptr.orxCLOCK_INFO	clock: getFromInfo(pstClockInfo: ptr orxCLOCK_INFO): ptr orxCLOCK	
-setModifier	norx/clock.html#setModifier,ptr.orxCLOCK,orxCLOCK_MOD_TYPE,orxFLOAT	clock: setModifier(pstClock: ptr orxCLOCK; eModType: orxCLOCK_MOD_TYPE; fModValue: orxFLOAT): orxSTATUS	
+setModifier	norx/clock.html#setModifier,ptr.orxCLOCK,orxCLOCK_MODIFIER,orxFLOAT	clock: setModifier(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER;\n            fValue: orxFLOAT): orxSTATUS	
+getModifier	norx/clock.html#getModifier,ptr.orxCLOCK,orxCLOCK_MODIFIER	clock: getModifier(pstClock: ptr orxCLOCK; eModifier: orxCLOCK_MODIFIER): orxFLOAT	
 setTickSize	norx/clock.html#setTickSize,ptr.orxCLOCK,orxFLOAT	clock: setTickSize(pstClock: ptr orxCLOCK; fTickSize: orxFLOAT): orxSTATUS	
-register	norx/clock.html#register,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer,orxMODULE_ID,orxCLOCK_PRIORITY	clock: register(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; pContext: pointer;\n         eModuleID: orxMODULE_ID; ePriority: orxCLOCK_PRIORITY): orxSTATUS	
+register	norx/clock.html#register,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer,orxMODULE_ID,orxCLOCK_PRIORITY	clock: register(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;\n         pContext: pointer; eModuleID: orxMODULE_ID;\n         ePriority: orxCLOCK_PRIORITY): orxSTATUS	
 unregister	norx/clock.html#unregister,ptr.orxCLOCK,orxCLOCK_FUNCTION	clock: unregister(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): orxSTATUS	
 getContext	norx/clock.html#getContext,ptr.orxCLOCK,orxCLOCK_FUNCTION	clock: getContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION): pointer	
-setContext	norx/clock.html#setContext,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer	clock: setContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; pContext: pointer): orxSTATUS	
-findFirst	norx/clock.html#findFirst,orxFLOAT,orxCLOCK_TYPE	clock: findFirst(fTickSize: orxFLOAT; eType: orxCLOCK_TYPE): ptr orxCLOCK	
-findNext	norx/clock.html#findNext,ptr.orxCLOCK	clock: findNext(pstClock: ptr orxCLOCK): ptr orxCLOCK	
+setContext	norx/clock.html#setContext,ptr.orxCLOCK,orxCLOCK_FUNCTION,pointer	clock: setContext(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;\n           pContext: pointer): orxSTATUS	
 getNext	norx/clock.html#getNext,ptr.orxCLOCK	clock: getNext(pstClock: ptr orxCLOCK): ptr orxCLOCK	
 clockGet	norx/clock.html#clockGet,cstring	clock: clockGet(zName: cstring): ptr orxCLOCK	
 getName	norx/clock.html#getName,ptr.orxCLOCK	clock: getName(pstClock: ptr orxCLOCK): cstring	
-addTimer	norx/clock.html#addTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,orxS32,pointer	clock: addTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;\n         s32Repetition: orxS32; pContext: pointer): orxSTATUS	
-removeTimer	norx/clock.html#removeTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,pointer	clock: removeTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;\n            pContext: pointer): orxSTATUS	
+addTimer	norx/clock.html#addTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,orxS32,pointer	clock: addTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;\n         fDelay: orxFLOAT; s32Repetition: orxS32; pContext: pointer): orxSTATUS	
+removeTimer	norx/clock.html#removeTimer,ptr.orxCLOCK,orxCLOCK_FUNCTION,orxFLOAT,pointer	clock: removeTimer(pstClock: ptr orxCLOCK; pfnCallback: orxCLOCK_FUNCTION;\n            fDelay: orxFLOAT; pContext: pointer): orxSTATUS	
 addGlobalTimer	norx/clock.html#addGlobalTimer,orxCLOCK_FUNCTION,orxFLOAT,orxS32,pointer	clock: addGlobalTimer(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;\n               s32Repetition: orxS32; pContext: pointer): orxSTATUS	
 removeGlobalTimer	norx/clock.html#removeGlobalTimer,orxCLOCK_FUNCTION,orxFLOAT,pointer	clock: removeGlobalTimer(pfnCallback: orxCLOCK_FUNCTION; fDelay: orxFLOAT;\n                  pContext: pointer): orxSTATUS	
