@@ -14,7 +14,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
 # Convert from joyNr:int & buttonIdx:int to orxJOYSTICK_BUTTON
 proc toJoystickButton*(joyNr: int, buttonIdx: int): orxJOYSTICK_BUTTON =
-  var eID: int = buttonIdx + (joyNr-1)*(orxJOYSTICK_BUTTON_SINGLE_NUMBER.ord)
+  var eID: int = buttonIdx + (joyNr-1)*orxJOYSTICK_BUTTON_SINGLE_NUMBER
   return orxJOYSTICK_BUTTON(uint(eID))
 
 proc init(): orxSTATUS {.cdecl.} =

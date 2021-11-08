@@ -660,12 +660,10 @@ type
     orxJOYSTICK_16_BUTTON_23,
     orxJOYSTICK_16_BUTTON_24,
     orxJOYSTICK_16_BUTTON_25,
-    orxJOYSTICK_BUTTON_NUMBER
+    orxJOYSTICK_LAST_BUTTON
 
-const
-  orxJOYSTICK_BUTTON_SINGLE_NUMBER* = orxJOYSTICK_2_BUTTON_A
-#const
-#  orxJOYSTICK_BUTTON_NONE* = orxENUM_NONE
+const orxJOYSTICK_BUTTON_SINGLE_NUMBER* = orxJOYSTICK_2_BUTTON_A.ord
+const orxJOYSTICK_BUTTON_NUMBER* = orxJOYSTICK_LAST_BUTTON.ord
 
 type
   orxJOYSTICK_AXIS* {.size: sizeof(cint).} = enum
@@ -767,10 +765,10 @@ type
     orxJOYSTICK_16_AXIS_RY,
     orxJOYSTICK_16_AXIS_LTRIGGER,
     orxJOYSTICK_16_AXIS_RTRIGGER,
-    orxJOYSTICK_AXIS_NUMBER
+    orxJOYSTICK_LAST_AXIS
 
-const
-  orxJOYSTICK_AXIS_SINGLE_NUMBER* = orxJOYSTICK_2_AXIS_LX
+const orxJOYSTICK_AXIS_SINGLE_NUMBER* = orxJOYSTICK_2_AXIS_LX.ord
+const orxJOYSTICK_AXIS_NUMBER* = orxJOYSTICK_LAST_AXIS.ord
 
 # TODO: This wont work when orxENUM_NONE is 0xFFFFFFFF
 #const
@@ -779,7 +777,7 @@ const
 const
   orxJOYSTICK_KU32_MIN_ID* = 1
 
-const orxJOYSTICK_KU32_MAX_ID* = (ord(orxJOYSTICK_BUTTON_NUMBER) / ord(orxJOYSTICK_BUTTON_SINGLE_NUMBER)).toInt
+const orxJOYSTICK_KU32_MAX_ID* = (orxJOYSTICK_BUTTON_NUMBER / orxJOYSTICK_BUTTON_SINGLE_NUMBER).toInt
 
 ## **************************************************************************
 ##  Functions directly implemented by orx core
