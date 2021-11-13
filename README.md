@@ -16,7 +16,7 @@ First install ORX dlls. At the moment best is to build them from a master git cl
 
 This works on my Ubuntu 64 bit (after installing normal C tools needed, more specifically `sudo apt-get install gcc g++ make`):
 
-0. Clone ORX with `git clone https://github.com/orx/orx.git`.
+0. Clone ORX **version 1.12** with `git clone -b 1.12 https://github.com/orx/orx.git`. This version is the release Norx is updated against at this time. It may also work with master, but who knows!
 1. Run `setup.sh` in top level first, this pulls down more dependencies. **Restart shell (or logout/login) to get $ORX variable set!**. On a clean Ubuntu you will be asked to install some libraries: `sudo apt install libgl1-mesa-dev libsndfile1-dev libopenal-dev libxrandr-dev`
 2. Build with `cd code/build/linux/gmake && make config=release64` (build also `debug64` and `profile64` to get those extra libraries). Same on OSX but in `code/build/mac`. 
 3. Copy libraries **to a library path** with for example `sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/` on Linux or OSX. May need to run `sudo ldconfig` after.
