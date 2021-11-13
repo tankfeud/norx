@@ -1,6 +1,0 @@
-Structures	norx/pluginCore.html
-orxPLUGIN_CORE_FUNCTION	norx/pluginCore.html#orxPLUGIN_CORE_FUNCTION	pluginCore: orxPLUGIN_CORE_FUNCTION	
-orxPLUGIN_USER_FUNCTION_INFO	norx/pluginCore.html#orxPLUGIN_USER_FUNCTION_INFO	pluginCore: orxPLUGIN_USER_FUNCTION_INFO	
-orxPLUGIN_INIT_FUNCTION	norx/pluginCore.html#orxPLUGIN_INIT_FUNCTION	pluginCore: orxPLUGIN_INIT_FUNCTION	
-addCoreInfo	norx/pluginCore.html#addCoreInfo,orxPLUGIN_CORE_ID,orxMODULE_ID,ptr.orxPLUGIN_CORE_FUNCTION,orxU32	pluginCore: addCoreInfo(ePluginCoreID: orxPLUGIN_CORE_ID; eModuleID: orxMODULE_ID;\n            astCoreFunction: ptr orxPLUGIN_CORE_FUNCTION;\n            u32CoreFunctionNumber: orxU32)	
-defaultCoreFunction	norx/pluginCore.html#defaultCoreFunction,cstring,cstring,orxU32	pluginCore: defaultCoreFunction(zFunctionName: cstring; zFileName: cstring; u32Line: orxU32): pointer	

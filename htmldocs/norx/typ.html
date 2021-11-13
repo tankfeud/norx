@@ -101,44 +101,46 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxHANDLE"
-    title="orxHANDLE = pointer"><wbr />orx<wbr />HANDLE<span class="attachedType"></span></a></li>
+    title="orxHANDLE = pointer">orxHANDLE</a></li>
   <li><a class="reference" href="#orxU64"
-    title="orxU64 = culonglong"><wbr />orx<wbr />U64<span class="attachedType"></span></a></li>
+    title="orxU64 = culonglong">orxU64</a></li>
   <li><a class="reference" href="#orxU32"
-    title="orxU32 = cuint"><wbr />orx<wbr />U32<span class="attachedType"></span></a></li>
+    title="orxU32 = cuint">orxU32</a></li>
   <li><a class="reference" href="#orxU16"
-    title="orxU16 = cushort"><wbr />orx<wbr />U16<span class="attachedType"></span></a></li>
+    title="orxU16 = cushort">orxU16</a></li>
   <li><a class="reference" href="#orxU8"
-    title="orxU8 = cuchar"><wbr />orx<wbr />U8<span class="attachedType"></span></a></li>
+    title="orxU8 = cuchar">orxU8</a></li>
   <li><a class="reference" href="#orxS64"
-    title="orxS64 = clonglong"><wbr />orx<wbr />S64<span class="attachedType"></span></a></li>
+    title="orxS64 = clonglong">orxS64</a></li>
   <li><a class="reference" href="#orxS32"
-    title="orxS32 = cint"><wbr />orx<wbr />S32<span class="attachedType"></span></a></li>
+    title="orxS32 = cint">orxS32</a></li>
   <li><a class="reference" href="#orxS16"
-    title="orxS16 = cshort"><wbr />orx<wbr />S16<span class="attachedType"></span></a></li>
+    title="orxS16 = cshort">orxS16</a></li>
   <li><a class="reference" href="#orxS8"
-    title="orxS8 = cchar"><wbr />orx<wbr />S8<span class="attachedType"></span></a></li>
+    title="orxS8 = cchar">orxS8</a></li>
   <li><a class="reference" href="#orxBOOL"
-    title="orxBOOL = distinct cuint"><wbr />orx<wbr />BOOL<span class="attachedType"></span></a></li>
+    title="orxBOOL = distinct cuint">orxBOOL</a></li>
   <li><a class="reference" href="#orxFLOAT"
-    title="orxFLOAT = cfloat"><wbr />orx<wbr />FLOAT<span class="attachedType"></span></a></li>
+    title="orxFLOAT = cfloat">orxFLOAT</a></li>
   <li><a class="reference" href="#orxDOUBLE"
-    title="orxDOUBLE = cdouble"><wbr />orx<wbr />DOUBLE<span class="attachedType"></span></a></li>
+    title="orxDOUBLE = cdouble">orxDOUBLE</a></li>
   <li><a class="reference" href="#orxCHAR"
-    title="orxCHAR = char"><wbr />orx<wbr />CHAR<span class="attachedType"></span></a></li>
+    title="orxCHAR = char">orxCHAR</a></li>
   <li><a class="reference" href="#orxSTRINGID"
-    title="orxSTRINGID = orxU32"><wbr />orx<wbr />STRINGID<span class="attachedType"></span></a></li>
+    title="orxSTRINGID = orxU64">orxSTRINGID</a></li>
   <li><a class="reference" href="#orxENUM"
-    title="orxENUM = orxU32"><wbr />orx<wbr />ENUM<span class="attachedType"></span></a></li>
+    title="orxENUM = orxU32">orxENUM</a></li>
   <li><a class="reference" href="#orxSEEK_OFFSET_WHENCE"
     title="orxSEEK_OFFSET_WHENCE {.size: 4.} = enum
   orxSEEK_OFFSET_WHENCE_START = 0, orxSEEK_OFFSET_WHENCE_CURRENT,
   orxSEEK_OFFSET_WHENCE_END, orxSEEK_OFFSET_WHENCE_NUMBER,
-  orxSEEK_OFFSET_WHENCE_NONE = 4294967295"><wbr />orx<wbr />SEEK_<wbr />OFFSET_<wbr />WHENCE<span class="attachedType"></span></a></li>
+  orxSEEK_OFFSET_WHENCE_NONE = 4294967295">orxSEEK_OFFSET_WHENCE</a></li>
   <li><a class="reference" href="#orxSTATUS"
     title="orxSTATUS {.size: 4.} = enum
-  orxSTATUS_FAILURE = 0,        ## Failure status, the operation has failed
-  orxSTATUS_SUCCESS, orxSTATUS_NUMBER, orxSTATUS_NONE = 4294967295"><wbr />orx<wbr />STATUS<span class="attachedType"></span></a></li>
+  orxSTATUS_FAILURE = 0,    ## Failure status, the operation has failed
+  orxSTATUS_SUCCESS,        ## Success status, the operation has worked has expected
+  orxSTATUS_NUMBER,         ## Sentinel : Number of status
+  orxSTATUS_NONE = 4294967295">orxSTATUS</a></li>
 
   </ul>
 </li>
@@ -146,15 +148,15 @@ function main() {
   <a class="reference reference-toplevel" href="#8" id="58">Vars</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxSTRING_EMPTY"
-    title="orxSTRING_EMPTY: cstring"><wbr />orx<wbr />STRING_<wbr />EMPTY<span class="attachedType"></span></a></li>
+    title="orxSTRING_EMPTY: cstring">orxSTRING_EMPTY</a></li>
   <li><a class="reference" href="#orxSTRING_TRUE"
-    title="orxSTRING_TRUE: cstring"><wbr />orx<wbr />STRING_<wbr />TRUE<span class="attachedType"></span></a></li>
+    title="orxSTRING_TRUE: cstring">orxSTRING_TRUE</a></li>
   <li><a class="reference" href="#orxSTRING_FALSE"
-    title="orxSTRING_FALSE: cstring"><wbr />orx<wbr />STRING_<wbr />FALSE<span class="attachedType"></span></a></li>
+    title="orxSTRING_FALSE: cstring">orxSTRING_FALSE</a></li>
   <li><a class="reference" href="#orxSTRING_EOL"
-    title="orxSTRING_EOL: cstring"><wbr />orx<wbr />STRING_<wbr />EOL<span class="attachedType"></span></a></li>
+    title="orxSTRING_EOL: cstring">orxSTRING_EOL</a></li>
   <li><a class="reference" href="#orxSTRING_DIRECTORY_SEPARATOR"
-    title="orxSTRING_DIRECTORY_SEPARATOR: cstring"><wbr />orx<wbr />STRING_<wbr />DIRECTORY_<wbr />SEPARATOR<span class="attachedType"></span></a></li>
+    title="orxSTRING_DIRECTORY_SEPARATOR: cstring">orxSTRING_DIRECTORY_SEPARATOR</a></li>
 
   </ul>
 </li>
@@ -162,33 +164,33 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxENUM_NONE"
-    title="orxENUM_NONE = 0x00000000FFFFFFFF&apos;i64"><wbr />orx<wbr />ENUM_<wbr />NONE<span class="attachedType"></span></a></li>
+    title="orxENUM_NONE = 0x00000000FFFFFFFF&apos;i64">orxENUM_NONE</a></li>
   <li><a class="reference" href="#orxFALSE"
-    title="orxFALSE = 0&apos;u"><wbr />orx<wbr />FALSE<span class="attachedType"></span></a></li>
+    title="orxFALSE = 0&apos;u">orxFALSE</a></li>
   <li><a class="reference" href="#orxTRUE"
-    title="orxTRUE = 1&apos;u"><wbr />orx<wbr />TRUE<span class="attachedType"></span></a></li>
+    title="orxTRUE = 1&apos;u">orxTRUE</a></li>
   <li><a class="reference" href="#orxFLOAT_0"
-    title="orxFLOAT_0 = 0.0&apos;f32"><wbr />orx<wbr />FLOAT_<wbr />0<span class="attachedType"></span></a></li>
+    title="orxFLOAT_0 = 0.0&apos;f32">orxFLOAT_0</a></li>
   <li><a class="reference" href="#orxFLOAT_1"
-    title="orxFLOAT_1 = 1.0&apos;f32"><wbr />orx<wbr />FLOAT_<wbr />1<span class="attachedType"></span></a></li>
+    title="orxFLOAT_1 = 1.0&apos;f32">orxFLOAT_1</a></li>
   <li><a class="reference" href="#orxFLOAT_MAX"
-    title="orxFLOAT_MAX = 3.402823466e+38&apos;f32"><wbr />orx<wbr />FLOAT_<wbr />MAX<span class="attachedType"></span></a></li>
+    title="orxFLOAT_MAX = 3.402823466e+38&apos;f32">orxFLOAT_MAX</a></li>
   <li><a class="reference" href="#orxCHAR_NULL"
-    title="orxCHAR_NULL = &apos;\x00&apos;"><wbr />orx<wbr />CHAR_<wbr />NULL<span class="attachedType"></span></a></li>
+    title="orxCHAR_NULL = &apos;\x00&apos;">orxCHAR_NULL</a></li>
   <li><a class="reference" href="#orxCHAR_CR"
-    title="orxCHAR_CR = &apos;\c&apos;"><wbr />orx<wbr />CHAR_<wbr />CR<span class="attachedType"></span></a></li>
+    title="orxCHAR_CR = &apos;\c&apos;">orxCHAR_CR</a></li>
   <li><a class="reference" href="#orxCHAR_LF"
-    title="orxCHAR_LF = &apos;\n&apos;"><wbr />orx<wbr />CHAR_<wbr />LF<span class="attachedType"></span></a></li>
+    title="orxCHAR_LF = &apos;\n&apos;">orxCHAR_LF</a></li>
   <li><a class="reference" href="#orxCHAR_EOL"
-    title="orxCHAR_EOL = &apos;\n&apos;"><wbr />orx<wbr />CHAR_<wbr />EOL<span class="attachedType"></span></a></li>
+    title="orxCHAR_EOL = &apos;\n&apos;">orxCHAR_EOL</a></li>
   <li><a class="reference" href="#orxCHAR_ASCII_NUMBER"
-    title="orxCHAR_ASCII_NUMBER = 128"><wbr />orx<wbr />CHAR_<wbr />ASCII_<wbr />NUMBER<span class="attachedType"></span></a></li>
+    title="orxCHAR_ASCII_NUMBER = 128">orxCHAR_ASCII_NUMBER</a></li>
   <li><a class="reference" href="#orxCHAR_DIRECTORY_SEPARATOR_WINDOWS"
-    title="orxCHAR_DIRECTORY_SEPARATOR_WINDOWS = &apos;\b&apos;"><wbr />orx<wbr />CHAR_<wbr />DIRECTORY_<wbr />SEPARATOR_<wbr />WINDOWS<span class="attachedType"></span></a></li>
+    title="orxCHAR_DIRECTORY_SEPARATOR_WINDOWS = &apos;\b&apos;">orxCHAR_DIRECTORY_SEPARATOR_WINDOWS</a></li>
   <li><a class="reference" href="#orxCHAR_DIRECTORY_SEPARATOR_LINUX"
-    title="orxCHAR_DIRECTORY_SEPARATOR_LINUX = &apos;/&apos;"><wbr />orx<wbr />CHAR_<wbr />DIRECTORY_<wbr />SEPARATOR_<wbr />LINUX<span class="attachedType"></span></a></li>
+    title="orxCHAR_DIRECTORY_SEPARATOR_LINUX = &apos;/&apos;">orxCHAR_DIRECTORY_SEPARATOR_LINUX</a></li>
   <li><a class="reference" href="#orxCHAR_DIRECTORY_SEPARATOR"
-    title="orxCHAR_DIRECTORY_SEPARATOR = &apos;/&apos;"><wbr />orx<wbr />CHAR_<wbr />DIRECTORY_<wbr />SEPARATOR<span class="attachedType"></span></a></li>
+    title="orxCHAR_DIRECTORY_SEPARATOR = &apos;/&apos;">orxCHAR_DIRECTORY_SEPARATOR</a></li>
 
   </ul>
 </li>
@@ -196,9 +198,9 @@ function main() {
   <a class="reference reference-toplevel" href="#16" id="66">Converters</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#toBool.c%2CorxBOOL"
-    title="toBool(x: orxBOOL): bool"><wbr />to<wbr />Bool<span class="attachedType">orxBOOL</span></a></li>
+    title="toBool(x: orxBOOL): bool">toBool</a></li>
   <li><a class="reference" href="#toOrxBOOL.c%2Cbool"
-    title="toOrxBOOL(x: bool): orxBOOL"><wbr />to<wbr />Orx<wbr />BOOL<span class="attachedType">orxBOOL</span></a></li>
+    title="toOrxBOOL(x: bool): orxBOOL">toOrxBOOL</a></li>
 
   </ul>
 </li>
@@ -206,9 +208,9 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orx2F.t%2Cuntyped"
-    title="orx2F(V: untyped): untyped"><wbr />orx2F<span class="attachedType"></span></a></li>
+    title="orx2F(V: untyped): untyped">orx2F</a></li>
   <li><a class="reference" href="#orx2D.t%2Cuntyped"
-    title="orx2D(V: untyped): untyped"><wbr />orx2D<span class="attachedType"></span></a></li>
+    title="orx2D(V: untyped): untyped">orx2D</a></li>
 
   </ul>
 </li>
@@ -234,9 +236,9 @@ function main() {
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L54"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L58"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxU64"></a>
@@ -245,9 +247,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L57"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L61"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxU32"></a>
@@ -256,9 +258,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L58"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L62"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxU16"></a>
@@ -267,9 +269,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L59"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L63"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxU8"></a>
@@ -278,9 +280,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L60"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L64"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L64" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxS64"></a>
@@ -289,9 +291,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L61"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L65"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L65" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxS32"></a>
@@ -300,9 +302,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L62"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L66"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxS16"></a>
@@ -311,9 +313,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L63"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L67"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L67" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxS8"></a>
@@ -322,9 +324,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L64"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L68"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L64" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L68" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxBOOL"></a>
@@ -333,9 +335,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L65"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L69"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L65" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L69" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxFLOAT"></a>
@@ -344,9 +346,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L78"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L82"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDOUBLE"></a>
@@ -355,9 +357,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L79"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L83"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L79" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR"></a>
@@ -366,20 +368,20 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L80"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L84"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L80" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTRINGID"></a>
-<dt><pre><a href="typ.html#orxSTRINGID"><span class="Identifier">orxSTRINGID</span></a> <span class="Other">=</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a></pre></dt>
+<dt><pre><a href="typ.html#orxSTRINGID"><span class="Identifier">orxSTRINGID</span></a> <span class="Other">=</span> <a href="typ.html#orxU64"><span class="Identifier">orxU64</span></a></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L82"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L86"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L86" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxENUM"></a>
@@ -388,9 +390,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L83"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L87"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L87" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSEEK_OFFSET_WHENCE"></a>
@@ -402,22 +404,24 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L97"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L102"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L97" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L102" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTATUS"></a>
 <dt><pre><a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">orxSTATUS_FAILURE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>        <span class="Comment">## Failure status, the operation has failed</span>
-  <span class="Identifier">orxSTATUS_SUCCESS</span><span class="Other">,</span> <span class="Identifier">orxSTATUS_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxSTATUS_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
+  <span class="Identifier">orxSTATUS_FAILURE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>    <span class="Comment">## Failure status, the operation has failed</span>
+  <span class="Identifier">orxSTATUS_SUCCESS</span><span class="Other">,</span>        <span class="Comment">## Success status, the operation has worked has expected</span>
+  <span class="Identifier">orxSTATUS_NUMBER</span><span class="Other">,</span>         <span class="Comment">## Sentinel : Number of status</span>
+  <span class="Identifier">orxSTATUS_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L184"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L189"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L184" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L189" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -431,9 +435,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L151"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L156"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L156" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTRING_TRUE"></a>
@@ -442,9 +446,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L153"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L158"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L153" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTRING_FALSE"></a>
@@ -453,9 +457,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L155"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L160"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L155" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L160" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTRING_EOL"></a>
@@ -464,9 +468,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L157"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L162"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L157" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L162" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxSTRING_DIRECTORY_SEPARATOR"></a>
@@ -475,9 +479,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L167"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L172"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L167" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L172" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -491,9 +495,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L91"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L95"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxFALSE"></a>
@@ -502,9 +506,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L105"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L110"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L110" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxTRUE"></a>
@@ -513,9 +517,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L106"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L111"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L106" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L111" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxFLOAT_0"></a>
@@ -524,9 +528,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L119"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L124"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L119" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L124" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxFLOAT_1"></a>
@@ -535,9 +539,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L122"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L127"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L122" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxFLOAT_MAX"></a>
@@ -546,9 +550,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L125"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L130"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L125" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_NULL"></a>
@@ -557,9 +561,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L160"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L165"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L160" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L165" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_CR"></a>
@@ -568,9 +572,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L161"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L166"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L161" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L166" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_LF"></a>
@@ -579,9 +583,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L162"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L167"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L162" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L167" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_EOL"></a>
@@ -590,9 +594,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L163"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L168"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L163" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L168" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_ASCII_NUMBER"></a>
@@ -601,9 +605,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L164"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L169"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L169" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_DIRECTORY_SEPARATOR_WINDOWS"></a>
@@ -612,9 +616,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L171"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L176"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L171" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L176" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_DIRECTORY_SEPARATOR_LINUX"></a>
@@ -623,9 +627,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L172"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L177"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L172" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxCHAR_DIRECTORY_SEPARATOR"></a>
@@ -634,9 +638,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L180"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L185"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L180" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L185" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -650,9 +654,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Converts orxBOOL to bool
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L109"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L114"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L109" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L114" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="toOrxBOOL.c,bool"></a>
@@ -661,9 +665,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Converts bool to orxBOOL
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L112"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L117"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L112" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -677,9 +681,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L84"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L88"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L88" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orx2D.t,untyped"></a>
@@ -688,9 +692,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/typ.nim#L87"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/typ.nim#L91"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/typ.nim#L87" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/typ.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -703,7 +707,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-07-24 12:57:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-24 21:08:05 UTC</small>
       </div>
     </div>
   </div>

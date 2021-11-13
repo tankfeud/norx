@@ -68,6 +68,8 @@ rm -rf app/build
 ./gradlew assembleDebug -Parmeabi-v7a
 
 # Install on device
-echo "To install type: ./gradlew installDebug -Parmeabi-v7a"
+echo "To install type:"
+echo "cd build/android-native"
+echo "./gradlew installDebug -Parmeabi-v7a"
 #./gradlew installDebug -Parmeabi-v7a
 #./gradle installRelease

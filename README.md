@@ -54,8 +54,8 @@ These are the "differences" that you should be aware of when you read ORX docume
 # How to generate HTML docs
 There is a bash script `generatedocs.sh` that will regenerate the contents of the `htmldocs` directory. The documentation is unfortunately not searchable when viewed through the local filesystem, but you can reach the current docs on:
 
-* https://rawgit.com/gokr/norx/master/htmldocs/norx.html - The top level norx.nim doc. TODO: I need to add better comments!
-* https://rawgit.com/gokr/norx/master/htmldocs/theindex.html - The index of all the docs.
+* https://rawgit.com/tankfeud/norx/master/htmldocs/norx.html - The top level norx.nim doc. TODO: I need to add better comments!
+* https://rawgit.com/tankfeud/norx/master/htmldocs/theindex.html - The index of all the docs.
 
 I will investigate hosting docs on a proper website.
 
@@ -81,7 +81,7 @@ These are notes to "self". We track any changes to the `include` directory, for 
 # norx 0.5.0 - Upgrade to Orx b-release (1.12 release)
 This was not done by the steps above but manually merging corresponding header changes directly into nim files.
 1. Compare orx header changes, between versions 2020-07 and b-release branch.
-2. Added build.nim contaiing value from orxBuild.h after running setup.sh in Orx from b-release branch.
+2. Added build.nim containing value from orxBuild.h after running setup.sh in Orx from b-release branch.
 3. Problematic orxColorList.h was referenced by macro in orxVector.h generating list of colors of the orxVECTOR 
    This is solved by running new script in scripts/crreateNimColors.sh that generates colors in src/norx/colorList.nim
 4. Verifying all official samples works with Orx library compiled from b-release branch

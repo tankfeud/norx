@@ -93,6 +93,7 @@ else:
 
     const
       orxENUM_NONE* = 0xFFFFFFFF
+      # orxENUM_NONE* = -1 # TODO: this value was 0xFFFFFFFF used as a commaon NONE-enum for many Enum but Nim can't handle a Range from 0 to 0xFFFFFFFF when we need to iterate Enum values.
 
 ##  *** Misc constants ***
 

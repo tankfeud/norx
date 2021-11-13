@@ -71,7 +71,7 @@
   #define __orxVERSION_RELEASE__    "dev"
   #define __orxVERSION_BUILD__      0
 #endif
-  
+
 #ifndef C2NIM
 #define __orxVERSION_STRING__       orxSTRINGIFY(__orxVERSION_MAJOR__) "." orxSTRINGIFY(__orxVERSION_MINOR__) "-" orxSTRINGIFY(__orxVERSION_RELEASE__)
 #define __orxVERSION_FULL_STRING__  orxSTRINGIFY(__orxVERSION_MAJOR__) "." orxSTRINGIFY(__orxVERSION_MINOR__) "." orxSTRINGIFY(__orxVERSION_BUILD__) "-" orxSTRINGIFY(__orxVERSION_RELEASE__)

@@ -102,20 +102,35 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxDEBUG_LEVEL"
     title="orxDEBUG_LEVEL {.size: 4.} = enum
-  orxDEBUG_LEVEL_ANIM = 0,      ## Anim Debug
-  orxDEBUG_LEVEL_CONFIG, orxDEBUG_LEVEL_CLOCK, orxDEBUG_LEVEL_DISPLAY,
-  orxDEBUG_LEVEL_FILE, orxDEBUG_LEVEL_INPUT, orxDEBUG_LEVEL_JOYSTICK,
-  orxDEBUG_LEVEL_KEYBOARD, orxDEBUG_LEVEL_MEMORY, orxDEBUG_LEVEL_MOUSE,
-  orxDEBUG_LEVEL_OBJECT, orxDEBUG_LEVEL_PARAM, orxDEBUG_LEVEL_PHYSICS,
-  orxDEBUG_LEVEL_PLUGIN, orxDEBUG_LEVEL_PROFILER, orxDEBUG_LEVEL_RENDER,
-  orxDEBUG_LEVEL_SCREENSHOT, orxDEBUG_LEVEL_SOUND, orxDEBUG_LEVEL_SYSTEM,
-  orxDEBUG_LEVEL_TIMER, orxDEBUG_LEVEL_LOG, orxDEBUG_LEVEL_ASSERT,
-  orxDEBUG_LEVEL_USER, orxDEBUG_LEVEL_NUMBER, orxDEBUG_LEVEL_MAX_NUMBER = 32, orxDEBUG_LEVEL_ALL = 4294967294, ## All Debugs
-  orxDEBUG_LEVEL_NONE = 4294967295"><wbr />orx<wbr />DEBUG_<wbr />LEVEL<span class="attachedType"></span></a></li>
+  orxDEBUG_LEVEL_ANIM = 0,  ## Anim Debug
+  orxDEBUG_LEVEL_CONFIG,    ## Config Debug
+  orxDEBUG_LEVEL_CLOCK,     ## Clock Debug
+  orxDEBUG_LEVEL_DISPLAY,   ## Display Debug
+  orxDEBUG_LEVEL_FILE,      ## File Debug
+  orxDEBUG_LEVEL_INPUT,     ## Input Debug
+  orxDEBUG_LEVEL_JOYSTICK,  ## Joystick Debug
+  orxDEBUG_LEVEL_KEYBOARD,  ## Keyboard Debug
+  orxDEBUG_LEVEL_MEMORY,    ## Memory Debug
+  orxDEBUG_LEVEL_MOUSE,     ## Mouse Debug
+  orxDEBUG_LEVEL_OBJECT,    ## Object Debug
+  orxDEBUG_LEVEL_PARAM,     ## Param Debug
+  orxDEBUG_LEVEL_PHYSICS,   ## Physics Debug
+  orxDEBUG_LEVEL_PLUGIN,    ## Plug-in Debug
+  orxDEBUG_LEVEL_PROFILER,  ## Profiler Debug
+  orxDEBUG_LEVEL_RENDER,    ## Render Debug
+  orxDEBUG_LEVEL_SCREENSHOT, ## Screenshot Debug
+  orxDEBUG_LEVEL_SOUND,     ## Sound Debug
+  orxDEBUG_LEVEL_SYSTEM,    ## System Debug
+  orxDEBUG_LEVEL_TIMER,     ## Timer Debug
+  orxDEBUG_LEVEL_LOG,       ## Log Debug
+  orxDEBUG_LEVEL_ASSERT,    ## Assert Debug
+  orxDEBUG_LEVEL_USER,      ## User Debug
+  orxDEBUG_LEVEL_NUMBER, orxDEBUG_LEVEL_MAX_NUMBER = 32, orxDEBUG_LEVEL_ALL = 4294967294, ## All Debugs
+  orxDEBUG_LEVEL_NONE = 4294967295">orxDEBUG_LEVEL</a></li>
   <li><a class="reference" href="#orxDEBUG_CALLBACK_FUNCTION"
     title="orxDEBUG_CALLBACK_FUNCTION = proc (eLevel: orxDEBUG_LEVEL; zFunction: cstring;
-                                zFile: cstring; u32Line: orxU32; zLog: cstring): orxSTATUS {.
-    cdecl.}"><wbr />orx<wbr />DEBUG_<wbr />CALLBACK_<wbr />FUNCTION<span class="attachedType"></span></a></li>
+                                   zFile: cstring; u32Line: orxU32;
+                                   zLog: cstring): orxSTATUS {.cdecl.}">orxDEBUG_CALLBACK_FUNCTION</a></li>
 
   </ul>
 </li>
@@ -123,70 +138,106 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_NONE"
-    title="orxDEBUG_KU32_STATIC_FLAG_NONE = 0x00000000"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />NONE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_NONE = 0x00000000">orxDEBUG_KU32_STATIC_FLAG_NONE</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP"
-    title="orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP = 0x00000001"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />TIMESTAMP<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP = 0x00000001">orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP"
-    title="orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP = 0x00000002"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />FULL_<wbr />TIMESTAMP<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP = 0x00000002">orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_TYPE"
-    title="orxDEBUG_KU32_STATIC_FLAG_TYPE = 0x00000004"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />TYPE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_TYPE = 0x00000004">orxDEBUG_KU32_STATIC_FLAG_TYPE</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_TAGGED"
-    title="orxDEBUG_KU32_STATIC_FLAG_TAGGED = 0x00000008"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />TAGGED<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_TAGGED = 0x00000008">orxDEBUG_KU32_STATIC_FLAG_TAGGED</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_FILE"
-    title="orxDEBUG_KU32_STATIC_FLAG_FILE = 0x00000010"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />FILE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_FILE = 0x00000010">orxDEBUG_KU32_STATIC_FLAG_FILE</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_TERMINAL"
-    title="orxDEBUG_KU32_STATIC_FLAG_TERMINAL = 0x00000020"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />TERMINAL<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_TERMINAL = 0x00000020">orxDEBUG_KU32_STATIC_FLAG_TERMINAL</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_CONSOLE"
-    title="orxDEBUG_KU32_STATIC_FLAG_CONSOLE = 0x00000040"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />CONSOLE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_CONSOLE = 0x00000040">orxDEBUG_KU32_STATIC_FLAG_CONSOLE</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_FLAG_CALLBACK"
-    title="orxDEBUG_KU32_STATIC_FLAG_CALLBACK = 0x00000080"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />FLAG_<wbr />CALLBACK<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_FLAG_CALLBACK = 0x00000080">orxDEBUG_KU32_STATIC_FLAG_CALLBACK</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_MASK_DEFAULT"
-    title="orxDEBUG_KU32_STATIC_MASK_DEFAULT = 0x000000F5"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />MASK_<wbr />DEFAULT<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_MASK_DEFAULT = 0x000000F5">orxDEBUG_KU32_STATIC_MASK_DEFAULT</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_MASK_DEBUG"
-    title="orxDEBUG_KU32_STATIC_MASK_DEBUG = 0x000000BD"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />MASK_<wbr />DEBUG<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_MASK_DEBUG = 0x000000BD">orxDEBUG_KU32_STATIC_MASK_DEBUG</a></li>
   <li><a class="reference" href="#orxDEBUG_KU32_STATIC_MASK_USER_ALL"
-    title="orxDEBUG_KU32_STATIC_MASK_USER_ALL = 0x0FFFFFFF"><wbr />orx<wbr />DEBUG_<wbr />KU32_<wbr />STATIC_<wbr />MASK_<wbr />USER_<wbr />ALL<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KU32_STATIC_MASK_USER_ALL = 0x0FFFFFFF">orxDEBUG_KU32_STATIC_MASK_USER_ALL</a></li>
   <li><a class="reference" href="#orxDEBUG_KZ_DEFAULT_DEBUG_FILE"
-    title="orxDEBUG_KZ_DEFAULT_DEBUG_FILE = &quot;orx-debug.log&quot;"><wbr />orx<wbr />DEBUG_<wbr />KZ_<wbr />DEFAULT_<wbr />DEBUG_<wbr />FILE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KZ_DEFAULT_DEBUG_FILE = &quot;orx-debug.log&quot;">orxDEBUG_KZ_DEFAULT_DEBUG_FILE</a></li>
   <li><a class="reference" href="#orxDEBUG_KZ_DEFAULT_LOG_FILE"
-    title="orxDEBUG_KZ_DEFAULT_LOG_FILE = &quot;orx.log&quot;"><wbr />orx<wbr />DEBUG_<wbr />KZ_<wbr />DEFAULT_<wbr />LOG_<wbr />FILE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KZ_DEFAULT_LOG_FILE = &quot;orx.log&quot;">orxDEBUG_KZ_DEFAULT_LOG_FILE</a></li>
   <li><a class="reference" href="#orxDEBUG_KZ_DEFAULT_LOG_SUFFIX"
-    title="orxDEBUG_KZ_DEFAULT_LOG_SUFFIX = &quot;.log&quot;"><wbr />orx<wbr />DEBUG_<wbr />KZ_<wbr />DEFAULT_<wbr />LOG_<wbr />SUFFIX<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KZ_DEFAULT_LOG_SUFFIX = &quot;.log&quot;">orxDEBUG_KZ_DEFAULT_LOG_SUFFIX</a></li>
   <li><a class="reference" href="#orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX"
-    title="orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX = &quot;-debug.log&quot;"><wbr />orx<wbr />DEBUG_<wbr />KZ_<wbr />DEFAULT_<wbr />DEBUG_<wbr />SUFFIX<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX = &quot;-debug.log&quot;">orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX</a></li>
   <li><a class="reference" href="#orxDEBUG_KS32_BUFFER_OUTPUT_SIZE"
-    title="orxDEBUG_KS32_BUFFER_OUTPUT_SIZE = 2048"><wbr />orx<wbr />DEBUG_<wbr />KS32_<wbr />BUFFER_<wbr />OUTPUT_<wbr />SIZE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_KS32_BUFFER_OUTPUT_SIZE = 2048">orxDEBUG_KS32_BUFFER_OUTPUT_SIZE</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">debugBreak
+      <li><a class="reference" href="#debugBreak"
+    title="debugBreak()">debugBreak</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">enableLevel
+      <li><a class="reference" href="#enableLevel%2CorxDEBUG_LEVEL%2CorxBOOL"
+    title="enableLevel(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL)">enableLevel,<wbr>orxDEBUG_LEVEL,<wbr>orxBOOL</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setLogFile
+      <li><a class="reference" href="#setLogFile%2Ccstring"
+    title="setLogFile(zFileName: cstring)">setLogFile,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isLevelEnabled
+      <li><a class="reference" href="#isLevelEnabled%2CorxDEBUG_LEVEL"
+    title="isLevelEnabled(eLevel: orxDEBUG_LEVEL): orxBOOL">isLevelEnabled,<wbr>orxDEBUG_LEVEL</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">debugInit
+      <li><a class="reference" href="#debugInit"
+    title="debugInit(): orxSTATUS">debugInit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFlags
+      <li><a class="reference" href="#getFlags"
+    title="getFlags(): orxU32">getFlags</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">orxLOG
       <li><a class="reference" href="#orxLOG%2Cstring"
-    title="orxLOG(s: string)"><wbr />orx<wbr />LOG<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#debugInit"
-    title="debugInit(): orxSTATUS"><wbr />debug<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#debugExit"
-    title="debugExit()"><wbr />debug<wbr />Exit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#log%2CorxDEBUG_LEVEL%2Ccstring%2Ccstring%2CorxU32%2Ccstring"
+    title="orxLOG(s: string)">orxLOG,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setDebugFile
+      <li><a class="reference" href="#setDebugFile%2Ccstring"
+    title="setDebugFile(zFileName: cstring)">setDebugFile,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">debugExit
+      <li><a class="reference" href="#debugExit"
+    title="debugExit()">debugExit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setLogCallback
+      <li><a class="reference" href="#setLogCallback%2CorxDEBUG_CALLBACK_FUNCTION"
+    title="setLogCallback(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION)">setLogCallback,<wbr>orxDEBUG_CALLBACK_FUNCTION</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setFlags
+      <li><a class="reference" href="#setFlags%2CorxU32%2CorxU32"
+    title="setFlags(u32Add: orxU32; u32Remove: orxU32)">setFlags,<wbr>orxU32,<wbr>orxU32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">log
+      <li><a class="reference" href="#log%2CorxDEBUG_LEVEL%2Ccstring%2Ccstring%2CorxU32%2Ccstring"
     title="log(eLevel: orxDEBUG_LEVEL; zFunction: cstring; zFile: cstring; u32Line: orxU32;
-    zFormat: cstring)"><wbr />log<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#enableLevel%2CorxDEBUG_LEVEL%2CorxBOOL"
-    title="enableLevel(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL)"><wbr />enable<wbr />Level<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isLevelEnabled%2CorxDEBUG_LEVEL"
-    title="isLevelEnabled(eLevel: orxDEBUG_LEVEL): orxBOOL"><wbr />is<wbr />Level<wbr />Enabled<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setFlags%2CorxU32%2CorxU32"
-    title="setFlags(u32Add: orxU32; u32Remove: orxU32)"><wbr />set<wbr />Flags<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFlags"
-    title="getFlags(): orxU32"><wbr />get<wbr />Flags<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#debugBreak"
-    title="debugBreak()"><wbr />debug<wbr />Break<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setDebugFile%2Ccstring"
-    title="setDebugFile(zFileName: cstring)"><wbr />set<wbr />Debug<wbr />File<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setLogFile%2Ccstring"
-    title="setLogFile(zFileName: cstring)"><wbr />set<wbr />Log<wbr />File<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setLogCallback%2CorxDEBUG_CALLBACK_FUNCTION"
-    title="setLogCallback(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION)"><wbr />set<wbr />Log<wbr />Callback<span class="attachedType">orxDEBUG_CALLBACK_FUNCTION</span></a></li>
+    zFormat: cstring)">log,<wbr>orxDEBUG_LEVEL,<wbr>cstring,<wbr>cstring,<wbr>orxU32,<wbr>cstring</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -194,27 +245,27 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#orxDEBUG_ENABLE_LEVEL_MACRO.t%2Cuntyped%2Cuntyped"
-    title="orxDEBUG_ENABLE_LEVEL_MACRO(LEVEL, ENABLE: untyped): untyped"><wbr />orx<wbr />DEBUG_<wbr />ENABLE_<wbr />LEVEL_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_ENABLE_LEVEL_MACRO(LEVEL, ENABLE: untyped): untyped">orxDEBUG_ENABLE_LEVEL_MACRO</a></li>
   <li><a class="reference" href="#orxDEBUG_IS_LEVEL_ENABLED_MACRO.t%2Cuntyped"
-    title="orxDEBUG_IS_LEVEL_ENABLED_MACRO(LEVEL: untyped): untyped"><wbr />orx<wbr />DEBUG_<wbr />IS_<wbr />LEVEL_<wbr />ENABLED_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_IS_LEVEL_ENABLED_MACRO(LEVEL: untyped): untyped">orxDEBUG_IS_LEVEL_ENABLED_MACRO</a></li>
   <li><a class="reference" href="#orxDEBUG_SET_FLAGS_MACRO.t%2Cuntyped%2Cuntyped"
-    title="orxDEBUG_SET_FLAGS_MACRO(SET, UNSET: untyped): untyped"><wbr />orx<wbr />DEBUG_<wbr />SET_<wbr />FLAGS_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_SET_FLAGS_MACRO(SET, UNSET: untyped): untyped">orxDEBUG_SET_FLAGS_MACRO</a></li>
   <li><a class="reference" href="#orxDEBUG_GET_FLAGS_MACRO.t"
-    title="orxDEBUG_GET_FLAGS_MACRO(): untyped"><wbr />orx<wbr />DEBUG_<wbr />GET_<wbr />FLAGS_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_GET_FLAGS_MACRO(): untyped">orxDEBUG_GET_FLAGS_MACRO</a></li>
   <li><a class="reference" href="#orxDEBUG_SET_LOG_CALLBACK.t%2Cuntyped"
-    title="orxDEBUG_SET_LOG_CALLBACK(CALLBACK: untyped): untyped"><wbr />orx<wbr />DEBUG_<wbr />SET_<wbr />LOG_<wbr />CALLBACK<span class="attachedType"></span></a></li>
+    title="orxDEBUG_SET_LOG_CALLBACK(CALLBACK: untyped): untyped">orxDEBUG_SET_LOG_CALLBACK</a></li>
   <li><a class="reference" href="#orxDEBUG_SETLOGFILE.t%2Cuntyped"
-    title="orxDEBUG_SETLOGFILE(FILE: untyped): untyped"><wbr />orx<wbr />DEBUG_<wbr />SETLOGFILE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_SETLOGFILE(FILE: untyped): untyped">orxDEBUG_SETLOGFILE</a></li>
   <li><a class="reference" href="#orxBREAK.t"
-    title="orxBREAK(): void"><wbr />orx<wbr />BREAK<span class="attachedType"></span></a></li>
+    title="orxBREAK(): void">orxBREAK</a></li>
   <li><a class="reference" href="#orxDEBUG_SETDEBUGFILE.t%2Cuntyped"
-    title="orxDEBUG_SETDEBUGFILE(FILE: untyped): void"><wbr />orx<wbr />DEBUG_<wbr />SETDEBUGFILE<span class="attachedType"></span></a></li>
+    title="orxDEBUG_SETDEBUGFILE(FILE: untyped): void">orxDEBUG_SETDEBUGFILE</a></li>
   <li><a class="reference" href="#orxDEBUG_SETBASEFILENAME.t%2Cuntyped"
-    title="orxDEBUG_SETBASEFILENAME(FILE: untyped): void"><wbr />orx<wbr />DEBUG_<wbr />SETBASEFILENAME<span class="attachedType"></span></a></li>
+    title="orxDEBUG_SETBASEFILENAME(FILE: untyped): void">orxDEBUG_SETBASEFILENAME</a></li>
   <li><a class="reference" href="#orxDEBUG_INIT_MACRO.t"
-    title="orxDEBUG_INIT_MACRO(): void"><wbr />orx<wbr />DEBUG_<wbr />INIT_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_INIT_MACRO(): void">orxDEBUG_INIT_MACRO</a></li>
   <li><a class="reference" href="#orxDEBUG_EXIT_MACRO.t"
-    title="orxDEBUG_EXIT_MACRO(): untyped"><wbr />orx<wbr />DEBUG_<wbr />EXIT_<wbr />MACRO<span class="attachedType"></span></a></li>
+    title="orxDEBUG_EXIT_MACRO(): untyped">orxDEBUG_EXIT_MACRO</a></li>
 
   </ul>
 </li>
@@ -236,36 +287,51 @@ function main() {
 <dl class="item">
 <a id="orxDEBUG_LEVEL"></a>
 <dt><pre><a href="debug.html#orxDEBUG_LEVEL"><span class="Identifier">orxDEBUG_LEVEL</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">orxDEBUG_LEVEL_ANIM</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>      <span class="Comment">## Anim Debug</span>
-  <span class="Identifier">orxDEBUG_LEVEL_CONFIG</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_CLOCK</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_DISPLAY</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_FILE</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_INPUT</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_JOYSTICK</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_KEYBOARD</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_MEMORY</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_MOUSE</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_OBJECT</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_PARAM</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_PHYSICS</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_PLUGIN</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_PROFILER</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_RENDER</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_SCREENSHOT</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_SOUND</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_SYSTEM</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_TIMER</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_LOG</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_ASSERT</span><span class="Other">,</span>
-  <span class="Identifier">orxDEBUG_LEVEL_USER</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_MAX_NUMBER</span> <span class="Other">=</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_ALL</span> <span class="Other">=</span> <span class="DecNumber">4294967294</span><span class="Other">,</span> <span class="Comment">## All Debugs</span>
+  <span class="Identifier">orxDEBUG_LEVEL_ANIM</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>  <span class="Comment">## Anim Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_CONFIG</span><span class="Other">,</span>    <span class="Comment">## Config Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_CLOCK</span><span class="Other">,</span>     <span class="Comment">## Clock Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_DISPLAY</span><span class="Other">,</span>   <span class="Comment">## Display Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_FILE</span><span class="Other">,</span>      <span class="Comment">## File Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_INPUT</span><span class="Other">,</span>     <span class="Comment">## Input Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_JOYSTICK</span><span class="Other">,</span>  <span class="Comment">## Joystick Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_KEYBOARD</span><span class="Other">,</span>  <span class="Comment">## Keyboard Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_MEMORY</span><span class="Other">,</span>    <span class="Comment">## Memory Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_MOUSE</span><span class="Other">,</span>     <span class="Comment">## Mouse Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_OBJECT</span><span class="Other">,</span>    <span class="Comment">## Object Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_PARAM</span><span class="Other">,</span>     <span class="Comment">## Param Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_PHYSICS</span><span class="Other">,</span>   <span class="Comment">## Physics Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_PLUGIN</span><span class="Other">,</span>    <span class="Comment">## Plug-in Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_PROFILER</span><span class="Other">,</span>  <span class="Comment">## Profiler Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_RENDER</span><span class="Other">,</span>    <span class="Comment">## Render Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_SCREENSHOT</span><span class="Other">,</span> <span class="Comment">## Screenshot Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_SOUND</span><span class="Other">,</span>     <span class="Comment">## Sound Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_SYSTEM</span><span class="Other">,</span>    <span class="Comment">## System Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_TIMER</span><span class="Other">,</span>     <span class="Comment">## Timer Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_LOG</span><span class="Other">,</span>       <span class="Comment">## Log Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_ASSERT</span><span class="Other">,</span>    <span class="Comment">## Assert Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_USER</span><span class="Other">,</span>      <span class="Comment">## User Debug</span>
+  <span class="Identifier">orxDEBUG_LEVEL_NUMBER</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_MAX_NUMBER</span> <span class="Other">=</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="Identifier">orxDEBUG_LEVEL_ALL</span> <span class="Other">=</span> <span class="DecNumber">4294967294</span><span class="Other">,</span> <span class="Comment">## All Debugs</span>
   <span class="Identifier">orxDEBUG_LEVEL_NONE</span> <span class="Other">=</span> <span class="DecNumber">4294967295</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L30"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L30"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_CALLBACK_FUNCTION"></a>
 <dt><pre><a href="debug.html#orxDEBUG_CALLBACK_FUNCTION"><span class="Identifier">orxDEBUG_CALLBACK_FUNCTION</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">eLevel</span><span class="Other">:</span> <a href="debug.html#orxDEBUG_LEVEL"><span class="Identifier">orxDEBUG_LEVEL</span></a><span class="Other">;</span> <span class="Identifier">zFunction</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
-                                <span class="Identifier">zFile</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">u32Line</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a><span class="Other">;</span> <span class="Identifier">zLog</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
+                                   <span class="Identifier">zFile</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">u32Line</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a><span class="Other">;</span>
+                                   <span class="Identifier">zLog</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="typ.html#orxSTATUS"><span class="Identifier">orxSTATUS</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L66"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L66"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -279,9 +345,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L6"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L6"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L6" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L6" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP"></a>
@@ -290,9 +356,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L7"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L7"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L7" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP"></a>
@@ -301,9 +367,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L8"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L8"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_TYPE"></a>
@@ -312,9 +378,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L9"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L9"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L9" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L9" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_TAGGED"></a>
@@ -323,9 +389,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L10"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L10"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L10" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L10" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_FILE"></a>
@@ -334,9 +400,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L11"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L11"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L11" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L11" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_TERMINAL"></a>
@@ -345,9 +411,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L12"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L12"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L12" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L12" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_CONSOLE"></a>
@@ -356,9 +422,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L13"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L13"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L13" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L13" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_FLAG_CALLBACK"></a>
@@ -367,9 +433,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L14"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L14"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_MASK_DEFAULT"></a>
@@ -378,9 +444,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L15"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L15"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L15" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L15" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_MASK_DEBUG"></a>
@@ -389,9 +455,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L16"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L16"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L16" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L16" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KU32_STATIC_MASK_USER_ALL"></a>
@@ -400,9 +466,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L17"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L17"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L17" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L17" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KZ_DEFAULT_DEBUG_FILE"></a>
@@ -411,9 +477,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L22"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L22"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L22" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L22" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KZ_DEFAULT_LOG_FILE"></a>
@@ -422,9 +488,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L23"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L23"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KZ_DEFAULT_LOG_SUFFIX"></a>
@@ -433,9 +499,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L24"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L24"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX"></a>
@@ -444,9 +510,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L25"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L25"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L25" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L25" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_KS32_BUFFER_OUTPUT_SIZE"></a>
@@ -455,9 +521,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L129"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L129"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L129" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L129" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -471,9 +537,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L60"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L60"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="debugInit"></a>
@@ -485,9 +551,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L134"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L134"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L134" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L134" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="debugExit"></a>
@@ -496,14 +562,15 @@ class="link-seesrc" target="_blank">Source</a>
 
 Exits from the debug module
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L139"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L139"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L139" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L139" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="log,orxDEBUG_LEVEL,cstring,cstring,orxU32,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#log%2CorxDEBUG_LEVEL%2Ccstring%2Ccstring%2CorxU32%2Ccstring"><span class="Identifier">log</span></a><span class="Other">(</span><span class="Identifier">eLevel</span><span class="Other">:</span> <a href="debug.html#orxDEBUG_LEVEL"><span class="Identifier">orxDEBUG_LEVEL</span></a><span class="Other">;</span> <span class="Identifier">zFunction</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">zFile</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">u32Line</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a><span class="Other">;</span>
-        <span class="Identifier">zFormat</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;_orxDebug_Log&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#log%2CorxDEBUG_LEVEL%2Ccstring%2Ccstring%2CorxU32%2Ccstring"><span class="Identifier">log</span></a><span class="Other">(</span><span class="Identifier">eLevel</span><span class="Other">:</span> <a href="debug.html#orxDEBUG_LEVEL"><span class="Identifier">orxDEBUG_LEVEL</span></a><span class="Other">;</span> <span class="Identifier">zFunction</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">zFile</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
+         <span class="Identifier">u32Line</span><span class="Other">:</span> <a href="typ.html#orxU32"><span class="Identifier">orxU32</span></a><span class="Other">;</span> <span class="Identifier">zFormat</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;_orxDebug_Log&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Logs given debug text</dt>
@@ -511,9 +578,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L142"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L142"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="enableLevel,orxDEBUG_LEVEL,orxBOOL"></a>
@@ -526,9 +593,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L152"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L152"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L152" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L152" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="isLevelEnabled,orxDEBUG_LEVEL"></a>
@@ -541,9 +608,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L158"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L158"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setFlags,orxU32,orxU32"></a>
@@ -556,9 +623,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L163"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L163"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L163" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L163" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="getFlags"></a>
@@ -570,9 +637,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L169"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L169"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L169" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L169" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="debugBreak"></a>
@@ -581,14 +648,15 @@ class="link-seesrc" target="_blank">Source</a>
 
 Software break function
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L174"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L174"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setDebugFile,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setDebugFile%2Ccstring"><span class="Identifier">setDebugFile</span></a><span class="Other">(</span><span class="Identifier">zFileName</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;_orxDebug_SetDebugFile&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setDebugFile%2Ccstring"><span class="Identifier">setDebugFile</span></a><span class="Other">(</span><span class="Identifier">zFileName</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+                                        <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;_orxDebug_SetDebugFile&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Sets debug file name</dt>
@@ -596,14 +664,14 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L177"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L177"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setLogFile,cstring"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#setLogFile%2Ccstring"><span class="Identifier">setLogFile</span></a><span class="Other">(</span><span class="Identifier">zFileName</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;_orxDebug_SetLogFile&quot;</span><span class="Other">,</span>
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">libORX</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <dl class="docutils"><dt>Sets log file name</dt>
@@ -611,9 +679,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L182"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L182"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L182" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L182" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="setLogCallback,orxDEBUG_CALLBACK_FUNCTION"></a>
@@ -626,9 +694,9 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L187"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L187"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L187" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L187" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -642,9 +710,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L72"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L72"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_IS_LEVEL_ENABLED_MACRO.t,untyped"></a>
@@ -653,9 +721,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L75"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L75"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L75" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L75" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_SET_FLAGS_MACRO.t,untyped,untyped"></a>
@@ -664,9 +732,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L78"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L78"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_GET_FLAGS_MACRO.t"></a>
@@ -675,9 +743,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L81"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L81"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L81" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L81" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_SET_LOG_CALLBACK.t,untyped"></a>
@@ -686,9 +754,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L84"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L84"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_SETLOGFILE.t,untyped"></a>
@@ -697,9 +765,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L87"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L87"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L87" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L87" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxBREAK.t"></a>
@@ -708,9 +776,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L110"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L110"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L110" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L110" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_SETDEBUGFILE.t,untyped"></a>
@@ -719,9 +787,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L114"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L114"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L114" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L114" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_SETBASEFILENAME.t,untyped"></a>
@@ -730,9 +798,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L117"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L117"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_INIT_MACRO.t"></a>
@@ -741,9 +809,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L193"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L193"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L193" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L193" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="orxDEBUG_EXIT_MACRO.t"></a>
@@ -752,9 +820,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/gokr/norx/tree/0.4.2/src/norx/debug.nim#L206"
+href="https://github.com/tankfeud/norx/tree/0.4.3-88-g8d3a2d5/src/norx/debug.nim#L206"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/gokr/norx/edit/devel/src/norx/debug.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/tankfeud/norx/edit/devel/src/norx/debug.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -767,7 +835,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-07-24 12:57:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-24 21:08:05 UTC</small>
       </div>
     </div>
   </div>

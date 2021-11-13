@@ -1,9 +1,0 @@
-orxAABOX	norx/AABox.html#orxAABOX	AABox: orxAABOX	
-reorder	norx/AABox.html#reorder,ptr.orxAABOX	AABox: reorder(pstBox: ptr orxAABOX): ptr orxAABOX	
-set	norx/AABox.html#set,ptr.orxAABOX,ptr.orxVECTOR,ptr.orxVECTOR	AABox: set(pstRes: ptr orxAABOX; pvTL: ptr orxVECTOR; pvBR: ptr orxVECTOR): ptr orxAABOX	
-isInside	norx/AABox.html#isInside,ptr.orxAABOX,ptr.orxVECTOR	AABox: isInside(pstBox: ptr orxAABOX; pvPosition: ptr orxVECTOR): orxBOOL	
-testIntersection	norx/AABox.html#testIntersection,ptr.orxAABOX,ptr.orxAABOX	AABox: testIntersection(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL	
-test2DIntersection	norx/AABox.html#test2DIntersection,ptr.orxAABOX,ptr.orxAABOX	AABox: test2DIntersection(pstBox1: ptr orxAABOX; pstBox2: ptr orxAABOX): orxBOOL	
-copy	norx/AABox.html#copy,ptr.orxAABOX,ptr.orxAABOX	AABox: copy(pstDst: ptr orxAABOX; pstSrc: ptr orxAABOX): ptr orxAABOX	
-move	norx/AABox.html#move,ptr.orxAABOX,ptr.orxAABOX,ptr.orxVECTOR	AABox: move(pstRes: ptr orxAABOX; pstOp: ptr orxAABOX; pvMove: ptr orxVECTOR): ptr orxAABOX	
-getCenter	norx/AABox.html#getCenter,ptr.orxAABOX,ptr.orxVECTOR	AABox: getCenter(pstOp: ptr orxAABOX; pvRes: ptr orxVECTOR): ptr orxVECTOR	

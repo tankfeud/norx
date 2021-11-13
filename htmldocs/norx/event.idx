@@ -2,6 +2,7 @@ orxEVENT_GET_FLAG	norx/event.html#orxEVENT_GET_FLAG.t,untyped	event: orxEVENT_GE
 orxEVENT_KU32_FLAG_ID_NONE	norx/event.html#orxEVENT_KU32_FLAG_ID_NONE	event: orxEVENT_KU32_FLAG_ID_NONE	
 orxEVENT_KU32_MASK_ID_ALL	norx/event.html#orxEVENT_KU32_MASK_ID_ALL	event: orxEVENT_KU32_MASK_ID_ALL	
 orxEVENT_TYPE	norx/event.html#orxEVENT_TYPE	event: orxEVENT_TYPE	
+orxEVENT_TYPE_FIRST_RESERVED	norx/event.html#orxEVENT_TYPE_FIRST_RESERVED	event: orxEVENT_TYPE_FIRST_RESERVED	
 orxEVENT	norx/event.html#orxEVENT	event: orxEVENT	
 orxEVENT_HANDLER	norx/event.html#orxEVENT_HANDLER	event: orxEVENT_HANDLER	
 eventSetup	norx/event.html#eventSetup	event: eventSetup()	
@@ -11,7 +12,7 @@ addHandler	norx/event.html#addHandler,orxEVENT_TYPE,orxEVENT_HANDLER	event: addH
 addHandlerWithContext	norx/event.html#addHandlerWithContext,orxEVENT_TYPE,orxEVENT_HANDLER,pointer	event: addHandlerWithContext(eEventType: orxEVENT_TYPE;\n                      pfnEventHandler: orxEVENT_HANDLER; pContext: pointer): orxSTATUS	
 removeHandler	norx/event.html#removeHandler,orxEVENT_TYPE,orxEVENT_HANDLER	event: removeHandler(eEventType: orxEVENT_TYPE; pfnEventHandler: orxEVENT_HANDLER): orxSTATUS	
 removeHandlerWithContext	norx/event.html#removeHandlerWithContext,orxEVENT_TYPE,orxEVENT_HANDLER,pointer	event: removeHandlerWithContext(eEventType: orxEVENT_TYPE;\n                         pfnEventHandler: orxEVENT_HANDLER; pContext: pointer): orxSTATUS	
-setHandlerIDFlags	norx/event.html#setHandlerIDFlags,orxEVENT_HANDLER,orxEVENT_TYPE,pointer,orxU32,orxU32	event: setHandlerIDFlags(pfnEventHandler: orxEVENT_HANDLER; eEventType: orxEVENT_TYPE;\n                  pContext: pointer; u32AddIDFlags: orxU32; u32RemoveIDFlags: orxU32): orxSTATUS	
+setHandlerIDFlags	norx/event.html#setHandlerIDFlags,orxEVENT_HANDLER,orxEVENT_TYPE,pointer,orxU32,orxU32	event: setHandlerIDFlags(pfnEventHandler: orxEVENT_HANDLER; eEventType: orxEVENT_TYPE;\n                  pContext: pointer; u32AddIDFlags: orxU32;\n                  u32RemoveIDFlags: orxU32): orxSTATUS	
 send	norx/event.html#send,ptr.orxEVENT	event: send(pstEvent: ptr orxEVENT): orxSTATUS	
 sendShort	norx/event.html#sendShort,orxEVENT_TYPE,orxENUM	event: sendShort(eEventType: orxEVENT_TYPE; eEventID: orxENUM): orxSTATUS	
 isSending	norx/event.html#isSending	event: isSending(): orxBOOL	
