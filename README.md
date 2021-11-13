@@ -14,10 +14,10 @@ The only things you need to compile a Nim ORX game is this Nimble module and the
 # Build and install ORX
 First install ORX dlls. At the moment best is to build them from a master git clone of ORX since it is in sync with the wrapper.
 
-This works on my Ubuntu 64 bit (after installing normal C tools needed):
+This works on my Ubuntu 64 bit (after installing normal C tools needed, more specifically `sudo apt-get install gcc g++ make`):
 
 0. Clone ORX with `git clone https://github.com/orx/orx.git`.
-1. Run `setup.sh` in top level first, this pulls down more dependencies.
+1. Run `setup.sh` in top level first, this pulls down more dependencies. **Restart shell (or logout/login) to get $ORX variable set!**. On a clean Ubuntu you will be asked to install some libraries: `sudo apt install libgl1-mesa-dev libsndfile1-dev libopenal-dev libxrandr-dev`
 2. Build with `cd code/build/linux/gmake && make config=release64` (build also `debug64` and `profile64` to get those extra libraries). Same on OSX but in `code/build/mac`. 
 3. Copy libraries **to a library path** with for example `sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/` on Linux or OSX. May need to run `sudo ldconfig` after.
 
