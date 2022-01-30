@@ -1,5 +1,5 @@
 # Synch data directory into Android assets
-rm -rf build/android-native/app/src/main/assets/data
+rm -rf build/android-native/app/src/main/assets/*
 cp -a data build/android-native/app/src/main/assets/
 
 # Generate C source from Nim
