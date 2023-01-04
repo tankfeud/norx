@@ -2,7 +2,8 @@
 
 import os
 
-import norx, norx/[incl, clock, event, system, config, resource, input, viewport, obj, version, joystick]
+import norx, norx/[incl, clock, event, system, config, resource, input,
+    viewport, obj, version, joystick]
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
@@ -22,7 +23,7 @@ proc init(): orxSTATUS {.cdecl.} =
   orxLOG("Sample1 starting")
 
   var btnFromOrd: orxJOYSTICK_BUTTON = toJoystickButton(3, 4); # Verify enum can be constructed from ordinal
-  orxlog("btnFromOrd: " & $btnFromOrd)  # should print orxJOYSTICK_3_BUTTON_LBUMPER
+  orxlog("btnFromOrd: " & $btnFromOrd) # should print orxJOYSTICK_3_BUTTON_LBUMPER
 
   orxlog("VERSION_FULL_STRING: " & $ORX_VERSION_FULL_STRING)
 
@@ -60,7 +61,8 @@ proc bootstrap(): orxSTATUS {.cdecl.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", false)
+  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, cstring(dir &
+      "/data/config"), false)
   if status == orxSTATUS_SUCCESS:
     echo "Added storage"
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file

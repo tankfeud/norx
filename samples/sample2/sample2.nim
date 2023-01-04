@@ -5,7 +5,8 @@
 import os
 
 # Note here that we do not import norx, only it's sub modules
-import norx/[incl, param, clock, event, system, config, resource, input, viewport, memory, obj]
+import norx/[incl, param, clock, event, system, config, resource, input,
+    viewport, obj]
 
 ## Should stop execution by default event handling?
 var sbStopByEvent* = false
@@ -64,7 +65,8 @@ proc bootstrap(): orxSTATUS {.cdecl.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, $dir & "/data/config", false)
+  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, cstring(dir &
+      "/data/config"), false)
   if status == orxSTATUS_SUCCESS:
     echo "Added storage"
   # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
@@ -82,7 +84,7 @@ register(orxMODULE_ID_MAIN, "MAIN", mainSetup, init, exit)
 # Hack to produce C style argc/argv to pass on
 var argc = paramCount()
 var nargv = newSeq[string](argc + 1)
-nargv[0] = getAppFilename()  # Better than paramStr(0)
+nargv[0] = getAppFilename() # Better than paramStr(0)
 var x = 1
 while x <= argc:
   nargv[x] = paramStr(x)
@@ -100,23 +102,27 @@ if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
       eMainStatus: orxSTATUS
     #  Registers default event handler
     discard addHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-    discard setHandlerIDFlags(eventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
+    discard setHandlerIDFlags(eventHandler, orxEVENT_TYPE_SYSTEM, nil,
+        orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
 
     # Main loop
     var bStop = false
     sbStopByEvent = false
     while not bStop:
       #  Sends frame start event
-      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
+      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START,
+          nil, nil, addr(stPayload))
       #  Runs game specific code
       eMainStatus = run()
       #  Updates clock system
       eClockStatus = update()
       #  Sends frame stop event
-      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
+      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP,
+          nil, nil, addr(stPayload))
       #  Updates frame count
       stPayload.u32FrameCount += 1
-      bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
+      bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (
+          eClockStatus == orxSTATUS_FAILURE))
 
     # Removes event handler
     discard removeHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
