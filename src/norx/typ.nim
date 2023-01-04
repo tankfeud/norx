@@ -8,7 +8,7 @@ when defined(Windows):
     type
       orxU32* = cuint
       orxU16* = cushort
-      orxU8* = cuchar
+      orxU8* = uint8
       orxS32* = cint
       orxS16* = cshort
       orxS8* = cchar
@@ -17,7 +17,7 @@ when defined(Windows):
     type
       orxU32* = culong
       orxU16* = cushort
-      orxU8* = cuchar
+      orxU8* = uint8
       orxS32* = clong
       orxS16* = cshort
       orxS8* = cchar
@@ -61,7 +61,7 @@ else:
         orxU64* = culonglong
         orxU32* = cuint
         orxU16* = cushort
-        orxU8* = cuchar
+        orxU8* = uint8
         orxS64* = clonglong
         orxS32* = cint
         orxS16* = cshort
@@ -72,7 +72,7 @@ else:
         orxU64* = culonglong
         orxU32* = culong
         orxU16* = cushort
-        orxU8* = cuchar
+        orxU8* = uint8
         orxS64* = clonglong
         orxS32* = clong
         orxS16* = cshort
