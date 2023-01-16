@@ -10,7 +10,7 @@ suite "Testsuite for map_controls":
 
   var joyNrSeq: seq[int] = @[1,2]
 
-  let steps: seq[MapStep] = @[
+  var mapsteps1: seq[MapStep] = @[
     MapStep(id:"s1", desc:"Key1", ctrlType: JOY_BTN),
     MapStep(id:"s2", desc:"Axis2", ctrlType: JOY_AXIS),
     MapStep(id:"s3", desc:"KeyOrAxis3", ctrlType: JOY_ANY)
@@ -57,7 +57,7 @@ suite "Testsuite for map_controls":
 
     return (mapResponse.states[0], mapResponse.states[1])
 
-  setup:
+  proc setupTest(steps: seq[MapStep]) =
     mapRequest = MapRequest(joystickNrs: joyNrSeq, steps:steps, stableCount: 2, run: true)
     mapControls = newMapControls(mapRequest, activeInputsGetter)
     mapResponse = mapControls.mapResponse
@@ -66,6 +66,8 @@ suite "Testsuite for map_controls":
     mapControls.resetMapping()
 
   test "initMapping":
+    setupTest(mapsteps1)
+
     # give up and stop if this fails
     require(not isNil mapResponse)
     check(mapControls.isMappingActive())
@@ -81,6 +83,7 @@ suite "Testsuite for map_controls":
     check(state2.status == Init)
 
   test "Step 1 one joystick":
+    setupTest(mapsteps1)
     discard runUpdateBtns() # run update with NO active buttons/axes
 
     var state1,state2: MapStepState
@@ -123,6 +126,7 @@ suite "Testsuite for map_controls":
     check(state1.stepIdx == 1)
 
   test "All Steps both joysticks":
+    setupTest(mapsteps1)
 
     var state1,state2: MapStepState
 
@@ -148,9 +152,14 @@ suite "Testsuite for map_controls":
 
     (state1, state2) = runUpdateBtns(@[],@[2])
     check(state1.status == Mapping)
+    check(state1.stepIdx == 0)
+    check state1.results.len == 0
     check(state2.status == Mapping)
-    (state1, state2) = runUpdateBtns(@[2,6],@[2])
+    check(state2.stepIdx == 0)
+    check state2.results.len == 0
+    (state1, state2) = runUpdateBtns(@[2,6],@[2]) # joy #2 2 times -> step 1 done
     check(state1.status == Mapping)
+    check state1.results.len == 0
     check(state2.status == WaitNext)
     check state2.results.len == 1
     var mapResult: MapResult = state2.results[0]
@@ -179,7 +188,7 @@ suite "Testsuite for map_controls":
     check(state2.warn == WARN_BTN_ACTIVE)
 
     # this step #2 is JOY_AXIS
-    (state1, state2) = runUpdateBtns(@[],@[9,11], @[LX_Pos_Threshold],@[LX_Neg, LY_Pos])
+    (state1, state2) = runUpdateBtns(@[],@[9,11], @[LX_Pos_Threshold], @[LX_Neg, LY_Pos])
     check(state1.status == Mapping)
     check(state1.stepIdx == 1)
     check(state1.warn == WARN_NONE)
@@ -249,6 +258,7 @@ suite "Testsuite for map_controls":
     check mapResult.axisDir == 1
 
   test "Step 1 -> 2 check occupied":
+    setupTest(mapsteps1)
 
     var state1,state2: MapStepState
 
@@ -321,3 +331,50 @@ suite "Testsuite for map_controls":
     check(state1.warn == WARN_CTRL_OCCUPIED)
     check(state1.status == Mapping)
     check(state1.stepIdx == 2)
+
+  test "oppositePrev logic":
+    let mapstepsOppositePrev: seq[MapStep] = @[
+      MapStep(id:"s1", desc:"Left", ctrlType: JOY_ANY),
+      MapStep(id:"s2", desc:"RIGHT", ctrlType: JOY_ANY, oppositePrev: true), # opposite to preivous/Left
+      MapStep(id:"s3", desc:"THRUST", ctrlType: JOY_ANY),
+    ]
+    setupTest(mapstepsOppositePrev)
+
+    var state1,state2: MapStepState
+    # Activate
+    (state1, state2) = runUpdateBtns(@[1,2]) # run update with 2 active buttons
+    (state1, state2) = runUpdateBtns(@[1,2])
+    (state1, state2) = runUpdateBtns(@[1,2])
+    (state1, state2) = runUpdateBtns(@[1,2])
+    check(state1.status == WaitNext)
+
+    # Release
+    (state1, state2) = runUpdateBtns(@[],@[], @[])
+    check(state1.status == Mapping)
+
+    # Set first step to LY Neg
+    (state1, state2) = runUpdateBtns(@[],@[], @[LY_Neg])
+    (state1, state2) = runUpdateBtns(@[],@[], @[LY_Neg])
+    check(state1.status == WaitNext)
+    check state1.results.len == 1
+    var mapResult = state1.results[0]
+    check mapResult.inputType == JOY_AXIS
+    check mapResult.inputID == LY_Neg.axis
+    check mapResult.axisDir == LY_Neg.dir
+
+    # Release
+    (state1, state2) = runUpdateBtns(@[],@[], @[])
+    check(state1.status == Mapping)
+
+    # Let Mepping state run twice to auto-set LY_Pos due to oppositePrev
+    (state1, state2) = runUpdateBtns(@[],@[], @[])
+    check(state1.status == Mapping)
+    (state1, state2) = runUpdateBtns(@[],@[], @[])
+    check(state1.status == WaitNext)
+    check state1.results.len == 2
+    mapResult = state1.results[1]
+    check mapResult.inputType == JOY_AXIS
+    check mapResult.inputID == LY_Pos.axis
+    check mapResult.axisDir == LY_Pos.dir
+
+  # TODO: test threshold"

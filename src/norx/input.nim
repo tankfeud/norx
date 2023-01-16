@@ -4,4 +4,4 @@ export oinput
 
 template isActive*(zInputName: string): bool =
     ## Has input been newly activated since last frame?
-    oinput.isActive(zInputName).bool
+    oinput.isActive(cstring(zInputName)).bool

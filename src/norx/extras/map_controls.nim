@@ -14,6 +14,7 @@ type MapStep* = ref object
   id*: string
   desc*: string
   ctrlType*: CtrlType # type of control required; button,axis or any
+  oppositePrev*: bool # is opposite direction of prevkous step
 
 type MapRequest* = ref object
   joystickNrs*: seq[int]
@@ -112,16 +113,16 @@ proc mapJoystick(self: MapControls, state: MapStepState) =
     let active = self.activeInputsGetter(state.joyNr)
     if active.buttons.len == 2:
       state.lastBtnCount += 1
-    if (state.lastBtnCount == state.stableCount*2):
+    if state.lastBtnCount == state.stableCount*2:
       state.lastBtnCount = 0
       state.status = WaitNext
 
   if state.status == WaitNext:
-    # TODO: use settings NextStepMode
+    # TODO: use settings NextStepMode - Future improvement other ways to advance to next step
     state.warn = WARN_NONE
     let active = self.activeInputsGetter(state.joyNr)
     if active.buttons.len == 0 and active.axes.len == 0:
-      if ((state.stepIdx + 1) == self.mapRequest.steps.len):
+      if (state.stepIdx + 1) == self.mapRequest.steps.len:
         state.status = Done
       else:
         state.stepIdx += 1
@@ -139,6 +140,12 @@ proc mapJoystick(self: MapControls, state: MapStepState) =
 
   if state.status == Mapping:
     let step = self.mapRequest.steps[state.stepIdx]
+    if step.oppositePrev: # For oppositePrev flag we emulate that user selects the opposite direction of same JOY_AXIS as prev step's result
+      let prevResult = state.results[state.results.len - 1]
+      if prevResult.inputType == JOY_AXIS:
+        state.setIfStable(JOY_AXIS, prevResult.inputID, -prevResult.axisDir)
+        return
+
     let active = self.activeInputsGetter(state.joyNr)
     state.setWarning(step.ctrlType, active)
     case step.ctrlType
@@ -185,3 +192,4 @@ proc newMapControls*(req: MapRequest, getter: proc(joyNr: int): ActiveInputs): M
   result.mapRequest = req
   result.activeInputsGetter = getter
   result.initMapping()
+  echo "newMapControls", req.steps.len

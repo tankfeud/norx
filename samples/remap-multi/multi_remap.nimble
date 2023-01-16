@@ -1,10 +1,10 @@
 # Package
 version       = "0.1.0"
 author        = "Jonas Öhrn"
-description   = "Remapping inputs"
+description   = "Mapping multiple game controller sample"
 license       = "MIT"
 installDirs   = @["data"]
-bin           = @["remap"]
+bin           = @["multi_remap"]
 
 # Dependencies
 requires "nim >= 1.2.0"
