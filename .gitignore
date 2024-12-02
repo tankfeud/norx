@@ -1,10 +1,13 @@
-# Ignore binary (no extension) files in samples
-samples/*/*
-!samples/*/*.*
+# Ignore binary (no extension)
+*
+!/**/
+!*.*
+
 
 **/*.log
 **/*.dSYM
 **/*.iml
 **/.idea
 **/*.elf
+**/*.so
 
