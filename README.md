@@ -12,7 +12,7 @@ The high level tries to use Nim style and Nim types as much as possible.
 The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path. However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
 
 # Build and install ORX
-First install ORX dlls. At the moment best is to build them from a master git clone of ORX since it is in sync with the wrapper.
+First build ORX as dynamic libraries (liborx, liborxd and liborxp).
 
 This works on my Ubuntu 64 bit (after installing normal C tools needed, more specifically `sudo apt-get install gcc g++ make`):
 
@@ -22,6 +22,10 @@ This works on my Ubuntu 64 bit (after installing normal C tools needed, more spe
 3. Copy libraries **to a library path** with for example `sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/` on Linux or OSX. May need to run `sudo ldconfig` after.
 
 For other platforms, or if you get into trouble, follow [official ORX instructions](https://wiki.orx-project.org/en/guides/beginners/downloading_orx) that give much more details!
+
+NOTE for newer MacOS versions, dylib files in /usr/local/lib is not searched by macOS when running a Norx app.
+You can copy them to the local folder next to the app executable.
+See also https://developer.apple.com/forums/thread/736719 and https://briandfoy.github.io/macos-s-system-integrity-protection-sanitizes-your-environment/)
 
 # Install Nim
 Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | sh` or see [Official download](https://nim-lang.org/install.html).
@@ -78,11 +82,11 @@ These are notes to "self". We track any changes to the `include` directory, for 
 4. `c2nim common.c2nim object/orxObject.h` to reproduce `orxObject.nim`
 5. Merge parts into `obj.nim` that should be there using `meld object/orxObject.nim ../src/norx/obj.nim`
 
-# norx 0.5.0 - Upgrade to Orx b-release (1.12 release)
+# norx 0.5.0 - Upgrade to Orx release 1.12
 This was not done by the steps above but manually merging corresponding header changes directly into nim files.
-1. Compare orx header changes, between versions 2020-07 and b-release branch.
-2. Added build.nim containing value from orxBuild.h after running setup.sh in Orx from b-release branch.
+1. Compare orx header changes, between versions 2020-07 and 1.12 tag.
+2. Added build.nim containing value from orxBuild.h after running setup.sh in Orx from version at git tag 1.12.
 3. Problematic orxColorList.h was referenced by macro in orxVector.h generating list of colors of the orxVECTOR 
    This is solved by running new script in scripts/crreateNimColors.sh that generates colors in src/norx/colorList.nim
-4. Verifying all official samples works with Orx library compiled from b-release branch
+4. Verifying all official samples works with Orx library compiled from 1.12 tag
 
