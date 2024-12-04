@@ -13,9 +13,9 @@ template orxSTRUCTURE_GET_POINTER*(STRUCTURE, TYPE, ID: untyped): untyped =
 
 template orxSTRUCTURE_MACRO*(STRUCTURE: untyped): untyped =
   (if (((STRUCTURE) != nil) and
-      ((((cast[ptr orxSTRUCTURE](STRUCTURE)).u64GUID.int64 and
+      ((((cast[ptr orxSTRUCTURE](STRUCTURE)).u64GUID and
       orxSTRUCTURE_GUID_MASK_STRUCTURE_ID) shr
-      orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID) < orxSTRUCTURE_ID_NUMBER.int64)): cast[ptr orxSTRUCTURE]((
+      orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID) < orxSTRUCTURE_ID_NUMBER.uint64)): cast[ptr orxSTRUCTURE]((
       STRUCTURE)) else: cast[ptr orxSTRUCTURE](nil))
 
 template orxANIM*(STRUCTURE: untyped): untyped =
@@ -93,17 +93,17 @@ template orxVIEWPORT*(STRUCTURE: untyped): untyped =
 ##
 
 const
-  orxSTRUCTURE_GUID_MAGIC_TAG_DELETED* = 0x0000000000000000'i64
+  orxSTRUCTURE_GUID_MAGIC_TAG_DELETED* = 0xDEFACED0DEADC0DE'u64
 
 ## * Structure GUID masks/shifts
 ##
 
 const
-  orxSTRUCTURE_GUID_MASK_STRUCTURE_ID* = 0x00000000000000FF'i64
+  orxSTRUCTURE_GUID_MASK_STRUCTURE_ID* = 0x00000000000000FF'u64
   orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID* = 0
-  orxSTRUCTURE_GUID_MASK_ITEM_ID* = 0x00000000FFFFFF00'i64
+  orxSTRUCTURE_GUID_MASK_ITEM_ID* = 0x00000000FFFFFF00'u64
   orxSTRUCTURE_GUID_SHIFT_ITEM_ID* = 8
-  orxSTRUCTURE_GUID_MASK_INSTANCE_ID* = 0xFFFFFFFF00000000'i64
+  orxSTRUCTURE_GUID_MASK_INSTANCE_ID* = 0xFFFFFFFF00000000'u64
   orxSTRUCTURE_GUID_SHIFT_INSTANCE_ID* = 32
 
 ## * Structure IDs
@@ -166,8 +166,10 @@ proc getPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTR
   ##  @param[in]   _pStructure    Concerned structure
   ##  @param[in]   _eStructureID   ID to test the structure against
   ##  @return      Valid orxSTRUCTURE, nil otherwise
-  let uid: int64 = (cast[ptr orxSTRUCTURE](pStructure)).u64GUID.int64
-  if (pStructure != nil and ((uid and orxSTRUCTURE_GUID_MASK_STRUCTURE_ID) shr orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID) == eStructureID.int64):
+  if pStructure.isNil:
+    return nil
+  let uid = (cast[ptr orxSTRUCTURE](pStructure)).u64GUID
+  if ((uid and orxSTRUCTURE_GUID_MASK_STRUCTURE_ID) shr orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID) == eStructureID.uint64:
     return cast[ptr orxSTRUCTURE](pStructure)
   else:
     return cast[ptr orxSTRUCTURE](nil)
@@ -416,8 +418,8 @@ proc getID*(pStructure: pointer): orxSTRUCTURE_ID {.inline, cdecl.} =
   ##  Checks
   orxSTRUCTURE_ASSERT(pStructure)
   ##  Done!
-  return (orxSTRUCTURE_ID)((orxSTRUCTURE_MACRO(pStructure).u64GUID.uint64 and
-      orxSTRUCTURE_GUID_MASK_STRUCTURE_ID.uint64) shr
+  return (orxSTRUCTURE_ID)((orxSTRUCTURE_MACRO(pStructure).u64GUID and
+      orxSTRUCTURE_GUID_MASK_STRUCTURE_ID) shr
       orxSTRUCTURE_GUID_SHIFT_STRUCTURE_ID)
 
 #TODO: Removed these for now

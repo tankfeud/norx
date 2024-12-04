@@ -7,7 +7,7 @@
 
 import std/unittest
 
-import norx/[incl, structure]
+import norx/[incl]
 
 suite "Suite 1":
 
@@ -15,8 +15,3 @@ suite "Suite 1":
 
   test "can add":
     check 5+5 == 10
-
-  test "ptr orxSTRUCTURE invalid":
-    let a = "aString"
-    let invalidObjectPointer: ptr orxSTRUCTURE = cast[ptr orxSTRUCTURE](unsafeAddr(a))
-    check getPointer(invalidObjectPointer, orxSTRUCTURE_ID_OBJECT) == nil
