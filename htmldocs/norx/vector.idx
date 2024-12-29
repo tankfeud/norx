@@ -1,37 +1,38 @@
-set	norx/vector.html#set,ptr.orxVECTOR,orxFLOAT,orxFLOAT,orxFLOAT	vector: set(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR	
-setAll	norx/vector.html#setAll,ptr.orxVECTOR,orxFLOAT	vector: setAll(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR	
-copy	norx/vector.html#copy,ptr.orxVECTOR,ptr.orxVECTOR	vector: copy(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR	
-add	norx/vector.html#add,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: add(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-sub	norx/vector.html#sub,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: sub(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-mulf	norx/vector.html#mulf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: mulf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR	
-mul	norx/vector.html#mul,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: mul(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-divf	norx/vector.html#divf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: divf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR	
-divv	norx/vector.html#divv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: divv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-lerp	norx/vector.html#lerp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: lerp(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;\n     fOp: orxFLOAT): ptr orxVECTOR	
-min	norx/vector.html#min,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: min(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-max	norx/vector.html#max,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: max(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-clamp	norx/vector.html#clamp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: clamp(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;\n      pvMax: ptr orxVECTOR): ptr orxVECTOR	
-neg	norx/vector.html#neg,ptr.orxVECTOR,ptr.orxVECTOR	vector: neg(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR	
-rec	norx/vector.html#rec,ptr.orxVECTOR,ptr.orxVECTOR	vector: rec(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR	
-floor	norx/vector.html#floor,ptr.orxVECTOR,ptr.orxVECTOR	vector: floor(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR	
-round	norx/vector.html#round,ptr.orxVECTOR,ptr.orxVECTOR	vector: round(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR	
-getSquareSize	norx/vector.html#getSquareSize,ptr.orxVECTOR	vector: getSquareSize(pvOp: ptr orxVECTOR): orxFLOAT	
-getSize	norx/vector.html#getSize,ptr.orxVECTOR	vector: getSize(pvOp: ptr orxVECTOR): orxFLOAT	
-getSquareDistance	norx/vector.html#getSquareDistance,ptr.orxVECTOR,ptr.orxVECTOR	vector: getSquareDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT	
-getDistance	norx/vector.html#getDistance,ptr.orxVECTOR,ptr.orxVECTOR	vector: getDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT	
-normalize	norx/vector.html#normalize,ptr.orxVECTOR,ptr.orxVECTOR	vector: normalize(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR	
-twoDrotate	norx/vector.html#twoDrotate,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: twoDrotate(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxVECTOR	
-isNull	norx/vector.html#isNull,ptr.orxVECTOR	vector: isNull(pvOp: ptr orxVECTOR): orxBOOL	
-areEqual	norx/vector.html#areEqual,ptr.orxVECTOR,ptr.orxVECTOR	vector: areEqual(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL	
-fromCartesianToSpherical	norx/vector.html#fromCartesianToSpherical,ptr.orxSPVECTOR,ptr.orxVECTOR	vector: fromCartesianToSpherical(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr orxSPVECTOR	
-fromSphericalToCartesian	norx/vector.html#fromSphericalToCartesian,ptr.orxVECTOR,ptr.orxSPVECTOR	vector: fromSphericalToCartesian(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVECTOR): ptr orxVECTOR	
-dot	norx/vector.html#dot,ptr.orxVECTOR,ptr.orxVECTOR	vector: dot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT	
-twoDDot	norx/vector.html#twoDDot,ptr.orxVECTOR,ptr.orxVECTOR	vector: twoDDot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT	
-cross	norx/vector.html#cross,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	vector: cross(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR	
-bezier	norx/vector.html#bezier,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: bezier(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR; pvPoint2: ptr orxVECTOR;\n       pvPoint3: ptr orxVECTOR; pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR	
-catmullRom	norx/vector.html#catmullRom,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	vector: catmullRom(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;\n           pvPoint2: ptr orxVECTOR; pvPoint3: ptr orxVECTOR;\n           pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR	
-orxVECTOR_X	norx/vector.html#orxVECTOR_X	vector: orxVECTOR_X	
-orxVECTOR_Y	norx/vector.html#orxVECTOR_Y	vector: orxVECTOR_Y	
-orxVECTOR_Z	norx/vector.html#orxVECTOR_Z	vector: orxVECTOR_Z	
-orxVECTOR_0	norx/vector.html#orxVECTOR_0	vector: orxVECTOR_0	
-orxVECTOR_1	norx/vector.html#orxVECTOR_1	vector: orxVECTOR_1	
+nimTitle	vector	norx/vector.html	module norx/vector		0
+nim	set	norx/vector.html#set,ptr.orxVECTOR,orxFLOAT,orxFLOAT,orxFLOAT	proc set(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR		7
+nim	setAll	norx/vector.html#setAll,ptr.orxVECTOR,orxFLOAT	proc setAll(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR		24
+nim	copy	norx/vector.html#copy,ptr.orxVECTOR,ptr.orxVECTOR	proc copy(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR		33
+nim	add	norx/vector.html#add,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc add(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		47
+nim	sub	norx/vector.html#sub,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc sub(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		65
+nim	mulf	norx/vector.html#mulf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc mulf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR		83
+nim	mul	norx/vector.html#mul,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc mul(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		100
+nim	divf	norx/vector.html#divf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc divf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR		118
+nim	divv	norx/vector.html#divv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc divv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		139
+nim	lerp	norx/vector.html#lerp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc lerp(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;\n     fOp: orxFLOAT): ptr orxVECTOR		157
+nim	min	norx/vector.html#min,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc min(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		176
+nim	max	norx/vector.html#max,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc max(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		194
+nim	clamp	norx/vector.html#clamp,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc clamp(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;\n      pvMax: ptr orxVECTOR): ptr orxVECTOR		212
+nim	neg	norx/vector.html#neg,ptr.orxVECTOR,ptr.orxVECTOR	proc neg(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		232
+nim	rec	norx/vector.html#rec,ptr.orxVECTOR,ptr.orxVECTOR	proc rec(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		248
+nim	floor	norx/vector.html#floor,ptr.orxVECTOR,ptr.orxVECTOR	proc floor(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		264
+nim	round	norx/vector.html#round,ptr.orxVECTOR,ptr.orxVECTOR	proc round(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		280
+nim	getSquareSize	norx/vector.html#getSquareSize,ptr.orxVECTOR	proc getSquareSize(pvOp: ptr orxVECTOR): orxFLOAT		296
+nim	getSize	norx/vector.html#getSize,ptr.orxVECTOR	proc getSize(pvOp: ptr orxVECTOR): orxFLOAT		308
+nim	getSquareDistance	norx/vector.html#getSquareDistance,ptr.orxVECTOR,ptr.orxVECTOR	proc getSquareDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		320
+nim	getDistance	norx/vector.html#getDistance,ptr.orxVECTOR,ptr.orxVECTOR	proc getDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		338
+nim	normalize	norx/vector.html#normalize,ptr.orxVECTOR,ptr.orxVECTOR	proc normalize(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		356
+nim	twoDrotate	norx/vector.html#twoDrotate,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc twoDrotate(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxVECTOR		377
+nim	isNull	norx/vector.html#isNull,ptr.orxVECTOR	proc isNull(pvOp: ptr orxVECTOR): orxBOOL		407
+nim	areEqual	norx/vector.html#areEqual,ptr.orxVECTOR,ptr.orxVECTOR	proc areEqual(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL		420
+nim	fromCartesianToSpherical	norx/vector.html#fromCartesianToSpherical,ptr.orxSPVECTOR,ptr.orxVECTOR	proc fromCartesianToSpherical(pvRes: ptr orxSPVECTOR; pvOp: ptr orxVECTOR): ptr orxSPVECTOR		436
+nim	fromSphericalToCartesian	norx/vector.html#fromSphericalToCartesian,ptr.orxVECTOR,ptr.orxSPVECTOR	proc fromSphericalToCartesian(pvRes: ptr orxVECTOR; pvOp: ptr orxSPVECTOR): ptr orxVECTOR		498
+nim	dot	norx/vector.html#dot,ptr.orxVECTOR,ptr.orxVECTOR	proc dot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		534
+nim	twoDDot	norx/vector.html#twoDDot,ptr.orxVECTOR,ptr.orxVECTOR	proc twoDDot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		548
+nim	cross	norx/vector.html#cross,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc cross(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		563
+nim	bezier	norx/vector.html#bezier,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc bezier(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR; pvPoint2: ptr orxVECTOR;\n       pvPoint3: ptr orxVECTOR; pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR		586
+nim	catmullRom	norx/vector.html#catmullRom,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc catmullRom(pvRes: ptr orxVECTOR; pvPoint1: ptr orxVECTOR;\n           pvPoint2: ptr orxVECTOR; pvPoint3: ptr orxVECTOR;\n           pvPoint4: ptr orxVECTOR; fT: orxFLOAT): ptr orxVECTOR		600
+nim	orxVECTOR_X	norx/vector.html#orxVECTOR_X	var orxVECTOR_X		615
+nim	orxVECTOR_Y	norx/vector.html#orxVECTOR_Y	var orxVECTOR_Y		619
+nim	orxVECTOR_Z	norx/vector.html#orxVECTOR_Z	var orxVECTOR_Z		623
+nim	orxVECTOR_0	norx/vector.html#orxVECTOR_0	var orxVECTOR_0		627
+nim	orxVECTOR_1	norx/vector.html#orxVECTOR_1	var orxVECTOR_1		631

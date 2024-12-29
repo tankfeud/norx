@@ -1,43 +1,43 @@
-*** Debug defines. ***	norx/debug.html
-orxDEBUG_KU32_STATIC_FLAG_NONE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_NONE	debug: orxDEBUG_KU32_STATIC_FLAG_NONE	
-orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP	debug: orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP	
-orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP	debug: orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP	
-orxDEBUG_KU32_STATIC_FLAG_TYPE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TYPE	debug: orxDEBUG_KU32_STATIC_FLAG_TYPE	
-orxDEBUG_KU32_STATIC_FLAG_TAGGED	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TAGGED	debug: orxDEBUG_KU32_STATIC_FLAG_TAGGED	
-orxDEBUG_KU32_STATIC_FLAG_FILE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_FILE	debug: orxDEBUG_KU32_STATIC_FLAG_FILE	
-orxDEBUG_KU32_STATIC_FLAG_TERMINAL	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TERMINAL	debug: orxDEBUG_KU32_STATIC_FLAG_TERMINAL	
-orxDEBUG_KU32_STATIC_FLAG_CONSOLE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_CONSOLE	debug: orxDEBUG_KU32_STATIC_FLAG_CONSOLE	
-orxDEBUG_KU32_STATIC_FLAG_CALLBACK	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_CALLBACK	debug: orxDEBUG_KU32_STATIC_FLAG_CALLBACK	
-orxDEBUG_KU32_STATIC_MASK_DEFAULT	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_DEFAULT	debug: orxDEBUG_KU32_STATIC_MASK_DEFAULT	
-orxDEBUG_KU32_STATIC_MASK_DEBUG	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_DEBUG	debug: orxDEBUG_KU32_STATIC_MASK_DEBUG	
-orxDEBUG_KU32_STATIC_MASK_USER_ALL	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_USER_ALL	debug: orxDEBUG_KU32_STATIC_MASK_USER_ALL	
-orxDEBUG_KZ_DEFAULT_DEBUG_FILE	norx/debug.html#orxDEBUG_KZ_DEFAULT_DEBUG_FILE	debug: orxDEBUG_KZ_DEFAULT_DEBUG_FILE	
-orxDEBUG_KZ_DEFAULT_LOG_FILE	norx/debug.html#orxDEBUG_KZ_DEFAULT_LOG_FILE	debug: orxDEBUG_KZ_DEFAULT_LOG_FILE	
-orxDEBUG_KZ_DEFAULT_LOG_SUFFIX	norx/debug.html#orxDEBUG_KZ_DEFAULT_LOG_SUFFIX	debug: orxDEBUG_KZ_DEFAULT_LOG_SUFFIX	
-orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX	norx/debug.html#orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX	debug: orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX	
-orxDEBUG_LEVEL	norx/debug.html#orxDEBUG_LEVEL	debug: orxDEBUG_LEVEL	
-orxLOG	norx/debug.html#orxLOG,string	debug: orxLOG(s: string)	
-orxDEBUG_CALLBACK_FUNCTION	norx/debug.html#orxDEBUG_CALLBACK_FUNCTION	debug: orxDEBUG_CALLBACK_FUNCTION	
-orxDEBUG_ENABLE_LEVEL_MACRO	norx/debug.html#orxDEBUG_ENABLE_LEVEL_MACRO.t,untyped,untyped	debug: orxDEBUG_ENABLE_LEVEL_MACRO(LEVEL, ENABLE: untyped): untyped	
-orxDEBUG_IS_LEVEL_ENABLED_MACRO	norx/debug.html#orxDEBUG_IS_LEVEL_ENABLED_MACRO.t,untyped	debug: orxDEBUG_IS_LEVEL_ENABLED_MACRO(LEVEL: untyped): untyped	
-orxDEBUG_SET_FLAGS_MACRO	norx/debug.html#orxDEBUG_SET_FLAGS_MACRO.t,untyped,untyped	debug: orxDEBUG_SET_FLAGS_MACRO(SET, UNSET: untyped): untyped	
-orxDEBUG_GET_FLAGS_MACRO	norx/debug.html#orxDEBUG_GET_FLAGS_MACRO.t	debug: orxDEBUG_GET_FLAGS_MACRO(): untyped	
-orxDEBUG_SET_LOG_CALLBACK	norx/debug.html#orxDEBUG_SET_LOG_CALLBACK.t,untyped	debug: orxDEBUG_SET_LOG_CALLBACK(CALLBACK: untyped): untyped	
-orxDEBUG_SETLOGFILE	norx/debug.html#orxDEBUG_SETLOGFILE.t,untyped	debug: orxDEBUG_SETLOGFILE(FILE: untyped): untyped	
-orxBREAK	norx/debug.html#orxBREAK.t	debug: orxBREAK(): void	
-orxDEBUG_SETDEBUGFILE	norx/debug.html#orxDEBUG_SETDEBUGFILE.t,untyped	debug: orxDEBUG_SETDEBUGFILE(FILE: untyped): void	
-orxDEBUG_SETBASEFILENAME	norx/debug.html#orxDEBUG_SETBASEFILENAME.t,untyped	debug: orxDEBUG_SETBASEFILENAME(FILE: untyped): void	
-orxDEBUG_KS32_BUFFER_OUTPUT_SIZE	norx/debug.html#orxDEBUG_KS32_BUFFER_OUTPUT_SIZE	debug: orxDEBUG_KS32_BUFFER_OUTPUT_SIZE	
-debugInit	norx/debug.html#debugInit	debug: debugInit(): orxSTATUS	
-debugExit	norx/debug.html#debugExit	debug: debugExit()	
-log	norx/debug.html#log,orxDEBUG_LEVEL,cstring,cstring,orxU32,cstring	debug: log(eLevel: orxDEBUG_LEVEL; zFunction: cstring; zFile: cstring; u32Line: orxU32;\n    zFormat: cstring)	
-enableLevel	norx/debug.html#enableLevel,orxDEBUG_LEVEL,orxBOOL	debug: enableLevel(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL)	
-isLevelEnabled	norx/debug.html#isLevelEnabled,orxDEBUG_LEVEL	debug: isLevelEnabled(eLevel: orxDEBUG_LEVEL): orxBOOL	
-setFlags	norx/debug.html#setFlags,orxU32,orxU32	debug: setFlags(u32Add: orxU32; u32Remove: orxU32)	
-getFlags	norx/debug.html#getFlags	debug: getFlags(): orxU32	
-debugBreak	norx/debug.html#debugBreak	debug: debugBreak()	
-setDebugFile	norx/debug.html#setDebugFile,cstring	debug: setDebugFile(zFileName: cstring)	
-setLogFile	norx/debug.html#setLogFile,cstring	debug: setLogFile(zFileName: cstring)	
-setLogCallback	norx/debug.html#setLogCallback,orxDEBUG_CALLBACK_FUNCTION	debug: setLogCallback(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION)	
-orxDEBUG_INIT_MACRO	norx/debug.html#orxDEBUG_INIT_MACRO.t	debug: orxDEBUG_INIT_MACRO(): void	
-orxDEBUG_EXIT_MACRO	norx/debug.html#orxDEBUG_EXIT_MACRO.t	debug: orxDEBUG_EXIT_MACRO(): untyped	
+nimTitle	debug	norx/debug.html	module norx/debug		0
+nim	orxDEBUG_KU32_STATIC_FLAG_NONE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_NONE	const orxDEBUG_KU32_STATIC_FLAG_NONE		6
+nim	orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP	const orxDEBUG_KU32_STATIC_FLAG_TIMESTAMP		7
+nim	orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP	const orxDEBUG_KU32_STATIC_FLAG_FULL_TIMESTAMP		8
+nim	orxDEBUG_KU32_STATIC_FLAG_TYPE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TYPE	const orxDEBUG_KU32_STATIC_FLAG_TYPE		9
+nim	orxDEBUG_KU32_STATIC_FLAG_TAGGED	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TAGGED	const orxDEBUG_KU32_STATIC_FLAG_TAGGED		10
+nim	orxDEBUG_KU32_STATIC_FLAG_FILE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_FILE	const orxDEBUG_KU32_STATIC_FLAG_FILE		11
+nim	orxDEBUG_KU32_STATIC_FLAG_TERMINAL	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_TERMINAL	const orxDEBUG_KU32_STATIC_FLAG_TERMINAL		12
+nim	orxDEBUG_KU32_STATIC_FLAG_CONSOLE	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_CONSOLE	const orxDEBUG_KU32_STATIC_FLAG_CONSOLE		13
+nim	orxDEBUG_KU32_STATIC_FLAG_CALLBACK	norx/debug.html#orxDEBUG_KU32_STATIC_FLAG_CALLBACK	const orxDEBUG_KU32_STATIC_FLAG_CALLBACK		14
+nim	orxDEBUG_KU32_STATIC_MASK_DEFAULT	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_DEFAULT	const orxDEBUG_KU32_STATIC_MASK_DEFAULT		15
+nim	orxDEBUG_KU32_STATIC_MASK_DEBUG	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_DEBUG	const orxDEBUG_KU32_STATIC_MASK_DEBUG		16
+nim	orxDEBUG_KU32_STATIC_MASK_USER_ALL	norx/debug.html#orxDEBUG_KU32_STATIC_MASK_USER_ALL	const orxDEBUG_KU32_STATIC_MASK_USER_ALL		17
+nim	orxDEBUG_KZ_DEFAULT_DEBUG_FILE	norx/debug.html#orxDEBUG_KZ_DEFAULT_DEBUG_FILE	const orxDEBUG_KZ_DEFAULT_DEBUG_FILE		22
+nim	orxDEBUG_KZ_DEFAULT_LOG_FILE	norx/debug.html#orxDEBUG_KZ_DEFAULT_LOG_FILE	const orxDEBUG_KZ_DEFAULT_LOG_FILE		23
+nim	orxDEBUG_KZ_DEFAULT_LOG_SUFFIX	norx/debug.html#orxDEBUG_KZ_DEFAULT_LOG_SUFFIX	const orxDEBUG_KZ_DEFAULT_LOG_SUFFIX		24
+nim	orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX	norx/debug.html#orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX	const orxDEBUG_KZ_DEFAULT_DEBUG_SUFFIX		25
+nim	orxDEBUG_LEVEL	norx/debug.html#orxDEBUG_LEVEL	enum orxDEBUG_LEVEL		30
+nim	orxLOG	norx/debug.html#orxLOG,string	proc orxLOG(s: string)		60
+nim	orxDEBUG_CALLBACK_FUNCTION	norx/debug.html#orxDEBUG_CALLBACK_FUNCTION	type orxDEBUG_CALLBACK_FUNCTION		66
+nim	orxDEBUG_ENABLE_LEVEL_MACRO	norx/debug.html#orxDEBUG_ENABLE_LEVEL_MACRO.t,untyped,untyped	template orxDEBUG_ENABLE_LEVEL_MACRO(LEVEL, ENABLE: untyped): untyped		72
+nim	orxDEBUG_IS_LEVEL_ENABLED_MACRO	norx/debug.html#orxDEBUG_IS_LEVEL_ENABLED_MACRO.t,untyped	template orxDEBUG_IS_LEVEL_ENABLED_MACRO(LEVEL: untyped): untyped		75
+nim	orxDEBUG_SET_FLAGS_MACRO	norx/debug.html#orxDEBUG_SET_FLAGS_MACRO.t,untyped,untyped	template orxDEBUG_SET_FLAGS_MACRO(SET, UNSET: untyped): untyped		78
+nim	orxDEBUG_GET_FLAGS_MACRO	norx/debug.html#orxDEBUG_GET_FLAGS_MACRO.t	template orxDEBUG_GET_FLAGS_MACRO(): untyped		81
+nim	orxDEBUG_SET_LOG_CALLBACK	norx/debug.html#orxDEBUG_SET_LOG_CALLBACK.t,untyped	template orxDEBUG_SET_LOG_CALLBACK(CALLBACK: untyped): untyped		84
+nim	orxDEBUG_SETLOGFILE	norx/debug.html#orxDEBUG_SETLOGFILE.t,untyped	template orxDEBUG_SETLOGFILE(FILE: untyped): untyped		87
+nim	orxBREAK	norx/debug.html#orxBREAK.t	template orxBREAK(): void		110
+nim	orxDEBUG_SETDEBUGFILE	norx/debug.html#orxDEBUG_SETDEBUGFILE.t,untyped	template orxDEBUG_SETDEBUGFILE(FILE: untyped): void		114
+nim	orxDEBUG_SETBASEFILENAME	norx/debug.html#orxDEBUG_SETBASEFILENAME.t,untyped	template orxDEBUG_SETBASEFILENAME(FILE: untyped): void		117
+nim	orxDEBUG_KS32_BUFFER_OUTPUT_SIZE	norx/debug.html#orxDEBUG_KS32_BUFFER_OUTPUT_SIZE	const orxDEBUG_KS32_BUFFER_OUTPUT_SIZE		129
+nim	debugInit	norx/debug.html#debugInit	proc debugInit(): orxSTATUS		134
+nim	debugExit	norx/debug.html#debugExit	proc debugExit()		139
+nim	log	norx/debug.html#log,orxDEBUG_LEVEL,cstring,cstring,orxU32,cstring	proc log(eLevel: orxDEBUG_LEVEL; zFunction: cstring; zFile: cstring; u32Line: orxU32;\n    zFormat: cstring)		142
+nim	enableLevel	norx/debug.html#enableLevel,orxDEBUG_LEVEL,orxBOOL	proc enableLevel(eLevel: orxDEBUG_LEVEL; bEnable: orxBOOL)		152
+nim	isLevelEnabled	norx/debug.html#isLevelEnabled,orxDEBUG_LEVEL	proc isLevelEnabled(eLevel: orxDEBUG_LEVEL): orxBOOL		158
+nim	setFlags	norx/debug.html#setFlags,orxU32,orxU32	proc setFlags(u32Add: orxU32; u32Remove: orxU32)		163
+nim	getFlags	norx/debug.html#getFlags	proc getFlags(): orxU32		169
+nim	debugBreak	norx/debug.html#debugBreak	proc debugBreak()		174
+nim	setDebugFile	norx/debug.html#setDebugFile,cstring	proc setDebugFile(zFileName: cstring)		177
+nim	setLogFile	norx/debug.html#setLogFile,cstring	proc setLogFile(zFileName: cstring)		182
+nim	setLogCallback	norx/debug.html#setLogCallback,orxDEBUG_CALLBACK_FUNCTION	proc setLogCallback(pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION)		187
+nim	orxDEBUG_INIT_MACRO	norx/debug.html#orxDEBUG_INIT_MACRO.t	template orxDEBUG_INIT_MACRO(): void		193
+nim	orxDEBUG_EXIT_MACRO	norx/debug.html#orxDEBUG_EXIT_MACRO.t	template orxDEBUG_EXIT_MACRO(): untyped		206

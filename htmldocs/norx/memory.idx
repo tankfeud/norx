@@ -1,13 +1,15 @@
-orxMEMORY_BARRIER	norx/memory.html#orxMEMORY_BARRIER.t	memory: orxMEMORY_BARRIER(): void	
-orxMEMORY_TYPE	norx/memory.html#orxMEMORY_TYPE	memory: orxMEMORY_TYPE	
-memorySetup	norx/memory.html#memorySetup	memory: memorySetup()	
-memoryInit	norx/memory.html#memoryInit	memory: memoryInit(): orxSTATUS	
-memoryExit	norx/memory.html#memoryExit	memory: memoryExit()	
-allocate	norx/memory.html#allocate,orxU32,orxMEMORY_TYPE	memory: allocate(u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer	
-reallocate	norx/memory.html#reallocate,pointer,orxU32,orxMEMORY_TYPE	memory: reallocate(pMem: pointer; u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer	
-free	norx/memory.html#free,pointer	memory: free(pMem: pointer)	
-copy	norx/memory.html#copy,pointer,pointer,orxU32	memory: copy(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer	
-move	norx/memory.html#move,pointer,pointer,orxU32	memory: move(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer	
-compare	norx/memory.html#compare,pointer,pointer,orxU32	memory: compare(pMem1: pointer; pMem2: pointer; u32Size: orxU32): orxU32	
-getTypeName	norx/memory.html#getTypeName,orxMEMORY_TYPE	memory: getTypeName(eMemType: orxMEMORY_TYPE): cstring	
-getCacheLineSize	norx/memory.html#getCacheLineSize	memory: getCacheLineSize(): orxU32	
+nimTitle	memory	norx/memory.html	module norx/memory		0
+nim	orxMEMORY_BARRIER	norx/memory.html#orxMEMORY_BARRIER.t	template orxMEMORY_BARRIER(): untyped		6
+nim	orxHAS_MEMORY_BARRIER	norx/memory.html#orxHAS_MEMORY_BARRIER	const orxHAS_MEMORY_BARRIER		10
+nim	orxMEMORY_TYPE	norx/memory.html#orxMEMORY_TYPE	enum orxMEMORY_TYPE		33
+nim	memorySetup	norx/memory.html#memorySetup	proc memorySetup()		47
+nim	memoryInit	norx/memory.html#memoryInit	proc memoryInit(): orxSTATUS		50
+nim	memoryExit	norx/memory.html#memoryExit	proc memoryExit()		55
+nim	allocate	norx/memory.html#allocate,orxU32,orxMEMORY_TYPE	proc allocate(u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer		58
+nim	reallocate	norx/memory.html#reallocate,pointer,orxU32,orxMEMORY_TYPE	proc reallocate(pMem: pointer; u32Size: orxU32; eMemType: orxMEMORY_TYPE): pointer		65
+nim	free	norx/memory.html#free,pointer	proc free(pMem: pointer)		75
+nim	copy	norx/memory.html#copy,pointer,pointer,orxU32	proc copy(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer		80
+nim	move	norx/memory.html#move,pointer,pointer,orxU32	proc move(pDest: pointer; pSrc: pointer; u32Size: orxU32): pointer		94
+nim	compare	norx/memory.html#compare,pointer,pointer,orxU32	proc compare(pMem1: pointer; pMem2: pointer; u32Size: orxU32): orxU32		107
+nim	getTypeName	norx/memory.html#getTypeName,orxMEMORY_TYPE	proc getTypeName(eMemType: orxMEMORY_TYPE): cstring		146
+nim	getCacheLineSize	norx/memory.html#getCacheLineSize	proc getCacheLineSize(): orxU32		152

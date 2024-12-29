@@ -1,40 +1,41 @@
-orxHANDLE	norx/typ.html#orxHANDLE	typ: orxHANDLE	
-orxU64	norx/typ.html#orxU64	typ: orxU64	
-orxU32	norx/typ.html#orxU32	typ: orxU32	
-orxU16	norx/typ.html#orxU16	typ: orxU16	
-orxU8	norx/typ.html#orxU8	typ: orxU8	
-orxS64	norx/typ.html#orxS64	typ: orxS64	
-orxS32	norx/typ.html#orxS32	typ: orxS32	
-orxS16	norx/typ.html#orxS16	typ: orxS16	
-orxS8	norx/typ.html#orxS8	typ: orxS8	
-orxBOOL	norx/typ.html#orxBOOL	typ: orxBOOL	
-orxFLOAT	norx/typ.html#orxFLOAT	typ: orxFLOAT	
-orxDOUBLE	norx/typ.html#orxDOUBLE	typ: orxDOUBLE	
-orxCHAR	norx/typ.html#orxCHAR	typ: orxCHAR	
-orxSTRINGID	norx/typ.html#orxSTRINGID	typ: orxSTRINGID	
-orxENUM	norx/typ.html#orxENUM	typ: orxENUM	
-orx2F	norx/typ.html#orx2F.t,untyped	typ: orx2F(V: untyped): untyped	
-orx2D	norx/typ.html#orx2D.t,untyped	typ: orx2D(V: untyped): untyped	
-orxENUM_NONE	norx/typ.html#orxENUM_NONE	typ: orxENUM_NONE	
-orxSEEK_OFFSET_WHENCE	norx/typ.html#orxSEEK_OFFSET_WHENCE	typ: orxSEEK_OFFSET_WHENCE	
-orxFALSE	norx/typ.html#orxFALSE	typ: orxFALSE	
-orxTRUE	norx/typ.html#orxTRUE	typ: orxTRUE	
-toBool	norx/typ.html#toBool.c,orxBOOL	typ: toBool(x: orxBOOL): bool	
-toOrxBOOL	norx/typ.html#toOrxBOOL.c,bool	typ: toOrxBOOL(x: bool): orxBOOL	
-orxFLOAT_0	norx/typ.html#orxFLOAT_0	typ: orxFLOAT_0	
-orxFLOAT_1	norx/typ.html#orxFLOAT_1	typ: orxFLOAT_1	
-orxFLOAT_MAX	norx/typ.html#orxFLOAT_MAX	typ: orxFLOAT_MAX	
-orxSTRING_EMPTY	norx/typ.html#orxSTRING_EMPTY	typ: orxSTRING_EMPTY	
-orxSTRING_TRUE	norx/typ.html#orxSTRING_TRUE	typ: orxSTRING_TRUE	
-orxSTRING_FALSE	norx/typ.html#orxSTRING_FALSE	typ: orxSTRING_FALSE	
-orxSTRING_EOL	norx/typ.html#orxSTRING_EOL	typ: orxSTRING_EOL	
-orxCHAR_NULL	norx/typ.html#orxCHAR_NULL	typ: orxCHAR_NULL	
-orxCHAR_CR	norx/typ.html#orxCHAR_CR	typ: orxCHAR_CR	
-orxCHAR_LF	norx/typ.html#orxCHAR_LF	typ: orxCHAR_LF	
-orxCHAR_EOL	norx/typ.html#orxCHAR_EOL	typ: orxCHAR_EOL	
-orxCHAR_ASCII_NUMBER	norx/typ.html#orxCHAR_ASCII_NUMBER	typ: orxCHAR_ASCII_NUMBER	
-orxSTRING_DIRECTORY_SEPARATOR	norx/typ.html#orxSTRING_DIRECTORY_SEPARATOR	typ: orxSTRING_DIRECTORY_SEPARATOR	
-orxCHAR_DIRECTORY_SEPARATOR_WINDOWS	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR_WINDOWS	typ: orxCHAR_DIRECTORY_SEPARATOR_WINDOWS	
-orxCHAR_DIRECTORY_SEPARATOR_LINUX	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR_LINUX	typ: orxCHAR_DIRECTORY_SEPARATOR_LINUX	
-orxCHAR_DIRECTORY_SEPARATOR	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR	typ: orxCHAR_DIRECTORY_SEPARATOR	
-orxSTATUS	norx/typ.html#orxSTATUS	typ: orxSTATUS	
+nimTitle	typ	norx/typ.html	module norx/typ		0
+nim	orxHANDLE	norx/typ.html#orxHANDLE	type orxHANDLE		58
+nim	orxU64	norx/typ.html#orxU64	type orxU64		61
+nim	orxU32	norx/typ.html#orxU32	type orxU32		62
+nim	orxU16	norx/typ.html#orxU16	type orxU16		63
+nim	orxU8	norx/typ.html#orxU8	type orxU8		64
+nim	orxS64	norx/typ.html#orxS64	type orxS64		65
+nim	orxS32	norx/typ.html#orxS32	type orxS32		66
+nim	orxS16	norx/typ.html#orxS16	type orxS16		67
+nim	orxS8	norx/typ.html#orxS8	type orxS8		68
+nim	orxBOOL	norx/typ.html#orxBOOL	type orxBOOL		69
+nim	orxFLOAT	norx/typ.html#orxFLOAT	type orxFLOAT		82
+nim	orxDOUBLE	norx/typ.html#orxDOUBLE	type orxDOUBLE		83
+nim	orxCHAR	norx/typ.html#orxCHAR	type orxCHAR		84
+nim	orxSTRINGID	norx/typ.html#orxSTRINGID	type orxSTRINGID		86
+nim	orxENUM	norx/typ.html#orxENUM	type orxENUM		87
+nim	orx2F	norx/typ.html#orx2F.t,untyped	template orx2F(V: untyped): untyped		88
+nim	orx2D	norx/typ.html#orx2D.t,untyped	template orx2D(V: untyped): untyped		91
+nim	orxENUM_NONE	norx/typ.html#orxENUM_NONE	const orxENUM_NONE		95
+nim	orxSEEK_OFFSET_WHENCE	norx/typ.html#orxSEEK_OFFSET_WHENCE	enum orxSEEK_OFFSET_WHENCE		102
+nim	orxFALSE	norx/typ.html#orxFALSE	const orxFALSE		110
+nim	orxTRUE	norx/typ.html#orxTRUE	const orxTRUE		111
+nim	toBool	norx/typ.html#toBool.c,orxBOOL	converter toBool(x: orxBOOL): bool		114
+nim	toOrxBOOL	norx/typ.html#toOrxBOOL.c,bool	converter toOrxBOOL(x: bool): orxBOOL		117
+nim	orxFLOAT_0	norx/typ.html#orxFLOAT_0	const orxFLOAT_0		124
+nim	orxFLOAT_1	norx/typ.html#orxFLOAT_1	const orxFLOAT_1		127
+nim	orxFLOAT_MAX	norx/typ.html#orxFLOAT_MAX	const orxFLOAT_MAX		130
+nim	orxSTRING_EMPTY	norx/typ.html#orxSTRING_EMPTY	var orxSTRING_EMPTY		156
+nim	orxSTRING_TRUE	norx/typ.html#orxSTRING_TRUE	var orxSTRING_TRUE		158
+nim	orxSTRING_FALSE	norx/typ.html#orxSTRING_FALSE	var orxSTRING_FALSE		160
+nim	orxSTRING_EOL	norx/typ.html#orxSTRING_EOL	var orxSTRING_EOL		162
+nim	orxCHAR_NULL	norx/typ.html#orxCHAR_NULL	const orxCHAR_NULL		165
+nim	orxCHAR_CR	norx/typ.html#orxCHAR_CR	const orxCHAR_CR		166
+nim	orxCHAR_LF	norx/typ.html#orxCHAR_LF	const orxCHAR_LF		167
+nim	orxCHAR_EOL	norx/typ.html#orxCHAR_EOL	const orxCHAR_EOL		168
+nim	orxCHAR_ASCII_NUMBER	norx/typ.html#orxCHAR_ASCII_NUMBER	const orxCHAR_ASCII_NUMBER		169
+nim	orxSTRING_DIRECTORY_SEPARATOR	norx/typ.html#orxSTRING_DIRECTORY_SEPARATOR	var orxSTRING_DIRECTORY_SEPARATOR		172
+nim	orxCHAR_DIRECTORY_SEPARATOR_WINDOWS	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR_WINDOWS	const orxCHAR_DIRECTORY_SEPARATOR_WINDOWS		176
+nim	orxCHAR_DIRECTORY_SEPARATOR_LINUX	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR_LINUX	const orxCHAR_DIRECTORY_SEPARATOR_LINUX		177
+nim	orxCHAR_DIRECTORY_SEPARATOR	norx/typ.html#orxCHAR_DIRECTORY_SEPARATOR	const orxCHAR_DIRECTORY_SEPARATOR		185
+nim	orxSTATUS	norx/typ.html#orxSTATUS	enum orxSTATUS		189

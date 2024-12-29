@@ -1,4 +1,5 @@
-sbStopByEvent	norx.html#sbStopByEvent	norx: sbStopByEvent	
-orx_DefaultEventHandler	norx.html#orx_DefaultEventHandler,ptr.orxEVENT	norx: orx_DefaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS	
-orx_MainSetup	norx.html#orx_MainSetup	norx: orx_MainSetup()	
-execute	norx.html#execute,proc),proc),proc)	norx: execute(initProc: proc (): orxSTATUS {.cdecl.};\n        runProc: proc (): orxSTATUS {.cdecl.}; exitProc: proc () {.cdecl.})	
+nimTitle	norx	norx.html	module norx		0
+nim	sbStopByEvent	norx.html#sbStopByEvent	var sbStopByEvent		7
+nim	orx_DefaultEventHandler	norx.html#orx_DefaultEventHandler,ptr.orxEVENT	proc orx_DefaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS		12
+nim	orx_MainSetup	norx.html#orx_MainSetup	proc orx_MainSetup()		24
+nim	execute	norx.html#execute,proc),proc),proc)	proc execute(initProc: proc (): orxSTATUS {.cdecl.};\n        runProc: proc (): orxSTATUS {.cdecl.}; exitProc: proc () {.cdecl.})		92

@@ -1,19 +1,20 @@
-orxSYSTEM_EVENT	norx/system.html#orxSYSTEM_EVENT	system: orxSYSTEM_EVENT	
-INNER_C_STRUCT_orxSystem_94	norx/system.html#INNER_C_STRUCT_orxSystem_94	system: INNER_C_STRUCT_orxSystem_94	
-INNER_C_STRUCT_orxSystem_102	norx/system.html#INNER_C_STRUCT_orxSystem_102	system: INNER_C_STRUCT_orxSystem_102	
-INNER_C_STRUCT_orxSystem_109	norx/system.html#INNER_C_STRUCT_orxSystem_109	system: INNER_C_STRUCT_orxSystem_109	
-INNER_C_STRUCT_orxSystem_117	norx/system.html#INNER_C_STRUCT_orxSystem_117	system: INNER_C_STRUCT_orxSystem_117	
-orxSYSTEM_EVENT_PAYLOAD	norx/system.html#orxSYSTEM_EVENT_PAYLOAD	system: orxSYSTEM_EVENT_PAYLOAD	
-systemSetup	norx/system.html#systemSetup	system: systemSetup()	
-systemInit	norx/system.html#systemInit	system: systemInit(): orxSTATUS	
-systemExit	norx/system.html#systemExit	system: systemExit()	
-getTime	norx/system.html#getTime	system: getTime(): orxDOUBLE	
-getRealTime	norx/system.html#getRealTime	system: getRealTime(): orxU64	
-getSystemTime	norx/system.html#getSystemTime	system: getSystemTime(): orxDOUBLE	
-delay	norx/system.html#delay,orxFLOAT	system: delay(fSeconds: orxFLOAT)	
-getVersion	norx/system.html#getVersion,ptr.orxVERSION	system: getVersion(pstVersion: ptr orxVERSION): ptr orxVERSION	
-getVersionString	norx/system.html#getVersionString	system: getVersionString(): cstring	
-getVersionFullString	norx/system.html#getVersionFullString	system: getVersionFullString(): cstring	
-getVersionNumeric	norx/system.html#getVersionNumeric	system: getVersionNumeric(): orxU32	
-getClipboard	norx/system.html#getClipboard	system: getClipboard(): cstring	
-setClipboard	norx/system.html#setClipboard,cstring	system: setClipboard(zValue: cstring): orxSTATUS	
+nimTitle	system	norx/system.html	module norx/system		0
+nim	orxSYSTEM_EVENT	norx/system.html#orxSYSTEM_EVENT	enum orxSYSTEM_EVENT		7
+nim	INNER_C_STRUCT_orxSystem_94	norx/system.html#INNER_C_STRUCT_orxSystem_94	object INNER_C_STRUCT_orxSystem_94		22
+nim	INNER_C_STRUCT_orxSystem_102	norx/system.html#INNER_C_STRUCT_orxSystem_102	object INNER_C_STRUCT_orxSystem_102		29
+nim	INNER_C_STRUCT_orxSystem_109	norx/system.html#INNER_C_STRUCT_orxSystem_109	object INNER_C_STRUCT_orxSystem_109		33
+nim	INNER_C_STRUCT_orxSystem_117	norx/system.html#INNER_C_STRUCT_orxSystem_117	object INNER_C_STRUCT_orxSystem_117		37
+nim	orxSYSTEM_EVENT_PAYLOAD	norx/system.html#orxSYSTEM_EVENT_PAYLOAD	object orxSYSTEM_EVENT_PAYLOAD		40
+nim	systemSetup	norx/system.html#systemSetup	proc systemSetup()		47
+nim	systemInit	norx/system.html#systemInit	proc systemInit(): orxSTATUS		50
+nim	systemExit	norx/system.html#systemExit	proc systemExit()		55
+nim	getTime	norx/system.html#getTime	proc getTime(): orxDOUBLE		58
+nim	getRealTime	norx/system.html#getRealTime	proc getRealTime(): orxU64		63
+nim	getSystemTime	norx/system.html#getSystemTime	proc getSystemTime(): orxDOUBLE		68
+nim	delay	norx/system.html#delay,orxFLOAT	proc delay(fSeconds: orxFLOAT)		73
+nim	getVersion	norx/system.html#getVersion,ptr.orxVERSION	proc getVersion(pstVersion: ptr orxVERSION): ptr orxVERSION		78
+nim	getVersionString	norx/system.html#getVersionString	proc getVersionString(): cstring		84
+nim	getVersionFullString	norx/system.html#getVersionFullString	proc getVersionFullString(): cstring		89
+nim	getVersionNumeric	norx/system.html#getVersionNumeric	proc getVersionNumeric(): orxU32		94
+nim	getClipboard	norx/system.html#getClipboard	proc getClipboard(): cstring		99
+nim	setClipboard	norx/system.html#setClipboard,cstring	proc setClipboard(zValue: cstring): orxSTATUS		104
