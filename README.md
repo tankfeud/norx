@@ -4,7 +4,7 @@ Norx is a Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) lib
 The wrapper consists of two parts:
 
 * The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is automatically generated as much as possible from the C header files.
-* The high level `norx.nim` module created by hand to use Nim style and Nim types as much as possible.
+* The high level `norx.nim` module created by hand to use Nim style and Nim types as much as possible. This is the module you should import in your Nim code, it also exports the low level wrapper.
 
 The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path. However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
 
