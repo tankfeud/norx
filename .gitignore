@@ -1,8 +1,6 @@
-# Ignore binary (no extension)
-*
-!/**/
-!*.*
-
+# Ignore binaries
+samples/fsample1/sample1
+scripts/create_wrapper
 
 **/*.log
 **/*.dSYM
@@ -10,4 +8,3 @@
 **/.idea
 **/*.elf
 **/*.so
-
