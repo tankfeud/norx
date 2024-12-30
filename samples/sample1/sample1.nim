@@ -2,7 +2,10 @@
 import os
 import norx
 
-proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
+# We need cdecl for all functions, as they are called from C code
+{.push cdecl.}
+
+proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):
@@ -10,7 +13,7 @@ proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
     echo "User quitting"
     discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
 
-proc init(): orxSTATUS {.cdecl, gcsafe.} =
+proc init(): orxSTATUS =
   ## Init function, it is called when all orx's modules have been initialized
   echo("Sample1 starting")
   echo("Version: " & $getVersionFullString())
@@ -35,16 +38,16 @@ proc init(): orxSTATUS {.cdecl, gcsafe.} =
 
   return STATUS_SUCCESS
 
-proc run(): orxSTATUS {.sideEffect, cdecl, gcsafe.} =
+proc run(): orxSTATUS =
   ## Run function, it should not contain any game logic
-  # Return orxSTATUS_FAILURE to instruct orx to quit
-  return STATUS_SUCCESS
+  # Return STATUS_FAILURE to instruct orx to quit
+  STATUS_SUCCESS
 
-proc exit() {.cdecl, gcsafe.} =
+proc exit() =
   ## Exit function, it is called before exiting from orx
   echo "Exit called"
 
-proc bootstrap(): orxSTATUS {.cdecl, gcsafe.} =
+proc bootstrap(): orxSTATUS =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
@@ -53,7 +56,7 @@ proc bootstrap(): orxSTATUS {.cdecl, gcsafe.} =
   if status == STATUS_SUCCESS:
     echo "Added storage"
   # Return STATUS_FAILURE to prevent ORX from loading the default config file
-  return STATUS_SUCCESS
+  STATUS_SUCCESS
 
 
 # Set the bootstrap function to provide at least one resource storage before loading any config files
