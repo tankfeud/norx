@@ -1,6 +1,5 @@
 import os
-import wrapper
-import vector
+import wrapper, vector
 export wrapper, vector
 
 #[ ##  Windows
@@ -123,6 +122,10 @@ converter toBool*(x: orxBOOL): bool = cint(x) != 0
 
 converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
   ## Converts bool to orxBOOL
+
+## From orxEvent.h
+template eventGetFlag*(ID: untyped): untyped =
+  ((orxU32)(1 shl (orxU32)(ID)))
 
 template debugInitMacro*(): void =
   var u32DebugFlags: orxU32

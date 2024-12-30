@@ -7,5 +7,5 @@ installDirs   = @["data"]
 bin           = @["sample2"]
 
 # Dependencies
-requires "nim >= 1.2.0"
+requires "nim >= 2.0.10"
 requires "norx"

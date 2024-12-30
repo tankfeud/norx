@@ -2,7 +2,7 @@
 import os
 import norx
 
-proc Update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
+proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):
@@ -25,15 +25,14 @@ proc init(): orxSTATUS {.cdecl, gcsafe.} =
   if not s.isNil:
     echo "Scene created"
 
-  # Register the Update function to the core clock
+  # Register the update function to the core clock
   let clock = clockGet(CLOCK_KZ_CORE)
   if not clock.isNil:
     echo "Clock gotten"
-  var status = clockRegister(clock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+  var status = clockRegister(clock, update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
   if status == STATUS_SUCCESS:
     echo "Clock registered"
 
-  # Done!
   return STATUS_SUCCESS
 
 proc run(): orxSTATUS {.sideEffect, cdecl, gcsafe.} =
@@ -53,18 +52,17 @@ proc bootstrap(): orxSTATUS {.cdecl, gcsafe.} =
       "/data/config"), false)
   if status == STATUS_SUCCESS:
     echo "Added storage"
-  # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
+  # Return STATUS_FAILURE to prevent ORX from loading the default config file
   return STATUS_SUCCESS
 
 
-when isMainModule:
-  # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = orxConfig_SetBootstrap(bootstrap)
-  if status == STATUS_SUCCESS:
-    echo "Bootstrap was set"
+# Set the bootstrap function to provide at least one resource storage before loading any config files
+var status = orxConfig_SetBootstrap(bootstrap)
+if status == STATUS_SUCCESS:
+  echo "Bootstrap was set"
 
-  # Execute our game
-  execute(init, run, exit)
+# Execute our game
+execute(init, run, exit)
 
-  # Done!
-  quit(0)
+# Done!
+quit(0)

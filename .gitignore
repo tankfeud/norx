@@ -5,6 +5,7 @@ samples/qr-code/show_qr
 scripts/create_wrapper
 
 **/*.log
+**/*.cih
 **/*.dSYM
 **/*.iml
 **/.idea

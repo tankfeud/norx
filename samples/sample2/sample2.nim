@@ -3,88 +3,82 @@
 ##
 ## NOTE: THIS IS NOT THE RECOMMENDED ORX WAY.
 import os
+import norx
 
-# Note here that we do not import norx, only it's sub modules
-import norx/[incl, param, clock, event, system, config, resource, input,
-    viewport, obj]
-
-## Should stop execution by default event handling?
-var sbStopByEvent* = false
-
-##  Event handler.
-##  @param[in]   pstEvent                     Sent event
-##  @return      orxSTATUS_SUCCESS if handled / orxSTATUS_FAILURE otherwise
-proc eventHandler(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
-  ##  Checks
-  assert(pstEvent.eType == orxEVENT_TYPE_SYSTEM)
-  assert(pstEvent.eID == ord(orxSYSTEM_EVENT_CLOSE))
-  ##  Updates status
-  sbStopByEvent = true
-  ##  Done!
-  return orxSTATUS_SUCCESS
-
-## Default main setup (module dependencies)
-proc mainSetup() {.cdecl.} =
-  ##  Adds module dependencies
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_OBJECT)
-  addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_RENDER)
-  addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_SCREENSHOT)
-  ##  Done!
-
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  ## Update function, it has been registered to be called every tick of the core clock
+proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
+  ## Update function registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):
     # Send close event
     echo "User quitting"
-    discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.ord)
+    discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
 
 proc init(): orxSTATUS {.cdecl.} =
-  ## Init function, it is called when all orx's modules have been initialized
-  orxLOG("Sample2 starting")
+  ## Init function, it is called when all ORX modules have been initialized
+  echo "Sample2 starting"
+  echo "Version: " & $getVersionFullString()
 
-  # Create viewport, scene and register the Update function to the core clock
+  # Create viewport and scene
   discard viewportCreateFromConfig("MainViewport")
   discard objectCreateFromConfig("Scene")
-  let clock = clockGet(orxCLOCK_KZ_CORE)
-  discard clock.register(Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
 
-  # Done!
-  return orxSTATUS_SUCCESS
+  # Register the Update function to the core clock
+  let clock = clockGet(CLOCK_KZ_CORE)
+  discard clockRegister(clock, update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+  return STATUS_SUCCESS
 
-proc run(): orxSTATUS =
+proc run(): orxSTATUS {.sideEffect, cdecl, gcsafe.} =
   ## Run function, it should not contain any game logic
-  # Return orxSTATUS_FAILURE to instruct orx to quit
-  return orxSTATUS_SUCCESS
+  return STATUS_SUCCESS
 
 proc exit() {.cdecl.} =
-  ## Exit function, it is called before exiting from orx
+  ## Exit function, it is called before exiting from ORX
   echo "Exit called"
 
-proc bootstrap(): orxSTATUS {.cdecl.} =
+proc bootstrap(): orxSTATUS {.cdecl, gcsafe.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   # Add a config storage to find the initial config file
   var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, cstring(dir &
-      "/data/config"), false)
-  if status == orxSTATUS_SUCCESS:
+  var status = addStorage(CONFIG_KZ_RESOURCE_GROUP, cstring(dir & "/data/config"), false)
+  if status == STATUS_SUCCESS:
     echo "Added storage"
-  # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
-  return orxSTATUS_SUCCESS
+  # Return STATUS_FAILURE to prevent ORX from loading the default config file
+  return STATUS_SUCCESS
 
-# Register bootstrap
-discard setBootstrap(bootstrap)
+# Set the bootstrap function to provide at least one resource storage before loading any config files
+discard orxConfig_SetBootstrap(bootstrap)
+
+#
+# From here and below is where we implement our own main loop.
+#
+
+# We use this global variable to stop the main loop.
+var stopByEvent* = false
+
+proc eventHandler(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
+  # Check for close event
+  assert(pstEvent.eType == EVENT_TYPE_SYSTEM)
+  if pstEvent.eID == ord(SYSTEM_EVENT_CLOSE):
+    # This will be detected by the main loop below.
+    stopByEvent = true
+  return STATUS_SUCCESS
+
+proc mainSetup() {.cdecl.} =
+  # Adds module dependencies
+  addDependency(MODULE_ID_MAIN, MODULE_ID_OBJECT)
+  addDependency(MODULE_ID_MAIN, MODULE_ID_RENDER)
+  addOptionalDependency(MODULE_ID_MAIN, MODULE_ID_SCREENSHOT)
 
 # Inits the Debug System
-orxDEBUG_INIT_MACRO()
+debugInitMacro()
 
-#  Registers main module
-register(orxMODULE_ID_MAIN, "MAIN", mainSetup, init, exit)
+# Registers main module
+moduleRegister(MODULE_ID_MAIN, "MAIN", mainSetup, init, exit)
 
 # Hack to produce C style argc/argv to pass on
 var argc = paramCount()
 var nargv = newSeq[string](argc + 1)
-nargv[0] = getAppFilename() # Better than paramStr(0)
+nargv[0] = getAppFilename()  # Better than paramStr(0)
 var x = 1
 while x <= argc:
   nargv[x] = paramStr(x)
@@ -92,44 +86,41 @@ while x <= argc:
 var argv: cstringArray = nargv.allocCStringArray()
 inc(argc)
 
-#  Sends the command line arguments to orxParam module
-if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
-  #  Inits the engine
-  if moduleInit(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
+# Sends the command line arguments to orxParam module
+if orxParam_SetArgs(argc.orxU32, argv) != STATUS_FAILURE:
+  # Inits the engine
+  if moduleInit(MODULE_ID_MAIN) != STATUS_FAILURE:
     var
-      stPayload: orxSYSTEM_EVENT_PAYLOAD
-      eClockStatus: orxSTATUS
-      eMainStatus: orxSTATUS
-    #  Registers default event handler
-    discard addHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-    discard setHandlerIDFlags(eventHandler, orxEVENT_TYPE_SYSTEM, nil,
-        orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
-
+      payload: struct_orxSYSTEM_EVENT_PAYLOAD_t
+      clockStatus: orxSTATUS
+      mainStatus: orxSTATUS
+    # Registers event handler above
+    var st = addHandler(EVENT_TYPE_SYSTEM, eventHandler)
+    # Set handler ID flags
+    discard setHandlerIDFlags(eventHandler, EVENT_TYPE_SYSTEM, nil, eventGetFlag(SYSTEM_EVENT_CLOSE), EVENT_KU32_MASK_ID_ALL.orxU32)
+    # Clears payload
+    zeroMem(addr(payload), sizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t).orxU32)
     # Main loop
-    var bStop = false
-    sbStopByEvent = false
+    var
+      bStop = false
+    stopByEvent = false
     while not bStop:
-      #  Sends frame start event
-      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START,
-          nil, nil, addr(stPayload))
-      #  Runs game specific code
-      eMainStatus = run()
-      #  Updates clock system
-      eClockStatus = update()
-      #  Sends frame stop event
-      orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP,
-          nil, nil, addr(stPayload))
-      #  Updates frame count
-      stPayload.u32FrameCount += 1
-      bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (
-          eClockStatus == orxSTATUS_FAILURE))
+      # Sends frame start event
+      eventSendMacro(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(payload))
+      # Runs game specific code
+      mainStatus = run()
+      # Updates clock system
+      clockStatus = clockUpdate()
+      # Sends frame stop event
+      eventSendMacro(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(payload))
+      # Updates frame count
+      payload.anon0.u32FrameCount += 1
+      bStop = (stopByEvent or (mainStatus == STATUS_FAILURE) or (clockStatus == STATUS_FAILURE))
 
     # Removes event handler
-    discard removeHandler(orxEVENT_TYPE_SYSTEM, eventHandler)
-
+    discard removeHandler(EVENT_TYPE_SYSTEM, eventHandler)
     # Exits from the engine
-    moduleExit(orxMODULE_ID_MAIN)
-
-orxDEBUG_EXIT_MACRO()
+    moduleExit(MODULE_ID_MAIN)
+debugExitMacro()
 
 quit(0)
