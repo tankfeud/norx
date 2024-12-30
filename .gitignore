@@ -1,5 +1,5 @@
 # Ignore binaries
-samples/fsample1/sample1
+samples/sample1/sample1
 scripts/create_wrapper
 
 **/*.log
