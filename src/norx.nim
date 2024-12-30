@@ -235,7 +235,6 @@ when not defined(PLUGIN):
                             runProc: proc(): orxSTATUS {.cdecl.};
                             exitProc: proc() {.cdecl.}) {.inline} =
         ## Inits the Debug System
-        echo "Inits the Debug System"
         debugInitMacro()
         ## Checks
         assert(runProc != nil)

@@ -1,5 +1,5 @@
 ## This is a port of the trivial sample that ORX comes with.
-import strutils, os
+import os
 import norx
 
 proc Update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
@@ -13,7 +13,7 @@ proc Update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
 proc init(): orxSTATUS {.cdecl, gcsafe.} =
   ## Init function, it is called when all orx's modules have been initialized
   echo("Sample1 starting")
-  echo("VERSION_FULL_STRING: " & $getVersionFullString())
+  echo("Version: " & $getVersionFullString())
 
   # Create the viewport
   var v = viewportCreateFromConfig("MainViewport")
@@ -68,4 +68,3 @@ when isMainModule:
 
   # Done!
   quit(0)
-
