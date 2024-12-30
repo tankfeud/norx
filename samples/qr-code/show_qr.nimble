@@ -7,6 +7,6 @@ installDirs   = @["data"]
 bin           = @["show_qr"]
 
 # Dependencies
-requires "nim >= 1.2.0"
+requires "nim >= 2.0.10"
 requires "norx"
 requires "qr"

@@ -1,6 +1,7 @@
 import os
 import wrapper
-export wrapper
+import vector
+export wrapper, vector
 
 #[ ##  Windows
 when defined(Windows):
