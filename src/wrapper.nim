@@ -11605,12 +11605,12 @@ else:
   static :
     hint("Declaration of " & "clockCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(delete):
-  proc delete*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
+when not declared(clockDelete):
+  proc clockDelete*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
       cdecl, importc: "orxClock_Delete".}
 else:
   static :
-    hint("Declaration of " & "delete" & " already exists, not redeclaring")
+    hint("Declaration of " & "clockDelete" & " already exists, not redeclaring")
 when not declared(resync):
   proc resync*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
       cdecl, importc: "orxClock_Resync".}
@@ -11903,12 +11903,12 @@ else:
   static :
     hint("Declaration of " & "structureCreate" &
         " already exists, not redeclaring")
-when not declared(orxStructure_Delete):
-  proc orxStructure_Delete*(internal_pStructure: pointer): orxSTATUS_520095066 {.
+when not declared(structureDelete):
+  proc structureDelete*(internal_pStructure: pointer): orxSTATUS_520095066 {.
       cdecl, importc: "orxStructure_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxStructure_Delete" &
+    hint("Declaration of " & "structureDelete" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetStorageType):
   proc orxStructure_GetStorageType*(internal_eStructureID: orxSTRUCTURE_ID_520095151): orxSTRUCTURE_STORAGE_TYPE_520095155 {.
@@ -12041,13 +12041,12 @@ when not declared(animCreate):
 else:
   static :
     hint("Declaration of " & "animCreate" & " already exists, not redeclaring")
-when not declared(orxAnim_Delete):
-  proc orxAnim_Delete*(internal_pstAnim: ptr orxANIM_520095163): orxSTATUS_520095066 {.
+when not declared(animDelete):
+  proc animDelete*(internal_pstAnim: ptr orxANIM_520095163): orxSTATUS_520095066 {.
       cdecl, importc: "orxAnim_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxAnim_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "animDelete" & " already exists, not redeclaring")
 when not declared(orxAnim_AddKey):
   proc orxAnim_AddKey*(internal_pstAnim: ptr orxANIM_520095163;
                        internal_pstData: ptr orxSTRUCTURE_520095159;
@@ -12198,12 +12197,12 @@ else:
   static :
     hint("Declaration of " & "animSetCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxAnimSet_Delete):
-  proc orxAnimSet_Delete*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxSTATUS_520095066 {.
+when not declared(animSetDelete):
+  proc animSetDelete*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxSTATUS_520095066 {.
       cdecl, importc: "orxAnimSet_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxAnimSet_Delete" &
+    hint("Declaration of " & "animSetDelete" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_ClearCache):
   proc orxAnimSet_ClearCache*(): orxSTATUS_520095066 {.cdecl,
@@ -12400,12 +12399,12 @@ else:
   static :
     hint("Declaration of " & "animPointerCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxAnimPointer_Delete):
-  proc orxAnimPointer_Delete*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxSTATUS_520095066 {.
+when not declared(animPointerDelete):
+  proc animPointerDelete*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxSTATUS_520095066 {.
       cdecl, importc: "orxAnimPointer_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxAnimPointer_Delete" &
+    hint("Declaration of " & "animPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetAnimSet):
   proc orxAnimPointer_GetAnimSet*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): ptr orxANIMSET_520095177 {.
@@ -13296,13 +13295,12 @@ when not declared(bankCreate):
 else:
   static :
     hint("Declaration of " & "bankCreate" & " already exists, not redeclaring")
-when not declared(orxBank_Delete):
-  proc orxBank_Delete*(internal_pstBank: ptr orxBANK_520095259): void {.cdecl,
+when not declared(bankDelete):
+  proc bankDelete*(internal_pstBank: ptr orxBANK_520095259): void {.cdecl,
       importc: "orxBank_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxBank_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "bankDelete" & " already exists, not redeclaring")
 when not declared(orxBank_Allocate):
   proc orxBank_Allocate*(internal_pstBank: ptr orxBANK_520095259): pointer {.
       cdecl, importc: "orxBank_Allocate".}
@@ -13394,12 +13392,12 @@ else:
   static :
     hint("Declaration of " & "hashTableCreate" &
         " already exists, not redeclaring")
-when not declared(orxHashTable_Delete):
-  proc orxHashTable_Delete*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
+when not declared(hashTableDelete):
+  proc hashTableDelete*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
       cdecl, importc: "orxHashTable_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxHashTable_Delete" &
+    hint("Declaration of " & "hashTableDelete" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Clear):
   proc orxHashTable_Clear*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
@@ -13924,12 +13922,12 @@ else:
   static :
     hint("Declaration of " & "orxTexture_Load" &
         " already exists, not redeclaring")
-when not declared(orxTexture_Delete):
-  proc orxTexture_Delete*(internal_pstTexture: ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+when not declared(textureDelete):
+  proc textureDelete*(internal_pstTexture: ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
       cdecl, importc: "orxTexture_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxTexture_Delete" &
+    hint("Declaration of " & "textureDelete" &
         " already exists, not redeclaring")
 when not declared(orxTexture_ClearCache):
   proc orxTexture_ClearCache*(): orxSTATUS_520095066 {.cdecl,
@@ -14025,13 +14023,12 @@ else:
   static :
     hint("Declaration of " & "fontCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxFont_Delete):
-  proc orxFont_Delete*(internal_pstFont: ptr orxFONT_520095323): orxSTATUS_520095066 {.
+when not declared(fontDelete):
+  proc fontDelete*(internal_pstFont: ptr orxFONT_520095323): orxSTATUS_520095066 {.
       cdecl, importc: "orxFont_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxFont_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "fontDelete" & " already exists, not redeclaring")
 when not declared(orxFont_GetDefaultFont):
   proc orxFont_GetDefaultFont*(): ptr orxFONT_520095323 {.cdecl,
       importc: "orxFont_GetDefaultFont".}
@@ -14179,41 +14176,38 @@ when not declared(joystickExit):
 else:
   static :
     hint("Declaration of " & "joystickExit" & " already exists, not redeclaring")
-when not declared(orxJoystick_GetAxisValue):
-  proc orxJoystick_GetAxisValue*(internal_eAxis: orxJOYSTICK_AXIS_520095331): orxFLOAT_520095040 {.
+when not declared(getAxisValue):
+  proc getAxisValue*(internal_eAxis: orxJOYSTICK_AXIS_520095331): orxFLOAT_520095040 {.
       cdecl, importc: "orxJoystick_GetAxisValue".}
 else:
   static :
-    hint("Declaration of " & "orxJoystick_GetAxisValue" &
-        " already exists, not redeclaring")
-when not declared(orxJoystick_IsButtonPressed):
-  proc orxJoystick_IsButtonPressed*(internal_eButton: orxJOYSTICK_BUTTON_520095327): orxBOOL_520095038 {.
+    hint("Declaration of " & "getAxisValue" & " already exists, not redeclaring")
+when not declared(isButtonPressed):
+  proc isButtonPressed*(internal_eButton: orxJOYSTICK_BUTTON_520095327): orxBOOL_520095038 {.
       cdecl, importc: "orxJoystick_IsButtonPressed".}
 else:
   static :
-    hint("Declaration of " & "orxJoystick_IsButtonPressed" &
+    hint("Declaration of " & "isButtonPressed" &
         " already exists, not redeclaring")
-when not declared(orxJoystick_GetButtonName):
-  proc orxJoystick_GetButtonName*(internal_eButton: orxJOYSTICK_BUTTON_520095327): cstring {.
+when not declared(getButtonName):
+  proc getButtonName*(internal_eButton: orxJOYSTICK_BUTTON_520095327): cstring {.
       cdecl, importc: "orxJoystick_GetButtonName".}
 else:
   static :
-    hint("Declaration of " & "orxJoystick_GetButtonName" &
+    hint("Declaration of " & "getButtonName" &
         " already exists, not redeclaring")
-when not declared(orxJoystick_GetAxisName):
-  proc orxJoystick_GetAxisName*(internal_eAxis: orxJOYSTICK_AXIS_520095331): cstring {.
+when not declared(getAxisName):
+  proc getAxisName*(internal_eAxis: orxJOYSTICK_AXIS_520095331): cstring {.
       cdecl, importc: "orxJoystick_GetAxisName".}
 else:
   static :
-    hint("Declaration of " & "orxJoystick_GetAxisName" &
-        " already exists, not redeclaring")
-when not declared(orxJoystick_IsConnected):
-  proc orxJoystick_IsConnected*(internal_u32ID: orxU32_520095024): orxBOOL_520095038 {.
+    hint("Declaration of " & "getAxisName" & " already exists, not redeclaring")
+when not declared(isConnected):
+  proc isConnected*(internal_u32ID: orxU32_520095024): orxBOOL_520095038 {.
       cdecl, importc: "orxJoystick_IsConnected".}
 else:
   static :
-    hint("Declaration of " & "orxJoystick_IsConnected" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "isConnected" & " already exists, not redeclaring")
 when not declared(keyboardSetup):
   proc keyboardSetup*(): void {.cdecl, importc: "orxKeyboard_Setup".}
 else:
@@ -14551,21 +14545,21 @@ else:
   static :
     hint("Declaration of " & "isInCombineMode" &
         " already exists, not redeclaring")
-when not declared(bind_proc):
-  proc bind_proc*(internal_zName: cstring; internal_eType: orxINPUT_TYPE_520095347;
+when not declared(inputBind):
+  proc inputBind*(internal_zName: cstring; internal_eType: orxINPUT_TYPE_520095347;
                   internal_eID: orxENUM_520095048;
                   internal_eMode: orxINPUT_MODE_520095351;
                   internal_s32BindingIndex: orxS32_520095032): orxSTATUS_520095066 {.
       cdecl, importc: "orxInput_Bind".}
 else:
   static :
-    hint("Declaration of " & "bind_proc" & " already exists, not redeclaring")
-when not declared(unbind):
-  proc unbind*(internal_zName: cstring; internal_s32BindingIndex: orxS32_520095032): orxSTATUS_520095066 {.
+    hint("Declaration of " & "inputBind" & " already exists, not redeclaring")
+when not declared(inputUnbind):
+  proc inputUnbind*(internal_zName: cstring; internal_s32BindingIndex: orxS32_520095032): orxSTATUS_520095066 {.
       cdecl, importc: "orxInput_Unbind".}
 else:
   static :
-    hint("Declaration of " & "unbind" & " already exists, not redeclaring")
+    hint("Declaration of " & "inputUnbind" & " already exists, not redeclaring")
 when not declared(getBoundInputCount):
   proc getBoundInputCount*(internal_eType: orxINPUT_TYPE_520095347;
                            internal_eID: orxENUM_520095048;
@@ -15067,12 +15061,13 @@ when not declared(write):
 else:
   static :
     hint("Declaration of " & "write" & " already exists, not redeclaring")
-when not declared(delete_proc):
-  proc delete_proc*(internal_zLocation: cstring): orxSTATUS_520095066 {.cdecl,
-      importc: "orxResource_Delete".}
+when not declared(resourceDelete):
+  proc resourceDelete*(internal_zLocation: cstring): orxSTATUS_520095066 {.
+      cdecl, importc: "orxResource_Delete".}
 else:
   static :
-    hint("Declaration of " & "delete_proc" & " already exists, not redeclaring")
+    hint("Declaration of " & "resourceDelete" &
+        " already exists, not redeclaring")
 when not declared(getPendingOpCount):
   proc getPendingOpCount*(internal_hResource: orxHANDLE_520095050): orxU32_520095024 {.
       cdecl, importc: "orxResource_GetPendingOpCount".}
@@ -15519,12 +15514,12 @@ else:
   static :
     hint("Declaration of " & "graphicCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxGraphic_Delete):
-  proc orxGraphic_Delete*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
+when not declared(graphicDelete):
+  proc graphicDelete*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
       cdecl, importc: "orxGraphic_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxGraphic_Delete" &
+    hint("Declaration of " & "graphicDelete" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_Clone):
   proc orxGraphic_Clone*(internal_pstGraphic: ptr orxGRAPHIC_520095421): ptr orxGRAPHIC_520095421 {.
@@ -15781,13 +15776,12 @@ else:
   static :
     hint("Declaration of " & "textCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxText_Delete):
-  proc orxText_Delete*(internal_pstText: ptr orxTEXT_520095423): orxSTATUS_520095066 {.
+when not declared(textDelete):
+  proc textDelete*(internal_pstText: ptr orxTEXT_520095423): orxSTATUS_520095066 {.
       cdecl, importc: "orxText_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxText_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "textDelete" & " already exists, not redeclaring")
 when not declared(orxText_GetName):
   proc orxText_GetName*(internal_pstText: ptr orxTEXT_520095423): cstring {.
       cdecl, importc: "orxText_GetName".}
@@ -15972,13 +15966,12 @@ else:
   static :
     hint("Declaration of " & "orxFile_Write" &
         " already exists, not redeclaring")
-when not declared(orxFile_Delete):
-  proc orxFile_Delete*(internal_zFileName: cstring): orxSTATUS_520095066 {.
-      cdecl, importc: "orxFile_Delete".}
+when not declared(fileDelete):
+  proc fileDelete*(internal_zFileName: cstring): orxSTATUS_520095066 {.cdecl,
+      importc: "orxFile_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxFile_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "fileDelete" & " already exists, not redeclaring")
 when not declared(orxFile_Seek):
   proc orxFile_Seek*(internal_pstFile: ptr orxFILE_520095429;
                      internal_s64Position: orxS64_520095030;
@@ -16146,12 +16139,12 @@ else:
   static :
     hint("Declaration of " & "orxSoundSystem_LoadStream" &
         " already exists, not redeclaring")
-when not declared(orxSoundSystem_Delete):
-  proc orxSoundSystem_Delete*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+when not declared(soundSystemDelete):
+  proc soundSystemDelete*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
       cdecl, importc: "orxSoundSystem_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxSoundSystem_Delete" &
+    hint("Declaration of " & "soundSystemDelete" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_Play):
   proc orxSoundSystem_Play*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
@@ -16495,13 +16488,12 @@ else:
   static :
     hint("Declaration of " & "orxSound_CreateWithEmptyStream" &
         " already exists, not redeclaring")
-when not declared(orxSound_Delete):
-  proc orxSound_Delete*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+when not declared(soundDelete):
+  proc soundDelete*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
       cdecl, importc: "orxSound_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxSound_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "soundDelete" & " already exists, not redeclaring")
 when not declared(orxSound_ClearCache):
   proc orxSound_ClearCache*(): orxSTATUS_520095066 {.cdecl,
       importc: "orxSound_ClearCache".}
@@ -16944,13 +16936,12 @@ else:
   static :
     hint("Declaration of " & "objectCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(delete_proc_0E2CBDA8):
-  proc delete_proc_0E2CBDA8*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+when not declared(objectDelete):
+  proc objectDelete*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
       cdecl, importc: "orxObject_Delete".}
 else:
   static :
-    hint("Declaration of " & "delete_proc_0E2CBDA8" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "objectDelete" & " already exists, not redeclaring")
 when not declared(objectUpdate):
   proc objectUpdate*(internal_pstObject: ptr orxOBJECT_520095487;
                      internal_pstClockInfo: ptr orxCLOCK_INFO_520095123): orxSTATUS_520095066 {.
@@ -18213,12 +18204,12 @@ else:
   static :
     hint("Declaration of " & "fXCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxFX_Delete):
-  proc orxFX_Delete*(internal_pstFX: ptr orxFX_520095501): orxSTATUS_520095066 {.
+when not declared(fXDelete):
+  proc fXDelete*(internal_pstFX: ptr orxFX_520095501): orxSTATUS_520095066 {.
       cdecl, importc: "orxFX_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxFX_Delete" & " already exists, not redeclaring")
+    hint("Declaration of " & "fXDelete" & " already exists, not redeclaring")
 when not declared(orxFX_ClearCache):
   proc orxFX_ClearCache*(): orxSTATUS_520095066 {.cdecl,
       importc: "orxFX_ClearCache".}
@@ -18357,12 +18348,12 @@ else:
   static :
     hint("Declaration of " & "fXPointerCreate" &
         " already exists, not redeclaring")
-when not declared(orxFXPointer_Delete):
-  proc orxFXPointer_Delete*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxSTATUS_520095066 {.
+when not declared(fXPointerDelete):
+  proc fXPointerDelete*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxSTATUS_520095066 {.
       cdecl, importc: "orxFXPointer_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxFXPointer_Delete" &
+    hint("Declaration of " & "fXPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_Enable):
   proc orxFXPointer_Enable*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
@@ -18534,13 +18525,12 @@ when not declared(frameCreate):
 else:
   static :
     hint("Declaration of " & "frameCreate" & " already exists, not redeclaring")
-when not declared(orxFrame_Delete):
-  proc orxFrame_Delete*(internal_pstFrame: ptr orxFRAME_520095517): orxSTATUS_520095066 {.
+when not declared(frameDelete):
+  proc frameDelete*(internal_pstFrame: ptr orxFRAME_520095517): orxSTATUS_520095066 {.
       cdecl, importc: "orxFrame_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxFrame_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "frameDelete" & " already exists, not redeclaring")
 when not declared(orxFrame_SetParent):
   proc orxFrame_SetParent*(internal_pstFrame: ptr orxFRAME_520095517;
                            internal_pstParent: ptr orxFRAME_520095517): void {.
@@ -18686,12 +18676,12 @@ else:
   static :
     hint("Declaration of " & "spawnerCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxSpawner_Delete):
-  proc orxSpawner_Delete*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxSTATUS_520095066 {.
+when not declared(spawnerDelete):
+  proc spawnerDelete*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxSTATUS_520095066 {.
       cdecl, importc: "orxSpawner_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxSpawner_Delete" &
+    hint("Declaration of " & "spawnerDelete" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_Enable):
   proc orxSpawner_Enable*(internal_pstSpawner: ptr orxSPAWNER_520095523;
@@ -18950,12 +18940,12 @@ else:
   static :
     hint("Declaration of " & "timeLineCreate" &
         " already exists, not redeclaring")
-when not declared(orxTimeLine_Delete):
-  proc orxTimeLine_Delete*(internal_pstTimeLine: ptr orxTIMELINE_520095525): orxSTATUS_520095066 {.
+when not declared(timeLineDelete):
+  proc timeLineDelete*(internal_pstTimeLine: ptr orxTIMELINE_520095525): orxSTATUS_520095066 {.
       cdecl, importc: "orxTimeLine_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxTimeLine_Delete" &
+    hint("Declaration of " & "timeLineDelete" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_ClearCache):
   proc orxTimeLine_ClearCache*(): orxSTATUS_520095066 {.cdecl,
@@ -19031,12 +19021,12 @@ else:
   static :
     hint("Declaration of " & "triggerCreate" &
         " already exists, not redeclaring")
-when not declared(orxTrigger_Delete):
-  proc orxTrigger_Delete*(internal_pstTrigger: ptr orxTRIGGER_520095535): orxSTATUS_520095066 {.
+when not declared(triggerDelete):
+  proc triggerDelete*(internal_pstTrigger: ptr orxTRIGGER_520095535): orxSTATUS_520095066 {.
       cdecl, importc: "orxTrigger_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxTrigger_Delete" &
+    hint("Declaration of " & "triggerDelete" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_ClearCache):
   proc orxTrigger_ClearCache*(): orxSTATUS_520095066 {.cdecl,
@@ -19635,13 +19625,12 @@ else:
   static :
     hint("Declaration of " & "bodyCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxBody_Delete):
-  proc orxBody_Delete*(internal_pstBody: ptr orxBODY_520095571): orxSTATUS_520095066 {.
+when not declared(bodyDelete):
+  proc bodyDelete*(internal_pstBody: ptr orxBODY_520095571): orxSTATUS_520095066 {.
       cdecl, importc: "orxBody_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxBody_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "bodyDelete" & " already exists, not redeclaring")
 when not declared(orxBody_GetName):
   proc orxBody_GetName*(internal_pstBody: ptr orxBODY_520095571): cstring {.
       cdecl, importc: "orxBody_GetName".}
@@ -20181,13 +20170,12 @@ else:
   static :
     hint("Declaration of " & "cameraCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxCamera_Delete):
-  proc orxCamera_Delete*(internal_pstCamera: ptr orxCAMERA_520095577): orxSTATUS_520095066 {.
+when not declared(cameraDelete):
+  proc cameraDelete*(internal_pstCamera: ptr orxCAMERA_520095577): orxSTATUS_520095066 {.
       cdecl, importc: "orxCamera_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxCamera_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "cameraDelete" & " already exists, not redeclaring")
 when not declared(orxCamera_AddGroupID):
   proc orxCamera_AddGroupID*(internal_pstCamera: ptr orxCAMERA_520095577;
                              internal_stGroupID: orxSTRINGID_520095046;
@@ -20365,13 +20353,12 @@ else:
   static :
     hint("Declaration of " & "shaderCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxShader_Delete):
-  proc orxShader_Delete*(internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
+when not declared(shaderDelete):
+  proc shaderDelete*(internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
       cdecl, importc: "orxShader_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxShader_Delete" &
-        " already exists, not redeclaring")
+    hint("Declaration of " & "shaderDelete" & " already exists, not redeclaring")
 when not declared(orxShader_ClearCache):
   proc orxShader_ClearCache*(): orxSTATUS_520095066 {.cdecl,
       importc: "orxShader_ClearCache".}
@@ -20528,12 +20515,12 @@ else:
   static :
     hint("Declaration of " & "shaderPointerCreate" &
         " already exists, not redeclaring")
-when not declared(orxShaderPointer_Delete):
-  proc orxShaderPointer_Delete*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
+when not declared(shaderPointerDelete):
+  proc shaderPointerDelete*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
       cdecl, importc: "orxShaderPointer_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxShaderPointer_Delete" &
+    hint("Declaration of " & "shaderPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_Start):
   proc orxShaderPointer_Start*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
@@ -20636,12 +20623,12 @@ else:
   static :
     hint("Declaration of " & "viewportCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxViewport_Delete):
-  proc orxViewport_Delete*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxSTATUS_520095066 {.
+when not declared(viewportDelete):
+  proc viewportDelete*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxSTATUS_520095066 {.
       cdecl, importc: "orxViewport_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxViewport_Delete" &
+    hint("Declaration of " & "viewportDelete" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetTextureList):
   proc orxViewport_SetTextureList*(internal_pstViewport: ptr orxVIEWPORT_520095599;
@@ -20930,12 +20917,12 @@ else:
   static :
     hint("Declaration of " & "soundPointerCreate" &
         " already exists, not redeclaring")
-when not declared(orxSoundPointer_Delete):
-  proc orxSoundPointer_Delete*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+when not declared(soundPointerDelete):
+  proc soundPointerDelete*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
       cdecl, importc: "orxSoundPointer_Delete".}
 else:
   static :
-    hint("Declaration of " & "orxSoundPointer_Delete" &
+    hint("Declaration of " & "soundPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_Enable):
   proc orxSoundPointer_Enable*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;

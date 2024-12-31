@@ -11,11 +11,11 @@ const default_prefix = """
 const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline}) 
 
 # These names are too short so we protect them so they will be renamed with the module name as prefix
-const protectedNames = ["Setup", "Init", "Exit", "Create", "CreateFromConfig",
-  "Get", "Register", "Send", "SendShort", "Update"]
-# These modules will 
+const protectedNames = ["Setup", "Init", "Exit", "Create", "Update", "Delete", "CreateFromConfig",
+  "Get", "Register", "Send", "SendShort", "Bind", "Unbind"]
+# These modules will have their proc names shortened
 const shortenedModules = ["input", "system", "object", "event", "clock",
-  "resource", "module"]
+  "resource", "module", "joystick"]
 
 # Rename logic
 proc renameCallback(n, k: string, p = ""): string =
@@ -33,17 +33,15 @@ proc renameCallback(n, k: string, p = ""): string =
   if splits.len == 1:
     return n
   var module = splits[0]
-  # Remove the orx prefix of the module name
+  # Remove the orx prefix of the module name and ensure
+  # the first module character is lowercase
   if module.len > 3 and module.startsWith("orx"):
     module = module[3..^1]
-
-  # Ensure the first module character is lowercase
   module[0] = module[0].toLowerAscii()
   let name = splits[1]
   # Treat protected names by prepending module name.
   if name in protectedNames:
     return module & name
-
   # For these modules we use just the name
   if module in shortenedModules:
     result = name
