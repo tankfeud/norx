@@ -4,6 +4,9 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in
 DIR=$(dirname "$SCRIPT")
 
+# Make sure dependencies are installed
+cd scripts && nimble install -d && cd ..
+
 # Recreate wrapper.nim using Futhark from ORX sources
 rm ./src/wrapper.nim
 nim c -r --maxLoopIterationsVM:100000000 -d:futharkRebuild ./scripts/create_wrapper.nim
