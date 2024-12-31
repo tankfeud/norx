@@ -1,6 +1,6 @@
 import os
-import wrapper, vector
-export wrapper, vector
+import wrapper, vector, joystick
+export wrapper, vector, joystick
 
 #[ ##  Windows
 when defined(Windows):
@@ -126,6 +126,21 @@ converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
 ## From orxEvent.h
 template eventGetFlag*(ID: untyped): untyped =
   ((orxU32)(1 shl (orxU32)(ID)))
+
+## From orxStructure.h
+proc getPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.
+    inline, cdecl.} =
+  ## Gets structure pointer / debug mode
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _eStructureID   ID to test the structure against
+  ##  @return      Valid orxSTRUCTURE, nil otherwise
+  if pStructure.isNil:
+    return nil
+  let uid = (cast[ptr orxSTRUCTURE](pStructure)).u64GUID
+  if ((uid and STRUCTURE_GUID_MASK_STRUCTURE_ID) shr STRUCTURE_GUID_SHIFT_STRUCTURE_ID) == eStructureID.uint64:
+    return cast[ptr orxSTRUCTURE](pStructure)
+  else:
+    return cast[ptr orxSTRUCTURE](nil)
 
 template debugInitMacro*(): void =
   var u32DebugFlags: orxU32
