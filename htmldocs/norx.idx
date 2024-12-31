@@ -1,5 +1,17 @@
-nimTitle	norx	norx.html	module norx		0
-nim	sbStopByEvent	norx.html#sbStopByEvent	var sbStopByEvent		7
-nim	orx_DefaultEventHandler	norx.html#orx_DefaultEventHandler,ptr.orxEVENT	proc orx_DefaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS		12
-nim	orx_MainSetup	norx.html#orx_MainSetup	proc orx_MainSetup()		24
-nim	execute	norx.html#execute,proc),proc),proc)	proc execute(initProc: proc (): orxSTATUS {.cdecl.};\n        runProc: proc (): orxSTATUS {.cdecl.}; exitProc: proc () {.cdecl.})		92
+nimTitle	norx	norx.html	module src/norx		0
+nim	ORX_VERSION_STRING	norx.html#ORX_VERSION_STRING	const ORX_VERSION_STRING		103
+nim	ORX_VERSION_FULL_STRING	norx.html#ORX_VERSION_FULL_STRING	const ORX_VERSION_FULL_STRING		104
+nim	ORX_VERSION	norx.html#ORX_VERSION	const ORX_VERSION		111
+nim	orxFALSE	norx.html#orxFALSE	const orxFALSE		117
+nim	orxTRUE	norx.html#orxTRUE	const orxTRUE		118
+nim	toBool	norx.html#toBool.c,orxBOOL	converter toBool(x: orxBOOL): bool		120
+nim	toOrxBOOL	norx.html#toOrxBOOL.c,bool	converter toOrxBOOL(x: bool): orxBOOL		123
+nim	eventGetFlag	norx.html#eventGetFlag.t,untyped	template eventGetFlag(ID: untyped): untyped		127
+nim	getPointer	norx.html#getPointer,pointer,orxSTRUCTURE_ID	proc getPointer(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE		131
+nim	debugInitMacro	norx.html#debugInitMacro.t	template debugInitMacro(): void		145
+nim	debugExitMacro	norx.html#debugExitMacro.t	template debugExitMacro(): untyped		161
+nim	eventSendMacro	norx.html#eventSendMacro.t,untyped,untyped,untyped,untyped,untyped	template eventSendMacro(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): void		164
+nim	sbStopByEvent	norx.html#sbStopByEvent_2	var sbStopByEvent		175
+nim	mainSetup	norx.html#mainSetup	proc mainSetup()		177
+nim	defaultEventHandler	norx.html#defaultEventHandler,ptr.orxEVENT	proc defaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS		183
+nim	execute	norx.html#execute,proc),proc),proc)	proc execute(initProc: proc (): orxSTATUS {.cdecl.};\n        runProc: proc (): orxSTATUS {.cdecl.}; exitProc: proc () {.cdecl.})		253

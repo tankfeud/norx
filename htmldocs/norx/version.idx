@@ -1,8 +1,0 @@
-nimTitle	version	norx/version.html	module norx/version		0
-nim	ORX_VERSION_MAJOR	norx/version.html#ORX_VERSION_MAJOR	const ORX_VERSION_MAJOR		11
-nim	ORX_VERSION_MINOR	norx/version.html#ORX_VERSION_MINOR	const ORX_VERSION_MINOR		12
-nim	ORX_VERSION_RELEASE	norx/version.html#ORX_VERSION_RELEASE	const ORX_VERSION_RELEASE		13
-nim	ORX_VERSION_STRING	norx/version.html#ORX_VERSION_STRING	const ORX_VERSION_STRING		19
-nim	ORX_VERSION_FULL_STRING	norx/version.html#ORX_VERSION_FULL_STRING	const ORX_VERSION_FULL_STRING		20
-nim	ORX_VERSION	norx/version.html#ORX_VERSION	const ORX_VERSION		27
-nim	orxVERSION	norx/version.html#orxVERSION	object orxVERSION		33

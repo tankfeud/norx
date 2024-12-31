@@ -1,6 +1,0 @@
-nimTitle	vectorType	norx/vectorType.html	module norx/vectorType		0
-nim	orxVECTOR	norx/vectorType.html#orxVECTOR	tuple orxVECTOR		31
-nim	orxSPVECTOR	norx/vectorType.html#orxSPVECTOR	tuple orxSPVECTOR		32
-nim	orxRGBVECTOR	norx/vectorType.html#orxRGBVECTOR	tuple orxRGBVECTOR		33
-nim	orxHSLVECTOR	norx/vectorType.html#orxHSLVECTOR	tuple orxHSLVECTOR		34
-nim	orxHSVVECTOR	norx/vectorType.html#orxHSVVECTOR	tuple orxHSVVECTOR		35

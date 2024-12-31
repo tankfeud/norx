@@ -1,0 +1,5 @@
+nimTitle	joystick	joystick.html	module src/joystick		0
+nim	orxJOYSTICK_GET_AXIS	joystick.html#orxJOYSTICK_GET_AXIS.t,untyped,untyped	template orxJOYSTICK_GET_AXIS(AXIS, ID: untyped): untyped		5
+nim	orxJOYSTICK_GET_BUTTON	joystick.html#orxJOYSTICK_GET_BUTTON.t,untyped,untyped	template orxJOYSTICK_GET_BUTTON(BUTTON, ID: untyped): untyped		9
+nim	orxJOYSTICK_GET_ID_FROM_AXIS	joystick.html#orxJOYSTICK_GET_ID_FROM_AXIS.t,untyped	template orxJOYSTICK_GET_ID_FROM_AXIS(AXIS: untyped): untyped		13
+nim	orxJOYSTICK_GET_ID_FROM_BUTTON	joystick.html#orxJOYSTICK_GET_ID_FROM_BUTTON.t,untyped	template orxJOYSTICK_GET_ID_FROM_BUTTON(BUTTON: untyped): untyped		16
