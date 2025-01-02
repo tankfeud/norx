@@ -1,5 +1,10 @@
 import wrapper
 
+when defined(processAnnotations):
+  import annotation
+  static: processAnnotations(currentSourcePath())
+
+## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":28:8a7559931c2824bb9ef4556d058b7c7a
 template orxVECTOR*(x, y, z: untyped): orxVECTOR =
   var v: orxVECTOR
   v.anon0.fX = x.orxFLOAT

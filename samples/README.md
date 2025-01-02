@@ -2,6 +2,7 @@
 First install ORX & Nim as described in top README.
 
 Then run `nimble install` in each directory which will compile and install the sample binariies in release mode, or just run `nimble run` without installing the binary.
+Note that the android-native sample has its own README.md file.
 
 ESC quits. Pressing the key below ESC (may be different depending on your keyboard, on mine it's "§" but evidently "`" on others I guess) opens the ORX console.
 

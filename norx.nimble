@@ -10,3 +10,6 @@ requires "nim >= 2.0.10"
 # These are only used with android targets
 requires "https://github.com/yglukhov/android"
 requires "jnim"
+# These are only used during development
+requires "checksums"
+requires "regex"

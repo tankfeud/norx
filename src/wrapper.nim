@@ -13,19 +13,19 @@ when not declared(ownSizeOf):
     newLit(x.getSize)
 
 type
-  enum_orxSEEK_OFFSET_WHENCE_t_520095055* {.size: sizeof(cuint).} = enum
+  enum_orxSEEK_OFFSET_WHENCE_t_520095018* {.size: sizeof(cuint).} = enum
     SEEK_OFFSET_WHENCE_NONE = -1, SEEK_OFFSET_WHENCE_START = 0,
     SEEK_OFFSET_WHENCE_CURRENT = 1, SEEK_OFFSET_WHENCE_END = 2,
     SEEK_OFFSET_WHENCE_NUMBER = 3
 type
-  enum_orxCOLORSPACE_t_520095059* {.size: sizeof(cuint).} = enum
+  enum_orxCOLORSPACE_t_520095022* {.size: sizeof(cuint).} = enum
     COLORSPACE_NONE = -1, COLORSPACE_COMPONENT = 0, COLORSPACE_HSL = 1,
     COLORSPACE_HSV = 2, COLORSPACE_RGB = 3, COLORSPACE_NUMBER = 4
 type
-  enum_orxSTATUS_t_520095063* {.size: sizeof(cuint).} = enum
+  enum_orxSTATUS_t_520095026* {.size: sizeof(cuint).} = enum
     STATUS_NONE = -1, STATUS_FAILURE = 0, STATUS_SUCCESS = 1, STATUS_NUMBER = 2
 type
-  enum_orxMODULE_ID_t_520095071* {.size: sizeof(cuint).} = enum
+  enum_orxMODULE_ID_t_520095034* {.size: sizeof(cuint).} = enum
     MODULE_ID_NONE = -1, MODULE_ID_ANIM = 0, MODULE_ID_ANIMPOINTER = 1,
     MODULE_ID_ANIMSET = 2, MODULE_ID_BANK = 3, MODULE_ID_BODY = 4,
     MODULE_ID_CAMERA = 5, MODULE_ID_CLOCK = 6, MODULE_ID_COMMAND = 7,
@@ -47,13 +47,13 @@ type
     MODULE_ID_TOTAL_NUMBER = 64
 when not declared(MODULE_ID_USER_DEFINED):
   const
-    MODULE_ID_USER_DEFINED* = enum_orxMODULE_ID_t_520095071.MODULE_ID_CORE_NUMBER
+    MODULE_ID_USER_DEFINED* = enum_orxMODULE_ID_t_520095034.MODULE_ID_CORE_NUMBER
 else:
   static :
     hint("Declaration of " & "MODULE_ID_USER_DEFINED" &
         " already exists, not redeclaring")
 type
-  enum_orxDEBUG_LEVEL_t_520095083* {.size: sizeof(cuint).} = enum
+  enum_orxDEBUG_LEVEL_t_520095046* {.size: sizeof(cuint).} = enum
     DEBUG_LEVEL_ALL = -2, DEBUG_LEVEL_NONE = -1, DEBUG_LEVEL_ANIM = 0,
     DEBUG_LEVEL_CLOCK = 1, DEBUG_LEVEL_COMMAND = 2, DEBUG_LEVEL_CONFIG = 3,
     DEBUG_LEVEL_DISPLAY = 4, DEBUG_LEVEL_FILE = 5, DEBUG_LEVEL_INPUT = 6,
@@ -66,13 +66,13 @@ type
     DEBUG_LEVEL_ASSERT = 22, DEBUG_LEVEL_USER = 23, DEBUG_LEVEL_NUMBER = 24,
     DEBUG_LEVEL_MAX_NUMBER = 32
 type
-  enum_orxMEMORY_TYPE_t_520095089* {.size: sizeof(cuint).} = enum
+  enum_orxMEMORY_TYPE_t_520095052* {.size: sizeof(cuint).} = enum
     MEMORY_TYPE_NONE = -1, MEMORY_TYPE_MAIN = 0, MEMORY_TYPE_AUDIO = 1,
     MEMORY_TYPE_CONFIG = 2, MEMORY_TYPE_DEBUG = 3, MEMORY_TYPE_PHYSICS = 4,
     MEMORY_TYPE_SYSTEM = 5, MEMORY_TYPE_TEMP = 6, MEMORY_TYPE_TEXT = 7,
     MEMORY_TYPE_VIDEO = 8, MEMORY_TYPE_NUMBER = 9
 type
-  enum_orxSYSTEM_EVENT_t_520095097* {.size: sizeof(cuint).} = enum
+  enum_orxSYSTEM_EVENT_t_520095060* {.size: sizeof(cuint).} = enum
     SYSTEM_EVENT_NONE = -1, SYSTEM_EVENT_CLOSE = 0,
     SYSTEM_EVENT_FOCUS_GAINED = 1, SYSTEM_EVENT_FOCUS_LOST = 2,
     SYSTEM_EVENT_BACKGROUND = 3, SYSTEM_EVENT_FOREGROUND = 4,
@@ -83,22 +83,22 @@ type
     SYSTEM_EVENT_CLIPBOARD = 13, SYSTEM_EVENT_PARAM_READY = 14,
     SYSTEM_EVENT_PARAM_DISPLAY = 15, SYSTEM_EVENT_NUMBER = 16
 type
-  enum_orxCLOCK_MODIFIER_t_520095112* {.size: sizeof(cuint).} = enum
+  enum_orxCLOCK_MODIFIER_t_520095075* {.size: sizeof(cuint).} = enum
     CLOCK_MODIFIER_NONE = -1, CLOCK_MODIFIER_FIXED = 0,
     CLOCK_MODIFIER_MULTIPLY = 1, CLOCK_MODIFIER_MAXED = 2,
     CLOCK_MODIFIER_AVERAGE = 3, CLOCK_MODIFIER_NUMBER = 4
 type
-  enum_orxCLOCK_PRIORITY_t_520095116* {.size: sizeof(cuint).} = enum
+  enum_orxCLOCK_PRIORITY_t_520095079* {.size: sizeof(cuint).} = enum
     CLOCK_PRIORITY_NONE = -1, CLOCK_PRIORITY_LOWEST = 0,
     CLOCK_PRIORITY_LOWER = 1, CLOCK_PRIORITY_LOW = 2, CLOCK_PRIORITY_NORMAL = 3,
     CLOCK_PRIORITY_HIGH = 4, CLOCK_PRIORITY_HIGHER = 5,
     CLOCK_PRIORITY_HIGHEST = 6, CLOCK_PRIORITY_NUMBER = 7
 type
-  enum_orxCLOCK_EVENT_t_520095124* {.size: sizeof(cuint).} = enum
+  enum_orxCLOCK_EVENT_t_520095087* {.size: sizeof(cuint).} = enum
     CLOCK_EVENT_NONE = -1, CLOCK_EVENT_RESTART = 0, CLOCK_EVENT_RESYNC = 1,
     CLOCK_EVENT_PAUSE = 2, CLOCK_EVENT_UNPAUSE = 3, CLOCK_EVENT_NUMBER = 4
 type
-  enum_orxSTRUCTURE_ID_t_520095148* {.size: sizeof(cuint).} = enum
+  enum_orxSTRUCTURE_ID_t_520095111* {.size: sizeof(cuint).} = enum
     STRUCTURE_ID_NONE = -1, STRUCTURE_ID_ANIMPOINTER = 0, STRUCTURE_ID_BODY = 1,
     STRUCTURE_ID_CLOCK = 2, STRUCTURE_ID_FRAME = 3, STRUCTURE_ID_FXPOINTER = 4,
     STRUCTURE_ID_GRAPHIC = 5, STRUCTURE_ID_SHADERPOINTER = 6,
@@ -111,22 +111,22 @@ type
     STRUCTURE_ID_VIEWPORT = 21, STRUCTURE_ID_NUMBER = 22
 when not declared(STRUCTURE_ID_ANIM):
   const
-    STRUCTURE_ID_ANIM* = enum_orxSTRUCTURE_ID_t_520095148.STRUCTURE_ID_LINKABLE_NUMBER
+    STRUCTURE_ID_ANIM* = enum_orxSTRUCTURE_ID_t_520095111.STRUCTURE_ID_LINKABLE_NUMBER
 else:
   static :
     hint("Declaration of " & "STRUCTURE_ID_ANIM" &
         " already exists, not redeclaring")
 type
-  enum_orxSTRUCTURE_STORAGE_TYPE_t_520095152* {.size: sizeof(cuint).} = enum
+  enum_orxSTRUCTURE_STORAGE_TYPE_t_520095115* {.size: sizeof(cuint).} = enum
     STRUCTURE_STORAGE_TYPE_NONE = -1, STRUCTURE_STORAGE_TYPE_LINKLIST = 0,
     STRUCTURE_STORAGE_TYPE_TREE = 1, STRUCTURE_STORAGE_TYPE_NUMBER = 2
 type
-  enum_orxANIM_EVENT_t_520095164* {.size: sizeof(cuint).} = enum
+  enum_orxANIM_EVENT_t_520095127* {.size: sizeof(cuint).} = enum
     ANIM_EVENT_NONE = -1, ANIM_EVENT_START = 0, ANIM_EVENT_STOP = 1,
     ANIM_EVENT_CUT = 2, ANIM_EVENT_LOOP = 3, ANIM_EVENT_UPDATE = 4,
     ANIM_EVENT_CUSTOM_EVENT = 5, ANIM_EVENT_NUMBER = 6
 type
-  enum_orxCOMMAND_VAR_TYPE_t_520095182* {.size: sizeof(cuint).} = enum
+  enum_orxCOMMAND_VAR_TYPE_t_520095145* {.size: sizeof(cuint).} = enum
     COMMAND_VAR_TYPE_NONE = -1, COMMAND_VAR_TYPE_STRING = 0,
     COMMAND_VAR_TYPE_FLOAT = 1, COMMAND_VAR_TYPE_S32 = 2,
     COMMAND_VAR_TYPE_U32 = 3, COMMAND_VAR_TYPE_S64 = 4,
@@ -134,21 +134,21 @@ type
     COMMAND_VAR_TYPE_VECTOR = 7, COMMAND_VAR_TYPE_NUMERIC = 8,
     COMMAND_VAR_TYPE_NUMBER = 9
 type
-  enum_orxCONFIG_EVENT_t_520095196* {.size: sizeof(cuint).} = enum
+  enum_orxCONFIG_EVENT_t_520095159* {.size: sizeof(cuint).} = enum
     CONFIG_EVENT_NONE = -1, CONFIG_EVENT_RELOAD_START = 0,
     CONFIG_EVENT_RELOAD_STOP = 1, CONFIG_EVENT_NUMBER = 2
 type
-  enum_orxPLUGIN_FUNCTION_ID_t_520095206* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_ID_t_520095169* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_ID_NONE = -1
 type
-  enum_orxPLUGIN_CORE_ID_t_520095212* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_CORE_ID_t_520095175* {.size: sizeof(cuint).} = enum
     PLUGIN_CORE_ID_NONE = -1, PLUGIN_CORE_ID_DISPLAY = 0,
     PLUGIN_CORE_ID_JOYSTICK = 1, PLUGIN_CORE_ID_KEYBOARD = 2,
     PLUGIN_CORE_ID_MOUSE = 3, PLUGIN_CORE_ID_PHYSICS = 4,
     PLUGIN_CORE_ID_RENDER = 5, PLUGIN_CORE_ID_SOUNDSYSTEM = 6,
     PLUGIN_CORE_ID_NUMBER = 7
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095216* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095179* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_EXIT = 1,
@@ -198,7 +198,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_VIDEO_MODE_AVAILABLE = 45,
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_NUMBER = 46
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095220* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095183* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_EXIT = 1,
@@ -207,7 +207,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_IS_CONNECTED = 4,
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_NUMBER = 5
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095224* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095187* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_KEYBOARD_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_KEYBOARD_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_KEYBOARD_EXIT = 1,
@@ -219,7 +219,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_KEYBOARD_SHOW = 7,
     PLUGIN_FUNCTION_BASE_ID_KEYBOARD_NUMBER = 8
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095228* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095191* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_MOUSE_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_MOUSE_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_MOUSE_EXIT = 1,
@@ -232,7 +232,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_MOUSE_GRAB = 8,
     PLUGIN_FUNCTION_BASE_ID_MOUSE_NUMBER = 9
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095232* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095195* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_PHYSICS_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_PHYSICS_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_PHYSICS_EXIT = 1,
@@ -291,7 +291,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_PHYSICS_ENABLE_SIMULATION = 54,
     PLUGIN_FUNCTION_BASE_ID_PHYSICS_NUMBER = 55
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095236* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095199* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_RENDER_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_RENDER_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_RENDER_EXIT = 1,
@@ -299,7 +299,7 @@ type
     PLUGIN_FUNCTION_BASE_ID_RENDER_GET_SCREEN_POSITION = 3,
     PLUGIN_FUNCTION_BASE_ID_RENDER_NUMBER = 4
 type
-  enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095240* {.size: sizeof(cuint).} = enum
+  enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095203* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_NONE = -1,
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_INIT = 0,
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_EXIT = 1,
@@ -353,32 +353,32 @@ type
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_GET_LISTENER_POSITION = 49,
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_NUMBER = 50
 type
-  enum_orxDISPLAY_PRIMITIVE_t_520095276* {.size: sizeof(cuint).} = enum
+  enum_orxDISPLAY_PRIMITIVE_t_520095239* {.size: sizeof(cuint).} = enum
     DISPLAY_PRIMITIVE_NONE = -1, DISPLAY_PRIMITIVE_POINTS = 0,
     DISPLAY_PRIMITIVE_LINES = 1, DISPLAY_PRIMITIVE_LINE_LOOP = 2,
     DISPLAY_PRIMITIVE_LINE_STRIP = 3, DISPLAY_PRIMITIVE_TRIANGLES = 4,
     DISPLAY_PRIMITIVE_TRIANGLE_STRIP = 5, DISPLAY_PRIMITIVE_TRIANGLE_FAN = 6,
     DISPLAY_PRIMITIVE_NUMBER = 7
 type
-  enum_orxDISPLAY_SMOOTHING_t_520095296* {.size: sizeof(cuint).} = enum
+  enum_orxDISPLAY_SMOOTHING_t_520095259* {.size: sizeof(cuint).} = enum
     DISPLAY_SMOOTHING_NONE = -1, DISPLAY_SMOOTHING_DEFAULT = 0,
     DISPLAY_SMOOTHING_ON = 1, DISPLAY_SMOOTHING_OFF = 2,
     DISPLAY_SMOOTHING_NUMBER = 3
 type
-  enum_orxDISPLAY_BLEND_MODE_t_520095300* {.size: sizeof(cuint).} = enum
+  enum_orxDISPLAY_BLEND_MODE_t_520095263* {.size: sizeof(cuint).} = enum
     DISPLAY_BLEND_MODE_NONE = -1, DISPLAY_BLEND_MODE_ALPHA = 0,
     DISPLAY_BLEND_MODE_MULTIPLY = 1, DISPLAY_BLEND_MODE_ADD = 2,
     DISPLAY_BLEND_MODE_PREMUL = 3, DISPLAY_BLEND_MODE_NUMBER = 4
 type
-  enum_orxDISPLAY_EVENT_t_520095308* {.size: sizeof(cuint).} = enum
+  enum_orxDISPLAY_EVENT_t_520095271* {.size: sizeof(cuint).} = enum
     DISPLAY_EVENT_NONE = -1, DISPLAY_EVENT_SET_VIDEO_MODE = 0,
     DISPLAY_EVENT_LOAD_BITMAP = 1, DISPLAY_EVENT_NUMBER = 2
 type
-  enum_orxTEXTURE_EVENT_t_520095316* {.size: sizeof(cuint).} = enum
+  enum_orxTEXTURE_EVENT_t_520095279* {.size: sizeof(cuint).} = enum
     TEXTURE_EVENT_NONE = -1, TEXTURE_EVENT_CREATE = 0, TEXTURE_EVENT_DELETE = 1,
     TEXTURE_EVENT_LOAD = 2, TEXTURE_EVENT_NUMBER = 3
 type
-  enum_orxJOYSTICK_BUTTON_t_520095324* {.size: sizeof(cuint).} = enum
+  enum_orxJOYSTICK_BUTTON_t_520095287* {.size: sizeof(cuint).} = enum
     JOYSTICK_BUTTON_NONE = -1, JOYSTICK_BUTTON_A_1 = 0, JOYSTICK_BUTTON_B_1 = 1,
     JOYSTICK_BUTTON_X_1 = 2, JOYSTICK_BUTTON_Y_1 = 3,
     JOYSTICK_BUTTON_LBUMPER_1 = 4, JOYSTICK_BUTTON_RBUMPER_1 = 5,
@@ -702,13 +702,13 @@ type
     JOYSTICK_BUTTON_NUMBER = 640
 when not declared(JOYSTICK_BUTTON_A_2):
   const
-    JOYSTICK_BUTTON_A_2* = enum_orxJOYSTICK_BUTTON_t_520095324.JOYSTICK_BUTTON_SINGLE_NUMBER
+    JOYSTICK_BUTTON_A_2* = enum_orxJOYSTICK_BUTTON_t_520095287.JOYSTICK_BUTTON_SINGLE_NUMBER
 else:
   static :
     hint("Declaration of " & "JOYSTICK_BUTTON_A_2" &
         " already exists, not redeclaring")
 type
-  enum_orxJOYSTICK_AXIS_t_520095328* {.size: sizeof(cuint).} = enum
+  enum_orxJOYSTICK_AXIS_t_520095291* {.size: sizeof(cuint).} = enum
     JOYSTICK_AXIS_NONE = -1, JOYSTICK_AXIS_LX_1 = 0, JOYSTICK_AXIS_LY_1 = 1,
     JOYSTICK_AXIS_RX_1 = 2, JOYSTICK_AXIS_RY_1 = 3,
     JOYSTICK_AXIS_LTRIGGER_1 = 4, JOYSTICK_AXIS_RTRIGGER_1 = 5,
@@ -756,13 +756,13 @@ type
     JOYSTICK_AXIS_RTRIGGER_16 = 95, JOYSTICK_AXIS_NUMBER = 96
 when not declared(JOYSTICK_AXIS_LX_2):
   const
-    JOYSTICK_AXIS_LX_2* = enum_orxJOYSTICK_AXIS_t_520095328.JOYSTICK_AXIS_SINGLE_NUMBER
+    JOYSTICK_AXIS_LX_2* = enum_orxJOYSTICK_AXIS_t_520095291.JOYSTICK_AXIS_SINGLE_NUMBER
 else:
   static :
     hint("Declaration of " & "JOYSTICK_AXIS_LX_2" &
         " already exists, not redeclaring")
 type
-  enum_orxKEYBOARD_KEY_t_520095332* {.size: sizeof(cuint).} = enum
+  enum_orxKEYBOARD_KEY_t_520095295* {.size: sizeof(cuint).} = enum
     KEYBOARD_KEY_NONE = -1, KEYBOARD_KEY_0 = 0, KEYBOARD_KEY_1 = 1,
     KEYBOARD_KEY_2 = 2, KEYBOARD_KEY_3 = 3, KEYBOARD_KEY_4 = 4,
     KEYBOARD_KEY_5 = 5, KEYBOARD_KEY_6 = 6, KEYBOARD_KEY_7 = 7,
@@ -813,33 +813,33 @@ type
     KEYBOARD_KEY_RALT = 119, KEYBOARD_KEY_RSYSTEM = 120,
     KEYBOARD_KEY_MENU = 121, KEYBOARD_KEY_NUMBER = 122
 type
-  enum_orxMOUSE_BUTTON_t_520095336* {.size: sizeof(cuint).} = enum
+  enum_orxMOUSE_BUTTON_t_520095299* {.size: sizeof(cuint).} = enum
     MOUSE_BUTTON_NONE = -1, MOUSE_BUTTON_LEFT = 0, MOUSE_BUTTON_RIGHT = 1,
     MOUSE_BUTTON_MIDDLE = 2, MOUSE_BUTTON_EXTRA_1 = 3, MOUSE_BUTTON_EXTRA_2 = 4,
     MOUSE_BUTTON_EXTRA_3 = 5, MOUSE_BUTTON_EXTRA_4 = 6,
     MOUSE_BUTTON_EXTRA_5 = 7, MOUSE_BUTTON_WHEEL_UP = 8,
     MOUSE_BUTTON_WHEEL_DOWN = 9, MOUSE_BUTTON_NUMBER = 10
 type
-  enum_orxMOUSE_AXIS_t_520095340* {.size: sizeof(cuint).} = enum
+  enum_orxMOUSE_AXIS_t_520095303* {.size: sizeof(cuint).} = enum
     MOUSE_AXIS_NONE = -1, MOUSE_AXIS_X = 0, MOUSE_AXIS_Y = 1,
     MOUSE_AXIS_NUMBER = 2
 type
-  enum_orxINPUT_TYPE_t_520095344* {.size: sizeof(cuint).} = enum
+  enum_orxINPUT_TYPE_t_520095307* {.size: sizeof(cuint).} = enum
     INPUT_TYPE_NONE = -1, INPUT_TYPE_KEYBOARD_KEY = 0,
     INPUT_TYPE_MOUSE_BUTTON = 1, INPUT_TYPE_MOUSE_AXIS = 2,
     INPUT_TYPE_JOYSTICK_BUTTON = 3, INPUT_TYPE_JOYSTICK_AXIS = 4,
     INPUT_TYPE_EXTERNAL = 5, INPUT_TYPE_NUMBER = 6
 type
-  enum_orxINPUT_MODE_t_520095348* {.size: sizeof(cuint).} = enum
+  enum_orxINPUT_MODE_t_520095311* {.size: sizeof(cuint).} = enum
     INPUT_MODE_NONE = -1, INPUT_MODE_FULL = 0, INPUT_MODE_POSITIVE = 1,
     INPUT_MODE_NEGATIVE = 2, INPUT_MODE_NUMBER = 3
 type
-  enum_orxINPUT_EVENT_t_520095352* {.size: sizeof(cuint).} = enum
+  enum_orxINPUT_EVENT_t_520095315* {.size: sizeof(cuint).} = enum
     INPUT_EVENT_NONE = -1, INPUT_EVENT_ON = 0, INPUT_EVENT_OFF = 1,
     INPUT_EVENT_SELECT_SET = 2, INPUT_EVENT_REMOVE_SET = 3,
     INPUT_EVENT_NUMBER = 4
 type
-  enum_orxEVENT_TYPE_t_520095360* {.size: sizeof(cuint).} = enum
+  enum_orxEVENT_TYPE_t_520095323* {.size: sizeof(cuint).} = enum
     EVENT_TYPE_NONE = -1, EVENT_TYPE_ANIM = 0, EVENT_TYPE_CLOCK = 1,
     EVENT_TYPE_CONFIG = 2, EVENT_TYPE_DISPLAY = 3, EVENT_TYPE_FX = 4,
     EVENT_TYPE_INPUT = 5, EVENT_TYPE_LOCALE = 6, EVENT_TYPE_OBJECT = 7,
@@ -851,21 +851,21 @@ type
     EVENT_TYPE_USER_DEFINED = 256
 when not declared(EVENT_TYPE_FIRST_RESERVED):
   const
-    EVENT_TYPE_FIRST_RESERVED* = enum_orxEVENT_TYPE_t_520095360.EVENT_TYPE_CORE_NUMBER
+    EVENT_TYPE_FIRST_RESERVED* = enum_orxEVENT_TYPE_t_520095323.EVENT_TYPE_CORE_NUMBER
 else:
   static :
     hint("Declaration of " & "EVENT_TYPE_FIRST_RESERVED" &
         " already exists, not redeclaring")
 type
-  enum_orxLOCALE_EVENT_t_520095370* {.size: sizeof(cuint).} = enum
+  enum_orxLOCALE_EVENT_t_520095333* {.size: sizeof(cuint).} = enum
     LOCALE_EVENT_NONE = -1, LOCALE_EVENT_SELECT_LANGUAGE = 0,
     LOCALE_EVENT_SET_STRING = 1, LOCALE_EVENT_NUMBER = 2
 type
-  enum_orxRESOURCE_EVENT_t_520095404* {.size: sizeof(cuint).} = enum
+  enum_orxRESOURCE_EVENT_t_520095367* {.size: sizeof(cuint).} = enum
     RESOURCE_EVENT_NONE = -1, RESOURCE_EVENT_UPDATE = 0, RESOURCE_EVENT_ADD = 1,
     RESOURCE_EVENT_REMOVE = 2, RESOURCE_EVENT_NUMBER = 3
 type
-  enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095440* {.size: sizeof(cuint).} = enum
+  enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095403* {.size: sizeof(cuint).} = enum
     SOUNDSYSTEM_STREAM_TYPE_NONE = -1, SOUNDSYSTEM_STREAM_TYPE_EMPTY = 0,
     SOUNDSYSTEM_STREAM_TYPE_WHITE = 1, SOUNDSYSTEM_STREAM_TYPE_PINK = 2,
     SOUNDSYSTEM_STREAM_TYPE_BROWNIAN = 3, SOUNDSYSTEM_STREAM_TYPE_SINE = 4,
@@ -873,12 +873,12 @@ type
     SOUNDSYSTEM_STREAM_TYPE_SAWTOOTH = 7, SOUNDSYSTEM_STREAM_TYPE_RESOURCE = 8,
     SOUNDSYSTEM_STREAM_TYPE_NUMBER = 9
 type
-  enum_orxSOUNDSYSTEM_STATUS_t_520095444* {.size: sizeof(cuint).} = enum
+  enum_orxSOUNDSYSTEM_STATUS_t_520095407* {.size: sizeof(cuint).} = enum
     SOUNDSYSTEM_STATUS_NONE = -1, SOUNDSYSTEM_STATUS_PLAY = 0,
     SOUNDSYSTEM_STATUS_PAUSE = 1, SOUNDSYSTEM_STATUS_STOP = 2,
     SOUNDSYSTEM_STATUS_NUMBER = 3
 type
-  enum_orxSOUND_FILTER_TYPE_t_520095448* {.size: sizeof(cuint).} = enum
+  enum_orxSOUND_FILTER_TYPE_t_520095411* {.size: sizeof(cuint).} = enum
     SOUND_FILTER_TYPE_NONE = -1, SOUND_FILTER_TYPE_BIQUAD = 0,
     SOUND_FILTER_TYPE_LOW_PASS = 1, SOUND_FILTER_TYPE_HIGH_PASS = 2,
     SOUND_FILTER_TYPE_BAND_PASS = 3, SOUND_FILTER_TYPE_LOW_SHELF = 4,
@@ -886,23 +886,23 @@ type
     SOUND_FILTER_TYPE_PEAKING = 7, SOUND_FILTER_TYPE_DELAY = 8,
     SOUND_FILTER_TYPE_CUSTOM = 9, SOUND_FILTER_TYPE_NUMBER = 10
 type
-  enum_orxSOUND_STATUS_t_520095458* {.size: sizeof(cuint).} = enum
+  enum_orxSOUND_STATUS_t_520095421* {.size: sizeof(cuint).} = enum
     SOUND_STATUS_NONE = -1, SOUND_STATUS_PLAY = 0, SOUND_STATUS_PAUSE = 1,
     SOUND_STATUS_STOP = 2, SOUND_STATUS_NUMBER = 3
 type
-  enum_orxSOUND_EVENT_t_520095466* {.size: sizeof(cuint).} = enum
+  enum_orxSOUND_EVENT_t_520095429* {.size: sizeof(cuint).} = enum
     SOUND_EVENT_NONE = -1, SOUND_EVENT_START = 0, SOUND_EVENT_STOP = 1,
     SOUND_EVENT_ADD = 2, SOUND_EVENT_REMOVE = 3, SOUND_EVENT_PACKET = 4,
     SOUND_EVENT_RECORDING_START = 5, SOUND_EVENT_RECORDING_STOP = 6,
     SOUND_EVENT_RECORDING_PACKET = 7, SOUND_EVENT_SET_FILTER_PARAM = 8,
     SOUND_EVENT_NUMBER = 9
 type
-  enum_orxOBJECT_EVENT_t_520095482* {.size: sizeof(cuint).} = enum
+  enum_orxOBJECT_EVENT_t_520095445* {.size: sizeof(cuint).} = enum
     OBJECT_EVENT_NONE = -1, OBJECT_EVENT_CREATE = 0, OBJECT_EVENT_DELETE = 1,
     OBJECT_EVENT_PREPARE = 2, OBJECT_EVENT_ENABLE = 3, OBJECT_EVENT_DISABLE = 4,
     OBJECT_EVENT_PAUSE = 5, OBJECT_EVENT_UNPAUSE = 6, OBJECT_EVENT_NUMBER = 7
 type
-  enum_orxFX_TYPE_t_520095488* {.size: sizeof(cuint).} = enum
+  enum_orxFX_TYPE_t_520095451* {.size: sizeof(cuint).} = enum
     FX_TYPE_NONE = -1, FX_TYPE_ALPHA = 0, FX_TYPE_RGB = 1, FX_TYPE_HSL = 2,
     FX_TYPE_HSV = 3, FX_TYPE_POSITION = 4, FX_TYPE_ROTATION = 5,
     FX_TYPE_SCALE = 6, FX_TYPE_SPEED = 7, FX_TYPE_VOLUME = 8, FX_TYPE_PITCH = 9,
@@ -911,13 +911,13 @@ type
     FX_TYPE_VECTOR_MULTIPLY = 15, FX_TYPE_NUMBER = 16
 when not declared(FX_TYPE_MAX_NUMBER):
   const
-    FX_TYPE_MAX_NUMBER* = enum_orxFX_TYPE_t_520095488.FX_TYPE_NUMBER
+    FX_TYPE_MAX_NUMBER* = enum_orxFX_TYPE_t_520095451.FX_TYPE_NUMBER
 else:
   static :
     hint("Declaration of " & "FX_TYPE_MAX_NUMBER" &
         " already exists, not redeclaring")
 type
-  enum_orxFX_CURVE_t_520095492* {.size: sizeof(cuint).} = enum
+  enum_orxFX_CURVE_t_520095455* {.size: sizeof(cuint).} = enum
     FX_CURVE_NONE = -1, FX_CURVE_SINE = 0, FX_CURVE_SQUARE = 1,
     FX_CURVE_TRIANGLE = 2, FX_CURVE_SYMMETRIC_NUMBER = 3, FX_CURVE_LINEAR = 4,
     FX_CURVE_SMOOTH = 5, FX_CURVE_SMOOTHER = 6, FX_CURVE_EASE_IN_SINE = 7,
@@ -938,54 +938,54 @@ type
     FX_CURVE_EASE_IN_OUT_BOUNCE = 36, FX_CURVE_NUMBER = 37
 when not declared(FX_CURVE_BEZIER):
   const
-    FX_CURVE_BEZIER* = enum_orxFX_CURVE_t_520095492.FX_CURVE_SYMMETRIC_NUMBER
+    FX_CURVE_BEZIER* = enum_orxFX_CURVE_t_520095455.FX_CURVE_SYMMETRIC_NUMBER
 else:
   static :
     hint("Declaration of " & "FX_CURVE_BEZIER" &
         " already exists, not redeclaring")
 type
-  enum_orxFX_EVENT_t_520095502* {.size: sizeof(cuint).} = enum
+  enum_orxFX_EVENT_t_520095465* {.size: sizeof(cuint).} = enum
     FX_EVENT_NONE = -1, FX_EVENT_START = 0, FX_EVENT_STOP = 1, FX_EVENT_ADD = 2,
     FX_EVENT_REMOVE = 3, FX_EVENT_LOOP = 4, FX_EVENT_NUMBER = 5
 type
-  enum_orxFRAME_SPACE_t_520095512* {.size: sizeof(cuint).} = enum
+  enum_orxFRAME_SPACE_t_520095475* {.size: sizeof(cuint).} = enum
     FRAME_SPACE_NONE = -1, FRAME_SPACE_GLOBAL = 0, FRAME_SPACE_LOCAL = 1,
     FRAME_SPACE_NUMBER = 2
 type
-  enum_orxSPAWNER_EVENT_t_520095518* {.size: sizeof(cuint).} = enum
+  enum_orxSPAWNER_EVENT_t_520095481* {.size: sizeof(cuint).} = enum
     SPAWNER_EVENT_NONE = -1, SPAWNER_EVENT_SPAWN = 0, SPAWNER_EVENT_CREATE = 1,
     SPAWNER_EVENT_DELETE = 2, SPAWNER_EVENT_RESET = 3, SPAWNER_EVENT_EMPTY = 4,
     SPAWNER_EVENT_WAVE_START = 5, SPAWNER_EVENT_WAVE_STOP = 6,
     SPAWNER_EVENT_NUMBER = 7
 type
-  enum_orxTIMELINE_EVENT_t_520095526* {.size: sizeof(cuint).} = enum
+  enum_orxTIMELINE_EVENT_t_520095489* {.size: sizeof(cuint).} = enum
     TIMELINE_EVENT_NONE = -1, TIMELINE_EVENT_TRACK_START = 0,
     TIMELINE_EVENT_TRACK_STOP = 1, TIMELINE_EVENT_TRACK_ADD = 2,
     TIMELINE_EVENT_TRACK_REMOVE = 3, TIMELINE_EVENT_LOOP = 4,
     TIMELINE_EVENT_TRIGGER = 5, TIMELINE_EVENT_NUMBER = 6
 type
-  enum_orxTRIGGER_EVENT_t_520095536* {.size: sizeof(cuint).} = enum
+  enum_orxTRIGGER_EVENT_t_520095499* {.size: sizeof(cuint).} = enum
     TRIGGER_EVENT_NONE = -1, TRIGGER_EVENT_SET_ADD = 0,
     TRIGGER_EVENT_SET_REMOVE = 1, TRIGGER_EVENT_FIRE = 2,
     TRIGGER_EVENT_NUMBER = 3
 type
-  enum_orxPHYSICS_EVENT_t_520095556* {.size: sizeof(cuint).} = enum
+  enum_orxPHYSICS_EVENT_t_520095519* {.size: sizeof(cuint).} = enum
     PHYSICS_EVENT_NONE = -1, PHYSICS_EVENT_CONTACT_ADD = 0,
     PHYSICS_EVENT_CONTACT_REMOVE = 1, PHYSICS_EVENT_NUMBER = 2
 type
-  enum_orxSHADER_PARAM_TYPE_t_520095578* {.size: sizeof(cuint).} = enum
+  enum_orxSHADER_PARAM_TYPE_t_520095541* {.size: sizeof(cuint).} = enum
     SHADER_PARAM_TYPE_NONE = -1, SHADER_PARAM_TYPE_FLOAT = 0,
     SHADER_PARAM_TYPE_TEXTURE = 1, SHADER_PARAM_TYPE_VECTOR = 2,
     SHADER_PARAM_TYPE_TIME = 3, SHADER_PARAM_TYPE_NUMBER = 4
 type
-  enum_orxSHADER_EVENT_t_520095588* {.size: sizeof(cuint).} = enum
+  enum_orxSHADER_EVENT_t_520095551* {.size: sizeof(cuint).} = enum
     SHADER_EVENT_NONE = -1, SHADER_EVENT_SET_PARAM = 0, SHADER_EVENT_NUMBER = 1
 type
-  enum_orxVIEWPORT_EVENT_t_520095600* {.size: sizeof(cuint).} = enum
+  enum_orxVIEWPORT_EVENT_t_520095563* {.size: sizeof(cuint).} = enum
     VIEWPORT_EVENT_NONE = -1, VIEWPORT_EVENT_RESIZE = 0,
     VIEWPORT_EVENT_NUMBER = 1
 type
-  enum_orxRENDER_EVENT_t_520095604* {.size: sizeof(cuint).} = enum
+  enum_orxRENDER_EVENT_t_520095567* {.size: sizeof(cuint).} = enum
     RENDER_EVENT_NONE = -1, RENDER_EVENT_START = 0, RENDER_EVENT_STOP = 1,
     RENDER_EVENT_VIEWPORT_START = 2, RENDER_EVENT_VIEWPORT_STOP = 3,
     RENDER_EVENT_OBJECT_START = 4, RENDER_EVENT_OBJECT_STOP = 5,
@@ -1264,470 +1264,470 @@ else:
     hint("Declaration of " & "struct_orxFRAME_t" &
         " already exists, not redeclaring")
 type
-  orxU64_520095021 = culonglong
-  orxU32_520095023 = cuint
-  orxU16_520095025 = cushort
-  orxU8_520095027 = uint8
-  orxS64_520095029 = clonglong
-  orxS32_520095031 = cint
-  orxS16_520095033 = cshort
-  orxS8_520095035 = cschar
-  orxBOOL_520095037 = cuint
-  orxFLOAT_520095039 = cfloat
-  orxDOUBLE_520095041 = cdouble
-  orxCHAR_520095043 = cschar
-  orxSTRINGID_520095045 = orxU64_520095022
-  orxENUM_520095047 = orxU32_520095024
-  orxHANDLE_520095049 = pointer
-  orxSPTR_520095051 = orxS64_520095030
-  orxUPTR_520095053 = orxU64_520095022
-  orxSEEK_OFFSET_WHENCE_520095057 = enum_orxSEEK_OFFSET_WHENCE_t_520095056
-  orxCOLORSPACE_520095061 = enum_orxCOLORSPACE_t_520095060
-  orxSTATUS_520095065 = enum_orxSTATUS_t_520095064
-  struct_orxVERSION_t_520095067 {.pure, inheritable, bycopy.} = object
+  orxU64_520094984 = culonglong
+  orxU32_520094986 = cuint
+  orxU16_520094988 = cushort
+  orxU8_520094990 = uint8
+  orxS64_520094992 = clonglong
+  orxS32_520094994 = cint
+  orxS16_520094996 = cshort
+  orxS8_520094998 = cschar
+  orxBOOL_520095000 = cuint
+  orxFLOAT_520095002 = cfloat
+  orxDOUBLE_520095004 = cdouble
+  orxCHAR_520095006 = cschar
+  orxSTRINGID_520095008 = orxU64_520094985
+  orxENUM_520095010 = orxU32_520094987
+  orxHANDLE_520095012 = pointer
+  orxSPTR_520095014 = orxS64_520094993
+  orxUPTR_520095016 = orxU64_520094985
+  orxSEEK_OFFSET_WHENCE_520095020 = enum_orxSEEK_OFFSET_WHENCE_t_520095019
+  orxCOLORSPACE_520095024 = enum_orxCOLORSPACE_t_520095023
+  orxSTATUS_520095028 = enum_orxSTATUS_t_520095027
+  struct_orxVERSION_t_520095030 {.pure, inheritable, bycopy.} = object
     zRelease*: cstring
-    u32Major*: orxU32_520095024
-    u32Minor*: orxU32_520095024
-    u32Build*: orxU32_520095024
-  orxVERSION_520095069 = struct_orxVERSION_t_520095068
-  orxMODULE_ID_520095073 = enum_orxMODULE_ID_t_520095072
-  orxMODULE_INIT_FUNCTION_520095075 = proc (): orxSTATUS_520095066 {.cdecl.}
-  orxMODULE_EXIT_FUNCTION_520095077 = proc (): void {.cdecl.}
-  orxMODULE_RUN_FUNCTION_520095079 = proc (): orxSTATUS_520095066 {.cdecl.}
-  orxMODULE_SETUP_FUNCTION_520095081 = proc (): void {.cdecl.}
-  orxDEBUG_LEVEL_520095085 = enum_orxDEBUG_LEVEL_t_520095084
-  orxDEBUG_CALLBACK_FUNCTION_520095087 = proc (a0: orxDEBUG_LEVEL_520095086;
-      a1: cstring; a2: cstring; a3: orxU32_520095024; a4: cstring): orxSTATUS_520095066 {.
+    u32Major*: orxU32_520094987
+    u32Minor*: orxU32_520094987
+    u32Build*: orxU32_520094987
+  orxVERSION_520095032 = struct_orxVERSION_t_520095031
+  orxMODULE_ID_520095036 = enum_orxMODULE_ID_t_520095035
+  orxMODULE_INIT_FUNCTION_520095038 = proc (): orxSTATUS_520095029 {.cdecl.}
+  orxMODULE_EXIT_FUNCTION_520095040 = proc (): void {.cdecl.}
+  orxMODULE_RUN_FUNCTION_520095042 = proc (): orxSTATUS_520095029 {.cdecl.}
+  orxMODULE_SETUP_FUNCTION_520095044 = proc (): void {.cdecl.}
+  orxDEBUG_LEVEL_520095048 = enum_orxDEBUG_LEVEL_t_520095047
+  orxDEBUG_CALLBACK_FUNCTION_520095050 = proc (a0: orxDEBUG_LEVEL_520095049;
+      a1: cstring; a2: cstring; a3: orxU32_520094987; a4: cstring): orxSTATUS_520095029 {.
       cdecl.}
-  orxMEMORY_TYPE_520095091 = enum_orxMEMORY_TYPE_t_520095090
+  orxMEMORY_TYPE_520095054 = enum_orxMEMORY_TYPE_t_520095053
   struct_orxVECTOR_t_anon0_t {.union, bycopy.} = object
-    fX*: orxFLOAT_520095040
-    fRho*: orxFLOAT_520095040
-    fR*: orxFLOAT_520095040
-    fH*: orxFLOAT_520095040
+    fX*: orxFLOAT_520095003
+    fRho*: orxFLOAT_520095003
+    fR*: orxFLOAT_520095003
+    fH*: orxFLOAT_520095003
   struct_orxVECTOR_t_anon1_t {.union, bycopy.} = object
-    fY*: orxFLOAT_520095040
-    fTheta*: orxFLOAT_520095040
-    fG*: orxFLOAT_520095040
-    fS*: orxFLOAT_520095040
+    fY*: orxFLOAT_520095003
+    fTheta*: orxFLOAT_520095003
+    fG*: orxFLOAT_520095003
+    fS*: orxFLOAT_520095003
   struct_orxVECTOR_t_anon2_t {.union, bycopy.} = object
-    fZ*: orxFLOAT_520095040
-    fPhi*: orxFLOAT_520095040
-    fB*: orxFLOAT_520095040
-    fL*: orxFLOAT_520095040
-    fV*: orxFLOAT_520095040
-  struct_orxVECTOR_t_520095093 {.pure, inheritable, bycopy.} = object
+    fZ*: orxFLOAT_520095003
+    fPhi*: orxFLOAT_520095003
+    fB*: orxFLOAT_520095003
+    fL*: orxFLOAT_520095003
+    fV*: orxFLOAT_520095003
+  struct_orxVECTOR_t_520095056 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxVECTOR_t_anon0_t
     anon1*: struct_orxVECTOR_t_anon1_t
     anon2*: struct_orxVECTOR_t_anon2_t
-  orxVECTOR_520095095 = struct_orxVECTOR_t_520095094
-  orxSYSTEM_EVENT_520095099 = enum_orxSYSTEM_EVENT_t_520095098
+  orxVECTOR_520095058 = struct_orxVECTOR_t_520095057
+  orxSYSTEM_EVENT_520095062 = enum_orxSYSTEM_EVENT_t_520095061
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stTouch_t {.pure, inheritable, bycopy.} = object
-    dTime*: orxDOUBLE_520095042
-    u32ID*: orxU32_520095024
-    fX*: orxFLOAT_520095040
-    fY*: orxFLOAT_520095040
-    fPressure*: orxFLOAT_520095040
+    dTime*: orxDOUBLE_520095005
+    u32ID*: orxU32_520094987
+    fX*: orxFLOAT_520095003
+    fY*: orxFLOAT_520095003
+    fPressure*: orxFLOAT_520095003
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stAccelerometer_t {.pure,
       inheritable, bycopy.} = object
-    dTime*: orxDOUBLE_520095042
-    vAcceleration*: orxVECTOR_520095096
+    dTime*: orxDOUBLE_520095005
+    vAcceleration*: orxVECTOR_520095059
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stDrop_t {.pure, inheritable, bycopy.} = object
     azValueList*: ptr cstring
-    u32Number*: orxU32_520095024
+    u32Number*: orxU32_520094987
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stClipboard_t {.pure, inheritable,
       bycopy.} = object
     zValue*: cstring
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t {.union, bycopy.} = object
-    u32FrameCount*: orxU32_520095024
+    u32FrameCount*: orxU32_520094987
     stTouch*: struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stTouch_t
     stAccelerometer*: struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stAccelerometer_t
     stDrop*: struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stDrop_t
     stClipboard*: struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stClipboard_t
-  struct_orxSYSTEM_EVENT_PAYLOAD_t_520095108 {.pure, inheritable, bycopy.} = object
+  struct_orxSYSTEM_EVENT_PAYLOAD_t_520095071 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t
-  orxSYSTEM_EVENT_PAYLOAD_520095110 = struct_orxSYSTEM_EVENT_PAYLOAD_t_520095109
-  orxCLOCK_MODIFIER_520095114 = enum_orxCLOCK_MODIFIER_t_520095113
-  orxCLOCK_PRIORITY_520095118 = enum_orxCLOCK_PRIORITY_t_520095117
-  struct_orxCLOCK_INFO_t_520095120 {.pure, inheritable, bycopy.} = object
-    fTickSize*: orxFLOAT_520095040
-    fDT*: orxFLOAT_520095040
-    fTime*: orxFLOAT_520095040
-    afModifierList*: array[4'i64, orxFLOAT_520095040]
-  orxCLOCK_INFO_520095122 = struct_orxCLOCK_INFO_t_520095121
-  orxCLOCK_EVENT_520095126 = enum_orxCLOCK_EVENT_t_520095125
-  orxCLOCK_520095128 = struct_orxCLOCK_t
-  orxCLOCK_FUNCTION_520095130 = proc (a0: ptr orxCLOCK_INFO_520095123;
+  orxSYSTEM_EVENT_PAYLOAD_520095073 = struct_orxSYSTEM_EVENT_PAYLOAD_t_520095072
+  orxCLOCK_MODIFIER_520095077 = enum_orxCLOCK_MODIFIER_t_520095076
+  orxCLOCK_PRIORITY_520095081 = enum_orxCLOCK_PRIORITY_t_520095080
+  struct_orxCLOCK_INFO_t_520095083 {.pure, inheritable, bycopy.} = object
+    fTickSize*: orxFLOAT_520095003
+    fDT*: orxFLOAT_520095003
+    fTime*: orxFLOAT_520095003
+    afModifierList*: array[4'i64, orxFLOAT_520095003]
+  orxCLOCK_INFO_520095085 = struct_orxCLOCK_INFO_t_520095084
+  orxCLOCK_EVENT_520095089 = enum_orxCLOCK_EVENT_t_520095088
+  orxCLOCK_520095091 = struct_orxCLOCK_t
+  orxCLOCK_FUNCTION_520095093 = proc (a0: ptr orxCLOCK_INFO_520095086;
                                       a1: pointer): void {.cdecl.}
-  struct_orxLINKLIST_NODE_t_520095132 {.pure, inheritable, bycopy.} = object
-    pstNext*: ptr struct_orxLINKLIST_NODE_t_520095133
-    pstPrevious*: ptr struct_orxLINKLIST_NODE_t_520095133
-    pstList*: ptr struct_orxLINKLIST_t_520095135
-  struct_orxLINKLIST_t_520095134 {.pure, inheritable, bycopy.} = object
-    pstFirst*: ptr orxLINKLIST_NODE_520095137
-    pstLast*: ptr orxLINKLIST_NODE_520095137
-    u32Count*: orxU32_520095024
-  orxLINKLIST_NODE_520095136 = struct_orxLINKLIST_NODE_t_520095133
-  orxLINKLIST_520095138 = struct_orxLINKLIST_t_520095135
-  struct_orxTREE_NODE_t_520095140 {.pure, inheritable, bycopy.} = object
-    pstParent*: ptr struct_orxTREE_NODE_t_520095141
-    pstChild*: ptr struct_orxTREE_NODE_t_520095141
-    pstSibling*: ptr struct_orxTREE_NODE_t_520095141
-    pstPrevious*: ptr struct_orxTREE_NODE_t_520095141
-    pstTree*: ptr struct_orxTREE_t_520095143
-  struct_orxTREE_t_520095142 {.pure, inheritable, bycopy.} = object
-    pstRoot*: ptr orxTREE_NODE_520095145
-    u32Count*: orxU32_520095024
-  orxTREE_NODE_520095144 = struct_orxTREE_NODE_t_520095141
-  orxTREE_520095146 = struct_orxTREE_t_520095143
-  orxSTRUCTURE_ID_520095150 = enum_orxSTRUCTURE_ID_t_520095149
-  orxSTRUCTURE_STORAGE_TYPE_520095154 = enum_orxSTRUCTURE_STORAGE_TYPE_t_520095153
+  struct_orxLINKLIST_NODE_t_520095095 {.pure, inheritable, bycopy.} = object
+    pstNext*: ptr struct_orxLINKLIST_NODE_t_520095096
+    pstPrevious*: ptr struct_orxLINKLIST_NODE_t_520095096
+    pstList*: ptr struct_orxLINKLIST_t_520095098
+  struct_orxLINKLIST_t_520095097 {.pure, inheritable, bycopy.} = object
+    pstFirst*: ptr orxLINKLIST_NODE_520095100
+    pstLast*: ptr orxLINKLIST_NODE_520095100
+    u32Count*: orxU32_520094987
+  orxLINKLIST_NODE_520095099 = struct_orxLINKLIST_NODE_t_520095096
+  orxLINKLIST_520095101 = struct_orxLINKLIST_t_520095098
+  struct_orxTREE_NODE_t_520095103 {.pure, inheritable, bycopy.} = object
+    pstParent*: ptr struct_orxTREE_NODE_t_520095104
+    pstChild*: ptr struct_orxTREE_NODE_t_520095104
+    pstSibling*: ptr struct_orxTREE_NODE_t_520095104
+    pstPrevious*: ptr struct_orxTREE_NODE_t_520095104
+    pstTree*: ptr struct_orxTREE_t_520095106
+  struct_orxTREE_t_520095105 {.pure, inheritable, bycopy.} = object
+    pstRoot*: ptr orxTREE_NODE_520095108
+    u32Count*: orxU32_520094987
+  orxTREE_NODE_520095107 = struct_orxTREE_NODE_t_520095104
+  orxTREE_520095109 = struct_orxTREE_t_520095106
+  orxSTRUCTURE_ID_520095113 = enum_orxSTRUCTURE_ID_t_520095112
+  orxSTRUCTURE_STORAGE_TYPE_520095117 = enum_orxSTRUCTURE_STORAGE_TYPE_t_520095116
   struct_orxSTRUCTURE_t_stStorage_t {.union, bycopy.} = object
-    stLinkListNode*: orxLINKLIST_NODE_520095137
-    stTreeNode*: orxTREE_NODE_520095145
-  struct_orxSTRUCTURE_t_520095156 {.pure, inheritable, bycopy.} = object
-    u64GUID*: orxU64_520095022
-    u64OwnerGUID*: orxU64_520095022
-    u32Flags*: orxU32_520095024
-    u32RefCount*: orxU32_520095024
+    stLinkListNode*: orxLINKLIST_NODE_520095100
+    stTreeNode*: orxTREE_NODE_520095108
+  struct_orxSTRUCTURE_t_520095119 {.pure, inheritable, bycopy.} = object
+    u64GUID*: orxU64_520094985
+    u64OwnerGUID*: orxU64_520094985
+    u32Flags*: orxU32_520094987
+    u32RefCount*: orxU32_520094987
     stStorage*: struct_orxSTRUCTURE_t_stStorage_t
-  orxSTRUCTURE_520095158 = struct_orxSTRUCTURE_t_520095157
-  orxSTRUCTURE_UPDATE_FUNCTION_520095160 = proc (a0: ptr orxSTRUCTURE_520095159;
-      a1: ptr orxSTRUCTURE_520095159; a2: ptr orxCLOCK_INFO_520095123): orxSTATUS_520095066 {.
+  orxSTRUCTURE_520095121 = struct_orxSTRUCTURE_t_520095120
+  orxSTRUCTURE_UPDATE_FUNCTION_520095123 = proc (a0: ptr orxSTRUCTURE_520095122;
+      a1: ptr orxSTRUCTURE_520095122; a2: ptr orxCLOCK_INFO_520095086): orxSTATUS_520095029 {.
       cdecl.}
-  orxANIM_520095162 = struct_orxANIM_t
-  orxANIM_EVENT_520095166 = enum_orxANIM_EVENT_t_520095165
+  orxANIM_520095125 = struct_orxANIM_t
+  orxANIM_EVENT_520095129 = enum_orxANIM_EVENT_t_520095128
   struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stLoop_t {.pure, inheritable, bycopy.} = object
-    u32Count*: orxU32_520095024
+    u32Count*: orxU32_520094987
   struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stCut_t {.pure, inheritable, bycopy.} = object
-    fTime*: orxFLOAT_520095040
+    fTime*: orxFLOAT_520095003
   struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stCustom_t {.pure, inheritable, bycopy.} = object
     zName*: cstring
-    fValue*: orxFLOAT_520095040
-    fTime*: orxFLOAT_520095040
+    fValue*: orxFLOAT_520095003
+    fTime*: orxFLOAT_520095003
   struct_orxANIM_EVENT_PAYLOAD_t_anon0_t {.union, bycopy.} = object
     stLoop*: struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stLoop_t
     stCut*: struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stCut_t
     stCustom*: struct_orxANIM_EVENT_PAYLOAD_t_anon0_t_stCustom_t
-  struct_orxANIM_EVENT_PAYLOAD_t_520095168 {.pure, inheritable, bycopy.} = object
-    pstAnim*: ptr orxANIM_520095163
+  struct_orxANIM_EVENT_PAYLOAD_t_520095131 {.pure, inheritable, bycopy.} = object
+    pstAnim*: ptr orxANIM_520095126
     zAnimName*: cstring
     anon0*: struct_orxANIM_EVENT_PAYLOAD_t_anon0_t
-  orxANIM_EVENT_PAYLOAD_520095170 = struct_orxANIM_EVENT_PAYLOAD_t_520095169
-  struct_orxANIM_CUSTOM_EVENT_t_520095172 {.pure, inheritable, bycopy.} = object
+  orxANIM_EVENT_PAYLOAD_520095133 = struct_orxANIM_EVENT_PAYLOAD_t_520095132
+  struct_orxANIM_CUSTOM_EVENT_t_520095135 {.pure, inheritable, bycopy.} = object
     zName*: cstring
-    fValue*: orxFLOAT_520095040
-    fTimeStamp*: orxFLOAT_520095040
-  orxANIM_CUSTOM_EVENT_520095174 = struct_orxANIM_CUSTOM_EVENT_t_520095173
-  orxANIMSET_520095176 = struct_orxANIMSET_t
-  orxANIMSET_LINK_TABLE_520095178 = struct_orxANIMSET_LINK_TABLE_t
-  orxANIMPOINTER_520095180 = struct_orxANIMPOINTER_t
-  orxCOMMAND_VAR_TYPE_520095184 = enum_orxCOMMAND_VAR_TYPE_t_520095183
-  struct_orxCOMMAND_VAR_DEF_t_520095186 {.pure, inheritable, bycopy.} = object
+    fValue*: orxFLOAT_520095003
+    fTimeStamp*: orxFLOAT_520095003
+  orxANIM_CUSTOM_EVENT_520095137 = struct_orxANIM_CUSTOM_EVENT_t_520095136
+  orxANIMSET_520095139 = struct_orxANIMSET_t
+  orxANIMSET_LINK_TABLE_520095141 = struct_orxANIMSET_LINK_TABLE_t
+  orxANIMPOINTER_520095143 = struct_orxANIMPOINTER_t
+  orxCOMMAND_VAR_TYPE_520095147 = enum_orxCOMMAND_VAR_TYPE_t_520095146
+  struct_orxCOMMAND_VAR_DEF_t_520095149 {.pure, inheritable, bycopy.} = object
     zName*: cstring
-    eType*: orxCOMMAND_VAR_TYPE_520095185
-  orxCOMMAND_VAR_DEF_520095188 = struct_orxCOMMAND_VAR_DEF_t_520095187
+    eType*: orxCOMMAND_VAR_TYPE_520095148
+  orxCOMMAND_VAR_DEF_520095151 = struct_orxCOMMAND_VAR_DEF_t_520095150
   struct_orxCOMMAND_VAR_t_anon0_t {.union, bycopy.} = object
-    vValue*: orxVECTOR_520095096
+    vValue*: orxVECTOR_520095059
     zValue*: cstring
-    u32Value*: orxU32_520095024
-    s32Value*: orxS32_520095032
-    u64Value*: orxU64_520095022
-    s64Value*: orxS64_520095030
-    fValue*: orxFLOAT_520095040
-    bValue*: orxBOOL_520095038
-  struct_orxCOMMAND_VAR_t_520095190 {.pure, inheritable, bycopy.} = object
+    u32Value*: orxU32_520094987
+    s32Value*: orxS32_520094995
+    u64Value*: orxU64_520094985
+    s64Value*: orxS64_520094993
+    fValue*: orxFLOAT_520095003
+    bValue*: orxBOOL_520095001
+  struct_orxCOMMAND_VAR_t_520095153 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxCOMMAND_VAR_t_anon0_t
-    eType*: orxCOMMAND_VAR_TYPE_520095185
-  orxCOMMAND_VAR_520095192 = struct_orxCOMMAND_VAR_t_520095191
-  orxCOMMAND_FUNCTION_520095194 = proc (a0: orxU32_520095024;
-                                        a1: ptr orxCOMMAND_VAR_520095193;
-                                        a2: ptr orxCOMMAND_VAR_520095193): void {.
+    eType*: orxCOMMAND_VAR_TYPE_520095148
+  orxCOMMAND_VAR_520095155 = struct_orxCOMMAND_VAR_t_520095154
+  orxCOMMAND_FUNCTION_520095157 = proc (a0: orxU32_520094987;
+                                        a1: ptr orxCOMMAND_VAR_520095156;
+                                        a2: ptr orxCOMMAND_VAR_520095156): void {.
       cdecl.}
-  orxCONFIG_EVENT_520095198 = enum_orxCONFIG_EVENT_t_520095197
-  orxCONFIG_SAVE_FUNCTION_520095200 = proc (a0: cstring; a1: cstring;
-      a2: cstring; a3: orxBOOL_520095038): orxBOOL_520095038 {.cdecl.}
-  orxCONFIG_CLEAR_FUNCTION_520095202 = proc (a0: cstring; a1: cstring): orxBOOL_520095038 {.
+  orxCONFIG_EVENT_520095161 = enum_orxCONFIG_EVENT_t_520095160
+  orxCONFIG_SAVE_FUNCTION_520095163 = proc (a0: cstring; a1: cstring;
+      a2: cstring; a3: orxBOOL_520095001): orxBOOL_520095001 {.cdecl.}
+  orxCONFIG_CLEAR_FUNCTION_520095165 = proc (a0: cstring; a1: cstring): orxBOOL_520095001 {.
       cdecl.}
-  orxCONFIG_BOOTSTRAP_FUNCTION_520095204 = proc (): orxSTATUS_520095066 {.cdecl.}
-  orxPLUGIN_FUNCTION_ID_520095208 = enum_orxPLUGIN_FUNCTION_ID_t_520095207
-  orxPLUGIN_FUNCTION_520095210 = proc (): orxSTATUS_520095066 {.cdecl.}
-  orxPLUGIN_CORE_ID_520095214 = enum_orxPLUGIN_CORE_ID_t_520095213
-  orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095218 = enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095217
-  orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095222 = enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095221
-  orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095226 = enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095225
-  orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095230 = enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095229
-  orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095234 = enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095233
-  orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095238 = enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095237
-  orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095242 = enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095241
-  struct_orxPLUGIN_CORE_FUNCTION_t_520095244 {.pure, inheritable, bycopy.} = object
-    eFunctionID*: orxPLUGIN_FUNCTION_ID_520095209
-    pfnFunction*: orxPLUGIN_FUNCTION_520095211
-    pfnDefaultFunction*: orxPLUGIN_FUNCTION_520095211
-  orxPLUGIN_CORE_FUNCTION_520095246 = struct_orxPLUGIN_CORE_FUNCTION_t_520095245
-  struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095248 {.pure, inheritable, bycopy.} = object
-    eFunctionID*: orxPLUGIN_FUNCTION_ID_520095209
-    pfnFunction*: orxPLUGIN_FUNCTION_520095211
-    zFunctionArgs*: array[128'i64, orxCHAR_520095044]
+  orxCONFIG_BOOTSTRAP_FUNCTION_520095167 = proc (): orxSTATUS_520095029 {.cdecl.}
+  orxPLUGIN_FUNCTION_ID_520095171 = enum_orxPLUGIN_FUNCTION_ID_t_520095170
+  orxPLUGIN_FUNCTION_520095173 = proc (): orxSTATUS_520095029 {.cdecl.}
+  orxPLUGIN_CORE_ID_520095177 = enum_orxPLUGIN_CORE_ID_t_520095176
+  orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095181 = enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095180
+  orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095185 = enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095184
+  orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095189 = enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095188
+  orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095193 = enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095192
+  orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095197 = enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095196
+  orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095201 = enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095200
+  orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095205 = enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095204
+  struct_orxPLUGIN_CORE_FUNCTION_t_520095207 {.pure, inheritable, bycopy.} = object
+    eFunctionID*: orxPLUGIN_FUNCTION_ID_520095172
+    pfnFunction*: orxPLUGIN_FUNCTION_520095174
+    pfnDefaultFunction*: orxPLUGIN_FUNCTION_520095174
+  orxPLUGIN_CORE_FUNCTION_520095209 = struct_orxPLUGIN_CORE_FUNCTION_t_520095208
+  struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095211 {.pure, inheritable, bycopy.} = object
+    eFunctionID*: orxPLUGIN_FUNCTION_ID_520095172
+    pfnFunction*: orxPLUGIN_FUNCTION_520095174
+    zFunctionArgs*: array[128'i64, orxCHAR_520095007]
     zFunctionName*: cstring
-  orxPLUGIN_USER_FUNCTION_INFO_520095250 = struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095249
-  orxPLUGIN_INIT_FUNCTION_520095252 = proc (a0: ptr orxU32_520095024;
-      a1: ptr ptr orxPLUGIN_USER_FUNCTION_INFO_520095251): orxSTATUS_520095066 {.
+  orxPLUGIN_USER_FUNCTION_INFO_520095213 = struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095212
+  orxPLUGIN_INIT_FUNCTION_520095215 = proc (a0: ptr orxU32_520094987;
+      a1: ptr ptr orxPLUGIN_USER_FUNCTION_INFO_520095214): orxSTATUS_520095029 {.
       cdecl.}
-  struct_orxOBOX_t_520095254 {.pure, inheritable, bycopy.} = object
-    vPosition*: orxVECTOR_520095096
-    vPivot*: orxVECTOR_520095096
-    vX*: orxVECTOR_520095096
-    vY*: orxVECTOR_520095096
-    vZ*: orxVECTOR_520095096
-  orxOBOX_520095256 = struct_orxOBOX_t_520095255
-  orxBANK_520095258 = struct_orxBANK_t
-  orxHASHTABLE_520095260 = struct_orxHASHTABLE_t
+  struct_orxOBOX_t_520095217 {.pure, inheritable, bycopy.} = object
+    vPosition*: orxVECTOR_520095059
+    vPivot*: orxVECTOR_520095059
+    vX*: orxVECTOR_520095059
+    vY*: orxVECTOR_520095059
+    vZ*: orxVECTOR_520095059
+  orxOBOX_520095219 = struct_orxOBOX_t_520095218
+  orxBANK_520095221 = struct_orxBANK_t
+  orxHASHTABLE_520095223 = struct_orxHASHTABLE_t
   struct_orxRGBA_t_anon0_t_anon0_t {.pure, inheritable, bycopy.} = object
-    u8R*: orxU8_520095028
-    u8G*: orxU8_520095028
-    u8B*: orxU8_520095028
-    u8A*: orxU8_520095028
+    u8R*: orxU8_520094991
+    u8G*: orxU8_520094991
+    u8B*: orxU8_520094991
+    u8A*: orxU8_520094991
   struct_orxRGBA_t_anon0_t {.union, bycopy.} = object
     anon0*: struct_orxRGBA_t_anon0_t_anon0_t
-    u32RGBA*: orxU32_520095024
-  struct_orxRGBA_t_520095262 {.pure, inheritable, bycopy.} = object
+    u32RGBA*: orxU32_520094987
+  struct_orxRGBA_t_520095225 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxRGBA_t_anon0_t
-  orxRGBA_520095264 = struct_orxRGBA_t_520095263
-  orxBITMAP_520095266 = struct_orxBITMAP_t
-  struct_orxDISPLAY_VERTEX_t_520095268 {.pure, inheritable, bycopy.} = object
-    fX*: orxFLOAT_520095040
-    fY*: orxFLOAT_520095040
-    fU*: orxFLOAT_520095040
-    fV*: orxFLOAT_520095040
-    stRGBA*: orxRGBA_520095265
-  orxDISPLAY_VERTEX_520095270 = struct_orxDISPLAY_VERTEX_t_520095269
-  struct_orxDISPLAY_TRANSFORM_t_520095272 {.pure, inheritable, bycopy.} = object
-    fSrcX*: orxFLOAT_520095040
-    fSrcY*: orxFLOAT_520095040
-    fDstX*: orxFLOAT_520095040
-    fDstY*: orxFLOAT_520095040
-    fRepeatX*: orxFLOAT_520095040
-    fRepeatY*: orxFLOAT_520095040
-    fScaleX*: orxFLOAT_520095040
-    fScaleY*: orxFLOAT_520095040
-    fRotation*: orxFLOAT_520095040
-  orxDISPLAY_TRANSFORM_520095274 = struct_orxDISPLAY_TRANSFORM_t_520095273
-  orxDISPLAY_PRIMITIVE_520095278 = enum_orxDISPLAY_PRIMITIVE_t_520095277
-  struct_orxDISPLAY_MESH_t_520095280 {.pure, inheritable, bycopy.} = object
-    astVertexList*: ptr orxDISPLAY_VERTEX_520095271
-    au16IndexList*: ptr orxU16_520095026
-    u32VertexNumber*: orxU32_520095024
-    u32IndexNumber*: orxU32_520095024
-    ePrimitive*: orxDISPLAY_PRIMITIVE_520095279
-  orxDISPLAY_MESH_520095282 = struct_orxDISPLAY_MESH_t_520095281
-  struct_orxDISPLAY_VIDEO_MODE_t_520095284 {.pure, inheritable, bycopy.} = object
-    u32Width*: orxU32_520095024
-    u32Height*: orxU32_520095024
-    u32Depth*: orxU32_520095024
-    u32RefreshRate*: orxU32_520095024
-    bFullScreen*: orxBOOL_520095038
-  orxDISPLAY_VIDEO_MODE_520095286 = struct_orxDISPLAY_VIDEO_MODE_t_520095285
-  struct_orxCHARACTER_GLYPH_t_520095288 {.pure, inheritable, bycopy.} = object
-    fX*: orxFLOAT_520095040
-    fY*: orxFLOAT_520095040
-    fWidth*: orxFLOAT_520095040
-  orxCHARACTER_GLYPH_520095290 = struct_orxCHARACTER_GLYPH_t_520095289
-  struct_orxCHARACTER_MAP_t_520095292 {.pure, inheritable, bycopy.} = object
-    fCharacterHeight*: orxFLOAT_520095040
-    pstCharacterBank*: ptr orxBANK_520095259
-    pstCharacterTable*: ptr orxHASHTABLE_520095261
-  orxCHARACTER_MAP_520095294 = struct_orxCHARACTER_MAP_t_520095293
-  orxDISPLAY_SMOOTHING_520095298 = enum_orxDISPLAY_SMOOTHING_t_520095297
-  orxDISPLAY_BLEND_MODE_520095302 = enum_orxDISPLAY_BLEND_MODE_t_520095301
+  orxRGBA_520095227 = struct_orxRGBA_t_520095226
+  orxBITMAP_520095229 = struct_orxBITMAP_t
+  struct_orxDISPLAY_VERTEX_t_520095231 {.pure, inheritable, bycopy.} = object
+    fX*: orxFLOAT_520095003
+    fY*: orxFLOAT_520095003
+    fU*: orxFLOAT_520095003
+    fV*: orxFLOAT_520095003
+    stRGBA*: orxRGBA_520095228
+  orxDISPLAY_VERTEX_520095233 = struct_orxDISPLAY_VERTEX_t_520095232
+  struct_orxDISPLAY_TRANSFORM_t_520095235 {.pure, inheritable, bycopy.} = object
+    fSrcX*: orxFLOAT_520095003
+    fSrcY*: orxFLOAT_520095003
+    fDstX*: orxFLOAT_520095003
+    fDstY*: orxFLOAT_520095003
+    fRepeatX*: orxFLOAT_520095003
+    fRepeatY*: orxFLOAT_520095003
+    fScaleX*: orxFLOAT_520095003
+    fScaleY*: orxFLOAT_520095003
+    fRotation*: orxFLOAT_520095003
+  orxDISPLAY_TRANSFORM_520095237 = struct_orxDISPLAY_TRANSFORM_t_520095236
+  orxDISPLAY_PRIMITIVE_520095241 = enum_orxDISPLAY_PRIMITIVE_t_520095240
+  struct_orxDISPLAY_MESH_t_520095243 {.pure, inheritable, bycopy.} = object
+    astVertexList*: ptr orxDISPLAY_VERTEX_520095234
+    au16IndexList*: ptr orxU16_520094989
+    u32VertexNumber*: orxU32_520094987
+    u32IndexNumber*: orxU32_520094987
+    ePrimitive*: orxDISPLAY_PRIMITIVE_520095242
+  orxDISPLAY_MESH_520095245 = struct_orxDISPLAY_MESH_t_520095244
+  struct_orxDISPLAY_VIDEO_MODE_t_520095247 {.pure, inheritable, bycopy.} = object
+    u32Width*: orxU32_520094987
+    u32Height*: orxU32_520094987
+    u32Depth*: orxU32_520094987
+    u32RefreshRate*: orxU32_520094987
+    bFullScreen*: orxBOOL_520095001
+  orxDISPLAY_VIDEO_MODE_520095249 = struct_orxDISPLAY_VIDEO_MODE_t_520095248
+  struct_orxCHARACTER_GLYPH_t_520095251 {.pure, inheritable, bycopy.} = object
+    fX*: orxFLOAT_520095003
+    fY*: orxFLOAT_520095003
+    fWidth*: orxFLOAT_520095003
+  orxCHARACTER_GLYPH_520095253 = struct_orxCHARACTER_GLYPH_t_520095252
+  struct_orxCHARACTER_MAP_t_520095255 {.pure, inheritable, bycopy.} = object
+    fCharacterHeight*: orxFLOAT_520095003
+    pstCharacterBank*: ptr orxBANK_520095222
+    pstCharacterTable*: ptr orxHASHTABLE_520095224
+  orxCHARACTER_MAP_520095257 = struct_orxCHARACTER_MAP_t_520095256
+  orxDISPLAY_SMOOTHING_520095261 = enum_orxDISPLAY_SMOOTHING_t_520095260
+  orxDISPLAY_BLEND_MODE_520095265 = enum_orxDISPLAY_BLEND_MODE_t_520095264
   struct_orxCOLOR_t_anon0_t {.union, bycopy.} = object
-    vRGB*: orxVECTOR_520095096
-    vHSL*: orxVECTOR_520095096
-    vHSV*: orxVECTOR_520095096
-  struct_orxCOLOR_t_520095304 {.pure, inheritable, bycopy.} = object
+    vRGB*: orxVECTOR_520095059
+    vHSL*: orxVECTOR_520095059
+    vHSV*: orxVECTOR_520095059
+  struct_orxCOLOR_t_520095267 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxCOLOR_t_anon0_t
-    fAlpha*: orxFLOAT_520095040
-  orxCOLOR_520095306 = struct_orxCOLOR_t_520095305
-  orxDISPLAY_EVENT_520095310 = enum_orxDISPLAY_EVENT_t_520095309
+    fAlpha*: orxFLOAT_520095003
+  orxCOLOR_520095269 = struct_orxCOLOR_t_520095268
+  orxDISPLAY_EVENT_520095273 = enum_orxDISPLAY_EVENT_t_520095272
   struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t_stVideoMode_t {.pure, inheritable,
       bycopy.} = object
-    u32Width*: orxU32_520095024
-    u32Height*: orxU32_520095024
-    u32Depth*: orxU32_520095024
-    u32RefreshRate*: orxU32_520095024
-    u32PreviousWidth*: orxU32_520095024
-    u32PreviousHeight*: orxU32_520095024
-    u32PreviousDepth*: orxU32_520095024
-    u32PreviousRefreshRate*: orxU32_520095024
-    bFullScreen*: orxBOOL_520095038
+    u32Width*: orxU32_520094987
+    u32Height*: orxU32_520094987
+    u32Depth*: orxU32_520094987
+    u32RefreshRate*: orxU32_520094987
+    u32PreviousWidth*: orxU32_520094987
+    u32PreviousHeight*: orxU32_520094987
+    u32PreviousDepth*: orxU32_520094987
+    u32PreviousRefreshRate*: orxU32_520094987
+    bFullScreen*: orxBOOL_520095001
   struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t_stBitmap_t {.pure, inheritable,
       bycopy.} = object
     zLocation*: cstring
-    stFilenameID*: orxSTRINGID_520095046
-    u32ID*: orxU32_520095024
+    stFilenameID*: orxSTRINGID_520095009
+    u32ID*: orxU32_520094987
   struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t {.union, bycopy.} = object
     stVideoMode*: struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t_stVideoMode_t
     stBitmap*: struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t_stBitmap_t
-  struct_orxDISPLAY_EVENT_PAYLOAD_t_520095312 {.pure, inheritable, bycopy.} = object
+  struct_orxDISPLAY_EVENT_PAYLOAD_t_520095275 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxDISPLAY_EVENT_PAYLOAD_t_anon0_t
-  orxDISPLAY_EVENT_PAYLOAD_520095314 = struct_orxDISPLAY_EVENT_PAYLOAD_t_520095313
-  orxTEXTURE_EVENT_520095318 = enum_orxTEXTURE_EVENT_t_520095317
-  orxTEXTURE_520095320 = struct_orxTEXTURE_t
-  orxFONT_520095322 = struct_orxFONT_t
-  orxJOYSTICK_BUTTON_520095326 = enum_orxJOYSTICK_BUTTON_t_520095325
-  orxJOYSTICK_AXIS_520095330 = enum_orxJOYSTICK_AXIS_t_520095329
-  orxKEYBOARD_KEY_520095334 = enum_orxKEYBOARD_KEY_t_520095333
-  orxMOUSE_BUTTON_520095338 = enum_orxMOUSE_BUTTON_t_520095337
-  orxMOUSE_AXIS_520095342 = enum_orxMOUSE_AXIS_t_520095341
-  orxINPUT_TYPE_520095346 = enum_orxINPUT_TYPE_t_520095345
-  orxINPUT_MODE_520095350 = enum_orxINPUT_MODE_t_520095349
-  orxINPUT_EVENT_520095354 = enum_orxINPUT_EVENT_t_520095353
-  struct_orxINPUT_EVENT_PAYLOAD_t_520095356 {.pure, inheritable, bycopy.} = object
+  orxDISPLAY_EVENT_PAYLOAD_520095277 = struct_orxDISPLAY_EVENT_PAYLOAD_t_520095276
+  orxTEXTURE_EVENT_520095281 = enum_orxTEXTURE_EVENT_t_520095280
+  orxTEXTURE_520095283 = struct_orxTEXTURE_t
+  orxFONT_520095285 = struct_orxFONT_t
+  orxJOYSTICK_BUTTON_520095289 = enum_orxJOYSTICK_BUTTON_t_520095288
+  orxJOYSTICK_AXIS_520095293 = enum_orxJOYSTICK_AXIS_t_520095292
+  orxKEYBOARD_KEY_520095297 = enum_orxKEYBOARD_KEY_t_520095296
+  orxMOUSE_BUTTON_520095301 = enum_orxMOUSE_BUTTON_t_520095300
+  orxMOUSE_AXIS_520095305 = enum_orxMOUSE_AXIS_t_520095304
+  orxINPUT_TYPE_520095309 = enum_orxINPUT_TYPE_t_520095308
+  orxINPUT_MODE_520095313 = enum_orxINPUT_MODE_t_520095312
+  orxINPUT_EVENT_520095317 = enum_orxINPUT_EVENT_t_520095316
+  struct_orxINPUT_EVENT_PAYLOAD_t_520095319 {.pure, inheritable, bycopy.} = object
     zSetName*: cstring
     zInputName*: cstring
-    aeType*: array[16'i64, orxINPUT_TYPE_520095347]
-    aeID*: array[16'i64, orxENUM_520095048]
-    aeMode*: array[16'i64, orxINPUT_MODE_520095351]
-    afValue*: array[16'i64, orxFLOAT_520095040]
-  orxINPUT_EVENT_PAYLOAD_520095358 = struct_orxINPUT_EVENT_PAYLOAD_t_520095357
-  orxEVENT_TYPE_520095362 = enum_orxEVENT_TYPE_t_520095361
-  struct_orxEVENT_t_520095364 {.pure, inheritable, bycopy.} = object
-    eType*: orxEVENT_TYPE_520095363
-    eID*: orxENUM_520095048
-    hSender*: orxHANDLE_520095050
-    hRecipient*: orxHANDLE_520095050
+    aeType*: array[16'i64, orxINPUT_TYPE_520095310]
+    aeID*: array[16'i64, orxENUM_520095011]
+    aeMode*: array[16'i64, orxINPUT_MODE_520095314]
+    afValue*: array[16'i64, orxFLOAT_520095003]
+  orxINPUT_EVENT_PAYLOAD_520095321 = struct_orxINPUT_EVENT_PAYLOAD_t_520095320
+  orxEVENT_TYPE_520095325 = enum_orxEVENT_TYPE_t_520095324
+  struct_orxEVENT_t_520095327 {.pure, inheritable, bycopy.} = object
+    eType*: orxEVENT_TYPE_520095326
+    eID*: orxENUM_520095011
+    hSender*: orxHANDLE_520095013
+    hRecipient*: orxHANDLE_520095013
     pstPayload*: pointer
     pContext*: pointer
-  orxEVENT_520095366 = struct_orxEVENT_t_520095365
-  orxEVENT_HANDLER_520095368 = proc (a0: ptr orxEVENT_520095367): orxSTATUS_520095066 {.
+  orxEVENT_520095329 = struct_orxEVENT_t_520095328
+  orxEVENT_HANDLER_520095331 = proc (a0: ptr orxEVENT_520095330): orxSTATUS_520095029 {.
       cdecl.}
-  orxLOCALE_EVENT_520095372 = enum_orxLOCALE_EVENT_t_520095371
-  struct_orxLOCALE_EVENT_PAYLOAD_t_520095374 {.pure, inheritable, bycopy.} = object
+  orxLOCALE_EVENT_520095335 = enum_orxLOCALE_EVENT_t_520095334
+  struct_orxLOCALE_EVENT_PAYLOAD_t_520095337 {.pure, inheritable, bycopy.} = object
     zLanguage*: cstring
     zGroup*: cstring
     zStringKey*: cstring
     zStringValue*: cstring
-  orxLOCALE_EVENT_PAYLOAD_520095376 = struct_orxLOCALE_EVENT_PAYLOAD_t_520095375
-  orxRESOURCE_OP_FUNCTION_520095378 = proc (a0: orxHANDLE_520095050; a1: orxS64_520095030;
+  orxLOCALE_EVENT_PAYLOAD_520095339 = struct_orxLOCALE_EVENT_PAYLOAD_t_520095338
+  orxRESOURCE_OP_FUNCTION_520095341 = proc (a0: orxHANDLE_520095013; a1: orxS64_520094993;
       a2: pointer; a3: pointer): void {.cdecl.}
-  orxRESOURCE_FUNCTION_LOCATE_520095380 = proc (a0: cstring; a1: cstring;
-      a2: cstring; a3: orxBOOL_520095038): cstring {.cdecl.}
-  orxRESOURCE_FUNCTION_GET_TIME_520095382 = proc (a0: cstring): orxS64_520095030 {.
+  orxRESOURCE_FUNCTION_LOCATE_520095343 = proc (a0: cstring; a1: cstring;
+      a2: cstring; a3: orxBOOL_520095001): cstring {.cdecl.}
+  orxRESOURCE_FUNCTION_GET_TIME_520095345 = proc (a0: cstring): orxS64_520094993 {.
       cdecl.}
-  orxRESOURCE_FUNCTION_OPEN_520095384 = proc (a0: cstring; a1: orxBOOL_520095038): orxHANDLE_520095050 {.
+  orxRESOURCE_FUNCTION_OPEN_520095347 = proc (a0: cstring; a1: orxBOOL_520095001): orxHANDLE_520095013 {.
       cdecl.}
-  orxRESOURCE_FUNCTION_CLOSE_520095386 = proc (a0: orxHANDLE_520095050): void {.
+  orxRESOURCE_FUNCTION_CLOSE_520095349 = proc (a0: orxHANDLE_520095013): void {.
       cdecl.}
-  orxRESOURCE_FUNCTION_GET_SIZE_520095388 = proc (a0: orxHANDLE_520095050): orxS64_520095030 {.
+  orxRESOURCE_FUNCTION_GET_SIZE_520095351 = proc (a0: orxHANDLE_520095013): orxS64_520094993 {.
       cdecl.}
-  orxRESOURCE_FUNCTION_SEEK_520095390 = proc (a0: orxHANDLE_520095050;
-      a1: orxS64_520095030; a2: orxSEEK_OFFSET_WHENCE_520095058): orxS64_520095030 {.
+  orxRESOURCE_FUNCTION_SEEK_520095353 = proc (a0: orxHANDLE_520095013;
+      a1: orxS64_520094993; a2: orxSEEK_OFFSET_WHENCE_520095021): orxS64_520094993 {.
       cdecl.}
-  orxRESOURCE_FUNCTION_TELL_520095392 = proc (a0: orxHANDLE_520095050): orxS64_520095030 {.
+  orxRESOURCE_FUNCTION_TELL_520095355 = proc (a0: orxHANDLE_520095013): orxS64_520094993 {.
       cdecl.}
-  orxRESOURCE_FUNCTION_READ_520095394 = proc (a0: orxHANDLE_520095050;
-      a1: orxS64_520095030; a2: pointer): orxS64_520095030 {.cdecl.}
-  orxRESOURCE_FUNCTION_WRITE_520095396 = proc (a0: orxHANDLE_520095050;
-      a1: orxS64_520095030; a2: pointer): orxS64_520095030 {.cdecl.}
-  orxRESOURCE_FUNCTION_DELETE_520095398 = proc (a0: cstring): orxSTATUS_520095066 {.
+  orxRESOURCE_FUNCTION_READ_520095357 = proc (a0: orxHANDLE_520095013;
+      a1: orxS64_520094993; a2: pointer): orxS64_520094993 {.cdecl.}
+  orxRESOURCE_FUNCTION_WRITE_520095359 = proc (a0: orxHANDLE_520095013;
+      a1: orxS64_520094993; a2: pointer): orxS64_520094993 {.cdecl.}
+  orxRESOURCE_FUNCTION_DELETE_520095361 = proc (a0: cstring): orxSTATUS_520095029 {.
       cdecl.}
-  struct_orxRESOURCE_TYPE_INFO_t_520095400 {.pure, inheritable, bycopy.} = object
+  struct_orxRESOURCE_TYPE_INFO_t_520095363 {.pure, inheritable, bycopy.} = object
     zTag*: cstring
-    pfnLocate*: orxRESOURCE_FUNCTION_LOCATE_520095381
-    pfnGetTime*: orxRESOURCE_FUNCTION_GET_TIME_520095383
-    pfnOpen*: orxRESOURCE_FUNCTION_OPEN_520095385
-    pfnClose*: orxRESOURCE_FUNCTION_CLOSE_520095387
-    pfnGetSize*: orxRESOURCE_FUNCTION_GET_SIZE_520095389
-    pfnSeek*: orxRESOURCE_FUNCTION_SEEK_520095391
-    pfnTell*: orxRESOURCE_FUNCTION_TELL_520095393
-    pfnRead*: orxRESOURCE_FUNCTION_READ_520095395
-    pfnWrite*: orxRESOURCE_FUNCTION_WRITE_520095397
-    pfnDelete*: orxRESOURCE_FUNCTION_DELETE_520095399
-  orxRESOURCE_TYPE_INFO_520095402 = struct_orxRESOURCE_TYPE_INFO_t_520095401
-  orxRESOURCE_EVENT_520095406 = enum_orxRESOURCE_EVENT_t_520095405
-  struct_orxRESOURCE_EVENT_PAYLOAD_t_520095408 {.pure, inheritable, bycopy.} = object
-    s64Time*: orxS64_520095030
+    pfnLocate*: orxRESOURCE_FUNCTION_LOCATE_520095344
+    pfnGetTime*: orxRESOURCE_FUNCTION_GET_TIME_520095346
+    pfnOpen*: orxRESOURCE_FUNCTION_OPEN_520095348
+    pfnClose*: orxRESOURCE_FUNCTION_CLOSE_520095350
+    pfnGetSize*: orxRESOURCE_FUNCTION_GET_SIZE_520095352
+    pfnSeek*: orxRESOURCE_FUNCTION_SEEK_520095354
+    pfnTell*: orxRESOURCE_FUNCTION_TELL_520095356
+    pfnRead*: orxRESOURCE_FUNCTION_READ_520095358
+    pfnWrite*: orxRESOURCE_FUNCTION_WRITE_520095360
+    pfnDelete*: orxRESOURCE_FUNCTION_DELETE_520095362
+  orxRESOURCE_TYPE_INFO_520095365 = struct_orxRESOURCE_TYPE_INFO_t_520095364
+  orxRESOURCE_EVENT_520095369 = enum_orxRESOURCE_EVENT_t_520095368
+  struct_orxRESOURCE_EVENT_PAYLOAD_t_520095371 {.pure, inheritable, bycopy.} = object
+    s64Time*: orxS64_520094993
     zLocation*: cstring
-    pstTypeInfo*: ptr orxRESOURCE_TYPE_INFO_520095403
-    stGroupID*: orxSTRINGID_520095046
-    stStorageID*: orxSTRINGID_520095046
-    stNameID*: orxSTRINGID_520095046
-  orxRESOURCE_EVENT_PAYLOAD_520095410 = struct_orxRESOURCE_EVENT_PAYLOAD_t_520095409
-  orxTHREAD_SEMAPHORE_520095412 = struct_orxTHREAD_SEMAPHORE_t
-  orxTHREAD_FUNCTION_520095414 = proc (a0: pointer): orxSTATUS_520095066 {.cdecl.}
-  struct_orxAABOX_t_520095416 {.pure, inheritable, bycopy.} = object
-    vTL*: orxVECTOR_520095096
-    vBR*: orxVECTOR_520095096
-  orxAABOX_520095418 = struct_orxAABOX_t_520095417
-  orxGRAPHIC_520095420 = struct_orxGRAPHIC_t
-  orxTEXT_520095422 = struct_orxTEXT_t
-  struct_orxFILE_INFO_t_520095424 {.pure, inheritable, bycopy.} = object
-    s64Size*: orxS64_520095030
-    s64TimeStamp*: orxS64_520095030
-    u32Flags*: orxU32_520095024
-    hInternal*: orxHANDLE_520095050
-    zName*: array[256'i64, orxCHAR_520095044]
-    zPattern*: array[256'i64, orxCHAR_520095044]
-    zPath*: array[1024'i64, orxCHAR_520095044]
-    zFullName*: array[1280'i64, orxCHAR_520095044]
-  orxFILE_INFO_520095426 = struct_orxFILE_INFO_t_520095425
-  orxFILE_520095428 = struct_orxFILE_t
-  orxPARAM_INIT_FUNCTION_520095430 = proc (a0: orxU32_520095024;
-      a1: ptr UncheckedArray[cstring]): orxSTATUS_520095066 {.cdecl.}
-  struct_orxPARAM_t_520095432 {.pure, inheritable, bycopy.} = object
-    u32Flags*: orxU32_520095024
+    pstTypeInfo*: ptr orxRESOURCE_TYPE_INFO_520095366
+    stGroupID*: orxSTRINGID_520095009
+    stStorageID*: orxSTRINGID_520095009
+    stNameID*: orxSTRINGID_520095009
+  orxRESOURCE_EVENT_PAYLOAD_520095373 = struct_orxRESOURCE_EVENT_PAYLOAD_t_520095372
+  orxTHREAD_SEMAPHORE_520095375 = struct_orxTHREAD_SEMAPHORE_t
+  orxTHREAD_FUNCTION_520095377 = proc (a0: pointer): orxSTATUS_520095029 {.cdecl.}
+  struct_orxAABOX_t_520095379 {.pure, inheritable, bycopy.} = object
+    vTL*: orxVECTOR_520095059
+    vBR*: orxVECTOR_520095059
+  orxAABOX_520095381 = struct_orxAABOX_t_520095380
+  orxGRAPHIC_520095383 = struct_orxGRAPHIC_t
+  orxTEXT_520095385 = struct_orxTEXT_t
+  struct_orxFILE_INFO_t_520095387 {.pure, inheritable, bycopy.} = object
+    s64Size*: orxS64_520094993
+    s64TimeStamp*: orxS64_520094993
+    u32Flags*: orxU32_520094987
+    hInternal*: orxHANDLE_520095013
+    zName*: array[256'i64, orxCHAR_520095007]
+    zPattern*: array[256'i64, orxCHAR_520095007]
+    zPath*: array[1024'i64, orxCHAR_520095007]
+    zFullName*: array[1280'i64, orxCHAR_520095007]
+  orxFILE_INFO_520095389 = struct_orxFILE_INFO_t_520095388
+  orxFILE_520095391 = struct_orxFILE_t
+  orxPARAM_INIT_FUNCTION_520095393 = proc (a0: orxU32_520094987;
+      a1: ptr UncheckedArray[cstring]): orxSTATUS_520095029 {.cdecl.}
+  struct_orxPARAM_t_520095395 {.pure, inheritable, bycopy.} = object
+    u32Flags*: orxU32_520094987
     zShortName*: cstring
     zLongName*: cstring
     zShortDesc*: cstring
     zLongDesc*: cstring
-    pfnParser*: orxPARAM_INIT_FUNCTION_520095431
-  orxPARAM_520095434 = struct_orxPARAM_t_520095433
-  orxSOUNDSYSTEM_SOUND_520095436 = struct_orxSOUNDSYSTEM_SOUND_t
-  orxSOUNDSYSTEM_SAMPLE_520095438 = struct_orxSOUNDSYSTEM_SAMPLE_t
-  orxSOUNDSYSTEM_STREAM_TYPE_520095442 = enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095441
-  orxSOUNDSYSTEM_STATUS_520095446 = enum_orxSOUNDSYSTEM_STATUS_t_520095445
-  orxSOUND_FILTER_TYPE_520095450 = enum_orxSOUND_FILTER_TYPE_t_520095449
-  orxSOUND_FILTER_FUNCTION_520095452 = proc (a0: ptr orxFLOAT_520095040;
-      a1: ptr orxFLOAT_520095040; a2: orxU32_520095024; a3: orxU32_520095024;
-      a4: orxU32_520095024; a5: orxSTRINGID_520095046; a6: pointer): void {.
+    pfnParser*: orxPARAM_INIT_FUNCTION_520095394
+  orxPARAM_520095397 = struct_orxPARAM_t_520095396
+  orxSOUNDSYSTEM_SOUND_520095399 = struct_orxSOUNDSYSTEM_SOUND_t
+  orxSOUNDSYSTEM_SAMPLE_520095401 = struct_orxSOUNDSYSTEM_SAMPLE_t
+  orxSOUNDSYSTEM_STREAM_TYPE_520095405 = enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095404
+  orxSOUNDSYSTEM_STATUS_520095409 = enum_orxSOUNDSYSTEM_STATUS_t_520095408
+  orxSOUND_FILTER_TYPE_520095413 = enum_orxSOUND_FILTER_TYPE_t_520095412
+  orxSOUND_FILTER_FUNCTION_520095415 = proc (a0: ptr orxFLOAT_520095003;
+      a1: ptr orxFLOAT_520095003; a2: orxU32_520094987; a3: orxU32_520094987;
+      a4: orxU32_520094987; a5: orxSTRINGID_520095009; a6: pointer): void {.
       cdecl.}
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stBiquad_t {.pure, inheritable, bycopy.} = object
-    fA0*: orxFLOAT_520095040
-    fA1*: orxFLOAT_520095040
-    fA2*: orxFLOAT_520095040
-    fB0*: orxFLOAT_520095040
-    fB1*: orxFLOAT_520095040
-    fB2*: orxFLOAT_520095040
+    fA0*: orxFLOAT_520095003
+    fA1*: orxFLOAT_520095003
+    fA2*: orxFLOAT_520095003
+    fB0*: orxFLOAT_520095003
+    fB1*: orxFLOAT_520095003
+    fB2*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stLowPass_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    u32Order*: orxU32_520095024
+    fFrequency*: orxFLOAT_520095003
+    u32Order*: orxU32_520094987
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stHighPass_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    u32Order*: orxU32_520095024
+    fFrequency*: orxFLOAT_520095003
+    u32Order*: orxU32_520094987
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stBandPass_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    u32Order*: orxU32_520095024
+    fFrequency*: orxFLOAT_520095003
+    u32Order*: orxU32_520094987
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stLowShelf_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    fQ*: orxFLOAT_520095040
-    fGain*: orxFLOAT_520095040
+    fFrequency*: orxFLOAT_520095003
+    fQ*: orxFLOAT_520095003
+    fGain*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stHighShelf_t {.pure, inheritable,
       bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    fQ*: orxFLOAT_520095040
-    fGain*: orxFLOAT_520095040
+    fFrequency*: orxFLOAT_520095003
+    fQ*: orxFLOAT_520095003
+    fGain*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stNotch_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    fQ*: orxFLOAT_520095040
+    fFrequency*: orxFLOAT_520095003
+    fQ*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stPeaking_t {.pure, inheritable, bycopy.} = object
-    fFrequency*: orxFLOAT_520095040
-    fQ*: orxFLOAT_520095040
-    fGain*: orxFLOAT_520095040
+    fFrequency*: orxFLOAT_520095003
+    fQ*: orxFLOAT_520095003
+    fGain*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stDelay_t {.pure, inheritable, bycopy.} = object
-    fDelay*: orxFLOAT_520095040
-    fDecay*: orxFLOAT_520095040
+    fDelay*: orxFLOAT_520095003
+    fDecay*: orxFLOAT_520095003
   struct_orxSOUND_FILTER_DATA_t_anon0_t_stCustom_t {.pure, inheritable, bycopy.} = object
-    pfnCallback*: orxSOUND_FILTER_FUNCTION_520095453
+    pfnCallback*: orxSOUND_FILTER_FUNCTION_520095416
     pContext*: pointer
   struct_orxSOUND_FILTER_DATA_t_anon0_t {.union, bycopy.} = object
     stBiquad*: struct_orxSOUND_FILTER_DATA_t_anon0_t_stBiquad_t
@@ -1740,180 +1740,180 @@ type
     stPeaking*: struct_orxSOUND_FILTER_DATA_t_anon0_t_stPeaking_t
     stDelay*: struct_orxSOUND_FILTER_DATA_t_anon0_t_stDelay_t
     stCustom*: struct_orxSOUND_FILTER_DATA_t_anon0_t_stCustom_t
-  struct_orxSOUND_FILTER_DATA_t_520095454 {.pure, inheritable, bycopy.} = object
-    eType*: orxSOUND_FILTER_TYPE_520095451
-    stNameID*: orxSTRINGID_520095046
+  struct_orxSOUND_FILTER_DATA_t_520095417 {.pure, inheritable, bycopy.} = object
+    eType*: orxSOUND_FILTER_TYPE_520095414
+    stNameID*: orxSTRINGID_520095009
     anon0*: struct_orxSOUND_FILTER_DATA_t_anon0_t
-  orxSOUND_FILTER_DATA_520095456 = struct_orxSOUND_FILTER_DATA_t_520095455
-  orxSOUND_STATUS_520095460 = enum_orxSOUND_STATUS_t_520095459
-  orxSOUND_520095462 = struct_orxSOUND_t
-  orxSOUND_SAMPLE_520095464 = struct_orxSOUND_SAMPLE_t
-  orxSOUND_EVENT_520095468 = enum_orxSOUND_EVENT_t_520095467
-  struct_orxSOUND_STREAM_INFO_t_520095470 {.pure, inheritable, bycopy.} = object
+  orxSOUND_FILTER_DATA_520095419 = struct_orxSOUND_FILTER_DATA_t_520095418
+  orxSOUND_STATUS_520095423 = enum_orxSOUND_STATUS_t_520095422
+  orxSOUND_520095425 = struct_orxSOUND_t
+  orxSOUND_SAMPLE_520095427 = struct_orxSOUND_SAMPLE_t
+  orxSOUND_EVENT_520095431 = enum_orxSOUND_EVENT_t_520095430
+  struct_orxSOUND_STREAM_INFO_t_520095433 {.pure, inheritable, bycopy.} = object
     zName*: cstring
-    u32SampleRate*: orxU32_520095024
-    u32ChannelNumber*: orxU32_520095024
-  orxSOUND_STREAM_INFO_520095472 = struct_orxSOUND_STREAM_INFO_t_520095471
-  struct_orxSOUND_STREAM_PACKET_t_520095474 {.pure, inheritable, bycopy.} = object
-    afSampleList*: ptr orxFLOAT_520095040
-    u32SampleNumber*: orxU32_520095024
-    fTimeStamp*: orxFLOAT_520095040
-    fTime*: orxFLOAT_520095040
-    s32ID*: orxS32_520095032
-    bDiscard*: orxBOOL_520095038
-    bLast*: orxBOOL_520095038
-  orxSOUND_STREAM_PACKET_520095476 = struct_orxSOUND_STREAM_PACKET_t_520095475
+    u32SampleRate*: orxU32_520094987
+    u32ChannelNumber*: orxU32_520094987
+  orxSOUND_STREAM_INFO_520095435 = struct_orxSOUND_STREAM_INFO_t_520095434
+  struct_orxSOUND_STREAM_PACKET_t_520095437 {.pure, inheritable, bycopy.} = object
+    afSampleList*: ptr orxFLOAT_520095003
+    u32SampleNumber*: orxU32_520094987
+    fTimeStamp*: orxFLOAT_520095003
+    fTime*: orxFLOAT_520095003
+    s32ID*: orxS32_520094995
+    bDiscard*: orxBOOL_520095001
+    bLast*: orxBOOL_520095001
+  orxSOUND_STREAM_PACKET_520095439 = struct_orxSOUND_STREAM_PACKET_t_520095438
   struct_orxSOUND_EVENT_PAYLOAD_t_stStream_t {.pure, inheritable, bycopy.} = object
-    stInfo*: orxSOUND_STREAM_INFO_520095473
-    stPacket*: orxSOUND_STREAM_PACKET_520095477
+    stInfo*: orxSOUND_STREAM_INFO_520095436
+    stPacket*: orxSOUND_STREAM_PACKET_520095440
   struct_orxSOUND_EVENT_PAYLOAD_t_stFilter_t {.pure, inheritable, bycopy.} = object
-    stData*: orxSOUND_FILTER_DATA_520095457
-    stBusID*: orxSTRINGID_520095046
-  struct_orxSOUND_EVENT_PAYLOAD_t_520095478 {.pure, inheritable, bycopy.} = object
-    pstSound*: ptr orxSOUND_520095463
+    stData*: orxSOUND_FILTER_DATA_520095420
+    stBusID*: orxSTRINGID_520095009
+  struct_orxSOUND_EVENT_PAYLOAD_t_520095441 {.pure, inheritable, bycopy.} = object
+    pstSound*: ptr orxSOUND_520095426
     stStream*: struct_orxSOUND_EVENT_PAYLOAD_t_stStream_t
     stFilter*: struct_orxSOUND_EVENT_PAYLOAD_t_stFilter_t
-  orxSOUND_EVENT_PAYLOAD_520095480 = struct_orxSOUND_EVENT_PAYLOAD_t_520095479
-  orxOBJECT_EVENT_520095484 = enum_orxOBJECT_EVENT_t_520095483
-  orxOBJECT_520095486 = struct_orxOBJECT_t
-  orxFX_TYPE_520095490 = enum_orxFX_TYPE_t_520095489
-  orxFX_CURVE_520095494 = enum_orxFX_CURVE_t_520095493
+  orxSOUND_EVENT_PAYLOAD_520095443 = struct_orxSOUND_EVENT_PAYLOAD_t_520095442
+  orxOBJECT_EVENT_520095447 = enum_orxOBJECT_EVENT_t_520095446
+  orxOBJECT_520095449 = struct_orxOBJECT_t
+  orxFX_TYPE_520095453 = enum_orxFX_TYPE_t_520095452
+  orxFX_CURVE_520095457 = enum_orxFX_CURVE_t_520095456
   struct_orxFX_CURVE_PARAM_t_anon0_t_anon0_t {.pure, inheritable, bycopy.} = object
-    fStartValue*: orxFLOAT_520095040
-    fEndValue*: orxFLOAT_520095040
+    fStartValue*: orxFLOAT_520095003
+    fEndValue*: orxFLOAT_520095003
   struct_orxFX_CURVE_PARAM_t_anon0_t_anon1_t {.pure, inheritable, bycopy.} = object
-    vStartValue*: orxVECTOR_520095096
-    vEndValue*: orxVECTOR_520095096
+    vStartValue*: orxVECTOR_520095059
+    vEndValue*: orxVECTOR_520095059
   struct_orxFX_CURVE_PARAM_t_anon0_t {.union, bycopy.} = object
     anon0*: struct_orxFX_CURVE_PARAM_t_anon0_t_anon0_t
     anon1*: struct_orxFX_CURVE_PARAM_t_anon0_t_anon1_t
-  struct_orxFX_CURVE_PARAM_t_520095496 {.pure, inheritable, bycopy.} = object
+  struct_orxFX_CURVE_PARAM_t_520095459 {.pure, inheritable, bycopy.} = object
     anon0*: struct_orxFX_CURVE_PARAM_t_anon0_t
-    vCurvePoint1*: orxVECTOR_520095096
-    vCurvePoint2*: orxVECTOR_520095096
-    fStartTime*: orxFLOAT_520095040
-    fEndTime*: orxFLOAT_520095040
-    fPeriod*: orxFLOAT_520095040
-    fPhase*: orxFLOAT_520095040
-    fAmplification*: orxFLOAT_520095040
-    fAcceleration*: orxFLOAT_520095040
-    fPow*: orxFLOAT_520095040
-  orxFX_CURVE_PARAM_520095498 = struct_orxFX_CURVE_PARAM_t_520095497
-  orxFX_520095500 = struct_orxFX_t
-  orxFX_EVENT_520095504 = enum_orxFX_EVENT_t_520095503
-  struct_orxFX_EVENT_PAYLOAD_t_520095506 {.pure, inheritable, bycopy.} = object
-    pstFX*: ptr orxFX_520095501
+    vCurvePoint1*: orxVECTOR_520095059
+    vCurvePoint2*: orxVECTOR_520095059
+    fStartTime*: orxFLOAT_520095003
+    fEndTime*: orxFLOAT_520095003
+    fPeriod*: orxFLOAT_520095003
+    fPhase*: orxFLOAT_520095003
+    fAmplification*: orxFLOAT_520095003
+    fAcceleration*: orxFLOAT_520095003
+    fPow*: orxFLOAT_520095003
+  orxFX_CURVE_PARAM_520095461 = struct_orxFX_CURVE_PARAM_t_520095460
+  orxFX_520095463 = struct_orxFX_t
+  orxFX_EVENT_520095467 = enum_orxFX_EVENT_t_520095466
+  struct_orxFX_EVENT_PAYLOAD_t_520095469 {.pure, inheritable, bycopy.} = object
+    pstFX*: ptr orxFX_520095464
     zFXName*: cstring
-  orxFX_EVENT_PAYLOAD_520095508 = struct_orxFX_EVENT_PAYLOAD_t_520095507
-  orxFXPOINTER_520095510 = struct_orxFXPOINTER_t
-  orxFRAME_SPACE_520095514 = enum_orxFRAME_SPACE_t_520095513
-  orxFRAME_520095516 = struct_orxFRAME_t
-  orxSPAWNER_EVENT_520095520 = enum_orxSPAWNER_EVENT_t_520095519
-  orxSPAWNER_520095522 = struct_orxSPAWNER_t
-  orxTIMELINE_520095524 = struct_orxTIMELINE_t
-  orxTIMELINE_EVENT_520095528 = enum_orxTIMELINE_EVENT_t_520095527
-  struct_orxTIMELINE_EVENT_PAYLOAD_t_520095530 {.pure, inheritable, bycopy.} = object
-    pstTimeLine*: ptr orxTIMELINE_520095525
+  orxFX_EVENT_PAYLOAD_520095471 = struct_orxFX_EVENT_PAYLOAD_t_520095470
+  orxFXPOINTER_520095473 = struct_orxFXPOINTER_t
+  orxFRAME_SPACE_520095477 = enum_orxFRAME_SPACE_t_520095476
+  orxFRAME_520095479 = struct_orxFRAME_t
+  orxSPAWNER_EVENT_520095483 = enum_orxSPAWNER_EVENT_t_520095482
+  orxSPAWNER_520095485 = struct_orxSPAWNER_t
+  orxTIMELINE_520095487 = struct_orxTIMELINE_t
+  orxTIMELINE_EVENT_520095491 = enum_orxTIMELINE_EVENT_t_520095490
+  struct_orxTIMELINE_EVENT_PAYLOAD_t_520095493 {.pure, inheritable, bycopy.} = object
+    pstTimeLine*: ptr orxTIMELINE_520095488
     zTrackName*: cstring
     zEvent*: cstring
-    fTimeStamp*: orxFLOAT_520095040
-  orxTIMELINE_EVENT_PAYLOAD_520095532 = struct_orxTIMELINE_EVENT_PAYLOAD_t_520095531
-  orxTRIGGER_520095534 = struct_orxTRIGGER_t
-  orxTRIGGER_EVENT_520095538 = enum_orxTRIGGER_EVENT_t_520095537
-  struct_orxTRIGGER_EVENT_PAYLOAD_t_520095540 {.pure, inheritable, bycopy.} = object
-    pstTrigger*: ptr orxTRIGGER_520095535
+    fTimeStamp*: orxFLOAT_520095003
+  orxTIMELINE_EVENT_PAYLOAD_520095495 = struct_orxTIMELINE_EVENT_PAYLOAD_t_520095494
+  orxTRIGGER_520095497 = struct_orxTRIGGER_t
+  orxTRIGGER_EVENT_520095501 = enum_orxTRIGGER_EVENT_t_520095500
+  struct_orxTRIGGER_EVENT_PAYLOAD_t_520095503 {.pure, inheritable, bycopy.} = object
+    pstTrigger*: ptr orxTRIGGER_520095498
     zSetName*: cstring
     zEvent*: cstring
-  orxTRIGGER_EVENT_PAYLOAD_520095542 = struct_orxTRIGGER_EVENT_PAYLOAD_t_520095541
-  struct_orxBODY_DEF_t_520095544 {.pure, inheritable, bycopy.} = object
-    vPosition*: orxVECTOR_520095096
-    fRotation*: orxFLOAT_520095040
-    fInertia*: orxFLOAT_520095040
-    fMass*: orxFLOAT_520095040
-    fLinearDamping*: orxFLOAT_520095040
-    fAngularDamping*: orxFLOAT_520095040
-    u32Flags*: orxU32_520095024
-  orxBODY_DEF_520095546 = struct_orxBODY_DEF_t_520095545
+  orxTRIGGER_EVENT_PAYLOAD_520095505 = struct_orxTRIGGER_EVENT_PAYLOAD_t_520095504
+  struct_orxBODY_DEF_t_520095507 {.pure, inheritable, bycopy.} = object
+    vPosition*: orxVECTOR_520095059
+    fRotation*: orxFLOAT_520095003
+    fInertia*: orxFLOAT_520095003
+    fMass*: orxFLOAT_520095003
+    fLinearDamping*: orxFLOAT_520095003
+    fAngularDamping*: orxFLOAT_520095003
+    u32Flags*: orxU32_520094987
+  orxBODY_DEF_520095509 = struct_orxBODY_DEF_t_520095508
   struct_orxBODY_PART_DEF_t_anon0_t_stSphere_t {.pure, inheritable, bycopy.} = object
-    vCenter*: orxVECTOR_520095096
-    fRadius*: orxFLOAT_520095040
+    vCenter*: orxVECTOR_520095059
+    fRadius*: orxFLOAT_520095003
   struct_orxBODY_PART_DEF_t_anon0_t_stAABox_t {.pure, inheritable, bycopy.} = object
-    stBox*: orxAABOX_520095419
+    stBox*: orxAABOX_520095382
   struct_orxBODY_PART_DEF_t_anon0_t_stMesh_t {.pure, inheritable, bycopy.} = object
-    u32VertexCount*: orxU32_520095024
-    avVertices*: array[8'i64, orxVECTOR_520095096]
+    u32VertexCount*: orxU32_520094987
+    avVertices*: array[8'i64, orxVECTOR_520095059]
   struct_orxBODY_PART_DEF_t_anon0_t_stEdge_t {.pure, inheritable, bycopy.} = object
-    avVertices*: array[2'i64, orxVECTOR_520095096]
-    vPrevious*: orxVECTOR_520095096
-    vNext*: orxVECTOR_520095096
-    bHasPrevious*: orxBOOL_520095038
-    bHasNext*: orxBOOL_520095038
+    avVertices*: array[2'i64, orxVECTOR_520095059]
+    vPrevious*: orxVECTOR_520095059
+    vNext*: orxVECTOR_520095059
+    bHasPrevious*: orxBOOL_520095001
+    bHasNext*: orxBOOL_520095001
   struct_orxBODY_PART_DEF_t_anon0_t_stChain_t {.pure, inheritable, bycopy.} = object
-    vPrevious*: orxVECTOR_520095096
-    vNext*: orxVECTOR_520095096
-    avVertices*: ptr orxVECTOR_520095096
-    u32VertexCount*: orxU32_520095024
-    bIsLoop*: orxBOOL_520095038
-    bHasPrevious*: orxBOOL_520095038
-    bHasNext*: orxBOOL_520095038
+    vPrevious*: orxVECTOR_520095059
+    vNext*: orxVECTOR_520095059
+    avVertices*: ptr orxVECTOR_520095059
+    u32VertexCount*: orxU32_520094987
+    bIsLoop*: orxBOOL_520095001
+    bHasPrevious*: orxBOOL_520095001
+    bHasNext*: orxBOOL_520095001
   struct_orxBODY_PART_DEF_t_anon0_t {.union, bycopy.} = object
     stSphere*: struct_orxBODY_PART_DEF_t_anon0_t_stSphere_t
     stAABox*: struct_orxBODY_PART_DEF_t_anon0_t_stAABox_t
     stMesh*: struct_orxBODY_PART_DEF_t_anon0_t_stMesh_t
     stEdge*: struct_orxBODY_PART_DEF_t_anon0_t_stEdge_t
     stChain*: struct_orxBODY_PART_DEF_t_anon0_t_stChain_t
-  struct_orxBODY_PART_DEF_t_520095548 {.pure, inheritable, bycopy.} = object
-    vScale*: orxVECTOR_520095096
-    fFriction*: orxFLOAT_520095040
-    fRestitution*: orxFLOAT_520095040
-    fDensity*: orxFLOAT_520095040
-    u16SelfFlags*: orxU16_520095026
-    u16CheckMask*: orxU16_520095026
-    u32Flags*: orxU32_520095024
+  struct_orxBODY_PART_DEF_t_520095511 {.pure, inheritable, bycopy.} = object
+    vScale*: orxVECTOR_520095059
+    fFriction*: orxFLOAT_520095003
+    fRestitution*: orxFLOAT_520095003
+    fDensity*: orxFLOAT_520095003
+    u16SelfFlags*: orxU16_520094989
+    u16CheckMask*: orxU16_520094989
+    u32Flags*: orxU32_520094987
     anon0*: struct_orxBODY_PART_DEF_t_anon0_t
-  orxBODY_PART_DEF_520095550 = struct_orxBODY_PART_DEF_t_520095549
+  orxBODY_PART_DEF_520095513 = struct_orxBODY_PART_DEF_t_520095512
   struct_orxBODY_JOINT_DEF_t_anon0_t_stRevolute_t {.pure, inheritable, bycopy.} = object
-    fDefaultRotation*: orxFLOAT_520095040
-    fMinRotation*: orxFLOAT_520095040
-    fMaxRotation*: orxFLOAT_520095040
-    fMotorSpeed*: orxFLOAT_520095040
-    fMaxMotorTorque*: orxFLOAT_520095040
+    fDefaultRotation*: orxFLOAT_520095003
+    fMinRotation*: orxFLOAT_520095003
+    fMaxRotation*: orxFLOAT_520095003
+    fMotorSpeed*: orxFLOAT_520095003
+    fMaxMotorTorque*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stPrismatic_t {.pure, inheritable, bycopy.} = object
-    vTranslationAxis*: orxVECTOR_520095096
-    fDefaultRotation*: orxFLOAT_520095040
-    fMinTranslation*: orxFLOAT_520095040
-    fMaxTranslation*: orxFLOAT_520095040
-    fMotorSpeed*: orxFLOAT_520095040
-    fMaxMotorForce*: orxFLOAT_520095040
+    vTranslationAxis*: orxVECTOR_520095059
+    fDefaultRotation*: orxFLOAT_520095003
+    fMinTranslation*: orxFLOAT_520095003
+    fMaxTranslation*: orxFLOAT_520095003
+    fMotorSpeed*: orxFLOAT_520095003
+    fMaxMotorForce*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stSpring_t {.pure, inheritable, bycopy.} = object
-    fLength*: orxFLOAT_520095040
-    fFrequency*: orxFLOAT_520095040
-    fDamping*: orxFLOAT_520095040
+    fLength*: orxFLOAT_520095003
+    fFrequency*: orxFLOAT_520095003
+    fDamping*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stRope_t {.pure, inheritable, bycopy.} = object
-    fLength*: orxFLOAT_520095040
+    fLength*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stPulley_t {.pure, inheritable, bycopy.} = object
-    vSrcGroundAnchor*: orxVECTOR_520095096
-    vDstGroundAnchor*: orxVECTOR_520095096
-    fLengthRatio*: orxFLOAT_520095040
-    fSrcLength*: orxFLOAT_520095040
-    fMaxSrcLength*: orxFLOAT_520095040
-    fDstLength*: orxFLOAT_520095040
-    fMaxDstLength*: orxFLOAT_520095040
+    vSrcGroundAnchor*: orxVECTOR_520095059
+    vDstGroundAnchor*: orxVECTOR_520095059
+    fLengthRatio*: orxFLOAT_520095003
+    fSrcLength*: orxFLOAT_520095003
+    fMaxSrcLength*: orxFLOAT_520095003
+    fDstLength*: orxFLOAT_520095003
+    fMaxDstLength*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stSuspension_t {.pure, inheritable, bycopy.} = object
-    vTranslationAxis*: orxVECTOR_520095096
-    fFrequency*: orxFLOAT_520095040
-    fDamping*: orxFLOAT_520095040
-    fMotorSpeed*: orxFLOAT_520095040
-    fMaxMotorForce*: orxFLOAT_520095040
+    vTranslationAxis*: orxVECTOR_520095059
+    fFrequency*: orxFLOAT_520095003
+    fDamping*: orxFLOAT_520095003
+    fMotorSpeed*: orxFLOAT_520095003
+    fMaxMotorForce*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stWeld_t {.pure, inheritable, bycopy.} = object
-    fDefaultRotation*: orxFLOAT_520095040
+    fDefaultRotation*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stFriction_t {.pure, inheritable, bycopy.} = object
-    fMaxForce*: orxFLOAT_520095040
-    fMaxTorque*: orxFLOAT_520095040
+    fMaxForce*: orxFLOAT_520095003
+    fMaxTorque*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t_stGear_t {.pure, inheritable, bycopy.} = object
     zSrcJointName*: cstring
     zDstJointName*: cstring
-    fJointRatio*: orxFLOAT_520095040
+    fJointRatio*: orxFLOAT_520095003
   struct_orxBODY_JOINT_DEF_t_anon0_t {.union, bycopy.} = object
     stRevolute*: struct_orxBODY_JOINT_DEF_t_anon0_t_stRevolute_t
     stPrismatic*: struct_orxBODY_JOINT_DEF_t_anon0_t_stPrismatic_t
@@ -1924,4551 +1924,4551 @@ type
     stWeld*: struct_orxBODY_JOINT_DEF_t_anon0_t_stWeld_t
     stFriction*: struct_orxBODY_JOINT_DEF_t_anon0_t_stFriction_t
     stGear*: struct_orxBODY_JOINT_DEF_t_anon0_t_stGear_t
-  struct_orxBODY_JOINT_DEF_t_520095552 {.pure, inheritable, bycopy.} = object
-    vSrcScale*: orxVECTOR_520095096
-    vDstScale*: orxVECTOR_520095096
-    vSrcAnchor*: orxVECTOR_520095096
-    vDstAnchor*: orxVECTOR_520095096
+  struct_orxBODY_JOINT_DEF_t_520095515 {.pure, inheritable, bycopy.} = object
+    vSrcScale*: orxVECTOR_520095059
+    vDstScale*: orxVECTOR_520095059
+    vSrcAnchor*: orxVECTOR_520095059
+    vDstAnchor*: orxVECTOR_520095059
     anon0*: struct_orxBODY_JOINT_DEF_t_anon0_t
-    u32Flags*: orxU32_520095024
-  orxBODY_JOINT_DEF_520095554 = struct_orxBODY_JOINT_DEF_t_520095553
-  orxPHYSICS_EVENT_520095558 = enum_orxPHYSICS_EVENT_t_520095557
-  struct_orxPHYSICS_EVENT_PAYLOAD_t_520095560 {.pure, inheritable, bycopy.} = object
-    vPosition*: orxVECTOR_520095096
-    vNormal*: orxVECTOR_520095096
+    u32Flags*: orxU32_520094987
+  orxBODY_JOINT_DEF_520095517 = struct_orxBODY_JOINT_DEF_t_520095516
+  orxPHYSICS_EVENT_520095521 = enum_orxPHYSICS_EVENT_t_520095520
+  struct_orxPHYSICS_EVENT_PAYLOAD_t_520095523 {.pure, inheritable, bycopy.} = object
+    vPosition*: orxVECTOR_520095059
+    vNormal*: orxVECTOR_520095059
     pstSenderPart*: ptr struct_orxBODY_PART_t
     pstRecipientPart*: ptr struct_orxBODY_PART_t
-  orxPHYSICS_EVENT_PAYLOAD_520095562 = struct_orxPHYSICS_EVENT_PAYLOAD_t_520095561
-  orxPHYSICS_BODY_520095564 = struct_orxPHYSICS_BODY_t
-  orxPHYSICS_BODY_PART_520095566 = struct_orxPHYSICS_BODY_PART_t
-  orxPHYSICS_BODY_JOINT_520095568 = struct_orxPHYSICS_BODY_JOINT_t
-  orxBODY_520095570 = struct_orxBODY_t
-  orxBODY_PART_520095572 = struct_orxBODY_PART_t
-  orxBODY_JOINT_520095574 = struct_orxBODY_JOINT_t
-  orxCAMERA_520095576 = struct_orxCAMERA_t
-  orxSHADER_PARAM_TYPE_520095580 = enum_orxSHADER_PARAM_TYPE_t_520095579
-  struct_orxSHADER_PARAM_t_520095582 {.pure, inheritable, bycopy.} = object
-    stNode*: orxLINKLIST_NODE_520095137
+  orxPHYSICS_EVENT_PAYLOAD_520095525 = struct_orxPHYSICS_EVENT_PAYLOAD_t_520095524
+  orxPHYSICS_BODY_520095527 = struct_orxPHYSICS_BODY_t
+  orxPHYSICS_BODY_PART_520095529 = struct_orxPHYSICS_BODY_PART_t
+  orxPHYSICS_BODY_JOINT_520095531 = struct_orxPHYSICS_BODY_JOINT_t
+  orxBODY_520095533 = struct_orxBODY_t
+  orxBODY_PART_520095535 = struct_orxBODY_PART_t
+  orxBODY_JOINT_520095537 = struct_orxBODY_JOINT_t
+  orxCAMERA_520095539 = struct_orxCAMERA_t
+  orxSHADER_PARAM_TYPE_520095543 = enum_orxSHADER_PARAM_TYPE_t_520095542
+  struct_orxSHADER_PARAM_t_520095545 {.pure, inheritable, bycopy.} = object
+    stNode*: orxLINKLIST_NODE_520095100
     zName*: cstring
-    eType*: orxSHADER_PARAM_TYPE_520095581
-    u32ArraySize*: orxU32_520095024
-  orxSHADER_PARAM_520095584 = struct_orxSHADER_PARAM_t_520095583
-  orxSHADER_520095586 = struct_orxSHADER_t
-  orxSHADER_EVENT_520095590 = enum_orxSHADER_EVENT_t_520095589
+    eType*: orxSHADER_PARAM_TYPE_520095544
+    u32ArraySize*: orxU32_520094987
+  orxSHADER_PARAM_520095547 = struct_orxSHADER_PARAM_t_520095546
+  orxSHADER_520095549 = struct_orxSHADER_t
+  orxSHADER_EVENT_520095553 = enum_orxSHADER_EVENT_t_520095552
   struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t {.union, bycopy.} = object
-    fValue*: orxFLOAT_520095040
-    pstValue*: ptr orxTEXTURE_520095321
-    vValue*: orxVECTOR_520095096
-  struct_orxSHADER_EVENT_PAYLOAD_t_520095592 {.pure, inheritable, bycopy.} = object
-    pstShader*: ptr orxSHADER_520095587
+    fValue*: orxFLOAT_520095003
+    pstValue*: ptr orxTEXTURE_520095284
+    vValue*: orxVECTOR_520095059
+  struct_orxSHADER_EVENT_PAYLOAD_t_520095555 {.pure, inheritable, bycopy.} = object
+    pstShader*: ptr orxSHADER_520095550
     zShaderName*: cstring
     zParamName*: cstring
-    eParamType*: orxSHADER_PARAM_TYPE_520095581
-    s32ParamIndex*: orxS32_520095032
+    eParamType*: orxSHADER_PARAM_TYPE_520095544
+    s32ParamIndex*: orxS32_520094995
     anon0*: struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t
-  orxSHADER_EVENT_PAYLOAD_520095594 = struct_orxSHADER_EVENT_PAYLOAD_t_520095593
-  orxSHADERPOINTER_520095596 = struct_orxSHADERPOINTER_t
-  orxVIEWPORT_520095598 = struct_orxVIEWPORT_t
-  orxVIEWPORT_EVENT_520095602 = enum_orxVIEWPORT_EVENT_t_520095601
-  orxRENDER_EVENT_520095606 = enum_orxRENDER_EVENT_t_520095605
+  orxSHADER_EVENT_PAYLOAD_520095557 = struct_orxSHADER_EVENT_PAYLOAD_t_520095556
+  orxSHADERPOINTER_520095559 = struct_orxSHADERPOINTER_t
+  orxVIEWPORT_520095561 = struct_orxVIEWPORT_t
+  orxVIEWPORT_EVENT_520095565 = enum_orxVIEWPORT_EVENT_t_520095564
+  orxRENDER_EVENT_520095569 = enum_orxRENDER_EVENT_t_520095568
   struct_orxRENDER_EVENT_PAYLOAD_t_stObject_t {.pure, inheritable, bycopy.} = object
-    pstTransform*: ptr orxDISPLAY_TRANSFORM_520095275
-  struct_orxRENDER_EVENT_PAYLOAD_t_520095608 {.pure, inheritable, bycopy.} = object
+    pstTransform*: ptr orxDISPLAY_TRANSFORM_520095238
+  struct_orxRENDER_EVENT_PAYLOAD_t_520095571 {.pure, inheritable, bycopy.} = object
     stObject*: struct_orxRENDER_EVENT_PAYLOAD_t_stObject_t
-  orxRENDER_EVENT_PAYLOAD_520095610 = struct_orxRENDER_EVENT_PAYLOAD_t_520095609
-  orxSOUNDPOINTER_520095612 = struct_orxSOUNDPOINTER_t
-  orxINPUT_TYPE_520095347 = (when declared(orxINPUT_TYPE):
-    when ownSizeof(orxINPUT_TYPE) != ownSizeof(orxINPUT_TYPE_520095346):
+  orxRENDER_EVENT_PAYLOAD_520095573 = struct_orxRENDER_EVENT_PAYLOAD_t_520095572
+  orxSOUNDPOINTER_520095575 = struct_orxSOUNDPOINTER_t
+  orxINPUT_TYPE_520095310 = (when declared(orxINPUT_TYPE):
+    when ownSizeof(orxINPUT_TYPE) != ownSizeof(orxINPUT_TYPE_520095309):
       static :
         warning("Declaration of " & "orxINPUT_TYPE" &
             " exists but with different size")
     orxINPUT_TYPE
    else:
-    orxINPUT_TYPE_520095346)
-  orxTRIGGER_EVENT_PAYLOAD_520095543 = (when declared(orxTRIGGER_EVENT_PAYLOAD):
+    orxINPUT_TYPE_520095309)
+  orxTRIGGER_EVENT_PAYLOAD_520095506 = (when declared(orxTRIGGER_EVENT_PAYLOAD):
     when ownSizeof(orxTRIGGER_EVENT_PAYLOAD) !=
-        ownSizeof(orxTRIGGER_EVENT_PAYLOAD_520095542):
+        ownSizeof(orxTRIGGER_EVENT_PAYLOAD_520095505):
       static :
         warning("Declaration of " & "orxTRIGGER_EVENT_PAYLOAD" &
             " exists but with different size")
     orxTRIGGER_EVENT_PAYLOAD
    else:
-    orxTRIGGER_EVENT_PAYLOAD_520095542)
-  orxLINKLIST_NODE_520095137 = (when declared(orxLINKLIST_NODE):
-    when ownSizeof(orxLINKLIST_NODE) != ownSizeof(orxLINKLIST_NODE_520095136):
+    orxTRIGGER_EVENT_PAYLOAD_520095505)
+  orxLINKLIST_NODE_520095100 = (when declared(orxLINKLIST_NODE):
+    when ownSizeof(orxLINKLIST_NODE) != ownSizeof(orxLINKLIST_NODE_520095099):
       static :
         warning("Declaration of " & "orxLINKLIST_NODE" &
             " exists but with different size")
     orxLINKLIST_NODE
    else:
-    orxLINKLIST_NODE_520095136)
-  enum_orxSTRUCTURE_STORAGE_TYPE_t_520095153 = (when declared(
+    orxLINKLIST_NODE_520095099)
+  enum_orxSTRUCTURE_STORAGE_TYPE_t_520095116 = (when declared(
       enum_orxSTRUCTURE_STORAGE_TYPE_t):
     when ownSizeof(enum_orxSTRUCTURE_STORAGE_TYPE_t) !=
-        ownSizeof(enum_orxSTRUCTURE_STORAGE_TYPE_t_520095152):
+        ownSizeof(enum_orxSTRUCTURE_STORAGE_TYPE_t_520095115):
       static :
         warning("Declaration of " & "enum_orxSTRUCTURE_STORAGE_TYPE_t" &
             " exists but with different size")
     enum_orxSTRUCTURE_STORAGE_TYPE_t
    else:
-    enum_orxSTRUCTURE_STORAGE_TYPE_t_520095152)
-  enum_orxANIM_EVENT_t_520095165 = (when declared(enum_orxANIM_EVENT_t):
-    when ownSizeof(enum_orxANIM_EVENT_t) != ownSizeof(enum_orxANIM_EVENT_t_520095164):
+    enum_orxSTRUCTURE_STORAGE_TYPE_t_520095115)
+  enum_orxANIM_EVENT_t_520095128 = (when declared(enum_orxANIM_EVENT_t):
+    when ownSizeof(enum_orxANIM_EVENT_t) != ownSizeof(enum_orxANIM_EVENT_t_520095127):
       static :
         warning("Declaration of " & "enum_orxANIM_EVENT_t" &
             " exists but with different size")
     enum_orxANIM_EVENT_t
    else:
-    enum_orxANIM_EVENT_t_520095164)
-  orxOBJECT_520095487 = (when declared(orxOBJECT):
-    when ownSizeof(orxOBJECT) != ownSizeof(orxOBJECT_520095486):
+    enum_orxANIM_EVENT_t_520095127)
+  orxOBJECT_520095450 = (when declared(orxOBJECT):
+    when ownSizeof(orxOBJECT) != ownSizeof(orxOBJECT_520095449):
       static :
         warning("Declaration of " & "orxOBJECT" &
             " exists but with different size")
     orxOBJECT
    else:
-    orxOBJECT_520095486)
-  orxDISPLAY_VERTEX_520095271 = (when declared(orxDISPLAY_VERTEX):
-    when ownSizeof(orxDISPLAY_VERTEX) != ownSizeof(orxDISPLAY_VERTEX_520095270):
+    orxOBJECT_520095449)
+  orxDISPLAY_VERTEX_520095234 = (when declared(orxDISPLAY_VERTEX):
+    when ownSizeof(orxDISPLAY_VERTEX) != ownSizeof(orxDISPLAY_VERTEX_520095233):
       static :
         warning("Declaration of " & "orxDISPLAY_VERTEX" &
             " exists but with different size")
     orxDISPLAY_VERTEX
    else:
-    orxDISPLAY_VERTEX_520095270)
-  enum_orxTEXTURE_EVENT_t_520095317 = (when declared(enum_orxTEXTURE_EVENT_t):
+    orxDISPLAY_VERTEX_520095233)
+  enum_orxTEXTURE_EVENT_t_520095280 = (when declared(enum_orxTEXTURE_EVENT_t):
     when ownSizeof(enum_orxTEXTURE_EVENT_t) !=
-        ownSizeof(enum_orxTEXTURE_EVENT_t_520095316):
+        ownSizeof(enum_orxTEXTURE_EVENT_t_520095279):
       static :
         warning("Declaration of " & "enum_orxTEXTURE_EVENT_t" &
             " exists but with different size")
     enum_orxTEXTURE_EVENT_t
    else:
-    enum_orxTEXTURE_EVENT_t_520095316)
-  orxU64_520095022 = (when declared(orxU64):
-    when ownSizeof(orxU64) != ownSizeof(orxU64_520095021):
+    enum_orxTEXTURE_EVENT_t_520095279)
+  orxU64_520094985 = (when declared(orxU64):
+    when ownSizeof(orxU64) != ownSizeof(orxU64_520094984):
       static :
         warning("Declaration of " & "orxU64" & " exists but with different size")
     orxU64
    else:
-    orxU64_520095021)
-  orxDISPLAY_PRIMITIVE_520095279 = (when declared(orxDISPLAY_PRIMITIVE):
-    when ownSizeof(orxDISPLAY_PRIMITIVE) != ownSizeof(orxDISPLAY_PRIMITIVE_520095278):
+    orxU64_520094984)
+  orxDISPLAY_PRIMITIVE_520095242 = (when declared(orxDISPLAY_PRIMITIVE):
+    when ownSizeof(orxDISPLAY_PRIMITIVE) != ownSizeof(orxDISPLAY_PRIMITIVE_520095241):
       static :
         warning("Declaration of " & "orxDISPLAY_PRIMITIVE" &
             " exists but with different size")
     orxDISPLAY_PRIMITIVE
    else:
-    orxDISPLAY_PRIMITIVE_520095278)
-  enum_orxFX_CURVE_t_520095493 = (when declared(enum_orxFX_CURVE_t):
-    when ownSizeof(enum_orxFX_CURVE_t) != ownSizeof(enum_orxFX_CURVE_t_520095492):
+    orxDISPLAY_PRIMITIVE_520095241)
+  enum_orxFX_CURVE_t_520095456 = (when declared(enum_orxFX_CURVE_t):
+    when ownSizeof(enum_orxFX_CURVE_t) != ownSizeof(enum_orxFX_CURVE_t_520095455):
       static :
         warning("Declaration of " & "enum_orxFX_CURVE_t" &
             " exists but with different size")
     enum_orxFX_CURVE_t
    else:
-    enum_orxFX_CURVE_t_520095492)
-  enum_orxPLUGIN_FUNCTION_ID_t_520095207 = (when declared(
+    enum_orxFX_CURVE_t_520095455)
+  enum_orxPLUGIN_FUNCTION_ID_t_520095170 = (when declared(
       enum_orxPLUGIN_FUNCTION_ID_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_ID_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_ID_t_520095206):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_ID_t_520095169):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_ID_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_ID_t
    else:
-    enum_orxPLUGIN_FUNCTION_ID_t_520095206)
-  orxCONFIG_EVENT_520095199 = (when declared(orxCONFIG_EVENT):
-    when ownSizeof(orxCONFIG_EVENT) != ownSizeof(orxCONFIG_EVENT_520095198):
+    enum_orxPLUGIN_FUNCTION_ID_t_520095169)
+  orxCONFIG_EVENT_520095162 = (when declared(orxCONFIG_EVENT):
+    when ownSizeof(orxCONFIG_EVENT) != ownSizeof(orxCONFIG_EVENT_520095161):
       static :
         warning("Declaration of " & "orxCONFIG_EVENT" &
             " exists but with different size")
     orxCONFIG_EVENT
    else:
-    orxCONFIG_EVENT_520095198)
-  orxRESOURCE_EVENT_520095407 = (when declared(orxRESOURCE_EVENT):
-    when ownSizeof(orxRESOURCE_EVENT) != ownSizeof(orxRESOURCE_EVENT_520095406):
+    orxCONFIG_EVENT_520095161)
+  orxRESOURCE_EVENT_520095370 = (when declared(orxRESOURCE_EVENT):
+    when ownSizeof(orxRESOURCE_EVENT) != ownSizeof(orxRESOURCE_EVENT_520095369):
       static :
         warning("Declaration of " & "orxRESOURCE_EVENT" &
             " exists but with different size")
     orxRESOURCE_EVENT
    else:
-    orxRESOURCE_EVENT_520095406)
-  orxFX_EVENT_PAYLOAD_520095509 = (when declared(orxFX_EVENT_PAYLOAD):
-    when ownSizeof(orxFX_EVENT_PAYLOAD) != ownSizeof(orxFX_EVENT_PAYLOAD_520095508):
+    orxRESOURCE_EVENT_520095369)
+  orxFX_EVENT_PAYLOAD_520095472 = (when declared(orxFX_EVENT_PAYLOAD):
+    when ownSizeof(orxFX_EVENT_PAYLOAD) != ownSizeof(orxFX_EVENT_PAYLOAD_520095471):
       static :
         warning("Declaration of " & "orxFX_EVENT_PAYLOAD" &
             " exists but with different size")
     orxFX_EVENT_PAYLOAD
    else:
-    orxFX_EVENT_PAYLOAD_520095508)
-  struct_orxSHADER_EVENT_PAYLOAD_t_520095593 = (when declared(
+    orxFX_EVENT_PAYLOAD_520095471)
+  struct_orxSHADER_EVENT_PAYLOAD_t_520095556 = (when declared(
       struct_orxSHADER_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxSHADER_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxSHADER_EVENT_PAYLOAD_t_520095592):
+        ownSizeof(struct_orxSHADER_EVENT_PAYLOAD_t_520095555):
       static :
         warning("Declaration of " & "struct_orxSHADER_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxSHADER_EVENT_PAYLOAD_t
    else:
-    struct_orxSHADER_EVENT_PAYLOAD_t_520095592)
-  struct_orxDISPLAY_VIDEO_MODE_t_520095285 = (when declared(
+    struct_orxSHADER_EVENT_PAYLOAD_t_520095555)
+  struct_orxDISPLAY_VIDEO_MODE_t_520095248 = (when declared(
       struct_orxDISPLAY_VIDEO_MODE_t):
     when ownSizeof(struct_orxDISPLAY_VIDEO_MODE_t) !=
-        ownSizeof(struct_orxDISPLAY_VIDEO_MODE_t_520095284):
+        ownSizeof(struct_orxDISPLAY_VIDEO_MODE_t_520095247):
       static :
         warning("Declaration of " & "struct_orxDISPLAY_VIDEO_MODE_t" &
             " exists but with different size")
     struct_orxDISPLAY_VIDEO_MODE_t
    else:
-    struct_orxDISPLAY_VIDEO_MODE_t_520095284)
-  orxMODULE_SETUP_FUNCTION_520095082 = (when declared(orxMODULE_SETUP_FUNCTION):
+    struct_orxDISPLAY_VIDEO_MODE_t_520095247)
+  orxMODULE_SETUP_FUNCTION_520095045 = (when declared(orxMODULE_SETUP_FUNCTION):
     when ownSizeof(orxMODULE_SETUP_FUNCTION) !=
-        ownSizeof(orxMODULE_SETUP_FUNCTION_520095081):
+        ownSizeof(orxMODULE_SETUP_FUNCTION_520095044):
       static :
         warning("Declaration of " & "orxMODULE_SETUP_FUNCTION" &
             " exists but with different size")
     orxMODULE_SETUP_FUNCTION
    else:
-    orxMODULE_SETUP_FUNCTION_520095081)
-  struct_orxTREE_t_520095143 = (when declared(struct_orxTREE_t):
-    when ownSizeof(struct_orxTREE_t) != ownSizeof(struct_orxTREE_t_520095142):
+    orxMODULE_SETUP_FUNCTION_520095044)
+  struct_orxTREE_t_520095106 = (when declared(struct_orxTREE_t):
+    when ownSizeof(struct_orxTREE_t) != ownSizeof(struct_orxTREE_t_520095105):
       static :
         warning("Declaration of " & "struct_orxTREE_t" &
             " exists but with different size")
     struct_orxTREE_t
    else:
-    struct_orxTREE_t_520095142)
-  enum_orxCOLORSPACE_t_520095060 = (when declared(enum_orxCOLORSPACE_t):
-    when ownSizeof(enum_orxCOLORSPACE_t) != ownSizeof(enum_orxCOLORSPACE_t_520095059):
+    struct_orxTREE_t_520095105)
+  enum_orxCOLORSPACE_t_520095023 = (when declared(enum_orxCOLORSPACE_t):
+    when ownSizeof(enum_orxCOLORSPACE_t) != ownSizeof(enum_orxCOLORSPACE_t_520095022):
       static :
         warning("Declaration of " & "enum_orxCOLORSPACE_t" &
             " exists but with different size")
     enum_orxCOLORSPACE_t
    else:
-    enum_orxCOLORSPACE_t_520095059)
-  enum_orxSTATUS_t_520095064 = (when declared(enum_orxSTATUS_t):
-    when ownSizeof(enum_orxSTATUS_t) != ownSizeof(enum_orxSTATUS_t_520095063):
+    enum_orxCOLORSPACE_t_520095022)
+  enum_orxSTATUS_t_520095027 = (when declared(enum_orxSTATUS_t):
+    when ownSizeof(enum_orxSTATUS_t) != ownSizeof(enum_orxSTATUS_t_520095026):
       static :
         warning("Declaration of " & "enum_orxSTATUS_t" &
             " exists but with different size")
     enum_orxSTATUS_t
    else:
-    enum_orxSTATUS_t_520095063)
-  enum_orxDEBUG_LEVEL_t_520095084 = (when declared(enum_orxDEBUG_LEVEL_t):
-    when ownSizeof(enum_orxDEBUG_LEVEL_t) != ownSizeof(enum_orxDEBUG_LEVEL_t_520095083):
+    enum_orxSTATUS_t_520095026)
+  enum_orxDEBUG_LEVEL_t_520095047 = (when declared(enum_orxDEBUG_LEVEL_t):
+    when ownSizeof(enum_orxDEBUG_LEVEL_t) != ownSizeof(enum_orxDEBUG_LEVEL_t_520095046):
       static :
         warning("Declaration of " & "enum_orxDEBUG_LEVEL_t" &
             " exists but with different size")
     enum_orxDEBUG_LEVEL_t
    else:
-    enum_orxDEBUG_LEVEL_t_520095083)
-  enum_orxSPAWNER_EVENT_t_520095519 = (when declared(enum_orxSPAWNER_EVENT_t):
+    enum_orxDEBUG_LEVEL_t_520095046)
+  enum_orxSPAWNER_EVENT_t_520095482 = (when declared(enum_orxSPAWNER_EVENT_t):
     when ownSizeof(enum_orxSPAWNER_EVENT_t) !=
-        ownSizeof(enum_orxSPAWNER_EVENT_t_520095518):
+        ownSizeof(enum_orxSPAWNER_EVENT_t_520095481):
       static :
         warning("Declaration of " & "enum_orxSPAWNER_EVENT_t" &
             " exists but with different size")
     enum_orxSPAWNER_EVENT_t
    else:
-    enum_orxSPAWNER_EVENT_t_520095518)
-  struct_orxRENDER_EVENT_PAYLOAD_t_520095609 = (when declared(
+    enum_orxSPAWNER_EVENT_t_520095481)
+  struct_orxRENDER_EVENT_PAYLOAD_t_520095572 = (when declared(
       struct_orxRENDER_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxRENDER_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxRENDER_EVENT_PAYLOAD_t_520095608):
+        ownSizeof(struct_orxRENDER_EVENT_PAYLOAD_t_520095571):
       static :
         warning("Declaration of " & "struct_orxRENDER_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxRENDER_EVENT_PAYLOAD_t
    else:
-    struct_orxRENDER_EVENT_PAYLOAD_t_520095608)
-  orxU16_520095026 = (when declared(orxU16):
-    when ownSizeof(orxU16) != ownSizeof(orxU16_520095025):
+    struct_orxRENDER_EVENT_PAYLOAD_t_520095571)
+  orxU16_520094989 = (when declared(orxU16):
+    when ownSizeof(orxU16) != ownSizeof(orxU16_520094988):
       static :
         warning("Declaration of " & "orxU16" & " exists but with different size")
     orxU16
    else:
-    orxU16_520095025)
-  orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095227 = (when declared(
+    orxU16_520094988)
+  orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095190 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095226):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095189):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095226)
-  orxFRAME_520095517 = (when declared(orxFRAME):
-    when ownSizeof(orxFRAME) != ownSizeof(orxFRAME_520095516):
+    orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095189)
+  orxFRAME_520095480 = (when declared(orxFRAME):
+    when ownSizeof(orxFRAME) != ownSizeof(orxFRAME_520095479):
       static :
         warning("Declaration of " & "orxFRAME" &
             " exists but with different size")
     orxFRAME
    else:
-    orxFRAME_520095516)
-  orxSTATUS_520095066 = (when declared(orxSTATUS):
-    when ownSizeof(orxSTATUS) != ownSizeof(orxSTATUS_520095065):
+    orxFRAME_520095479)
+  orxSTATUS_520095029 = (when declared(orxSTATUS):
+    when ownSizeof(orxSTATUS) != ownSizeof(orxSTATUS_520095028):
       static :
         warning("Declaration of " & "orxSTATUS" &
             " exists but with different size")
     orxSTATUS
    else:
-    orxSTATUS_520095065)
-  enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095441 = (when declared(
+    orxSTATUS_520095028)
+  enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095404 = (when declared(
       enum_orxSOUNDSYSTEM_STREAM_TYPE_t):
     when ownSizeof(enum_orxSOUNDSYSTEM_STREAM_TYPE_t) !=
-        ownSizeof(enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095440):
+        ownSizeof(enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095403):
       static :
         warning("Declaration of " & "enum_orxSOUNDSYSTEM_STREAM_TYPE_t" &
             " exists but with different size")
     enum_orxSOUNDSYSTEM_STREAM_TYPE_t
    else:
-    enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095440)
-  struct_orxTRIGGER_EVENT_PAYLOAD_t_520095541 = (when declared(
+    enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095403)
+  struct_orxTRIGGER_EVENT_PAYLOAD_t_520095504 = (when declared(
       struct_orxTRIGGER_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxTRIGGER_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxTRIGGER_EVENT_PAYLOAD_t_520095540):
+        ownSizeof(struct_orxTRIGGER_EVENT_PAYLOAD_t_520095503):
       static :
         warning("Declaration of " & "struct_orxTRIGGER_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxTRIGGER_EVENT_PAYLOAD_t
    else:
-    struct_orxTRIGGER_EVENT_PAYLOAD_t_520095540)
-  orxBODY_JOINT_DEF_520095555 = (when declared(orxBODY_JOINT_DEF):
-    when ownSizeof(orxBODY_JOINT_DEF) != ownSizeof(orxBODY_JOINT_DEF_520095554):
+    struct_orxTRIGGER_EVENT_PAYLOAD_t_520095503)
+  orxBODY_JOINT_DEF_520095518 = (when declared(orxBODY_JOINT_DEF):
+    when ownSizeof(orxBODY_JOINT_DEF) != ownSizeof(orxBODY_JOINT_DEF_520095517):
       static :
         warning("Declaration of " & "orxBODY_JOINT_DEF" &
             " exists but with different size")
     orxBODY_JOINT_DEF
    else:
-    orxBODY_JOINT_DEF_520095554)
-  orxDISPLAY_VIDEO_MODE_520095287 = (when declared(orxDISPLAY_VIDEO_MODE):
-    when ownSizeof(orxDISPLAY_VIDEO_MODE) != ownSizeof(orxDISPLAY_VIDEO_MODE_520095286):
+    orxBODY_JOINT_DEF_520095517)
+  orxDISPLAY_VIDEO_MODE_520095250 = (when declared(orxDISPLAY_VIDEO_MODE):
+    when ownSizeof(orxDISPLAY_VIDEO_MODE) != ownSizeof(orxDISPLAY_VIDEO_MODE_520095249):
       static :
         warning("Declaration of " & "orxDISPLAY_VIDEO_MODE" &
             " exists but with different size")
     orxDISPLAY_VIDEO_MODE
    else:
-    orxDISPLAY_VIDEO_MODE_520095286)
-  orxTRIGGER_520095535 = (when declared(orxTRIGGER):
-    when ownSizeof(orxTRIGGER) != ownSizeof(orxTRIGGER_520095534):
+    orxDISPLAY_VIDEO_MODE_520095249)
+  orxTRIGGER_520095498 = (when declared(orxTRIGGER):
+    when ownSizeof(orxTRIGGER) != ownSizeof(orxTRIGGER_520095497):
       static :
         warning("Declaration of " & "orxTRIGGER" &
             " exists but with different size")
     orxTRIGGER
    else:
-    orxTRIGGER_520095534)
-  orxSOUND_SAMPLE_520095465 = (when declared(orxSOUND_SAMPLE):
-    when ownSizeof(orxSOUND_SAMPLE) != ownSizeof(orxSOUND_SAMPLE_520095464):
+    orxTRIGGER_520095497)
+  orxSOUND_SAMPLE_520095428 = (when declared(orxSOUND_SAMPLE):
+    when ownSizeof(orxSOUND_SAMPLE) != ownSizeof(orxSOUND_SAMPLE_520095427):
       static :
         warning("Declaration of " & "orxSOUND_SAMPLE" &
             " exists but with different size")
     orxSOUND_SAMPLE
    else:
-    orxSOUND_SAMPLE_520095464)
-  orxS64_520095030 = (when declared(orxS64):
-    when ownSizeof(orxS64) != ownSizeof(orxS64_520095029):
+    orxSOUND_SAMPLE_520095427)
+  orxS64_520094993 = (when declared(orxS64):
+    when ownSizeof(orxS64) != ownSizeof(orxS64_520094992):
       static :
         warning("Declaration of " & "orxS64" & " exists but with different size")
     orxS64
    else:
-    orxS64_520095029)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095237 = (when declared(
+    orxS64_520094992)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095200 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095236):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095199):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095236)
-  orxSOUND_STREAM_INFO_520095473 = (when declared(orxSOUND_STREAM_INFO):
-    when ownSizeof(orxSOUND_STREAM_INFO) != ownSizeof(orxSOUND_STREAM_INFO_520095472):
+    enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095199)
+  orxSOUND_STREAM_INFO_520095436 = (when declared(orxSOUND_STREAM_INFO):
+    when ownSizeof(orxSOUND_STREAM_INFO) != ownSizeof(orxSOUND_STREAM_INFO_520095435):
       static :
         warning("Declaration of " & "orxSOUND_STREAM_INFO" &
             " exists but with different size")
     orxSOUND_STREAM_INFO
    else:
-    orxSOUND_STREAM_INFO_520095472)
-  orxMODULE_INIT_FUNCTION_520095076 = (when declared(orxMODULE_INIT_FUNCTION):
+    orxSOUND_STREAM_INFO_520095435)
+  orxMODULE_INIT_FUNCTION_520095039 = (when declared(orxMODULE_INIT_FUNCTION):
     when ownSizeof(orxMODULE_INIT_FUNCTION) !=
-        ownSizeof(orxMODULE_INIT_FUNCTION_520095075):
+        ownSizeof(orxMODULE_INIT_FUNCTION_520095038):
       static :
         warning("Declaration of " & "orxMODULE_INIT_FUNCTION" &
             " exists but with different size")
     orxMODULE_INIT_FUNCTION
    else:
-    orxMODULE_INIT_FUNCTION_520095075)
-  enum_orxDISPLAY_SMOOTHING_t_520095297 = (when declared(
+    orxMODULE_INIT_FUNCTION_520095038)
+  enum_orxDISPLAY_SMOOTHING_t_520095260 = (when declared(
       enum_orxDISPLAY_SMOOTHING_t):
     when ownSizeof(enum_orxDISPLAY_SMOOTHING_t) !=
-        ownSizeof(enum_orxDISPLAY_SMOOTHING_t_520095296):
+        ownSizeof(enum_orxDISPLAY_SMOOTHING_t_520095259):
       static :
         warning("Declaration of " & "enum_orxDISPLAY_SMOOTHING_t" &
             " exists but with different size")
     enum_orxDISPLAY_SMOOTHING_t
    else:
-    enum_orxDISPLAY_SMOOTHING_t_520095296)
-  orxINPUT_MODE_520095351 = (when declared(orxINPUT_MODE):
-    when ownSizeof(orxINPUT_MODE) != ownSizeof(orxINPUT_MODE_520095350):
+    enum_orxDISPLAY_SMOOTHING_t_520095259)
+  orxINPUT_MODE_520095314 = (when declared(orxINPUT_MODE):
+    when ownSizeof(orxINPUT_MODE) != ownSizeof(orxINPUT_MODE_520095313):
       static :
         warning("Declaration of " & "orxINPUT_MODE" &
             " exists but with different size")
     orxINPUT_MODE
    else:
-    orxINPUT_MODE_520095350)
-  orxU8_520095028 = (when declared(orxU8):
-    when ownSizeof(orxU8) != ownSizeof(orxU8_520095027):
+    orxINPUT_MODE_520095313)
+  orxU8_520094991 = (when declared(orxU8):
+    when ownSizeof(orxU8) != ownSizeof(orxU8_520094990):
       static :
         warning("Declaration of " & "orxU8" & " exists but with different size")
     orxU8
    else:
-    orxU8_520095027)
-  struct_orxLOCALE_EVENT_PAYLOAD_t_520095375 = (when declared(
+    orxU8_520094990)
+  struct_orxLOCALE_EVENT_PAYLOAD_t_520095338 = (when declared(
       struct_orxLOCALE_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxLOCALE_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxLOCALE_EVENT_PAYLOAD_t_520095374):
+        ownSizeof(struct_orxLOCALE_EVENT_PAYLOAD_t_520095337):
       static :
         warning("Declaration of " & "struct_orxLOCALE_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxLOCALE_EVENT_PAYLOAD_t
    else:
-    struct_orxLOCALE_EVENT_PAYLOAD_t_520095374)
-  enum_orxMOUSE_BUTTON_t_520095337 = (when declared(enum_orxMOUSE_BUTTON_t):
-    when ownSizeof(enum_orxMOUSE_BUTTON_t) != ownSizeof(enum_orxMOUSE_BUTTON_t_520095336):
+    struct_orxLOCALE_EVENT_PAYLOAD_t_520095337)
+  enum_orxMOUSE_BUTTON_t_520095300 = (when declared(enum_orxMOUSE_BUTTON_t):
+    when ownSizeof(enum_orxMOUSE_BUTTON_t) != ownSizeof(enum_orxMOUSE_BUTTON_t_520095299):
       static :
         warning("Declaration of " & "enum_orxMOUSE_BUTTON_t" &
             " exists but with different size")
     enum_orxMOUSE_BUTTON_t
    else:
-    enum_orxMOUSE_BUTTON_t_520095336)
-  orxBITMAP_520095267 = (when declared(orxBITMAP):
-    when ownSizeof(orxBITMAP) != ownSizeof(orxBITMAP_520095266):
+    enum_orxMOUSE_BUTTON_t_520095299)
+  orxBITMAP_520095230 = (when declared(orxBITMAP):
+    when ownSizeof(orxBITMAP) != ownSizeof(orxBITMAP_520095229):
       static :
         warning("Declaration of " & "orxBITMAP" &
             " exists but with different size")
     orxBITMAP
    else:
-    orxBITMAP_520095266)
-  struct_orxCHARACTER_MAP_t_520095293 = (when declared(struct_orxCHARACTER_MAP_t):
+    orxBITMAP_520095229)
+  struct_orxCHARACTER_MAP_t_520095256 = (when declared(struct_orxCHARACTER_MAP_t):
     when ownSizeof(struct_orxCHARACTER_MAP_t) !=
-        ownSizeof(struct_orxCHARACTER_MAP_t_520095292):
+        ownSizeof(struct_orxCHARACTER_MAP_t_520095255):
       static :
         warning("Declaration of " & "struct_orxCHARACTER_MAP_t" &
             " exists but with different size")
     struct_orxCHARACTER_MAP_t
    else:
-    struct_orxCHARACTER_MAP_t_520095292)
-  orxSHADERPOINTER_520095597 = (when declared(orxSHADERPOINTER):
-    when ownSizeof(orxSHADERPOINTER) != ownSizeof(orxSHADERPOINTER_520095596):
+    struct_orxCHARACTER_MAP_t_520095255)
+  orxSHADERPOINTER_520095560 = (when declared(orxSHADERPOINTER):
+    when ownSizeof(orxSHADERPOINTER) != ownSizeof(orxSHADERPOINTER_520095559):
       static :
         warning("Declaration of " & "orxSHADERPOINTER" &
             " exists but with different size")
     orxSHADERPOINTER
    else:
-    orxSHADERPOINTER_520095596)
-  orxS16_520095034 = (when declared(orxS16):
-    when ownSizeof(orxS16) != ownSizeof(orxS16_520095033):
+    orxSHADERPOINTER_520095559)
+  orxS16_520094997 = (when declared(orxS16):
+    when ownSizeof(orxS16) != ownSizeof(orxS16_520094996):
       static :
         warning("Declaration of " & "orxS16" & " exists but with different size")
     orxS16
    else:
-    orxS16_520095033)
-  orxCLOCK_FUNCTION_520095131 = (when declared(orxCLOCK_FUNCTION):
-    when ownSizeof(orxCLOCK_FUNCTION) != ownSizeof(orxCLOCK_FUNCTION_520095130):
+    orxS16_520094996)
+  orxCLOCK_FUNCTION_520095094 = (when declared(orxCLOCK_FUNCTION):
+    when ownSizeof(orxCLOCK_FUNCTION) != ownSizeof(orxCLOCK_FUNCTION_520095093):
       static :
         warning("Declaration of " & "orxCLOCK_FUNCTION" &
             " exists but with different size")
     orxCLOCK_FUNCTION
    else:
-    orxCLOCK_FUNCTION_520095130)
-  orxPHYSICS_BODY_520095565 = (when declared(orxPHYSICS_BODY):
-    when ownSizeof(orxPHYSICS_BODY) != ownSizeof(orxPHYSICS_BODY_520095564):
+    orxCLOCK_FUNCTION_520095093)
+  orxPHYSICS_BODY_520095528 = (when declared(orxPHYSICS_BODY):
+    when ownSizeof(orxPHYSICS_BODY) != ownSizeof(orxPHYSICS_BODY_520095527):
       static :
         warning("Declaration of " & "orxPHYSICS_BODY" &
             " exists but with different size")
     orxPHYSICS_BODY
    else:
-    orxPHYSICS_BODY_520095564)
-  orxPHYSICS_BODY_PART_520095567 = (when declared(orxPHYSICS_BODY_PART):
-    when ownSizeof(orxPHYSICS_BODY_PART) != ownSizeof(orxPHYSICS_BODY_PART_520095566):
+    orxPHYSICS_BODY_520095527)
+  orxPHYSICS_BODY_PART_520095530 = (when declared(orxPHYSICS_BODY_PART):
+    when ownSizeof(orxPHYSICS_BODY_PART) != ownSizeof(orxPHYSICS_BODY_PART_520095529):
       static :
         warning("Declaration of " & "orxPHYSICS_BODY_PART" &
             " exists but with different size")
     orxPHYSICS_BODY_PART
    else:
-    orxPHYSICS_BODY_PART_520095566)
-  orxCAMERA_520095577 = (when declared(orxCAMERA):
-    when ownSizeof(orxCAMERA) != ownSizeof(orxCAMERA_520095576):
+    orxPHYSICS_BODY_PART_520095529)
+  orxCAMERA_520095540 = (when declared(orxCAMERA):
+    when ownSizeof(orxCAMERA) != ownSizeof(orxCAMERA_520095539):
       static :
         warning("Declaration of " & "orxCAMERA" &
             " exists but with different size")
     orxCAMERA
    else:
-    orxCAMERA_520095576)
-  enum_orxOBJECT_EVENT_t_520095483 = (when declared(enum_orxOBJECT_EVENT_t):
-    when ownSizeof(enum_orxOBJECT_EVENT_t) != ownSizeof(enum_orxOBJECT_EVENT_t_520095482):
+    orxCAMERA_520095539)
+  enum_orxOBJECT_EVENT_t_520095446 = (when declared(enum_orxOBJECT_EVENT_t):
+    when ownSizeof(enum_orxOBJECT_EVENT_t) != ownSizeof(enum_orxOBJECT_EVENT_t_520095445):
       static :
         warning("Declaration of " & "enum_orxOBJECT_EVENT_t" &
             " exists but with different size")
     enum_orxOBJECT_EVENT_t
    else:
-    enum_orxOBJECT_EVENT_t_520095482)
-  orxHANDLE_520095050 = (when declared(orxHANDLE):
-    when ownSizeof(orxHANDLE) != ownSizeof(orxHANDLE_520095049):
+    enum_orxOBJECT_EVENT_t_520095445)
+  orxHANDLE_520095013 = (when declared(orxHANDLE):
+    when ownSizeof(orxHANDLE) != ownSizeof(orxHANDLE_520095012):
       static :
         warning("Declaration of " & "orxHANDLE" &
             " exists but with different size")
     orxHANDLE
    else:
-    orxHANDLE_520095049)
-  orxDISPLAY_MESH_520095283 = (when declared(orxDISPLAY_MESH):
-    when ownSizeof(orxDISPLAY_MESH) != ownSizeof(orxDISPLAY_MESH_520095282):
+    orxHANDLE_520095012)
+  orxDISPLAY_MESH_520095246 = (when declared(orxDISPLAY_MESH):
+    when ownSizeof(orxDISPLAY_MESH) != ownSizeof(orxDISPLAY_MESH_520095245):
       static :
         warning("Declaration of " & "orxDISPLAY_MESH" &
             " exists but with different size")
     orxDISPLAY_MESH
    else:
-    orxDISPLAY_MESH_520095282)
-  orxCONFIG_CLEAR_FUNCTION_520095203 = (when declared(orxCONFIG_CLEAR_FUNCTION):
+    orxDISPLAY_MESH_520095245)
+  orxCONFIG_CLEAR_FUNCTION_520095166 = (when declared(orxCONFIG_CLEAR_FUNCTION):
     when ownSizeof(orxCONFIG_CLEAR_FUNCTION) !=
-        ownSizeof(orxCONFIG_CLEAR_FUNCTION_520095202):
+        ownSizeof(orxCONFIG_CLEAR_FUNCTION_520095165):
       static :
         warning("Declaration of " & "orxCONFIG_CLEAR_FUNCTION" &
             " exists but with different size")
     orxCONFIG_CLEAR_FUNCTION
    else:
-    orxCONFIG_CLEAR_FUNCTION_520095202)
-  orxINPUT_EVENT_520095355 = (when declared(orxINPUT_EVENT):
-    when ownSizeof(orxINPUT_EVENT) != ownSizeof(orxINPUT_EVENT_520095354):
+    orxCONFIG_CLEAR_FUNCTION_520095165)
+  orxINPUT_EVENT_520095318 = (when declared(orxINPUT_EVENT):
+    when ownSizeof(orxINPUT_EVENT) != ownSizeof(orxINPUT_EVENT_520095317):
       static :
         warning("Declaration of " & "orxINPUT_EVENT" &
             " exists but with different size")
     orxINPUT_EVENT
    else:
-    orxINPUT_EVENT_520095354)
-  orxDEBUG_CALLBACK_FUNCTION_520095088 = (when declared(
+    orxINPUT_EVENT_520095317)
+  orxDEBUG_CALLBACK_FUNCTION_520095051 = (when declared(
       orxDEBUG_CALLBACK_FUNCTION):
     when ownSizeof(orxDEBUG_CALLBACK_FUNCTION) !=
-        ownSizeof(orxDEBUG_CALLBACK_FUNCTION_520095087):
+        ownSizeof(orxDEBUG_CALLBACK_FUNCTION_520095050):
       static :
         warning("Declaration of " & "orxDEBUG_CALLBACK_FUNCTION" &
             " exists but with different size")
     orxDEBUG_CALLBACK_FUNCTION
    else:
-    orxDEBUG_CALLBACK_FUNCTION_520095087)
-  enum_orxFX_EVENT_t_520095503 = (when declared(enum_orxFX_EVENT_t):
-    when ownSizeof(enum_orxFX_EVENT_t) != ownSizeof(enum_orxFX_EVENT_t_520095502):
+    orxDEBUG_CALLBACK_FUNCTION_520095050)
+  enum_orxFX_EVENT_t_520095466 = (when declared(enum_orxFX_EVENT_t):
+    when ownSizeof(enum_orxFX_EVENT_t) != ownSizeof(enum_orxFX_EVENT_t_520095465):
       static :
         warning("Declaration of " & "enum_orxFX_EVENT_t" &
             " exists but with different size")
     enum_orxFX_EVENT_t
    else:
-    enum_orxFX_EVENT_t_520095502)
-  orxVIEWPORT_520095599 = (when declared(orxVIEWPORT):
-    when ownSizeof(orxVIEWPORT) != ownSizeof(orxVIEWPORT_520095598):
+    enum_orxFX_EVENT_t_520095465)
+  orxVIEWPORT_520095562 = (when declared(orxVIEWPORT):
+    when ownSizeof(orxVIEWPORT) != ownSizeof(orxVIEWPORT_520095561):
       static :
         warning("Declaration of " & "orxVIEWPORT" &
             " exists but with different size")
     orxVIEWPORT
    else:
-    orxVIEWPORT_520095598)
-  orxTIMELINE_EVENT_520095529 = (when declared(orxTIMELINE_EVENT):
-    when ownSizeof(orxTIMELINE_EVENT) != ownSizeof(orxTIMELINE_EVENT_520095528):
+    orxVIEWPORT_520095561)
+  orxTIMELINE_EVENT_520095492 = (when declared(orxTIMELINE_EVENT):
+    when ownSizeof(orxTIMELINE_EVENT) != ownSizeof(orxTIMELINE_EVENT_520095491):
       static :
         warning("Declaration of " & "orxTIMELINE_EVENT" &
             " exists but with different size")
     orxTIMELINE_EVENT
    else:
-    orxTIMELINE_EVENT_520095528)
-  struct_orxEVENT_t_520095365 = (when declared(struct_orxEVENT_t):
-    when ownSizeof(struct_orxEVENT_t) != ownSizeof(struct_orxEVENT_t_520095364):
+    orxTIMELINE_EVENT_520095491)
+  struct_orxEVENT_t_520095328 = (when declared(struct_orxEVENT_t):
+    when ownSizeof(struct_orxEVENT_t) != ownSizeof(struct_orxEVENT_t_520095327):
       static :
         warning("Declaration of " & "struct_orxEVENT_t" &
             " exists but with different size")
     struct_orxEVENT_t
    else:
-    struct_orxEVENT_t_520095364)
-  orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095235 = (when declared(
+    struct_orxEVENT_t_520095327)
+  orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095198 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_PHYSICS):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_PHYSICS) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095234):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095197):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_PHYSICS" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_PHYSICS
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095234)
-  orxRESOURCE_FUNCTION_SEEK_520095391 = (when declared(orxRESOURCE_FUNCTION_SEEK):
+    orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095197)
+  orxRESOURCE_FUNCTION_SEEK_520095354 = (when declared(orxRESOURCE_FUNCTION_SEEK):
     when ownSizeof(orxRESOURCE_FUNCTION_SEEK) !=
-        ownSizeof(orxRESOURCE_FUNCTION_SEEK_520095390):
+        ownSizeof(orxRESOURCE_FUNCTION_SEEK_520095353):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_SEEK" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_SEEK
    else:
-    orxRESOURCE_FUNCTION_SEEK_520095390)
-  enum_orxDISPLAY_EVENT_t_520095309 = (when declared(enum_orxDISPLAY_EVENT_t):
+    orxRESOURCE_FUNCTION_SEEK_520095353)
+  enum_orxDISPLAY_EVENT_t_520095272 = (when declared(enum_orxDISPLAY_EVENT_t):
     when ownSizeof(enum_orxDISPLAY_EVENT_t) !=
-        ownSizeof(enum_orxDISPLAY_EVENT_t_520095308):
+        ownSizeof(enum_orxDISPLAY_EVENT_t_520095271):
       static :
         warning("Declaration of " & "enum_orxDISPLAY_EVENT_t" &
             " exists but with different size")
     enum_orxDISPLAY_EVENT_t
    else:
-    enum_orxDISPLAY_EVENT_t_520095308)
-  enum_orxJOYSTICK_BUTTON_t_520095325 = (when declared(enum_orxJOYSTICK_BUTTON_t):
+    enum_orxDISPLAY_EVENT_t_520095271)
+  enum_orxJOYSTICK_BUTTON_t_520095288 = (when declared(enum_orxJOYSTICK_BUTTON_t):
     when ownSizeof(enum_orxJOYSTICK_BUTTON_t) !=
-        ownSizeof(enum_orxJOYSTICK_BUTTON_t_520095324):
+        ownSizeof(enum_orxJOYSTICK_BUTTON_t_520095287):
       static :
         warning("Declaration of " & "enum_orxJOYSTICK_BUTTON_t" &
             " exists but with different size")
     enum_orxJOYSTICK_BUTTON_t
    else:
-    enum_orxJOYSTICK_BUTTON_t_520095324)
-  orxRESOURCE_FUNCTION_LOCATE_520095381 = (when declared(
+    enum_orxJOYSTICK_BUTTON_t_520095287)
+  orxRESOURCE_FUNCTION_LOCATE_520095344 = (when declared(
       orxRESOURCE_FUNCTION_LOCATE):
     when ownSizeof(orxRESOURCE_FUNCTION_LOCATE) !=
-        ownSizeof(orxRESOURCE_FUNCTION_LOCATE_520095380):
+        ownSizeof(orxRESOURCE_FUNCTION_LOCATE_520095343):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_LOCATE" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_LOCATE
    else:
-    orxRESOURCE_FUNCTION_LOCATE_520095380)
-  struct_orxRESOURCE_TYPE_INFO_t_520095401 = (when declared(
+    orxRESOURCE_FUNCTION_LOCATE_520095343)
+  struct_orxRESOURCE_TYPE_INFO_t_520095364 = (when declared(
       struct_orxRESOURCE_TYPE_INFO_t):
     when ownSizeof(struct_orxRESOURCE_TYPE_INFO_t) !=
-        ownSizeof(struct_orxRESOURCE_TYPE_INFO_t_520095400):
+        ownSizeof(struct_orxRESOURCE_TYPE_INFO_t_520095363):
       static :
         warning("Declaration of " & "struct_orxRESOURCE_TYPE_INFO_t" &
             " exists but with different size")
     struct_orxRESOURCE_TYPE_INFO_t
    else:
-    struct_orxRESOURCE_TYPE_INFO_t_520095400)
-  orxSHADER_EVENT_520095591 = (when declared(orxSHADER_EVENT):
-    when ownSizeof(orxSHADER_EVENT) != ownSizeof(orxSHADER_EVENT_520095590):
+    struct_orxRESOURCE_TYPE_INFO_t_520095363)
+  orxSHADER_EVENT_520095554 = (when declared(orxSHADER_EVENT):
+    when ownSizeof(orxSHADER_EVENT) != ownSizeof(orxSHADER_EVENT_520095553):
       static :
         warning("Declaration of " & "orxSHADER_EVENT" &
             " exists but with different size")
     orxSHADER_EVENT
    else:
-    orxSHADER_EVENT_520095590)
-  enum_orxSOUND_EVENT_t_520095467 = (when declared(enum_orxSOUND_EVENT_t):
-    when ownSizeof(enum_orxSOUND_EVENT_t) != ownSizeof(enum_orxSOUND_EVENT_t_520095466):
+    orxSHADER_EVENT_520095553)
+  enum_orxSOUND_EVENT_t_520095430 = (when declared(enum_orxSOUND_EVENT_t):
+    when ownSizeof(enum_orxSOUND_EVENT_t) != ownSizeof(enum_orxSOUND_EVENT_t_520095429):
       static :
         warning("Declaration of " & "enum_orxSOUND_EVENT_t" &
             " exists but with different size")
     enum_orxSOUND_EVENT_t
    else:
-    enum_orxSOUND_EVENT_t_520095466)
-  orxMODULE_RUN_FUNCTION_520095080 = (when declared(orxMODULE_RUN_FUNCTION):
-    when ownSizeof(orxMODULE_RUN_FUNCTION) != ownSizeof(orxMODULE_RUN_FUNCTION_520095079):
+    enum_orxSOUND_EVENT_t_520095429)
+  orxMODULE_RUN_FUNCTION_520095043 = (when declared(orxMODULE_RUN_FUNCTION):
+    when ownSizeof(orxMODULE_RUN_FUNCTION) != ownSizeof(orxMODULE_RUN_FUNCTION_520095042):
       static :
         warning("Declaration of " & "orxMODULE_RUN_FUNCTION" &
             " exists but with different size")
     orxMODULE_RUN_FUNCTION
    else:
-    orxMODULE_RUN_FUNCTION_520095079)
-  orxCLOCK_INFO_520095123 = (when declared(orxCLOCK_INFO):
-    when ownSizeof(orxCLOCK_INFO) != ownSizeof(orxCLOCK_INFO_520095122):
+    orxMODULE_RUN_FUNCTION_520095042)
+  orxCLOCK_INFO_520095086 = (when declared(orxCLOCK_INFO):
+    when ownSizeof(orxCLOCK_INFO) != ownSizeof(orxCLOCK_INFO_520095085):
       static :
         warning("Declaration of " & "orxCLOCK_INFO" &
             " exists but with different size")
     orxCLOCK_INFO
    else:
-    orxCLOCK_INFO_520095122)
-  struct_orxDISPLAY_TRANSFORM_t_520095273 = (when declared(
+    orxCLOCK_INFO_520095085)
+  struct_orxDISPLAY_TRANSFORM_t_520095236 = (when declared(
       struct_orxDISPLAY_TRANSFORM_t):
     when ownSizeof(struct_orxDISPLAY_TRANSFORM_t) !=
-        ownSizeof(struct_orxDISPLAY_TRANSFORM_t_520095272):
+        ownSizeof(struct_orxDISPLAY_TRANSFORM_t_520095235):
       static :
         warning("Declaration of " & "struct_orxDISPLAY_TRANSFORM_t" &
             " exists but with different size")
     struct_orxDISPLAY_TRANSFORM_t
    else:
-    struct_orxDISPLAY_TRANSFORM_t_520095272)
-  orxSTRUCTURE_STORAGE_TYPE_520095155 = (when declared(orxSTRUCTURE_STORAGE_TYPE):
+    struct_orxDISPLAY_TRANSFORM_t_520095235)
+  orxSTRUCTURE_STORAGE_TYPE_520095118 = (when declared(orxSTRUCTURE_STORAGE_TYPE):
     when ownSizeof(orxSTRUCTURE_STORAGE_TYPE) !=
-        ownSizeof(orxSTRUCTURE_STORAGE_TYPE_520095154):
+        ownSizeof(orxSTRUCTURE_STORAGE_TYPE_520095117):
       static :
         warning("Declaration of " & "orxSTRUCTURE_STORAGE_TYPE" &
             " exists but with different size")
     orxSTRUCTURE_STORAGE_TYPE
    else:
-    orxSTRUCTURE_STORAGE_TYPE_520095154)
-  orxBODY_PART_DEF_520095551 = (when declared(orxBODY_PART_DEF):
-    when ownSizeof(orxBODY_PART_DEF) != ownSizeof(orxBODY_PART_DEF_520095550):
+    orxSTRUCTURE_STORAGE_TYPE_520095117)
+  orxBODY_PART_DEF_520095514 = (when declared(orxBODY_PART_DEF):
+    when ownSizeof(orxBODY_PART_DEF) != ownSizeof(orxBODY_PART_DEF_520095513):
       static :
         warning("Declaration of " & "orxBODY_PART_DEF" &
             " exists but with different size")
     orxBODY_PART_DEF
    else:
-    orxBODY_PART_DEF_520095550)
-  enum_orxCOMMAND_VAR_TYPE_t_520095183 = (when declared(
+    orxBODY_PART_DEF_520095513)
+  enum_orxCOMMAND_VAR_TYPE_t_520095146 = (when declared(
       enum_orxCOMMAND_VAR_TYPE_t):
     when ownSizeof(enum_orxCOMMAND_VAR_TYPE_t) !=
-        ownSizeof(enum_orxCOMMAND_VAR_TYPE_t_520095182):
+        ownSizeof(enum_orxCOMMAND_VAR_TYPE_t_520095145):
       static :
         warning("Declaration of " & "enum_orxCOMMAND_VAR_TYPE_t" &
             " exists but with different size")
     enum_orxCOMMAND_VAR_TYPE_t
    else:
-    enum_orxCOMMAND_VAR_TYPE_t_520095182)
-  orxBOOL_520095038 = (when declared(orxBOOL):
-    when ownSizeof(orxBOOL) != ownSizeof(orxBOOL_520095037):
+    enum_orxCOMMAND_VAR_TYPE_t_520095145)
+  orxBOOL_520095001 = (when declared(orxBOOL):
+    when ownSizeof(orxBOOL) != ownSizeof(orxBOOL_520095000):
       static :
         warning("Declaration of " & "orxBOOL" &
             " exists but with different size")
     orxBOOL
    else:
-    orxBOOL_520095037)
-  orxCOLOR_520095307 = (when declared(orxCOLOR):
-    when ownSizeof(orxCOLOR) != ownSizeof(orxCOLOR_520095306):
+    orxBOOL_520095000)
+  orxCOLOR_520095270 = (when declared(orxCOLOR):
+    when ownSizeof(orxCOLOR) != ownSizeof(orxCOLOR_520095269):
       static :
         warning("Declaration of " & "orxCOLOR" &
             " exists but with different size")
     orxCOLOR
    else:
-    orxCOLOR_520095306)
-  orxPLUGIN_USER_FUNCTION_INFO_520095251 = (when declared(
+    orxCOLOR_520095269)
+  orxPLUGIN_USER_FUNCTION_INFO_520095214 = (when declared(
       orxPLUGIN_USER_FUNCTION_INFO):
     when ownSizeof(orxPLUGIN_USER_FUNCTION_INFO) !=
-        ownSizeof(orxPLUGIN_USER_FUNCTION_INFO_520095250):
+        ownSizeof(orxPLUGIN_USER_FUNCTION_INFO_520095213):
       static :
         warning("Declaration of " & "orxPLUGIN_USER_FUNCTION_INFO" &
             " exists but with different size")
     orxPLUGIN_USER_FUNCTION_INFO
    else:
-    orxPLUGIN_USER_FUNCTION_INFO_520095250)
-  orxTIMELINE_520095525 = (when declared(orxTIMELINE):
-    when ownSizeof(orxTIMELINE) != ownSizeof(orxTIMELINE_520095524):
+    orxPLUGIN_USER_FUNCTION_INFO_520095213)
+  orxTIMELINE_520095488 = (when declared(orxTIMELINE):
+    when ownSizeof(orxTIMELINE) != ownSizeof(orxTIMELINE_520095487):
       static :
         warning("Declaration of " & "orxTIMELINE" &
             " exists but with different size")
     orxTIMELINE
    else:
-    orxTIMELINE_520095524)
-  orxSOUNDPOINTER_520095613 = (when declared(orxSOUNDPOINTER):
-    when ownSizeof(orxSOUNDPOINTER) != ownSizeof(orxSOUNDPOINTER_520095612):
+    orxTIMELINE_520095487)
+  orxSOUNDPOINTER_520095576 = (when declared(orxSOUNDPOINTER):
+    when ownSizeof(orxSOUNDPOINTER) != ownSizeof(orxSOUNDPOINTER_520095575):
       static :
         warning("Declaration of " & "orxSOUNDPOINTER" &
             " exists but with different size")
     orxSOUNDPOINTER
    else:
-    orxSOUNDPOINTER_520095612)
-  orxSOUNDSYSTEM_STREAM_TYPE_520095443 = (when declared(
+    orxSOUNDPOINTER_520095575)
+  orxSOUNDSYSTEM_STREAM_TYPE_520095406 = (when declared(
       orxSOUNDSYSTEM_STREAM_TYPE):
     when ownSizeof(orxSOUNDSYSTEM_STREAM_TYPE) !=
-        ownSizeof(orxSOUNDSYSTEM_STREAM_TYPE_520095442):
+        ownSizeof(orxSOUNDSYSTEM_STREAM_TYPE_520095405):
       static :
         warning("Declaration of " & "orxSOUNDSYSTEM_STREAM_TYPE" &
             " exists but with different size")
     orxSOUNDSYSTEM_STREAM_TYPE
    else:
-    orxSOUNDSYSTEM_STREAM_TYPE_520095442)
-  struct_orxSOUND_EVENT_PAYLOAD_t_520095479 = (when declared(
+    orxSOUNDSYSTEM_STREAM_TYPE_520095405)
+  struct_orxSOUND_EVENT_PAYLOAD_t_520095442 = (when declared(
       struct_orxSOUND_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxSOUND_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxSOUND_EVENT_PAYLOAD_t_520095478):
+        ownSizeof(struct_orxSOUND_EVENT_PAYLOAD_t_520095441):
       static :
         warning("Declaration of " & "struct_orxSOUND_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxSOUND_EVENT_PAYLOAD_t
    else:
-    struct_orxSOUND_EVENT_PAYLOAD_t_520095478)
-  orxCOMMAND_VAR_DEF_520095189 = (when declared(orxCOMMAND_VAR_DEF):
-    when ownSizeof(orxCOMMAND_VAR_DEF) != ownSizeof(orxCOMMAND_VAR_DEF_520095188):
+    struct_orxSOUND_EVENT_PAYLOAD_t_520095441)
+  orxCOMMAND_VAR_DEF_520095152 = (when declared(orxCOMMAND_VAR_DEF):
+    when ownSizeof(orxCOMMAND_VAR_DEF) != ownSizeof(orxCOMMAND_VAR_DEF_520095151):
       static :
         warning("Declaration of " & "orxCOMMAND_VAR_DEF" &
             " exists but with different size")
     orxCOMMAND_VAR_DEF
    else:
-    orxCOMMAND_VAR_DEF_520095188)
-  orxRESOURCE_FUNCTION_OPEN_520095385 = (when declared(orxRESOURCE_FUNCTION_OPEN):
+    orxCOMMAND_VAR_DEF_520095151)
+  orxRESOURCE_FUNCTION_OPEN_520095348 = (when declared(orxRESOURCE_FUNCTION_OPEN):
     when ownSizeof(orxRESOURCE_FUNCTION_OPEN) !=
-        ownSizeof(orxRESOURCE_FUNCTION_OPEN_520095384):
+        ownSizeof(orxRESOURCE_FUNCTION_OPEN_520095347):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_OPEN" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_OPEN
    else:
-    orxRESOURCE_FUNCTION_OPEN_520095384)
-  orxLOCALE_EVENT_520095373 = (when declared(orxLOCALE_EVENT):
-    when ownSizeof(orxLOCALE_EVENT) != ownSizeof(orxLOCALE_EVENT_520095372):
+    orxRESOURCE_FUNCTION_OPEN_520095347)
+  orxLOCALE_EVENT_520095336 = (when declared(orxLOCALE_EVENT):
+    when ownSizeof(orxLOCALE_EVENT) != ownSizeof(orxLOCALE_EVENT_520095335):
       static :
         warning("Declaration of " & "orxLOCALE_EVENT" &
             " exists but with different size")
     orxLOCALE_EVENT
    else:
-    orxLOCALE_EVENT_520095372)
-  orxFX_TYPE_520095491 = (when declared(orxFX_TYPE):
-    when ownSizeof(orxFX_TYPE) != ownSizeof(orxFX_TYPE_520095490):
+    orxLOCALE_EVENT_520095335)
+  orxFX_TYPE_520095454 = (when declared(orxFX_TYPE):
+    when ownSizeof(orxFX_TYPE) != ownSizeof(orxFX_TYPE_520095453):
       static :
         warning("Declaration of " & "orxFX_TYPE" &
             " exists but with different size")
     orxFX_TYPE
    else:
-    orxFX_TYPE_520095490)
-  orxMOUSE_BUTTON_520095339 = (when declared(orxMOUSE_BUTTON):
-    when ownSizeof(orxMOUSE_BUTTON) != ownSizeof(orxMOUSE_BUTTON_520095338):
+    orxFX_TYPE_520095453)
+  orxMOUSE_BUTTON_520095302 = (when declared(orxMOUSE_BUTTON):
+    when ownSizeof(orxMOUSE_BUTTON) != ownSizeof(orxMOUSE_BUTTON_520095301):
       static :
         warning("Declaration of " & "orxMOUSE_BUTTON" &
             " exists but with different size")
     orxMOUSE_BUTTON
    else:
-    orxMOUSE_BUTTON_520095338)
-  orxANIM_EVENT_520095167 = (when declared(orxANIM_EVENT):
-    when ownSizeof(orxANIM_EVENT) != ownSizeof(orxANIM_EVENT_520095166):
+    orxMOUSE_BUTTON_520095301)
+  orxANIM_EVENT_520095130 = (when declared(orxANIM_EVENT):
+    when ownSizeof(orxANIM_EVENT) != ownSizeof(orxANIM_EVENT_520095129):
       static :
         warning("Declaration of " & "orxANIM_EVENT" &
             " exists but with different size")
     orxANIM_EVENT
    else:
-    orxANIM_EVENT_520095166)
-  orxOBOX_520095257 = (when declared(orxOBOX):
-    when ownSizeof(orxOBOX) != ownSizeof(orxOBOX_520095256):
+    orxANIM_EVENT_520095129)
+  orxOBOX_520095220 = (when declared(orxOBOX):
+    when ownSizeof(orxOBOX) != ownSizeof(orxOBOX_520095219):
       static :
         warning("Declaration of " & "orxOBOX" &
             " exists but with different size")
     orxOBOX
    else:
-    orxOBOX_520095256)
-  struct_orxANIM_EVENT_PAYLOAD_t_520095169 = (when declared(
+    orxOBOX_520095219)
+  struct_orxANIM_EVENT_PAYLOAD_t_520095132 = (when declared(
       struct_orxANIM_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxANIM_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxANIM_EVENT_PAYLOAD_t_520095168):
+        ownSizeof(struct_orxANIM_EVENT_PAYLOAD_t_520095131):
       static :
         warning("Declaration of " & "struct_orxANIM_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxANIM_EVENT_PAYLOAD_t
    else:
-    struct_orxANIM_EVENT_PAYLOAD_t_520095168)
-  enum_orxEVENT_TYPE_t_520095361 = (when declared(enum_orxEVENT_TYPE_t):
-    when ownSizeof(enum_orxEVENT_TYPE_t) != ownSizeof(enum_orxEVENT_TYPE_t_520095360):
+    struct_orxANIM_EVENT_PAYLOAD_t_520095131)
+  enum_orxEVENT_TYPE_t_520095324 = (when declared(enum_orxEVENT_TYPE_t):
+    when ownSizeof(enum_orxEVENT_TYPE_t) != ownSizeof(enum_orxEVENT_TYPE_t_520095323):
       static :
         warning("Declaration of " & "enum_orxEVENT_TYPE_t" &
             " exists but with different size")
     enum_orxEVENT_TYPE_t
    else:
-    enum_orxEVENT_TYPE_t_520095360)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095217 = (when declared(
+    enum_orxEVENT_TYPE_t_520095323)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095180 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095216):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095179):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095216)
-  enum_orxJOYSTICK_AXIS_t_520095329 = (when declared(enum_orxJOYSTICK_AXIS_t):
+    enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095179)
+  enum_orxJOYSTICK_AXIS_t_520095292 = (when declared(enum_orxJOYSTICK_AXIS_t):
     when ownSizeof(enum_orxJOYSTICK_AXIS_t) !=
-        ownSizeof(enum_orxJOYSTICK_AXIS_t_520095328):
+        ownSizeof(enum_orxJOYSTICK_AXIS_t_520095291):
       static :
         warning("Declaration of " & "enum_orxJOYSTICK_AXIS_t" &
             " exists but with different size")
     enum_orxJOYSTICK_AXIS_t
    else:
-    enum_orxJOYSTICK_AXIS_t_520095328)
-  orxDEBUG_LEVEL_520095086 = (when declared(orxDEBUG_LEVEL):
-    when ownSizeof(orxDEBUG_LEVEL) != ownSizeof(orxDEBUG_LEVEL_520095085):
+    enum_orxJOYSTICK_AXIS_t_520095291)
+  orxDEBUG_LEVEL_520095049 = (when declared(orxDEBUG_LEVEL):
+    when ownSizeof(orxDEBUG_LEVEL) != ownSizeof(orxDEBUG_LEVEL_520095048):
       static :
         warning("Declaration of " & "orxDEBUG_LEVEL" &
             " exists but with different size")
     orxDEBUG_LEVEL
    else:
-    orxDEBUG_LEVEL_520095085)
-  orxANIMSET_LINK_TABLE_520095179 = (when declared(orxANIMSET_LINK_TABLE):
-    when ownSizeof(orxANIMSET_LINK_TABLE) != ownSizeof(orxANIMSET_LINK_TABLE_520095178):
+    orxDEBUG_LEVEL_520095048)
+  orxANIMSET_LINK_TABLE_520095142 = (when declared(orxANIMSET_LINK_TABLE):
+    when ownSizeof(orxANIMSET_LINK_TABLE) != ownSizeof(orxANIMSET_LINK_TABLE_520095141):
       static :
         warning("Declaration of " & "orxANIMSET_LINK_TABLE" &
             " exists but with different size")
     orxANIMSET_LINK_TABLE
    else:
-    orxANIMSET_LINK_TABLE_520095178)
-  orxPLUGIN_CORE_ID_520095215 = (when declared(orxPLUGIN_CORE_ID):
-    when ownSizeof(orxPLUGIN_CORE_ID) != ownSizeof(orxPLUGIN_CORE_ID_520095214):
+    orxANIMSET_LINK_TABLE_520095141)
+  orxPLUGIN_CORE_ID_520095178 = (when declared(orxPLUGIN_CORE_ID):
+    when ownSizeof(orxPLUGIN_CORE_ID) != ownSizeof(orxPLUGIN_CORE_ID_520095177):
       static :
         warning("Declaration of " & "orxPLUGIN_CORE_ID" &
             " exists but with different size")
     orxPLUGIN_CORE_ID
    else:
-    orxPLUGIN_CORE_ID_520095214)
-  orxPHYSICS_BODY_JOINT_520095569 = (when declared(orxPHYSICS_BODY_JOINT):
-    when ownSizeof(orxPHYSICS_BODY_JOINT) != ownSizeof(orxPHYSICS_BODY_JOINT_520095568):
+    orxPLUGIN_CORE_ID_520095177)
+  orxPHYSICS_BODY_JOINT_520095532 = (when declared(orxPHYSICS_BODY_JOINT):
+    when ownSizeof(orxPHYSICS_BODY_JOINT) != ownSizeof(orxPHYSICS_BODY_JOINT_520095531):
       static :
         warning("Declaration of " & "orxPHYSICS_BODY_JOINT" &
             " exists but with different size")
     orxPHYSICS_BODY_JOINT
    else:
-    orxPHYSICS_BODY_JOINT_520095568)
-  struct_orxSHADER_PARAM_t_520095583 = (when declared(struct_orxSHADER_PARAM_t):
+    orxPHYSICS_BODY_JOINT_520095531)
+  struct_orxSHADER_PARAM_t_520095546 = (when declared(struct_orxSHADER_PARAM_t):
     when ownSizeof(struct_orxSHADER_PARAM_t) !=
-        ownSizeof(struct_orxSHADER_PARAM_t_520095582):
+        ownSizeof(struct_orxSHADER_PARAM_t_520095545):
       static :
         warning("Declaration of " & "struct_orxSHADER_PARAM_t" &
             " exists but with different size")
     struct_orxSHADER_PARAM_t
    else:
-    struct_orxSHADER_PARAM_t_520095582)
-  orxFX_520095501 = (when declared(orxFX):
-    when ownSizeof(orxFX) != ownSizeof(orxFX_520095500):
+    struct_orxSHADER_PARAM_t_520095545)
+  orxFX_520095464 = (when declared(orxFX):
+    when ownSizeof(orxFX) != ownSizeof(orxFX_520095463):
       static :
         warning("Declaration of " & "orxFX" & " exists but with different size")
     orxFX
    else:
-    orxFX_520095500)
-  enum_orxSYSTEM_EVENT_t_520095098 = (when declared(enum_orxSYSTEM_EVENT_t):
-    when ownSizeof(enum_orxSYSTEM_EVENT_t) != ownSizeof(enum_orxSYSTEM_EVENT_t_520095097):
+    orxFX_520095463)
+  enum_orxSYSTEM_EVENT_t_520095061 = (when declared(enum_orxSYSTEM_EVENT_t):
+    when ownSizeof(enum_orxSYSTEM_EVENT_t) != ownSizeof(enum_orxSYSTEM_EVENT_t_520095060):
       static :
         warning("Declaration of " & "enum_orxSYSTEM_EVENT_t" &
             " exists but with different size")
     enum_orxSYSTEM_EVENT_t
    else:
-    enum_orxSYSTEM_EVENT_t_520095097)
-  orxPARAM_INIT_FUNCTION_520095431 = (when declared(orxPARAM_INIT_FUNCTION):
-    when ownSizeof(orxPARAM_INIT_FUNCTION) != ownSizeof(orxPARAM_INIT_FUNCTION_520095430):
+    enum_orxSYSTEM_EVENT_t_520095060)
+  orxPARAM_INIT_FUNCTION_520095394 = (when declared(orxPARAM_INIT_FUNCTION):
+    when ownSizeof(orxPARAM_INIT_FUNCTION) != ownSizeof(orxPARAM_INIT_FUNCTION_520095393):
       static :
         warning("Declaration of " & "orxPARAM_INIT_FUNCTION" &
             " exists but with different size")
     orxPARAM_INIT_FUNCTION
    else:
-    orxPARAM_INIT_FUNCTION_520095430)
-  struct_orxSTRUCTURE_t_520095157 = (when declared(struct_orxSTRUCTURE_t):
-    when ownSizeof(struct_orxSTRUCTURE_t) != ownSizeof(struct_orxSTRUCTURE_t_520095156):
+    orxPARAM_INIT_FUNCTION_520095393)
+  struct_orxSTRUCTURE_t_520095120 = (when declared(struct_orxSTRUCTURE_t):
+    when ownSizeof(struct_orxSTRUCTURE_t) != ownSizeof(struct_orxSTRUCTURE_t_520095119):
       static :
         warning("Declaration of " & "struct_orxSTRUCTURE_t" &
             " exists but with different size")
     struct_orxSTRUCTURE_t
    else:
-    struct_orxSTRUCTURE_t_520095156)
-  struct_orxSYSTEM_EVENT_PAYLOAD_t_520095109 = (when declared(
+    struct_orxSTRUCTURE_t_520095119)
+  struct_orxSYSTEM_EVENT_PAYLOAD_t_520095072 = (when declared(
       struct_orxSYSTEM_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t_520095108):
+        ownSizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t_520095071):
       static :
         warning("Declaration of " & "struct_orxSYSTEM_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxSYSTEM_EVENT_PAYLOAD_t
    else:
-    struct_orxSYSTEM_EVENT_PAYLOAD_t_520095108)
-  enum_orxCLOCK_EVENT_t_520095125 = (when declared(enum_orxCLOCK_EVENT_t):
-    when ownSizeof(enum_orxCLOCK_EVENT_t) != ownSizeof(enum_orxCLOCK_EVENT_t_520095124):
+    struct_orxSYSTEM_EVENT_PAYLOAD_t_520095071)
+  enum_orxCLOCK_EVENT_t_520095088 = (when declared(enum_orxCLOCK_EVENT_t):
+    when ownSizeof(enum_orxCLOCK_EVENT_t) != ownSizeof(enum_orxCLOCK_EVENT_t_520095087):
       static :
         warning("Declaration of " & "enum_orxCLOCK_EVENT_t" &
             " exists but with different size")
     enum_orxCLOCK_EVENT_t
    else:
-    enum_orxCLOCK_EVENT_t_520095124)
-  enum_orxRENDER_EVENT_t_520095605 = (when declared(enum_orxRENDER_EVENT_t):
-    when ownSizeof(enum_orxRENDER_EVENT_t) != ownSizeof(enum_orxRENDER_EVENT_t_520095604):
+    enum_orxCLOCK_EVENT_t_520095087)
+  enum_orxRENDER_EVENT_t_520095568 = (when declared(enum_orxRENDER_EVENT_t):
+    when ownSizeof(enum_orxRENDER_EVENT_t) != ownSizeof(enum_orxRENDER_EVENT_t_520095567):
       static :
         warning("Declaration of " & "enum_orxRENDER_EVENT_t" &
             " exists but with different size")
     enum_orxRENDER_EVENT_t
    else:
-    enum_orxRENDER_EVENT_t_520095604)
-  struct_orxTREE_NODE_t_520095141 = (when declared(struct_orxTREE_NODE_t):
-    when ownSizeof(struct_orxTREE_NODE_t) != ownSizeof(struct_orxTREE_NODE_t_520095140):
+    enum_orxRENDER_EVENT_t_520095567)
+  struct_orxTREE_NODE_t_520095104 = (when declared(struct_orxTREE_NODE_t):
+    when ownSizeof(struct_orxTREE_NODE_t) != ownSizeof(struct_orxTREE_NODE_t_520095103):
       static :
         warning("Declaration of " & "struct_orxTREE_NODE_t" &
             " exists but with different size")
     struct_orxTREE_NODE_t
    else:
-    struct_orxTREE_NODE_t_520095140)
-  orxSOUND_STREAM_PACKET_520095477 = (when declared(orxSOUND_STREAM_PACKET):
-    when ownSizeof(orxSOUND_STREAM_PACKET) != ownSizeof(orxSOUND_STREAM_PACKET_520095476):
+    struct_orxTREE_NODE_t_520095103)
+  orxSOUND_STREAM_PACKET_520095440 = (when declared(orxSOUND_STREAM_PACKET):
+    when ownSizeof(orxSOUND_STREAM_PACKET) != ownSizeof(orxSOUND_STREAM_PACKET_520095439):
       static :
         warning("Declaration of " & "orxSOUND_STREAM_PACKET" &
             " exists but with different size")
     orxSOUND_STREAM_PACKET
    else:
-    orxSOUND_STREAM_PACKET_520095476)
-  struct_orxINPUT_EVENT_PAYLOAD_t_520095357 = (when declared(
+    orxSOUND_STREAM_PACKET_520095439)
+  struct_orxINPUT_EVENT_PAYLOAD_t_520095320 = (when declared(
       struct_orxINPUT_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxINPUT_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxINPUT_EVENT_PAYLOAD_t_520095356):
+        ownSizeof(struct_orxINPUT_EVENT_PAYLOAD_t_520095319):
       static :
         warning("Declaration of " & "struct_orxINPUT_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxINPUT_EVENT_PAYLOAD_t
    else:
-    struct_orxINPUT_EVENT_PAYLOAD_t_520095356)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095229 = (when declared(
+    struct_orxINPUT_EVENT_PAYLOAD_t_520095319)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095192 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095228):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095191):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095228)
-  orxANIMSET_520095177 = (when declared(orxANIMSET):
-    when ownSizeof(orxANIMSET) != ownSizeof(orxANIMSET_520095176):
+    enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095191)
+  orxANIMSET_520095140 = (when declared(orxANIMSET):
+    when ownSizeof(orxANIMSET) != ownSizeof(orxANIMSET_520095139):
       static :
         warning("Declaration of " & "orxANIMSET" &
             " exists but with different size")
     orxANIMSET
    else:
-    orxANIMSET_520095176)
-  orxSOUNDSYSTEM_SOUND_520095437 = (when declared(orxSOUNDSYSTEM_SOUND):
-    when ownSizeof(orxSOUNDSYSTEM_SOUND) != ownSizeof(orxSOUNDSYSTEM_SOUND_520095436):
+    orxANIMSET_520095139)
+  orxSOUNDSYSTEM_SOUND_520095400 = (when declared(orxSOUNDSYSTEM_SOUND):
+    when ownSizeof(orxSOUNDSYSTEM_SOUND) != ownSizeof(orxSOUNDSYSTEM_SOUND_520095399):
       static :
         warning("Declaration of " & "orxSOUNDSYSTEM_SOUND" &
             " exists but with different size")
     orxSOUNDSYSTEM_SOUND
    else:
-    orxSOUNDSYSTEM_SOUND_520095436)
-  orxTHREAD_FUNCTION_520095415 = (when declared(orxTHREAD_FUNCTION):
-    when ownSizeof(orxTHREAD_FUNCTION) != ownSizeof(orxTHREAD_FUNCTION_520095414):
+    orxSOUNDSYSTEM_SOUND_520095399)
+  orxTHREAD_FUNCTION_520095378 = (when declared(orxTHREAD_FUNCTION):
+    when ownSizeof(orxTHREAD_FUNCTION) != ownSizeof(orxTHREAD_FUNCTION_520095377):
       static :
         warning("Declaration of " & "orxTHREAD_FUNCTION" &
             " exists but with different size")
     orxTHREAD_FUNCTION
    else:
-    orxTHREAD_FUNCTION_520095414)
-  orxSTRINGID_520095046 = (when declared(orxSTRINGID):
-    when ownSizeof(orxSTRINGID) != ownSizeof(orxSTRINGID_520095045):
+    orxTHREAD_FUNCTION_520095377)
+  orxSTRINGID_520095009 = (when declared(orxSTRINGID):
+    when ownSizeof(orxSTRINGID) != ownSizeof(orxSTRINGID_520095008):
       static :
         warning("Declaration of " & "orxSTRINGID" &
             " exists but with different size")
     orxSTRINGID
    else:
-    orxSTRINGID_520095045)
-  enum_orxLOCALE_EVENT_t_520095371 = (when declared(enum_orxLOCALE_EVENT_t):
-    when ownSizeof(enum_orxLOCALE_EVENT_t) != ownSizeof(enum_orxLOCALE_EVENT_t_520095370):
+    orxSTRINGID_520095008)
+  enum_orxLOCALE_EVENT_t_520095334 = (when declared(enum_orxLOCALE_EVENT_t):
+    when ownSizeof(enum_orxLOCALE_EVENT_t) != ownSizeof(enum_orxLOCALE_EVENT_t_520095333):
       static :
         warning("Declaration of " & "enum_orxLOCALE_EVENT_t" &
             " exists but with different size")
     enum_orxLOCALE_EVENT_t
    else:
-    enum_orxLOCALE_EVENT_t_520095370)
-  enum_orxSOUND_STATUS_t_520095459 = (when declared(enum_orxSOUND_STATUS_t):
-    when ownSizeof(enum_orxSOUND_STATUS_t) != ownSizeof(enum_orxSOUND_STATUS_t_520095458):
+    enum_orxLOCALE_EVENT_t_520095333)
+  enum_orxSOUND_STATUS_t_520095422 = (when declared(enum_orxSOUND_STATUS_t):
+    when ownSizeof(enum_orxSOUND_STATUS_t) != ownSizeof(enum_orxSOUND_STATUS_t_520095421):
       static :
         warning("Declaration of " & "enum_orxSOUND_STATUS_t" &
             " exists but with different size")
     enum_orxSOUND_STATUS_t
    else:
-    enum_orxSOUND_STATUS_t_520095458)
-  orxSHADER_PARAM_520095585 = (when declared(orxSHADER_PARAM):
-    when ownSizeof(orxSHADER_PARAM) != ownSizeof(orxSHADER_PARAM_520095584):
+    enum_orxSOUND_STATUS_t_520095421)
+  orxSHADER_PARAM_520095548 = (when declared(orxSHADER_PARAM):
+    when ownSizeof(orxSHADER_PARAM) != ownSizeof(orxSHADER_PARAM_520095547):
       static :
         warning("Declaration of " & "orxSHADER_PARAM" &
             " exists but with different size")
     orxSHADER_PARAM
    else:
-    orxSHADER_PARAM_520095584)
-  orxDISPLAY_TRANSFORM_520095275 = (when declared(orxDISPLAY_TRANSFORM):
-    when ownSizeof(orxDISPLAY_TRANSFORM) != ownSizeof(orxDISPLAY_TRANSFORM_520095274):
+    orxSHADER_PARAM_520095547)
+  orxDISPLAY_TRANSFORM_520095238 = (when declared(orxDISPLAY_TRANSFORM):
+    when ownSizeof(orxDISPLAY_TRANSFORM) != ownSizeof(orxDISPLAY_TRANSFORM_520095237):
       static :
         warning("Declaration of " & "orxDISPLAY_TRANSFORM" &
             " exists but with different size")
     orxDISPLAY_TRANSFORM
    else:
-    orxDISPLAY_TRANSFORM_520095274)
-  orxSTRUCTURE_520095159 = (when declared(orxSTRUCTURE):
-    when ownSizeof(orxSTRUCTURE) != ownSizeof(orxSTRUCTURE_520095158):
+    orxDISPLAY_TRANSFORM_520095237)
+  orxSTRUCTURE_520095122 = (when declared(orxSTRUCTURE):
+    when ownSizeof(orxSTRUCTURE) != ownSizeof(orxSTRUCTURE_520095121):
       static :
         warning("Declaration of " & "orxSTRUCTURE" &
             " exists but with different size")
     orxSTRUCTURE
    else:
-    orxSTRUCTURE_520095158)
-  orxSOUND_FILTER_FUNCTION_520095453 = (when declared(orxSOUND_FILTER_FUNCTION):
+    orxSTRUCTURE_520095121)
+  orxSOUND_FILTER_FUNCTION_520095416 = (when declared(orxSOUND_FILTER_FUNCTION):
     when ownSizeof(orxSOUND_FILTER_FUNCTION) !=
-        ownSizeof(orxSOUND_FILTER_FUNCTION_520095452):
+        ownSizeof(orxSOUND_FILTER_FUNCTION_520095415):
       static :
         warning("Declaration of " & "orxSOUND_FILTER_FUNCTION" &
             " exists but with different size")
     orxSOUND_FILTER_FUNCTION
    else:
-    orxSOUND_FILTER_FUNCTION_520095452)
-  struct_orxSOUND_FILTER_DATA_t_520095455 = (when declared(
+    orxSOUND_FILTER_FUNCTION_520095415)
+  struct_orxSOUND_FILTER_DATA_t_520095418 = (when declared(
       struct_orxSOUND_FILTER_DATA_t):
     when ownSizeof(struct_orxSOUND_FILTER_DATA_t) !=
-        ownSizeof(struct_orxSOUND_FILTER_DATA_t_520095454):
+        ownSizeof(struct_orxSOUND_FILTER_DATA_t_520095417):
       static :
         warning("Declaration of " & "struct_orxSOUND_FILTER_DATA_t" &
             " exists but with different size")
     struct_orxSOUND_FILTER_DATA_t
    else:
-    struct_orxSOUND_FILTER_DATA_t_520095454)
-  orxTREE_NODE_520095145 = (when declared(orxTREE_NODE):
-    when ownSizeof(orxTREE_NODE) != ownSizeof(orxTREE_NODE_520095144):
+    struct_orxSOUND_FILTER_DATA_t_520095417)
+  orxTREE_NODE_520095108 = (when declared(orxTREE_NODE):
+    when ownSizeof(orxTREE_NODE) != ownSizeof(orxTREE_NODE_520095107):
       static :
         warning("Declaration of " & "orxTREE_NODE" &
             " exists but with different size")
     orxTREE_NODE
    else:
-    orxTREE_NODE_520095144)
-  struct_orxFILE_INFO_t_520095425 = (when declared(struct_orxFILE_INFO_t):
-    when ownSizeof(struct_orxFILE_INFO_t) != ownSizeof(struct_orxFILE_INFO_t_520095424):
+    orxTREE_NODE_520095107)
+  struct_orxFILE_INFO_t_520095388 = (when declared(struct_orxFILE_INFO_t):
+    when ownSizeof(struct_orxFILE_INFO_t) != ownSizeof(struct_orxFILE_INFO_t_520095387):
       static :
         warning("Declaration of " & "struct_orxFILE_INFO_t" &
             " exists but with different size")
     struct_orxFILE_INFO_t
    else:
-    struct_orxFILE_INFO_t_520095424)
-  orxRESOURCE_FUNCTION_GET_TIME_520095383 = (when declared(
+    struct_orxFILE_INFO_t_520095387)
+  orxRESOURCE_FUNCTION_GET_TIME_520095346 = (when declared(
       orxRESOURCE_FUNCTION_GET_TIME):
     when ownSizeof(orxRESOURCE_FUNCTION_GET_TIME) !=
-        ownSizeof(orxRESOURCE_FUNCTION_GET_TIME_520095382):
+        ownSizeof(orxRESOURCE_FUNCTION_GET_TIME_520095345):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_GET_TIME" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_GET_TIME
    else:
-    orxRESOURCE_FUNCTION_GET_TIME_520095382)
-  struct_orxVERSION_t_520095068 = (when declared(struct_orxVERSION_t):
-    when ownSizeof(struct_orxVERSION_t) != ownSizeof(struct_orxVERSION_t_520095067):
+    orxRESOURCE_FUNCTION_GET_TIME_520095345)
+  struct_orxVERSION_t_520095031 = (when declared(struct_orxVERSION_t):
+    when ownSizeof(struct_orxVERSION_t) != ownSizeof(struct_orxVERSION_t_520095030):
       static :
         warning("Declaration of " & "struct_orxVERSION_t" &
             " exists but with different size")
     struct_orxVERSION_t
    else:
-    struct_orxVERSION_t_520095067)
-  orxJOYSTICK_AXIS_520095331 = (when declared(orxJOYSTICK_AXIS):
-    when ownSizeof(orxJOYSTICK_AXIS) != ownSizeof(orxJOYSTICK_AXIS_520095330):
+    struct_orxVERSION_t_520095030)
+  orxJOYSTICK_AXIS_520095294 = (when declared(orxJOYSTICK_AXIS):
+    when ownSizeof(orxJOYSTICK_AXIS) != ownSizeof(orxJOYSTICK_AXIS_520095293):
       static :
         warning("Declaration of " & "orxJOYSTICK_AXIS" &
             " exists but with different size")
     orxJOYSTICK_AXIS
    else:
-    orxJOYSTICK_AXIS_520095330)
-  enum_orxCLOCK_MODIFIER_t_520095113 = (when declared(enum_orxCLOCK_MODIFIER_t):
+    orxJOYSTICK_AXIS_520095293)
+  enum_orxCLOCK_MODIFIER_t_520095076 = (when declared(enum_orxCLOCK_MODIFIER_t):
     when ownSizeof(enum_orxCLOCK_MODIFIER_t) !=
-        ownSizeof(enum_orxCLOCK_MODIFIER_t_520095112):
+        ownSizeof(enum_orxCLOCK_MODIFIER_t_520095075):
       static :
         warning("Declaration of " & "enum_orxCLOCK_MODIFIER_t" &
             " exists but with different size")
     enum_orxCLOCK_MODIFIER_t
    else:
-    enum_orxCLOCK_MODIFIER_t_520095112)
-  enum_orxMODULE_ID_t_520095072 = (when declared(enum_orxMODULE_ID_t):
-    when ownSizeof(enum_orxMODULE_ID_t) != ownSizeof(enum_orxMODULE_ID_t_520095071):
+    enum_orxCLOCK_MODIFIER_t_520095075)
+  enum_orxMODULE_ID_t_520095035 = (when declared(enum_orxMODULE_ID_t):
+    when ownSizeof(enum_orxMODULE_ID_t) != ownSizeof(enum_orxMODULE_ID_t_520095034):
       static :
         warning("Declaration of " & "enum_orxMODULE_ID_t" &
             " exists but with different size")
     enum_orxMODULE_ID_t
    else:
-    enum_orxMODULE_ID_t_520095071)
-  enum_orxFX_TYPE_t_520095489 = (when declared(enum_orxFX_TYPE_t):
-    when ownSizeof(enum_orxFX_TYPE_t) != ownSizeof(enum_orxFX_TYPE_t_520095488):
+    enum_orxMODULE_ID_t_520095034)
+  enum_orxFX_TYPE_t_520095452 = (when declared(enum_orxFX_TYPE_t):
+    when ownSizeof(enum_orxFX_TYPE_t) != ownSizeof(enum_orxFX_TYPE_t_520095451):
       static :
         warning("Declaration of " & "enum_orxFX_TYPE_t" &
             " exists but with different size")
     enum_orxFX_TYPE_t
    else:
-    enum_orxFX_TYPE_t_520095488)
-  orxFX_CURVE_PARAM_520095499 = (when declared(orxFX_CURVE_PARAM):
-    when ownSizeof(orxFX_CURVE_PARAM) != ownSizeof(orxFX_CURVE_PARAM_520095498):
+    enum_orxFX_TYPE_t_520095451)
+  orxFX_CURVE_PARAM_520095462 = (when declared(orxFX_CURVE_PARAM):
+    when ownSizeof(orxFX_CURVE_PARAM) != ownSizeof(orxFX_CURVE_PARAM_520095461):
       static :
         warning("Declaration of " & "orxFX_CURVE_PARAM" &
             " exists but with different size")
     orxFX_CURVE_PARAM
    else:
-    orxFX_CURVE_PARAM_520095498)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095221 = (when declared(
+    orxFX_CURVE_PARAM_520095461)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095184 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095220):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095183):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095220)
-  enum_orxFRAME_SPACE_t_520095513 = (when declared(enum_orxFRAME_SPACE_t):
-    when ownSizeof(enum_orxFRAME_SPACE_t) != ownSizeof(enum_orxFRAME_SPACE_t_520095512):
+    enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095183)
+  enum_orxFRAME_SPACE_t_520095476 = (when declared(enum_orxFRAME_SPACE_t):
+    when ownSizeof(enum_orxFRAME_SPACE_t) != ownSizeof(enum_orxFRAME_SPACE_t_520095475):
       static :
         warning("Declaration of " & "enum_orxFRAME_SPACE_t" &
             " exists but with different size")
     enum_orxFRAME_SPACE_t
    else:
-    enum_orxFRAME_SPACE_t_520095512)
-  orxCONFIG_BOOTSTRAP_FUNCTION_520095205 = (when declared(
+    enum_orxFRAME_SPACE_t_520095475)
+  orxCONFIG_BOOTSTRAP_FUNCTION_520095168 = (when declared(
       orxCONFIG_BOOTSTRAP_FUNCTION):
     when ownSizeof(orxCONFIG_BOOTSTRAP_FUNCTION) !=
-        ownSizeof(orxCONFIG_BOOTSTRAP_FUNCTION_520095204):
+        ownSizeof(orxCONFIG_BOOTSTRAP_FUNCTION_520095167):
       static :
         warning("Declaration of " & "orxCONFIG_BOOTSTRAP_FUNCTION" &
             " exists but with different size")
     orxCONFIG_BOOTSTRAP_FUNCTION
    else:
-    orxCONFIG_BOOTSTRAP_FUNCTION_520095204)
-  enum_orxCONFIG_EVENT_t_520095197 = (when declared(enum_orxCONFIG_EVENT_t):
-    when ownSizeof(enum_orxCONFIG_EVENT_t) != ownSizeof(enum_orxCONFIG_EVENT_t_520095196):
+    orxCONFIG_BOOTSTRAP_FUNCTION_520095167)
+  enum_orxCONFIG_EVENT_t_520095160 = (when declared(enum_orxCONFIG_EVENT_t):
+    when ownSizeof(enum_orxCONFIG_EVENT_t) != ownSizeof(enum_orxCONFIG_EVENT_t_520095159):
       static :
         warning("Declaration of " & "enum_orxCONFIG_EVENT_t" &
             " exists but with different size")
     enum_orxCONFIG_EVENT_t
    else:
-    enum_orxCONFIG_EVENT_t_520095196)
-  enum_orxTRIGGER_EVENT_t_520095537 = (when declared(enum_orxTRIGGER_EVENT_t):
+    enum_orxCONFIG_EVENT_t_520095159)
+  enum_orxTRIGGER_EVENT_t_520095500 = (when declared(enum_orxTRIGGER_EVENT_t):
     when ownSizeof(enum_orxTRIGGER_EVENT_t) !=
-        ownSizeof(enum_orxTRIGGER_EVENT_t_520095536):
+        ownSizeof(enum_orxTRIGGER_EVENT_t_520095499):
       static :
         warning("Declaration of " & "enum_orxTRIGGER_EVENT_t" &
             " exists but with different size")
     enum_orxTRIGGER_EVENT_t
    else:
-    enum_orxTRIGGER_EVENT_t_520095536)
-  enum_orxINPUT_TYPE_t_520095345 = (when declared(enum_orxINPUT_TYPE_t):
-    when ownSizeof(enum_orxINPUT_TYPE_t) != ownSizeof(enum_orxINPUT_TYPE_t_520095344):
+    enum_orxTRIGGER_EVENT_t_520095499)
+  enum_orxINPUT_TYPE_t_520095308 = (when declared(enum_orxINPUT_TYPE_t):
+    when ownSizeof(enum_orxINPUT_TYPE_t) != ownSizeof(enum_orxINPUT_TYPE_t_520095307):
       static :
         warning("Declaration of " & "enum_orxINPUT_TYPE_t" &
             " exists but with different size")
     enum_orxINPUT_TYPE_t
    else:
-    enum_orxINPUT_TYPE_t_520095344)
-  orxTREE_520095147 = (when declared(orxTREE):
-    when ownSizeof(orxTREE) != ownSizeof(orxTREE_520095146):
+    enum_orxINPUT_TYPE_t_520095307)
+  orxTREE_520095110 = (when declared(orxTREE):
+    when ownSizeof(orxTREE) != ownSizeof(orxTREE_520095109):
       static :
         warning("Declaration of " & "orxTREE" &
             " exists but with different size")
     orxTREE
    else:
-    orxTREE_520095146)
-  orxRESOURCE_FUNCTION_DELETE_520095399 = (when declared(
+    orxTREE_520095109)
+  orxRESOURCE_FUNCTION_DELETE_520095362 = (when declared(
       orxRESOURCE_FUNCTION_DELETE):
     when ownSizeof(orxRESOURCE_FUNCTION_DELETE) !=
-        ownSizeof(orxRESOURCE_FUNCTION_DELETE_520095398):
+        ownSizeof(orxRESOURCE_FUNCTION_DELETE_520095361):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_DELETE" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_DELETE
    else:
-    orxRESOURCE_FUNCTION_DELETE_520095398)
-  enum_orxPHYSICS_EVENT_t_520095557 = (when declared(enum_orxPHYSICS_EVENT_t):
+    orxRESOURCE_FUNCTION_DELETE_520095361)
+  enum_orxPHYSICS_EVENT_t_520095520 = (when declared(enum_orxPHYSICS_EVENT_t):
     when ownSizeof(enum_orxPHYSICS_EVENT_t) !=
-        ownSizeof(enum_orxPHYSICS_EVENT_t_520095556):
+        ownSizeof(enum_orxPHYSICS_EVENT_t_520095519):
       static :
         warning("Declaration of " & "enum_orxPHYSICS_EVENT_t" &
             " exists but with different size")
     enum_orxPHYSICS_EVENT_t
    else:
-    enum_orxPHYSICS_EVENT_t_520095556)
-  orxRENDER_EVENT_PAYLOAD_520095611 = (when declared(orxRENDER_EVENT_PAYLOAD):
+    enum_orxPHYSICS_EVENT_t_520095519)
+  orxRENDER_EVENT_PAYLOAD_520095574 = (when declared(orxRENDER_EVENT_PAYLOAD):
     when ownSizeof(orxRENDER_EVENT_PAYLOAD) !=
-        ownSizeof(orxRENDER_EVENT_PAYLOAD_520095610):
+        ownSizeof(orxRENDER_EVENT_PAYLOAD_520095573):
       static :
         warning("Declaration of " & "orxRENDER_EVENT_PAYLOAD" &
             " exists but with different size")
     orxRENDER_EVENT_PAYLOAD
    else:
-    orxRENDER_EVENT_PAYLOAD_520095610)
-  enum_orxSTRUCTURE_ID_t_520095149 = (when declared(enum_orxSTRUCTURE_ID_t):
-    when ownSizeof(enum_orxSTRUCTURE_ID_t) != ownSizeof(enum_orxSTRUCTURE_ID_t_520095148):
+    orxRENDER_EVENT_PAYLOAD_520095573)
+  enum_orxSTRUCTURE_ID_t_520095112 = (when declared(enum_orxSTRUCTURE_ID_t):
+    when ownSizeof(enum_orxSTRUCTURE_ID_t) != ownSizeof(enum_orxSTRUCTURE_ID_t_520095111):
       static :
         warning("Declaration of " & "enum_orxSTRUCTURE_ID_t" &
             " exists but with different size")
     enum_orxSTRUCTURE_ID_t
    else:
-    enum_orxSTRUCTURE_ID_t_520095148)
-  orxSHADER_EVENT_PAYLOAD_520095595 = (when declared(orxSHADER_EVENT_PAYLOAD):
+    enum_orxSTRUCTURE_ID_t_520095111)
+  orxSHADER_EVENT_PAYLOAD_520095558 = (when declared(orxSHADER_EVENT_PAYLOAD):
     when ownSizeof(orxSHADER_EVENT_PAYLOAD) !=
-        ownSizeof(orxSHADER_EVENT_PAYLOAD_520095594):
+        ownSizeof(orxSHADER_EVENT_PAYLOAD_520095557):
       static :
         warning("Declaration of " & "orxSHADER_EVENT_PAYLOAD" &
             " exists but with different size")
     orxSHADER_EVENT_PAYLOAD
    else:
-    orxSHADER_EVENT_PAYLOAD_520095594)
-  orxCONFIG_SAVE_FUNCTION_520095201 = (when declared(orxCONFIG_SAVE_FUNCTION):
+    orxSHADER_EVENT_PAYLOAD_520095557)
+  orxCONFIG_SAVE_FUNCTION_520095164 = (when declared(orxCONFIG_SAVE_FUNCTION):
     when ownSizeof(orxCONFIG_SAVE_FUNCTION) !=
-        ownSizeof(orxCONFIG_SAVE_FUNCTION_520095200):
+        ownSizeof(orxCONFIG_SAVE_FUNCTION_520095163):
       static :
         warning("Declaration of " & "orxCONFIG_SAVE_FUNCTION" &
             " exists but with different size")
     orxCONFIG_SAVE_FUNCTION
    else:
-    orxCONFIG_SAVE_FUNCTION_520095200)
-  orxCLOCK_520095129 = (when declared(orxCLOCK):
-    when ownSizeof(orxCLOCK) != ownSizeof(orxCLOCK_520095128):
+    orxCONFIG_SAVE_FUNCTION_520095163)
+  orxCLOCK_520095092 = (when declared(orxCLOCK):
+    when ownSizeof(orxCLOCK) != ownSizeof(orxCLOCK_520095091):
       static :
         warning("Declaration of " & "orxCLOCK" &
             " exists but with different size")
     orxCLOCK
    else:
-    orxCLOCK_520095128)
-  struct_orxANIM_CUSTOM_EVENT_t_520095173 = (when declared(
+    orxCLOCK_520095091)
+  struct_orxANIM_CUSTOM_EVENT_t_520095136 = (when declared(
       struct_orxANIM_CUSTOM_EVENT_t):
     when ownSizeof(struct_orxANIM_CUSTOM_EVENT_t) !=
-        ownSizeof(struct_orxANIM_CUSTOM_EVENT_t_520095172):
+        ownSizeof(struct_orxANIM_CUSTOM_EVENT_t_520095135):
       static :
         warning("Declaration of " & "struct_orxANIM_CUSTOM_EVENT_t" &
             " exists but with different size")
     struct_orxANIM_CUSTOM_EVENT_t
    else:
-    struct_orxANIM_CUSTOM_EVENT_t_520095172)
-  orxPLUGIN_CORE_FUNCTION_520095247 = (when declared(orxPLUGIN_CORE_FUNCTION):
+    struct_orxANIM_CUSTOM_EVENT_t_520095135)
+  orxPLUGIN_CORE_FUNCTION_520095210 = (when declared(orxPLUGIN_CORE_FUNCTION):
     when ownSizeof(orxPLUGIN_CORE_FUNCTION) !=
-        ownSizeof(orxPLUGIN_CORE_FUNCTION_520095246):
+        ownSizeof(orxPLUGIN_CORE_FUNCTION_520095209):
       static :
         warning("Declaration of " & "orxPLUGIN_CORE_FUNCTION" &
             " exists but with different size")
     orxPLUGIN_CORE_FUNCTION
    else:
-    orxPLUGIN_CORE_FUNCTION_520095246)
-  orxTRIGGER_EVENT_520095539 = (when declared(orxTRIGGER_EVENT):
-    when ownSizeof(orxTRIGGER_EVENT) != ownSizeof(orxTRIGGER_EVENT_520095538):
+    orxPLUGIN_CORE_FUNCTION_520095209)
+  orxTRIGGER_EVENT_520095502 = (when declared(orxTRIGGER_EVENT):
+    when ownSizeof(orxTRIGGER_EVENT) != ownSizeof(orxTRIGGER_EVENT_520095501):
       static :
         warning("Declaration of " & "orxTRIGGER_EVENT" &
             " exists but with different size")
     orxTRIGGER_EVENT
    else:
-    orxTRIGGER_EVENT_520095538)
-  struct_orxRESOURCE_EVENT_PAYLOAD_t_520095409 = (when declared(
+    orxTRIGGER_EVENT_520095501)
+  struct_orxRESOURCE_EVENT_PAYLOAD_t_520095372 = (when declared(
       struct_orxRESOURCE_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxRESOURCE_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxRESOURCE_EVENT_PAYLOAD_t_520095408):
+        ownSizeof(struct_orxRESOURCE_EVENT_PAYLOAD_t_520095371):
       static :
         warning("Declaration of " & "struct_orxRESOURCE_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxRESOURCE_EVENT_PAYLOAD_t
    else:
-    struct_orxRESOURCE_EVENT_PAYLOAD_t_520095408)
-  struct_orxBODY_PART_DEF_t_520095549 = (when declared(struct_orxBODY_PART_DEF_t):
+    struct_orxRESOURCE_EVENT_PAYLOAD_t_520095371)
+  struct_orxBODY_PART_DEF_t_520095512 = (when declared(struct_orxBODY_PART_DEF_t):
     when ownSizeof(struct_orxBODY_PART_DEF_t) !=
-        ownSizeof(struct_orxBODY_PART_DEF_t_520095548):
+        ownSizeof(struct_orxBODY_PART_DEF_t_520095511):
       static :
         warning("Declaration of " & "struct_orxBODY_PART_DEF_t" &
             " exists but with different size")
     struct_orxBODY_PART_DEF_t
    else:
-    struct_orxBODY_PART_DEF_t_520095548)
-  struct_orxCOMMAND_VAR_DEF_t_520095187 = (when declared(
+    struct_orxBODY_PART_DEF_t_520095511)
+  struct_orxCOMMAND_VAR_DEF_t_520095150 = (when declared(
       struct_orxCOMMAND_VAR_DEF_t):
     when ownSizeof(struct_orxCOMMAND_VAR_DEF_t) !=
-        ownSizeof(struct_orxCOMMAND_VAR_DEF_t_520095186):
+        ownSizeof(struct_orxCOMMAND_VAR_DEF_t_520095149):
       static :
         warning("Declaration of " & "struct_orxCOMMAND_VAR_DEF_t" &
             " exists but with different size")
     struct_orxCOMMAND_VAR_DEF_t
    else:
-    struct_orxCOMMAND_VAR_DEF_t_520095186)
-  struct_orxVECTOR_t_520095094 = (when declared(struct_orxVECTOR_t):
-    when ownSizeof(struct_orxVECTOR_t) != ownSizeof(struct_orxVECTOR_t_520095093):
+    struct_orxCOMMAND_VAR_DEF_t_520095149)
+  struct_orxVECTOR_t_520095057 = (when declared(struct_orxVECTOR_t):
+    when ownSizeof(struct_orxVECTOR_t) != ownSizeof(struct_orxVECTOR_t_520095056):
       static :
         warning("Declaration of " & "struct_orxVECTOR_t" &
             " exists but with different size")
     struct_orxVECTOR_t
    else:
-    struct_orxVECTOR_t_520095093)
-  orxCOMMAND_FUNCTION_520095195 = (when declared(orxCOMMAND_FUNCTION):
-    when ownSizeof(orxCOMMAND_FUNCTION) != ownSizeof(orxCOMMAND_FUNCTION_520095194):
+    struct_orxVECTOR_t_520095056)
+  orxCOMMAND_FUNCTION_520095158 = (when declared(orxCOMMAND_FUNCTION):
+    when ownSizeof(orxCOMMAND_FUNCTION) != ownSizeof(orxCOMMAND_FUNCTION_520095157):
       static :
         warning("Declaration of " & "orxCOMMAND_FUNCTION" &
             " exists but with different size")
     orxCOMMAND_FUNCTION
    else:
-    orxCOMMAND_FUNCTION_520095194)
-  orxRESOURCE_FUNCTION_WRITE_520095397 = (when declared(
+    orxCOMMAND_FUNCTION_520095157)
+  orxRESOURCE_FUNCTION_WRITE_520095360 = (when declared(
       orxRESOURCE_FUNCTION_WRITE):
     when ownSizeof(orxRESOURCE_FUNCTION_WRITE) !=
-        ownSizeof(orxRESOURCE_FUNCTION_WRITE_520095396):
+        ownSizeof(orxRESOURCE_FUNCTION_WRITE_520095359):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_WRITE" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_WRITE
    else:
-    orxRESOURCE_FUNCTION_WRITE_520095396)
-  orxAABOX_520095419 = (when declared(orxAABOX):
-    when ownSizeof(orxAABOX) != ownSizeof(orxAABOX_520095418):
+    orxRESOURCE_FUNCTION_WRITE_520095359)
+  orxAABOX_520095382 = (when declared(orxAABOX):
+    when ownSizeof(orxAABOX) != ownSizeof(orxAABOX_520095381):
       static :
         warning("Declaration of " & "orxAABOX" &
             " exists but with different size")
     orxAABOX
    else:
-    orxAABOX_520095418)
-  orxLOCALE_EVENT_PAYLOAD_520095377 = (when declared(orxLOCALE_EVENT_PAYLOAD):
+    orxAABOX_520095381)
+  orxLOCALE_EVENT_PAYLOAD_520095340 = (when declared(orxLOCALE_EVENT_PAYLOAD):
     when ownSizeof(orxLOCALE_EVENT_PAYLOAD) !=
-        ownSizeof(orxLOCALE_EVENT_PAYLOAD_520095376):
+        ownSizeof(orxLOCALE_EVENT_PAYLOAD_520095339):
       static :
         warning("Declaration of " & "orxLOCALE_EVENT_PAYLOAD" &
             " exists but with different size")
     orxLOCALE_EVENT_PAYLOAD
    else:
-    orxLOCALE_EVENT_PAYLOAD_520095376)
-  orxBODY_DEF_520095547 = (when declared(orxBODY_DEF):
-    when ownSizeof(orxBODY_DEF) != ownSizeof(orxBODY_DEF_520095546):
+    orxLOCALE_EVENT_PAYLOAD_520095339)
+  orxBODY_DEF_520095510 = (when declared(orxBODY_DEF):
+    when ownSizeof(orxBODY_DEF) != ownSizeof(orxBODY_DEF_520095509):
       static :
         warning("Declaration of " & "orxBODY_DEF" &
             " exists but with different size")
     orxBODY_DEF
    else:
-    orxBODY_DEF_520095546)
-  orxBODY_JOINT_520095575 = (when declared(orxBODY_JOINT):
-    when ownSizeof(orxBODY_JOINT) != ownSizeof(orxBODY_JOINT_520095574):
+    orxBODY_DEF_520095509)
+  orxBODY_JOINT_520095538 = (when declared(orxBODY_JOINT):
+    when ownSizeof(orxBODY_JOINT) != ownSizeof(orxBODY_JOINT_520095537):
       static :
         warning("Declaration of " & "orxBODY_JOINT" &
             " exists but with different size")
     orxBODY_JOINT
    else:
-    orxBODY_JOINT_520095574)
-  orxSHADER_PARAM_TYPE_520095581 = (when declared(orxSHADER_PARAM_TYPE):
-    when ownSizeof(orxSHADER_PARAM_TYPE) != ownSizeof(orxSHADER_PARAM_TYPE_520095580):
+    orxBODY_JOINT_520095537)
+  orxSHADER_PARAM_TYPE_520095544 = (when declared(orxSHADER_PARAM_TYPE):
+    when ownSizeof(orxSHADER_PARAM_TYPE) != ownSizeof(orxSHADER_PARAM_TYPE_520095543):
       static :
         warning("Declaration of " & "orxSHADER_PARAM_TYPE" &
             " exists but with different size")
     orxSHADER_PARAM_TYPE
    else:
-    orxSHADER_PARAM_TYPE_520095580)
-  orxBANK_520095259 = (when declared(orxBANK):
-    when ownSizeof(orxBANK) != ownSizeof(orxBANK_520095258):
+    orxSHADER_PARAM_TYPE_520095543)
+  orxBANK_520095222 = (when declared(orxBANK):
+    when ownSizeof(orxBANK) != ownSizeof(orxBANK_520095221):
       static :
         warning("Declaration of " & "orxBANK" &
             " exists but with different size")
     orxBANK
    else:
-    orxBANK_520095258)
-  orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095219 = (when declared(
+    orxBANK_520095221)
+  orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095182 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_DISPLAY):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_DISPLAY) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095218):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095181):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_DISPLAY" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_DISPLAY
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095218)
-  orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095223 = (when declared(
+    orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095181)
+  orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095186 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095222):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095185):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095222)
-  enum_orxDISPLAY_BLEND_MODE_t_520095301 = (when declared(
+    orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095185)
+  enum_orxDISPLAY_BLEND_MODE_t_520095264 = (when declared(
       enum_orxDISPLAY_BLEND_MODE_t):
     when ownSizeof(enum_orxDISPLAY_BLEND_MODE_t) !=
-        ownSizeof(enum_orxDISPLAY_BLEND_MODE_t_520095300):
+        ownSizeof(enum_orxDISPLAY_BLEND_MODE_t_520095263):
       static :
         warning("Declaration of " & "enum_orxDISPLAY_BLEND_MODE_t" &
             " exists but with different size")
     enum_orxDISPLAY_BLEND_MODE_t
    else:
-    enum_orxDISPLAY_BLEND_MODE_t_520095300)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095241 = (when declared(
+    enum_orxDISPLAY_BLEND_MODE_t_520095263)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095204 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095240):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095203):
       static :
         warning("Declaration of " &
             "enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095240)
-  orxFONT_520095323 = (when declared(orxFONT):
-    when ownSizeof(orxFONT) != ownSizeof(orxFONT_520095322):
+    enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095203)
+  orxFONT_520095286 = (when declared(orxFONT):
+    when ownSizeof(orxFONT) != ownSizeof(orxFONT_520095285):
       static :
         warning("Declaration of " & "orxFONT" &
             " exists but with different size")
     orxFONT
    else:
-    orxFONT_520095322)
-  orxGRAPHIC_520095421 = (when declared(orxGRAPHIC):
-    when ownSizeof(orxGRAPHIC) != ownSizeof(orxGRAPHIC_520095420):
+    orxFONT_520095285)
+  orxGRAPHIC_520095384 = (when declared(orxGRAPHIC):
+    when ownSizeof(orxGRAPHIC) != ownSizeof(orxGRAPHIC_520095383):
       static :
         warning("Declaration of " & "orxGRAPHIC" &
             " exists but with different size")
     orxGRAPHIC
    else:
-    orxGRAPHIC_520095420)
-  struct_orxCOMMAND_VAR_t_520095191 = (when declared(struct_orxCOMMAND_VAR_t):
+    orxGRAPHIC_520095383)
+  struct_orxCOMMAND_VAR_t_520095154 = (when declared(struct_orxCOMMAND_VAR_t):
     when ownSizeof(struct_orxCOMMAND_VAR_t) !=
-        ownSizeof(struct_orxCOMMAND_VAR_t_520095190):
+        ownSizeof(struct_orxCOMMAND_VAR_t_520095153):
       static :
         warning("Declaration of " & "struct_orxCOMMAND_VAR_t" &
             " exists but with different size")
     struct_orxCOMMAND_VAR_t
    else:
-    struct_orxCOMMAND_VAR_t_520095190)
-  enum_orxMEMORY_TYPE_t_520095090 = (when declared(enum_orxMEMORY_TYPE_t):
-    when ownSizeof(enum_orxMEMORY_TYPE_t) != ownSizeof(enum_orxMEMORY_TYPE_t_520095089):
+    struct_orxCOMMAND_VAR_t_520095153)
+  enum_orxMEMORY_TYPE_t_520095053 = (when declared(enum_orxMEMORY_TYPE_t):
+    when ownSizeof(enum_orxMEMORY_TYPE_t) != ownSizeof(enum_orxMEMORY_TYPE_t_520095052):
       static :
         warning("Declaration of " & "enum_orxMEMORY_TYPE_t" &
             " exists but with different size")
     enum_orxMEMORY_TYPE_t
    else:
-    enum_orxMEMORY_TYPE_t_520095089)
-  orxDOUBLE_520095042 = (when declared(orxDOUBLE):
-    when ownSizeof(orxDOUBLE) != ownSizeof(orxDOUBLE_520095041):
+    enum_orxMEMORY_TYPE_t_520095052)
+  orxDOUBLE_520095005 = (when declared(orxDOUBLE):
+    when ownSizeof(orxDOUBLE) != ownSizeof(orxDOUBLE_520095004):
       static :
         warning("Declaration of " & "orxDOUBLE" &
             " exists but with different size")
     orxDOUBLE
    else:
-    orxDOUBLE_520095041)
-  orxCHARACTER_GLYPH_520095291 = (when declared(orxCHARACTER_GLYPH):
-    when ownSizeof(orxCHARACTER_GLYPH) != ownSizeof(orxCHARACTER_GLYPH_520095290):
+    orxDOUBLE_520095004)
+  orxCHARACTER_GLYPH_520095254 = (when declared(orxCHARACTER_GLYPH):
+    when ownSizeof(orxCHARACTER_GLYPH) != ownSizeof(orxCHARACTER_GLYPH_520095253):
       static :
         warning("Declaration of " & "orxCHARACTER_GLYPH" &
             " exists but with different size")
     orxCHARACTER_GLYPH
    else:
-    orxCHARACTER_GLYPH_520095290)
-  orxCHARACTER_MAP_520095295 = (when declared(orxCHARACTER_MAP):
-    when ownSizeof(orxCHARACTER_MAP) != ownSizeof(orxCHARACTER_MAP_520095294):
+    orxCHARACTER_GLYPH_520095253)
+  orxCHARACTER_MAP_520095258 = (when declared(orxCHARACTER_MAP):
+    when ownSizeof(orxCHARACTER_MAP) != ownSizeof(orxCHARACTER_MAP_520095257):
       static :
         warning("Declaration of " & "orxCHARACTER_MAP" &
             " exists but with different size")
     orxCHARACTER_MAP
    else:
-    orxCHARACTER_MAP_520095294)
-  orxINPUT_EVENT_PAYLOAD_520095359 = (when declared(orxINPUT_EVENT_PAYLOAD):
-    when ownSizeof(orxINPUT_EVENT_PAYLOAD) != ownSizeof(orxINPUT_EVENT_PAYLOAD_520095358):
+    orxCHARACTER_MAP_520095257)
+  orxINPUT_EVENT_PAYLOAD_520095322 = (when declared(orxINPUT_EVENT_PAYLOAD):
+    when ownSizeof(orxINPUT_EVENT_PAYLOAD) != ownSizeof(orxINPUT_EVENT_PAYLOAD_520095321):
       static :
         warning("Declaration of " & "orxINPUT_EVENT_PAYLOAD" &
             " exists but with different size")
     orxINPUT_EVENT_PAYLOAD
    else:
-    orxINPUT_EVENT_PAYLOAD_520095358)
-  enum_orxSOUNDSYSTEM_STATUS_t_520095445 = (when declared(
+    orxINPUT_EVENT_PAYLOAD_520095321)
+  enum_orxSOUNDSYSTEM_STATUS_t_520095408 = (when declared(
       enum_orxSOUNDSYSTEM_STATUS_t):
     when ownSizeof(enum_orxSOUNDSYSTEM_STATUS_t) !=
-        ownSizeof(enum_orxSOUNDSYSTEM_STATUS_t_520095444):
+        ownSizeof(enum_orxSOUNDSYSTEM_STATUS_t_520095407):
       static :
         warning("Declaration of " & "enum_orxSOUNDSYSTEM_STATUS_t" &
             " exists but with different size")
     enum_orxSOUNDSYSTEM_STATUS_t
    else:
-    enum_orxSOUNDSYSTEM_STATUS_t_520095444)
-  orxRESOURCE_FUNCTION_TELL_520095393 = (when declared(orxRESOURCE_FUNCTION_TELL):
+    enum_orxSOUNDSYSTEM_STATUS_t_520095407)
+  orxRESOURCE_FUNCTION_TELL_520095356 = (when declared(orxRESOURCE_FUNCTION_TELL):
     when ownSizeof(orxRESOURCE_FUNCTION_TELL) !=
-        ownSizeof(orxRESOURCE_FUNCTION_TELL_520095392):
+        ownSizeof(orxRESOURCE_FUNCTION_TELL_520095355):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_TELL" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_TELL
    else:
-    orxRESOURCE_FUNCTION_TELL_520095392)
-  orxJOYSTICK_BUTTON_520095327 = (when declared(orxJOYSTICK_BUTTON):
-    when ownSizeof(orxJOYSTICK_BUTTON) != ownSizeof(orxJOYSTICK_BUTTON_520095326):
+    orxRESOURCE_FUNCTION_TELL_520095355)
+  orxJOYSTICK_BUTTON_520095290 = (when declared(orxJOYSTICK_BUTTON):
+    when ownSizeof(orxJOYSTICK_BUTTON) != ownSizeof(orxJOYSTICK_BUTTON_520095289):
       static :
         warning("Declaration of " & "orxJOYSTICK_BUTTON" &
             " exists but with different size")
     orxJOYSTICK_BUTTON
    else:
-    orxJOYSTICK_BUTTON_520095326)
-  orxVIEWPORT_EVENT_520095603 = (when declared(orxVIEWPORT_EVENT):
-    when ownSizeof(orxVIEWPORT_EVENT) != ownSizeof(orxVIEWPORT_EVENT_520095602):
+    orxJOYSTICK_BUTTON_520095289)
+  orxVIEWPORT_EVENT_520095566 = (when declared(orxVIEWPORT_EVENT):
+    when ownSizeof(orxVIEWPORT_EVENT) != ownSizeof(orxVIEWPORT_EVENT_520095565):
       static :
         warning("Declaration of " & "orxVIEWPORT_EVENT" &
             " exists but with different size")
     orxVIEWPORT_EVENT
    else:
-    orxVIEWPORT_EVENT_520095602)
-  orxEVENT_520095367 = (when declared(orxEVENT):
-    when ownSizeof(orxEVENT) != ownSizeof(orxEVENT_520095366):
+    orxVIEWPORT_EVENT_520095565)
+  orxEVENT_520095330 = (when declared(orxEVENT):
+    when ownSizeof(orxEVENT) != ownSizeof(orxEVENT_520095329):
       static :
         warning("Declaration of " & "orxEVENT" &
             " exists but with different size")
     orxEVENT
    else:
-    orxEVENT_520095366)
-  orxSOUND_520095463 = (when declared(orxSOUND):
-    when ownSizeof(orxSOUND) != ownSizeof(orxSOUND_520095462):
+    orxEVENT_520095329)
+  orxSOUND_520095426 = (when declared(orxSOUND):
+    when ownSizeof(orxSOUND) != ownSizeof(orxSOUND_520095425):
       static :
         warning("Declaration of " & "orxSOUND" &
             " exists but with different size")
     orxSOUND
    else:
-    orxSOUND_520095462)
-  orxMODULE_ID_520095074 = (when declared(orxMODULE_ID):
-    when ownSizeof(orxMODULE_ID) != ownSizeof(orxMODULE_ID_520095073):
+    orxSOUND_520095425)
+  orxMODULE_ID_520095037 = (when declared(orxMODULE_ID):
+    when ownSizeof(orxMODULE_ID) != ownSizeof(orxMODULE_ID_520095036):
       static :
         warning("Declaration of " & "orxMODULE_ID" &
             " exists but with different size")
     orxMODULE_ID
    else:
-    orxMODULE_ID_520095073)
-  orxRESOURCE_EVENT_PAYLOAD_520095411 = (when declared(orxRESOURCE_EVENT_PAYLOAD):
+    orxMODULE_ID_520095036)
+  orxRESOURCE_EVENT_PAYLOAD_520095374 = (when declared(orxRESOURCE_EVENT_PAYLOAD):
     when ownSizeof(orxRESOURCE_EVENT_PAYLOAD) !=
-        ownSizeof(orxRESOURCE_EVENT_PAYLOAD_520095410):
+        ownSizeof(orxRESOURCE_EVENT_PAYLOAD_520095373):
       static :
         warning("Declaration of " & "orxRESOURCE_EVENT_PAYLOAD" &
             " exists but with different size")
     orxRESOURCE_EVENT_PAYLOAD
    else:
-    orxRESOURCE_EVENT_PAYLOAD_520095410)
-  struct_orxPHYSICS_EVENT_PAYLOAD_t_520095561 = (when declared(
+    orxRESOURCE_EVENT_PAYLOAD_520095373)
+  struct_orxPHYSICS_EVENT_PAYLOAD_t_520095524 = (when declared(
       struct_orxPHYSICS_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxPHYSICS_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxPHYSICS_EVENT_PAYLOAD_t_520095560):
+        ownSizeof(struct_orxPHYSICS_EVENT_PAYLOAD_t_520095523):
       static :
         warning("Declaration of " & "struct_orxPHYSICS_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxPHYSICS_EVENT_PAYLOAD_t
    else:
-    struct_orxPHYSICS_EVENT_PAYLOAD_t_520095560)
-  orxPLUGIN_FUNCTION_520095211 = (when declared(orxPLUGIN_FUNCTION):
-    when ownSizeof(orxPLUGIN_FUNCTION) != ownSizeof(orxPLUGIN_FUNCTION_520095210):
+    struct_orxPHYSICS_EVENT_PAYLOAD_t_520095523)
+  orxPLUGIN_FUNCTION_520095174 = (when declared(orxPLUGIN_FUNCTION):
+    when ownSizeof(orxPLUGIN_FUNCTION) != ownSizeof(orxPLUGIN_FUNCTION_520095173):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION" &
             " exists but with different size")
     orxPLUGIN_FUNCTION
    else:
-    orxPLUGIN_FUNCTION_520095210)
-  struct_orxDISPLAY_VERTEX_t_520095269 = (when declared(
+    orxPLUGIN_FUNCTION_520095173)
+  struct_orxDISPLAY_VERTEX_t_520095232 = (when declared(
       struct_orxDISPLAY_VERTEX_t):
     when ownSizeof(struct_orxDISPLAY_VERTEX_t) !=
-        ownSizeof(struct_orxDISPLAY_VERTEX_t_520095268):
+        ownSizeof(struct_orxDISPLAY_VERTEX_t_520095231):
       static :
         warning("Declaration of " & "struct_orxDISPLAY_VERTEX_t" &
             " exists but with different size")
     struct_orxDISPLAY_VERTEX_t
    else:
-    struct_orxDISPLAY_VERTEX_t_520095268)
-  struct_orxAABOX_t_520095417 = (when declared(struct_orxAABOX_t):
-    when ownSizeof(struct_orxAABOX_t) != ownSizeof(struct_orxAABOX_t_520095416):
+    struct_orxDISPLAY_VERTEX_t_520095231)
+  struct_orxAABOX_t_520095380 = (when declared(struct_orxAABOX_t):
+    when ownSizeof(struct_orxAABOX_t) != ownSizeof(struct_orxAABOX_t_520095379):
       static :
         warning("Declaration of " & "struct_orxAABOX_t" &
             " exists but with different size")
     struct_orxAABOX_t
    else:
-    struct_orxAABOX_t_520095416)
-  struct_orxBODY_JOINT_DEF_t_520095553 = (when declared(
+    struct_orxAABOX_t_520095379)
+  struct_orxBODY_JOINT_DEF_t_520095516 = (when declared(
       struct_orxBODY_JOINT_DEF_t):
     when ownSizeof(struct_orxBODY_JOINT_DEF_t) !=
-        ownSizeof(struct_orxBODY_JOINT_DEF_t_520095552):
+        ownSizeof(struct_orxBODY_JOINT_DEF_t_520095515):
       static :
         warning("Declaration of " & "struct_orxBODY_JOINT_DEF_t" &
             " exists but with different size")
     struct_orxBODY_JOINT_DEF_t
    else:
-    struct_orxBODY_JOINT_DEF_t_520095552)
-  orxANIM_CUSTOM_EVENT_520095175 = (when declared(orxANIM_CUSTOM_EVENT):
-    when ownSizeof(orxANIM_CUSTOM_EVENT) != ownSizeof(orxANIM_CUSTOM_EVENT_520095174):
+    struct_orxBODY_JOINT_DEF_t_520095515)
+  orxANIM_CUSTOM_EVENT_520095138 = (when declared(orxANIM_CUSTOM_EVENT):
+    when ownSizeof(orxANIM_CUSTOM_EVENT) != ownSizeof(orxANIM_CUSTOM_EVENT_520095137):
       static :
         warning("Declaration of " & "orxANIM_CUSTOM_EVENT" &
             " exists but with different size")
     orxANIM_CUSTOM_EVENT
    else:
-    orxANIM_CUSTOM_EVENT_520095174)
-  orxCLOCK_EVENT_520095127 = (when declared(orxCLOCK_EVENT):
-    when ownSizeof(orxCLOCK_EVENT) != ownSizeof(orxCLOCK_EVENT_520095126):
+    orxANIM_CUSTOM_EVENT_520095137)
+  orxCLOCK_EVENT_520095090 = (when declared(orxCLOCK_EVENT):
+    when ownSizeof(orxCLOCK_EVENT) != ownSizeof(orxCLOCK_EVENT_520095089):
       static :
         warning("Declaration of " & "orxCLOCK_EVENT" &
             " exists but with different size")
     orxCLOCK_EVENT
    else:
-    orxCLOCK_EVENT_520095126)
-  orxCLOCK_MODIFIER_520095115 = (when declared(orxCLOCK_MODIFIER):
-    when ownSizeof(orxCLOCK_MODIFIER) != ownSizeof(orxCLOCK_MODIFIER_520095114):
+    orxCLOCK_EVENT_520095089)
+  orxCLOCK_MODIFIER_520095078 = (when declared(orxCLOCK_MODIFIER):
+    when ownSizeof(orxCLOCK_MODIFIER) != ownSizeof(orxCLOCK_MODIFIER_520095077):
       static :
         warning("Declaration of " & "orxCLOCK_MODIFIER" &
             " exists but with different size")
     orxCLOCK_MODIFIER
    else:
-    orxCLOCK_MODIFIER_520095114)
-  orxFX_EVENT_520095505 = (when declared(orxFX_EVENT):
-    when ownSizeof(orxFX_EVENT) != ownSizeof(orxFX_EVENT_520095504):
+    orxCLOCK_MODIFIER_520095077)
+  orxFX_EVENT_520095468 = (when declared(orxFX_EVENT):
+    when ownSizeof(orxFX_EVENT) != ownSizeof(orxFX_EVENT_520095467):
       static :
         warning("Declaration of " & "orxFX_EVENT" &
             " exists but with different size")
     orxFX_EVENT
    else:
-    orxFX_EVENT_520095504)
-  struct_orxCOLOR_t_520095305 = (when declared(struct_orxCOLOR_t):
-    when ownSizeof(struct_orxCOLOR_t) != ownSizeof(struct_orxCOLOR_t_520095304):
+    orxFX_EVENT_520095467)
+  struct_orxCOLOR_t_520095268 = (when declared(struct_orxCOLOR_t):
+    when ownSizeof(struct_orxCOLOR_t) != ownSizeof(struct_orxCOLOR_t_520095267):
       static :
         warning("Declaration of " & "struct_orxCOLOR_t" &
             " exists but with different size")
     struct_orxCOLOR_t
    else:
-    struct_orxCOLOR_t_520095304)
-  orxRESOURCE_FUNCTION_CLOSE_520095387 = (when declared(
+    struct_orxCOLOR_t_520095267)
+  orxRESOURCE_FUNCTION_CLOSE_520095350 = (when declared(
       orxRESOURCE_FUNCTION_CLOSE):
     when ownSizeof(orxRESOURCE_FUNCTION_CLOSE) !=
-        ownSizeof(orxRESOURCE_FUNCTION_CLOSE_520095386):
+        ownSizeof(orxRESOURCE_FUNCTION_CLOSE_520095349):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_CLOSE" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_CLOSE
    else:
-    orxRESOURCE_FUNCTION_CLOSE_520095386)
-  struct_orxLINKLIST_NODE_t_520095133 = (when declared(struct_orxLINKLIST_NODE_t):
+    orxRESOURCE_FUNCTION_CLOSE_520095349)
+  struct_orxLINKLIST_NODE_t_520095096 = (when declared(struct_orxLINKLIST_NODE_t):
     when ownSizeof(struct_orxLINKLIST_NODE_t) !=
-        ownSizeof(struct_orxLINKLIST_NODE_t_520095132):
+        ownSizeof(struct_orxLINKLIST_NODE_t_520095095):
       static :
         warning("Declaration of " & "struct_orxLINKLIST_NODE_t" &
             " exists but with different size")
     struct_orxLINKLIST_NODE_t
    else:
-    struct_orxLINKLIST_NODE_t_520095132)
-  orxSPTR_520095052 = (when declared(orxSPTR):
-    when ownSizeof(orxSPTR) != ownSizeof(orxSPTR_520095051):
+    struct_orxLINKLIST_NODE_t_520095095)
+  orxSPTR_520095015 = (when declared(orxSPTR):
+    when ownSizeof(orxSPTR) != ownSizeof(orxSPTR_520095014):
       static :
         warning("Declaration of " & "orxSPTR" &
             " exists but with different size")
     orxSPTR
    else:
-    orxSPTR_520095051)
-  enum_orxTIMELINE_EVENT_t_520095527 = (when declared(enum_orxTIMELINE_EVENT_t):
+    orxSPTR_520095014)
+  enum_orxTIMELINE_EVENT_t_520095490 = (when declared(enum_orxTIMELINE_EVENT_t):
     when ownSizeof(enum_orxTIMELINE_EVENT_t) !=
-        ownSizeof(enum_orxTIMELINE_EVENT_t_520095526):
+        ownSizeof(enum_orxTIMELINE_EVENT_t_520095489):
       static :
         warning("Declaration of " & "enum_orxTIMELINE_EVENT_t" &
             " exists but with different size")
     enum_orxTIMELINE_EVENT_t
    else:
-    enum_orxTIMELINE_EVENT_t_520095526)
-  enum_orxVIEWPORT_EVENT_t_520095601 = (when declared(enum_orxVIEWPORT_EVENT_t):
+    enum_orxTIMELINE_EVENT_t_520095489)
+  enum_orxVIEWPORT_EVENT_t_520095564 = (when declared(enum_orxVIEWPORT_EVENT_t):
     when ownSizeof(enum_orxVIEWPORT_EVENT_t) !=
-        ownSizeof(enum_orxVIEWPORT_EVENT_t_520095600):
+        ownSizeof(enum_orxVIEWPORT_EVENT_t_520095563):
       static :
         warning("Declaration of " & "enum_orxVIEWPORT_EVENT_t" &
             " exists but with different size")
     enum_orxVIEWPORT_EVENT_t
    else:
-    enum_orxVIEWPORT_EVENT_t_520095600)
-  struct_orxCLOCK_INFO_t_520095121 = (when declared(struct_orxCLOCK_INFO_t):
-    when ownSizeof(struct_orxCLOCK_INFO_t) != ownSizeof(struct_orxCLOCK_INFO_t_520095120):
+    enum_orxVIEWPORT_EVENT_t_520095563)
+  struct_orxCLOCK_INFO_t_520095084 = (when declared(struct_orxCLOCK_INFO_t):
+    when ownSizeof(struct_orxCLOCK_INFO_t) != ownSizeof(struct_orxCLOCK_INFO_t_520095083):
       static :
         warning("Declaration of " & "struct_orxCLOCK_INFO_t" &
             " exists but with different size")
     struct_orxCLOCK_INFO_t
    else:
-    struct_orxCLOCK_INFO_t_520095120)
-  orxSTRUCTURE_ID_520095151 = (when declared(orxSTRUCTURE_ID):
-    when ownSizeof(orxSTRUCTURE_ID) != ownSizeof(orxSTRUCTURE_ID_520095150):
+    struct_orxCLOCK_INFO_t_520095083)
+  orxSTRUCTURE_ID_520095114 = (when declared(orxSTRUCTURE_ID):
+    when ownSizeof(orxSTRUCTURE_ID) != ownSizeof(orxSTRUCTURE_ID_520095113):
       static :
         warning("Declaration of " & "orxSTRUCTURE_ID" &
             " exists but with different size")
     orxSTRUCTURE_ID
    else:
-    orxSTRUCTURE_ID_520095150)
-  struct_orxOBOX_t_520095255 = (when declared(struct_orxOBOX_t):
-    when ownSizeof(struct_orxOBOX_t) != ownSizeof(struct_orxOBOX_t_520095254):
+    orxSTRUCTURE_ID_520095113)
+  struct_orxOBOX_t_520095218 = (when declared(struct_orxOBOX_t):
+    when ownSizeof(struct_orxOBOX_t) != ownSizeof(struct_orxOBOX_t_520095217):
       static :
         warning("Declaration of " & "struct_orxOBOX_t" &
             " exists but with different size")
     struct_orxOBOX_t
    else:
-    struct_orxOBOX_t_520095254)
-  orxSOUNDSYSTEM_STATUS_520095447 = (when declared(orxSOUNDSYSTEM_STATUS):
-    when ownSizeof(orxSOUNDSYSTEM_STATUS) != ownSizeof(orxSOUNDSYSTEM_STATUS_520095446):
+    struct_orxOBOX_t_520095217)
+  orxSOUNDSYSTEM_STATUS_520095410 = (when declared(orxSOUNDSYSTEM_STATUS):
+    when ownSizeof(orxSOUNDSYSTEM_STATUS) != ownSizeof(orxSOUNDSYSTEM_STATUS_520095409):
       static :
         warning("Declaration of " & "orxSOUNDSYSTEM_STATUS" &
             " exists but with different size")
     orxSOUNDSYSTEM_STATUS
    else:
-    orxSOUNDSYSTEM_STATUS_520095446)
-  orxFRAME_SPACE_520095515 = (when declared(orxFRAME_SPACE):
-    when ownSizeof(orxFRAME_SPACE) != ownSizeof(orxFRAME_SPACE_520095514):
+    orxSOUNDSYSTEM_STATUS_520095409)
+  orxFRAME_SPACE_520095478 = (when declared(orxFRAME_SPACE):
+    when ownSizeof(orxFRAME_SPACE) != ownSizeof(orxFRAME_SPACE_520095477):
       static :
         warning("Declaration of " & "orxFRAME_SPACE" &
             " exists but with different size")
     orxFRAME_SPACE
    else:
-    orxFRAME_SPACE_520095514)
-  orxMODULE_EXIT_FUNCTION_520095078 = (when declared(orxMODULE_EXIT_FUNCTION):
+    orxFRAME_SPACE_520095477)
+  orxMODULE_EXIT_FUNCTION_520095041 = (when declared(orxMODULE_EXIT_FUNCTION):
     when ownSizeof(orxMODULE_EXIT_FUNCTION) !=
-        ownSizeof(orxMODULE_EXIT_FUNCTION_520095077):
+        ownSizeof(orxMODULE_EXIT_FUNCTION_520095040):
       static :
         warning("Declaration of " & "orxMODULE_EXIT_FUNCTION" &
             " exists but with different size")
     orxMODULE_EXIT_FUNCTION
    else:
-    orxMODULE_EXIT_FUNCTION_520095077)
-  orxANIMPOINTER_520095181 = (when declared(orxANIMPOINTER):
-    when ownSizeof(orxANIMPOINTER) != ownSizeof(orxANIMPOINTER_520095180):
+    orxMODULE_EXIT_FUNCTION_520095040)
+  orxANIMPOINTER_520095144 = (when declared(orxANIMPOINTER):
+    when ownSizeof(orxANIMPOINTER) != ownSizeof(orxANIMPOINTER_520095143):
       static :
         warning("Declaration of " & "orxANIMPOINTER" &
             " exists but with different size")
     orxANIMPOINTER
    else:
-    orxANIMPOINTER_520095180)
-  orxHASHTABLE_520095261 = (when declared(orxHASHTABLE):
-    when ownSizeof(orxHASHTABLE) != ownSizeof(orxHASHTABLE_520095260):
+    orxANIMPOINTER_520095143)
+  orxHASHTABLE_520095224 = (when declared(orxHASHTABLE):
+    when ownSizeof(orxHASHTABLE) != ownSizeof(orxHASHTABLE_520095223):
       static :
         warning("Declaration of " & "orxHASHTABLE" &
             " exists but with different size")
     orxHASHTABLE
    else:
-    orxHASHTABLE_520095260)
-  enum_orxKEYBOARD_KEY_t_520095333 = (when declared(enum_orxKEYBOARD_KEY_t):
-    when ownSizeof(enum_orxKEYBOARD_KEY_t) != ownSizeof(enum_orxKEYBOARD_KEY_t_520095332):
+    orxHASHTABLE_520095223)
+  enum_orxKEYBOARD_KEY_t_520095296 = (when declared(enum_orxKEYBOARD_KEY_t):
+    when ownSizeof(enum_orxKEYBOARD_KEY_t) != ownSizeof(enum_orxKEYBOARD_KEY_t_520095295):
       static :
         warning("Declaration of " & "enum_orxKEYBOARD_KEY_t" &
             " exists but with different size")
     enum_orxKEYBOARD_KEY_t
    else:
-    enum_orxKEYBOARD_KEY_t_520095332)
-  struct_orxFX_EVENT_PAYLOAD_t_520095507 = (when declared(
+    enum_orxKEYBOARD_KEY_t_520095295)
+  struct_orxFX_EVENT_PAYLOAD_t_520095470 = (when declared(
       struct_orxFX_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxFX_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxFX_EVENT_PAYLOAD_t_520095506):
+        ownSizeof(struct_orxFX_EVENT_PAYLOAD_t_520095469):
       static :
         warning("Declaration of " & "struct_orxFX_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxFX_EVENT_PAYLOAD_t
    else:
-    struct_orxFX_EVENT_PAYLOAD_t_520095506)
-  struct_orxSOUND_STREAM_INFO_t_520095471 = (when declared(
+    struct_orxFX_EVENT_PAYLOAD_t_520095469)
+  struct_orxSOUND_STREAM_INFO_t_520095434 = (when declared(
       struct_orxSOUND_STREAM_INFO_t):
     when ownSizeof(struct_orxSOUND_STREAM_INFO_t) !=
-        ownSizeof(struct_orxSOUND_STREAM_INFO_t_520095470):
+        ownSizeof(struct_orxSOUND_STREAM_INFO_t_520095433):
       static :
         warning("Declaration of " & "struct_orxSOUND_STREAM_INFO_t" &
             " exists but with different size")
     struct_orxSOUND_STREAM_INFO_t
    else:
-    struct_orxSOUND_STREAM_INFO_t_520095470)
-  orxSYSTEM_EVENT_PAYLOAD_520095111 = (when declared(orxSYSTEM_EVENT_PAYLOAD):
+    struct_orxSOUND_STREAM_INFO_t_520095433)
+  orxSYSTEM_EVENT_PAYLOAD_520095074 = (when declared(orxSYSTEM_EVENT_PAYLOAD):
     when ownSizeof(orxSYSTEM_EVENT_PAYLOAD) !=
-        ownSizeof(orxSYSTEM_EVENT_PAYLOAD_520095110):
+        ownSizeof(orxSYSTEM_EVENT_PAYLOAD_520095073):
       static :
         warning("Declaration of " & "orxSYSTEM_EVENT_PAYLOAD" &
             " exists but with different size")
     orxSYSTEM_EVENT_PAYLOAD
    else:
-    orxSYSTEM_EVENT_PAYLOAD_520095110)
-  orxSOUND_EVENT_520095469 = (when declared(orxSOUND_EVENT):
-    when ownSizeof(orxSOUND_EVENT) != ownSizeof(orxSOUND_EVENT_520095468):
+    orxSYSTEM_EVENT_PAYLOAD_520095073)
+  orxSOUND_EVENT_520095432 = (when declared(orxSOUND_EVENT):
+    when ownSizeof(orxSOUND_EVENT) != ownSizeof(orxSOUND_EVENT_520095431):
       static :
         warning("Declaration of " & "orxSOUND_EVENT" &
             " exists but with different size")
     orxSOUND_EVENT
    else:
-    orxSOUND_EVENT_520095468)
-  struct_orxCHARACTER_GLYPH_t_520095289 = (when declared(
+    orxSOUND_EVENT_520095431)
+  struct_orxCHARACTER_GLYPH_t_520095252 = (when declared(
       struct_orxCHARACTER_GLYPH_t):
     when ownSizeof(struct_orxCHARACTER_GLYPH_t) !=
-        ownSizeof(struct_orxCHARACTER_GLYPH_t_520095288):
+        ownSizeof(struct_orxCHARACTER_GLYPH_t_520095251):
       static :
         warning("Declaration of " & "struct_orxCHARACTER_GLYPH_t" &
             " exists but with different size")
     struct_orxCHARACTER_GLYPH_t
    else:
-    struct_orxCHARACTER_GLYPH_t_520095288)
-  orxRESOURCE_TYPE_INFO_520095403 = (when declared(orxRESOURCE_TYPE_INFO):
-    when ownSizeof(orxRESOURCE_TYPE_INFO) != ownSizeof(orxRESOURCE_TYPE_INFO_520095402):
+    struct_orxCHARACTER_GLYPH_t_520095251)
+  orxRESOURCE_TYPE_INFO_520095366 = (when declared(orxRESOURCE_TYPE_INFO):
+    when ownSizeof(orxRESOURCE_TYPE_INFO) != ownSizeof(orxRESOURCE_TYPE_INFO_520095365):
       static :
         warning("Declaration of " & "orxRESOURCE_TYPE_INFO" &
             " exists but with different size")
     orxRESOURCE_TYPE_INFO
    else:
-    orxRESOURCE_TYPE_INFO_520095402)
-  orxPARAM_520095435 = (when declared(orxPARAM):
-    when ownSizeof(orxPARAM) != ownSizeof(orxPARAM_520095434):
+    orxRESOURCE_TYPE_INFO_520095365)
+  orxPARAM_520095398 = (when declared(orxPARAM):
+    when ownSizeof(orxPARAM) != ownSizeof(orxPARAM_520095397):
       static :
         warning("Declaration of " & "orxPARAM" &
             " exists but with different size")
     orxPARAM
    else:
-    orxPARAM_520095434)
-  enum_orxINPUT_MODE_t_520095349 = (when declared(enum_orxINPUT_MODE_t):
-    when ownSizeof(enum_orxINPUT_MODE_t) != ownSizeof(enum_orxINPUT_MODE_t_520095348):
+    orxPARAM_520095397)
+  enum_orxINPUT_MODE_t_520095312 = (when declared(enum_orxINPUT_MODE_t):
+    when ownSizeof(enum_orxINPUT_MODE_t) != ownSizeof(enum_orxINPUT_MODE_t_520095311):
       static :
         warning("Declaration of " & "enum_orxINPUT_MODE_t" &
             " exists but with different size")
     enum_orxINPUT_MODE_t
    else:
-    enum_orxINPUT_MODE_t_520095348)
-  orxSYSTEM_EVENT_520095100 = (when declared(orxSYSTEM_EVENT):
-    when ownSizeof(orxSYSTEM_EVENT) != ownSizeof(orxSYSTEM_EVENT_520095099):
+    enum_orxINPUT_MODE_t_520095311)
+  orxSYSTEM_EVENT_520095063 = (when declared(orxSYSTEM_EVENT):
+    when ownSizeof(orxSYSTEM_EVENT) != ownSizeof(orxSYSTEM_EVENT_520095062):
       static :
         warning("Declaration of " & "orxSYSTEM_EVENT" &
             " exists but with different size")
     orxSYSTEM_EVENT
    else:
-    orxSYSTEM_EVENT_520095099)
-  orxRESOURCE_FUNCTION_GET_SIZE_520095389 = (when declared(
+    orxSYSTEM_EVENT_520095062)
+  orxRESOURCE_FUNCTION_GET_SIZE_520095352 = (when declared(
       orxRESOURCE_FUNCTION_GET_SIZE):
     when ownSizeof(orxRESOURCE_FUNCTION_GET_SIZE) !=
-        ownSizeof(orxRESOURCE_FUNCTION_GET_SIZE_520095388):
+        ownSizeof(orxRESOURCE_FUNCTION_GET_SIZE_520095351):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_GET_SIZE" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_GET_SIZE
    else:
-    orxRESOURCE_FUNCTION_GET_SIZE_520095388)
-  struct_orxLINKLIST_t_520095135 = (when declared(struct_orxLINKLIST_t):
-    when ownSizeof(struct_orxLINKLIST_t) != ownSizeof(struct_orxLINKLIST_t_520095134):
+    orxRESOURCE_FUNCTION_GET_SIZE_520095351)
+  struct_orxLINKLIST_t_520095098 = (when declared(struct_orxLINKLIST_t):
+    when ownSizeof(struct_orxLINKLIST_t) != ownSizeof(struct_orxLINKLIST_t_520095097):
       static :
         warning("Declaration of " & "struct_orxLINKLIST_t" &
             " exists but with different size")
     struct_orxLINKLIST_t
    else:
-    struct_orxLINKLIST_t_520095134)
-  orxSOUND_FILTER_DATA_520095457 = (when declared(orxSOUND_FILTER_DATA):
-    when ownSizeof(orxSOUND_FILTER_DATA) != ownSizeof(orxSOUND_FILTER_DATA_520095456):
+    struct_orxLINKLIST_t_520095097)
+  orxSOUND_FILTER_DATA_520095420 = (when declared(orxSOUND_FILTER_DATA):
+    when ownSizeof(orxSOUND_FILTER_DATA) != ownSizeof(orxSOUND_FILTER_DATA_520095419):
       static :
         warning("Declaration of " & "orxSOUND_FILTER_DATA" &
             " exists but with different size")
     orxSOUND_FILTER_DATA
    else:
-    orxSOUND_FILTER_DATA_520095456)
-  orxOBJECT_EVENT_520095485 = (when declared(orxOBJECT_EVENT):
-    when ownSizeof(orxOBJECT_EVENT) != ownSizeof(orxOBJECT_EVENT_520095484):
+    orxSOUND_FILTER_DATA_520095419)
+  orxOBJECT_EVENT_520095448 = (when declared(orxOBJECT_EVENT):
+    when ownSizeof(orxOBJECT_EVENT) != ownSizeof(orxOBJECT_EVENT_520095447):
       static :
         warning("Declaration of " & "orxOBJECT_EVENT" &
             " exists but with different size")
     orxOBJECT_EVENT
    else:
-    orxOBJECT_EVENT_520095484)
-  enum_orxSOUND_FILTER_TYPE_t_520095449 = (when declared(
+    orxOBJECT_EVENT_520095447)
+  enum_orxSOUND_FILTER_TYPE_t_520095412 = (when declared(
       enum_orxSOUND_FILTER_TYPE_t):
     when ownSizeof(enum_orxSOUND_FILTER_TYPE_t) !=
-        ownSizeof(enum_orxSOUND_FILTER_TYPE_t_520095448):
+        ownSizeof(enum_orxSOUND_FILTER_TYPE_t_520095411):
       static :
         warning("Declaration of " & "enum_orxSOUND_FILTER_TYPE_t" &
             " exists but with different size")
     enum_orxSOUND_FILTER_TYPE_t
    else:
-    enum_orxSOUND_FILTER_TYPE_t_520095448)
-  orxDISPLAY_SMOOTHING_520095299 = (when declared(orxDISPLAY_SMOOTHING):
-    when ownSizeof(orxDISPLAY_SMOOTHING) != ownSizeof(orxDISPLAY_SMOOTHING_520095298):
+    enum_orxSOUND_FILTER_TYPE_t_520095411)
+  orxDISPLAY_SMOOTHING_520095262 = (when declared(orxDISPLAY_SMOOTHING):
+    when ownSizeof(orxDISPLAY_SMOOTHING) != ownSizeof(orxDISPLAY_SMOOTHING_520095261):
       static :
         warning("Declaration of " & "orxDISPLAY_SMOOTHING" &
             " exists but with different size")
     orxDISPLAY_SMOOTHING
    else:
-    orxDISPLAY_SMOOTHING_520095298)
-  orxCOMMAND_VAR_TYPE_520095185 = (when declared(orxCOMMAND_VAR_TYPE):
-    when ownSizeof(orxCOMMAND_VAR_TYPE) != ownSizeof(orxCOMMAND_VAR_TYPE_520095184):
+    orxDISPLAY_SMOOTHING_520095261)
+  orxCOMMAND_VAR_TYPE_520095148 = (when declared(orxCOMMAND_VAR_TYPE):
+    when ownSizeof(orxCOMMAND_VAR_TYPE) != ownSizeof(orxCOMMAND_VAR_TYPE_520095147):
       static :
         warning("Declaration of " & "orxCOMMAND_VAR_TYPE" &
             " exists but with different size")
     orxCOMMAND_VAR_TYPE
    else:
-    orxCOMMAND_VAR_TYPE_520095184)
-  orxKEYBOARD_KEY_520095335 = (when declared(orxKEYBOARD_KEY):
-    when ownSizeof(orxKEYBOARD_KEY) != ownSizeof(orxKEYBOARD_KEY_520095334):
+    orxCOMMAND_VAR_TYPE_520095147)
+  orxKEYBOARD_KEY_520095298 = (when declared(orxKEYBOARD_KEY):
+    when ownSizeof(orxKEYBOARD_KEY) != ownSizeof(orxKEYBOARD_KEY_520095297):
       static :
         warning("Declaration of " & "orxKEYBOARD_KEY" &
             " exists but with different size")
     orxKEYBOARD_KEY
    else:
-    orxKEYBOARD_KEY_520095334)
-  orxPHYSICS_EVENT_520095559 = (when declared(orxPHYSICS_EVENT):
-    when ownSizeof(orxPHYSICS_EVENT) != ownSizeof(orxPHYSICS_EVENT_520095558):
+    orxKEYBOARD_KEY_520095297)
+  orxPHYSICS_EVENT_520095522 = (when declared(orxPHYSICS_EVENT):
+    when ownSizeof(orxPHYSICS_EVENT) != ownSizeof(orxPHYSICS_EVENT_520095521):
       static :
         warning("Declaration of " & "orxPHYSICS_EVENT" &
             " exists but with different size")
     orxPHYSICS_EVENT
    else:
-    orxPHYSICS_EVENT_520095558)
-  struct_orxRGBA_t_520095263 = (when declared(struct_orxRGBA_t):
-    when ownSizeof(struct_orxRGBA_t) != ownSizeof(struct_orxRGBA_t_520095262):
+    orxPHYSICS_EVENT_520095521)
+  struct_orxRGBA_t_520095226 = (when declared(struct_orxRGBA_t):
+    when ownSizeof(struct_orxRGBA_t) != ownSizeof(struct_orxRGBA_t_520095225):
       static :
         warning("Declaration of " & "struct_orxRGBA_t" &
             " exists but with different size")
     struct_orxRGBA_t
    else:
-    struct_orxRGBA_t_520095262)
-  orxPLUGIN_FUNCTION_ID_520095209 = (when declared(orxPLUGIN_FUNCTION_ID):
-    when ownSizeof(orxPLUGIN_FUNCTION_ID) != ownSizeof(orxPLUGIN_FUNCTION_ID_520095208):
+    struct_orxRGBA_t_520095225)
+  orxPLUGIN_FUNCTION_ID_520095172 = (when declared(orxPLUGIN_FUNCTION_ID):
+    when ownSizeof(orxPLUGIN_FUNCTION_ID) != ownSizeof(orxPLUGIN_FUNCTION_ID_520095171):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_ID" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_ID
    else:
-    orxPLUGIN_FUNCTION_ID_520095208)
-  orxS32_520095032 = (when declared(orxS32):
-    when ownSizeof(orxS32) != ownSizeof(orxS32_520095031):
+    orxPLUGIN_FUNCTION_ID_520095171)
+  orxS32_520094995 = (when declared(orxS32):
+    when ownSizeof(orxS32) != ownSizeof(orxS32_520094994):
       static :
         warning("Declaration of " & "orxS32" & " exists but with different size")
     orxS32
    else:
-    orxS32_520095031)
-  orxFILE_520095429 = (when declared(orxFILE):
-    when ownSizeof(orxFILE) != ownSizeof(orxFILE_520095428):
+    orxS32_520094994)
+  orxFILE_520095392 = (when declared(orxFILE):
+    when ownSizeof(orxFILE) != ownSizeof(orxFILE_520095391):
       static :
         warning("Declaration of " & "orxFILE" &
             " exists but with different size")
     orxFILE
    else:
-    orxFILE_520095428)
-  orxSHADER_520095587 = (when declared(orxSHADER):
-    when ownSizeof(orxSHADER) != ownSizeof(orxSHADER_520095586):
+    orxFILE_520095391)
+  orxSHADER_520095550 = (when declared(orxSHADER):
+    when ownSizeof(orxSHADER) != ownSizeof(orxSHADER_520095549):
       static :
         warning("Declaration of " & "orxSHADER" &
             " exists but with different size")
     orxSHADER
    else:
-    orxSHADER_520095586)
-  struct_orxBODY_DEF_t_520095545 = (when declared(struct_orxBODY_DEF_t):
-    when ownSizeof(struct_orxBODY_DEF_t) != ownSizeof(struct_orxBODY_DEF_t_520095544):
+    orxSHADER_520095549)
+  struct_orxBODY_DEF_t_520095508 = (when declared(struct_orxBODY_DEF_t):
+    when ownSizeof(struct_orxBODY_DEF_t) != ownSizeof(struct_orxBODY_DEF_t_520095507):
       static :
         warning("Declaration of " & "struct_orxBODY_DEF_t" &
             " exists but with different size")
     struct_orxBODY_DEF_t
    else:
-    struct_orxBODY_DEF_t_520095544)
-  orxSEEK_OFFSET_WHENCE_520095058 = (when declared(orxSEEK_OFFSET_WHENCE):
-    when ownSizeof(orxSEEK_OFFSET_WHENCE) != ownSizeof(orxSEEK_OFFSET_WHENCE_520095057):
+    struct_orxBODY_DEF_t_520095507)
+  orxSEEK_OFFSET_WHENCE_520095021 = (when declared(orxSEEK_OFFSET_WHENCE):
+    when ownSizeof(orxSEEK_OFFSET_WHENCE) != ownSizeof(orxSEEK_OFFSET_WHENCE_520095020):
       static :
         warning("Declaration of " & "orxSEEK_OFFSET_WHENCE" &
             " exists but with different size")
     orxSEEK_OFFSET_WHENCE
    else:
-    orxSEEK_OFFSET_WHENCE_520095057)
-  orxTEXTURE_520095321 = (when declared(orxTEXTURE):
-    when ownSizeof(orxTEXTURE) != ownSizeof(orxTEXTURE_520095320):
+    orxSEEK_OFFSET_WHENCE_520095020)
+  orxTEXTURE_520095284 = (when declared(orxTEXTURE):
+    when ownSizeof(orxTEXTURE) != ownSizeof(orxTEXTURE_520095283):
       static :
         warning("Declaration of " & "orxTEXTURE" &
             " exists but with different size")
     orxTEXTURE
    else:
-    orxTEXTURE_520095320)
-  enum_orxMOUSE_AXIS_t_520095341 = (when declared(enum_orxMOUSE_AXIS_t):
-    when ownSizeof(enum_orxMOUSE_AXIS_t) != ownSizeof(enum_orxMOUSE_AXIS_t_520095340):
+    orxTEXTURE_520095283)
+  enum_orxMOUSE_AXIS_t_520095304 = (when declared(enum_orxMOUSE_AXIS_t):
+    when ownSizeof(enum_orxMOUSE_AXIS_t) != ownSizeof(enum_orxMOUSE_AXIS_t_520095303):
       static :
         warning("Declaration of " & "enum_orxMOUSE_AXIS_t" &
             " exists but with different size")
     enum_orxMOUSE_AXIS_t
    else:
-    enum_orxMOUSE_AXIS_t_520095340)
-  enum_orxRESOURCE_EVENT_t_520095405 = (when declared(enum_orxRESOURCE_EVENT_t):
+    enum_orxMOUSE_AXIS_t_520095303)
+  enum_orxRESOURCE_EVENT_t_520095368 = (when declared(enum_orxRESOURCE_EVENT_t):
     when ownSizeof(enum_orxRESOURCE_EVENT_t) !=
-        ownSizeof(enum_orxRESOURCE_EVENT_t_520095404):
+        ownSizeof(enum_orxRESOURCE_EVENT_t_520095367):
       static :
         warning("Declaration of " & "enum_orxRESOURCE_EVENT_t" &
             " exists but with different size")
     enum_orxRESOURCE_EVENT_t
    else:
-    enum_orxRESOURCE_EVENT_t_520095404)
-  struct_orxDISPLAY_EVENT_PAYLOAD_t_520095313 = (when declared(
+    enum_orxRESOURCE_EVENT_t_520095367)
+  struct_orxDISPLAY_EVENT_PAYLOAD_t_520095276 = (when declared(
       struct_orxDISPLAY_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxDISPLAY_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxDISPLAY_EVENT_PAYLOAD_t_520095312):
+        ownSizeof(struct_orxDISPLAY_EVENT_PAYLOAD_t_520095275):
       static :
         warning("Declaration of " & "struct_orxDISPLAY_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxDISPLAY_EVENT_PAYLOAD_t
    else:
-    struct_orxDISPLAY_EVENT_PAYLOAD_t_520095312)
-  orxRGBA_520095265 = (when declared(orxRGBA):
-    when ownSizeof(orxRGBA) != ownSizeof(orxRGBA_520095264):
+    struct_orxDISPLAY_EVENT_PAYLOAD_t_520095275)
+  orxRGBA_520095228 = (when declared(orxRGBA):
+    when ownSizeof(orxRGBA) != ownSizeof(orxRGBA_520095227):
       static :
         warning("Declaration of " & "orxRGBA" &
             " exists but with different size")
     orxRGBA
    else:
-    orxRGBA_520095264)
-  orxSOUND_EVENT_PAYLOAD_520095481 = (when declared(orxSOUND_EVENT_PAYLOAD):
-    when ownSizeof(orxSOUND_EVENT_PAYLOAD) != ownSizeof(orxSOUND_EVENT_PAYLOAD_520095480):
+    orxRGBA_520095227)
+  orxSOUND_EVENT_PAYLOAD_520095444 = (when declared(orxSOUND_EVENT_PAYLOAD):
+    when ownSizeof(orxSOUND_EVENT_PAYLOAD) != ownSizeof(orxSOUND_EVENT_PAYLOAD_520095443):
       static :
         warning("Declaration of " & "orxSOUND_EVENT_PAYLOAD" &
             " exists but with different size")
     orxSOUND_EVENT_PAYLOAD
    else:
-    orxSOUND_EVENT_PAYLOAD_520095480)
-  orxDISPLAY_BLEND_MODE_520095303 = (when declared(orxDISPLAY_BLEND_MODE):
-    when ownSizeof(orxDISPLAY_BLEND_MODE) != ownSizeof(orxDISPLAY_BLEND_MODE_520095302):
+    orxSOUND_EVENT_PAYLOAD_520095443)
+  orxDISPLAY_BLEND_MODE_520095266 = (when declared(orxDISPLAY_BLEND_MODE):
+    when ownSizeof(orxDISPLAY_BLEND_MODE) != ownSizeof(orxDISPLAY_BLEND_MODE_520095265):
       static :
         warning("Declaration of " & "orxDISPLAY_BLEND_MODE" &
             " exists but with different size")
     orxDISPLAY_BLEND_MODE
    else:
-    orxDISPLAY_BLEND_MODE_520095302)
-  orxS8_520095036 = (when declared(orxS8):
-    when ownSizeof(orxS8) != ownSizeof(orxS8_520095035):
+    orxDISPLAY_BLEND_MODE_520095265)
+  orxS8_520094999 = (when declared(orxS8):
+    when ownSizeof(orxS8) != ownSizeof(orxS8_520094998):
       static :
         warning("Declaration of " & "orxS8" & " exists but with different size")
     orxS8
    else:
-    orxS8_520095035)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095225 = (when declared(
+    orxS8_520094998)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095188 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095224):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095187):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095224)
-  struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095249 = (when declared(
+    enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095187)
+  struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095212 = (when declared(
       struct_orxPLUGIN_USER_FUNCTION_INFO_t):
     when ownSizeof(struct_orxPLUGIN_USER_FUNCTION_INFO_t) !=
-        ownSizeof(struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095248):
+        ownSizeof(struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095211):
       static :
         warning("Declaration of " & "struct_orxPLUGIN_USER_FUNCTION_INFO_t" &
             " exists but with different size")
     struct_orxPLUGIN_USER_FUNCTION_INFO_t
    else:
-    struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095248)
-  orxANIM_EVENT_PAYLOAD_520095171 = (when declared(orxANIM_EVENT_PAYLOAD):
-    when ownSizeof(orxANIM_EVENT_PAYLOAD) != ownSizeof(orxANIM_EVENT_PAYLOAD_520095170):
+    struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095211)
+  orxANIM_EVENT_PAYLOAD_520095134 = (when declared(orxANIM_EVENT_PAYLOAD):
+    when ownSizeof(orxANIM_EVENT_PAYLOAD) != ownSizeof(orxANIM_EVENT_PAYLOAD_520095133):
       static :
         warning("Declaration of " & "orxANIM_EVENT_PAYLOAD" &
             " exists but with different size")
     orxANIM_EVENT_PAYLOAD
    else:
-    orxANIM_EVENT_PAYLOAD_520095170)
-  orxPLUGIN_INIT_FUNCTION_520095253 = (when declared(orxPLUGIN_INIT_FUNCTION):
+    orxANIM_EVENT_PAYLOAD_520095133)
+  orxPLUGIN_INIT_FUNCTION_520095216 = (when declared(orxPLUGIN_INIT_FUNCTION):
     when ownSizeof(orxPLUGIN_INIT_FUNCTION) !=
-        ownSizeof(orxPLUGIN_INIT_FUNCTION_520095252):
+        ownSizeof(orxPLUGIN_INIT_FUNCTION_520095215):
       static :
         warning("Declaration of " & "orxPLUGIN_INIT_FUNCTION" &
             " exists but with different size")
     orxPLUGIN_INIT_FUNCTION
    else:
-    orxPLUGIN_INIT_FUNCTION_520095252)
-  orxTHREAD_SEMAPHORE_520095413 = (when declared(orxTHREAD_SEMAPHORE):
-    when ownSizeof(orxTHREAD_SEMAPHORE) != ownSizeof(orxTHREAD_SEMAPHORE_520095412):
+    orxPLUGIN_INIT_FUNCTION_520095215)
+  orxTHREAD_SEMAPHORE_520095376 = (when declared(orxTHREAD_SEMAPHORE):
+    when ownSizeof(orxTHREAD_SEMAPHORE) != ownSizeof(orxTHREAD_SEMAPHORE_520095375):
       static :
         warning("Declaration of " & "orxTHREAD_SEMAPHORE" &
             " exists but with different size")
     orxTHREAD_SEMAPHORE
    else:
-    orxTHREAD_SEMAPHORE_520095412)
-  orxTEXT_520095423 = (when declared(orxTEXT):
-    when ownSizeof(orxTEXT) != ownSizeof(orxTEXT_520095422):
+    orxTHREAD_SEMAPHORE_520095375)
+  orxTEXT_520095386 = (when declared(orxTEXT):
+    when ownSizeof(orxTEXT) != ownSizeof(orxTEXT_520095385):
       static :
         warning("Declaration of " & "orxTEXT" &
             " exists but with different size")
     orxTEXT
    else:
-    orxTEXT_520095422)
-  orxBODY_PART_520095573 = (when declared(orxBODY_PART):
-    when ownSizeof(orxBODY_PART) != ownSizeof(orxBODY_PART_520095572):
+    orxTEXT_520095385)
+  orxBODY_PART_520095536 = (when declared(orxBODY_PART):
+    when ownSizeof(orxBODY_PART) != ownSizeof(orxBODY_PART_520095535):
       static :
         warning("Declaration of " & "orxBODY_PART" &
             " exists but with different size")
     orxBODY_PART
    else:
-    orxBODY_PART_520095572)
-  struct_orxTIMELINE_EVENT_PAYLOAD_t_520095531 = (when declared(
+    orxBODY_PART_520095535)
+  struct_orxTIMELINE_EVENT_PAYLOAD_t_520095494 = (when declared(
       struct_orxTIMELINE_EVENT_PAYLOAD_t):
     when ownSizeof(struct_orxTIMELINE_EVENT_PAYLOAD_t) !=
-        ownSizeof(struct_orxTIMELINE_EVENT_PAYLOAD_t_520095530):
+        ownSizeof(struct_orxTIMELINE_EVENT_PAYLOAD_t_520095493):
       static :
         warning("Declaration of " & "struct_orxTIMELINE_EVENT_PAYLOAD_t" &
             " exists but with different size")
     struct_orxTIMELINE_EVENT_PAYLOAD_t
    else:
-    struct_orxTIMELINE_EVENT_PAYLOAD_t_520095530)
-  orxDISPLAY_EVENT_520095311 = (when declared(orxDISPLAY_EVENT):
-    when ownSizeof(orxDISPLAY_EVENT) != ownSizeof(orxDISPLAY_EVENT_520095310):
+    struct_orxTIMELINE_EVENT_PAYLOAD_t_520095493)
+  orxDISPLAY_EVENT_520095274 = (when declared(orxDISPLAY_EVENT):
+    when ownSizeof(orxDISPLAY_EVENT) != ownSizeof(orxDISPLAY_EVENT_520095273):
       static :
         warning("Declaration of " & "orxDISPLAY_EVENT" &
             " exists but with different size")
     orxDISPLAY_EVENT
    else:
-    orxDISPLAY_EVENT_520095310)
-  orxVECTOR_520095096 = (when declared(orxVECTOR):
-    when ownSizeof(orxVECTOR) != ownSizeof(orxVECTOR_520095095):
+    orxDISPLAY_EVENT_520095273)
+  orxVECTOR_520095059 = (when declared(orxVECTOR):
+    when ownSizeof(orxVECTOR) != ownSizeof(orxVECTOR_520095058):
       static :
         warning("Declaration of " & "orxVECTOR" &
             " exists but with different size")
     orxVECTOR
    else:
-    orxVECTOR_520095095)
-  orxFX_CURVE_520095495 = (when declared(orxFX_CURVE):
-    when ownSizeof(orxFX_CURVE) != ownSizeof(orxFX_CURVE_520095494):
+    orxVECTOR_520095058)
+  orxFX_CURVE_520095458 = (when declared(orxFX_CURVE):
+    when ownSizeof(orxFX_CURVE) != ownSizeof(orxFX_CURVE_520095457):
       static :
         warning("Declaration of " & "orxFX_CURVE" &
             " exists but with different size")
     orxFX_CURVE
    else:
-    orxFX_CURVE_520095494)
-  struct_orxDISPLAY_MESH_t_520095281 = (when declared(struct_orxDISPLAY_MESH_t):
+    orxFX_CURVE_520095457)
+  struct_orxDISPLAY_MESH_t_520095244 = (when declared(struct_orxDISPLAY_MESH_t):
     when ownSizeof(struct_orxDISPLAY_MESH_t) !=
-        ownSizeof(struct_orxDISPLAY_MESH_t_520095280):
+        ownSizeof(struct_orxDISPLAY_MESH_t_520095243):
       static :
         warning("Declaration of " & "struct_orxDISPLAY_MESH_t" &
             " exists but with different size")
     struct_orxDISPLAY_MESH_t
    else:
-    struct_orxDISPLAY_MESH_t_520095280)
-  orxRENDER_EVENT_520095607 = (when declared(orxRENDER_EVENT):
-    when ownSizeof(orxRENDER_EVENT) != ownSizeof(orxRENDER_EVENT_520095606):
+    struct_orxDISPLAY_MESH_t_520095243)
+  orxRENDER_EVENT_520095570 = (when declared(orxRENDER_EVENT):
+    when ownSizeof(orxRENDER_EVENT) != ownSizeof(orxRENDER_EVENT_520095569):
       static :
         warning("Declaration of " & "orxRENDER_EVENT" &
             " exists but with different size")
     orxRENDER_EVENT
    else:
-    orxRENDER_EVENT_520095606)
-  orxCOMMAND_VAR_520095193 = (when declared(orxCOMMAND_VAR):
-    when ownSizeof(orxCOMMAND_VAR) != ownSizeof(orxCOMMAND_VAR_520095192):
+    orxRENDER_EVENT_520095569)
+  orxCOMMAND_VAR_520095156 = (when declared(orxCOMMAND_VAR):
+    when ownSizeof(orxCOMMAND_VAR) != ownSizeof(orxCOMMAND_VAR_520095155):
       static :
         warning("Declaration of " & "orxCOMMAND_VAR" &
             " exists but with different size")
     orxCOMMAND_VAR
    else:
-    orxCOMMAND_VAR_520095192)
-  struct_orxPARAM_t_520095433 = (when declared(struct_orxPARAM_t):
-    when ownSizeof(struct_orxPARAM_t) != ownSizeof(struct_orxPARAM_t_520095432):
+    orxCOMMAND_VAR_520095155)
+  struct_orxPARAM_t_520095396 = (when declared(struct_orxPARAM_t):
+    when ownSizeof(struct_orxPARAM_t) != ownSizeof(struct_orxPARAM_t_520095395):
       static :
         warning("Declaration of " & "struct_orxPARAM_t" &
             " exists but with different size")
     struct_orxPARAM_t
    else:
-    struct_orxPARAM_t_520095432)
-  enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095233 = (when declared(
+    struct_orxPARAM_t_520095395)
+  enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095196 = (when declared(
       enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t):
     when ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t) !=
-        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095232):
+        ownSizeof(enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095195):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t" &
             " exists but with different size")
     enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t
    else:
-    enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095232)
-  struct_orxFX_CURVE_PARAM_t_520095497 = (when declared(
+    enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095195)
+  struct_orxFX_CURVE_PARAM_t_520095460 = (when declared(
       struct_orxFX_CURVE_PARAM_t):
     when ownSizeof(struct_orxFX_CURVE_PARAM_t) !=
-        ownSizeof(struct_orxFX_CURVE_PARAM_t_520095496):
+        ownSizeof(struct_orxFX_CURVE_PARAM_t_520095459):
       static :
         warning("Declaration of " & "struct_orxFX_CURVE_PARAM_t" &
             " exists but with different size")
     struct_orxFX_CURVE_PARAM_t
    else:
-    struct_orxFX_CURVE_PARAM_t_520095496)
-  enum_orxCLOCK_PRIORITY_t_520095117 = (when declared(enum_orxCLOCK_PRIORITY_t):
+    struct_orxFX_CURVE_PARAM_t_520095459)
+  enum_orxCLOCK_PRIORITY_t_520095080 = (when declared(enum_orxCLOCK_PRIORITY_t):
     when ownSizeof(enum_orxCLOCK_PRIORITY_t) !=
-        ownSizeof(enum_orxCLOCK_PRIORITY_t_520095116):
+        ownSizeof(enum_orxCLOCK_PRIORITY_t_520095079):
       static :
         warning("Declaration of " & "enum_orxCLOCK_PRIORITY_t" &
             " exists but with different size")
     enum_orxCLOCK_PRIORITY_t
    else:
-    enum_orxCLOCK_PRIORITY_t_520095116)
-  orxMOUSE_AXIS_520095343 = (when declared(orxMOUSE_AXIS):
-    when ownSizeof(orxMOUSE_AXIS) != ownSizeof(orxMOUSE_AXIS_520095342):
+    enum_orxCLOCK_PRIORITY_t_520095079)
+  orxMOUSE_AXIS_520095306 = (when declared(orxMOUSE_AXIS):
+    when ownSizeof(orxMOUSE_AXIS) != ownSizeof(orxMOUSE_AXIS_520095305):
       static :
         warning("Declaration of " & "orxMOUSE_AXIS" &
             " exists but with different size")
     orxMOUSE_AXIS
    else:
-    orxMOUSE_AXIS_520095342)
-  orxCHAR_520095044 = (when declared(orxCHAR):
-    when ownSizeof(orxCHAR) != ownSizeof(orxCHAR_520095043):
+    orxMOUSE_AXIS_520095305)
+  orxCHAR_520095007 = (when declared(orxCHAR):
+    when ownSizeof(orxCHAR) != ownSizeof(orxCHAR_520095006):
       static :
         warning("Declaration of " & "orxCHAR" &
             " exists but with different size")
     orxCHAR
    else:
-    orxCHAR_520095043)
-  orxVERSION_520095070 = (when declared(orxVERSION):
-    when ownSizeof(orxVERSION) != ownSizeof(orxVERSION_520095069):
+    orxCHAR_520095006)
+  orxVERSION_520095033 = (when declared(orxVERSION):
+    when ownSizeof(orxVERSION) != ownSizeof(orxVERSION_520095032):
       static :
         warning("Declaration of " & "orxVERSION" &
             " exists but with different size")
     orxVERSION
    else:
-    orxVERSION_520095069)
-  orxUPTR_520095054 = (when declared(orxUPTR):
-    when ownSizeof(orxUPTR) != ownSizeof(orxUPTR_520095053):
+    orxVERSION_520095032)
+  orxUPTR_520095017 = (when declared(orxUPTR):
+    when ownSizeof(orxUPTR) != ownSizeof(orxUPTR_520095016):
       static :
         warning("Declaration of " & "orxUPTR" &
             " exists but with different size")
     orxUPTR
    else:
-    orxUPTR_520095053)
-  orxEVENT_TYPE_520095363 = (when declared(orxEVENT_TYPE):
-    when ownSizeof(orxEVENT_TYPE) != ownSizeof(orxEVENT_TYPE_520095362):
+    orxUPTR_520095016)
+  orxEVENT_TYPE_520095326 = (when declared(orxEVENT_TYPE):
+    when ownSizeof(orxEVENT_TYPE) != ownSizeof(orxEVENT_TYPE_520095325):
       static :
         warning("Declaration of " & "orxEVENT_TYPE" &
             " exists but with different size")
     orxEVENT_TYPE
    else:
-    orxEVENT_TYPE_520095362)
-  orxSOUNDSYSTEM_SAMPLE_520095439 = (when declared(orxSOUNDSYSTEM_SAMPLE):
-    when ownSizeof(orxSOUNDSYSTEM_SAMPLE) != ownSizeof(orxSOUNDSYSTEM_SAMPLE_520095438):
+    orxEVENT_TYPE_520095325)
+  orxSOUNDSYSTEM_SAMPLE_520095402 = (when declared(orxSOUNDSYSTEM_SAMPLE):
+    when ownSizeof(orxSOUNDSYSTEM_SAMPLE) != ownSizeof(orxSOUNDSYSTEM_SAMPLE_520095401):
       static :
         warning("Declaration of " & "orxSOUNDSYSTEM_SAMPLE" &
             " exists but with different size")
     orxSOUNDSYSTEM_SAMPLE
    else:
-    orxSOUNDSYSTEM_SAMPLE_520095438)
-  orxSPAWNER_EVENT_520095521 = (when declared(orxSPAWNER_EVENT):
-    when ownSizeof(orxSPAWNER_EVENT) != ownSizeof(orxSPAWNER_EVENT_520095520):
+    orxSOUNDSYSTEM_SAMPLE_520095401)
+  orxSPAWNER_EVENT_520095484 = (when declared(orxSPAWNER_EVENT):
+    when ownSizeof(orxSPAWNER_EVENT) != ownSizeof(orxSPAWNER_EVENT_520095483):
       static :
         warning("Declaration of " & "orxSPAWNER_EVENT" &
             " exists but with different size")
     orxSPAWNER_EVENT
    else:
-    orxSPAWNER_EVENT_520095520)
-  orxTIMELINE_EVENT_PAYLOAD_520095533 = (when declared(orxTIMELINE_EVENT_PAYLOAD):
+    orxSPAWNER_EVENT_520095483)
+  orxTIMELINE_EVENT_PAYLOAD_520095496 = (when declared(orxTIMELINE_EVENT_PAYLOAD):
     when ownSizeof(orxTIMELINE_EVENT_PAYLOAD) !=
-        ownSizeof(orxTIMELINE_EVENT_PAYLOAD_520095532):
+        ownSizeof(orxTIMELINE_EVENT_PAYLOAD_520095495):
       static :
         warning("Declaration of " & "orxTIMELINE_EVENT_PAYLOAD" &
             " exists but with different size")
     orxTIMELINE_EVENT_PAYLOAD
    else:
-    orxTIMELINE_EVENT_PAYLOAD_520095532)
-  orxFXPOINTER_520095511 = (when declared(orxFXPOINTER):
-    when ownSizeof(orxFXPOINTER) != ownSizeof(orxFXPOINTER_520095510):
+    orxTIMELINE_EVENT_PAYLOAD_520095495)
+  orxFXPOINTER_520095474 = (when declared(orxFXPOINTER):
+    when ownSizeof(orxFXPOINTER) != ownSizeof(orxFXPOINTER_520095473):
       static :
         warning("Declaration of " & "orxFXPOINTER" &
             " exists but with different size")
     orxFXPOINTER
    else:
-    orxFXPOINTER_520095510)
-  orxMEMORY_TYPE_520095092 = (when declared(orxMEMORY_TYPE):
-    when ownSizeof(orxMEMORY_TYPE) != ownSizeof(orxMEMORY_TYPE_520095091):
+    orxFXPOINTER_520095473)
+  orxMEMORY_TYPE_520095055 = (when declared(orxMEMORY_TYPE):
+    when ownSizeof(orxMEMORY_TYPE) != ownSizeof(orxMEMORY_TYPE_520095054):
       static :
         warning("Declaration of " & "orxMEMORY_TYPE" &
             " exists but with different size")
     orxMEMORY_TYPE
    else:
-    orxMEMORY_TYPE_520095091)
-  orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095231 = (when declared(
+    orxMEMORY_TYPE_520095054)
+  orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095194 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_MOUSE):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_MOUSE) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095230):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095193):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_MOUSE" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_MOUSE
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095230)
-  orxLINKLIST_520095139 = (when declared(orxLINKLIST):
-    when ownSizeof(orxLINKLIST) != ownSizeof(orxLINKLIST_520095138):
+    orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095193)
+  orxLINKLIST_520095102 = (when declared(orxLINKLIST):
+    when ownSizeof(orxLINKLIST) != ownSizeof(orxLINKLIST_520095101):
       static :
         warning("Declaration of " & "orxLINKLIST" &
             " exists but with different size")
     orxLINKLIST
    else:
-    orxLINKLIST_520095138)
-  orxRESOURCE_FUNCTION_READ_520095395 = (when declared(orxRESOURCE_FUNCTION_READ):
+    orxLINKLIST_520095101)
+  orxRESOURCE_FUNCTION_READ_520095358 = (when declared(orxRESOURCE_FUNCTION_READ):
     when ownSizeof(orxRESOURCE_FUNCTION_READ) !=
-        ownSizeof(orxRESOURCE_FUNCTION_READ_520095394):
+        ownSizeof(orxRESOURCE_FUNCTION_READ_520095357):
       static :
         warning("Declaration of " & "orxRESOURCE_FUNCTION_READ" &
             " exists but with different size")
     orxRESOURCE_FUNCTION_READ
    else:
-    orxRESOURCE_FUNCTION_READ_520095394)
-  enum_orxSEEK_OFFSET_WHENCE_t_520095056 = (when declared(
+    orxRESOURCE_FUNCTION_READ_520095357)
+  enum_orxSEEK_OFFSET_WHENCE_t_520095019 = (when declared(
       enum_orxSEEK_OFFSET_WHENCE_t):
     when ownSizeof(enum_orxSEEK_OFFSET_WHENCE_t) !=
-        ownSizeof(enum_orxSEEK_OFFSET_WHENCE_t_520095055):
+        ownSizeof(enum_orxSEEK_OFFSET_WHENCE_t_520095018):
       static :
         warning("Declaration of " & "enum_orxSEEK_OFFSET_WHENCE_t" &
             " exists but with different size")
     enum_orxSEEK_OFFSET_WHENCE_t
    else:
-    enum_orxSEEK_OFFSET_WHENCE_t_520095055)
-  orxEVENT_HANDLER_520095369 = (when declared(orxEVENT_HANDLER):
-    when ownSizeof(orxEVENT_HANDLER) != ownSizeof(orxEVENT_HANDLER_520095368):
+    enum_orxSEEK_OFFSET_WHENCE_t_520095018)
+  orxEVENT_HANDLER_520095332 = (when declared(orxEVENT_HANDLER):
+    when ownSizeof(orxEVENT_HANDLER) != ownSizeof(orxEVENT_HANDLER_520095331):
       static :
         warning("Declaration of " & "orxEVENT_HANDLER" &
             " exists but with different size")
     orxEVENT_HANDLER
    else:
-    orxEVENT_HANDLER_520095368)
-  struct_orxPLUGIN_CORE_FUNCTION_t_520095245 = (when declared(
+    orxEVENT_HANDLER_520095331)
+  struct_orxPLUGIN_CORE_FUNCTION_t_520095208 = (when declared(
       struct_orxPLUGIN_CORE_FUNCTION_t):
     when ownSizeof(struct_orxPLUGIN_CORE_FUNCTION_t) !=
-        ownSizeof(struct_orxPLUGIN_CORE_FUNCTION_t_520095244):
+        ownSizeof(struct_orxPLUGIN_CORE_FUNCTION_t_520095207):
       static :
         warning("Declaration of " & "struct_orxPLUGIN_CORE_FUNCTION_t" &
             " exists but with different size")
     struct_orxPLUGIN_CORE_FUNCTION_t
    else:
-    struct_orxPLUGIN_CORE_FUNCTION_t_520095244)
-  enum_orxPLUGIN_CORE_ID_t_520095213 = (when declared(enum_orxPLUGIN_CORE_ID_t):
+    struct_orxPLUGIN_CORE_FUNCTION_t_520095207)
+  enum_orxPLUGIN_CORE_ID_t_520095176 = (when declared(enum_orxPLUGIN_CORE_ID_t):
     when ownSizeof(enum_orxPLUGIN_CORE_ID_t) !=
-        ownSizeof(enum_orxPLUGIN_CORE_ID_t_520095212):
+        ownSizeof(enum_orxPLUGIN_CORE_ID_t_520095175):
       static :
         warning("Declaration of " & "enum_orxPLUGIN_CORE_ID_t" &
             " exists but with different size")
     enum_orxPLUGIN_CORE_ID_t
    else:
-    enum_orxPLUGIN_CORE_ID_t_520095212)
-  orxCLOCK_PRIORITY_520095119 = (when declared(orxCLOCK_PRIORITY):
-    when ownSizeof(orxCLOCK_PRIORITY) != ownSizeof(orxCLOCK_PRIORITY_520095118):
+    enum_orxPLUGIN_CORE_ID_t_520095175)
+  orxCLOCK_PRIORITY_520095082 = (when declared(orxCLOCK_PRIORITY):
+    when ownSizeof(orxCLOCK_PRIORITY) != ownSizeof(orxCLOCK_PRIORITY_520095081):
       static :
         warning("Declaration of " & "orxCLOCK_PRIORITY" &
             " exists but with different size")
     orxCLOCK_PRIORITY
    else:
-    orxCLOCK_PRIORITY_520095118)
-  orxANIM_520095163 = (when declared(orxANIM):
-    when ownSizeof(orxANIM) != ownSizeof(orxANIM_520095162):
+    orxCLOCK_PRIORITY_520095081)
+  orxANIM_520095126 = (when declared(orxANIM):
+    when ownSizeof(orxANIM) != ownSizeof(orxANIM_520095125):
       static :
         warning("Declaration of " & "orxANIM" &
             " exists but with different size")
     orxANIM
    else:
-    orxANIM_520095162)
-  orxBODY_520095571 = (when declared(orxBODY):
-    when ownSizeof(orxBODY) != ownSizeof(orxBODY_520095570):
+    orxANIM_520095125)
+  orxBODY_520095534 = (when declared(orxBODY):
+    when ownSizeof(orxBODY) != ownSizeof(orxBODY_520095533):
       static :
         warning("Declaration of " & "orxBODY" &
             " exists but with different size")
     orxBODY
    else:
-    orxBODY_520095570)
-  orxPHYSICS_EVENT_PAYLOAD_520095563 = (when declared(orxPHYSICS_EVENT_PAYLOAD):
+    orxBODY_520095533)
+  orxPHYSICS_EVENT_PAYLOAD_520095526 = (when declared(orxPHYSICS_EVENT_PAYLOAD):
     when ownSizeof(orxPHYSICS_EVENT_PAYLOAD) !=
-        ownSizeof(orxPHYSICS_EVENT_PAYLOAD_520095562):
+        ownSizeof(orxPHYSICS_EVENT_PAYLOAD_520095525):
       static :
         warning("Declaration of " & "orxPHYSICS_EVENT_PAYLOAD" &
             " exists but with different size")
     orxPHYSICS_EVENT_PAYLOAD
    else:
-    orxPHYSICS_EVENT_PAYLOAD_520095562)
-  orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095239 = (when declared(
+    orxPHYSICS_EVENT_PAYLOAD_520095525)
+  orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095202 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_RENDER):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_RENDER) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095238):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095201):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_RENDER" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_RENDER
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095238)
-  orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095243 = (when declared(
+    orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095201)
+  orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095206 = (when declared(
       orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM):
     when ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM) !=
-        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095242):
+        ownSizeof(orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095205):
       static :
         warning("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM" &
             " exists but with different size")
     orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM
    else:
-    orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095242)
-  enum_orxDISPLAY_PRIMITIVE_t_520095277 = (when declared(
+    orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095205)
+  enum_orxDISPLAY_PRIMITIVE_t_520095240 = (when declared(
       enum_orxDISPLAY_PRIMITIVE_t):
     when ownSizeof(enum_orxDISPLAY_PRIMITIVE_t) !=
-        ownSizeof(enum_orxDISPLAY_PRIMITIVE_t_520095276):
+        ownSizeof(enum_orxDISPLAY_PRIMITIVE_t_520095239):
       static :
         warning("Declaration of " & "enum_orxDISPLAY_PRIMITIVE_t" &
             " exists but with different size")
     enum_orxDISPLAY_PRIMITIVE_t
    else:
-    enum_orxDISPLAY_PRIMITIVE_t_520095276)
-  orxDISPLAY_EVENT_PAYLOAD_520095315 = (when declared(orxDISPLAY_EVENT_PAYLOAD):
+    enum_orxDISPLAY_PRIMITIVE_t_520095239)
+  orxDISPLAY_EVENT_PAYLOAD_520095278 = (when declared(orxDISPLAY_EVENT_PAYLOAD):
     when ownSizeof(orxDISPLAY_EVENT_PAYLOAD) !=
-        ownSizeof(orxDISPLAY_EVENT_PAYLOAD_520095314):
+        ownSizeof(orxDISPLAY_EVENT_PAYLOAD_520095277):
       static :
         warning("Declaration of " & "orxDISPLAY_EVENT_PAYLOAD" &
             " exists but with different size")
     orxDISPLAY_EVENT_PAYLOAD
    else:
-    orxDISPLAY_EVENT_PAYLOAD_520095314)
-  enum_orxINPUT_EVENT_t_520095353 = (when declared(enum_orxINPUT_EVENT_t):
-    when ownSizeof(enum_orxINPUT_EVENT_t) != ownSizeof(enum_orxINPUT_EVENT_t_520095352):
+    orxDISPLAY_EVENT_PAYLOAD_520095277)
+  enum_orxINPUT_EVENT_t_520095316 = (when declared(enum_orxINPUT_EVENT_t):
+    when ownSizeof(enum_orxINPUT_EVENT_t) != ownSizeof(enum_orxINPUT_EVENT_t_520095315):
       static :
         warning("Declaration of " & "enum_orxINPUT_EVENT_t" &
             " exists but with different size")
     enum_orxINPUT_EVENT_t
    else:
-    enum_orxINPUT_EVENT_t_520095352)
-  orxSOUND_STATUS_520095461 = (when declared(orxSOUND_STATUS):
-    when ownSizeof(orxSOUND_STATUS) != ownSizeof(orxSOUND_STATUS_520095460):
+    enum_orxINPUT_EVENT_t_520095315)
+  orxSOUND_STATUS_520095424 = (when declared(orxSOUND_STATUS):
+    when ownSizeof(orxSOUND_STATUS) != ownSizeof(orxSOUND_STATUS_520095423):
       static :
         warning("Declaration of " & "orxSOUND_STATUS" &
             " exists but with different size")
     orxSOUND_STATUS
    else:
-    orxSOUND_STATUS_520095460)
-  orxSTRUCTURE_UPDATE_FUNCTION_520095161 = (when declared(
+    orxSOUND_STATUS_520095423)
+  orxSTRUCTURE_UPDATE_FUNCTION_520095124 = (when declared(
       orxSTRUCTURE_UPDATE_FUNCTION):
     when ownSizeof(orxSTRUCTURE_UPDATE_FUNCTION) !=
-        ownSizeof(orxSTRUCTURE_UPDATE_FUNCTION_520095160):
+        ownSizeof(orxSTRUCTURE_UPDATE_FUNCTION_520095123):
       static :
         warning("Declaration of " & "orxSTRUCTURE_UPDATE_FUNCTION" &
             " exists but with different size")
     orxSTRUCTURE_UPDATE_FUNCTION
    else:
-    orxSTRUCTURE_UPDATE_FUNCTION_520095160)
-  struct_orxSOUND_STREAM_PACKET_t_520095475 = (when declared(
+    orxSTRUCTURE_UPDATE_FUNCTION_520095123)
+  struct_orxSOUND_STREAM_PACKET_t_520095438 = (when declared(
       struct_orxSOUND_STREAM_PACKET_t):
     when ownSizeof(struct_orxSOUND_STREAM_PACKET_t) !=
-        ownSizeof(struct_orxSOUND_STREAM_PACKET_t_520095474):
+        ownSizeof(struct_orxSOUND_STREAM_PACKET_t_520095437):
       static :
         warning("Declaration of " & "struct_orxSOUND_STREAM_PACKET_t" &
             " exists but with different size")
     struct_orxSOUND_STREAM_PACKET_t
    else:
-    struct_orxSOUND_STREAM_PACKET_t_520095474)
-  orxFILE_INFO_520095427 = (when declared(orxFILE_INFO):
-    when ownSizeof(orxFILE_INFO) != ownSizeof(orxFILE_INFO_520095426):
+    struct_orxSOUND_STREAM_PACKET_t_520095437)
+  orxFILE_INFO_520095390 = (when declared(orxFILE_INFO):
+    when ownSizeof(orxFILE_INFO) != ownSizeof(orxFILE_INFO_520095389):
       static :
         warning("Declaration of " & "orxFILE_INFO" &
             " exists but with different size")
     orxFILE_INFO
    else:
-    orxFILE_INFO_520095426)
-  orxFLOAT_520095040 = (when declared(orxFLOAT):
-    when ownSizeof(orxFLOAT) != ownSizeof(orxFLOAT_520095039):
+    orxFILE_INFO_520095389)
+  orxFLOAT_520095003 = (when declared(orxFLOAT):
+    when ownSizeof(orxFLOAT) != ownSizeof(orxFLOAT_520095002):
       static :
         warning("Declaration of " & "orxFLOAT" &
             " exists but with different size")
     orxFLOAT
    else:
-    orxFLOAT_520095039)
-  enum_orxSHADER_EVENT_t_520095589 = (when declared(enum_orxSHADER_EVENT_t):
-    when ownSizeof(enum_orxSHADER_EVENT_t) != ownSizeof(enum_orxSHADER_EVENT_t_520095588):
+    orxFLOAT_520095002)
+  enum_orxSHADER_EVENT_t_520095552 = (when declared(enum_orxSHADER_EVENT_t):
+    when ownSizeof(enum_orxSHADER_EVENT_t) != ownSizeof(enum_orxSHADER_EVENT_t_520095551):
       static :
         warning("Declaration of " & "enum_orxSHADER_EVENT_t" &
             " exists but with different size")
     enum_orxSHADER_EVENT_t
    else:
-    enum_orxSHADER_EVENT_t_520095588)
-  enum_orxSHADER_PARAM_TYPE_t_520095579 = (when declared(
+    enum_orxSHADER_EVENT_t_520095551)
+  enum_orxSHADER_PARAM_TYPE_t_520095542 = (when declared(
       enum_orxSHADER_PARAM_TYPE_t):
     when ownSizeof(enum_orxSHADER_PARAM_TYPE_t) !=
-        ownSizeof(enum_orxSHADER_PARAM_TYPE_t_520095578):
+        ownSizeof(enum_orxSHADER_PARAM_TYPE_t_520095541):
       static :
         warning("Declaration of " & "enum_orxSHADER_PARAM_TYPE_t" &
             " exists but with different size")
     enum_orxSHADER_PARAM_TYPE_t
    else:
-    enum_orxSHADER_PARAM_TYPE_t_520095578)
-  orxCOLORSPACE_520095062 = (when declared(orxCOLORSPACE):
-    when ownSizeof(orxCOLORSPACE) != ownSizeof(orxCOLORSPACE_520095061):
+    enum_orxSHADER_PARAM_TYPE_t_520095541)
+  orxCOLORSPACE_520095025 = (when declared(orxCOLORSPACE):
+    when ownSizeof(orxCOLORSPACE) != ownSizeof(orxCOLORSPACE_520095024):
       static :
         warning("Declaration of " & "orxCOLORSPACE" &
             " exists but with different size")
     orxCOLORSPACE
    else:
-    orxCOLORSPACE_520095061)
-  orxSPAWNER_520095523 = (when declared(orxSPAWNER):
-    when ownSizeof(orxSPAWNER) != ownSizeof(orxSPAWNER_520095522):
+    orxCOLORSPACE_520095024)
+  orxSPAWNER_520095486 = (when declared(orxSPAWNER):
+    when ownSizeof(orxSPAWNER) != ownSizeof(orxSPAWNER_520095485):
       static :
         warning("Declaration of " & "orxSPAWNER" &
             " exists but with different size")
     orxSPAWNER
    else:
-    orxSPAWNER_520095522)
-  orxTEXTURE_EVENT_520095319 = (when declared(orxTEXTURE_EVENT):
-    when ownSizeof(orxTEXTURE_EVENT) != ownSizeof(orxTEXTURE_EVENT_520095318):
+    orxSPAWNER_520095485)
+  orxTEXTURE_EVENT_520095282 = (when declared(orxTEXTURE_EVENT):
+    when ownSizeof(orxTEXTURE_EVENT) != ownSizeof(orxTEXTURE_EVENT_520095281):
       static :
         warning("Declaration of " & "orxTEXTURE_EVENT" &
             " exists but with different size")
     orxTEXTURE_EVENT
    else:
-    orxTEXTURE_EVENT_520095318)
-  orxRESOURCE_OP_FUNCTION_520095379 = (when declared(orxRESOURCE_OP_FUNCTION):
+    orxTEXTURE_EVENT_520095281)
+  orxRESOURCE_OP_FUNCTION_520095342 = (when declared(orxRESOURCE_OP_FUNCTION):
     when ownSizeof(orxRESOURCE_OP_FUNCTION) !=
-        ownSizeof(orxRESOURCE_OP_FUNCTION_520095378):
+        ownSizeof(orxRESOURCE_OP_FUNCTION_520095341):
       static :
         warning("Declaration of " & "orxRESOURCE_OP_FUNCTION" &
             " exists but with different size")
     orxRESOURCE_OP_FUNCTION
    else:
-    orxRESOURCE_OP_FUNCTION_520095378)
-  orxSOUND_FILTER_TYPE_520095451 = (when declared(orxSOUND_FILTER_TYPE):
-    when ownSizeof(orxSOUND_FILTER_TYPE) != ownSizeof(orxSOUND_FILTER_TYPE_520095450):
+    orxRESOURCE_OP_FUNCTION_520095341)
+  orxSOUND_FILTER_TYPE_520095414 = (when declared(orxSOUND_FILTER_TYPE):
+    when ownSizeof(orxSOUND_FILTER_TYPE) != ownSizeof(orxSOUND_FILTER_TYPE_520095413):
       static :
         warning("Declaration of " & "orxSOUND_FILTER_TYPE" &
             " exists but with different size")
     orxSOUND_FILTER_TYPE
    else:
-    orxSOUND_FILTER_TYPE_520095450)
-  orxENUM_520095048 = (when declared(orxENUM):
-    when ownSizeof(orxENUM) != ownSizeof(orxENUM_520095047):
+    orxSOUND_FILTER_TYPE_520095413)
+  orxENUM_520095011 = (when declared(orxENUM):
+    when ownSizeof(orxENUM) != ownSizeof(orxENUM_520095010):
       static :
         warning("Declaration of " & "orxENUM" &
             " exists but with different size")
     orxENUM
    else:
-    orxENUM_520095047)
-  orxU32_520095024 = (when declared(orxU32):
-    when ownSizeof(orxU32) != ownSizeof(orxU32_520095023):
+    orxENUM_520095010)
+  orxU32_520094987 = (when declared(orxU32):
+    when ownSizeof(orxU32) != ownSizeof(orxU32_520094986):
       static :
         warning("Declaration of " & "orxU32" & " exists but with different size")
     orxU32
    else:
-    orxU32_520095023)
+    orxU32_520094986)
 when not declared(orxINPUT_TYPE):
   type
-    orxINPUT_TYPE* = orxINPUT_TYPE_520095346
+    orxINPUT_TYPE* = orxINPUT_TYPE_520095309
 else:
   static :
     hint("Declaration of " & "orxINPUT_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxTRIGGER_EVENT_PAYLOAD):
   type
-    orxTRIGGER_EVENT_PAYLOAD* = orxTRIGGER_EVENT_PAYLOAD_520095542
+    orxTRIGGER_EVENT_PAYLOAD* = orxTRIGGER_EVENT_PAYLOAD_520095505
 else:
   static :
     hint("Declaration of " & "orxTRIGGER_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxLINKLIST_NODE):
   type
-    orxLINKLIST_NODE* = orxLINKLIST_NODE_520095136
+    orxLINKLIST_NODE* = orxLINKLIST_NODE_520095099
 else:
   static :
     hint("Declaration of " & "orxLINKLIST_NODE" &
         " already exists, not redeclaring")
 when not declared(enum_orxSTRUCTURE_STORAGE_TYPE_t):
   type
-    enum_orxSTRUCTURE_STORAGE_TYPE_t* = enum_orxSTRUCTURE_STORAGE_TYPE_t_520095152
+    enum_orxSTRUCTURE_STORAGE_TYPE_t* = enum_orxSTRUCTURE_STORAGE_TYPE_t_520095115
 else:
   static :
     hint("Declaration of " & "enum_orxSTRUCTURE_STORAGE_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxANIM_EVENT_t):
   type
-    enum_orxANIM_EVENT_t* = enum_orxANIM_EVENT_t_520095164
+    enum_orxANIM_EVENT_t* = enum_orxANIM_EVENT_t_520095127
 else:
   static :
     hint("Declaration of " & "enum_orxANIM_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxOBJECT):
   type
-    orxOBJECT* = orxOBJECT_520095486
+    orxOBJECT* = orxOBJECT_520095449
 else:
   static :
     hint("Declaration of " & "orxOBJECT" & " already exists, not redeclaring")
 when not declared(orxDISPLAY_VERTEX):
   type
-    orxDISPLAY_VERTEX* = orxDISPLAY_VERTEX_520095270
+    orxDISPLAY_VERTEX* = orxDISPLAY_VERTEX_520095233
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_VERTEX" &
         " already exists, not redeclaring")
 when not declared(enum_orxTEXTURE_EVENT_t):
   type
-    enum_orxTEXTURE_EVENT_t* = enum_orxTEXTURE_EVENT_t_520095316
+    enum_orxTEXTURE_EVENT_t* = enum_orxTEXTURE_EVENT_t_520095279
 else:
   static :
     hint("Declaration of " & "enum_orxTEXTURE_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxU64):
   type
-    orxU64* = orxU64_520095021
+    orxU64* = orxU64_520094984
 else:
   static :
     hint("Declaration of " & "orxU64" & " already exists, not redeclaring")
 when not declared(orxDISPLAY_PRIMITIVE):
   type
-    orxDISPLAY_PRIMITIVE* = orxDISPLAY_PRIMITIVE_520095278
+    orxDISPLAY_PRIMITIVE* = orxDISPLAY_PRIMITIVE_520095241
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_PRIMITIVE" &
         " already exists, not redeclaring")
 when not declared(enum_orxFX_CURVE_t):
   type
-    enum_orxFX_CURVE_t* = enum_orxFX_CURVE_t_520095492
+    enum_orxFX_CURVE_t* = enum_orxFX_CURVE_t_520095455
 else:
   static :
     hint("Declaration of " & "enum_orxFX_CURVE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_ID_t):
   type
-    enum_orxPLUGIN_FUNCTION_ID_t* = enum_orxPLUGIN_FUNCTION_ID_t_520095206
+    enum_orxPLUGIN_FUNCTION_ID_t* = enum_orxPLUGIN_FUNCTION_ID_t_520095169
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_ID_t" &
         " already exists, not redeclaring")
 when not declared(orxCONFIG_EVENT):
   type
-    orxCONFIG_EVENT* = orxCONFIG_EVENT_520095198
+    orxCONFIG_EVENT* = orxCONFIG_EVENT_520095161
 else:
   static :
     hint("Declaration of " & "orxCONFIG_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_EVENT):
   type
-    orxRESOURCE_EVENT* = orxRESOURCE_EVENT_520095406
+    orxRESOURCE_EVENT* = orxRESOURCE_EVENT_520095369
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxFX_EVENT_PAYLOAD):
   type
-    orxFX_EVENT_PAYLOAD* = orxFX_EVENT_PAYLOAD_520095508
+    orxFX_EVENT_PAYLOAD* = orxFX_EVENT_PAYLOAD_520095471
 else:
   static :
     hint("Declaration of " & "orxFX_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(struct_orxSHADER_EVENT_PAYLOAD_t):
   type
-    struct_orxSHADER_EVENT_PAYLOAD_t* = struct_orxSHADER_EVENT_PAYLOAD_t_520095592
+    struct_orxSHADER_EVENT_PAYLOAD_t* = struct_orxSHADER_EVENT_PAYLOAD_t_520095555
 else:
   static :
     hint("Declaration of " & "struct_orxSHADER_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxDISPLAY_VIDEO_MODE_t):
   type
-    struct_orxDISPLAY_VIDEO_MODE_t* = struct_orxDISPLAY_VIDEO_MODE_t_520095284
+    struct_orxDISPLAY_VIDEO_MODE_t* = struct_orxDISPLAY_VIDEO_MODE_t_520095247
 else:
   static :
     hint("Declaration of " & "struct_orxDISPLAY_VIDEO_MODE_t" &
         " already exists, not redeclaring")
 when not declared(orxMODULE_SETUP_FUNCTION):
   type
-    orxMODULE_SETUP_FUNCTION* = orxMODULE_SETUP_FUNCTION_520095081
+    orxMODULE_SETUP_FUNCTION* = orxMODULE_SETUP_FUNCTION_520095044
 else:
   static :
     hint("Declaration of " & "orxMODULE_SETUP_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(struct_orxTREE_t):
   type
-    struct_orxTREE_t* = struct_orxTREE_t_520095142
+    struct_orxTREE_t* = struct_orxTREE_t_520095105
 else:
   static :
     hint("Declaration of " & "struct_orxTREE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxCOLORSPACE_t):
   type
-    enum_orxCOLORSPACE_t* = enum_orxCOLORSPACE_t_520095059
+    enum_orxCOLORSPACE_t* = enum_orxCOLORSPACE_t_520095022
 else:
   static :
     hint("Declaration of " & "enum_orxCOLORSPACE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxSTATUS_t):
   type
-    enum_orxSTATUS_t* = enum_orxSTATUS_t_520095063
+    enum_orxSTATUS_t* = enum_orxSTATUS_t_520095026
 else:
   static :
     hint("Declaration of " & "enum_orxSTATUS_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxDEBUG_LEVEL_t):
   type
-    enum_orxDEBUG_LEVEL_t* = enum_orxDEBUG_LEVEL_t_520095083
+    enum_orxDEBUG_LEVEL_t* = enum_orxDEBUG_LEVEL_t_520095046
 else:
   static :
     hint("Declaration of " & "enum_orxDEBUG_LEVEL_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxSPAWNER_EVENT_t):
   type
-    enum_orxSPAWNER_EVENT_t* = enum_orxSPAWNER_EVENT_t_520095518
+    enum_orxSPAWNER_EVENT_t* = enum_orxSPAWNER_EVENT_t_520095481
 else:
   static :
     hint("Declaration of " & "enum_orxSPAWNER_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxRENDER_EVENT_PAYLOAD_t):
   type
-    struct_orxRENDER_EVENT_PAYLOAD_t* = struct_orxRENDER_EVENT_PAYLOAD_t_520095608
+    struct_orxRENDER_EVENT_PAYLOAD_t* = struct_orxRENDER_EVENT_PAYLOAD_t_520095571
 else:
   static :
     hint("Declaration of " & "struct_orxRENDER_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxU16):
   type
-    orxU16* = orxU16_520095025
+    orxU16* = orxU16_520094988
 else:
   static :
     hint("Declaration of " & "orxU16" & " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD* = orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095226
+    orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD* = orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_520095189
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD" &
         " already exists, not redeclaring")
 when not declared(orxFRAME):
   type
-    orxFRAME* = orxFRAME_520095516
+    orxFRAME* = orxFRAME_520095479
 else:
   static :
     hint("Declaration of " & "orxFRAME" & " already exists, not redeclaring")
 when not declared(orxSTATUS):
   type
-    orxSTATUS* = orxSTATUS_520095065
+    orxSTATUS* = orxSTATUS_520095028
 else:
   static :
     hint("Declaration of " & "orxSTATUS" & " already exists, not redeclaring")
 when not declared(enum_orxSOUNDSYSTEM_STREAM_TYPE_t):
   type
-    enum_orxSOUNDSYSTEM_STREAM_TYPE_t* = enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095440
+    enum_orxSOUNDSYSTEM_STREAM_TYPE_t* = enum_orxSOUNDSYSTEM_STREAM_TYPE_t_520095403
 else:
   static :
     hint("Declaration of " & "enum_orxSOUNDSYSTEM_STREAM_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxTRIGGER_EVENT_PAYLOAD_t):
   type
-    struct_orxTRIGGER_EVENT_PAYLOAD_t* = struct_orxTRIGGER_EVENT_PAYLOAD_t_520095540
+    struct_orxTRIGGER_EVENT_PAYLOAD_t* = struct_orxTRIGGER_EVENT_PAYLOAD_t_520095503
 else:
   static :
     hint("Declaration of " & "struct_orxTRIGGER_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxBODY_JOINT_DEF):
   type
-    orxBODY_JOINT_DEF* = orxBODY_JOINT_DEF_520095554
+    orxBODY_JOINT_DEF* = orxBODY_JOINT_DEF_520095517
 else:
   static :
     hint("Declaration of " & "orxBODY_JOINT_DEF" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_VIDEO_MODE):
   type
-    orxDISPLAY_VIDEO_MODE* = orxDISPLAY_VIDEO_MODE_520095286
+    orxDISPLAY_VIDEO_MODE* = orxDISPLAY_VIDEO_MODE_520095249
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_VIDEO_MODE" &
         " already exists, not redeclaring")
 when not declared(orxTRIGGER):
   type
-    orxTRIGGER* = orxTRIGGER_520095534
+    orxTRIGGER* = orxTRIGGER_520095497
 else:
   static :
     hint("Declaration of " & "orxTRIGGER" & " already exists, not redeclaring")
 when not declared(orxSOUND_SAMPLE):
   type
-    orxSOUND_SAMPLE* = orxSOUND_SAMPLE_520095464
+    orxSOUND_SAMPLE* = orxSOUND_SAMPLE_520095427
 else:
   static :
     hint("Declaration of " & "orxSOUND_SAMPLE" &
         " already exists, not redeclaring")
 when not declared(orxS64):
   type
-    orxS64* = orxS64_520095029
+    orxS64* = orxS64_520094992
 else:
   static :
     hint("Declaration of " & "orxS64" & " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095236
+    enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t_520095199
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_RENDER_t" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_STREAM_INFO):
   type
-    orxSOUND_STREAM_INFO* = orxSOUND_STREAM_INFO_520095472
+    orxSOUND_STREAM_INFO* = orxSOUND_STREAM_INFO_520095435
 else:
   static :
     hint("Declaration of " & "orxSOUND_STREAM_INFO" &
         " already exists, not redeclaring")
 when not declared(orxMODULE_INIT_FUNCTION):
   type
-    orxMODULE_INIT_FUNCTION* = orxMODULE_INIT_FUNCTION_520095075
+    orxMODULE_INIT_FUNCTION* = orxMODULE_INIT_FUNCTION_520095038
 else:
   static :
     hint("Declaration of " & "orxMODULE_INIT_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(enum_orxDISPLAY_SMOOTHING_t):
   type
-    enum_orxDISPLAY_SMOOTHING_t* = enum_orxDISPLAY_SMOOTHING_t_520095296
+    enum_orxDISPLAY_SMOOTHING_t* = enum_orxDISPLAY_SMOOTHING_t_520095259
 else:
   static :
     hint("Declaration of " & "enum_orxDISPLAY_SMOOTHING_t" &
         " already exists, not redeclaring")
 when not declared(orxINPUT_MODE):
   type
-    orxINPUT_MODE* = orxINPUT_MODE_520095350
+    orxINPUT_MODE* = orxINPUT_MODE_520095313
 else:
   static :
     hint("Declaration of " & "orxINPUT_MODE" &
         " already exists, not redeclaring")
 when not declared(orxU8):
   type
-    orxU8* = orxU8_520095027
+    orxU8* = orxU8_520094990
 else:
   static :
     hint("Declaration of " & "orxU8" & " already exists, not redeclaring")
 when not declared(struct_orxLOCALE_EVENT_PAYLOAD_t):
   type
-    struct_orxLOCALE_EVENT_PAYLOAD_t* = struct_orxLOCALE_EVENT_PAYLOAD_t_520095374
+    struct_orxLOCALE_EVENT_PAYLOAD_t* = struct_orxLOCALE_EVENT_PAYLOAD_t_520095337
 else:
   static :
     hint("Declaration of " & "struct_orxLOCALE_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxMOUSE_BUTTON_t):
   type
-    enum_orxMOUSE_BUTTON_t* = enum_orxMOUSE_BUTTON_t_520095336
+    enum_orxMOUSE_BUTTON_t* = enum_orxMOUSE_BUTTON_t_520095299
 else:
   static :
     hint("Declaration of " & "enum_orxMOUSE_BUTTON_t" &
         " already exists, not redeclaring")
 when not declared(orxBITMAP):
   type
-    orxBITMAP* = orxBITMAP_520095266
+    orxBITMAP* = orxBITMAP_520095229
 else:
   static :
     hint("Declaration of " & "orxBITMAP" & " already exists, not redeclaring")
 when not declared(struct_orxCHARACTER_MAP_t):
   type
-    struct_orxCHARACTER_MAP_t* = struct_orxCHARACTER_MAP_t_520095292
+    struct_orxCHARACTER_MAP_t* = struct_orxCHARACTER_MAP_t_520095255
 else:
   static :
     hint("Declaration of " & "struct_orxCHARACTER_MAP_t" &
         " already exists, not redeclaring")
 when not declared(orxSHADERPOINTER):
   type
-    orxSHADERPOINTER* = orxSHADERPOINTER_520095596
+    orxSHADERPOINTER* = orxSHADERPOINTER_520095559
 else:
   static :
     hint("Declaration of " & "orxSHADERPOINTER" &
         " already exists, not redeclaring")
 when not declared(orxS16):
   type
-    orxS16* = orxS16_520095033
+    orxS16* = orxS16_520094996
 else:
   static :
     hint("Declaration of " & "orxS16" & " already exists, not redeclaring")
 when not declared(orxCLOCK_FUNCTION):
   type
-    orxCLOCK_FUNCTION* = orxCLOCK_FUNCTION_520095130
+    orxCLOCK_FUNCTION* = orxCLOCK_FUNCTION_520095093
 else:
   static :
     hint("Declaration of " & "orxCLOCK_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxPHYSICS_BODY):
   type
-    orxPHYSICS_BODY* = orxPHYSICS_BODY_520095564
+    orxPHYSICS_BODY* = orxPHYSICS_BODY_520095527
 else:
   static :
     hint("Declaration of " & "orxPHYSICS_BODY" &
         " already exists, not redeclaring")
 when not declared(orxPHYSICS_BODY_PART):
   type
-    orxPHYSICS_BODY_PART* = orxPHYSICS_BODY_PART_520095566
+    orxPHYSICS_BODY_PART* = orxPHYSICS_BODY_PART_520095529
 else:
   static :
     hint("Declaration of " & "orxPHYSICS_BODY_PART" &
         " already exists, not redeclaring")
 when not declared(orxCAMERA):
   type
-    orxCAMERA* = orxCAMERA_520095576
+    orxCAMERA* = orxCAMERA_520095539
 else:
   static :
     hint("Declaration of " & "orxCAMERA" & " already exists, not redeclaring")
 when not declared(enum_orxOBJECT_EVENT_t):
   type
-    enum_orxOBJECT_EVENT_t* = enum_orxOBJECT_EVENT_t_520095482
+    enum_orxOBJECT_EVENT_t* = enum_orxOBJECT_EVENT_t_520095445
 else:
   static :
     hint("Declaration of " & "enum_orxOBJECT_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxHANDLE):
   type
-    orxHANDLE* = orxHANDLE_520095049
+    orxHANDLE* = orxHANDLE_520095012
 else:
   static :
     hint("Declaration of " & "orxHANDLE" & " already exists, not redeclaring")
 when not declared(orxDISPLAY_MESH):
   type
-    orxDISPLAY_MESH* = orxDISPLAY_MESH_520095282
+    orxDISPLAY_MESH* = orxDISPLAY_MESH_520095245
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_MESH" &
         " already exists, not redeclaring")
 when not declared(orxCONFIG_CLEAR_FUNCTION):
   type
-    orxCONFIG_CLEAR_FUNCTION* = orxCONFIG_CLEAR_FUNCTION_520095202
+    orxCONFIG_CLEAR_FUNCTION* = orxCONFIG_CLEAR_FUNCTION_520095165
 else:
   static :
     hint("Declaration of " & "orxCONFIG_CLEAR_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxINPUT_EVENT):
   type
-    orxINPUT_EVENT* = orxINPUT_EVENT_520095354
+    orxINPUT_EVENT* = orxINPUT_EVENT_520095317
 else:
   static :
     hint("Declaration of " & "orxINPUT_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxDEBUG_CALLBACK_FUNCTION):
   type
-    orxDEBUG_CALLBACK_FUNCTION* = orxDEBUG_CALLBACK_FUNCTION_520095087
+    orxDEBUG_CALLBACK_FUNCTION* = orxDEBUG_CALLBACK_FUNCTION_520095050
 else:
   static :
     hint("Declaration of " & "orxDEBUG_CALLBACK_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(enum_orxFX_EVENT_t):
   type
-    enum_orxFX_EVENT_t* = enum_orxFX_EVENT_t_520095502
+    enum_orxFX_EVENT_t* = enum_orxFX_EVENT_t_520095465
 else:
   static :
     hint("Declaration of " & "enum_orxFX_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxVIEWPORT):
   type
-    orxVIEWPORT* = orxVIEWPORT_520095598
+    orxVIEWPORT* = orxVIEWPORT_520095561
 else:
   static :
     hint("Declaration of " & "orxVIEWPORT" & " already exists, not redeclaring")
 when not declared(orxTIMELINE_EVENT):
   type
-    orxTIMELINE_EVENT* = orxTIMELINE_EVENT_520095528
+    orxTIMELINE_EVENT* = orxTIMELINE_EVENT_520095491
 else:
   static :
     hint("Declaration of " & "orxTIMELINE_EVENT" &
         " already exists, not redeclaring")
 when not declared(struct_orxEVENT_t):
   type
-    struct_orxEVENT_t* = struct_orxEVENT_t_520095364
+    struct_orxEVENT_t* = struct_orxEVENT_t_520095327
 else:
   static :
     hint("Declaration of " & "struct_orxEVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_PHYSICS):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_PHYSICS* = orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095234
+    orxPLUGIN_FUNCTION_BASE_ID_PHYSICS* = orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_520095197
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_PHYSICS" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_SEEK):
   type
-    orxRESOURCE_FUNCTION_SEEK* = orxRESOURCE_FUNCTION_SEEK_520095390
+    orxRESOURCE_FUNCTION_SEEK* = orxRESOURCE_FUNCTION_SEEK_520095353
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_SEEK" &
         " already exists, not redeclaring")
 when not declared(enum_orxDISPLAY_EVENT_t):
   type
-    enum_orxDISPLAY_EVENT_t* = enum_orxDISPLAY_EVENT_t_520095308
+    enum_orxDISPLAY_EVENT_t* = enum_orxDISPLAY_EVENT_t_520095271
 else:
   static :
     hint("Declaration of " & "enum_orxDISPLAY_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxJOYSTICK_BUTTON_t):
   type
-    enum_orxJOYSTICK_BUTTON_t* = enum_orxJOYSTICK_BUTTON_t_520095324
+    enum_orxJOYSTICK_BUTTON_t* = enum_orxJOYSTICK_BUTTON_t_520095287
 else:
   static :
     hint("Declaration of " & "enum_orxJOYSTICK_BUTTON_t" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_LOCATE):
   type
-    orxRESOURCE_FUNCTION_LOCATE* = orxRESOURCE_FUNCTION_LOCATE_520095380
+    orxRESOURCE_FUNCTION_LOCATE* = orxRESOURCE_FUNCTION_LOCATE_520095343
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_LOCATE" &
         " already exists, not redeclaring")
 when not declared(struct_orxRESOURCE_TYPE_INFO_t):
   type
-    struct_orxRESOURCE_TYPE_INFO_t* = struct_orxRESOURCE_TYPE_INFO_t_520095400
+    struct_orxRESOURCE_TYPE_INFO_t* = struct_orxRESOURCE_TYPE_INFO_t_520095363
 else:
   static :
     hint("Declaration of " & "struct_orxRESOURCE_TYPE_INFO_t" &
         " already exists, not redeclaring")
 when not declared(orxSHADER_EVENT):
   type
-    orxSHADER_EVENT* = orxSHADER_EVENT_520095590
+    orxSHADER_EVENT* = orxSHADER_EVENT_520095553
 else:
   static :
     hint("Declaration of " & "orxSHADER_EVENT" &
         " already exists, not redeclaring")
 when not declared(enum_orxSOUND_EVENT_t):
   type
-    enum_orxSOUND_EVENT_t* = enum_orxSOUND_EVENT_t_520095466
+    enum_orxSOUND_EVENT_t* = enum_orxSOUND_EVENT_t_520095429
 else:
   static :
     hint("Declaration of " & "enum_orxSOUND_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxMODULE_RUN_FUNCTION):
   type
-    orxMODULE_RUN_FUNCTION* = orxMODULE_RUN_FUNCTION_520095079
+    orxMODULE_RUN_FUNCTION* = orxMODULE_RUN_FUNCTION_520095042
 else:
   static :
     hint("Declaration of " & "orxMODULE_RUN_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxCLOCK_INFO):
   type
-    orxCLOCK_INFO* = orxCLOCK_INFO_520095122
+    orxCLOCK_INFO* = orxCLOCK_INFO_520095085
 else:
   static :
     hint("Declaration of " & "orxCLOCK_INFO" &
         " already exists, not redeclaring")
 when not declared(struct_orxDISPLAY_TRANSFORM_t):
   type
-    struct_orxDISPLAY_TRANSFORM_t* = struct_orxDISPLAY_TRANSFORM_t_520095272
+    struct_orxDISPLAY_TRANSFORM_t* = struct_orxDISPLAY_TRANSFORM_t_520095235
 else:
   static :
     hint("Declaration of " & "struct_orxDISPLAY_TRANSFORM_t" &
         " already exists, not redeclaring")
 when not declared(orxSTRUCTURE_STORAGE_TYPE):
   type
-    orxSTRUCTURE_STORAGE_TYPE* = orxSTRUCTURE_STORAGE_TYPE_520095154
+    orxSTRUCTURE_STORAGE_TYPE* = orxSTRUCTURE_STORAGE_TYPE_520095117
 else:
   static :
     hint("Declaration of " & "orxSTRUCTURE_STORAGE_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxBODY_PART_DEF):
   type
-    orxBODY_PART_DEF* = orxBODY_PART_DEF_520095550
+    orxBODY_PART_DEF* = orxBODY_PART_DEF_520095513
 else:
   static :
     hint("Declaration of " & "orxBODY_PART_DEF" &
         " already exists, not redeclaring")
 when not declared(enum_orxCOMMAND_VAR_TYPE_t):
   type
-    enum_orxCOMMAND_VAR_TYPE_t* = enum_orxCOMMAND_VAR_TYPE_t_520095182
+    enum_orxCOMMAND_VAR_TYPE_t* = enum_orxCOMMAND_VAR_TYPE_t_520095145
 else:
   static :
     hint("Declaration of " & "enum_orxCOMMAND_VAR_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxBOOL):
   type
-    orxBOOL* = orxBOOL_520095037
+    orxBOOL* = orxBOOL_520095000
 else:
   static :
     hint("Declaration of " & "orxBOOL" & " already exists, not redeclaring")
 when not declared(orxCOLOR):
   type
-    orxCOLOR* = orxCOLOR_520095306
+    orxCOLOR* = orxCOLOR_520095269
 else:
   static :
     hint("Declaration of " & "orxCOLOR" & " already exists, not redeclaring")
 when not declared(orxPLUGIN_USER_FUNCTION_INFO):
   type
-    orxPLUGIN_USER_FUNCTION_INFO* = orxPLUGIN_USER_FUNCTION_INFO_520095250
+    orxPLUGIN_USER_FUNCTION_INFO* = orxPLUGIN_USER_FUNCTION_INFO_520095213
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_USER_FUNCTION_INFO" &
         " already exists, not redeclaring")
 when not declared(orxTIMELINE):
   type
-    orxTIMELINE* = orxTIMELINE_520095524
+    orxTIMELINE* = orxTIMELINE_520095487
 else:
   static :
     hint("Declaration of " & "orxTIMELINE" & " already exists, not redeclaring")
 when not declared(orxSOUNDPOINTER):
   type
-    orxSOUNDPOINTER* = orxSOUNDPOINTER_520095612
+    orxSOUNDPOINTER* = orxSOUNDPOINTER_520095575
 else:
   static :
     hint("Declaration of " & "orxSOUNDPOINTER" &
         " already exists, not redeclaring")
 when not declared(orxSOUNDSYSTEM_STREAM_TYPE):
   type
-    orxSOUNDSYSTEM_STREAM_TYPE* = orxSOUNDSYSTEM_STREAM_TYPE_520095442
+    orxSOUNDSYSTEM_STREAM_TYPE* = orxSOUNDSYSTEM_STREAM_TYPE_520095405
 else:
   static :
     hint("Declaration of " & "orxSOUNDSYSTEM_STREAM_TYPE" &
         " already exists, not redeclaring")
 when not declared(struct_orxSOUND_EVENT_PAYLOAD_t):
   type
-    struct_orxSOUND_EVENT_PAYLOAD_t* = struct_orxSOUND_EVENT_PAYLOAD_t_520095478
+    struct_orxSOUND_EVENT_PAYLOAD_t* = struct_orxSOUND_EVENT_PAYLOAD_t_520095441
 else:
   static :
     hint("Declaration of " & "struct_orxSOUND_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxCOMMAND_VAR_DEF):
   type
-    orxCOMMAND_VAR_DEF* = orxCOMMAND_VAR_DEF_520095188
+    orxCOMMAND_VAR_DEF* = orxCOMMAND_VAR_DEF_520095151
 else:
   static :
     hint("Declaration of " & "orxCOMMAND_VAR_DEF" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_OPEN):
   type
-    orxRESOURCE_FUNCTION_OPEN* = orxRESOURCE_FUNCTION_OPEN_520095384
+    orxRESOURCE_FUNCTION_OPEN* = orxRESOURCE_FUNCTION_OPEN_520095347
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_OPEN" &
         " already exists, not redeclaring")
 when not declared(orxLOCALE_EVENT):
   type
-    orxLOCALE_EVENT* = orxLOCALE_EVENT_520095372
+    orxLOCALE_EVENT* = orxLOCALE_EVENT_520095335
 else:
   static :
     hint("Declaration of " & "orxLOCALE_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxFX_TYPE):
   type
-    orxFX_TYPE* = orxFX_TYPE_520095490
+    orxFX_TYPE* = orxFX_TYPE_520095453
 else:
   static :
     hint("Declaration of " & "orxFX_TYPE" & " already exists, not redeclaring")
 when not declared(orxMOUSE_BUTTON):
   type
-    orxMOUSE_BUTTON* = orxMOUSE_BUTTON_520095338
+    orxMOUSE_BUTTON* = orxMOUSE_BUTTON_520095301
 else:
   static :
     hint("Declaration of " & "orxMOUSE_BUTTON" &
         " already exists, not redeclaring")
 when not declared(orxANIM_EVENT):
   type
-    orxANIM_EVENT* = orxANIM_EVENT_520095166
+    orxANIM_EVENT* = orxANIM_EVENT_520095129
 else:
   static :
     hint("Declaration of " & "orxANIM_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxOBOX):
   type
-    orxOBOX* = orxOBOX_520095256
+    orxOBOX* = orxOBOX_520095219
 else:
   static :
     hint("Declaration of " & "orxOBOX" & " already exists, not redeclaring")
 when not declared(struct_orxANIM_EVENT_PAYLOAD_t):
   type
-    struct_orxANIM_EVENT_PAYLOAD_t* = struct_orxANIM_EVENT_PAYLOAD_t_520095168
+    struct_orxANIM_EVENT_PAYLOAD_t* = struct_orxANIM_EVENT_PAYLOAD_t_520095131
 else:
   static :
     hint("Declaration of " & "struct_orxANIM_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxEVENT_TYPE_t):
   type
-    enum_orxEVENT_TYPE_t* = enum_orxEVENT_TYPE_t_520095360
+    enum_orxEVENT_TYPE_t* = enum_orxEVENT_TYPE_t_520095323
 else:
   static :
     hint("Declaration of " & "enum_orxEVENT_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095216
+    enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t_520095179
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxJOYSTICK_AXIS_t):
   type
-    enum_orxJOYSTICK_AXIS_t* = enum_orxJOYSTICK_AXIS_t_520095328
+    enum_orxJOYSTICK_AXIS_t* = enum_orxJOYSTICK_AXIS_t_520095291
 else:
   static :
     hint("Declaration of " & "enum_orxJOYSTICK_AXIS_t" &
         " already exists, not redeclaring")
 when not declared(orxDEBUG_LEVEL):
   type
-    orxDEBUG_LEVEL* = orxDEBUG_LEVEL_520095085
+    orxDEBUG_LEVEL* = orxDEBUG_LEVEL_520095048
 else:
   static :
     hint("Declaration of " & "orxDEBUG_LEVEL" &
         " already exists, not redeclaring")
 when not declared(orxANIMSET_LINK_TABLE):
   type
-    orxANIMSET_LINK_TABLE* = orxANIMSET_LINK_TABLE_520095178
+    orxANIMSET_LINK_TABLE* = orxANIMSET_LINK_TABLE_520095141
 else:
   static :
     hint("Declaration of " & "orxANIMSET_LINK_TABLE" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_CORE_ID):
   type
-    orxPLUGIN_CORE_ID* = orxPLUGIN_CORE_ID_520095214
+    orxPLUGIN_CORE_ID* = orxPLUGIN_CORE_ID_520095177
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_CORE_ID" &
         " already exists, not redeclaring")
 when not declared(orxPHYSICS_BODY_JOINT):
   type
-    orxPHYSICS_BODY_JOINT* = orxPHYSICS_BODY_JOINT_520095568
+    orxPHYSICS_BODY_JOINT* = orxPHYSICS_BODY_JOINT_520095531
 else:
   static :
     hint("Declaration of " & "orxPHYSICS_BODY_JOINT" &
         " already exists, not redeclaring")
 when not declared(struct_orxSHADER_PARAM_t):
   type
-    struct_orxSHADER_PARAM_t* = struct_orxSHADER_PARAM_t_520095582
+    struct_orxSHADER_PARAM_t* = struct_orxSHADER_PARAM_t_520095545
 else:
   static :
     hint("Declaration of " & "struct_orxSHADER_PARAM_t" &
         " already exists, not redeclaring")
 when not declared(orxFX):
   type
-    orxFX* = orxFX_520095500
+    orxFX* = orxFX_520095463
 else:
   static :
     hint("Declaration of " & "orxFX" & " already exists, not redeclaring")
 when not declared(enum_orxSYSTEM_EVENT_t):
   type
-    enum_orxSYSTEM_EVENT_t* = enum_orxSYSTEM_EVENT_t_520095097
+    enum_orxSYSTEM_EVENT_t* = enum_orxSYSTEM_EVENT_t_520095060
 else:
   static :
     hint("Declaration of " & "enum_orxSYSTEM_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxPARAM_INIT_FUNCTION):
   type
-    orxPARAM_INIT_FUNCTION* = orxPARAM_INIT_FUNCTION_520095430
+    orxPARAM_INIT_FUNCTION* = orxPARAM_INIT_FUNCTION_520095393
 else:
   static :
     hint("Declaration of " & "orxPARAM_INIT_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(struct_orxSTRUCTURE_t):
   type
-    struct_orxSTRUCTURE_t* = struct_orxSTRUCTURE_t_520095156
+    struct_orxSTRUCTURE_t* = struct_orxSTRUCTURE_t_520095119
 else:
   static :
     hint("Declaration of " & "struct_orxSTRUCTURE_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxSYSTEM_EVENT_PAYLOAD_t):
   type
-    struct_orxSYSTEM_EVENT_PAYLOAD_t* = struct_orxSYSTEM_EVENT_PAYLOAD_t_520095108
+    struct_orxSYSTEM_EVENT_PAYLOAD_t* = struct_orxSYSTEM_EVENT_PAYLOAD_t_520095071
 else:
   static :
     hint("Declaration of " & "struct_orxSYSTEM_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxCLOCK_EVENT_t):
   type
-    enum_orxCLOCK_EVENT_t* = enum_orxCLOCK_EVENT_t_520095124
+    enum_orxCLOCK_EVENT_t* = enum_orxCLOCK_EVENT_t_520095087
 else:
   static :
     hint("Declaration of " & "enum_orxCLOCK_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxRENDER_EVENT_t):
   type
-    enum_orxRENDER_EVENT_t* = enum_orxRENDER_EVENT_t_520095604
+    enum_orxRENDER_EVENT_t* = enum_orxRENDER_EVENT_t_520095567
 else:
   static :
     hint("Declaration of " & "enum_orxRENDER_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxTREE_NODE_t):
   type
-    struct_orxTREE_NODE_t* = struct_orxTREE_NODE_t_520095140
+    struct_orxTREE_NODE_t* = struct_orxTREE_NODE_t_520095103
 else:
   static :
     hint("Declaration of " & "struct_orxTREE_NODE_t" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_STREAM_PACKET):
   type
-    orxSOUND_STREAM_PACKET* = orxSOUND_STREAM_PACKET_520095476
+    orxSOUND_STREAM_PACKET* = orxSOUND_STREAM_PACKET_520095439
 else:
   static :
     hint("Declaration of " & "orxSOUND_STREAM_PACKET" &
         " already exists, not redeclaring")
 when not declared(struct_orxINPUT_EVENT_PAYLOAD_t):
   type
-    struct_orxINPUT_EVENT_PAYLOAD_t* = struct_orxINPUT_EVENT_PAYLOAD_t_520095356
+    struct_orxINPUT_EVENT_PAYLOAD_t* = struct_orxINPUT_EVENT_PAYLOAD_t_520095319
 else:
   static :
     hint("Declaration of " & "struct_orxINPUT_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095228
+    enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t_520095191
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_MOUSE_t" &
         " already exists, not redeclaring")
 when not declared(orxANIMSET):
   type
-    orxANIMSET* = orxANIMSET_520095176
+    orxANIMSET* = orxANIMSET_520095139
 else:
   static :
     hint("Declaration of " & "orxANIMSET" & " already exists, not redeclaring")
 when not declared(orxSOUNDSYSTEM_SOUND):
   type
-    orxSOUNDSYSTEM_SOUND* = orxSOUNDSYSTEM_SOUND_520095436
+    orxSOUNDSYSTEM_SOUND* = orxSOUNDSYSTEM_SOUND_520095399
 else:
   static :
     hint("Declaration of " & "orxSOUNDSYSTEM_SOUND" &
         " already exists, not redeclaring")
 when not declared(orxTHREAD_FUNCTION):
   type
-    orxTHREAD_FUNCTION* = orxTHREAD_FUNCTION_520095414
+    orxTHREAD_FUNCTION* = orxTHREAD_FUNCTION_520095377
 else:
   static :
     hint("Declaration of " & "orxTHREAD_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxSTRINGID):
   type
-    orxSTRINGID* = orxSTRINGID_520095045
+    orxSTRINGID* = orxSTRINGID_520095008
 else:
   static :
     hint("Declaration of " & "orxSTRINGID" & " already exists, not redeclaring")
 when not declared(enum_orxLOCALE_EVENT_t):
   type
-    enum_orxLOCALE_EVENT_t* = enum_orxLOCALE_EVENT_t_520095370
+    enum_orxLOCALE_EVENT_t* = enum_orxLOCALE_EVENT_t_520095333
 else:
   static :
     hint("Declaration of " & "enum_orxLOCALE_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxSOUND_STATUS_t):
   type
-    enum_orxSOUND_STATUS_t* = enum_orxSOUND_STATUS_t_520095458
+    enum_orxSOUND_STATUS_t* = enum_orxSOUND_STATUS_t_520095421
 else:
   static :
     hint("Declaration of " & "enum_orxSOUND_STATUS_t" &
         " already exists, not redeclaring")
 when not declared(orxSHADER_PARAM):
   type
-    orxSHADER_PARAM* = orxSHADER_PARAM_520095584
+    orxSHADER_PARAM* = orxSHADER_PARAM_520095547
 else:
   static :
     hint("Declaration of " & "orxSHADER_PARAM" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_TRANSFORM):
   type
-    orxDISPLAY_TRANSFORM* = orxDISPLAY_TRANSFORM_520095274
+    orxDISPLAY_TRANSFORM* = orxDISPLAY_TRANSFORM_520095237
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_TRANSFORM" &
         " already exists, not redeclaring")
 when not declared(orxSTRUCTURE):
   type
-    orxSTRUCTURE* = orxSTRUCTURE_520095158
+    orxSTRUCTURE* = orxSTRUCTURE_520095121
 else:
   static :
     hint("Declaration of " & "orxSTRUCTURE" & " already exists, not redeclaring")
 when not declared(orxSOUND_FILTER_FUNCTION):
   type
-    orxSOUND_FILTER_FUNCTION* = orxSOUND_FILTER_FUNCTION_520095452
+    orxSOUND_FILTER_FUNCTION* = orxSOUND_FILTER_FUNCTION_520095415
 else:
   static :
     hint("Declaration of " & "orxSOUND_FILTER_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(struct_orxSOUND_FILTER_DATA_t):
   type
-    struct_orxSOUND_FILTER_DATA_t* = struct_orxSOUND_FILTER_DATA_t_520095454
+    struct_orxSOUND_FILTER_DATA_t* = struct_orxSOUND_FILTER_DATA_t_520095417
 else:
   static :
     hint("Declaration of " & "struct_orxSOUND_FILTER_DATA_t" &
         " already exists, not redeclaring")
 when not declared(orxTREE_NODE):
   type
-    orxTREE_NODE* = orxTREE_NODE_520095144
+    orxTREE_NODE* = orxTREE_NODE_520095107
 else:
   static :
     hint("Declaration of " & "orxTREE_NODE" & " already exists, not redeclaring")
 when not declared(struct_orxFILE_INFO_t):
   type
-    struct_orxFILE_INFO_t* = struct_orxFILE_INFO_t_520095424
+    struct_orxFILE_INFO_t* = struct_orxFILE_INFO_t_520095387
 else:
   static :
     hint("Declaration of " & "struct_orxFILE_INFO_t" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_GET_TIME):
   type
-    orxRESOURCE_FUNCTION_GET_TIME* = orxRESOURCE_FUNCTION_GET_TIME_520095382
+    orxRESOURCE_FUNCTION_GET_TIME* = orxRESOURCE_FUNCTION_GET_TIME_520095345
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_GET_TIME" &
         " already exists, not redeclaring")
 when not declared(struct_orxVERSION_t):
   type
-    struct_orxVERSION_t* = struct_orxVERSION_t_520095067
+    struct_orxVERSION_t* = struct_orxVERSION_t_520095030
 else:
   static :
     hint("Declaration of " & "struct_orxVERSION_t" &
         " already exists, not redeclaring")
 when not declared(orxJOYSTICK_AXIS):
   type
-    orxJOYSTICK_AXIS* = orxJOYSTICK_AXIS_520095330
+    orxJOYSTICK_AXIS* = orxJOYSTICK_AXIS_520095293
 else:
   static :
     hint("Declaration of " & "orxJOYSTICK_AXIS" &
         " already exists, not redeclaring")
 when not declared(enum_orxCLOCK_MODIFIER_t):
   type
-    enum_orxCLOCK_MODIFIER_t* = enum_orxCLOCK_MODIFIER_t_520095112
+    enum_orxCLOCK_MODIFIER_t* = enum_orxCLOCK_MODIFIER_t_520095075
 else:
   static :
     hint("Declaration of " & "enum_orxCLOCK_MODIFIER_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxMODULE_ID_t):
   type
-    enum_orxMODULE_ID_t* = enum_orxMODULE_ID_t_520095071
+    enum_orxMODULE_ID_t* = enum_orxMODULE_ID_t_520095034
 else:
   static :
     hint("Declaration of " & "enum_orxMODULE_ID_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxFX_TYPE_t):
   type
-    enum_orxFX_TYPE_t* = enum_orxFX_TYPE_t_520095488
+    enum_orxFX_TYPE_t* = enum_orxFX_TYPE_t_520095451
 else:
   static :
     hint("Declaration of " & "enum_orxFX_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxFX_CURVE_PARAM):
   type
-    orxFX_CURVE_PARAM* = orxFX_CURVE_PARAM_520095498
+    orxFX_CURVE_PARAM* = orxFX_CURVE_PARAM_520095461
 else:
   static :
     hint("Declaration of " & "orxFX_CURVE_PARAM" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095220
+    enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t_520095183
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxFRAME_SPACE_t):
   type
-    enum_orxFRAME_SPACE_t* = enum_orxFRAME_SPACE_t_520095512
+    enum_orxFRAME_SPACE_t* = enum_orxFRAME_SPACE_t_520095475
 else:
   static :
     hint("Declaration of " & "enum_orxFRAME_SPACE_t" &
         " already exists, not redeclaring")
 when not declared(orxCONFIG_BOOTSTRAP_FUNCTION):
   type
-    orxCONFIG_BOOTSTRAP_FUNCTION* = orxCONFIG_BOOTSTRAP_FUNCTION_520095204
+    orxCONFIG_BOOTSTRAP_FUNCTION* = orxCONFIG_BOOTSTRAP_FUNCTION_520095167
 else:
   static :
     hint("Declaration of " & "orxCONFIG_BOOTSTRAP_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(enum_orxCONFIG_EVENT_t):
   type
-    enum_orxCONFIG_EVENT_t* = enum_orxCONFIG_EVENT_t_520095196
+    enum_orxCONFIG_EVENT_t* = enum_orxCONFIG_EVENT_t_520095159
 else:
   static :
     hint("Declaration of " & "enum_orxCONFIG_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxTRIGGER_EVENT_t):
   type
-    enum_orxTRIGGER_EVENT_t* = enum_orxTRIGGER_EVENT_t_520095536
+    enum_orxTRIGGER_EVENT_t* = enum_orxTRIGGER_EVENT_t_520095499
 else:
   static :
     hint("Declaration of " & "enum_orxTRIGGER_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxINPUT_TYPE_t):
   type
-    enum_orxINPUT_TYPE_t* = enum_orxINPUT_TYPE_t_520095344
+    enum_orxINPUT_TYPE_t* = enum_orxINPUT_TYPE_t_520095307
 else:
   static :
     hint("Declaration of " & "enum_orxINPUT_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxTREE):
   type
-    orxTREE* = orxTREE_520095146
+    orxTREE* = orxTREE_520095109
 else:
   static :
     hint("Declaration of " & "orxTREE" & " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_DELETE):
   type
-    orxRESOURCE_FUNCTION_DELETE* = orxRESOURCE_FUNCTION_DELETE_520095398
+    orxRESOURCE_FUNCTION_DELETE* = orxRESOURCE_FUNCTION_DELETE_520095361
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_DELETE" &
         " already exists, not redeclaring")
 when not declared(enum_orxPHYSICS_EVENT_t):
   type
-    enum_orxPHYSICS_EVENT_t* = enum_orxPHYSICS_EVENT_t_520095556
+    enum_orxPHYSICS_EVENT_t* = enum_orxPHYSICS_EVENT_t_520095519
 else:
   static :
     hint("Declaration of " & "enum_orxPHYSICS_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxRENDER_EVENT_PAYLOAD):
   type
-    orxRENDER_EVENT_PAYLOAD* = orxRENDER_EVENT_PAYLOAD_520095610
+    orxRENDER_EVENT_PAYLOAD* = orxRENDER_EVENT_PAYLOAD_520095573
 else:
   static :
     hint("Declaration of " & "orxRENDER_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(enum_orxSTRUCTURE_ID_t):
   type
-    enum_orxSTRUCTURE_ID_t* = enum_orxSTRUCTURE_ID_t_520095148
+    enum_orxSTRUCTURE_ID_t* = enum_orxSTRUCTURE_ID_t_520095111
 else:
   static :
     hint("Declaration of " & "enum_orxSTRUCTURE_ID_t" &
         " already exists, not redeclaring")
 when not declared(orxSHADER_EVENT_PAYLOAD):
   type
-    orxSHADER_EVENT_PAYLOAD* = orxSHADER_EVENT_PAYLOAD_520095594
+    orxSHADER_EVENT_PAYLOAD* = orxSHADER_EVENT_PAYLOAD_520095557
 else:
   static :
     hint("Declaration of " & "orxSHADER_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxCONFIG_SAVE_FUNCTION):
   type
-    orxCONFIG_SAVE_FUNCTION* = orxCONFIG_SAVE_FUNCTION_520095200
+    orxCONFIG_SAVE_FUNCTION* = orxCONFIG_SAVE_FUNCTION_520095163
 else:
   static :
     hint("Declaration of " & "orxCONFIG_SAVE_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxCLOCK):
   type
-    orxCLOCK* = orxCLOCK_520095128
+    orxCLOCK* = orxCLOCK_520095091
 else:
   static :
     hint("Declaration of " & "orxCLOCK" & " already exists, not redeclaring")
 when not declared(struct_orxANIM_CUSTOM_EVENT_t):
   type
-    struct_orxANIM_CUSTOM_EVENT_t* = struct_orxANIM_CUSTOM_EVENT_t_520095172
+    struct_orxANIM_CUSTOM_EVENT_t* = struct_orxANIM_CUSTOM_EVENT_t_520095135
 else:
   static :
     hint("Declaration of " & "struct_orxANIM_CUSTOM_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_CORE_FUNCTION):
   type
-    orxPLUGIN_CORE_FUNCTION* = orxPLUGIN_CORE_FUNCTION_520095246
+    orxPLUGIN_CORE_FUNCTION* = orxPLUGIN_CORE_FUNCTION_520095209
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_CORE_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxTRIGGER_EVENT):
   type
-    orxTRIGGER_EVENT* = orxTRIGGER_EVENT_520095538
+    orxTRIGGER_EVENT* = orxTRIGGER_EVENT_520095501
 else:
   static :
     hint("Declaration of " & "orxTRIGGER_EVENT" &
         " already exists, not redeclaring")
 when not declared(struct_orxRESOURCE_EVENT_PAYLOAD_t):
   type
-    struct_orxRESOURCE_EVENT_PAYLOAD_t* = struct_orxRESOURCE_EVENT_PAYLOAD_t_520095408
+    struct_orxRESOURCE_EVENT_PAYLOAD_t* = struct_orxRESOURCE_EVENT_PAYLOAD_t_520095371
 else:
   static :
     hint("Declaration of " & "struct_orxRESOURCE_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxBODY_PART_DEF_t):
   type
-    struct_orxBODY_PART_DEF_t* = struct_orxBODY_PART_DEF_t_520095548
+    struct_orxBODY_PART_DEF_t* = struct_orxBODY_PART_DEF_t_520095511
 else:
   static :
     hint("Declaration of " & "struct_orxBODY_PART_DEF_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxCOMMAND_VAR_DEF_t):
   type
-    struct_orxCOMMAND_VAR_DEF_t* = struct_orxCOMMAND_VAR_DEF_t_520095186
+    struct_orxCOMMAND_VAR_DEF_t* = struct_orxCOMMAND_VAR_DEF_t_520095149
 else:
   static :
     hint("Declaration of " & "struct_orxCOMMAND_VAR_DEF_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxVECTOR_t):
   type
-    struct_orxVECTOR_t* = struct_orxVECTOR_t_520095093
+    struct_orxVECTOR_t* = struct_orxVECTOR_t_520095056
 else:
   static :
     hint("Declaration of " & "struct_orxVECTOR_t" &
         " already exists, not redeclaring")
 when not declared(orxCOMMAND_FUNCTION):
   type
-    orxCOMMAND_FUNCTION* = orxCOMMAND_FUNCTION_520095194
+    orxCOMMAND_FUNCTION* = orxCOMMAND_FUNCTION_520095157
 else:
   static :
     hint("Declaration of " & "orxCOMMAND_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_WRITE):
   type
-    orxRESOURCE_FUNCTION_WRITE* = orxRESOURCE_FUNCTION_WRITE_520095396
+    orxRESOURCE_FUNCTION_WRITE* = orxRESOURCE_FUNCTION_WRITE_520095359
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_WRITE" &
         " already exists, not redeclaring")
 when not declared(orxAABOX):
   type
-    orxAABOX* = orxAABOX_520095418
+    orxAABOX* = orxAABOX_520095381
 else:
   static :
     hint("Declaration of " & "orxAABOX" & " already exists, not redeclaring")
 when not declared(orxLOCALE_EVENT_PAYLOAD):
   type
-    orxLOCALE_EVENT_PAYLOAD* = orxLOCALE_EVENT_PAYLOAD_520095376
+    orxLOCALE_EVENT_PAYLOAD* = orxLOCALE_EVENT_PAYLOAD_520095339
 else:
   static :
     hint("Declaration of " & "orxLOCALE_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxBODY_DEF):
   type
-    orxBODY_DEF* = orxBODY_DEF_520095546
+    orxBODY_DEF* = orxBODY_DEF_520095509
 else:
   static :
     hint("Declaration of " & "orxBODY_DEF" & " already exists, not redeclaring")
 when not declared(orxBODY_JOINT):
   type
-    orxBODY_JOINT* = orxBODY_JOINT_520095574
+    orxBODY_JOINT* = orxBODY_JOINT_520095537
 else:
   static :
     hint("Declaration of " & "orxBODY_JOINT" &
         " already exists, not redeclaring")
 when not declared(orxSHADER_PARAM_TYPE):
   type
-    orxSHADER_PARAM_TYPE* = orxSHADER_PARAM_TYPE_520095580
+    orxSHADER_PARAM_TYPE* = orxSHADER_PARAM_TYPE_520095543
 else:
   static :
     hint("Declaration of " & "orxSHADER_PARAM_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxBANK):
   type
-    orxBANK* = orxBANK_520095258
+    orxBANK* = orxBANK_520095221
 else:
   static :
     hint("Declaration of " & "orxBANK" & " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_DISPLAY):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_DISPLAY* = orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095218
+    orxPLUGIN_FUNCTION_BASE_ID_DISPLAY* = orxPLUGIN_FUNCTION_BASE_ID_DISPLAY_520095181
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_DISPLAY" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK* = orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095222
+    orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK* = orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_520095185
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK" &
         " already exists, not redeclaring")
 when not declared(enum_orxDISPLAY_BLEND_MODE_t):
   type
-    enum_orxDISPLAY_BLEND_MODE_t* = enum_orxDISPLAY_BLEND_MODE_t_520095300
+    enum_orxDISPLAY_BLEND_MODE_t* = enum_orxDISPLAY_BLEND_MODE_t_520095263
 else:
   static :
     hint("Declaration of " & "enum_orxDISPLAY_BLEND_MODE_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095240
+    enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t_520095203
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_t" &
         " already exists, not redeclaring")
 when not declared(orxFONT):
   type
-    orxFONT* = orxFONT_520095322
+    orxFONT* = orxFONT_520095285
 else:
   static :
     hint("Declaration of " & "orxFONT" & " already exists, not redeclaring")
 when not declared(orxGRAPHIC):
   type
-    orxGRAPHIC* = orxGRAPHIC_520095420
+    orxGRAPHIC* = orxGRAPHIC_520095383
 else:
   static :
     hint("Declaration of " & "orxGRAPHIC" & " already exists, not redeclaring")
 when not declared(struct_orxCOMMAND_VAR_t):
   type
-    struct_orxCOMMAND_VAR_t* = struct_orxCOMMAND_VAR_t_520095190
+    struct_orxCOMMAND_VAR_t* = struct_orxCOMMAND_VAR_t_520095153
 else:
   static :
     hint("Declaration of " & "struct_orxCOMMAND_VAR_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxMEMORY_TYPE_t):
   type
-    enum_orxMEMORY_TYPE_t* = enum_orxMEMORY_TYPE_t_520095089
+    enum_orxMEMORY_TYPE_t* = enum_orxMEMORY_TYPE_t_520095052
 else:
   static :
     hint("Declaration of " & "enum_orxMEMORY_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxDOUBLE):
   type
-    orxDOUBLE* = orxDOUBLE_520095041
+    orxDOUBLE* = orxDOUBLE_520095004
 else:
   static :
     hint("Declaration of " & "orxDOUBLE" & " already exists, not redeclaring")
 when not declared(orxCHARACTER_GLYPH):
   type
-    orxCHARACTER_GLYPH* = orxCHARACTER_GLYPH_520095290
+    orxCHARACTER_GLYPH* = orxCHARACTER_GLYPH_520095253
 else:
   static :
     hint("Declaration of " & "orxCHARACTER_GLYPH" &
         " already exists, not redeclaring")
 when not declared(orxCHARACTER_MAP):
   type
-    orxCHARACTER_MAP* = orxCHARACTER_MAP_520095294
+    orxCHARACTER_MAP* = orxCHARACTER_MAP_520095257
 else:
   static :
     hint("Declaration of " & "orxCHARACTER_MAP" &
         " already exists, not redeclaring")
 when not declared(orxINPUT_EVENT_PAYLOAD):
   type
-    orxINPUT_EVENT_PAYLOAD* = orxINPUT_EVENT_PAYLOAD_520095358
+    orxINPUT_EVENT_PAYLOAD* = orxINPUT_EVENT_PAYLOAD_520095321
 else:
   static :
     hint("Declaration of " & "orxINPUT_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(enum_orxSOUNDSYSTEM_STATUS_t):
   type
-    enum_orxSOUNDSYSTEM_STATUS_t* = enum_orxSOUNDSYSTEM_STATUS_t_520095444
+    enum_orxSOUNDSYSTEM_STATUS_t* = enum_orxSOUNDSYSTEM_STATUS_t_520095407
 else:
   static :
     hint("Declaration of " & "enum_orxSOUNDSYSTEM_STATUS_t" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_TELL):
   type
-    orxRESOURCE_FUNCTION_TELL* = orxRESOURCE_FUNCTION_TELL_520095392
+    orxRESOURCE_FUNCTION_TELL* = orxRESOURCE_FUNCTION_TELL_520095355
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_TELL" &
         " already exists, not redeclaring")
 when not declared(orxJOYSTICK_BUTTON):
   type
-    orxJOYSTICK_BUTTON* = orxJOYSTICK_BUTTON_520095326
+    orxJOYSTICK_BUTTON* = orxJOYSTICK_BUTTON_520095289
 else:
   static :
     hint("Declaration of " & "orxJOYSTICK_BUTTON" &
         " already exists, not redeclaring")
 when not declared(orxVIEWPORT_EVENT):
   type
-    orxVIEWPORT_EVENT* = orxVIEWPORT_EVENT_520095602
+    orxVIEWPORT_EVENT* = orxVIEWPORT_EVENT_520095565
 else:
   static :
     hint("Declaration of " & "orxVIEWPORT_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxEVENT):
   type
-    orxEVENT* = orxEVENT_520095366
+    orxEVENT* = orxEVENT_520095329
 else:
   static :
     hint("Declaration of " & "orxEVENT" & " already exists, not redeclaring")
 when not declared(orxSOUND):
   type
-    orxSOUND* = orxSOUND_520095462
+    orxSOUND* = orxSOUND_520095425
 else:
   static :
     hint("Declaration of " & "orxSOUND" & " already exists, not redeclaring")
 when not declared(orxMODULE_ID):
   type
-    orxMODULE_ID* = orxMODULE_ID_520095073
+    orxMODULE_ID* = orxMODULE_ID_520095036
 else:
   static :
     hint("Declaration of " & "orxMODULE_ID" & " already exists, not redeclaring")
 when not declared(orxRESOURCE_EVENT_PAYLOAD):
   type
-    orxRESOURCE_EVENT_PAYLOAD* = orxRESOURCE_EVENT_PAYLOAD_520095410
+    orxRESOURCE_EVENT_PAYLOAD* = orxRESOURCE_EVENT_PAYLOAD_520095373
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(struct_orxPHYSICS_EVENT_PAYLOAD_t):
   type
-    struct_orxPHYSICS_EVENT_PAYLOAD_t* = struct_orxPHYSICS_EVENT_PAYLOAD_t_520095560
+    struct_orxPHYSICS_EVENT_PAYLOAD_t* = struct_orxPHYSICS_EVENT_PAYLOAD_t_520095523
 else:
   static :
     hint("Declaration of " & "struct_orxPHYSICS_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION):
   type
-    orxPLUGIN_FUNCTION* = orxPLUGIN_FUNCTION_520095210
+    orxPLUGIN_FUNCTION* = orxPLUGIN_FUNCTION_520095173
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(struct_orxDISPLAY_VERTEX_t):
   type
-    struct_orxDISPLAY_VERTEX_t* = struct_orxDISPLAY_VERTEX_t_520095268
+    struct_orxDISPLAY_VERTEX_t* = struct_orxDISPLAY_VERTEX_t_520095231
 else:
   static :
     hint("Declaration of " & "struct_orxDISPLAY_VERTEX_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxAABOX_t):
   type
-    struct_orxAABOX_t* = struct_orxAABOX_t_520095416
+    struct_orxAABOX_t* = struct_orxAABOX_t_520095379
 else:
   static :
     hint("Declaration of " & "struct_orxAABOX_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxBODY_JOINT_DEF_t):
   type
-    struct_orxBODY_JOINT_DEF_t* = struct_orxBODY_JOINT_DEF_t_520095552
+    struct_orxBODY_JOINT_DEF_t* = struct_orxBODY_JOINT_DEF_t_520095515
 else:
   static :
     hint("Declaration of " & "struct_orxBODY_JOINT_DEF_t" &
         " already exists, not redeclaring")
 when not declared(orxANIM_CUSTOM_EVENT):
   type
-    orxANIM_CUSTOM_EVENT* = orxANIM_CUSTOM_EVENT_520095174
+    orxANIM_CUSTOM_EVENT* = orxANIM_CUSTOM_EVENT_520095137
 else:
   static :
     hint("Declaration of " & "orxANIM_CUSTOM_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxCLOCK_EVENT):
   type
-    orxCLOCK_EVENT* = orxCLOCK_EVENT_520095126
+    orxCLOCK_EVENT* = orxCLOCK_EVENT_520095089
 else:
   static :
     hint("Declaration of " & "orxCLOCK_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxCLOCK_MODIFIER):
   type
-    orxCLOCK_MODIFIER* = orxCLOCK_MODIFIER_520095114
+    orxCLOCK_MODIFIER* = orxCLOCK_MODIFIER_520095077
 else:
   static :
     hint("Declaration of " & "orxCLOCK_MODIFIER" &
         " already exists, not redeclaring")
 when not declared(orxFX_EVENT):
   type
-    orxFX_EVENT* = orxFX_EVENT_520095504
+    orxFX_EVENT* = orxFX_EVENT_520095467
 else:
   static :
     hint("Declaration of " & "orxFX_EVENT" & " already exists, not redeclaring")
 when not declared(struct_orxCOLOR_t):
   type
-    struct_orxCOLOR_t* = struct_orxCOLOR_t_520095304
+    struct_orxCOLOR_t* = struct_orxCOLOR_t_520095267
 else:
   static :
     hint("Declaration of " & "struct_orxCOLOR_t" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_CLOSE):
   type
-    orxRESOURCE_FUNCTION_CLOSE* = orxRESOURCE_FUNCTION_CLOSE_520095386
+    orxRESOURCE_FUNCTION_CLOSE* = orxRESOURCE_FUNCTION_CLOSE_520095349
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_CLOSE" &
         " already exists, not redeclaring")
 when not declared(struct_orxLINKLIST_NODE_t):
   type
-    struct_orxLINKLIST_NODE_t* = struct_orxLINKLIST_NODE_t_520095132
+    struct_orxLINKLIST_NODE_t* = struct_orxLINKLIST_NODE_t_520095095
 else:
   static :
     hint("Declaration of " & "struct_orxLINKLIST_NODE_t" &
         " already exists, not redeclaring")
 when not declared(orxSPTR):
   type
-    orxSPTR* = orxSPTR_520095051
+    orxSPTR* = orxSPTR_520095014
 else:
   static :
     hint("Declaration of " & "orxSPTR" & " already exists, not redeclaring")
 when not declared(enum_orxTIMELINE_EVENT_t):
   type
-    enum_orxTIMELINE_EVENT_t* = enum_orxTIMELINE_EVENT_t_520095526
+    enum_orxTIMELINE_EVENT_t* = enum_orxTIMELINE_EVENT_t_520095489
 else:
   static :
     hint("Declaration of " & "enum_orxTIMELINE_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxVIEWPORT_EVENT_t):
   type
-    enum_orxVIEWPORT_EVENT_t* = enum_orxVIEWPORT_EVENT_t_520095600
+    enum_orxVIEWPORT_EVENT_t* = enum_orxVIEWPORT_EVENT_t_520095563
 else:
   static :
     hint("Declaration of " & "enum_orxVIEWPORT_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxCLOCK_INFO_t):
   type
-    struct_orxCLOCK_INFO_t* = struct_orxCLOCK_INFO_t_520095120
+    struct_orxCLOCK_INFO_t* = struct_orxCLOCK_INFO_t_520095083
 else:
   static :
     hint("Declaration of " & "struct_orxCLOCK_INFO_t" &
         " already exists, not redeclaring")
 when not declared(orxSTRUCTURE_ID):
   type
-    orxSTRUCTURE_ID* = orxSTRUCTURE_ID_520095150
+    orxSTRUCTURE_ID* = orxSTRUCTURE_ID_520095113
 else:
   static :
     hint("Declaration of " & "orxSTRUCTURE_ID" &
         " already exists, not redeclaring")
 when not declared(struct_orxOBOX_t):
   type
-    struct_orxOBOX_t* = struct_orxOBOX_t_520095254
+    struct_orxOBOX_t* = struct_orxOBOX_t_520095217
 else:
   static :
     hint("Declaration of " & "struct_orxOBOX_t" &
         " already exists, not redeclaring")
 when not declared(orxSOUNDSYSTEM_STATUS):
   type
-    orxSOUNDSYSTEM_STATUS* = orxSOUNDSYSTEM_STATUS_520095446
+    orxSOUNDSYSTEM_STATUS* = orxSOUNDSYSTEM_STATUS_520095409
 else:
   static :
     hint("Declaration of " & "orxSOUNDSYSTEM_STATUS" &
         " already exists, not redeclaring")
 when not declared(orxFRAME_SPACE):
   type
-    orxFRAME_SPACE* = orxFRAME_SPACE_520095514
+    orxFRAME_SPACE* = orxFRAME_SPACE_520095477
 else:
   static :
     hint("Declaration of " & "orxFRAME_SPACE" &
         " already exists, not redeclaring")
 when not declared(orxMODULE_EXIT_FUNCTION):
   type
-    orxMODULE_EXIT_FUNCTION* = orxMODULE_EXIT_FUNCTION_520095077
+    orxMODULE_EXIT_FUNCTION* = orxMODULE_EXIT_FUNCTION_520095040
 else:
   static :
     hint("Declaration of " & "orxMODULE_EXIT_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxANIMPOINTER):
   type
-    orxANIMPOINTER* = orxANIMPOINTER_520095180
+    orxANIMPOINTER* = orxANIMPOINTER_520095143
 else:
   static :
     hint("Declaration of " & "orxANIMPOINTER" &
         " already exists, not redeclaring")
 when not declared(orxHASHTABLE):
   type
-    orxHASHTABLE* = orxHASHTABLE_520095260
+    orxHASHTABLE* = orxHASHTABLE_520095223
 else:
   static :
     hint("Declaration of " & "orxHASHTABLE" & " already exists, not redeclaring")
 when not declared(enum_orxKEYBOARD_KEY_t):
   type
-    enum_orxKEYBOARD_KEY_t* = enum_orxKEYBOARD_KEY_t_520095332
+    enum_orxKEYBOARD_KEY_t* = enum_orxKEYBOARD_KEY_t_520095295
 else:
   static :
     hint("Declaration of " & "enum_orxKEYBOARD_KEY_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxFX_EVENT_PAYLOAD_t):
   type
-    struct_orxFX_EVENT_PAYLOAD_t* = struct_orxFX_EVENT_PAYLOAD_t_520095506
+    struct_orxFX_EVENT_PAYLOAD_t* = struct_orxFX_EVENT_PAYLOAD_t_520095469
 else:
   static :
     hint("Declaration of " & "struct_orxFX_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxSOUND_STREAM_INFO_t):
   type
-    struct_orxSOUND_STREAM_INFO_t* = struct_orxSOUND_STREAM_INFO_t_520095470
+    struct_orxSOUND_STREAM_INFO_t* = struct_orxSOUND_STREAM_INFO_t_520095433
 else:
   static :
     hint("Declaration of " & "struct_orxSOUND_STREAM_INFO_t" &
         " already exists, not redeclaring")
 when not declared(orxSYSTEM_EVENT_PAYLOAD):
   type
-    orxSYSTEM_EVENT_PAYLOAD* = orxSYSTEM_EVENT_PAYLOAD_520095110
+    orxSYSTEM_EVENT_PAYLOAD* = orxSYSTEM_EVENT_PAYLOAD_520095073
 else:
   static :
     hint("Declaration of " & "orxSYSTEM_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_EVENT):
   type
-    orxSOUND_EVENT* = orxSOUND_EVENT_520095468
+    orxSOUND_EVENT* = orxSOUND_EVENT_520095431
 else:
   static :
     hint("Declaration of " & "orxSOUND_EVENT" &
         " already exists, not redeclaring")
 when not declared(struct_orxCHARACTER_GLYPH_t):
   type
-    struct_orxCHARACTER_GLYPH_t* = struct_orxCHARACTER_GLYPH_t_520095288
+    struct_orxCHARACTER_GLYPH_t* = struct_orxCHARACTER_GLYPH_t_520095251
 else:
   static :
     hint("Declaration of " & "struct_orxCHARACTER_GLYPH_t" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_TYPE_INFO):
   type
-    orxRESOURCE_TYPE_INFO* = orxRESOURCE_TYPE_INFO_520095402
+    orxRESOURCE_TYPE_INFO* = orxRESOURCE_TYPE_INFO_520095365
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_TYPE_INFO" &
         " already exists, not redeclaring")
 when not declared(orxPARAM):
   type
-    orxPARAM* = orxPARAM_520095434
+    orxPARAM* = orxPARAM_520095397
 else:
   static :
     hint("Declaration of " & "orxPARAM" & " already exists, not redeclaring")
 when not declared(enum_orxINPUT_MODE_t):
   type
-    enum_orxINPUT_MODE_t* = enum_orxINPUT_MODE_t_520095348
+    enum_orxINPUT_MODE_t* = enum_orxINPUT_MODE_t_520095311
 else:
   static :
     hint("Declaration of " & "enum_orxINPUT_MODE_t" &
         " already exists, not redeclaring")
 when not declared(orxSYSTEM_EVENT):
   type
-    orxSYSTEM_EVENT* = orxSYSTEM_EVENT_520095099
+    orxSYSTEM_EVENT* = orxSYSTEM_EVENT_520095062
 else:
   static :
     hint("Declaration of " & "orxSYSTEM_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_GET_SIZE):
   type
-    orxRESOURCE_FUNCTION_GET_SIZE* = orxRESOURCE_FUNCTION_GET_SIZE_520095388
+    orxRESOURCE_FUNCTION_GET_SIZE* = orxRESOURCE_FUNCTION_GET_SIZE_520095351
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_GET_SIZE" &
         " already exists, not redeclaring")
 when not declared(struct_orxLINKLIST_t):
   type
-    struct_orxLINKLIST_t* = struct_orxLINKLIST_t_520095134
+    struct_orxLINKLIST_t* = struct_orxLINKLIST_t_520095097
 else:
   static :
     hint("Declaration of " & "struct_orxLINKLIST_t" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_FILTER_DATA):
   type
-    orxSOUND_FILTER_DATA* = orxSOUND_FILTER_DATA_520095456
+    orxSOUND_FILTER_DATA* = orxSOUND_FILTER_DATA_520095419
 else:
   static :
     hint("Declaration of " & "orxSOUND_FILTER_DATA" &
         " already exists, not redeclaring")
 when not declared(orxOBJECT_EVENT):
   type
-    orxOBJECT_EVENT* = orxOBJECT_EVENT_520095484
+    orxOBJECT_EVENT* = orxOBJECT_EVENT_520095447
 else:
   static :
     hint("Declaration of " & "orxOBJECT_EVENT" &
         " already exists, not redeclaring")
 when not declared(enum_orxSOUND_FILTER_TYPE_t):
   type
-    enum_orxSOUND_FILTER_TYPE_t* = enum_orxSOUND_FILTER_TYPE_t_520095448
+    enum_orxSOUND_FILTER_TYPE_t* = enum_orxSOUND_FILTER_TYPE_t_520095411
 else:
   static :
     hint("Declaration of " & "enum_orxSOUND_FILTER_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_SMOOTHING):
   type
-    orxDISPLAY_SMOOTHING* = orxDISPLAY_SMOOTHING_520095298
+    orxDISPLAY_SMOOTHING* = orxDISPLAY_SMOOTHING_520095261
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_SMOOTHING" &
         " already exists, not redeclaring")
 when not declared(orxCOMMAND_VAR_TYPE):
   type
-    orxCOMMAND_VAR_TYPE* = orxCOMMAND_VAR_TYPE_520095184
+    orxCOMMAND_VAR_TYPE* = orxCOMMAND_VAR_TYPE_520095147
 else:
   static :
     hint("Declaration of " & "orxCOMMAND_VAR_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxKEYBOARD_KEY):
   type
-    orxKEYBOARD_KEY* = orxKEYBOARD_KEY_520095334
+    orxKEYBOARD_KEY* = orxKEYBOARD_KEY_520095297
 else:
   static :
     hint("Declaration of " & "orxKEYBOARD_KEY" &
         " already exists, not redeclaring")
 when not declared(orxPHYSICS_EVENT):
   type
-    orxPHYSICS_EVENT* = orxPHYSICS_EVENT_520095558
+    orxPHYSICS_EVENT* = orxPHYSICS_EVENT_520095521
 else:
   static :
     hint("Declaration of " & "orxPHYSICS_EVENT" &
         " already exists, not redeclaring")
 when not declared(struct_orxRGBA_t):
   type
-    struct_orxRGBA_t* = struct_orxRGBA_t_520095262
+    struct_orxRGBA_t* = struct_orxRGBA_t_520095225
 else:
   static :
     hint("Declaration of " & "struct_orxRGBA_t" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_ID):
   type
-    orxPLUGIN_FUNCTION_ID* = orxPLUGIN_FUNCTION_ID_520095208
+    orxPLUGIN_FUNCTION_ID* = orxPLUGIN_FUNCTION_ID_520095171
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_ID" &
         " already exists, not redeclaring")
 when not declared(orxS32):
   type
-    orxS32* = orxS32_520095031
+    orxS32* = orxS32_520094994
 else:
   static :
     hint("Declaration of " & "orxS32" & " already exists, not redeclaring")
 when not declared(orxFILE):
   type
-    orxFILE* = orxFILE_520095428
+    orxFILE* = orxFILE_520095391
 else:
   static :
     hint("Declaration of " & "orxFILE" & " already exists, not redeclaring")
 when not declared(orxSHADER):
   type
-    orxSHADER* = orxSHADER_520095586
+    orxSHADER* = orxSHADER_520095549
 else:
   static :
     hint("Declaration of " & "orxSHADER" & " already exists, not redeclaring")
 when not declared(struct_orxBODY_DEF_t):
   type
-    struct_orxBODY_DEF_t* = struct_orxBODY_DEF_t_520095544
+    struct_orxBODY_DEF_t* = struct_orxBODY_DEF_t_520095507
 else:
   static :
     hint("Declaration of " & "struct_orxBODY_DEF_t" &
         " already exists, not redeclaring")
 when not declared(orxSEEK_OFFSET_WHENCE):
   type
-    orxSEEK_OFFSET_WHENCE* = orxSEEK_OFFSET_WHENCE_520095057
+    orxSEEK_OFFSET_WHENCE* = orxSEEK_OFFSET_WHENCE_520095020
 else:
   static :
     hint("Declaration of " & "orxSEEK_OFFSET_WHENCE" &
         " already exists, not redeclaring")
 when not declared(orxTEXTURE):
   type
-    orxTEXTURE* = orxTEXTURE_520095320
+    orxTEXTURE* = orxTEXTURE_520095283
 else:
   static :
     hint("Declaration of " & "orxTEXTURE" & " already exists, not redeclaring")
 when not declared(enum_orxMOUSE_AXIS_t):
   type
-    enum_orxMOUSE_AXIS_t* = enum_orxMOUSE_AXIS_t_520095340
+    enum_orxMOUSE_AXIS_t* = enum_orxMOUSE_AXIS_t_520095303
 else:
   static :
     hint("Declaration of " & "enum_orxMOUSE_AXIS_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxRESOURCE_EVENT_t):
   type
-    enum_orxRESOURCE_EVENT_t* = enum_orxRESOURCE_EVENT_t_520095404
+    enum_orxRESOURCE_EVENT_t* = enum_orxRESOURCE_EVENT_t_520095367
 else:
   static :
     hint("Declaration of " & "enum_orxRESOURCE_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxDISPLAY_EVENT_PAYLOAD_t):
   type
-    struct_orxDISPLAY_EVENT_PAYLOAD_t* = struct_orxDISPLAY_EVENT_PAYLOAD_t_520095312
+    struct_orxDISPLAY_EVENT_PAYLOAD_t* = struct_orxDISPLAY_EVENT_PAYLOAD_t_520095275
 else:
   static :
     hint("Declaration of " & "struct_orxDISPLAY_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxRGBA):
   type
-    orxRGBA* = orxRGBA_520095264
+    orxRGBA* = orxRGBA_520095227
 else:
   static :
     hint("Declaration of " & "orxRGBA" & " already exists, not redeclaring")
 when not declared(orxSOUND_EVENT_PAYLOAD):
   type
-    orxSOUND_EVENT_PAYLOAD* = orxSOUND_EVENT_PAYLOAD_520095480
+    orxSOUND_EVENT_PAYLOAD* = orxSOUND_EVENT_PAYLOAD_520095443
 else:
   static :
     hint("Declaration of " & "orxSOUND_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_BLEND_MODE):
   type
-    orxDISPLAY_BLEND_MODE* = orxDISPLAY_BLEND_MODE_520095302
+    orxDISPLAY_BLEND_MODE* = orxDISPLAY_BLEND_MODE_520095265
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_BLEND_MODE" &
         " already exists, not redeclaring")
 when not declared(orxS8):
   type
-    orxS8* = orxS8_520095035
+    orxS8* = orxS8_520094998
 else:
   static :
     hint("Declaration of " & "orxS8" & " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095224
+    enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t_520095187
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_KEYBOARD_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxPLUGIN_USER_FUNCTION_INFO_t):
   type
-    struct_orxPLUGIN_USER_FUNCTION_INFO_t* = struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095248
+    struct_orxPLUGIN_USER_FUNCTION_INFO_t* = struct_orxPLUGIN_USER_FUNCTION_INFO_t_520095211
 else:
   static :
     hint("Declaration of " & "struct_orxPLUGIN_USER_FUNCTION_INFO_t" &
         " already exists, not redeclaring")
 when not declared(orxANIM_EVENT_PAYLOAD):
   type
-    orxANIM_EVENT_PAYLOAD* = orxANIM_EVENT_PAYLOAD_520095170
+    orxANIM_EVENT_PAYLOAD* = orxANIM_EVENT_PAYLOAD_520095133
 else:
   static :
     hint("Declaration of " & "orxANIM_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_INIT_FUNCTION):
   type
-    orxPLUGIN_INIT_FUNCTION* = orxPLUGIN_INIT_FUNCTION_520095252
+    orxPLUGIN_INIT_FUNCTION* = orxPLUGIN_INIT_FUNCTION_520095215
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_INIT_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxTHREAD_SEMAPHORE):
   type
-    orxTHREAD_SEMAPHORE* = orxTHREAD_SEMAPHORE_520095412
+    orxTHREAD_SEMAPHORE* = orxTHREAD_SEMAPHORE_520095375
 else:
   static :
     hint("Declaration of " & "orxTHREAD_SEMAPHORE" &
         " already exists, not redeclaring")
 when not declared(orxTEXT):
   type
-    orxTEXT* = orxTEXT_520095422
+    orxTEXT* = orxTEXT_520095385
 else:
   static :
     hint("Declaration of " & "orxTEXT" & " already exists, not redeclaring")
 when not declared(orxBODY_PART):
   type
-    orxBODY_PART* = orxBODY_PART_520095572
+    orxBODY_PART* = orxBODY_PART_520095535
 else:
   static :
     hint("Declaration of " & "orxBODY_PART" & " already exists, not redeclaring")
 when not declared(struct_orxTIMELINE_EVENT_PAYLOAD_t):
   type
-    struct_orxTIMELINE_EVENT_PAYLOAD_t* = struct_orxTIMELINE_EVENT_PAYLOAD_t_520095530
+    struct_orxTIMELINE_EVENT_PAYLOAD_t* = struct_orxTIMELINE_EVENT_PAYLOAD_t_520095493
 else:
   static :
     hint("Declaration of " & "struct_orxTIMELINE_EVENT_PAYLOAD_t" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_EVENT):
   type
-    orxDISPLAY_EVENT* = orxDISPLAY_EVENT_520095310
+    orxDISPLAY_EVENT* = orxDISPLAY_EVENT_520095273
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR):
   type
-    orxVECTOR* = orxVECTOR_520095095
+    orxVECTOR* = orxVECTOR_520095058
 else:
   static :
     hint("Declaration of " & "orxVECTOR" & " already exists, not redeclaring")
 when not declared(orxFX_CURVE):
   type
-    orxFX_CURVE* = orxFX_CURVE_520095494
+    orxFX_CURVE* = orxFX_CURVE_520095457
 else:
   static :
     hint("Declaration of " & "orxFX_CURVE" & " already exists, not redeclaring")
 when not declared(struct_orxDISPLAY_MESH_t):
   type
-    struct_orxDISPLAY_MESH_t* = struct_orxDISPLAY_MESH_t_520095280
+    struct_orxDISPLAY_MESH_t* = struct_orxDISPLAY_MESH_t_520095243
 else:
   static :
     hint("Declaration of " & "struct_orxDISPLAY_MESH_t" &
         " already exists, not redeclaring")
 when not declared(orxRENDER_EVENT):
   type
-    orxRENDER_EVENT* = orxRENDER_EVENT_520095606
+    orxRENDER_EVENT* = orxRENDER_EVENT_520095569
 else:
   static :
     hint("Declaration of " & "orxRENDER_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxCOMMAND_VAR):
   type
-    orxCOMMAND_VAR* = orxCOMMAND_VAR_520095192
+    orxCOMMAND_VAR* = orxCOMMAND_VAR_520095155
 else:
   static :
     hint("Declaration of " & "orxCOMMAND_VAR" &
         " already exists, not redeclaring")
 when not declared(struct_orxPARAM_t):
   type
-    struct_orxPARAM_t* = struct_orxPARAM_t_520095432
+    struct_orxPARAM_t* = struct_orxPARAM_t_520095395
 else:
   static :
     hint("Declaration of " & "struct_orxPARAM_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t):
   type
-    enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095232
+    enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t* = enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t_520095195
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_FUNCTION_BASE_ID_PHYSICS_t" &
         " already exists, not redeclaring")
 when not declared(struct_orxFX_CURVE_PARAM_t):
   type
-    struct_orxFX_CURVE_PARAM_t* = struct_orxFX_CURVE_PARAM_t_520095496
+    struct_orxFX_CURVE_PARAM_t* = struct_orxFX_CURVE_PARAM_t_520095459
 else:
   static :
     hint("Declaration of " & "struct_orxFX_CURVE_PARAM_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxCLOCK_PRIORITY_t):
   type
-    enum_orxCLOCK_PRIORITY_t* = enum_orxCLOCK_PRIORITY_t_520095116
+    enum_orxCLOCK_PRIORITY_t* = enum_orxCLOCK_PRIORITY_t_520095079
 else:
   static :
     hint("Declaration of " & "enum_orxCLOCK_PRIORITY_t" &
         " already exists, not redeclaring")
 when not declared(orxMOUSE_AXIS):
   type
-    orxMOUSE_AXIS* = orxMOUSE_AXIS_520095342
+    orxMOUSE_AXIS* = orxMOUSE_AXIS_520095305
 else:
   static :
     hint("Declaration of " & "orxMOUSE_AXIS" &
         " already exists, not redeclaring")
 when not declared(orxCHAR):
   type
-    orxCHAR* = orxCHAR_520095043
+    orxCHAR* = orxCHAR_520095006
 else:
   static :
     hint("Declaration of " & "orxCHAR" & " already exists, not redeclaring")
 when not declared(orxVERSION):
   type
-    orxVERSION* = orxVERSION_520095069
+    orxVERSION* = orxVERSION_520095032
 else:
   static :
     hint("Declaration of " & "orxVERSION" & " already exists, not redeclaring")
 when not declared(orxUPTR):
   type
-    orxUPTR* = orxUPTR_520095053
+    orxUPTR* = orxUPTR_520095016
 else:
   static :
     hint("Declaration of " & "orxUPTR" & " already exists, not redeclaring")
 when not declared(orxEVENT_TYPE):
   type
-    orxEVENT_TYPE* = orxEVENT_TYPE_520095362
+    orxEVENT_TYPE* = orxEVENT_TYPE_520095325
 else:
   static :
     hint("Declaration of " & "orxEVENT_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxSOUNDSYSTEM_SAMPLE):
   type
-    orxSOUNDSYSTEM_SAMPLE* = orxSOUNDSYSTEM_SAMPLE_520095438
+    orxSOUNDSYSTEM_SAMPLE* = orxSOUNDSYSTEM_SAMPLE_520095401
 else:
   static :
     hint("Declaration of " & "orxSOUNDSYSTEM_SAMPLE" &
         " already exists, not redeclaring")
 when not declared(orxSPAWNER_EVENT):
   type
-    orxSPAWNER_EVENT* = orxSPAWNER_EVENT_520095520
+    orxSPAWNER_EVENT* = orxSPAWNER_EVENT_520095483
 else:
   static :
     hint("Declaration of " & "orxSPAWNER_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxTIMELINE_EVENT_PAYLOAD):
   type
-    orxTIMELINE_EVENT_PAYLOAD* = orxTIMELINE_EVENT_PAYLOAD_520095532
+    orxTIMELINE_EVENT_PAYLOAD* = orxTIMELINE_EVENT_PAYLOAD_520095495
 else:
   static :
     hint("Declaration of " & "orxTIMELINE_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxFXPOINTER):
   type
-    orxFXPOINTER* = orxFXPOINTER_520095510
+    orxFXPOINTER* = orxFXPOINTER_520095473
 else:
   static :
     hint("Declaration of " & "orxFXPOINTER" & " already exists, not redeclaring")
 when not declared(orxMEMORY_TYPE):
   type
-    orxMEMORY_TYPE* = orxMEMORY_TYPE_520095091
+    orxMEMORY_TYPE* = orxMEMORY_TYPE_520095054
 else:
   static :
     hint("Declaration of " & "orxMEMORY_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_MOUSE):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_MOUSE* = orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095230
+    orxPLUGIN_FUNCTION_BASE_ID_MOUSE* = orxPLUGIN_FUNCTION_BASE_ID_MOUSE_520095193
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_MOUSE" &
         " already exists, not redeclaring")
 when not declared(orxLINKLIST):
   type
-    orxLINKLIST* = orxLINKLIST_520095138
+    orxLINKLIST* = orxLINKLIST_520095101
 else:
   static :
     hint("Declaration of " & "orxLINKLIST" & " already exists, not redeclaring")
 when not declared(orxRESOURCE_FUNCTION_READ):
   type
-    orxRESOURCE_FUNCTION_READ* = orxRESOURCE_FUNCTION_READ_520095394
+    orxRESOURCE_FUNCTION_READ* = orxRESOURCE_FUNCTION_READ_520095357
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_FUNCTION_READ" &
         " already exists, not redeclaring")
 when not declared(enum_orxSEEK_OFFSET_WHENCE_t):
   type
-    enum_orxSEEK_OFFSET_WHENCE_t* = enum_orxSEEK_OFFSET_WHENCE_t_520095055
+    enum_orxSEEK_OFFSET_WHENCE_t* = enum_orxSEEK_OFFSET_WHENCE_t_520095018
 else:
   static :
     hint("Declaration of " & "enum_orxSEEK_OFFSET_WHENCE_t" &
         " already exists, not redeclaring")
 when not declared(orxEVENT_HANDLER):
   type
-    orxEVENT_HANDLER* = orxEVENT_HANDLER_520095368
+    orxEVENT_HANDLER* = orxEVENT_HANDLER_520095331
 else:
   static :
     hint("Declaration of " & "orxEVENT_HANDLER" &
         " already exists, not redeclaring")
 when not declared(struct_orxPLUGIN_CORE_FUNCTION_t):
   type
-    struct_orxPLUGIN_CORE_FUNCTION_t* = struct_orxPLUGIN_CORE_FUNCTION_t_520095244
+    struct_orxPLUGIN_CORE_FUNCTION_t* = struct_orxPLUGIN_CORE_FUNCTION_t_520095207
 else:
   static :
     hint("Declaration of " & "struct_orxPLUGIN_CORE_FUNCTION_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxPLUGIN_CORE_ID_t):
   type
-    enum_orxPLUGIN_CORE_ID_t* = enum_orxPLUGIN_CORE_ID_t_520095212
+    enum_orxPLUGIN_CORE_ID_t* = enum_orxPLUGIN_CORE_ID_t_520095175
 else:
   static :
     hint("Declaration of " & "enum_orxPLUGIN_CORE_ID_t" &
         " already exists, not redeclaring")
 when not declared(orxCLOCK_PRIORITY):
   type
-    orxCLOCK_PRIORITY* = orxCLOCK_PRIORITY_520095118
+    orxCLOCK_PRIORITY* = orxCLOCK_PRIORITY_520095081
 else:
   static :
     hint("Declaration of " & "orxCLOCK_PRIORITY" &
         " already exists, not redeclaring")
 when not declared(orxANIM):
   type
-    orxANIM* = orxANIM_520095162
+    orxANIM* = orxANIM_520095125
 else:
   static :
     hint("Declaration of " & "orxANIM" & " already exists, not redeclaring")
 when not declared(orxBODY):
   type
-    orxBODY* = orxBODY_520095570
+    orxBODY* = orxBODY_520095533
 else:
   static :
     hint("Declaration of " & "orxBODY" & " already exists, not redeclaring")
 when not declared(orxPHYSICS_EVENT_PAYLOAD):
   type
-    orxPHYSICS_EVENT_PAYLOAD* = orxPHYSICS_EVENT_PAYLOAD_520095562
+    orxPHYSICS_EVENT_PAYLOAD* = orxPHYSICS_EVENT_PAYLOAD_520095525
 else:
   static :
     hint("Declaration of " & "orxPHYSICS_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_RENDER):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_RENDER* = orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095238
+    orxPLUGIN_FUNCTION_BASE_ID_RENDER* = orxPLUGIN_FUNCTION_BASE_ID_RENDER_520095201
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_RENDER" &
         " already exists, not redeclaring")
 when not declared(orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM):
   type
-    orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM* = orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095242
+    orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM* = orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_520095205
 else:
   static :
     hint("Declaration of " & "orxPLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM" &
         " already exists, not redeclaring")
 when not declared(enum_orxDISPLAY_PRIMITIVE_t):
   type
-    enum_orxDISPLAY_PRIMITIVE_t* = enum_orxDISPLAY_PRIMITIVE_t_520095276
+    enum_orxDISPLAY_PRIMITIVE_t* = enum_orxDISPLAY_PRIMITIVE_t_520095239
 else:
   static :
     hint("Declaration of " & "enum_orxDISPLAY_PRIMITIVE_t" &
         " already exists, not redeclaring")
 when not declared(orxDISPLAY_EVENT_PAYLOAD):
   type
-    orxDISPLAY_EVENT_PAYLOAD* = orxDISPLAY_EVENT_PAYLOAD_520095314
+    orxDISPLAY_EVENT_PAYLOAD* = orxDISPLAY_EVENT_PAYLOAD_520095277
 else:
   static :
     hint("Declaration of " & "orxDISPLAY_EVENT_PAYLOAD" &
         " already exists, not redeclaring")
 when not declared(enum_orxINPUT_EVENT_t):
   type
-    enum_orxINPUT_EVENT_t* = enum_orxINPUT_EVENT_t_520095352
+    enum_orxINPUT_EVENT_t* = enum_orxINPUT_EVENT_t_520095315
 else:
   static :
     hint("Declaration of " & "enum_orxINPUT_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_STATUS):
   type
-    orxSOUND_STATUS* = orxSOUND_STATUS_520095460
+    orxSOUND_STATUS* = orxSOUND_STATUS_520095423
 else:
   static :
     hint("Declaration of " & "orxSOUND_STATUS" &
         " already exists, not redeclaring")
 when not declared(orxSTRUCTURE_UPDATE_FUNCTION):
   type
-    orxSTRUCTURE_UPDATE_FUNCTION* = orxSTRUCTURE_UPDATE_FUNCTION_520095160
+    orxSTRUCTURE_UPDATE_FUNCTION* = orxSTRUCTURE_UPDATE_FUNCTION_520095123
 else:
   static :
     hint("Declaration of " & "orxSTRUCTURE_UPDATE_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(struct_orxSOUND_STREAM_PACKET_t):
   type
-    struct_orxSOUND_STREAM_PACKET_t* = struct_orxSOUND_STREAM_PACKET_t_520095474
+    struct_orxSOUND_STREAM_PACKET_t* = struct_orxSOUND_STREAM_PACKET_t_520095437
 else:
   static :
     hint("Declaration of " & "struct_orxSOUND_STREAM_PACKET_t" &
         " already exists, not redeclaring")
 when not declared(orxFILE_INFO):
   type
-    orxFILE_INFO* = orxFILE_INFO_520095426
+    orxFILE_INFO* = orxFILE_INFO_520095389
 else:
   static :
     hint("Declaration of " & "orxFILE_INFO" & " already exists, not redeclaring")
 when not declared(orxFLOAT):
   type
-    orxFLOAT* = orxFLOAT_520095039
+    orxFLOAT* = orxFLOAT_520095002
 else:
   static :
     hint("Declaration of " & "orxFLOAT" & " already exists, not redeclaring")
 when not declared(enum_orxSHADER_EVENT_t):
   type
-    enum_orxSHADER_EVENT_t* = enum_orxSHADER_EVENT_t_520095588
+    enum_orxSHADER_EVENT_t* = enum_orxSHADER_EVENT_t_520095551
 else:
   static :
     hint("Declaration of " & "enum_orxSHADER_EVENT_t" &
         " already exists, not redeclaring")
 when not declared(enum_orxSHADER_PARAM_TYPE_t):
   type
-    enum_orxSHADER_PARAM_TYPE_t* = enum_orxSHADER_PARAM_TYPE_t_520095578
+    enum_orxSHADER_PARAM_TYPE_t* = enum_orxSHADER_PARAM_TYPE_t_520095541
 else:
   static :
     hint("Declaration of " & "enum_orxSHADER_PARAM_TYPE_t" &
         " already exists, not redeclaring")
 when not declared(orxCOLORSPACE):
   type
-    orxCOLORSPACE* = orxCOLORSPACE_520095061
+    orxCOLORSPACE* = orxCOLORSPACE_520095024
 else:
   static :
     hint("Declaration of " & "orxCOLORSPACE" &
         " already exists, not redeclaring")
 when not declared(orxSPAWNER):
   type
-    orxSPAWNER* = orxSPAWNER_520095522
+    orxSPAWNER* = orxSPAWNER_520095485
 else:
   static :
     hint("Declaration of " & "orxSPAWNER" & " already exists, not redeclaring")
 when not declared(orxTEXTURE_EVENT):
   type
-    orxTEXTURE_EVENT* = orxTEXTURE_EVENT_520095318
+    orxTEXTURE_EVENT* = orxTEXTURE_EVENT_520095281
 else:
   static :
     hint("Declaration of " & "orxTEXTURE_EVENT" &
         " already exists, not redeclaring")
 when not declared(orxRESOURCE_OP_FUNCTION):
   type
-    orxRESOURCE_OP_FUNCTION* = orxRESOURCE_OP_FUNCTION_520095378
+    orxRESOURCE_OP_FUNCTION* = orxRESOURCE_OP_FUNCTION_520095341
 else:
   static :
     hint("Declaration of " & "orxRESOURCE_OP_FUNCTION" &
         " already exists, not redeclaring")
 when not declared(orxSOUND_FILTER_TYPE):
   type
-    orxSOUND_FILTER_TYPE* = orxSOUND_FILTER_TYPE_520095450
+    orxSOUND_FILTER_TYPE* = orxSOUND_FILTER_TYPE_520095413
 else:
   static :
     hint("Declaration of " & "orxSOUND_FILTER_TYPE" &
         " already exists, not redeclaring")
 when not declared(orxENUM):
   type
-    orxENUM* = orxENUM_520095047
+    orxENUM* = orxENUM_520095010
 else:
   static :
     hint("Declaration of " & "orxENUM" & " already exists, not redeclaring")
 when not declared(orxU32):
   type
-    orxU32* = orxU32_520095023
+    orxU32* = orxU32_520094986
 else:
   static :
     hint("Declaration of " & "orxU32" & " already exists, not redeclaring")
@@ -7098,7 +7098,7 @@ else:
     hint("Declaration of " & "DEBUG_KS32_BUFFER_OUTPUT_SIZE" &
         " already exists, not redeclaring")
 when not declared(orxString_Hash):
-  proc orxString_Hash*(internal_zString: cstring): orxSTRINGID_520095046 {.
+  proc orxString_Hash*(internal_zString: cstring): orxSTRINGID_520095009 {.
       cdecl, importc: "orxString_Hash".}
 else:
   static :
@@ -10109,68 +10109,68 @@ else:
     hint("Declaration of " & "SOUNDPOINTER_KU32_SOUND_NUMBER" &
         " already exists, not redeclaring")
 when not declared(orxFLOAT_0):
-  var orxFLOAT_0*: orxFLOAT_520095040
+  var orxFLOAT_0*: orxFLOAT_520095003
 else:
   static :
     hint("Declaration of " & "orxFLOAT_0" & " already exists, not redeclaring")
 when not declared(orxFLOAT_1):
-  var orxFLOAT_1*: orxFLOAT_520095040
+  var orxFLOAT_1*: orxFLOAT_520095003
 else:
   static :
     hint("Declaration of " & "orxFLOAT_1" & " already exists, not redeclaring")
 when not declared(orxFLOAT_MAX):
-  var orxFLOAT_MAX*: orxFLOAT_520095040
+  var orxFLOAT_MAX*: orxFLOAT_520095003
 else:
   static :
     hint("Declaration of " & "orxFLOAT_MAX" & " already exists, not redeclaring")
 when not declared(orxDOUBLE_0):
-  var orxDOUBLE_0*: orxDOUBLE_520095042
+  var orxDOUBLE_0*: orxDOUBLE_520095005
 else:
   static :
     hint("Declaration of " & "orxDOUBLE_0" & " already exists, not redeclaring")
 when not declared(orxDOUBLE_1):
-  var orxDOUBLE_1*: orxDOUBLE_520095042
+  var orxDOUBLE_1*: orxDOUBLE_520095005
 else:
   static :
     hint("Declaration of " & "orxDOUBLE_1" & " already exists, not redeclaring")
 when not declared(orxDOUBLE_MAX):
-  var orxDOUBLE_MAX*: orxDOUBLE_520095042
+  var orxDOUBLE_MAX*: orxDOUBLE_520095005
 else:
   static :
     hint("Declaration of " & "orxDOUBLE_MAX" &
         " already exists, not redeclaring")
 when not declared(orxU64_UNDEFINED):
-  var orxU64_UNDEFINED*: orxU64_520095022
+  var orxU64_UNDEFINED*: orxU64_520094985
 else:
   static :
     hint("Declaration of " & "orxU64_UNDEFINED" &
         " already exists, not redeclaring")
 when not declared(orxU32_UNDEFINED):
-  var orxU32_UNDEFINED*: orxU32_520095024
+  var orxU32_UNDEFINED*: orxU32_520094987
 else:
   static :
     hint("Declaration of " & "orxU32_UNDEFINED" &
         " already exists, not redeclaring")
 when not declared(orxU16_UNDEFINED):
-  var orxU16_UNDEFINED*: orxU16_520095026
+  var orxU16_UNDEFINED*: orxU16_520094989
 else:
   static :
     hint("Declaration of " & "orxU16_UNDEFINED" &
         " already exists, not redeclaring")
 when not declared(orxU8_UNDEFINED):
-  var orxU8_UNDEFINED*: orxU8_520095028
+  var orxU8_UNDEFINED*: orxU8_520094991
 else:
   static :
     hint("Declaration of " & "orxU8_UNDEFINED" &
         " already exists, not redeclaring")
 when not declared(orxHANDLE_UNDEFINED):
-  var orxHANDLE_UNDEFINED*: orxHANDLE_520095050
+  var orxHANDLE_UNDEFINED*: orxHANDLE_520095013
 else:
   static :
     hint("Declaration of " & "orxHANDLE_UNDEFINED" &
         " already exists, not redeclaring")
 when not declared(orxSTRINGID_UNDEFINED):
-  var orxSTRINGID_UNDEFINED*: orxSTRINGID_520095046
+  var orxSTRINGID_UNDEFINED*: orxSTRINGID_520095009
 else:
   static :
     hint("Declaration of " & "orxSTRINGID_UNDEFINED" &
@@ -10206,59 +10206,59 @@ else:
     hint("Declaration of " & "orxSTRING_DIRECTORY_SEPARATOR" &
         " already exists, not redeclaring")
 when not declared(moduleRegister):
-  proc moduleRegister*(internal_eModuleID: orxMODULE_ID_520095074;
+  proc moduleRegister*(internal_eModuleID: orxMODULE_ID_520095037;
                        internal_zModuleName: cstring;
-                       internal_pfnSetup: orxMODULE_SETUP_FUNCTION_520095082;
-                       internal_pfnInit: orxMODULE_INIT_FUNCTION_520095076;
-                       internal_pfnExit: orxMODULE_EXIT_FUNCTION_520095078): void {.
+                       internal_pfnSetup: orxMODULE_SETUP_FUNCTION_520095045;
+                       internal_pfnInit: orxMODULE_INIT_FUNCTION_520095039;
+                       internal_pfnExit: orxMODULE_EXIT_FUNCTION_520095041): void {.
       cdecl, importc: "orxModule_Register".}
 else:
   static :
     hint("Declaration of " & "moduleRegister" &
         " already exists, not redeclaring")
 when not declared(addDependency):
-  proc addDependency*(internal_eModuleID: orxMODULE_ID_520095074;
-                      internal_eDependID: orxMODULE_ID_520095074): void {.cdecl,
+  proc addDependency*(internal_eModuleID: orxMODULE_ID_520095037;
+                      internal_eDependID: orxMODULE_ID_520095037): void {.cdecl,
       importc: "orxModule_AddDependency".}
 else:
   static :
     hint("Declaration of " & "addDependency" &
         " already exists, not redeclaring")
 when not declared(addOptionalDependency):
-  proc addOptionalDependency*(internal_eModuleID: orxMODULE_ID_520095074;
-                              internal_eDependID: orxMODULE_ID_520095074): void {.
+  proc addOptionalDependency*(internal_eModuleID: orxMODULE_ID_520095037;
+                              internal_eDependID: orxMODULE_ID_520095037): void {.
       cdecl, importc: "orxModule_AddOptionalDependency".}
 else:
   static :
     hint("Declaration of " & "addOptionalDependency" &
         " already exists, not redeclaring")
 when not declared(moduleInit):
-  proc moduleInit*(internal_eModuleID: orxMODULE_ID_520095074): orxSTATUS_520095066 {.
+  proc moduleInit*(internal_eModuleID: orxMODULE_ID_520095037): orxSTATUS_520095029 {.
       cdecl, importc: "orxModule_Init".}
 else:
   static :
     hint("Declaration of " & "moduleInit" & " already exists, not redeclaring")
 when not declared(moduleExit):
-  proc moduleExit*(internal_eModuleID: orxMODULE_ID_520095074): void {.cdecl,
+  proc moduleExit*(internal_eModuleID: orxMODULE_ID_520095037): void {.cdecl,
       importc: "orxModule_Exit".}
 else:
   static :
     hint("Declaration of " & "moduleExit" & " already exists, not redeclaring")
 when not declared(isInitialized):
-  proc isInitialized*(internal_eModuleID: orxMODULE_ID_520095074): orxBOOL_520095038 {.
+  proc isInitialized*(internal_eModuleID: orxMODULE_ID_520095037): orxBOOL_520095001 {.
       cdecl, importc: "orxModule_IsInitialized".}
 else:
   static :
     hint("Declaration of " & "isInitialized" &
         " already exists, not redeclaring")
 when not declared(getName):
-  proc getName*(internal_eModuleID: orxMODULE_ID_520095074): cstring {.cdecl,
+  proc getName*(internal_eModuleID: orxMODULE_ID_520095037): cstring {.cdecl,
       importc: "orxModule_GetName".}
 else:
   static :
     hint("Declaration of " & "getName" & " already exists, not redeclaring")
 when not declared(internal_orxDebug_Init):
-  proc internal_orxDebug_Init*(): orxSTATUS_520095066 {.cdecl,
+  proc internal_orxDebug_Init*(): orxSTATUS_520095029 {.cdecl,
       importc: "_orxDebug_Init".}
 else:
   static :
@@ -10271,9 +10271,9 @@ else:
     hint("Declaration of " & "internal_orxDebug_Exit" &
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_Log):
-  proc internal_orxDebug_Log*(internal_eLevel: orxDEBUG_LEVEL_520095086;
+  proc internal_orxDebug_Log*(internal_eLevel: orxDEBUG_LEVEL_520095049;
                               internal_zFunction: cstring;
-                              internal_zFile: cstring; internal_u32Line: orxU32_520095024;
+                              internal_zFile: cstring; internal_u32Line: orxU32_520094987;
                               internal_zFormat: cstring): void {.cdecl, varargs,
       importc: "_orxDebug_Log".}
 else:
@@ -10281,30 +10281,30 @@ else:
     hint("Declaration of " & "internal_orxDebug_Log" &
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_EnableLevel):
-  proc internal_orxDebug_EnableLevel*(internal_eLevel: orxDEBUG_LEVEL_520095086;
-                                      internal_bEnable: orxBOOL_520095038): void {.
+  proc internal_orxDebug_EnableLevel*(internal_eLevel: orxDEBUG_LEVEL_520095049;
+                                      internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "_orxDebug_EnableLevel".}
 else:
   static :
     hint("Declaration of " & "internal_orxDebug_EnableLevel" &
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_IsLevelEnabled):
-  proc internal_orxDebug_IsLevelEnabled*(internal_eLevel: orxDEBUG_LEVEL_520095086): orxBOOL_520095038 {.
+  proc internal_orxDebug_IsLevelEnabled*(internal_eLevel: orxDEBUG_LEVEL_520095049): orxBOOL_520095001 {.
       cdecl, importc: "_orxDebug_IsLevelEnabled".}
 else:
   static :
     hint("Declaration of " & "internal_orxDebug_IsLevelEnabled" &
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_SetFlags):
-  proc internal_orxDebug_SetFlags*(internal_u32Add: orxU32_520095024;
-                                   internal_u32Remove: orxU32_520095024): void {.
+  proc internal_orxDebug_SetFlags*(internal_u32Add: orxU32_520094987;
+                                   internal_u32Remove: orxU32_520094987): void {.
       cdecl, importc: "_orxDebug_SetFlags".}
 else:
   static :
     hint("Declaration of " & "internal_orxDebug_SetFlags" &
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_GetFlags):
-  proc internal_orxDebug_GetFlags*(): orxU32_520095024 {.cdecl,
+  proc internal_orxDebug_GetFlags*(): orxU32_520094987 {.cdecl,
       importc: "_orxDebug_GetFlags".}
 else:
   static :
@@ -10332,7 +10332,7 @@ else:
         " already exists, not redeclaring")
 when not declared(internal_orxDebug_SetLogCallback):
   proc internal_orxDebug_SetLogCallback*(
-      internal_pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION_520095088): void {.
+      internal_pfnLogCallback: orxDEBUG_CALLBACK_FUNCTION_520095051): void {.
       cdecl, importc: "_orxDebug_SetLogCallback".}
 else:
   static :
@@ -10344,7 +10344,7 @@ else:
   static :
     hint("Declaration of " & "memorySetup" & " already exists, not redeclaring")
 when not declared(memoryInit):
-  proc memoryInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxMemory_Init".}
+  proc memoryInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxMemory_Init".}
 else:
   static :
     hint("Declaration of " & "memoryInit" & " already exists, not redeclaring")
@@ -10354,16 +10354,16 @@ else:
   static :
     hint("Declaration of " & "memoryExit" & " already exists, not redeclaring")
 when not declared(orxMemory_Allocate):
-  proc orxMemory_Allocate*(internal_u32Size: orxU32_520095024;
-                           internal_eMemType: orxMEMORY_TYPE_520095092): pointer {.
+  proc orxMemory_Allocate*(internal_u32Size: orxU32_520094987;
+                           internal_eMemType: orxMEMORY_TYPE_520095055): pointer {.
       cdecl, importc: "orxMemory_Allocate".}
 else:
   static :
     hint("Declaration of " & "orxMemory_Allocate" &
         " already exists, not redeclaring")
 when not declared(orxMemory_Reallocate):
-  proc orxMemory_Reallocate*(internal_pMem: pointer; internal_u32Size: orxU32_520095024;
-                             internal_eMemType: orxMEMORY_TYPE_520095092): pointer {.
+  proc orxMemory_Reallocate*(internal_pMem: pointer; internal_u32Size: orxU32_520094987;
+                             internal_eMemType: orxMEMORY_TYPE_520095055): pointer {.
       cdecl, importc: "orxMemory_Reallocate".}
 else:
   static :
@@ -10377,1059 +10377,1059 @@ else:
     hint("Declaration of " & "orxMemory_Free" &
         " already exists, not redeclaring")
 when not declared(orxMemory_GetTypeName):
-  proc orxMemory_GetTypeName*(internal_eMemType: orxMEMORY_TYPE_520095092): cstring {.
+  proc orxMemory_GetTypeName*(internal_eMemType: orxMEMORY_TYPE_520095055): cstring {.
       cdecl, importc: "orxMemory_GetTypeName".}
 else:
   static :
     hint("Declaration of " & "orxMemory_GetTypeName" &
         " already exists, not redeclaring")
 when not declared(orxMemory_GetCacheLineSize):
-  proc orxMemory_GetCacheLineSize*(): orxU32_520095024 {.cdecl,
+  proc orxMemory_GetCacheLineSize*(): orxU32_520094987 {.cdecl,
       importc: "orxMemory_GetCacheLineSize".}
 else:
   static :
     hint("Declaration of " & "orxMemory_GetCacheLineSize" &
         " already exists, not redeclaring")
 when not declared(orxMath_InitRandom):
-  proc orxMath_InitRandom*(internal_u32Seed: orxU32_520095024): void {.cdecl,
+  proc orxMath_InitRandom*(internal_u32Seed: orxU32_520094987): void {.cdecl,
       importc: "orxMath_InitRandom".}
 else:
   static :
     hint("Declaration of " & "orxMath_InitRandom" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomFloat):
-  proc orxMath_GetRandomFloat*(internal_fMin: orxFLOAT_520095040;
-                               internal_fMax: orxFLOAT_520095040): orxFLOAT_520095040 {.
+  proc orxMath_GetRandomFloat*(internal_fMin: orxFLOAT_520095003;
+                               internal_fMax: orxFLOAT_520095003): orxFLOAT_520095003 {.
       cdecl, importc: "orxMath_GetRandomFloat".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomFloat" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetSteppedRandomFloat):
-  proc orxMath_GetSteppedRandomFloat*(internal_fMin: orxFLOAT_520095040;
-                                      internal_fMax: orxFLOAT_520095040;
-                                      internal_fStep: orxFLOAT_520095040): orxFLOAT_520095040 {.
+  proc orxMath_GetSteppedRandomFloat*(internal_fMin: orxFLOAT_520095003;
+                                      internal_fMax: orxFLOAT_520095003;
+                                      internal_fStep: orxFLOAT_520095003): orxFLOAT_520095003 {.
       cdecl, importc: "orxMath_GetSteppedRandomFloat".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetSteppedRandomFloat" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomU32):
-  proc orxMath_GetRandomU32*(internal_u32Min: orxU32_520095024;
-                             internal_u32Max: orxU32_520095024): orxU32_520095024 {.
+  proc orxMath_GetRandomU32*(internal_u32Min: orxU32_520094987;
+                             internal_u32Max: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxMath_GetRandomU32".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomU32" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetSteppedRandomU32):
-  proc orxMath_GetSteppedRandomU32*(internal_u32Min: orxU32_520095024;
-                                    internal_u32Max: orxU32_520095024;
-                                    internal_u32Step: orxU32_520095024): orxU32_520095024 {.
+  proc orxMath_GetSteppedRandomU32*(internal_u32Min: orxU32_520094987;
+                                    internal_u32Max: orxU32_520094987;
+                                    internal_u32Step: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxMath_GetSteppedRandomU32".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetSteppedRandomU32" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomS32):
-  proc orxMath_GetRandomS32*(internal_s32Min: orxS32_520095032;
-                             internal_s32Max: orxS32_520095032): orxS32_520095032 {.
+  proc orxMath_GetRandomS32*(internal_s32Min: orxS32_520094995;
+                             internal_s32Max: orxS32_520094995): orxS32_520094995 {.
       cdecl, importc: "orxMath_GetRandomS32".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomS32" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetSteppedRandomS32):
-  proc orxMath_GetSteppedRandomS32*(internal_s32Min: orxS32_520095032;
-                                    internal_s32Max: orxS32_520095032;
-                                    internal_s32Step: orxS32_520095032): orxS32_520095032 {.
+  proc orxMath_GetSteppedRandomS32*(internal_s32Min: orxS32_520094995;
+                                    internal_s32Max: orxS32_520094995;
+                                    internal_s32Step: orxS32_520094995): orxS32_520094995 {.
       cdecl, importc: "orxMath_GetSteppedRandomS32".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetSteppedRandomS32" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomU64):
-  proc orxMath_GetRandomU64*(internal_u64Min: orxU64_520095022;
-                             internal_u64Max: orxU64_520095022): orxU64_520095022 {.
+  proc orxMath_GetRandomU64*(internal_u64Min: orxU64_520094985;
+                             internal_u64Max: orxU64_520094985): orxU64_520094985 {.
       cdecl, importc: "orxMath_GetRandomU64".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomU64" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetSteppedRandomU64):
-  proc orxMath_GetSteppedRandomU64*(internal_u64Min: orxU64_520095022;
-                                    internal_u64Max: orxU64_520095022;
-                                    internal_u64Step: orxU64_520095022): orxU64_520095022 {.
+  proc orxMath_GetSteppedRandomU64*(internal_u64Min: orxU64_520094985;
+                                    internal_u64Max: orxU64_520094985;
+                                    internal_u64Step: orxU64_520094985): orxU64_520094985 {.
       cdecl, importc: "orxMath_GetSteppedRandomU64".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetSteppedRandomU64" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomS64):
-  proc orxMath_GetRandomS64*(internal_s64Min: orxS64_520095030;
-                             internal_s64Max: orxS64_520095030): orxS64_520095030 {.
+  proc orxMath_GetRandomS64*(internal_s64Min: orxS64_520094993;
+                             internal_s64Max: orxS64_520094993): orxS64_520094993 {.
       cdecl, importc: "orxMath_GetRandomS64".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomS64" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetSteppedRandomS64):
-  proc orxMath_GetSteppedRandomS64*(internal_s64Min: orxS64_520095030;
-                                    internal_s64Max: orxS64_520095030;
-                                    internal_s64Step: orxS64_520095030): orxS64_520095030 {.
+  proc orxMath_GetSteppedRandomS64*(internal_s64Min: orxS64_520094993;
+                                    internal_s64Max: orxS64_520094993;
+                                    internal_s64Step: orxS64_520094993): orxS64_520094993 {.
       cdecl, importc: "orxMath_GetSteppedRandomS64".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetSteppedRandomS64" &
         " already exists, not redeclaring")
 when not declared(orxMath_GetRandomSeeds):
-  proc orxMath_GetRandomSeeds*(internal_au32Seeds: array[4'i64, orxU32_520095024]): void {.
+  proc orxMath_GetRandomSeeds*(internal_au32Seeds: array[4'i64, orxU32_520094987]): void {.
       cdecl, importc: "orxMath_GetRandomSeeds".}
 else:
   static :
     hint("Declaration of " & "orxMath_GetRandomSeeds" &
         " already exists, not redeclaring")
 when not declared(orxMath_SetRandomSeeds):
-  proc orxMath_SetRandomSeeds*(internal_au32Seeds: array[4'i64, orxU32_520095024]): void {.
+  proc orxMath_SetRandomSeeds*(internal_au32Seeds: array[4'i64, orxU32_520094987]): void {.
       cdecl, importc: "orxMath_SetRandomSeeds".}
 else:
   static :
     hint("Declaration of " & "orxMath_SetRandomSeeds" &
         " already exists, not redeclaring")
 when not declared(orxVector_Bezier):
-  proc orxVector_Bezier*(internal_pvRes: ptr orxVECTOR_520095096;
-                         internal_pvPoint1: ptr orxVECTOR_520095096;
-                         internal_pvPoint2: ptr orxVECTOR_520095096;
-                         internal_pvPoint3: ptr orxVECTOR_520095096;
-                         internal_pvPoint4: ptr orxVECTOR_520095096;
-                         internal_fT: orxFLOAT_520095040): ptr orxVECTOR_520095096 {.
+  proc orxVector_Bezier*(internal_pvRes: ptr orxVECTOR_520095059;
+                         internal_pvPoint1: ptr orxVECTOR_520095059;
+                         internal_pvPoint2: ptr orxVECTOR_520095059;
+                         internal_pvPoint3: ptr orxVECTOR_520095059;
+                         internal_pvPoint4: ptr orxVECTOR_520095059;
+                         internal_fT: orxFLOAT_520095003): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxVector_Bezier".}
 else:
   static :
     hint("Declaration of " & "orxVector_Bezier" &
         " already exists, not redeclaring")
 when not declared(orxVector_CatmullRom):
-  proc orxVector_CatmullRom*(internal_pvRes: ptr orxVECTOR_520095096;
-                             internal_pvPoint1: ptr orxVECTOR_520095096;
-                             internal_pvPoint2: ptr orxVECTOR_520095096;
-                             internal_pvPoint3: ptr orxVECTOR_520095096;
-                             internal_pvPoint4: ptr orxVECTOR_520095096;
-                             internal_fT: orxFLOAT_520095040): ptr orxVECTOR_520095096 {.
+  proc orxVector_CatmullRom*(internal_pvRes: ptr orxVECTOR_520095059;
+                             internal_pvPoint1: ptr orxVECTOR_520095059;
+                             internal_pvPoint2: ptr orxVECTOR_520095059;
+                             internal_pvPoint3: ptr orxVECTOR_520095059;
+                             internal_pvPoint4: ptr orxVECTOR_520095059;
+                             internal_fT: orxFLOAT_520095003): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxVector_CatmullRom".}
 else:
   static :
     hint("Declaration of " & "orxVector_CatmullRom" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_X):
-  var orxVECTOR_X* {.importc: "orxVECTOR_X".}: orxVECTOR_520095096
+  var orxVECTOR_X* {.importc: "orxVECTOR_X".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_X" & " already exists, not redeclaring")
 when not declared(orxVECTOR_Y):
-  var orxVECTOR_Y* {.importc: "orxVECTOR_Y".}: orxVECTOR_520095096
+  var orxVECTOR_Y* {.importc: "orxVECTOR_Y".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_Y" & " already exists, not redeclaring")
 when not declared(orxVECTOR_Z):
-  var orxVECTOR_Z* {.importc: "orxVECTOR_Z".}: orxVECTOR_520095096
+  var orxVECTOR_Z* {.importc: "orxVECTOR_Z".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_Z" & " already exists, not redeclaring")
 when not declared(orxVECTOR_0):
-  var orxVECTOR_0* {.importc: "orxVECTOR_0".}: orxVECTOR_520095096
+  var orxVECTOR_0* {.importc: "orxVECTOR_0".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_0" & " already exists, not redeclaring")
 when not declared(orxVECTOR_1):
-  var orxVECTOR_1* {.importc: "orxVECTOR_1".}: orxVECTOR_520095096
+  var orxVECTOR_1* {.importc: "orxVECTOR_1".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_1" & " already exists, not redeclaring")
 when not declared(orxVECTOR_ALICE_BLUE):
-  var orxVECTOR_ALICE_BLUE* {.importc: "orxVECTOR_ALICE_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_ALICE_BLUE* {.importc: "orxVECTOR_ALICE_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ALICE_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ANTIQUE_WHITE):
-  var orxVECTOR_ANTIQUE_WHITE* {.importc: "orxVECTOR_ANTIQUE_WHITE".}: orxVECTOR_520095096
+  var orxVECTOR_ANTIQUE_WHITE* {.importc: "orxVECTOR_ANTIQUE_WHITE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ANTIQUE_WHITE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_AQUA):
-  var orxVECTOR_AQUA* {.importc: "orxVECTOR_AQUA".}: orxVECTOR_520095096
+  var orxVECTOR_AQUA* {.importc: "orxVECTOR_AQUA".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_AQUA" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_AQUAMARINE):
-  var orxVECTOR_AQUAMARINE* {.importc: "orxVECTOR_AQUAMARINE".}: orxVECTOR_520095096
+  var orxVECTOR_AQUAMARINE* {.importc: "orxVECTOR_AQUAMARINE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_AQUAMARINE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_AZURE):
-  var orxVECTOR_AZURE* {.importc: "orxVECTOR_AZURE".}: orxVECTOR_520095096
+  var orxVECTOR_AZURE* {.importc: "orxVECTOR_AZURE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_AZURE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BEIGE):
-  var orxVECTOR_BEIGE* {.importc: "orxVECTOR_BEIGE".}: orxVECTOR_520095096
+  var orxVECTOR_BEIGE* {.importc: "orxVECTOR_BEIGE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BEIGE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BISQUE):
-  var orxVECTOR_BISQUE* {.importc: "orxVECTOR_BISQUE".}: orxVECTOR_520095096
+  var orxVECTOR_BISQUE* {.importc: "orxVECTOR_BISQUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BISQUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BLACK):
-  var orxVECTOR_BLACK* {.importc: "orxVECTOR_BLACK".}: orxVECTOR_520095096
+  var orxVECTOR_BLACK* {.importc: "orxVECTOR_BLACK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BLACK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BLANCHED_ALMOND):
-  var orxVECTOR_BLANCHED_ALMOND* {.importc: "orxVECTOR_BLANCHED_ALMOND".}: orxVECTOR_520095096
+  var orxVECTOR_BLANCHED_ALMOND* {.importc: "orxVECTOR_BLANCHED_ALMOND".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BLANCHED_ALMOND" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BLUE):
-  var orxVECTOR_BLUE* {.importc: "orxVECTOR_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_BLUE* {.importc: "orxVECTOR_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BLUE_VIOLET):
-  var orxVECTOR_BLUE_VIOLET* {.importc: "orxVECTOR_BLUE_VIOLET".}: orxVECTOR_520095096
+  var orxVECTOR_BLUE_VIOLET* {.importc: "orxVECTOR_BLUE_VIOLET".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BLUE_VIOLET" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BROWN):
-  var orxVECTOR_BROWN* {.importc: "orxVECTOR_BROWN".}: orxVECTOR_520095096
+  var orxVECTOR_BROWN* {.importc: "orxVECTOR_BROWN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BROWN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_BURLY_WOOD):
-  var orxVECTOR_BURLY_WOOD* {.importc: "orxVECTOR_BURLY_WOOD".}: orxVECTOR_520095096
+  var orxVECTOR_BURLY_WOOD* {.importc: "orxVECTOR_BURLY_WOOD".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_BURLY_WOOD" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CADET_BLUE):
-  var orxVECTOR_CADET_BLUE* {.importc: "orxVECTOR_CADET_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_CADET_BLUE* {.importc: "orxVECTOR_CADET_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CADET_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CHARTREUSE):
-  var orxVECTOR_CHARTREUSE* {.importc: "orxVECTOR_CHARTREUSE".}: orxVECTOR_520095096
+  var orxVECTOR_CHARTREUSE* {.importc: "orxVECTOR_CHARTREUSE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CHARTREUSE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CHOCOLATE):
-  var orxVECTOR_CHOCOLATE* {.importc: "orxVECTOR_CHOCOLATE".}: orxVECTOR_520095096
+  var orxVECTOR_CHOCOLATE* {.importc: "orxVECTOR_CHOCOLATE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CHOCOLATE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CORAL):
-  var orxVECTOR_CORAL* {.importc: "orxVECTOR_CORAL".}: orxVECTOR_520095096
+  var orxVECTOR_CORAL* {.importc: "orxVECTOR_CORAL".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CORAL" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CORNFLOWER_BLUE):
-  var orxVECTOR_CORNFLOWER_BLUE* {.importc: "orxVECTOR_CORNFLOWER_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_CORNFLOWER_BLUE* {.importc: "orxVECTOR_CORNFLOWER_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CORNFLOWER_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CORNSILK):
-  var orxVECTOR_CORNSILK* {.importc: "orxVECTOR_CORNSILK".}: orxVECTOR_520095096
+  var orxVECTOR_CORNSILK* {.importc: "orxVECTOR_CORNSILK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CORNSILK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CRIMSON):
-  var orxVECTOR_CRIMSON* {.importc: "orxVECTOR_CRIMSON".}: orxVECTOR_520095096
+  var orxVECTOR_CRIMSON* {.importc: "orxVECTOR_CRIMSON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CRIMSON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_CYAN):
-  var orxVECTOR_CYAN* {.importc: "orxVECTOR_CYAN".}: orxVECTOR_520095096
+  var orxVECTOR_CYAN* {.importc: "orxVECTOR_CYAN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_CYAN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_BLUE):
-  var orxVECTOR_DARK_BLUE* {.importc: "orxVECTOR_DARK_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_BLUE* {.importc: "orxVECTOR_DARK_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_CYAN):
-  var orxVECTOR_DARK_CYAN* {.importc: "orxVECTOR_DARK_CYAN".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_CYAN* {.importc: "orxVECTOR_DARK_CYAN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_CYAN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_GOLDEN_ROD):
-  var orxVECTOR_DARK_GOLDEN_ROD* {.importc: "orxVECTOR_DARK_GOLDEN_ROD".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_GOLDEN_ROD* {.importc: "orxVECTOR_DARK_GOLDEN_ROD".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_GOLDEN_ROD" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_GRAY):
-  var orxVECTOR_DARK_GRAY* {.importc: "orxVECTOR_DARK_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_GRAY* {.importc: "orxVECTOR_DARK_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_GREY):
-  var orxVECTOR_DARK_GREY* {.importc: "orxVECTOR_DARK_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_GREY* {.importc: "orxVECTOR_DARK_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_GREEN):
-  var orxVECTOR_DARK_GREEN* {.importc: "orxVECTOR_DARK_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_GREEN* {.importc: "orxVECTOR_DARK_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_KHAKI):
-  var orxVECTOR_DARK_KHAKI* {.importc: "orxVECTOR_DARK_KHAKI".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_KHAKI* {.importc: "orxVECTOR_DARK_KHAKI".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_KHAKI" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_MAGENTA):
-  var orxVECTOR_DARK_MAGENTA* {.importc: "orxVECTOR_DARK_MAGENTA".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_MAGENTA* {.importc: "orxVECTOR_DARK_MAGENTA".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_MAGENTA" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_OLIVE_GREEN):
-  var orxVECTOR_DARK_OLIVE_GREEN* {.importc: "orxVECTOR_DARK_OLIVE_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_OLIVE_GREEN* {.importc: "orxVECTOR_DARK_OLIVE_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_OLIVE_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_ORANGE):
-  var orxVECTOR_DARK_ORANGE* {.importc: "orxVECTOR_DARK_ORANGE".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_ORANGE* {.importc: "orxVECTOR_DARK_ORANGE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_ORANGE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_ORCHID):
-  var orxVECTOR_DARK_ORCHID* {.importc: "orxVECTOR_DARK_ORCHID".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_ORCHID* {.importc: "orxVECTOR_DARK_ORCHID".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_ORCHID" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_RED):
-  var orxVECTOR_DARK_RED* {.importc: "orxVECTOR_DARK_RED".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_RED* {.importc: "orxVECTOR_DARK_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_SALMON):
-  var orxVECTOR_DARK_SALMON* {.importc: "orxVECTOR_DARK_SALMON".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_SALMON* {.importc: "orxVECTOR_DARK_SALMON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_SALMON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_SEA_GREEN):
-  var orxVECTOR_DARK_SEA_GREEN* {.importc: "orxVECTOR_DARK_SEA_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_SEA_GREEN* {.importc: "orxVECTOR_DARK_SEA_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_SEA_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_SLATE_BLUE):
-  var orxVECTOR_DARK_SLATE_BLUE* {.importc: "orxVECTOR_DARK_SLATE_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_SLATE_BLUE* {.importc: "orxVECTOR_DARK_SLATE_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_SLATE_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_SLATE_GRAY):
-  var orxVECTOR_DARK_SLATE_GRAY* {.importc: "orxVECTOR_DARK_SLATE_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_SLATE_GRAY* {.importc: "orxVECTOR_DARK_SLATE_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_SLATE_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_SLATE_GREY):
-  var orxVECTOR_DARK_SLATE_GREY* {.importc: "orxVECTOR_DARK_SLATE_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_SLATE_GREY* {.importc: "orxVECTOR_DARK_SLATE_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_SLATE_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_TURQUOISE):
-  var orxVECTOR_DARK_TURQUOISE* {.importc: "orxVECTOR_DARK_TURQUOISE".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_TURQUOISE* {.importc: "orxVECTOR_DARK_TURQUOISE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_TURQUOISE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DARK_VIOLET):
-  var orxVECTOR_DARK_VIOLET* {.importc: "orxVECTOR_DARK_VIOLET".}: orxVECTOR_520095096
+  var orxVECTOR_DARK_VIOLET* {.importc: "orxVECTOR_DARK_VIOLET".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DARK_VIOLET" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DEEP_PINK):
-  var orxVECTOR_DEEP_PINK* {.importc: "orxVECTOR_DEEP_PINK".}: orxVECTOR_520095096
+  var orxVECTOR_DEEP_PINK* {.importc: "orxVECTOR_DEEP_PINK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DEEP_PINK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DEEP_SKY_BLUE):
-  var orxVECTOR_DEEP_SKY_BLUE* {.importc: "orxVECTOR_DEEP_SKY_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_DEEP_SKY_BLUE* {.importc: "orxVECTOR_DEEP_SKY_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DEEP_SKY_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DIM_GRAY):
-  var orxVECTOR_DIM_GRAY* {.importc: "orxVECTOR_DIM_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_DIM_GRAY* {.importc: "orxVECTOR_DIM_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DIM_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DIM_GREY):
-  var orxVECTOR_DIM_GREY* {.importc: "orxVECTOR_DIM_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_DIM_GREY* {.importc: "orxVECTOR_DIM_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DIM_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_DODGER_BLUE):
-  var orxVECTOR_DODGER_BLUE* {.importc: "orxVECTOR_DODGER_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_DODGER_BLUE* {.importc: "orxVECTOR_DODGER_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_DODGER_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_FIRE_BRICK):
-  var orxVECTOR_FIRE_BRICK* {.importc: "orxVECTOR_FIRE_BRICK".}: orxVECTOR_520095096
+  var orxVECTOR_FIRE_BRICK* {.importc: "orxVECTOR_FIRE_BRICK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_FIRE_BRICK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_FLORAL_WHITE):
-  var orxVECTOR_FLORAL_WHITE* {.importc: "orxVECTOR_FLORAL_WHITE".}: orxVECTOR_520095096
+  var orxVECTOR_FLORAL_WHITE* {.importc: "orxVECTOR_FLORAL_WHITE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_FLORAL_WHITE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_FOREST_GREEN):
-  var orxVECTOR_FOREST_GREEN* {.importc: "orxVECTOR_FOREST_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_FOREST_GREEN* {.importc: "orxVECTOR_FOREST_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_FOREST_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_FUCHSIA):
-  var orxVECTOR_FUCHSIA* {.importc: "orxVECTOR_FUCHSIA".}: orxVECTOR_520095096
+  var orxVECTOR_FUCHSIA* {.importc: "orxVECTOR_FUCHSIA".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_FUCHSIA" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GAINSBORO):
-  var orxVECTOR_GAINSBORO* {.importc: "orxVECTOR_GAINSBORO".}: orxVECTOR_520095096
+  var orxVECTOR_GAINSBORO* {.importc: "orxVECTOR_GAINSBORO".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GAINSBORO" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GHOST_WHITE):
-  var orxVECTOR_GHOST_WHITE* {.importc: "orxVECTOR_GHOST_WHITE".}: orxVECTOR_520095096
+  var orxVECTOR_GHOST_WHITE* {.importc: "orxVECTOR_GHOST_WHITE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GHOST_WHITE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GOLD):
-  var orxVECTOR_GOLD* {.importc: "orxVECTOR_GOLD".}: orxVECTOR_520095096
+  var orxVECTOR_GOLD* {.importc: "orxVECTOR_GOLD".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GOLD" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GOLDEN_ROD):
-  var orxVECTOR_GOLDEN_ROD* {.importc: "orxVECTOR_GOLDEN_ROD".}: orxVECTOR_520095096
+  var orxVECTOR_GOLDEN_ROD* {.importc: "orxVECTOR_GOLDEN_ROD".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GOLDEN_ROD" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GRAY):
-  var orxVECTOR_GRAY* {.importc: "orxVECTOR_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_GRAY* {.importc: "orxVECTOR_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GREY):
-  var orxVECTOR_GREY* {.importc: "orxVECTOR_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_GREY* {.importc: "orxVECTOR_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GREEN):
-  var orxVECTOR_GREEN* {.importc: "orxVECTOR_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_GREEN* {.importc: "orxVECTOR_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_GREEN_YELLOW):
-  var orxVECTOR_GREEN_YELLOW* {.importc: "orxVECTOR_GREEN_YELLOW".}: orxVECTOR_520095096
+  var orxVECTOR_GREEN_YELLOW* {.importc: "orxVECTOR_GREEN_YELLOW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_GREEN_YELLOW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_HONEY_DEW):
-  var orxVECTOR_HONEY_DEW* {.importc: "orxVECTOR_HONEY_DEW".}: orxVECTOR_520095096
+  var orxVECTOR_HONEY_DEW* {.importc: "orxVECTOR_HONEY_DEW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_HONEY_DEW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_HOT_PINK):
-  var orxVECTOR_HOT_PINK* {.importc: "orxVECTOR_HOT_PINK".}: orxVECTOR_520095096
+  var orxVECTOR_HOT_PINK* {.importc: "orxVECTOR_HOT_PINK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_HOT_PINK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_INDIAN_RED):
-  var orxVECTOR_INDIAN_RED* {.importc: "orxVECTOR_INDIAN_RED".}: orxVECTOR_520095096
+  var orxVECTOR_INDIAN_RED* {.importc: "orxVECTOR_INDIAN_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_INDIAN_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_INDIGO):
-  var orxVECTOR_INDIGO* {.importc: "orxVECTOR_INDIGO".}: orxVECTOR_520095096
+  var orxVECTOR_INDIGO* {.importc: "orxVECTOR_INDIGO".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_INDIGO" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_IVORY):
-  var orxVECTOR_IVORY* {.importc: "orxVECTOR_IVORY".}: orxVECTOR_520095096
+  var orxVECTOR_IVORY* {.importc: "orxVECTOR_IVORY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_IVORY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_KHAKI):
-  var orxVECTOR_KHAKI* {.importc: "orxVECTOR_KHAKI".}: orxVECTOR_520095096
+  var orxVECTOR_KHAKI* {.importc: "orxVECTOR_KHAKI".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_KHAKI" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LAVENDER):
-  var orxVECTOR_LAVENDER* {.importc: "orxVECTOR_LAVENDER".}: orxVECTOR_520095096
+  var orxVECTOR_LAVENDER* {.importc: "orxVECTOR_LAVENDER".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LAVENDER" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LAVENDER_BLUSH):
-  var orxVECTOR_LAVENDER_BLUSH* {.importc: "orxVECTOR_LAVENDER_BLUSH".}: orxVECTOR_520095096
+  var orxVECTOR_LAVENDER_BLUSH* {.importc: "orxVECTOR_LAVENDER_BLUSH".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LAVENDER_BLUSH" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LAWN_GREEN):
-  var orxVECTOR_LAWN_GREEN* {.importc: "orxVECTOR_LAWN_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_LAWN_GREEN* {.importc: "orxVECTOR_LAWN_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LAWN_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LEMON_CHIFFON):
-  var orxVECTOR_LEMON_CHIFFON* {.importc: "orxVECTOR_LEMON_CHIFFON".}: orxVECTOR_520095096
+  var orxVECTOR_LEMON_CHIFFON* {.importc: "orxVECTOR_LEMON_CHIFFON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LEMON_CHIFFON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_BLUE):
-  var orxVECTOR_LIGHT_BLUE* {.importc: "orxVECTOR_LIGHT_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_BLUE* {.importc: "orxVECTOR_LIGHT_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_CORAL):
-  var orxVECTOR_LIGHT_CORAL* {.importc: "orxVECTOR_LIGHT_CORAL".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_CORAL* {.importc: "orxVECTOR_LIGHT_CORAL".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_CORAL" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_CYAN):
-  var orxVECTOR_LIGHT_CYAN* {.importc: "orxVECTOR_LIGHT_CYAN".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_CYAN* {.importc: "orxVECTOR_LIGHT_CYAN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_CYAN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_GOLDEN_ROD_YELLOW):
   var orxVECTOR_LIGHT_GOLDEN_ROD_YELLOW* {.
-      importc: "orxVECTOR_LIGHT_GOLDEN_ROD_YELLOW".}: orxVECTOR_520095096
+      importc: "orxVECTOR_LIGHT_GOLDEN_ROD_YELLOW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_GOLDEN_ROD_YELLOW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_GRAY):
-  var orxVECTOR_LIGHT_GRAY* {.importc: "orxVECTOR_LIGHT_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_GRAY* {.importc: "orxVECTOR_LIGHT_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_GREY):
-  var orxVECTOR_LIGHT_GREY* {.importc: "orxVECTOR_LIGHT_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_GREY* {.importc: "orxVECTOR_LIGHT_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_GREEN):
-  var orxVECTOR_LIGHT_GREEN* {.importc: "orxVECTOR_LIGHT_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_GREEN* {.importc: "orxVECTOR_LIGHT_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_PINK):
-  var orxVECTOR_LIGHT_PINK* {.importc: "orxVECTOR_LIGHT_PINK".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_PINK* {.importc: "orxVECTOR_LIGHT_PINK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_PINK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_SALMON):
-  var orxVECTOR_LIGHT_SALMON* {.importc: "orxVECTOR_LIGHT_SALMON".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_SALMON* {.importc: "orxVECTOR_LIGHT_SALMON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_SALMON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_SEA_GREEN):
-  var orxVECTOR_LIGHT_SEA_GREEN* {.importc: "orxVECTOR_LIGHT_SEA_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_SEA_GREEN* {.importc: "orxVECTOR_LIGHT_SEA_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_SEA_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_SKY_BLUE):
-  var orxVECTOR_LIGHT_SKY_BLUE* {.importc: "orxVECTOR_LIGHT_SKY_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_SKY_BLUE* {.importc: "orxVECTOR_LIGHT_SKY_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_SKY_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_SLATE_GRAY):
-  var orxVECTOR_LIGHT_SLATE_GRAY* {.importc: "orxVECTOR_LIGHT_SLATE_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_SLATE_GRAY* {.importc: "orxVECTOR_LIGHT_SLATE_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_SLATE_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_SLATE_GREY):
-  var orxVECTOR_LIGHT_SLATE_GREY* {.importc: "orxVECTOR_LIGHT_SLATE_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_SLATE_GREY* {.importc: "orxVECTOR_LIGHT_SLATE_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_SLATE_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_STEEL_BLUE):
-  var orxVECTOR_LIGHT_STEEL_BLUE* {.importc: "orxVECTOR_LIGHT_STEEL_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_STEEL_BLUE* {.importc: "orxVECTOR_LIGHT_STEEL_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_STEEL_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIGHT_YELLOW):
-  var orxVECTOR_LIGHT_YELLOW* {.importc: "orxVECTOR_LIGHT_YELLOW".}: orxVECTOR_520095096
+  var orxVECTOR_LIGHT_YELLOW* {.importc: "orxVECTOR_LIGHT_YELLOW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIGHT_YELLOW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIME):
-  var orxVECTOR_LIME* {.importc: "orxVECTOR_LIME".}: orxVECTOR_520095096
+  var orxVECTOR_LIME* {.importc: "orxVECTOR_LIME".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIME" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LIME_GREEN):
-  var orxVECTOR_LIME_GREEN* {.importc: "orxVECTOR_LIME_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_LIME_GREEN* {.importc: "orxVECTOR_LIME_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LIME_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_LINEN):
-  var orxVECTOR_LINEN* {.importc: "orxVECTOR_LINEN".}: orxVECTOR_520095096
+  var orxVECTOR_LINEN* {.importc: "orxVECTOR_LINEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_LINEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MAGENTA):
-  var orxVECTOR_MAGENTA* {.importc: "orxVECTOR_MAGENTA".}: orxVECTOR_520095096
+  var orxVECTOR_MAGENTA* {.importc: "orxVECTOR_MAGENTA".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MAGENTA" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MAROON):
-  var orxVECTOR_MAROON* {.importc: "orxVECTOR_MAROON".}: orxVECTOR_520095096
+  var orxVECTOR_MAROON* {.importc: "orxVECTOR_MAROON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MAROON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_AQUA_MARINE):
-  var orxVECTOR_MEDIUM_AQUA_MARINE* {.importc: "orxVECTOR_MEDIUM_AQUA_MARINE".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_AQUA_MARINE* {.importc: "orxVECTOR_MEDIUM_AQUA_MARINE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_AQUA_MARINE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_BLUE):
-  var orxVECTOR_MEDIUM_BLUE* {.importc: "orxVECTOR_MEDIUM_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_BLUE* {.importc: "orxVECTOR_MEDIUM_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_ORCHID):
-  var orxVECTOR_MEDIUM_ORCHID* {.importc: "orxVECTOR_MEDIUM_ORCHID".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_ORCHID* {.importc: "orxVECTOR_MEDIUM_ORCHID".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_ORCHID" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_PURPLE):
-  var orxVECTOR_MEDIUM_PURPLE* {.importc: "orxVECTOR_MEDIUM_PURPLE".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_PURPLE* {.importc: "orxVECTOR_MEDIUM_PURPLE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_PURPLE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_SEA_GREEN):
-  var orxVECTOR_MEDIUM_SEA_GREEN* {.importc: "orxVECTOR_MEDIUM_SEA_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_SEA_GREEN* {.importc: "orxVECTOR_MEDIUM_SEA_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_SEA_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_SLATE_BLUE):
-  var orxVECTOR_MEDIUM_SLATE_BLUE* {.importc: "orxVECTOR_MEDIUM_SLATE_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_SLATE_BLUE* {.importc: "orxVECTOR_MEDIUM_SLATE_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_SLATE_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_SPRING_GREEN):
-  var orxVECTOR_MEDIUM_SPRING_GREEN* {.importc: "orxVECTOR_MEDIUM_SPRING_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_SPRING_GREEN* {.importc: "orxVECTOR_MEDIUM_SPRING_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_SPRING_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_TURQUOISE):
-  var orxVECTOR_MEDIUM_TURQUOISE* {.importc: "orxVECTOR_MEDIUM_TURQUOISE".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_TURQUOISE* {.importc: "orxVECTOR_MEDIUM_TURQUOISE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_TURQUOISE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MEDIUM_VIOLET_RED):
-  var orxVECTOR_MEDIUM_VIOLET_RED* {.importc: "orxVECTOR_MEDIUM_VIOLET_RED".}: orxVECTOR_520095096
+  var orxVECTOR_MEDIUM_VIOLET_RED* {.importc: "orxVECTOR_MEDIUM_VIOLET_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MEDIUM_VIOLET_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MIDNIGHT_BLUE):
-  var orxVECTOR_MIDNIGHT_BLUE* {.importc: "orxVECTOR_MIDNIGHT_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_MIDNIGHT_BLUE* {.importc: "orxVECTOR_MIDNIGHT_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MIDNIGHT_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MINT_CREAM):
-  var orxVECTOR_MINT_CREAM* {.importc: "orxVECTOR_MINT_CREAM".}: orxVECTOR_520095096
+  var orxVECTOR_MINT_CREAM* {.importc: "orxVECTOR_MINT_CREAM".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MINT_CREAM" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MISTY_ROSE):
-  var orxVECTOR_MISTY_ROSE* {.importc: "orxVECTOR_MISTY_ROSE".}: orxVECTOR_520095096
+  var orxVECTOR_MISTY_ROSE* {.importc: "orxVECTOR_MISTY_ROSE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MISTY_ROSE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_MOCCASIN):
-  var orxVECTOR_MOCCASIN* {.importc: "orxVECTOR_MOCCASIN".}: orxVECTOR_520095096
+  var orxVECTOR_MOCCASIN* {.importc: "orxVECTOR_MOCCASIN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_MOCCASIN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_NAVAJO_WHITE):
-  var orxVECTOR_NAVAJO_WHITE* {.importc: "orxVECTOR_NAVAJO_WHITE".}: orxVECTOR_520095096
+  var orxVECTOR_NAVAJO_WHITE* {.importc: "orxVECTOR_NAVAJO_WHITE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_NAVAJO_WHITE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_NAVY):
-  var orxVECTOR_NAVY* {.importc: "orxVECTOR_NAVY".}: orxVECTOR_520095096
+  var orxVECTOR_NAVY* {.importc: "orxVECTOR_NAVY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_NAVY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_OLD_LACE):
-  var orxVECTOR_OLD_LACE* {.importc: "orxVECTOR_OLD_LACE".}: orxVECTOR_520095096
+  var orxVECTOR_OLD_LACE* {.importc: "orxVECTOR_OLD_LACE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_OLD_LACE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_OLIVE):
-  var orxVECTOR_OLIVE* {.importc: "orxVECTOR_OLIVE".}: orxVECTOR_520095096
+  var orxVECTOR_OLIVE* {.importc: "orxVECTOR_OLIVE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_OLIVE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_OLIVE_DRAB):
-  var orxVECTOR_OLIVE_DRAB* {.importc: "orxVECTOR_OLIVE_DRAB".}: orxVECTOR_520095096
+  var orxVECTOR_OLIVE_DRAB* {.importc: "orxVECTOR_OLIVE_DRAB".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_OLIVE_DRAB" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ORANGE):
-  var orxVECTOR_ORANGE* {.importc: "orxVECTOR_ORANGE".}: orxVECTOR_520095096
+  var orxVECTOR_ORANGE* {.importc: "orxVECTOR_ORANGE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ORANGE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ORANGE_RED):
-  var orxVECTOR_ORANGE_RED* {.importc: "orxVECTOR_ORANGE_RED".}: orxVECTOR_520095096
+  var orxVECTOR_ORANGE_RED* {.importc: "orxVECTOR_ORANGE_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ORANGE_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ORCHID):
-  var orxVECTOR_ORCHID* {.importc: "orxVECTOR_ORCHID".}: orxVECTOR_520095096
+  var orxVECTOR_ORCHID* {.importc: "orxVECTOR_ORCHID".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ORCHID" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PALE_GOLDEN_ROD):
-  var orxVECTOR_PALE_GOLDEN_ROD* {.importc: "orxVECTOR_PALE_GOLDEN_ROD".}: orxVECTOR_520095096
+  var orxVECTOR_PALE_GOLDEN_ROD* {.importc: "orxVECTOR_PALE_GOLDEN_ROD".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PALE_GOLDEN_ROD" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PALE_GREEN):
-  var orxVECTOR_PALE_GREEN* {.importc: "orxVECTOR_PALE_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_PALE_GREEN* {.importc: "orxVECTOR_PALE_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PALE_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PALE_TURQUOISE):
-  var orxVECTOR_PALE_TURQUOISE* {.importc: "orxVECTOR_PALE_TURQUOISE".}: orxVECTOR_520095096
+  var orxVECTOR_PALE_TURQUOISE* {.importc: "orxVECTOR_PALE_TURQUOISE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PALE_TURQUOISE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PALE_VIOLET_RED):
-  var orxVECTOR_PALE_VIOLET_RED* {.importc: "orxVECTOR_PALE_VIOLET_RED".}: orxVECTOR_520095096
+  var orxVECTOR_PALE_VIOLET_RED* {.importc: "orxVECTOR_PALE_VIOLET_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PALE_VIOLET_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PAPAYA_WHIP):
-  var orxVECTOR_PAPAYA_WHIP* {.importc: "orxVECTOR_PAPAYA_WHIP".}: orxVECTOR_520095096
+  var orxVECTOR_PAPAYA_WHIP* {.importc: "orxVECTOR_PAPAYA_WHIP".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PAPAYA_WHIP" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PEACH_PUFF):
-  var orxVECTOR_PEACH_PUFF* {.importc: "orxVECTOR_PEACH_PUFF".}: orxVECTOR_520095096
+  var orxVECTOR_PEACH_PUFF* {.importc: "orxVECTOR_PEACH_PUFF".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PEACH_PUFF" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PERU):
-  var orxVECTOR_PERU* {.importc: "orxVECTOR_PERU".}: orxVECTOR_520095096
+  var orxVECTOR_PERU* {.importc: "orxVECTOR_PERU".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PERU" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PINK):
-  var orxVECTOR_PINK* {.importc: "orxVECTOR_PINK".}: orxVECTOR_520095096
+  var orxVECTOR_PINK* {.importc: "orxVECTOR_PINK".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PINK" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PLUM):
-  var orxVECTOR_PLUM* {.importc: "orxVECTOR_PLUM".}: orxVECTOR_520095096
+  var orxVECTOR_PLUM* {.importc: "orxVECTOR_PLUM".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PLUM" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_POWDER_BLUE):
-  var orxVECTOR_POWDER_BLUE* {.importc: "orxVECTOR_POWDER_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_POWDER_BLUE* {.importc: "orxVECTOR_POWDER_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_POWDER_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_PURPLE):
-  var orxVECTOR_PURPLE* {.importc: "orxVECTOR_PURPLE".}: orxVECTOR_520095096
+  var orxVECTOR_PURPLE* {.importc: "orxVECTOR_PURPLE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_PURPLE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_REBECCA_PURPLE):
-  var orxVECTOR_REBECCA_PURPLE* {.importc: "orxVECTOR_REBECCA_PURPLE".}: orxVECTOR_520095096
+  var orxVECTOR_REBECCA_PURPLE* {.importc: "orxVECTOR_REBECCA_PURPLE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_REBECCA_PURPLE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_RED):
-  var orxVECTOR_RED* {.importc: "orxVECTOR_RED".}: orxVECTOR_520095096
+  var orxVECTOR_RED* {.importc: "orxVECTOR_RED".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_RED" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ROSY_BROWN):
-  var orxVECTOR_ROSY_BROWN* {.importc: "orxVECTOR_ROSY_BROWN".}: orxVECTOR_520095096
+  var orxVECTOR_ROSY_BROWN* {.importc: "orxVECTOR_ROSY_BROWN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ROSY_BROWN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_ROYAL_BLUE):
-  var orxVECTOR_ROYAL_BLUE* {.importc: "orxVECTOR_ROYAL_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_ROYAL_BLUE* {.importc: "orxVECTOR_ROYAL_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_ROYAL_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SADDLE_BROWN):
-  var orxVECTOR_SADDLE_BROWN* {.importc: "orxVECTOR_SADDLE_BROWN".}: orxVECTOR_520095096
+  var orxVECTOR_SADDLE_BROWN* {.importc: "orxVECTOR_SADDLE_BROWN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SADDLE_BROWN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SALMON):
-  var orxVECTOR_SALMON* {.importc: "orxVECTOR_SALMON".}: orxVECTOR_520095096
+  var orxVECTOR_SALMON* {.importc: "orxVECTOR_SALMON".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SALMON" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SANDY_BROWN):
-  var orxVECTOR_SANDY_BROWN* {.importc: "orxVECTOR_SANDY_BROWN".}: orxVECTOR_520095096
+  var orxVECTOR_SANDY_BROWN* {.importc: "orxVECTOR_SANDY_BROWN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SANDY_BROWN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SEA_GREEN):
-  var orxVECTOR_SEA_GREEN* {.importc: "orxVECTOR_SEA_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_SEA_GREEN* {.importc: "orxVECTOR_SEA_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SEA_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SEA_SHELL):
-  var orxVECTOR_SEA_SHELL* {.importc: "orxVECTOR_SEA_SHELL".}: orxVECTOR_520095096
+  var orxVECTOR_SEA_SHELL* {.importc: "orxVECTOR_SEA_SHELL".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SEA_SHELL" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SIENNA):
-  var orxVECTOR_SIENNA* {.importc: "orxVECTOR_SIENNA".}: orxVECTOR_520095096
+  var orxVECTOR_SIENNA* {.importc: "orxVECTOR_SIENNA".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SIENNA" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SILVER):
-  var orxVECTOR_SILVER* {.importc: "orxVECTOR_SILVER".}: orxVECTOR_520095096
+  var orxVECTOR_SILVER* {.importc: "orxVECTOR_SILVER".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SILVER" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SKY_BLUE):
-  var orxVECTOR_SKY_BLUE* {.importc: "orxVECTOR_SKY_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_SKY_BLUE* {.importc: "orxVECTOR_SKY_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SKY_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SLATE_BLUE):
-  var orxVECTOR_SLATE_BLUE* {.importc: "orxVECTOR_SLATE_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_SLATE_BLUE* {.importc: "orxVECTOR_SLATE_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SLATE_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SLATE_GRAY):
-  var orxVECTOR_SLATE_GRAY* {.importc: "orxVECTOR_SLATE_GRAY".}: orxVECTOR_520095096
+  var orxVECTOR_SLATE_GRAY* {.importc: "orxVECTOR_SLATE_GRAY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SLATE_GRAY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SLATE_GREY):
-  var orxVECTOR_SLATE_GREY* {.importc: "orxVECTOR_SLATE_GREY".}: orxVECTOR_520095096
+  var orxVECTOR_SLATE_GREY* {.importc: "orxVECTOR_SLATE_GREY".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SLATE_GREY" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SNOW):
-  var orxVECTOR_SNOW* {.importc: "orxVECTOR_SNOW".}: orxVECTOR_520095096
+  var orxVECTOR_SNOW* {.importc: "orxVECTOR_SNOW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SNOW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_SPRING_GREEN):
-  var orxVECTOR_SPRING_GREEN* {.importc: "orxVECTOR_SPRING_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_SPRING_GREEN* {.importc: "orxVECTOR_SPRING_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_SPRING_GREEN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_STEEL_BLUE):
-  var orxVECTOR_STEEL_BLUE* {.importc: "orxVECTOR_STEEL_BLUE".}: orxVECTOR_520095096
+  var orxVECTOR_STEEL_BLUE* {.importc: "orxVECTOR_STEEL_BLUE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_STEEL_BLUE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_TAN):
-  var orxVECTOR_TAN* {.importc: "orxVECTOR_TAN".}: orxVECTOR_520095096
+  var orxVECTOR_TAN* {.importc: "orxVECTOR_TAN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_TAN" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_TEAL):
-  var orxVECTOR_TEAL* {.importc: "orxVECTOR_TEAL".}: orxVECTOR_520095096
+  var orxVECTOR_TEAL* {.importc: "orxVECTOR_TEAL".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_TEAL" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_THISTLE):
-  var orxVECTOR_THISTLE* {.importc: "orxVECTOR_THISTLE".}: orxVECTOR_520095096
+  var orxVECTOR_THISTLE* {.importc: "orxVECTOR_THISTLE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_THISTLE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_TOMATO):
-  var orxVECTOR_TOMATO* {.importc: "orxVECTOR_TOMATO".}: orxVECTOR_520095096
+  var orxVECTOR_TOMATO* {.importc: "orxVECTOR_TOMATO".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_TOMATO" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_TURQUOISE):
-  var orxVECTOR_TURQUOISE* {.importc: "orxVECTOR_TURQUOISE".}: orxVECTOR_520095096
+  var orxVECTOR_TURQUOISE* {.importc: "orxVECTOR_TURQUOISE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_TURQUOISE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_VIOLET):
-  var orxVECTOR_VIOLET* {.importc: "orxVECTOR_VIOLET".}: orxVECTOR_520095096
+  var orxVECTOR_VIOLET* {.importc: "orxVECTOR_VIOLET".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_VIOLET" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_WHEAT):
-  var orxVECTOR_WHEAT* {.importc: "orxVECTOR_WHEAT".}: orxVECTOR_520095096
+  var orxVECTOR_WHEAT* {.importc: "orxVECTOR_WHEAT".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_WHEAT" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_WHITE):
-  var orxVECTOR_WHITE* {.importc: "orxVECTOR_WHITE".}: orxVECTOR_520095096
+  var orxVECTOR_WHITE* {.importc: "orxVECTOR_WHITE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_WHITE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_WHITE_SMOKE):
-  var orxVECTOR_WHITE_SMOKE* {.importc: "orxVECTOR_WHITE_SMOKE".}: orxVECTOR_520095096
+  var orxVECTOR_WHITE_SMOKE* {.importc: "orxVECTOR_WHITE_SMOKE".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_WHITE_SMOKE" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_YELLOW):
-  var orxVECTOR_YELLOW* {.importc: "orxVECTOR_YELLOW".}: orxVECTOR_520095096
+  var orxVECTOR_YELLOW* {.importc: "orxVECTOR_YELLOW".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_YELLOW" &
         " already exists, not redeclaring")
 when not declared(orxVECTOR_YELLOW_GREEN):
-  var orxVECTOR_YELLOW_GREEN* {.importc: "orxVECTOR_YELLOW_GREEN".}: orxVECTOR_520095096
+  var orxVECTOR_YELLOW_GREEN* {.importc: "orxVECTOR_YELLOW_GREEN".}: orxVECTOR_520095059
 else:
   static :
     hint("Declaration of " & "orxVECTOR_YELLOW_GREEN" &
@@ -11440,7 +11440,7 @@ else:
   static :
     hint("Declaration of " & "systemSetup" & " already exists, not redeclaring")
 when not declared(systemInit):
-  proc systemInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxSystem_Init".}
+  proc systemInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxSystem_Init".}
 else:
   static :
     hint("Declaration of " & "systemInit" & " already exists, not redeclaring")
@@ -11450,31 +11450,31 @@ else:
   static :
     hint("Declaration of " & "systemExit" & " already exists, not redeclaring")
 when not declared(getTime):
-  proc getTime*(): orxDOUBLE_520095042 {.cdecl, importc: "orxSystem_GetTime".}
+  proc getTime*(): orxDOUBLE_520095005 {.cdecl, importc: "orxSystem_GetTime".}
 else:
   static :
     hint("Declaration of " & "getTime" & " already exists, not redeclaring")
 when not declared(getRealTime):
-  proc getRealTime*(): orxU64_520095022 {.cdecl,
+  proc getRealTime*(): orxU64_520094985 {.cdecl,
       importc: "orxSystem_GetRealTime".}
 else:
   static :
     hint("Declaration of " & "getRealTime" & " already exists, not redeclaring")
 when not declared(getSystemTime):
-  proc getSystemTime*(): orxDOUBLE_520095042 {.cdecl,
+  proc getSystemTime*(): orxDOUBLE_520095005 {.cdecl,
       importc: "orxSystem_GetSystemTime".}
 else:
   static :
     hint("Declaration of " & "getSystemTime" &
         " already exists, not redeclaring")
 when not declared(delay):
-  proc delay*(internal_fSeconds: orxFLOAT_520095040): void {.cdecl,
+  proc delay*(internal_fSeconds: orxFLOAT_520095003): void {.cdecl,
       importc: "orxSystem_Delay".}
 else:
   static :
     hint("Declaration of " & "delay" & " already exists, not redeclaring")
 when not declared(getVersion):
-  proc getVersion*(internal_pstVersion: ptr orxVERSION_520095070): ptr orxVERSION_520095070 {.
+  proc getVersion*(internal_pstVersion: ptr orxVERSION_520095033): ptr orxVERSION_520095033 {.
       cdecl, importc: "orxSystem_GetVersion".}
 else:
   static :
@@ -11494,7 +11494,7 @@ else:
     hint("Declaration of " & "getVersionFullString" &
         " already exists, not redeclaring")
 when not declared(getVersionNumeric):
-  proc getVersionNumeric*(): orxU32_520095024 {.cdecl,
+  proc getVersionNumeric*(): orxU32_520094987 {.cdecl,
       importc: "orxSystem_GetVersionNumeric".}
 else:
   static :
@@ -11506,15 +11506,15 @@ else:
   static :
     hint("Declaration of " & "getClipboard" & " already exists, not redeclaring")
 when not declared(setClipboard):
-  proc setClipboard*(internal_zValue: cstring): orxSTATUS_520095066 {.cdecl,
+  proc setClipboard*(internal_zValue: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxSystem_SetClipboard".}
 else:
   static :
     hint("Declaration of " & "setClipboard" & " already exists, not redeclaring")
 when not declared(orxString_PrintUTF8Character):
   proc orxString_PrintUTF8Character*(internal_zDstString: cstring;
-                                     internal_u32Size: orxU32_520095024;
-                                     internal_u32CharacterCodePoint: orxU32_520095024): orxU32_520095024 {.
+                                     internal_u32Size: orxU32_520094987;
+                                     internal_u32CharacterCodePoint: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxString_PrintUTF8Character".}
 else:
   static :
@@ -11522,7 +11522,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxString_GetFirstCharacterCodePoint):
   proc orxString_GetFirstCharacterCodePoint*(internal_zString: cstring;
-      internal_pzRemaining: ptr cstring): orxU32_520095024 {.cdecl,
+      internal_pzRemaining: ptr cstring): orxU32_520094987 {.cdecl,
       importc: "orxString_GetFirstCharacterCodePoint".}
 else:
   static :
@@ -11534,7 +11534,7 @@ else:
   static :
     hint("Declaration of " & "stringSetup" & " already exists, not redeclaring")
 when not declared(stringInit):
-  proc stringInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxString_Init".}
+  proc stringInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxString_Init".}
 else:
   static :
     hint("Declaration of " & "stringInit" & " already exists, not redeclaring")
@@ -11545,21 +11545,21 @@ else:
     hint("Declaration of " & "stringExit" & " already exists, not redeclaring")
 when not declared(orxString_NHash):
   proc orxString_NHash*(internal_zString: cstring;
-                        internal_u32CharNumber: orxU32_520095024): orxSTRINGID_520095046 {.
+                        internal_u32CharNumber: orxU32_520094987): orxSTRINGID_520095009 {.
       cdecl, importc: "orxString_NHash".}
 else:
   static :
     hint("Declaration of " & "orxString_NHash" &
         " already exists, not redeclaring")
 when not declared(orxString_GetID):
-  proc orxString_GetID*(internal_zString: cstring): orxSTRINGID_520095046 {.
+  proc orxString_GetID*(internal_zString: cstring): orxSTRINGID_520095009 {.
       cdecl, importc: "orxString_GetID".}
 else:
   static :
     hint("Declaration of " & "orxString_GetID" &
         " already exists, not redeclaring")
 when not declared(orxString_GetFromID):
-  proc orxString_GetFromID*(internal_stID: orxSTRINGID_520095046): cstring {.
+  proc orxString_GetFromID*(internal_stID: orxSTRINGID_520095009): cstring {.
       cdecl, importc: "orxString_GetFromID".}
 else:
   static :
@@ -11578,7 +11578,7 @@ else:
   static :
     hint("Declaration of " & "clockSetup" & " already exists, not redeclaring")
 when not declared(clockInit):
-  proc clockInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxClock_Init".}
+  proc clockInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxClock_Init".}
 else:
   static :
     hint("Declaration of " & "clockInit" & " already exists, not redeclaring")
@@ -11588,271 +11588,271 @@ else:
   static :
     hint("Declaration of " & "clockExit" & " already exists, not redeclaring")
 when not declared(clockUpdate):
-  proc clockUpdate*(): orxSTATUS_520095066 {.cdecl, importc: "orxClock_Update".}
+  proc clockUpdate*(): orxSTATUS_520095029 {.cdecl, importc: "orxClock_Update".}
 else:
   static :
     hint("Declaration of " & "clockUpdate" & " already exists, not redeclaring")
 when not declared(clockCreate):
-  proc clockCreate*(internal_fTickSize: orxFLOAT_520095040): ptr orxCLOCK_520095129 {.
+  proc clockCreate*(internal_fTickSize: orxFLOAT_520095003): ptr orxCLOCK_520095092 {.
       cdecl, importc: "orxClock_Create".}
 else:
   static :
     hint("Declaration of " & "clockCreate" & " already exists, not redeclaring")
 when not declared(clockCreateFromConfig):
-  proc clockCreateFromConfig*(internal_zConfigID: cstring): ptr orxCLOCK_520095129 {.
+  proc clockCreateFromConfig*(internal_zConfigID: cstring): ptr orxCLOCK_520095092 {.
       cdecl, importc: "orxClock_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "clockCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(clockDelete):
-  proc clockDelete*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
+  proc clockDelete*(internal_pstClock: ptr orxCLOCK_520095092): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_Delete".}
 else:
   static :
     hint("Declaration of " & "clockDelete" & " already exists, not redeclaring")
 when not declared(resync):
-  proc resync*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
+  proc resync*(internal_pstClock: ptr orxCLOCK_520095092): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_Resync".}
 else:
   static :
     hint("Declaration of " & "resync" & " already exists, not redeclaring")
 when not declared(resyncAll):
-  proc resyncAll*(): orxSTATUS_520095066 {.cdecl, importc: "orxClock_ResyncAll".}
+  proc resyncAll*(): orxSTATUS_520095029 {.cdecl, importc: "orxClock_ResyncAll".}
 else:
   static :
     hint("Declaration of " & "resyncAll" & " already exists, not redeclaring")
 when not declared(restart):
-  proc restart*(internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
+  proc restart*(internal_pstClock: ptr orxCLOCK_520095092): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_Restart".}
 else:
   static :
     hint("Declaration of " & "restart" & " already exists, not redeclaring")
 when not declared(pause):
-  proc pause*(internal_pstClock: ptr orxCLOCK_520095129;
-              internal_bPause: orxBOOL_520095038): void {.cdecl,
+  proc pause*(internal_pstClock: ptr orxCLOCK_520095092;
+              internal_bPause: orxBOOL_520095001): void {.cdecl,
       importc: "orxClock_Pause".}
 else:
   static :
     hint("Declaration of " & "pause" & " already exists, not redeclaring")
 when not declared(isPaused):
-  proc isPaused*(internal_pstClock: ptr orxCLOCK_520095129): orxBOOL_520095038 {.
+  proc isPaused*(internal_pstClock: ptr orxCLOCK_520095092): orxBOOL_520095001 {.
       cdecl, importc: "orxClock_IsPaused".}
 else:
   static :
     hint("Declaration of " & "isPaused" & " already exists, not redeclaring")
 when not declared(getInfo):
-  proc getInfo*(internal_pstClock: ptr orxCLOCK_520095129): ptr orxCLOCK_INFO_520095123 {.
+  proc getInfo*(internal_pstClock: ptr orxCLOCK_520095092): ptr orxCLOCK_INFO_520095086 {.
       cdecl, importc: "orxClock_GetInfo".}
 else:
   static :
     hint("Declaration of " & "getInfo" & " already exists, not redeclaring")
 when not declared(getFromInfo):
-  proc getFromInfo*(internal_pstClockInfo: ptr orxCLOCK_INFO_520095123): ptr orxCLOCK_520095129 {.
+  proc getFromInfo*(internal_pstClockInfo: ptr orxCLOCK_INFO_520095086): ptr orxCLOCK_520095092 {.
       cdecl, importc: "orxClock_GetFromInfo".}
 else:
   static :
     hint("Declaration of " & "getFromInfo" & " already exists, not redeclaring")
 when not declared(setModifier):
-  proc setModifier*(internal_pstClock: ptr orxCLOCK_520095129;
-                    internal_eModifier: orxCLOCK_MODIFIER_520095115;
-                    internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setModifier*(internal_pstClock: ptr orxCLOCK_520095092;
+                    internal_eModifier: orxCLOCK_MODIFIER_520095078;
+                    internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_SetModifier".}
 else:
   static :
     hint("Declaration of " & "setModifier" & " already exists, not redeclaring")
 when not declared(getModifier):
-  proc getModifier*(internal_pstClock: ptr orxCLOCK_520095129;
-                    internal_eModifier: orxCLOCK_MODIFIER_520095115): orxFLOAT_520095040 {.
+  proc getModifier*(internal_pstClock: ptr orxCLOCK_520095092;
+                    internal_eModifier: orxCLOCK_MODIFIER_520095078): orxFLOAT_520095003 {.
       cdecl, importc: "orxClock_GetModifier".}
 else:
   static :
     hint("Declaration of " & "getModifier" & " already exists, not redeclaring")
 when not declared(setTickSize):
-  proc setTickSize*(internal_pstClock: ptr orxCLOCK_520095129;
-                    internal_fTickSize: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setTickSize*(internal_pstClock: ptr orxCLOCK_520095092;
+                    internal_fTickSize: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_SetTickSize".}
 else:
   static :
     hint("Declaration of " & "setTickSize" & " already exists, not redeclaring")
 when not declared(clockRegister):
-  proc clockRegister*(internal_pstClock: ptr orxCLOCK_520095129;
-                      internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
+  proc clockRegister*(internal_pstClock: ptr orxCLOCK_520095092;
+                      internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
                       internal_pContext: pointer;
-                      internal_eModuleID: orxMODULE_ID_520095074;
-                      internal_ePriority: orxCLOCK_PRIORITY_520095119): orxSTATUS_520095066 {.
+                      internal_eModuleID: orxMODULE_ID_520095037;
+                      internal_ePriority: orxCLOCK_PRIORITY_520095082): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_Register".}
 else:
   static :
     hint("Declaration of " & "clockRegister" &
         " already exists, not redeclaring")
 when not declared(unregister):
-  proc unregister*(internal_pstClock: ptr orxCLOCK_520095129;
-                   internal_pfnCallback: orxCLOCK_FUNCTION_520095131): orxSTATUS_520095066 {.
+  proc unregister*(internal_pstClock: ptr orxCLOCK_520095092;
+                   internal_pfnCallback: orxCLOCK_FUNCTION_520095094): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_Unregister".}
 else:
   static :
     hint("Declaration of " & "unregister" & " already exists, not redeclaring")
 when not declared(getContext):
-  proc getContext*(internal_pstClock: ptr orxCLOCK_520095129;
-                   internal_pfnCallback: orxCLOCK_FUNCTION_520095131): pointer {.
+  proc getContext*(internal_pstClock: ptr orxCLOCK_520095092;
+                   internal_pfnCallback: orxCLOCK_FUNCTION_520095094): pointer {.
       cdecl, importc: "orxClock_GetContext".}
 else:
   static :
     hint("Declaration of " & "getContext" & " already exists, not redeclaring")
 when not declared(setContext):
-  proc setContext*(internal_pstClock: ptr orxCLOCK_520095129;
-                   internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
-                   internal_pContext: pointer): orxSTATUS_520095066 {.cdecl,
+  proc setContext*(internal_pstClock: ptr orxCLOCK_520095092;
+                   internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
+                   internal_pContext: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxClock_SetContext".}
 else:
   static :
     hint("Declaration of " & "setContext" & " already exists, not redeclaring")
 when not declared(clockGet):
-  proc clockGet*(internal_zName: cstring): ptr orxCLOCK_520095129 {.cdecl,
+  proc clockGet*(internal_zName: cstring): ptr orxCLOCK_520095092 {.cdecl,
       importc: "orxClock_Get".}
 else:
   static :
     hint("Declaration of " & "clockGet" & " already exists, not redeclaring")
 when not declared(getName_proc):
-  proc getName_proc*(internal_pstClock: ptr orxCLOCK_520095129): cstring {.
+  proc getName_proc*(internal_pstClock: ptr orxCLOCK_520095092): cstring {.
       cdecl, importc: "orxClock_GetName".}
 else:
   static :
     hint("Declaration of " & "getName_proc" & " already exists, not redeclaring")
 when not declared(addTimer):
-  proc addTimer*(internal_pstClock: ptr orxCLOCK_520095129;
-                 internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
-                 internal_fDelay: orxFLOAT_520095040;
-                 internal_s32Repetition: orxS32_520095032;
-                 internal_pContext: pointer): orxSTATUS_520095066 {.cdecl,
+  proc addTimer*(internal_pstClock: ptr orxCLOCK_520095092;
+                 internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
+                 internal_fDelay: orxFLOAT_520095003;
+                 internal_s32Repetition: orxS32_520094995;
+                 internal_pContext: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxClock_AddTimer".}
 else:
   static :
     hint("Declaration of " & "addTimer" & " already exists, not redeclaring")
 when not declared(removeTimer):
-  proc removeTimer*(internal_pstClock: ptr orxCLOCK_520095129;
-                    internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
-                    internal_fDelay: orxFLOAT_520095040;
-                    internal_pContext: pointer): orxSTATUS_520095066 {.cdecl,
+  proc removeTimer*(internal_pstClock: ptr orxCLOCK_520095092;
+                    internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
+                    internal_fDelay: orxFLOAT_520095003;
+                    internal_pContext: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxClock_RemoveTimer".}
 else:
   static :
     hint("Declaration of " & "removeTimer" & " already exists, not redeclaring")
 when not declared(addGlobalTimer):
-  proc addGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
-                       internal_fDelay: orxFLOAT_520095040;
-                       internal_s32Repetition: orxS32_520095032;
-                       internal_pContext: pointer): orxSTATUS_520095066 {.cdecl,
+  proc addGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
+                       internal_fDelay: orxFLOAT_520095003;
+                       internal_s32Repetition: orxS32_520094995;
+                       internal_pContext: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxClock_AddGlobalTimer".}
 else:
   static :
     hint("Declaration of " & "addGlobalTimer" &
         " already exists, not redeclaring")
 when not declared(removeGlobalTimer):
-  proc removeGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION_520095131;
-                          internal_fDelay: orxFLOAT_520095040;
-                          internal_pContext: pointer): orxSTATUS_520095066 {.
+  proc removeGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION_520095094;
+                          internal_fDelay: orxFLOAT_520095003;
+                          internal_pContext: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxClock_RemoveGlobalTimer".}
 else:
   static :
     hint("Declaration of " & "removeGlobalTimer" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_Clean):
-  proc orxLinkList_Clean*(internal_pstList: ptr orxLINKLIST_520095139): orxSTATUS_520095066 {.
+  proc orxLinkList_Clean*(internal_pstList: ptr orxLINKLIST_520095102): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_Clean".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_Clean" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_AddStart):
-  proc orxLinkList_AddStart*(internal_pstList: ptr orxLINKLIST_520095139;
-                             internal_pstNode: ptr orxLINKLIST_NODE_520095137): orxSTATUS_520095066 {.
+  proc orxLinkList_AddStart*(internal_pstList: ptr orxLINKLIST_520095102;
+                             internal_pstNode: ptr orxLINKLIST_NODE_520095100): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_AddStart".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_AddStart" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_AddEnd):
-  proc orxLinkList_AddEnd*(internal_pstList: ptr orxLINKLIST_520095139;
-                           internal_pstNode: ptr orxLINKLIST_NODE_520095137): orxSTATUS_520095066 {.
+  proc orxLinkList_AddEnd*(internal_pstList: ptr orxLINKLIST_520095102;
+                           internal_pstNode: ptr orxLINKLIST_NODE_520095100): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_AddEnd".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_AddEnd" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_AddBefore):
-  proc orxLinkList_AddBefore*(internal_pstRefNode: ptr orxLINKLIST_NODE_520095137;
-                              internal_pstNode: ptr orxLINKLIST_NODE_520095137): orxSTATUS_520095066 {.
+  proc orxLinkList_AddBefore*(internal_pstRefNode: ptr orxLINKLIST_NODE_520095100;
+                              internal_pstNode: ptr orxLINKLIST_NODE_520095100): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_AddBefore".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_AddBefore" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_AddAfter):
-  proc orxLinkList_AddAfter*(internal_pstRefNode: ptr orxLINKLIST_NODE_520095137;
-                             internal_pstNode: ptr orxLINKLIST_NODE_520095137): orxSTATUS_520095066 {.
+  proc orxLinkList_AddAfter*(internal_pstRefNode: ptr orxLINKLIST_NODE_520095100;
+                             internal_pstNode: ptr orxLINKLIST_NODE_520095100): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_AddAfter".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_AddAfter" &
         " already exists, not redeclaring")
 when not declared(orxLinkList_Remove):
-  proc orxLinkList_Remove*(internal_pstNode: ptr orxLINKLIST_NODE_520095137): orxSTATUS_520095066 {.
+  proc orxLinkList_Remove*(internal_pstNode: ptr orxLINKLIST_NODE_520095100): orxSTATUS_520095029 {.
       cdecl, importc: "orxLinkList_Remove".}
 else:
   static :
     hint("Declaration of " & "orxLinkList_Remove" &
         " already exists, not redeclaring")
 when not declared(orxTree_Clean):
-  proc orxTree_Clean*(internal_pstTree: ptr orxTREE_520095147): orxSTATUS_520095066 {.
+  proc orxTree_Clean*(internal_pstTree: ptr orxTREE_520095110): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_Clean".}
 else:
   static :
     hint("Declaration of " & "orxTree_Clean" &
         " already exists, not redeclaring")
 when not declared(orxTree_AddRoot):
-  proc orxTree_AddRoot*(internal_pstTree: ptr orxTREE_520095147;
-                        internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_AddRoot*(internal_pstTree: ptr orxTREE_520095110;
+                        internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_AddRoot".}
 else:
   static :
     hint("Declaration of " & "orxTree_AddRoot" &
         " already exists, not redeclaring")
 when not declared(orxTree_AddParent):
-  proc orxTree_AddParent*(internal_pstRefNode: ptr orxTREE_NODE_520095145;
-                          internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_AddParent*(internal_pstRefNode: ptr orxTREE_NODE_520095108;
+                          internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_AddParent".}
 else:
   static :
     hint("Declaration of " & "orxTree_AddParent" &
         " already exists, not redeclaring")
 when not declared(orxTree_AddSibling):
-  proc orxTree_AddSibling*(internal_pstRefNode: ptr orxTREE_NODE_520095145;
-                           internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_AddSibling*(internal_pstRefNode: ptr orxTREE_NODE_520095108;
+                           internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_AddSibling".}
 else:
   static :
     hint("Declaration of " & "orxTree_AddSibling" &
         " already exists, not redeclaring")
 when not declared(orxTree_AddChild):
-  proc orxTree_AddChild*(internal_pstRefNode: ptr orxTREE_NODE_520095145;
-                         internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_AddChild*(internal_pstRefNode: ptr orxTREE_NODE_520095108;
+                         internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_AddChild".}
 else:
   static :
     hint("Declaration of " & "orxTree_AddChild" &
         " already exists, not redeclaring")
 when not declared(orxTree_MoveAsChild):
-  proc orxTree_MoveAsChild*(internal_pstRefNode: ptr orxTREE_NODE_520095145;
-                            internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_MoveAsChild*(internal_pstRefNode: ptr orxTREE_NODE_520095108;
+                            internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_MoveAsChild".}
 else:
   static :
     hint("Declaration of " & "orxTree_MoveAsChild" &
         " already exists, not redeclaring")
 when not declared(orxTree_Remove):
-  proc orxTree_Remove*(internal_pstNode: ptr orxTREE_NODE_520095145): orxSTATUS_520095066 {.
+  proc orxTree_Remove*(internal_pstNode: ptr orxTREE_NODE_520095108): orxSTATUS_520095029 {.
       cdecl, importc: "orxTree_Remove".}
 else:
   static :
@@ -11865,7 +11865,7 @@ else:
     hint("Declaration of " & "structureSetup" &
         " already exists, not redeclaring")
 when not declared(structureInit):
-  proc structureInit*(): orxSTATUS_520095066 {.cdecl,
+  proc structureInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxStructure_Init".}
 else:
   static :
@@ -11878,47 +11878,47 @@ else:
     hint("Declaration of " & "structureExit" &
         " already exists, not redeclaring")
 when not declared(structureRegister):
-  proc structureRegister*(internal_eStructureID: orxSTRUCTURE_ID_520095151;
-                          internal_eStorageType: orxSTRUCTURE_STORAGE_TYPE_520095155;
-                          internal_eMemoryType: orxMEMORY_TYPE_520095092;
-                          internal_u32Size: orxU32_520095024;
-                          internal_u32BankSize: orxU32_520095024;
-                          internal_pfnUpdate: orxSTRUCTURE_UPDATE_FUNCTION_520095161): orxSTATUS_520095066 {.
+  proc structureRegister*(internal_eStructureID: orxSTRUCTURE_ID_520095114;
+                          internal_eStorageType: orxSTRUCTURE_STORAGE_TYPE_520095118;
+                          internal_eMemoryType: orxMEMORY_TYPE_520095055;
+                          internal_u32Size: orxU32_520094987;
+                          internal_u32BankSize: orxU32_520094987;
+                          internal_pfnUpdate: orxSTRUCTURE_UPDATE_FUNCTION_520095124): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_Register".}
 else:
   static :
     hint("Declaration of " & "structureRegister" &
         " already exists, not redeclaring")
 when not declared(orxStructure_Unregister):
-  proc orxStructure_Unregister*(internal_eStructureID: orxSTRUCTURE_ID_520095151): orxSTATUS_520095066 {.
+  proc orxStructure_Unregister*(internal_eStructureID: orxSTRUCTURE_ID_520095114): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_Unregister".}
 else:
   static :
     hint("Declaration of " & "orxStructure_Unregister" &
         " already exists, not redeclaring")
 when not declared(structureCreate):
-  proc structureCreate*(internal_eStructureID: orxSTRUCTURE_ID_520095151): ptr orxSTRUCTURE_520095159 {.
+  proc structureCreate*(internal_eStructureID: orxSTRUCTURE_ID_520095114): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_Create".}
 else:
   static :
     hint("Declaration of " & "structureCreate" &
         " already exists, not redeclaring")
 when not declared(structureDelete):
-  proc structureDelete*(internal_pStructure: pointer): orxSTATUS_520095066 {.
+  proc structureDelete*(internal_pStructure: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_Delete".}
 else:
   static :
     hint("Declaration of " & "structureDelete" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetStorageType):
-  proc orxStructure_GetStorageType*(internal_eStructureID: orxSTRUCTURE_ID_520095151): orxSTRUCTURE_STORAGE_TYPE_520095155 {.
+  proc orxStructure_GetStorageType*(internal_eStructureID: orxSTRUCTURE_ID_520095114): orxSTRUCTURE_STORAGE_TYPE_520095118 {.
       cdecl, importc: "orxStructure_GetStorageType".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetStorageType" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetCount):
-  proc orxStructure_GetCount*(internal_eStructureID: orxSTRUCTURE_ID_520095151): orxU32_520095024 {.
+  proc orxStructure_GetCount*(internal_eStructureID: orxSTRUCTURE_ID_520095114): orxU32_520094987 {.
       cdecl, importc: "orxStructure_GetCount".}
 else:
   static :
@@ -11927,20 +11927,20 @@ else:
 when not declared(structureUpdate):
   proc structureUpdate*(internal_pStructure: pointer;
                         internal_phCaller: pointer;
-                        internal_pstClockInfo: ptr orxCLOCK_INFO_520095123): orxSTATUS_520095066 {.
+                        internal_pstClockInfo: ptr orxCLOCK_INFO_520095086): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_Update".}
 else:
   static :
     hint("Declaration of " & "structureUpdate" &
         " already exists, not redeclaring")
 when not declared(structureGet):
-  proc structureGet*(internal_u64GUID: orxU64_520095022): ptr orxSTRUCTURE_520095159 {.
+  proc structureGet*(internal_u64GUID: orxU64_520094985): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_Get".}
 else:
   static :
     hint("Declaration of " & "structureGet" & " already exists, not redeclaring")
 when not declared(orxStructure_GetOwner):
-  proc orxStructure_GetOwner*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetOwner*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetOwner".}
 else:
   static :
@@ -11948,56 +11948,56 @@ else:
         " already exists, not redeclaring")
 when not declared(orxStructure_SetOwner):
   proc orxStructure_SetOwner*(internal_pStructure: pointer;
-                              internal_pOwner: pointer): orxSTATUS_520095066 {.
+                              internal_pOwner: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_SetOwner".}
 else:
   static :
     hint("Declaration of " & "orxStructure_SetOwner" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetFirst):
-  proc orxStructure_GetFirst*(internal_eStructureID: orxSTRUCTURE_ID_520095151): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetFirst*(internal_eStructureID: orxSTRUCTURE_ID_520095114): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetFirst".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetFirst" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetLast):
-  proc orxStructure_GetLast*(internal_eStructureID: orxSTRUCTURE_ID_520095151): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetLast*(internal_eStructureID: orxSTRUCTURE_ID_520095114): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetLast".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetLast" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetParent):
-  proc orxStructure_GetParent*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetParent*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetParent".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetParent" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetChild):
-  proc orxStructure_GetChild*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetChild*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetChild".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetChild" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetSibling):
-  proc orxStructure_GetSibling*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetSibling*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetSibling".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetSibling" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetPrevious):
-  proc orxStructure_GetPrevious*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetPrevious*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetPrevious".}
 else:
   static :
     hint("Declaration of " & "orxStructure_GetPrevious" &
         " already exists, not redeclaring")
 when not declared(orxStructure_GetNext):
-  proc orxStructure_GetNext*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095159 {.
+  proc orxStructure_GetNext*(internal_pStructure: pointer): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxStructure_GetNext".}
 else:
   static :
@@ -12005,14 +12005,14 @@ else:
         " already exists, not redeclaring")
 when not declared(orxStructure_SetParent):
   proc orxStructure_SetParent*(internal_pStructure: pointer;
-                               internal_phParent: pointer): orxSTATUS_520095066 {.
+                               internal_phParent: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_SetParent".}
 else:
   static :
     hint("Declaration of " & "orxStructure_SetParent" &
         " already exists, not redeclaring")
 when not declared(orxStructure_LogAll):
-  proc orxStructure_LogAll*(internal_bPrivate: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxStructure_LogAll*(internal_bPrivate: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxStructure_LogAll".}
 else:
   static :
@@ -12024,7 +12024,7 @@ else:
   static :
     hint("Declaration of " & "animSetup" & " already exists, not redeclaring")
 when not declared(animInit):
-  proc animInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxAnim_Init".}
+  proc animInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxAnim_Init".}
 else:
   static :
     hint("Declaration of " & "animInit" & " already exists, not redeclaring")
@@ -12034,135 +12034,135 @@ else:
   static :
     hint("Declaration of " & "animExit" & " already exists, not redeclaring")
 when not declared(animCreate):
-  proc animCreate*(internal_u32Flags: orxU32_520095024;
-                   internal_u32KeyNumber: orxU32_520095024;
-                   internal_u32EventNumber: orxU32_520095024): ptr orxANIM_520095163 {.
+  proc animCreate*(internal_u32Flags: orxU32_520094987;
+                   internal_u32KeyNumber: orxU32_520094987;
+                   internal_u32EventNumber: orxU32_520094987): ptr orxANIM_520095126 {.
       cdecl, importc: "orxAnim_Create".}
 else:
   static :
     hint("Declaration of " & "animCreate" & " already exists, not redeclaring")
 when not declared(animDelete):
-  proc animDelete*(internal_pstAnim: ptr orxANIM_520095163): orxSTATUS_520095066 {.
+  proc animDelete*(internal_pstAnim: ptr orxANIM_520095126): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnim_Delete".}
 else:
   static :
     hint("Declaration of " & "animDelete" & " already exists, not redeclaring")
 when not declared(orxAnim_AddKey):
-  proc orxAnim_AddKey*(internal_pstAnim: ptr orxANIM_520095163;
-                       internal_pstData: ptr orxSTRUCTURE_520095159;
-                       internal_fTimeStamp: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxAnim_AddKey*(internal_pstAnim: ptr orxANIM_520095126;
+                       internal_pstData: ptr orxSTRUCTURE_520095122;
+                       internal_fTimeStamp: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnim_AddKey".}
 else:
   static :
     hint("Declaration of " & "orxAnim_AddKey" &
         " already exists, not redeclaring")
 when not declared(orxAnim_RemoveLastKey):
-  proc orxAnim_RemoveLastKey*(internal_pstAnim: ptr orxANIM_520095163): orxSTATUS_520095066 {.
+  proc orxAnim_RemoveLastKey*(internal_pstAnim: ptr orxANIM_520095126): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnim_RemoveLastKey".}
 else:
   static :
     hint("Declaration of " & "orxAnim_RemoveLastKey" &
         " already exists, not redeclaring")
 when not declared(orxAnim_RemoveAllKeys):
-  proc orxAnim_RemoveAllKeys*(internal_pstAnim: ptr orxANIM_520095163): void {.
+  proc orxAnim_RemoveAllKeys*(internal_pstAnim: ptr orxANIM_520095126): void {.
       cdecl, importc: "orxAnim_RemoveAllKeys".}
 else:
   static :
     hint("Declaration of " & "orxAnim_RemoveAllKeys" &
         " already exists, not redeclaring")
 when not declared(orxAnim_AddEvent):
-  proc orxAnim_AddEvent*(internal_pstAnim: ptr orxANIM_520095163;
+  proc orxAnim_AddEvent*(internal_pstAnim: ptr orxANIM_520095126;
                          internal_zEventName: cstring;
-                         internal_fTimeStamp: orxFLOAT_520095040;
-                         internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+                         internal_fTimeStamp: orxFLOAT_520095003;
+                         internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnim_AddEvent".}
 else:
   static :
     hint("Declaration of " & "orxAnim_AddEvent" &
         " already exists, not redeclaring")
 when not declared(orxAnim_RemoveLastEvent):
-  proc orxAnim_RemoveLastEvent*(internal_pstAnim: ptr orxANIM_520095163): orxSTATUS_520095066 {.
+  proc orxAnim_RemoveLastEvent*(internal_pstAnim: ptr orxANIM_520095126): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnim_RemoveLastEvent".}
 else:
   static :
     hint("Declaration of " & "orxAnim_RemoveLastEvent" &
         " already exists, not redeclaring")
 when not declared(orxAnim_RemoveAllEvents):
-  proc orxAnim_RemoveAllEvents*(internal_pstAnim: ptr orxANIM_520095163): void {.
+  proc orxAnim_RemoveAllEvents*(internal_pstAnim: ptr orxANIM_520095126): void {.
       cdecl, importc: "orxAnim_RemoveAllEvents".}
 else:
   static :
     hint("Declaration of " & "orxAnim_RemoveAllEvents" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetNextEvent):
-  proc orxAnim_GetNextEvent*(internal_pstAnim: ptr orxANIM_520095163;
-                             internal_pstEvent: ptr orxANIM_CUSTOM_EVENT_520095175): ptr orxANIM_CUSTOM_EVENT_520095175 {.
+  proc orxAnim_GetNextEvent*(internal_pstAnim: ptr orxANIM_520095126;
+                             internal_pstEvent: ptr orxANIM_CUSTOM_EVENT_520095138): ptr orxANIM_CUSTOM_EVENT_520095138 {.
       cdecl, importc: "orxAnim_GetNextEvent".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetNextEvent" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetEventAfter):
-  proc orxAnim_GetEventAfter*(internal_pstAnim: ptr orxANIM_520095163;
-                              internal_fTimeStamp: orxFLOAT_520095040): ptr orxANIM_CUSTOM_EVENT_520095175 {.
+  proc orxAnim_GetEventAfter*(internal_pstAnim: ptr orxANIM_520095126;
+                              internal_fTimeStamp: orxFLOAT_520095003): ptr orxANIM_CUSTOM_EVENT_520095138 {.
       cdecl, importc: "orxAnim_GetEventAfter".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetEventAfter" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetKey):
-  proc orxAnim_GetKey*(internal_pstAnim: ptr orxANIM_520095163;
-                       internal_fTimeStamp: orxFLOAT_520095040): orxU32_520095024 {.
+  proc orxAnim_GetKey*(internal_pstAnim: ptr orxANIM_520095126;
+                       internal_fTimeStamp: orxFLOAT_520095003): orxU32_520094987 {.
       cdecl, importc: "orxAnim_GetKey".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetKey" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetKeyData):
-  proc orxAnim_GetKeyData*(internal_pstAnim: ptr orxANIM_520095163;
-                           internal_u32Index: orxU32_520095024): ptr orxSTRUCTURE_520095159 {.
+  proc orxAnim_GetKeyData*(internal_pstAnim: ptr orxANIM_520095126;
+                           internal_u32Index: orxU32_520094987): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxAnim_GetKeyData".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetKeyData" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetKeyStorageSize):
-  proc orxAnim_GetKeyStorageSize*(internal_pstAnim: ptr orxANIM_520095163): orxU32_520095024 {.
+  proc orxAnim_GetKeyStorageSize*(internal_pstAnim: ptr orxANIM_520095126): orxU32_520094987 {.
       cdecl, importc: "orxAnim_GetKeyStorageSize".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetKeyStorageSize" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetKeyCount):
-  proc orxAnim_GetKeyCount*(internal_pstAnim: ptr orxANIM_520095163): orxU32_520095024 {.
+  proc orxAnim_GetKeyCount*(internal_pstAnim: ptr orxANIM_520095126): orxU32_520094987 {.
       cdecl, importc: "orxAnim_GetKeyCount".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetKeyCount" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetEventStorageSize):
-  proc orxAnim_GetEventStorageSize*(internal_pstAnim: ptr orxANIM_520095163): orxU32_520095024 {.
+  proc orxAnim_GetEventStorageSize*(internal_pstAnim: ptr orxANIM_520095126): orxU32_520094987 {.
       cdecl, importc: "orxAnim_GetEventStorageSize".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetEventStorageSize" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetEventCount):
-  proc orxAnim_GetEventCount*(internal_pstAnim: ptr orxANIM_520095163): orxU32_520095024 {.
+  proc orxAnim_GetEventCount*(internal_pstAnim: ptr orxANIM_520095126): orxU32_520094987 {.
       cdecl, importc: "orxAnim_GetEventCount".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetEventCount" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetLength):
-  proc orxAnim_GetLength*(internal_pstAnim: ptr orxANIM_520095163): orxFLOAT_520095040 {.
+  proc orxAnim_GetLength*(internal_pstAnim: ptr orxANIM_520095126): orxFLOAT_520095003 {.
       cdecl, importc: "orxAnim_GetLength".}
 else:
   static :
     hint("Declaration of " & "orxAnim_GetLength" &
         " already exists, not redeclaring")
 when not declared(orxAnim_GetName):
-  proc orxAnim_GetName*(internal_pstAnim: ptr orxANIM_520095163): cstring {.
+  proc orxAnim_GetName*(internal_pstAnim: ptr orxANIM_520095126): cstring {.
       cdecl, importc: "orxAnim_GetName".}
 else:
   static :
@@ -12174,7 +12174,7 @@ else:
   static :
     hint("Declaration of " & "animSetSetup" & " already exists, not redeclaring")
 when not declared(animSetInit):
-  proc animSetInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxAnimSet_Init".}
+  proc animSetInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxAnimSet_Init".}
 else:
   static :
     hint("Declaration of " & "animSetInit" & " already exists, not redeclaring")
@@ -12184,183 +12184,183 @@ else:
   static :
     hint("Declaration of " & "animSetExit" & " already exists, not redeclaring")
 when not declared(animSetCreate):
-  proc animSetCreate*(internal_u32Size: orxU32_520095024): ptr orxANIMSET_520095177 {.
+  proc animSetCreate*(internal_u32Size: orxU32_520094987): ptr orxANIMSET_520095140 {.
       cdecl, importc: "orxAnimSet_Create".}
 else:
   static :
     hint("Declaration of " & "animSetCreate" &
         " already exists, not redeclaring")
 when not declared(animSetCreateFromConfig):
-  proc animSetCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMSET_520095177 {.
+  proc animSetCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMSET_520095140 {.
       cdecl, importc: "orxAnimSet_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "animSetCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(animSetDelete):
-  proc animSetDelete*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxSTATUS_520095066 {.
+  proc animSetDelete*(internal_pstAnimSet: ptr orxANIMSET_520095140): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimSet_Delete".}
 else:
   static :
     hint("Declaration of " & "animSetDelete" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_ClearCache):
-  proc orxAnimSet_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxAnimSet_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxAnimSet_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_AddReference):
-  proc orxAnimSet_AddReference*(internal_pstAnimSet: ptr orxANIMSET_520095177): void {.
+  proc orxAnimSet_AddReference*(internal_pstAnimSet: ptr orxANIMSET_520095140): void {.
       cdecl, importc: "orxAnimSet_AddReference".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_AddReference" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_RemoveReference):
-  proc orxAnimSet_RemoveReference*(internal_pstAnimSet: ptr orxANIMSET_520095177): void {.
+  proc orxAnimSet_RemoveReference*(internal_pstAnimSet: ptr orxANIMSET_520095140): void {.
       cdecl, importc: "orxAnimSet_RemoveReference".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_RemoveReference" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_CloneLinkTable):
-  proc orxAnimSet_CloneLinkTable*(internal_pstAnimSet: ptr orxANIMSET_520095177): ptr orxANIMSET_LINK_TABLE_520095179 {.
+  proc orxAnimSet_CloneLinkTable*(internal_pstAnimSet: ptr orxANIMSET_520095140): ptr orxANIMSET_LINK_TABLE_520095142 {.
       cdecl, importc: "orxAnimSet_CloneLinkTable".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_CloneLinkTable" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_DeleteLinkTable):
-  proc orxAnimSet_DeleteLinkTable*(internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE_520095179): void {.
+  proc orxAnimSet_DeleteLinkTable*(internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE_520095142): void {.
       cdecl, importc: "orxAnimSet_DeleteLinkTable".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_DeleteLinkTable" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_AddAnim):
-  proc orxAnimSet_AddAnim*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                           internal_pstAnim: ptr orxANIM_520095163): orxU32_520095024 {.
+  proc orxAnimSet_AddAnim*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                           internal_pstAnim: ptr orxANIM_520095126): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_AddAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_AddAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_RemoveAnim):
-  proc orxAnimSet_RemoveAnim*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                              internal_u32AnimID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxAnimSet_RemoveAnim*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                              internal_u32AnimID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimSet_RemoveAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_RemoveAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_RemoveAllAnims):
-  proc orxAnimSet_RemoveAllAnims*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxSTATUS_520095066 {.
+  proc orxAnimSet_RemoveAllAnims*(internal_pstAnimSet: ptr orxANIMSET_520095140): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimSet_RemoveAllAnims".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_RemoveAllAnims" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_AddLink):
-  proc orxAnimSet_AddLink*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                           internal_u32SrcAnim: orxU32_520095024;
-                           internal_u32DstAnim: orxU32_520095024): orxU32_520095024 {.
+  proc orxAnimSet_AddLink*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                           internal_u32SrcAnim: orxU32_520094987;
+                           internal_u32DstAnim: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_AddLink".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_AddLink" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_RemoveLink):
-  proc orxAnimSet_RemoveLink*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                              internal_u32LinkID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxAnimSet_RemoveLink*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                              internal_u32LinkID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimSet_RemoveLink".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_RemoveLink" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetLink):
-  proc orxAnimSet_GetLink*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                           internal_u32SrcAnim: orxU32_520095024;
-                           internal_u32DstAnim: orxU32_520095024): orxU32_520095024 {.
+  proc orxAnimSet_GetLink*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                           internal_u32SrcAnim: orxU32_520094987;
+                           internal_u32DstAnim: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_GetLink".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetLink" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_SetLinkProperty):
-  proc orxAnimSet_SetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                                   internal_u32LinkID: orxU32_520095024;
-                                   internal_u32Property: orxU32_520095024;
-                                   internal_u32Value: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxAnimSet_SetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                                   internal_u32LinkID: orxU32_520094987;
+                                   internal_u32Property: orxU32_520094987;
+                                   internal_u32Value: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimSet_SetLinkProperty".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_SetLinkProperty" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetLinkProperty):
-  proc orxAnimSet_GetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                                   internal_u32LinkID: orxU32_520095024;
-                                   internal_u32Property: orxU32_520095024): orxU32_520095024 {.
+  proc orxAnimSet_GetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                                   internal_u32LinkID: orxU32_520094987;
+                                   internal_u32Property: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_GetLinkProperty".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetLinkProperty" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_ComputeAnim):
-  proc orxAnimSet_ComputeAnim*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                               internal_u32SrcAnim: orxU32_520095024;
-                               internal_u32DstAnim: orxU32_520095024;
-                               internal_pfTime: ptr orxFLOAT_520095040;
-      internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE_520095179;
-                               internal_pbCut: ptr orxBOOL_520095038;
-                               internal_pbClearTarget: ptr orxBOOL_520095038): orxU32_520095024 {.
+  proc orxAnimSet_ComputeAnim*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                               internal_u32SrcAnim: orxU32_520094987;
+                               internal_u32DstAnim: orxU32_520094987;
+                               internal_pfTime: ptr orxFLOAT_520095003;
+      internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE_520095142;
+                               internal_pbCut: ptr orxBOOL_520095001;
+                               internal_pbClearTarget: ptr orxBOOL_520095001): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_ComputeAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_ComputeAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_FindNextAnim):
-  proc orxAnimSet_FindNextAnim*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                                internal_u32SrcAnim: orxU32_520095024;
-                                internal_u32DstAnim: orxU32_520095024): orxU32_520095024 {.
+  proc orxAnimSet_FindNextAnim*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                                internal_u32SrcAnim: orxU32_520094987;
+                                internal_u32DstAnim: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_FindNextAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_FindNextAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetAnim):
-  proc orxAnimSet_GetAnim*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                           internal_u32AnimID: orxU32_520095024): ptr orxANIM_520095163 {.
+  proc orxAnimSet_GetAnim*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                           internal_u32AnimID: orxU32_520094987): ptr orxANIM_520095126 {.
       cdecl, importc: "orxAnimSet_GetAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetAnimStorageSize):
-  proc orxAnimSet_GetAnimStorageSize*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxU32_520095024 {.
+  proc orxAnimSet_GetAnimStorageSize*(internal_pstAnimSet: ptr orxANIMSET_520095140): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_GetAnimStorageSize".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetAnimStorageSize" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetAnimCount):
-  proc orxAnimSet_GetAnimCount*(internal_pstAnimSet: ptr orxANIMSET_520095177): orxU32_520095024 {.
+  proc orxAnimSet_GetAnimCount*(internal_pstAnimSet: ptr orxANIMSET_520095140): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_GetAnimCount".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetAnimCount" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetAnimIDFromName):
-  proc orxAnimSet_GetAnimIDFromName*(internal_pstAnimSet: ptr orxANIMSET_520095177;
-                                     internal_zAnimName: cstring): orxU32_520095024 {.
+  proc orxAnimSet_GetAnimIDFromName*(internal_pstAnimSet: ptr orxANIMSET_520095140;
+                                     internal_zAnimName: cstring): orxU32_520094987 {.
       cdecl, importc: "orxAnimSet_GetAnimIDFromName".}
 else:
   static :
     hint("Declaration of " & "orxAnimSet_GetAnimIDFromName" &
         " already exists, not redeclaring")
 when not declared(orxAnimSet_GetName):
-  proc orxAnimSet_GetName*(internal_pstAnimSet: ptr orxANIMSET_520095177): cstring {.
+  proc orxAnimSet_GetName*(internal_pstAnimSet: ptr orxANIMSET_520095140): cstring {.
       cdecl, importc: "orxAnimSet_GetName".}
 else:
   static :
@@ -12373,7 +12373,7 @@ else:
     hint("Declaration of " & "animPointerSetup" &
         " already exists, not redeclaring")
 when not declared(animPointerInit):
-  proc animPointerInit*(): orxSTATUS_520095066 {.cdecl,
+  proc animPointerInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxAnimPointer_Init".}
 else:
   static :
@@ -12386,42 +12386,42 @@ else:
     hint("Declaration of " & "animPointerExit" &
         " already exists, not redeclaring")
 when not declared(animPointerCreate):
-  proc animPointerCreate*(internal_pstAnimSet: ptr orxANIMSET_520095177): ptr orxANIMPOINTER_520095181 {.
+  proc animPointerCreate*(internal_pstAnimSet: ptr orxANIMSET_520095140): ptr orxANIMPOINTER_520095144 {.
       cdecl, importc: "orxAnimPointer_Create".}
 else:
   static :
     hint("Declaration of " & "animPointerCreate" &
         " already exists, not redeclaring")
 when not declared(animPointerCreateFromConfig):
-  proc animPointerCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMPOINTER_520095181 {.
+  proc animPointerCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMPOINTER_520095144 {.
       cdecl, importc: "orxAnimPointer_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "animPointerCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(animPointerDelete):
-  proc animPointerDelete*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxSTATUS_520095066 {.
+  proc animPointerDelete*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_Delete".}
 else:
   static :
     hint("Declaration of " & "animPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetAnimSet):
-  proc orxAnimPointer_GetAnimSet*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): ptr orxANIMSET_520095177 {.
+  proc orxAnimPointer_GetAnimSet*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): ptr orxANIMSET_520095140 {.
       cdecl, importc: "orxAnimPointer_GetAnimSet".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_GetAnimSet" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetCurrentAnim):
-  proc orxAnimPointer_GetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxU32_520095024 {.
+  proc orxAnimPointer_GetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): orxU32_520094987 {.
       cdecl, importc: "orxAnimPointer_GetCurrentAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_GetCurrentAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetTargetAnim):
-  proc orxAnimPointer_GetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxU32_520095024 {.
+  proc orxAnimPointer_GetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): orxU32_520094987 {.
       cdecl, importc: "orxAnimPointer_GetTargetAnim".}
 else:
   static :
@@ -12429,7 +12429,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetCurrentAnimName):
   proc orxAnimPointer_GetCurrentAnimName*(
-      internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): cstring {.cdecl,
+      internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): cstring {.cdecl,
       importc: "orxAnimPointer_GetCurrentAnimName".}
 else:
   static :
@@ -12437,7 +12437,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetTargetAnimName):
   proc orxAnimPointer_GetTargetAnimName*(
-      internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): cstring {.cdecl,
+      internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): cstring {.cdecl,
       importc: "orxAnimPointer_GetTargetAnimName".}
 else:
   static :
@@ -12445,37 +12445,37 @@ else:
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetCurrentAnimData):
   proc orxAnimPointer_GetCurrentAnimData*(
-      internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): ptr orxSTRUCTURE_520095159 {.
+      internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxAnimPointer_GetCurrentAnimData".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_GetCurrentAnimData" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetTime):
-  proc orxAnimPointer_GetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxFLOAT_520095040 {.
+  proc orxAnimPointer_GetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): orxFLOAT_520095003 {.
       cdecl, importc: "orxAnimPointer_GetTime".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_GetTime" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_GetFrequency):
-  proc orxAnimPointer_GetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181): orxFLOAT_520095040 {.
+  proc orxAnimPointer_GetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144): orxFLOAT_520095003 {.
       cdecl, importc: "orxAnimPointer_GetFrequency".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_GetFrequency" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetCurrentAnim):
-  proc orxAnimPointer_SetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-                                      internal_u32AnimID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxAnimPointer_SetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+                                      internal_u32AnimID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_SetCurrentAnim".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_SetCurrentAnim" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetTargetAnim):
-  proc orxAnimPointer_SetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-                                     internal_u32AnimID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxAnimPointer_SetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+                                     internal_u32AnimID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_SetTargetAnim".}
 else:
   static :
@@ -12483,8 +12483,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetCurrentAnimFromName):
   proc orxAnimPointer_SetCurrentAnimFromName*(
-      internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-      internal_zAnimName: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+      internal_zAnimName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxAnimPointer_SetCurrentAnimFromName".}
 else:
   static :
@@ -12492,32 +12492,32 @@ else:
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetTargetAnimFromName):
   proc orxAnimPointer_SetTargetAnimFromName*(
-      internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-      internal_zAnimName: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+      internal_zAnimName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxAnimPointer_SetTargetAnimFromName".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_SetTargetAnimFromName" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetTime):
-  proc orxAnimPointer_SetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-                               internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxAnimPointer_SetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+                               internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_SetTime".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_SetTime" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_SetFrequency):
-  proc orxAnimPointer_SetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-                                    internal_fFrequency: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxAnimPointer_SetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+                                    internal_fFrequency: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_SetFrequency".}
 else:
   static :
     hint("Declaration of " & "orxAnimPointer_SetFrequency" &
         " already exists, not redeclaring")
 when not declared(orxAnimPointer_Pause):
-  proc orxAnimPointer_Pause*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095181;
-                             internal_bPause: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxAnimPointer_Pause*(internal_pstAnimPointer: ptr orxANIMPOINTER_520095144;
+                             internal_bPause: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxAnimPointer_Pause".}
 else:
   static :
@@ -12529,7 +12529,7 @@ else:
   static :
     hint("Declaration of " & "commandSetup" & " already exists, not redeclaring")
 when not declared(commandInit):
-  proc commandInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxCommand_Init".}
+  proc commandInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxCommand_Init".}
 else:
   static :
     hint("Declaration of " & "commandInit" & " already exists, not redeclaring")
@@ -12540,25 +12540,25 @@ else:
     hint("Declaration of " & "commandExit" & " already exists, not redeclaring")
 when not declared(commandRegister):
   proc commandRegister*(internal_zCommand: cstring;
-                        internal_pfnFunction: orxCOMMAND_FUNCTION_520095195;
-                        internal_u32RequiredParamNumber: orxU32_520095024;
-                        internal_u32OptionalParamNumber: orxU32_520095024;
-                        internal_astParamList: ptr orxCOMMAND_VAR_DEF_520095189;
-                        internal_pstResult: ptr orxCOMMAND_VAR_DEF_520095189): orxSTATUS_520095066 {.
+                        internal_pfnFunction: orxCOMMAND_FUNCTION_520095158;
+                        internal_u32RequiredParamNumber: orxU32_520094987;
+                        internal_u32OptionalParamNumber: orxU32_520094987;
+                        internal_astParamList: ptr orxCOMMAND_VAR_DEF_520095152;
+                        internal_pstResult: ptr orxCOMMAND_VAR_DEF_520095152): orxSTATUS_520095029 {.
       cdecl, importc: "orxCommand_Register".}
 else:
   static :
     hint("Declaration of " & "commandRegister" &
         " already exists, not redeclaring")
 when not declared(orxCommand_Unregister):
-  proc orxCommand_Unregister*(internal_zCommand: cstring): orxSTATUS_520095066 {.
+  proc orxCommand_Unregister*(internal_zCommand: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxCommand_Unregister".}
 else:
   static :
     hint("Declaration of " & "orxCommand_Unregister" &
         " already exists, not redeclaring")
 when not declared(orxCommand_IsRegistered):
-  proc orxCommand_IsRegistered*(internal_zCommand: cstring): orxBOOL_520095038 {.
+  proc orxCommand_IsRegistered*(internal_zCommand: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxCommand_IsRegistered".}
 else:
   static :
@@ -12566,21 +12566,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_AddAlias):
   proc orxCommand_AddAlias*(internal_zAlias: cstring;
-                            internal_zCommand: cstring; internal_zArgs: cstring): orxSTATUS_520095066 {.
+                            internal_zCommand: cstring; internal_zArgs: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxCommand_AddAlias".}
 else:
   static :
     hint("Declaration of " & "orxCommand_AddAlias" &
         " already exists, not redeclaring")
 when not declared(orxCommand_RemoveAlias):
-  proc orxCommand_RemoveAlias*(internal_zAlias: cstring): orxSTATUS_520095066 {.
+  proc orxCommand_RemoveAlias*(internal_zAlias: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxCommand_RemoveAlias".}
 else:
   static :
     hint("Declaration of " & "orxCommand_RemoveAlias" &
         " already exists, not redeclaring")
 when not declared(orxCommand_IsAlias):
-  proc orxCommand_IsAlias*(internal_zAlias: cstring): orxBOOL_520095038 {.cdecl,
+  proc orxCommand_IsAlias*(internal_zAlias: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxCommand_IsAlias".}
 else:
   static :
@@ -12595,7 +12595,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_GetNext):
   proc orxCommand_GetNext*(internal_zBase: cstring; internal_zPrevious: cstring;
-                           internal_pu32CommonLength: ptr orxU32_520095024): cstring {.
+                           internal_pu32CommonLength: ptr orxU32_520094987): cstring {.
       cdecl, importc: "orxCommand_GetNext".}
 else:
   static :
@@ -12603,7 +12603,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_Evaluate):
   proc orxCommand_Evaluate*(internal_zCommandLine: cstring;
-                            internal_pstResult: ptr orxCOMMAND_VAR_520095193): ptr orxCOMMAND_VAR_520095193 {.
+                            internal_pstResult: ptr orxCOMMAND_VAR_520095156): ptr orxCOMMAND_VAR_520095156 {.
       cdecl, importc: "orxCommand_Evaluate".}
 else:
   static :
@@ -12611,8 +12611,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_EvaluateWithGUID):
   proc orxCommand_EvaluateWithGUID*(internal_zCommandLine: cstring;
-                                    internal_u64GUID: orxU64_520095022;
-                                    internal_pstResult: ptr orxCOMMAND_VAR_520095193): ptr orxCOMMAND_VAR_520095193 {.
+                                    internal_u64GUID: orxU64_520094985;
+                                    internal_pstResult: ptr orxCOMMAND_VAR_520095156): ptr orxCOMMAND_VAR_520095156 {.
       cdecl, importc: "orxCommand_EvaluateWithGUID".}
 else:
   static :
@@ -12620,18 +12620,18 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_Execute):
   proc orxCommand_Execute*(internal_zCommand: cstring;
-                           internal_u32ArgNumber: orxU32_520095024;
-                           internal_astArgList: ptr orxCOMMAND_VAR_520095193;
-                           internal_pstResult: ptr orxCOMMAND_VAR_520095193): ptr orxCOMMAND_VAR_520095193 {.
+                           internal_u32ArgNumber: orxU32_520094987;
+                           internal_astArgList: ptr orxCOMMAND_VAR_520095156;
+                           internal_pstResult: ptr orxCOMMAND_VAR_520095156): ptr orxCOMMAND_VAR_520095156 {.
       cdecl, importc: "orxCommand_Execute".}
 else:
   static :
     hint("Declaration of " & "orxCommand_Execute" &
         " already exists, not redeclaring")
 when not declared(orxCommand_ParseNumericalArguments):
-  proc orxCommand_ParseNumericalArguments*(internal_u32ArgNumber: orxU32_520095024;
-      internal_astArgList: ptr orxCOMMAND_VAR_520095193;
-      internal_astOperandList: ptr orxCOMMAND_VAR_520095193): orxSTATUS_520095066 {.
+  proc orxCommand_ParseNumericalArguments*(internal_u32ArgNumber: orxU32_520094987;
+      internal_astArgList: ptr orxCOMMAND_VAR_520095156;
+      internal_astOperandList: ptr orxCOMMAND_VAR_520095156): orxSTATUS_520095029 {.
       cdecl, importc: "orxCommand_ParseNumericalArguments".}
 else:
   static :
@@ -12639,8 +12639,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxCommand_PrintVar):
   proc orxCommand_PrintVar*(internal_zDstString: cstring;
-                            internal_u32Size: orxU32_520095024;
-                            internal_pstVar: ptr orxCOMMAND_VAR_520095193): orxU32_520095024 {.
+                            internal_u32Size: orxU32_520094987;
+                            internal_pstVar: ptr orxCOMMAND_VAR_520095156): orxU32_520094987 {.
       cdecl, importc: "orxCommand_PrintVar".}
 else:
   static :
@@ -12652,7 +12652,7 @@ else:
   static :
     hint("Declaration of " & "configSetup" & " already exists, not redeclaring")
 when not declared(configInit):
-  proc configInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxConfig_Init".}
+  proc configInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxConfig_Init".}
 else:
   static :
     hint("Declaration of " & "configInit" & " already exists, not redeclaring")
@@ -12662,21 +12662,21 @@ else:
   static :
     hint("Declaration of " & "configExit" & " already exists, not redeclaring")
 when not declared(orxConfig_EnableTypoCheck):
-  proc orxConfig_EnableTypoCheck*(internal_bEnable: orxBOOL_520095038): void {.
+  proc orxConfig_EnableTypoCheck*(internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxConfig_EnableTypoCheck".}
 else:
   static :
     hint("Declaration of " & "orxConfig_EnableTypoCheck" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsTypoCheckEnabled):
-  proc orxConfig_IsTypoCheckEnabled*(): orxBOOL_520095038 {.cdecl,
+  proc orxConfig_IsTypoCheckEnabled*(): orxBOOL_520095001 {.cdecl,
       importc: "orxConfig_IsTypoCheckEnabled".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsTypoCheckEnabled" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetEncryptionKey):
-  proc orxConfig_SetEncryptionKey*(internal_zEncryptionKey: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_SetEncryptionKey*(internal_zEncryptionKey: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetEncryptionKey".}
 else:
   static :
@@ -12690,14 +12690,14 @@ else:
     hint("Declaration of " & "orxConfig_GetEncryptionKey" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetBootstrap):
-  proc orxConfig_SetBootstrap*(internal_pfnBootstrap: orxCONFIG_BOOTSTRAP_FUNCTION_520095205): orxSTATUS_520095066 {.
+  proc orxConfig_SetBootstrap*(internal_pfnBootstrap: orxCONFIG_BOOTSTRAP_FUNCTION_520095168): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetBootstrap".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetBootstrap" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetBaseName):
-  proc orxConfig_SetBaseName*(internal_zBaseName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_SetBaseName*(internal_zBaseName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetBaseName".}
 else:
   static :
@@ -12711,7 +12711,7 @@ else:
     hint("Declaration of " & "orxConfig_GetMainFileName" &
         " already exists, not redeclaring")
 when not declared(orxConfig_Load):
-  proc orxConfig_Load*(internal_zFileName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_Load*(internal_zFileName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_Load".}
 else:
   static :
@@ -12719,14 +12719,14 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_LoadFromMemory):
   proc orxConfig_LoadFromMemory*(internal_acBuffer: cstring;
-                                 internal_u32BufferSize: orxU32_520095024): orxSTATUS_520095066 {.
+                                 internal_u32BufferSize: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_LoadFromMemory".}
 else:
   static :
     hint("Declaration of " & "orxConfig_LoadFromMemory" &
         " already exists, not redeclaring")
 when not declared(orxConfig_ReloadHistory):
-  proc orxConfig_ReloadHistory*(): orxSTATUS_520095066 {.cdecl,
+  proc orxConfig_ReloadHistory*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxConfig_ReloadHistory".}
 else:
   static :
@@ -12734,8 +12734,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_Save):
   proc orxConfig_Save*(internal_zFileName: cstring;
-                       internal_bUseEncryption: orxBOOL_520095038;
-                       internal_pfnSaveCallback: orxCONFIG_SAVE_FUNCTION_520095201): orxSTATUS_520095066 {.
+                       internal_bUseEncryption: orxBOOL_520095001;
+                       internal_pfnSaveCallback: orxCONFIG_SAVE_FUNCTION_520095164): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_Save".}
 else:
   static :
@@ -12744,7 +12744,7 @@ else:
 when not declared(orxConfig_CopyFile):
   proc orxConfig_CopyFile*(internal_zDstFileName: cstring;
                            internal_zSrcFileName: cstring;
-                           internal_zEncryptionKey: cstring): orxSTATUS_520095066 {.
+                           internal_zEncryptionKey: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_CopyFile".}
 else:
   static :
@@ -12753,15 +12753,15 @@ else:
 when not declared(orxConfig_MergeFiles):
   proc orxConfig_MergeFiles*(internal_zDstFileName: cstring;
                              internal_azSrcFileName: ptr cstring;
-                             internal_u32Number: orxU32_520095024;
-                             internal_zEncryptionKey: cstring): orxSTATUS_520095066 {.
+                             internal_u32Number: orxU32_520094987;
+                             internal_zEncryptionKey: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_MergeFiles".}
 else:
   static :
     hint("Declaration of " & "orxConfig_MergeFiles" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SelectSection):
-  proc orxConfig_SelectSection*(internal_zSectionName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_SelectSection*(internal_zSectionName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SelectSection".}
 else:
   static :
@@ -12769,7 +12769,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_RenameSection):
   proc orxConfig_RenameSection*(internal_zSectionName: cstring;
-                                internal_zNewSectionName: cstring): orxSTATUS_520095066 {.
+                                internal_zNewSectionName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_RenameSection".}
 else:
   static :
@@ -12783,7 +12783,7 @@ else:
     hint("Declaration of " & "orxConfig_GetOrigin" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetOriginID):
-  proc orxConfig_GetOriginID*(internal_zSectionName: cstring): orxSTRINGID_520095046 {.
+  proc orxConfig_GetOriginID*(internal_zSectionName: cstring): orxSTRINGID_520095009 {.
       cdecl, importc: "orxConfig_GetOriginID".}
 else:
   static :
@@ -12791,7 +12791,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_SetParent):
   proc orxConfig_SetParent*(internal_zSectionName: cstring;
-                            internal_zParentName: cstring): orxSTATUS_520095066 {.
+                            internal_zParentName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetParent".}
 else:
   static :
@@ -12805,7 +12805,7 @@ else:
     hint("Declaration of " & "orxConfig_GetParent" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetDefaultParent):
-  proc orxConfig_SetDefaultParent*(internal_zSectionName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_SetDefaultParent*(internal_zSectionName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetDefaultParent".}
 else:
   static :
@@ -12826,21 +12826,21 @@ else:
     hint("Declaration of " & "orxConfig_GetCurrentSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_PushSection):
-  proc orxConfig_PushSection*(internal_zSectionName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_PushSection*(internal_zSectionName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_PushSection".}
 else:
   static :
     hint("Declaration of " & "orxConfig_PushSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_PopSection):
-  proc orxConfig_PopSection*(): orxSTATUS_520095066 {.cdecl,
+  proc orxConfig_PopSection*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxConfig_PopSection".}
 else:
   static :
     hint("Declaration of " & "orxConfig_PopSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_HasSection):
-  proc orxConfig_HasSection*(internal_zSectionName: cstring): orxBOOL_520095038 {.
+  proc orxConfig_HasSection*(internal_zSectionName: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_HasSection".}
 else:
   static :
@@ -12848,91 +12848,91 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_ProtectSection):
   proc orxConfig_ProtectSection*(internal_zSectionName: cstring;
-                                 internal_bProtect: orxBOOL_520095038): orxSTATUS_520095066 {.
+                                 internal_bProtect: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_ProtectSection".}
 else:
   static :
     hint("Declaration of " & "orxConfig_ProtectSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetSectionCount):
-  proc orxConfig_GetSectionCount*(): orxU32_520095024 {.cdecl,
+  proc orxConfig_GetSectionCount*(): orxU32_520094987 {.cdecl,
       importc: "orxConfig_GetSectionCount".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetSectionCount" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetSection):
-  proc orxConfig_GetSection*(internal_u32SectionIndex: orxU32_520095024): cstring {.
+  proc orxConfig_GetSection*(internal_u32SectionIndex: orxU32_520094987): cstring {.
       cdecl, importc: "orxConfig_GetSection".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_Clear):
-  proc orxConfig_Clear*(internal_pfnClearCallback: orxCONFIG_CLEAR_FUNCTION_520095203): orxSTATUS_520095066 {.
+  proc orxConfig_Clear*(internal_pfnClearCallback: orxCONFIG_CLEAR_FUNCTION_520095166): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_Clear".}
 else:
   static :
     hint("Declaration of " & "orxConfig_Clear" &
         " already exists, not redeclaring")
 when not declared(orxConfig_ClearSection):
-  proc orxConfig_ClearSection*(internal_zSectionName: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_ClearSection*(internal_zSectionName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_ClearSection".}
 else:
   static :
     hint("Declaration of " & "orxConfig_ClearSection" &
         " already exists, not redeclaring")
 when not declared(orxConfig_ClearValue):
-  proc orxConfig_ClearValue*(internal_zKey: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_ClearValue*(internal_zKey: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_ClearValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_ClearValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsLocallyInheritedValue):
-  proc orxConfig_IsLocallyInheritedValue*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_IsLocallyInheritedValue*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_IsLocallyInheritedValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsLocallyInheritedValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsInheritedValue):
-  proc orxConfig_IsInheritedValue*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_IsInheritedValue*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_IsInheritedValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsInheritedValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsRandomValue):
-  proc orxConfig_IsRandomValue*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_IsRandomValue*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_IsRandomValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsRandomValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsDynamicValue):
-  proc orxConfig_IsDynamicValue*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_IsDynamicValue*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_IsDynamicValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsDynamicValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsCommandValue):
-  proc orxConfig_IsCommandValue*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_IsCommandValue*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_IsCommandValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsCommandValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_HasValue):
-  proc orxConfig_HasValue*(internal_zKey: cstring): orxBOOL_520095038 {.cdecl,
+  proc orxConfig_HasValue*(internal_zKey: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxConfig_HasValue".}
 else:
   static :
     hint("Declaration of " & "orxConfig_HasValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_HasValueNoCheck):
-  proc orxConfig_HasValueNoCheck*(internal_zKey: cstring): orxBOOL_520095038 {.
+  proc orxConfig_HasValueNoCheck*(internal_zKey: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_HasValueNoCheck".}
 else:
   static :
@@ -12946,35 +12946,35 @@ else:
     hint("Declaration of " & "orxConfig_GetValueSource" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetS32):
-  proc orxConfig_GetS32*(internal_zKey: cstring): orxS32_520095032 {.cdecl,
+  proc orxConfig_GetS32*(internal_zKey: cstring): orxS32_520094995 {.cdecl,
       importc: "orxConfig_GetS32".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetS32" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetU32):
-  proc orxConfig_GetU32*(internal_zKey: cstring): orxU32_520095024 {.cdecl,
+  proc orxConfig_GetU32*(internal_zKey: cstring): orxU32_520094987 {.cdecl,
       importc: "orxConfig_GetU32".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetU32" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetS64):
-  proc orxConfig_GetS64*(internal_zKey: cstring): orxS64_520095030 {.cdecl,
+  proc orxConfig_GetS64*(internal_zKey: cstring): orxS64_520094993 {.cdecl,
       importc: "orxConfig_GetS64".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetS64" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetU64):
-  proc orxConfig_GetU64*(internal_zKey: cstring): orxU64_520095022 {.cdecl,
+  proc orxConfig_GetU64*(internal_zKey: cstring): orxU64_520094985 {.cdecl,
       importc: "orxConfig_GetU64".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetU64" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetFloat):
-  proc orxConfig_GetFloat*(internal_zKey: cstring): orxFLOAT_520095040 {.cdecl,
+  proc orxConfig_GetFloat*(internal_zKey: cstring): orxFLOAT_520095003 {.cdecl,
       importc: "orxConfig_GetFloat".}
 else:
   static :
@@ -12988,7 +12988,7 @@ else:
     hint("Declaration of " & "orxConfig_GetString" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetBool):
-  proc orxConfig_GetBool*(internal_zKey: cstring): orxBOOL_520095038 {.cdecl,
+  proc orxConfig_GetBool*(internal_zKey: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxConfig_GetBool".}
 else:
   static :
@@ -12996,7 +12996,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetVector):
   proc orxConfig_GetVector*(internal_zKey: cstring;
-                            internal_pvVector: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+                            internal_pvVector: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxConfig_GetVector".}
 else:
   static :
@@ -13004,8 +13004,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetColorVector):
   proc orxConfig_GetColorVector*(internal_zKey: cstring;
-                                 internal_eColorSpace: orxCOLORSPACE_520095062;
-                                 internal_pvVector: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+                                 internal_eColorSpace: orxCOLORSPACE_520095025;
+                                 internal_pvVector: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxConfig_GetColorVector".}
 else:
   static :
@@ -13019,42 +13019,42 @@ else:
     hint("Declaration of " & "orxConfig_DuplicateRawValue" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetS32):
-  proc orxConfig_SetS32*(internal_zKey: cstring; internal_s32Value: orxS32_520095032): orxSTATUS_520095066 {.
+  proc orxConfig_SetS32*(internal_zKey: cstring; internal_s32Value: orxS32_520094995): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetS32".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetS32" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetU32):
-  proc orxConfig_SetU32*(internal_zKey: cstring; internal_u32Value: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxConfig_SetU32*(internal_zKey: cstring; internal_u32Value: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetU32".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetU32" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetS64):
-  proc orxConfig_SetS64*(internal_zKey: cstring; internal_s64Value: orxS64_520095030): orxSTATUS_520095066 {.
+  proc orxConfig_SetS64*(internal_zKey: cstring; internal_s64Value: orxS64_520094993): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetS64".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetS64" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetU64):
-  proc orxConfig_SetU64*(internal_zKey: cstring; internal_u64Value: orxU64_520095022): orxSTATUS_520095066 {.
+  proc orxConfig_SetU64*(internal_zKey: cstring; internal_u64Value: orxU64_520094985): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetU64".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetU64" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetFloat):
-  proc orxConfig_SetFloat*(internal_zKey: cstring; internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxConfig_SetFloat*(internal_zKey: cstring; internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetFloat".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetFloat" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetString):
-  proc orxConfig_SetString*(internal_zKey: cstring; internal_zValue: cstring): orxSTATUS_520095066 {.
+  proc orxConfig_SetString*(internal_zKey: cstring; internal_zValue: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetString".}
 else:
   static :
@@ -13062,14 +13062,14 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_SetStringBlock):
   proc orxConfig_SetStringBlock*(internal_zKey: cstring;
-                                 internal_zValue: cstring): orxSTATUS_520095066 {.
+                                 internal_zValue: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetStringBlock".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetStringBlock" &
         " already exists, not redeclaring")
 when not declared(orxConfig_SetBool):
-  proc orxConfig_SetBool*(internal_zKey: cstring; internal_bValue: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxConfig_SetBool*(internal_zKey: cstring; internal_bValue: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetBool".}
 else:
   static :
@@ -13077,21 +13077,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_SetVector):
   proc orxConfig_SetVector*(internal_zKey: cstring;
-                            internal_pvValue: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+                            internal_pvValue: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetVector".}
 else:
   static :
     hint("Declaration of " & "orxConfig_SetVector" &
         " already exists, not redeclaring")
 when not declared(orxConfig_IsList):
-  proc orxConfig_IsList*(internal_zKey: cstring): orxBOOL_520095038 {.cdecl,
+  proc orxConfig_IsList*(internal_zKey: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxConfig_IsList".}
 else:
   static :
     hint("Declaration of " & "orxConfig_IsList" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListCount):
-  proc orxConfig_GetListCount*(internal_zKey: cstring): orxS32_520095032 {.
+  proc orxConfig_GetListCount*(internal_zKey: cstring): orxS32_520094995 {.
       cdecl, importc: "orxConfig_GetListCount".}
 else:
   static :
@@ -13099,7 +13099,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListS32):
   proc orxConfig_GetListS32*(internal_zKey: cstring;
-                             internal_s32ListIndex: orxS32_520095032): orxS32_520095032 {.
+                             internal_s32ListIndex: orxS32_520094995): orxS32_520094995 {.
       cdecl, importc: "orxConfig_GetListS32".}
 else:
   static :
@@ -13107,7 +13107,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListU32):
   proc orxConfig_GetListU32*(internal_zKey: cstring;
-                             internal_s32ListIndex: orxS32_520095032): orxU32_520095024 {.
+                             internal_s32ListIndex: orxS32_520094995): orxU32_520094987 {.
       cdecl, importc: "orxConfig_GetListU32".}
 else:
   static :
@@ -13115,7 +13115,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListS64):
   proc orxConfig_GetListS64*(internal_zKey: cstring;
-                             internal_s32ListIndex: orxS32_520095032): orxS64_520095030 {.
+                             internal_s32ListIndex: orxS32_520094995): orxS64_520094993 {.
       cdecl, importc: "orxConfig_GetListS64".}
 else:
   static :
@@ -13123,7 +13123,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListU64):
   proc orxConfig_GetListU64*(internal_zKey: cstring;
-                             internal_s32ListIndex: orxS32_520095032): orxU64_520095022 {.
+                             internal_s32ListIndex: orxS32_520094995): orxU64_520094985 {.
       cdecl, importc: "orxConfig_GetListU64".}
 else:
   static :
@@ -13131,7 +13131,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListFloat):
   proc orxConfig_GetListFloat*(internal_zKey: cstring;
-                               internal_s32ListIndex: orxS32_520095032): orxFLOAT_520095040 {.
+                               internal_s32ListIndex: orxS32_520094995): orxFLOAT_520095003 {.
       cdecl, importc: "orxConfig_GetListFloat".}
 else:
   static :
@@ -13139,7 +13139,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListString):
   proc orxConfig_GetListString*(internal_zKey: cstring;
-                                internal_s32ListIndex: orxS32_520095032): cstring {.
+                                internal_s32ListIndex: orxS32_520094995): cstring {.
       cdecl, importc: "orxConfig_GetListString".}
 else:
   static :
@@ -13147,7 +13147,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListBool):
   proc orxConfig_GetListBool*(internal_zKey: cstring;
-                              internal_s32ListIndex: orxS32_520095032): orxBOOL_520095038 {.
+                              internal_s32ListIndex: orxS32_520094995): orxBOOL_520095001 {.
       cdecl, importc: "orxConfig_GetListBool".}
 else:
   static :
@@ -13155,8 +13155,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListVector):
   proc orxConfig_GetListVector*(internal_zKey: cstring;
-                                internal_s32ListIndex: orxS32_520095032;
-                                internal_pvVector: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+                                internal_s32ListIndex: orxS32_520094995;
+                                internal_pvVector: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxConfig_GetListVector".}
 else:
   static :
@@ -13164,9 +13164,9 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_GetListColorVector):
   proc orxConfig_GetListColorVector*(internal_zKey: cstring;
-                                     internal_s32ListIndex: orxS32_520095032;
-                                     internal_eColorSpace: orxCOLORSPACE_520095062;
-                                     internal_pvVector: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+                                     internal_s32ListIndex: orxS32_520094995;
+                                     internal_eColorSpace: orxCOLORSPACE_520095025;
+                                     internal_pvVector: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxConfig_GetListColorVector".}
 else:
   static :
@@ -13175,7 +13175,7 @@ else:
 when not declared(orxConfig_SetListString):
   proc orxConfig_SetListString*(internal_zKey: cstring;
                                 internal_azValue: ptr UncheckedArray[cstring];
-                                internal_u32Number: orxU32_520095024): orxSTATUS_520095066 {.
+                                internal_u32Number: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_SetListString".}
 else:
   static :
@@ -13183,21 +13183,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxConfig_AppendListString):
   proc orxConfig_AppendListString*(internal_zKey: cstring; internal_azValue: ptr UncheckedArray[
-      cstring]; internal_u32Number: orxU32_520095024): orxSTATUS_520095066 {.
+      cstring]; internal_u32Number: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxConfig_AppendListString".}
 else:
   static :
     hint("Declaration of " & "orxConfig_AppendListString" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetKeyCount):
-  proc orxConfig_GetKeyCount*(): orxU32_520095024 {.cdecl,
+  proc orxConfig_GetKeyCount*(): orxU32_520094987 {.cdecl,
       importc: "orxConfig_GetKeyCount".}
 else:
   static :
     hint("Declaration of " & "orxConfig_GetKeyCount" &
         " already exists, not redeclaring")
 when not declared(orxConfig_GetKey):
-  proc orxConfig_GetKey*(internal_u32KeyIndex: orxU32_520095024): cstring {.
+  proc orxConfig_GetKey*(internal_u32KeyIndex: orxU32_520094987): cstring {.
       cdecl, importc: "orxConfig_GetKey".}
 else:
   static :
@@ -13253,10 +13253,10 @@ else:
     hint("Declaration of " & "internal_registerFunction_SOUNDSYSTEM" &
         " already exists, not redeclaring")
 when not declared(orxPlugin_AddCoreInfo):
-  proc orxPlugin_AddCoreInfo*(internal_ePluginCoreID: orxPLUGIN_CORE_ID_520095215;
-                              internal_eModuleID: orxMODULE_ID_520095074;
-      internal_astCoreFunction: ptr orxPLUGIN_CORE_FUNCTION_520095247;
-                              internal_u32CoreFunctionNumber: orxU32_520095024): void {.
+  proc orxPlugin_AddCoreInfo*(internal_ePluginCoreID: orxPLUGIN_CORE_ID_520095178;
+                              internal_eModuleID: orxMODULE_ID_520095037;
+      internal_astCoreFunction: ptr orxPLUGIN_CORE_FUNCTION_520095210;
+                              internal_u32CoreFunctionNumber: orxU32_520094987): void {.
       cdecl, importc: "orxPlugin_AddCoreInfo".}
 else:
   static :
@@ -13265,7 +13265,7 @@ else:
 when not declared(orxPlugin_DefaultCoreFunction):
   proc orxPlugin_DefaultCoreFunction*(internal_zFunctionName: cstring;
                                       internal_zFileName: cstring;
-                                      internal_u32Line: orxU32_520095024): pointer {.
+                                      internal_u32Line: orxU32_520094987): pointer {.
       cdecl, importc: "orxPlugin_DefaultCoreFunction".}
 else:
   static :
@@ -13277,7 +13277,7 @@ else:
   static :
     hint("Declaration of " & "bankSetup" & " already exists, not redeclaring")
 when not declared(bankInit):
-  proc bankInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxBank_Init".}
+  proc bankInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxBank_Init".}
 else:
   static :
     hint("Declaration of " & "bankInit" & " already exists, not redeclaring")
@@ -13287,30 +13287,30 @@ else:
   static :
     hint("Declaration of " & "bankExit" & " already exists, not redeclaring")
 when not declared(bankCreate):
-  proc bankCreate*(internal_u32Count: orxU32_520095024;
-                   internal_u32Size: orxU32_520095024;
-                   internal_u32Flags: orxU32_520095024;
-                   internal_eMemType: orxMEMORY_TYPE_520095092): ptr orxBANK_520095259 {.
+  proc bankCreate*(internal_u32Count: orxU32_520094987;
+                   internal_u32Size: orxU32_520094987;
+                   internal_u32Flags: orxU32_520094987;
+                   internal_eMemType: orxMEMORY_TYPE_520095055): ptr orxBANK_520095222 {.
       cdecl, importc: "orxBank_Create".}
 else:
   static :
     hint("Declaration of " & "bankCreate" & " already exists, not redeclaring")
 when not declared(bankDelete):
-  proc bankDelete*(internal_pstBank: ptr orxBANK_520095259): void {.cdecl,
+  proc bankDelete*(internal_pstBank: ptr orxBANK_520095222): void {.cdecl,
       importc: "orxBank_Delete".}
 else:
   static :
     hint("Declaration of " & "bankDelete" & " already exists, not redeclaring")
 when not declared(orxBank_Allocate):
-  proc orxBank_Allocate*(internal_pstBank: ptr orxBANK_520095259): pointer {.
+  proc orxBank_Allocate*(internal_pstBank: ptr orxBANK_520095222): pointer {.
       cdecl, importc: "orxBank_Allocate".}
 else:
   static :
     hint("Declaration of " & "orxBank_Allocate" &
         " already exists, not redeclaring")
 when not declared(orxBank_AllocateIndexed):
-  proc orxBank_AllocateIndexed*(internal_pstBank: ptr orxBANK_520095259;
-                                internal_pu32ItemIndex: ptr orxU32_520095024;
+  proc orxBank_AllocateIndexed*(internal_pstBank: ptr orxBANK_520095222;
+                                internal_pu32ItemIndex: ptr orxU32_520094987;
                                 internal_ppPrevious: ptr pointer): pointer {.
       cdecl, importc: "orxBank_AllocateIndexed".}
 else:
@@ -13318,29 +13318,29 @@ else:
     hint("Declaration of " & "orxBank_AllocateIndexed" &
         " already exists, not redeclaring")
 when not declared(orxBank_Free):
-  proc orxBank_Free*(internal_pstBank: ptr orxBANK_520095259;
+  proc orxBank_Free*(internal_pstBank: ptr orxBANK_520095222;
                      internal_pCell: pointer): void {.cdecl,
       importc: "orxBank_Free".}
 else:
   static :
     hint("Declaration of " & "orxBank_Free" & " already exists, not redeclaring")
 when not declared(orxBank_FreeAtIndex):
-  proc orxBank_FreeAtIndex*(internal_pstBank: ptr orxBANK_520095259;
-                            internal_u32Index: orxU32_520095024): void {.cdecl,
+  proc orxBank_FreeAtIndex*(internal_pstBank: ptr orxBANK_520095222;
+                            internal_u32Index: orxU32_520094987): void {.cdecl,
       importc: "orxBank_FreeAtIndex".}
 else:
   static :
     hint("Declaration of " & "orxBank_FreeAtIndex" &
         " already exists, not redeclaring")
 when not declared(orxBank_Clear):
-  proc orxBank_Clear*(internal_pstBank: ptr orxBANK_520095259): void {.cdecl,
+  proc orxBank_Clear*(internal_pstBank: ptr orxBANK_520095222): void {.cdecl,
       importc: "orxBank_Clear".}
 else:
   static :
     hint("Declaration of " & "orxBank_Clear" &
         " already exists, not redeclaring")
 when not declared(orxBank_Compact):
-  proc orxBank_Compact*(internal_pstBank: ptr orxBANK_520095259): void {.cdecl,
+  proc orxBank_Compact*(internal_pstBank: ptr orxBANK_520095222): void {.cdecl,
       importc: "orxBank_Compact".}
 else:
   static :
@@ -13353,7 +13353,7 @@ else:
     hint("Declaration of " & "orxBank_CompactAll" &
         " already exists, not redeclaring")
 when not declared(orxBank_GetNext):
-  proc orxBank_GetNext*(internal_pstBank: ptr orxBANK_520095259;
+  proc orxBank_GetNext*(internal_pstBank: ptr orxBANK_520095222;
                         internal_pCell: pointer): pointer {.cdecl,
       importc: "orxBank_GetNext".}
 else:
@@ -13361,111 +13361,111 @@ else:
     hint("Declaration of " & "orxBank_GetNext" &
         " already exists, not redeclaring")
 when not declared(orxBank_GetIndex):
-  proc orxBank_GetIndex*(internal_pstBank: ptr orxBANK_520095259;
-                         internal_pCell: pointer): orxU32_520095024 {.cdecl,
+  proc orxBank_GetIndex*(internal_pstBank: ptr orxBANK_520095222;
+                         internal_pCell: pointer): orxU32_520094987 {.cdecl,
       importc: "orxBank_GetIndex".}
 else:
   static :
     hint("Declaration of " & "orxBank_GetIndex" &
         " already exists, not redeclaring")
 when not declared(orxBank_GetAtIndex):
-  proc orxBank_GetAtIndex*(internal_pstBank: ptr orxBANK_520095259;
-                           internal_u32Index: orxU32_520095024): pointer {.
+  proc orxBank_GetAtIndex*(internal_pstBank: ptr orxBANK_520095222;
+                           internal_u32Index: orxU32_520094987): pointer {.
       cdecl, importc: "orxBank_GetAtIndex".}
 else:
   static :
     hint("Declaration of " & "orxBank_GetAtIndex" &
         " already exists, not redeclaring")
 when not declared(orxBank_GetCount):
-  proc orxBank_GetCount*(internal_pstBank: ptr orxBANK_520095259): orxU32_520095024 {.
+  proc orxBank_GetCount*(internal_pstBank: ptr orxBANK_520095222): orxU32_520094987 {.
       cdecl, importc: "orxBank_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxBank_GetCount" &
         " already exists, not redeclaring")
 when not declared(hashTableCreate):
-  proc hashTableCreate*(internal_u32NbKey: orxU32_520095024;
-                        internal_u32Flags: orxU32_520095024;
-                        internal_eMemType: orxMEMORY_TYPE_520095092): ptr orxHASHTABLE_520095261 {.
+  proc hashTableCreate*(internal_u32NbKey: orxU32_520094987;
+                        internal_u32Flags: orxU32_520094987;
+                        internal_eMemType: orxMEMORY_TYPE_520095055): ptr orxHASHTABLE_520095224 {.
       cdecl, importc: "orxHashTable_Create".}
 else:
   static :
     hint("Declaration of " & "hashTableCreate" &
         " already exists, not redeclaring")
 when not declared(hashTableDelete):
-  proc hashTableDelete*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
+  proc hashTableDelete*(internal_pstHashTable: ptr orxHASHTABLE_520095224): orxSTATUS_520095029 {.
       cdecl, importc: "orxHashTable_Delete".}
 else:
   static :
     hint("Declaration of " & "hashTableDelete" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Clear):
-  proc orxHashTable_Clear*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
+  proc orxHashTable_Clear*(internal_pstHashTable: ptr orxHASHTABLE_520095224): orxSTATUS_520095029 {.
       cdecl, importc: "orxHashTable_Clear".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_Clear" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_GetCount):
-  proc orxHashTable_GetCount*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxU32_520095024 {.
+  proc orxHashTable_GetCount*(internal_pstHashTable: ptr orxHASHTABLE_520095224): orxU32_520094987 {.
       cdecl, importc: "orxHashTable_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_GetCount" &
         " already exists, not redeclaring")
 when not declared(hashTableGet):
-  proc hashTableGet*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                     internal_u64Key: orxU64_520095022): pointer {.cdecl,
+  proc hashTableGet*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                     internal_u64Key: orxU64_520094985): pointer {.cdecl,
       importc: "orxHashTable_Get".}
 else:
   static :
     hint("Declaration of " & "hashTableGet" & " already exists, not redeclaring")
 when not declared(orxHashTable_Retrieve):
-  proc orxHashTable_Retrieve*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                              internal_u64Key: orxU64_520095022): ptr pointer {.
+  proc orxHashTable_Retrieve*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                              internal_u64Key: orxU64_520094985): ptr pointer {.
       cdecl, importc: "orxHashTable_Retrieve".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_Retrieve" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Set):
-  proc orxHashTable_Set*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                         internal_u64Key: orxU64_520095022;
-                         internal_pData: pointer): orxSTATUS_520095066 {.cdecl,
+  proc orxHashTable_Set*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                         internal_u64Key: orxU64_520094985;
+                         internal_pData: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxHashTable_Set".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_Set" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Add):
-  proc orxHashTable_Add*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                         internal_u64Key: orxU64_520095022;
-                         internal_pData: pointer): orxSTATUS_520095066 {.cdecl,
+  proc orxHashTable_Add*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                         internal_u64Key: orxU64_520094985;
+                         internal_pData: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxHashTable_Add".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_Add" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Remove):
-  proc orxHashTable_Remove*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                            internal_u64Key: orxU64_520095022): orxSTATUS_520095066 {.
+  proc orxHashTable_Remove*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                            internal_u64Key: orxU64_520094985): orxSTATUS_520095029 {.
       cdecl, importc: "orxHashTable_Remove".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_Remove" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_GetNext):
-  proc orxHashTable_GetNext*(internal_pstHashTable: ptr orxHASHTABLE_520095261;
-                             internal_hIterator: orxHANDLE_520095050;
-                             internal_pu64Key: ptr orxU64_520095022;
-                             internal_ppData: ptr pointer): orxHANDLE_520095050 {.
+  proc orxHashTable_GetNext*(internal_pstHashTable: ptr orxHASHTABLE_520095224;
+                             internal_hIterator: orxHANDLE_520095013;
+                             internal_pu64Key: ptr orxU64_520094985;
+                             internal_ppData: ptr pointer): orxHANDLE_520095013 {.
       cdecl, importc: "orxHashTable_GetNext".}
 else:
   static :
     hint("Declaration of " & "orxHashTable_GetNext" &
         " already exists, not redeclaring")
 when not declared(orxHashTable_Optimize):
-  proc orxHashTable_Optimize*(internal_pstHashTable: ptr orxHASHTABLE_520095261): orxSTATUS_520095066 {.
+  proc orxHashTable_Optimize*(internal_pstHashTable: ptr orxHASHTABLE_520095224): orxSTATUS_520095029 {.
       cdecl, importc: "orxHashTable_Optimize".}
 else:
   static :
@@ -13477,46 +13477,46 @@ else:
   static :
     hint("Declaration of " & "displaySetup" & " already exists, not redeclaring")
 when not declared(orxColor_FromRGBToHSL):
-  proc orxColor_FromRGBToHSL*(internal_pstDst: ptr orxCOLOR_520095307;
-                              internal_pstSrc: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxColor_FromRGBToHSL*(internal_pstDst: ptr orxCOLOR_520095270;
+                              internal_pstSrc: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxColor_FromRGBToHSL".}
 else:
   static :
     hint("Declaration of " & "orxColor_FromRGBToHSL" &
         " already exists, not redeclaring")
 when not declared(orxColor_FromHSLToRGB):
-  proc orxColor_FromHSLToRGB*(internal_pstDst: ptr orxCOLOR_520095307;
-                              internal_pstSrc: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxColor_FromHSLToRGB*(internal_pstDst: ptr orxCOLOR_520095270;
+                              internal_pstSrc: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxColor_FromHSLToRGB".}
 else:
   static :
     hint("Declaration of " & "orxColor_FromHSLToRGB" &
         " already exists, not redeclaring")
 when not declared(orxColor_FromRGBToHSV):
-  proc orxColor_FromRGBToHSV*(internal_pstDst: ptr orxCOLOR_520095307;
-                              internal_pstSrc: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxColor_FromRGBToHSV*(internal_pstDst: ptr orxCOLOR_520095270;
+                              internal_pstSrc: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxColor_FromRGBToHSV".}
 else:
   static :
     hint("Declaration of " & "orxColor_FromRGBToHSV" &
         " already exists, not redeclaring")
 when not declared(orxColor_FromHSVToRGB):
-  proc orxColor_FromHSVToRGB*(internal_pstDst: ptr orxCOLOR_520095307;
-                              internal_pstSrc: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxColor_FromHSVToRGB*(internal_pstDst: ptr orxCOLOR_520095270;
+                              internal_pstSrc: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxColor_FromHSVToRGB".}
 else:
   static :
     hint("Declaration of " & "orxColor_FromHSVToRGB" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetBlendModeFromString):
-  proc orxDisplay_GetBlendModeFromString*(internal_zBlendMode: cstring): orxDISPLAY_BLEND_MODE_520095303 {.
+  proc orxDisplay_GetBlendModeFromString*(internal_zBlendMode: cstring): orxDISPLAY_BLEND_MODE_520095266 {.
       cdecl, importc: "orxDisplay_GetBlendModeFromString".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetBlendModeFromString" &
         " already exists, not redeclaring")
 when not declared(displayInit):
-  proc displayInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxDisplay_Init".}
+  proc displayInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxDisplay_Init".}
 else:
   static :
     hint("Declaration of " & "displayInit" & " already exists, not redeclaring")
@@ -13526,66 +13526,66 @@ else:
   static :
     hint("Declaration of " & "displayExit" & " already exists, not redeclaring")
 when not declared(orxDisplay_Swap):
-  proc orxDisplay_Swap*(): orxSTATUS_520095066 {.cdecl,
+  proc orxDisplay_Swap*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxDisplay_Swap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_Swap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetScreenBitmap):
-  proc orxDisplay_GetScreenBitmap*(): ptr orxBITMAP_520095267 {.cdecl,
+  proc orxDisplay_GetScreenBitmap*(): ptr orxBITMAP_520095230 {.cdecl,
       importc: "orxDisplay_GetScreenBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetScreenBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetScreenSize):
-  proc orxDisplay_GetScreenSize*(internal_pfWidth: ptr orxFLOAT_520095040;
-                                 internal_pfHeight: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxDisplay_GetScreenSize*(internal_pfWidth: ptr orxFLOAT_520095003;
+                                 internal_pfHeight: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_GetScreenSize".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetScreenSize" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_CreateBitmap):
-  proc orxDisplay_CreateBitmap*(internal_u32Width: orxU32_520095024;
-                                internal_u32Height: orxU32_520095024): ptr orxBITMAP_520095267 {.
+  proc orxDisplay_CreateBitmap*(internal_u32Width: orxU32_520094987;
+                                internal_u32Height: orxU32_520094987): ptr orxBITMAP_520095230 {.
       cdecl, importc: "orxDisplay_CreateBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_CreateBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DeleteBitmap):
-  proc orxDisplay_DeleteBitmap*(internal_pstBitmap: ptr orxBITMAP_520095267): void {.
+  proc orxDisplay_DeleteBitmap*(internal_pstBitmap: ptr orxBITMAP_520095230): void {.
       cdecl, importc: "orxDisplay_DeleteBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DeleteBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_LoadBitmap):
-  proc orxDisplay_LoadBitmap*(internal_zFileName: cstring): ptr orxBITMAP_520095267 {.
+  proc orxDisplay_LoadBitmap*(internal_zFileName: cstring): ptr orxBITMAP_520095230 {.
       cdecl, importc: "orxDisplay_LoadBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_LoadBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SaveBitmap):
-  proc orxDisplay_SaveBitmap*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                              internal_zFileName: cstring): orxSTATUS_520095066 {.
+  proc orxDisplay_SaveBitmap*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                              internal_zFileName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SaveBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SaveBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetTempBitmap):
-  proc orxDisplay_SetTempBitmap*(internal_pstBitmap: ptr orxBITMAP_520095267): orxSTATUS_520095066 {.
+  proc orxDisplay_SetTempBitmap*(internal_pstBitmap: ptr orxBITMAP_520095230): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetTempBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetTempBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetTempBitmap):
-  proc orxDisplay_GetTempBitmap*(): ptr orxBITMAP_520095267 {.cdecl,
+  proc orxDisplay_GetTempBitmap*(): ptr orxBITMAP_520095230 {.cdecl,
       importc: "orxDisplay_GetTempBitmap".}
 else:
   static :
@@ -13593,91 +13593,91 @@ else:
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetDestinationBitmaps):
   proc orxDisplay_SetDestinationBitmaps*(
-      internal_apstBitmapList: ptr ptr orxBITMAP_520095267;
-      internal_u32Number: orxU32_520095024): orxSTATUS_520095066 {.cdecl,
+      internal_apstBitmapList: ptr ptr orxBITMAP_520095230;
+      internal_u32Number: orxU32_520094987): orxSTATUS_520095029 {.cdecl,
       importc: "orxDisplay_SetDestinationBitmaps".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetDestinationBitmaps" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_ClearBitmap):
-  proc orxDisplay_ClearBitmap*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                               internal_stColor: orxRGBA_520095265): orxSTATUS_520095066 {.
+  proc orxDisplay_ClearBitmap*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                               internal_stColor: orxRGBA_520095228): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_ClearBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_ClearBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetBlendMode):
-  proc orxDisplay_SetBlendMode*(internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc orxDisplay_SetBlendMode*(internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetBitmapClipping):
-  proc orxDisplay_SetBitmapClipping*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                                     internal_u32TLX: orxU32_520095024;
-                                     internal_u32TLY: orxU32_520095024;
-                                     internal_u32BRX: orxU32_520095024;
-                                     internal_u32BRY: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxDisplay_SetBitmapClipping*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                                     internal_u32TLX: orxU32_520094987;
+                                     internal_u32TLY: orxU32_520094987;
+                                     internal_u32BRX: orxU32_520094987;
+                                     internal_u32BRY: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetBitmapClipping".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetBitmapClipping" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetBitmapData):
-  proc orxDisplay_SetBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                                 internal_au8Data: ptr orxU8_520095028;
-                                 internal_u32ByteNumber: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxDisplay_SetBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                                 internal_au8Data: ptr orxU8_520094991;
+                                 internal_u32ByteNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetBitmapData".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetBitmapData" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetBitmapData):
-  proc orxDisplay_GetBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                                 internal_au8Data: ptr orxU8_520095028;
-                                 internal_u32ByteNumber: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxDisplay_GetBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                                 internal_au8Data: ptr orxU8_520094991;
+                                 internal_u32ByteNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_GetBitmapData".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetBitmapData" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetPartialBitmapData):
-  proc orxDisplay_SetPartialBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                                        internal_au8Data: ptr orxU8_520095028;
-                                        internal_u32X: orxU32_520095024;
-                                        internal_u32Y: orxU32_520095024;
-                                        internal_u32Width: orxU32_520095024;
-                                        internal_u32Height: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxDisplay_SetPartialBitmapData*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                                        internal_au8Data: ptr orxU8_520094991;
+                                        internal_u32X: orxU32_520094987;
+                                        internal_u32Y: orxU32_520094987;
+                                        internal_u32Width: orxU32_520094987;
+                                        internal_u32Height: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetPartialBitmapData".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetPartialBitmapData" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetBitmapSize):
-  proc orxDisplay_GetBitmapSize*(internal_pstBitmap: ptr orxBITMAP_520095267;
-                                 internal_pfWidth: ptr orxFLOAT_520095040;
-                                 internal_pfHeight: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxDisplay_GetBitmapSize*(internal_pstBitmap: ptr orxBITMAP_520095230;
+                                 internal_pfWidth: ptr orxFLOAT_520095003;
+                                 internal_pfHeight: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_GetBitmapSize".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetBitmapSize" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetBitmapID):
-  proc orxDisplay_GetBitmapID*(internal_pstBitmap: ptr orxBITMAP_520095267): orxU32_520095024 {.
+  proc orxDisplay_GetBitmapID*(internal_pstBitmap: ptr orxBITMAP_520095230): orxU32_520094987 {.
       cdecl, importc: "orxDisplay_GetBitmapID".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetBitmapID" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_TransformBitmap):
-  proc orxDisplay_TransformBitmap*(internal_pstSrc: ptr orxBITMAP_520095267;
-      internal_pstTransform: ptr orxDISPLAY_TRANSFORM_520095275;
-                                   internal_stColor: orxRGBA_520095265;
-                                   internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299;
-                                   internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc orxDisplay_TransformBitmap*(internal_pstSrc: ptr orxBITMAP_520095230;
+      internal_pstTransform: ptr orxDISPLAY_TRANSFORM_520095238;
+                                   internal_stColor: orxRGBA_520095228;
+                                   internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262;
+                                   internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_TransformBitmap".}
 else:
   static :
@@ -13685,76 +13685,76 @@ else:
         " already exists, not redeclaring")
 when not declared(orxDisplay_TransformText):
   proc orxDisplay_TransformText*(internal_zString: cstring;
-                                 internal_pstFont: ptr orxBITMAP_520095267;
-                                 internal_pstMap: ptr orxCHARACTER_MAP_520095295;
-      internal_pstTransform: ptr orxDISPLAY_TRANSFORM_520095275;
-                                 internal_stColor: orxRGBA_520095265;
-                                 internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299;
-                                 internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+                                 internal_pstFont: ptr orxBITMAP_520095230;
+                                 internal_pstMap: ptr orxCHARACTER_MAP_520095258;
+      internal_pstTransform: ptr orxDISPLAY_TRANSFORM_520095238;
+                                 internal_stColor: orxRGBA_520095228;
+                                 internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262;
+                                 internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_TransformText".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_TransformText" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawLine):
-  proc orxDisplay_DrawLine*(internal_pvStart: ptr orxVECTOR_520095096;
-                            internal_pvEnd: ptr orxVECTOR_520095096;
-                            internal_stColor: orxRGBA_520095265): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawLine*(internal_pvStart: ptr orxVECTOR_520095059;
+                            internal_pvEnd: ptr orxVECTOR_520095059;
+                            internal_stColor: orxRGBA_520095228): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawLine".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawLine" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawPolyline):
-  proc orxDisplay_DrawPolyline*(internal_avVertexList: ptr orxVECTOR_520095096;
-                                internal_u32VertexNumber: orxU32_520095024;
-                                internal_stColor: orxRGBA_520095265): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawPolyline*(internal_avVertexList: ptr orxVECTOR_520095059;
+                                internal_u32VertexNumber: orxU32_520094987;
+                                internal_stColor: orxRGBA_520095228): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawPolyline".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawPolyline" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawPolygon):
-  proc orxDisplay_DrawPolygon*(internal_avVertexList: ptr orxVECTOR_520095096;
-                               internal_u32VertexNumber: orxU32_520095024;
-                               internal_stColor: orxRGBA_520095265;
-                               internal_bFill: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawPolygon*(internal_avVertexList: ptr orxVECTOR_520095059;
+                               internal_u32VertexNumber: orxU32_520094987;
+                               internal_stColor: orxRGBA_520095228;
+                               internal_bFill: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawPolygon".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawPolygon" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawCircle):
-  proc orxDisplay_DrawCircle*(internal_pvCenter: ptr orxVECTOR_520095096;
-                              internal_fRadius: orxFLOAT_520095040;
-                              internal_stColor: orxRGBA_520095265;
-                              internal_bFill: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawCircle*(internal_pvCenter: ptr orxVECTOR_520095059;
+                              internal_fRadius: orxFLOAT_520095003;
+                              internal_stColor: orxRGBA_520095228;
+                              internal_bFill: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawCircle".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawCircle" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawOBox):
-  proc orxDisplay_DrawOBox*(internal_pstBox: ptr orxOBOX_520095257;
-                            internal_stColor: orxRGBA_520095265;
-                            internal_bFill: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawOBox*(internal_pstBox: ptr orxOBOX_520095220;
+                            internal_stColor: orxRGBA_520095228;
+                            internal_bFill: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawOBox".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawOBox" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DrawMesh):
-  proc orxDisplay_DrawMesh*(internal_pstMesh: ptr orxDISPLAY_MESH_520095283;
-                            internal_pstBitmap: ptr orxBITMAP_520095267;
-                            internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299;
-                            internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc orxDisplay_DrawMesh*(internal_pstMesh: ptr orxDISPLAY_MESH_520095246;
+                            internal_pstBitmap: ptr orxBITMAP_520095230;
+                            internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262;
+                            internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_DrawMesh".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DrawMesh" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_HasShaderSupport):
-  proc orxDisplay_HasShaderSupport*(): orxBOOL_520095038 {.cdecl,
+  proc orxDisplay_HasShaderSupport*(): orxBOOL_520095001 {.cdecl,
       importc: "orxDisplay_HasShaderSupport".}
 else:
   static :
@@ -13762,131 +13762,131 @@ else:
         " already exists, not redeclaring")
 when not declared(orxDisplay_CreateShader):
   proc orxDisplay_CreateShader*(internal_azCodeList: ptr cstring;
-                                internal_u32Size: orxU32_520095024;
-                                internal_pstParamList: ptr orxLINKLIST_520095139;
-                                internal_bUseCustomParam: orxBOOL_520095038): orxHANDLE_520095050 {.
+                                internal_u32Size: orxU32_520094987;
+                                internal_pstParamList: ptr orxLINKLIST_520095102;
+                                internal_bUseCustomParam: orxBOOL_520095001): orxHANDLE_520095013 {.
       cdecl, importc: "orxDisplay_CreateShader".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_CreateShader" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_DeleteShader):
-  proc orxDisplay_DeleteShader*(internal_hShader: orxHANDLE_520095050): void {.
+  proc orxDisplay_DeleteShader*(internal_hShader: orxHANDLE_520095013): void {.
       cdecl, importc: "orxDisplay_DeleteShader".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_DeleteShader" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_StartShader):
-  proc orxDisplay_StartShader*(internal_hShader: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxDisplay_StartShader*(internal_hShader: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_StartShader".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_StartShader" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_StopShader):
-  proc orxDisplay_StopShader*(internal_hShader: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxDisplay_StopShader*(internal_hShader: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_StopShader".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_StopShader" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetParameterID):
-  proc orxDisplay_GetParameterID*(internal_hShader: orxHANDLE_520095050;
+  proc orxDisplay_GetParameterID*(internal_hShader: orxHANDLE_520095013;
                                   internal_zParam: cstring;
-                                  internal_s32Index: orxS32_520095032;
-                                  internal_bIsTexture: orxBOOL_520095038): orxS32_520095032 {.
+                                  internal_s32Index: orxS32_520094995;
+                                  internal_bIsTexture: orxBOOL_520095001): orxS32_520094995 {.
       cdecl, importc: "orxDisplay_GetParameterID".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetParameterID" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetShaderBitmap):
-  proc orxDisplay_SetShaderBitmap*(internal_hShader: orxHANDLE_520095050;
-                                   internal_s32ID: orxS32_520095032;
-                                   internal_pstValue: ptr orxBITMAP_520095267): orxSTATUS_520095066 {.
+  proc orxDisplay_SetShaderBitmap*(internal_hShader: orxHANDLE_520095013;
+                                   internal_s32ID: orxS32_520094995;
+                                   internal_pstValue: ptr orxBITMAP_520095230): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetShaderBitmap".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetShaderBitmap" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetShaderFloat):
-  proc orxDisplay_SetShaderFloat*(internal_hShader: orxHANDLE_520095050;
-                                  internal_s32ID: orxS32_520095032;
-                                  internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxDisplay_SetShaderFloat*(internal_hShader: orxHANDLE_520095013;
+                                  internal_s32ID: orxS32_520094995;
+                                  internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetShaderFloat".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetShaderFloat" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetShaderVector):
-  proc orxDisplay_SetShaderVector*(internal_hShader: orxHANDLE_520095050;
-                                   internal_s32ID: orxS32_520095032;
-                                   internal_pvValue: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxDisplay_SetShaderVector*(internal_hShader: orxHANDLE_520095013;
+                                   internal_s32ID: orxS32_520094995;
+                                   internal_pvValue: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetShaderVector".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetShaderVector" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetShaderID):
-  proc orxDisplay_GetShaderID*(internal_hShader: orxHANDLE_520095050): orxU32_520095024 {.
+  proc orxDisplay_GetShaderID*(internal_hShader: orxHANDLE_520095013): orxU32_520094987 {.
       cdecl, importc: "orxDisplay_GetShaderID".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetShaderID" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_EnableVSync):
-  proc orxDisplay_EnableVSync*(internal_bEnable: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxDisplay_EnableVSync*(internal_bEnable: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_EnableVSync".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_EnableVSync" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_IsVSyncEnabled):
-  proc orxDisplay_IsVSyncEnabled*(): orxBOOL_520095038 {.cdecl,
+  proc orxDisplay_IsVSyncEnabled*(): orxBOOL_520095001 {.cdecl,
       importc: "orxDisplay_IsVSyncEnabled".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_IsVSyncEnabled" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetFullScreen):
-  proc orxDisplay_SetFullScreen*(internal_bFullScreen: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxDisplay_SetFullScreen*(internal_bFullScreen: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetFullScreen".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetFullScreen" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_IsFullScreen):
-  proc orxDisplay_IsFullScreen*(): orxBOOL_520095038 {.cdecl,
+  proc orxDisplay_IsFullScreen*(): orxBOOL_520095001 {.cdecl,
       importc: "orxDisplay_IsFullScreen".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_IsFullScreen" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetVideoModeCount):
-  proc orxDisplay_GetVideoModeCount*(): orxU32_520095024 {.cdecl,
+  proc orxDisplay_GetVideoModeCount*(): orxU32_520094987 {.cdecl,
       importc: "orxDisplay_GetVideoModeCount".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetVideoModeCount" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_GetVideoMode):
-  proc orxDisplay_GetVideoMode*(internal_u32Index: orxU32_520095024;
-      internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095287): ptr orxDISPLAY_VIDEO_MODE_520095287 {.
+  proc orxDisplay_GetVideoMode*(internal_u32Index: orxU32_520094987;
+      internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095250): ptr orxDISPLAY_VIDEO_MODE_520095250 {.
       cdecl, importc: "orxDisplay_GetVideoMode".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_GetVideoMode" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_SetVideoMode):
-  proc orxDisplay_SetVideoMode*(internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095287): orxSTATUS_520095066 {.
+  proc orxDisplay_SetVideoMode*(internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095250): orxSTATUS_520095029 {.
       cdecl, importc: "orxDisplay_SetVideoMode".}
 else:
   static :
     hint("Declaration of " & "orxDisplay_SetVideoMode" &
         " already exists, not redeclaring")
 when not declared(orxDisplay_IsVideoModeAvailable):
-  proc orxDisplay_IsVideoModeAvailable*(internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095287): orxBOOL_520095038 {.
+  proc orxDisplay_IsVideoModeAvailable*(internal_pstVideoMode: ptr orxDISPLAY_VIDEO_MODE_520095250): orxBOOL_520095001 {.
       cdecl, importc: "orxDisplay_IsVideoModeAvailable".}
 else:
   static :
@@ -13898,7 +13898,7 @@ else:
   static :
     hint("Declaration of " & "textureSetup" & " already exists, not redeclaring")
 when not declared(textureInit):
-  proc textureInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxTexture_Init".}
+  proc textureInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxTexture_Init".}
 else:
   static :
     hint("Declaration of " & "textureInit" & " already exists, not redeclaring")
@@ -13908,7 +13908,7 @@ else:
   static :
     hint("Declaration of " & "textureExit" & " already exists, not redeclaring")
 when not declared(textureCreate):
-  proc textureCreate*(): ptr orxTEXTURE_520095321 {.cdecl,
+  proc textureCreate*(): ptr orxTEXTURE_520095284 {.cdecl,
       importc: "orxTexture_Create".}
 else:
   static :
@@ -13916,81 +13916,81 @@ else:
         " already exists, not redeclaring")
 when not declared(orxTexture_Load):
   proc orxTexture_Load*(internal_zFileName: cstring;
-                        internal_bKeepInCache: orxBOOL_520095038): ptr orxTEXTURE_520095321 {.
+                        internal_bKeepInCache: orxBOOL_520095001): ptr orxTEXTURE_520095284 {.
       cdecl, importc: "orxTexture_Load".}
 else:
   static :
     hint("Declaration of " & "orxTexture_Load" &
         " already exists, not redeclaring")
 when not declared(textureDelete):
-  proc textureDelete*(internal_pstTexture: ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+  proc textureDelete*(internal_pstTexture: ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxTexture_Delete".}
 else:
   static :
     hint("Declaration of " & "textureDelete" &
         " already exists, not redeclaring")
 when not declared(orxTexture_ClearCache):
-  proc orxTexture_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxTexture_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxTexture_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxTexture_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxTexture_LinkBitmap):
-  proc orxTexture_LinkBitmap*(internal_pstTexture: ptr orxTEXTURE_520095321;
-                              internal_pstBitmap: ptr orxBITMAP_520095267;
+  proc orxTexture_LinkBitmap*(internal_pstTexture: ptr orxTEXTURE_520095284;
+                              internal_pstBitmap: ptr orxBITMAP_520095230;
                               internal_zDataName: cstring;
-                              internal_bTransferOwnership: orxBOOL_520095038): orxSTATUS_520095066 {.
+                              internal_bTransferOwnership: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxTexture_LinkBitmap".}
 else:
   static :
     hint("Declaration of " & "orxTexture_LinkBitmap" &
         " already exists, not redeclaring")
 when not declared(orxTexture_UnlinkBitmap):
-  proc orxTexture_UnlinkBitmap*(internal_pstTexture: ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+  proc orxTexture_UnlinkBitmap*(internal_pstTexture: ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxTexture_UnlinkBitmap".}
 else:
   static :
     hint("Declaration of " & "orxTexture_UnlinkBitmap" &
         " already exists, not redeclaring")
 when not declared(orxTexture_GetBitmap):
-  proc orxTexture_GetBitmap*(internal_pstTexture: ptr orxTEXTURE_520095321): ptr orxBITMAP_520095267 {.
+  proc orxTexture_GetBitmap*(internal_pstTexture: ptr orxTEXTURE_520095284): ptr orxBITMAP_520095230 {.
       cdecl, importc: "orxTexture_GetBitmap".}
 else:
   static :
     hint("Declaration of " & "orxTexture_GetBitmap" &
         " already exists, not redeclaring")
 when not declared(orxTexture_GetSize):
-  proc orxTexture_GetSize*(internal_pstTexture: ptr orxTEXTURE_520095321;
-                           internal_pfWidth: ptr orxFLOAT_520095040;
-                           internal_pfHeight: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxTexture_GetSize*(internal_pstTexture: ptr orxTEXTURE_520095284;
+                           internal_pfWidth: ptr orxFLOAT_520095003;
+                           internal_pfHeight: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxTexture_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxTexture_GetSize" &
         " already exists, not redeclaring")
 when not declared(textureGet):
-  proc textureGet*(internal_zName: cstring): ptr orxTEXTURE_520095321 {.cdecl,
+  proc textureGet*(internal_zName: cstring): ptr orxTEXTURE_520095284 {.cdecl,
       importc: "orxTexture_Get".}
 else:
   static :
     hint("Declaration of " & "textureGet" & " already exists, not redeclaring")
 when not declared(orxTexture_GetName):
-  proc orxTexture_GetName*(internal_pstTexture: ptr orxTEXTURE_520095321): cstring {.
+  proc orxTexture_GetName*(internal_pstTexture: ptr orxTEXTURE_520095284): cstring {.
       cdecl, importc: "orxTexture_GetName".}
 else:
   static :
     hint("Declaration of " & "orxTexture_GetName" &
         " already exists, not redeclaring")
 when not declared(orxTexture_GetScreenTexture):
-  proc orxTexture_GetScreenTexture*(): ptr orxTEXTURE_520095321 {.cdecl,
+  proc orxTexture_GetScreenTexture*(): ptr orxTEXTURE_520095284 {.cdecl,
       importc: "orxTexture_GetScreenTexture".}
 else:
   static :
     hint("Declaration of " & "orxTexture_GetScreenTexture" &
         " already exists, not redeclaring")
 when not declared(orxTexture_GetLoadCount):
-  proc orxTexture_GetLoadCount*(): orxU32_520095024 {.cdecl,
+  proc orxTexture_GetLoadCount*(): orxU32_520094987 {.cdecl,
       importc: "orxTexture_GetLoadCount".}
 else:
   static :
@@ -14002,7 +14002,7 @@ else:
   static :
     hint("Declaration of " & "fontSetup" & " already exists, not redeclaring")
 when not declared(fontInit):
-  proc fontInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxFont_Init".}
+  proc fontInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxFont_Init".}
 else:
   static :
     hint("Declaration of " & "fontInit" & " already exists, not redeclaring")
@@ -14012,149 +14012,149 @@ else:
   static :
     hint("Declaration of " & "fontExit" & " already exists, not redeclaring")
 when not declared(fontCreate):
-  proc fontCreate*(): ptr orxFONT_520095323 {.cdecl, importc: "orxFont_Create".}
+  proc fontCreate*(): ptr orxFONT_520095286 {.cdecl, importc: "orxFont_Create".}
 else:
   static :
     hint("Declaration of " & "fontCreate" & " already exists, not redeclaring")
 when not declared(fontCreateFromConfig):
-  proc fontCreateFromConfig*(internal_zConfigID: cstring): ptr orxFONT_520095323 {.
+  proc fontCreateFromConfig*(internal_zConfigID: cstring): ptr orxFONT_520095286 {.
       cdecl, importc: "orxFont_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "fontCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(fontDelete):
-  proc fontDelete*(internal_pstFont: ptr orxFONT_520095323): orxSTATUS_520095066 {.
+  proc fontDelete*(internal_pstFont: ptr orxFONT_520095286): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_Delete".}
 else:
   static :
     hint("Declaration of " & "fontDelete" & " already exists, not redeclaring")
 when not declared(orxFont_GetDefaultFont):
-  proc orxFont_GetDefaultFont*(): ptr orxFONT_520095323 {.cdecl,
+  proc orxFont_GetDefaultFont*(): ptr orxFONT_520095286 {.cdecl,
       importc: "orxFont_GetDefaultFont".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetDefaultFont" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetTexture):
-  proc orxFont_SetTexture*(internal_pstFont: ptr orxFONT_520095323;
-                           internal_pstTexture: ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+  proc orxFont_SetTexture*(internal_pstFont: ptr orxFONT_520095286;
+                           internal_pstTexture: ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetTexture".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetTexture" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetCharacterList):
-  proc orxFont_SetCharacterList*(internal_pstFont: ptr orxFONT_520095323;
-                                 internal_zList: cstring): orxSTATUS_520095066 {.
+  proc orxFont_SetCharacterList*(internal_pstFont: ptr orxFONT_520095286;
+                                 internal_zList: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetCharacterList".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetCharacterList" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetCharacterHeight):
-  proc orxFont_SetCharacterHeight*(internal_pstFont: ptr orxFONT_520095323;
-                                   internal_fCharacterHeight: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFont_SetCharacterHeight*(internal_pstFont: ptr orxFONT_520095286;
+                                   internal_fCharacterHeight: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetCharacterHeight".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetCharacterHeight" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetCharacterWidthList):
-  proc orxFont_SetCharacterWidthList*(internal_pstFont: ptr orxFONT_520095323;
-                                      internal_u32CharacterNumber: orxU32_520095024;
-      internal_afCharacterWidthList: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFont_SetCharacterWidthList*(internal_pstFont: ptr orxFONT_520095286;
+                                      internal_u32CharacterNumber: orxU32_520094987;
+      internal_afCharacterWidthList: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetCharacterWidthList".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetCharacterWidthList" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetCharacterSpacing):
-  proc orxFont_SetCharacterSpacing*(internal_pstFont: ptr orxFONT_520095323;
-                                    internal_pvSpacing: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxFont_SetCharacterSpacing*(internal_pstFont: ptr orxFONT_520095286;
+                                    internal_pvSpacing: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetCharacterSpacing".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetCharacterSpacing" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetOrigin):
-  proc orxFont_SetOrigin*(internal_pstFont: ptr orxFONT_520095323;
-                          internal_pvOrigin: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxFont_SetOrigin*(internal_pstFont: ptr orxFONT_520095286;
+                          internal_pvOrigin: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetOrigin".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetOrigin" &
         " already exists, not redeclaring")
 when not declared(orxFont_SetSize):
-  proc orxFont_SetSize*(internal_pstFont: ptr orxFONT_520095323;
-                        internal_pvSize: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxFont_SetSize*(internal_pstFont: ptr orxFONT_520095286;
+                        internal_pvSize: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxFont_SetSize".}
 else:
   static :
     hint("Declaration of " & "orxFont_SetSize" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetTexture):
-  proc orxFont_GetTexture*(internal_pstFont: ptr orxFONT_520095323): ptr orxTEXTURE_520095321 {.
+  proc orxFont_GetTexture*(internal_pstFont: ptr orxFONT_520095286): ptr orxTEXTURE_520095284 {.
       cdecl, importc: "orxFont_GetTexture".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetTexture" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetCharacterList):
-  proc orxFont_GetCharacterList*(internal_pstFont: ptr orxFONT_520095323): cstring {.
+  proc orxFont_GetCharacterList*(internal_pstFont: ptr orxFONT_520095286): cstring {.
       cdecl, importc: "orxFont_GetCharacterList".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetCharacterList" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetCharacterHeight):
-  proc orxFont_GetCharacterHeight*(internal_pstFont: ptr orxFONT_520095323): orxFLOAT_520095040 {.
+  proc orxFont_GetCharacterHeight*(internal_pstFont: ptr orxFONT_520095286): orxFLOAT_520095003 {.
       cdecl, importc: "orxFont_GetCharacterHeight".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetCharacterHeight" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetCharacterWidth):
-  proc orxFont_GetCharacterWidth*(internal_pstFont: ptr orxFONT_520095323;
-                                  internal_u32CharacterCodePoint: orxU32_520095024): orxFLOAT_520095040 {.
+  proc orxFont_GetCharacterWidth*(internal_pstFont: ptr orxFONT_520095286;
+                                  internal_u32CharacterCodePoint: orxU32_520094987): orxFLOAT_520095003 {.
       cdecl, importc: "orxFont_GetCharacterWidth".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetCharacterWidth" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetCharacterSpacing):
-  proc orxFont_GetCharacterSpacing*(internal_pstFont: ptr orxFONT_520095323;
-                                    internal_pvSpacing: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFont_GetCharacterSpacing*(internal_pstFont: ptr orxFONT_520095286;
+                                    internal_pvSpacing: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFont_GetCharacterSpacing".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetCharacterSpacing" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetOrigin):
-  proc orxFont_GetOrigin*(internal_pstFont: ptr orxFONT_520095323;
-                          internal_pvOrigin: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFont_GetOrigin*(internal_pstFont: ptr orxFONT_520095286;
+                          internal_pvOrigin: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFont_GetOrigin".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetOrigin" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetSize):
-  proc orxFont_GetSize*(internal_pstFont: ptr orxFONT_520095323;
-                        internal_pvSize: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFont_GetSize*(internal_pstFont: ptr orxFONT_520095286;
+                        internal_pvSize: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFont_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetSize" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetMap):
-  proc orxFont_GetMap*(internal_pstFont: ptr orxFONT_520095323): ptr orxCHARACTER_MAP_520095295 {.
+  proc orxFont_GetMap*(internal_pstFont: ptr orxFONT_520095286): ptr orxCHARACTER_MAP_520095258 {.
       cdecl, importc: "orxFont_GetMap".}
 else:
   static :
     hint("Declaration of " & "orxFont_GetMap" &
         " already exists, not redeclaring")
 when not declared(orxFont_GetName):
-  proc orxFont_GetName*(internal_pstFont: ptr orxFONT_520095323): cstring {.
+  proc orxFont_GetName*(internal_pstFont: ptr orxFONT_520095286): cstring {.
       cdecl, importc: "orxFont_GetName".}
 else:
   static :
@@ -14167,7 +14167,7 @@ else:
     hint("Declaration of " & "joystickSetup" &
         " already exists, not redeclaring")
 when not declared(joystickInit):
-  proc joystickInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxJoystick_Init".}
+  proc joystickInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxJoystick_Init".}
 else:
   static :
     hint("Declaration of " & "joystickInit" & " already exists, not redeclaring")
@@ -14177,33 +14177,33 @@ else:
   static :
     hint("Declaration of " & "joystickExit" & " already exists, not redeclaring")
 when not declared(getAxisValue):
-  proc getAxisValue*(internal_eAxis: orxJOYSTICK_AXIS_520095331): orxFLOAT_520095040 {.
+  proc getAxisValue*(internal_eAxis: orxJOYSTICK_AXIS_520095294): orxFLOAT_520095003 {.
       cdecl, importc: "orxJoystick_GetAxisValue".}
 else:
   static :
     hint("Declaration of " & "getAxisValue" & " already exists, not redeclaring")
 when not declared(isButtonPressed):
-  proc isButtonPressed*(internal_eButton: orxJOYSTICK_BUTTON_520095327): orxBOOL_520095038 {.
+  proc isButtonPressed*(internal_eButton: orxJOYSTICK_BUTTON_520095290): orxBOOL_520095001 {.
       cdecl, importc: "orxJoystick_IsButtonPressed".}
 else:
   static :
     hint("Declaration of " & "isButtonPressed" &
         " already exists, not redeclaring")
 when not declared(getButtonName):
-  proc getButtonName*(internal_eButton: orxJOYSTICK_BUTTON_520095327): cstring {.
+  proc getButtonName*(internal_eButton: orxJOYSTICK_BUTTON_520095290): cstring {.
       cdecl, importc: "orxJoystick_GetButtonName".}
 else:
   static :
     hint("Declaration of " & "getButtonName" &
         " already exists, not redeclaring")
 when not declared(getAxisName):
-  proc getAxisName*(internal_eAxis: orxJOYSTICK_AXIS_520095331): cstring {.
+  proc getAxisName*(internal_eAxis: orxJOYSTICK_AXIS_520095294): cstring {.
       cdecl, importc: "orxJoystick_GetAxisName".}
 else:
   static :
     hint("Declaration of " & "getAxisName" & " already exists, not redeclaring")
 when not declared(isConnected):
-  proc isConnected*(internal_u32ID: orxU32_520095024): orxBOOL_520095038 {.
+  proc isConnected*(internal_u32ID: orxU32_520094987): orxBOOL_520095001 {.
       cdecl, importc: "orxJoystick_IsConnected".}
 else:
   static :
@@ -14215,7 +14215,7 @@ else:
     hint("Declaration of " & "keyboardSetup" &
         " already exists, not redeclaring")
 when not declared(keyboardInit):
-  proc keyboardInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxKeyboard_Init".}
+  proc keyboardInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxKeyboard_Init".}
 else:
   static :
     hint("Declaration of " & "keyboardInit" & " already exists, not redeclaring")
@@ -14225,21 +14225,21 @@ else:
   static :
     hint("Declaration of " & "keyboardExit" & " already exists, not redeclaring")
 when not declared(orxKeyboard_IsKeyPressed):
-  proc orxKeyboard_IsKeyPressed*(internal_eKey: orxKEYBOARD_KEY_520095335): orxBOOL_520095038 {.
+  proc orxKeyboard_IsKeyPressed*(internal_eKey: orxKEYBOARD_KEY_520095298): orxBOOL_520095001 {.
       cdecl, importc: "orxKeyboard_IsKeyPressed".}
 else:
   static :
     hint("Declaration of " & "orxKeyboard_IsKeyPressed" &
         " already exists, not redeclaring")
 when not declared(orxKeyboard_GetKeyDisplayName):
-  proc orxKeyboard_GetKeyDisplayName*(internal_eKey: orxKEYBOARD_KEY_520095335): cstring {.
+  proc orxKeyboard_GetKeyDisplayName*(internal_eKey: orxKEYBOARD_KEY_520095298): cstring {.
       cdecl, importc: "orxKeyboard_GetKeyDisplayName".}
 else:
   static :
     hint("Declaration of " & "orxKeyboard_GetKeyDisplayName" &
         " already exists, not redeclaring")
 when not declared(orxKeyboard_ReadKey):
-  proc orxKeyboard_ReadKey*(): orxKEYBOARD_KEY_520095335 {.cdecl,
+  proc orxKeyboard_ReadKey*(): orxKEYBOARD_KEY_520095298 {.cdecl,
       importc: "orxKeyboard_ReadKey".}
 else:
   static :
@@ -14260,14 +14260,14 @@ else:
     hint("Declaration of " & "orxKeyboard_ClearBuffer" &
         " already exists, not redeclaring")
 when not declared(orxKeyboard_GetKeyName):
-  proc orxKeyboard_GetKeyName*(internal_eKey: orxKEYBOARD_KEY_520095335): cstring {.
+  proc orxKeyboard_GetKeyName*(internal_eKey: orxKEYBOARD_KEY_520095298): cstring {.
       cdecl, importc: "orxKeyboard_GetKeyName".}
 else:
   static :
     hint("Declaration of " & "orxKeyboard_GetKeyName" &
         " already exists, not redeclaring")
 when not declared(orxKeyboard_Show):
-  proc orxKeyboard_Show*(internal_bShow: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxKeyboard_Show*(internal_bShow: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxKeyboard_Show".}
 else:
   static :
@@ -14279,7 +14279,7 @@ else:
   static :
     hint("Declaration of " & "mouseSetup" & " already exists, not redeclaring")
 when not declared(mouseInit):
-  proc mouseInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxMouse_Init".}
+  proc mouseInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxMouse_Init".}
 else:
   static :
     hint("Declaration of " & "mouseInit" & " already exists, not redeclaring")
@@ -14289,49 +14289,49 @@ else:
   static :
     hint("Declaration of " & "mouseExit" & " already exists, not redeclaring")
 when not declared(orxMouse_SetPosition):
-  proc orxMouse_SetPosition*(internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxMouse_SetPosition*(internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxMouse_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxMouse_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxMouse_GetPosition):
-  proc orxMouse_GetPosition*(internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxMouse_GetPosition*(internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxMouse_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxMouse_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxMouse_IsButtonPressed):
-  proc orxMouse_IsButtonPressed*(internal_eButton: orxMOUSE_BUTTON_520095339): orxBOOL_520095038 {.
+  proc orxMouse_IsButtonPressed*(internal_eButton: orxMOUSE_BUTTON_520095302): orxBOOL_520095001 {.
       cdecl, importc: "orxMouse_IsButtonPressed".}
 else:
   static :
     hint("Declaration of " & "orxMouse_IsButtonPressed" &
         " already exists, not redeclaring")
 when not declared(orxMouse_GetMoveDelta):
-  proc orxMouse_GetMoveDelta*(internal_pvMoveDelta: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxMouse_GetMoveDelta*(internal_pvMoveDelta: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxMouse_GetMoveDelta".}
 else:
   static :
     hint("Declaration of " & "orxMouse_GetMoveDelta" &
         " already exists, not redeclaring")
 when not declared(orxMouse_GetWheelDelta):
-  proc orxMouse_GetWheelDelta*(): orxFLOAT_520095040 {.cdecl,
+  proc orxMouse_GetWheelDelta*(): orxFLOAT_520095003 {.cdecl,
       importc: "orxMouse_GetWheelDelta".}
 else:
   static :
     hint("Declaration of " & "orxMouse_GetWheelDelta" &
         " already exists, not redeclaring")
 when not declared(orxMouse_ShowCursor):
-  proc orxMouse_ShowCursor*(internal_bShow: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxMouse_ShowCursor*(internal_bShow: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxMouse_ShowCursor".}
 else:
   static :
     hint("Declaration of " & "orxMouse_ShowCursor" &
         " already exists, not redeclaring")
 when not declared(orxMouse_Grab):
-  proc orxMouse_Grab*(internal_bGrab: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxMouse_Grab*(internal_bGrab: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxMouse_Grab".}
 else:
   static :
@@ -14339,21 +14339,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxMouse_SetCursor):
   proc orxMouse_SetCursor*(internal_zName: cstring;
-                           internal_pvPivot: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+                           internal_pvPivot: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxMouse_SetCursor".}
 else:
   static :
     hint("Declaration of " & "orxMouse_SetCursor" &
         " already exists, not redeclaring")
 when not declared(orxMouse_GetButtonName):
-  proc orxMouse_GetButtonName*(internal_eButton: orxMOUSE_BUTTON_520095339): cstring {.
+  proc orxMouse_GetButtonName*(internal_eButton: orxMOUSE_BUTTON_520095302): cstring {.
       cdecl, importc: "orxMouse_GetButtonName".}
 else:
   static :
     hint("Declaration of " & "orxMouse_GetButtonName" &
         " already exists, not redeclaring")
 when not declared(orxMouse_GetAxisName):
-  proc orxMouse_GetAxisName*(internal_eAxis: orxMOUSE_AXIS_520095343): cstring {.
+  proc orxMouse_GetAxisName*(internal_eAxis: orxMOUSE_AXIS_520095306): cstring {.
       cdecl, importc: "orxMouse_GetAxisName".}
 else:
   static :
@@ -14365,7 +14365,7 @@ else:
   static :
     hint("Declaration of " & "inputSetup" & " already exists, not redeclaring")
 when not declared(inputInit):
-  proc inputInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxInput_Init".}
+  proc inputInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxInput_Init".}
 else:
   static :
     hint("Declaration of " & "inputInit" & " already exists, not redeclaring")
@@ -14375,19 +14375,19 @@ else:
   static :
     hint("Declaration of " & "inputExit" & " already exists, not redeclaring")
 when not declared(load):
-  proc load*(internal_zFileName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc load*(internal_zFileName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_Load".}
 else:
   static :
     hint("Declaration of " & "load" & " already exists, not redeclaring")
 when not declared(save):
-  proc save*(internal_zFileName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc save*(internal_zFileName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_Save".}
 else:
   static :
     hint("Declaration of " & "save" & " already exists, not redeclaring")
 when not declared(selectSet):
-  proc selectSet*(internal_zSetName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc selectSet*(internal_zSetName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_SelectSet".}
 else:
   static :
@@ -14405,43 +14405,43 @@ else:
   static :
     hint("Declaration of " & "getNextSet" & " already exists, not redeclaring")
 when not declared(pushSet):
-  proc pushSet*(internal_zSetName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc pushSet*(internal_zSetName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_PushSet".}
 else:
   static :
     hint("Declaration of " & "pushSet" & " already exists, not redeclaring")
 when not declared(popSet):
-  proc popSet*(): orxSTATUS_520095066 {.cdecl, importc: "orxInput_PopSet".}
+  proc popSet*(): orxSTATUS_520095029 {.cdecl, importc: "orxInput_PopSet".}
 else:
   static :
     hint("Declaration of " & "popSet" & " already exists, not redeclaring")
 when not declared(removeSet):
-  proc removeSet*(internal_zSetName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc removeSet*(internal_zSetName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_RemoveSet".}
 else:
   static :
     hint("Declaration of " & "removeSet" & " already exists, not redeclaring")
 when not declared(enableSet):
-  proc enableSet*(internal_zSetName: cstring; internal_bEnable: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc enableSet*(internal_zSetName: cstring; internal_bEnable: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_EnableSet".}
 else:
   static :
     hint("Declaration of " & "enableSet" & " already exists, not redeclaring")
 when not declared(isSetEnabled):
-  proc isSetEnabled*(internal_zSetName: cstring): orxBOOL_520095038 {.cdecl,
+  proc isSetEnabled*(internal_zSetName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxInput_IsSetEnabled".}
 else:
   static :
     hint("Declaration of " & "isSetEnabled" & " already exists, not redeclaring")
 when not declared(clearSet):
-  proc clearSet*(internal_zSetName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc clearSet*(internal_zSetName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_ClearSet".}
 else:
   static :
     hint("Declaration of " & "clearSet" & " already exists, not redeclaring")
 when not declared(setTypeFlags):
-  proc setTypeFlags*(internal_u32AddTypeFlags: orxU32_520095024;
-                     internal_u32RemoveTypeFlags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc setTypeFlags*(internal_u32AddTypeFlags: orxU32_520094987;
+                     internal_u32RemoveTypeFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetTypeFlags".}
 else:
   static :
@@ -14453,71 +14453,71 @@ else:
   static :
     hint("Declaration of " & "getNext" & " already exists, not redeclaring")
 when not declared(isActive):
-  proc isActive*(internal_zInputName: cstring): orxBOOL_520095038 {.cdecl,
+  proc isActive*(internal_zInputName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxInput_IsActive".}
 else:
   static :
     hint("Declaration of " & "isActive" & " already exists, not redeclaring")
 when not declared(hasBeenActivated):
-  proc hasBeenActivated*(internal_zInputName: cstring): orxBOOL_520095038 {.
+  proc hasBeenActivated*(internal_zInputName: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxInput_HasBeenActivated".}
 else:
   static :
     hint("Declaration of " & "hasBeenActivated" &
         " already exists, not redeclaring")
 when not declared(hasBeenDeactivated):
-  proc hasBeenDeactivated*(internal_zInputName: cstring): orxBOOL_520095038 {.
+  proc hasBeenDeactivated*(internal_zInputName: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxInput_HasBeenDeactivated".}
 else:
   static :
     hint("Declaration of " & "hasBeenDeactivated" &
         " already exists, not redeclaring")
 when not declared(hasNewStatus):
-  proc hasNewStatus*(internal_zInputName: cstring): orxBOOL_520095038 {.cdecl,
+  proc hasNewStatus*(internal_zInputName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxInput_HasNewStatus".}
 else:
   static :
     hint("Declaration of " & "hasNewStatus" & " already exists, not redeclaring")
 when not declared(getValue):
-  proc getValue*(internal_zInputName: cstring): orxFLOAT_520095040 {.cdecl,
+  proc getValue*(internal_zInputName: cstring): orxFLOAT_520095003 {.cdecl,
       importc: "orxInput_GetValue".}
 else:
   static :
     hint("Declaration of " & "getValue" & " already exists, not redeclaring")
 when not declared(setValue):
-  proc setValue*(internal_zInputName: cstring; internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setValue*(internal_zInputName: cstring; internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetValue".}
 else:
   static :
     hint("Declaration of " & "setValue" & " already exists, not redeclaring")
 when not declared(setPermanentValue):
   proc setPermanentValue*(internal_zInputName: cstring;
-                          internal_fValue: orxFLOAT_520095040): orxSTATUS_520095066 {.
+                          internal_fValue: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetPermanentValue".}
 else:
   static :
     hint("Declaration of " & "setPermanentValue" &
         " already exists, not redeclaring")
 when not declared(resetValue):
-  proc resetValue*(internal_zInputName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc resetValue*(internal_zInputName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxInput_ResetValue".}
 else:
   static :
     hint("Declaration of " & "resetValue" & " already exists, not redeclaring")
 when not declared(getThreshold):
-  proc getThreshold*(internal_zInputName: cstring): orxFLOAT_520095040 {.cdecl,
+  proc getThreshold*(internal_zInputName: cstring): orxFLOAT_520095003 {.cdecl,
       importc: "orxInput_GetThreshold".}
 else:
   static :
     hint("Declaration of " & "getThreshold" & " already exists, not redeclaring")
 when not declared(setThreshold):
-  proc setThreshold*(internal_zInputName: cstring; internal_fThreshold: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setThreshold*(internal_zInputName: cstring; internal_fThreshold: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetThreshold".}
 else:
   static :
     hint("Declaration of " & "setThreshold" & " already exists, not redeclaring")
 when not declared(getMultiplier):
-  proc getMultiplier*(internal_zInputName: cstring): orxFLOAT_520095040 {.cdecl,
+  proc getMultiplier*(internal_zInputName: cstring): orxFLOAT_520095003 {.cdecl,
       importc: "orxInput_GetMultiplier".}
 else:
   static :
@@ -14525,85 +14525,85 @@ else:
         " already exists, not redeclaring")
 when not declared(setMultiplier):
   proc setMultiplier*(internal_zInputName: cstring;
-                      internal_fMultiplier: orxFLOAT_520095040): orxSTATUS_520095066 {.
+                      internal_fMultiplier: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetMultiplier".}
 else:
   static :
     hint("Declaration of " & "setMultiplier" &
         " already exists, not redeclaring")
 when not declared(setCombineMode):
-  proc setCombineMode*(internal_zName: cstring; internal_bCombine: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc setCombineMode*(internal_zName: cstring; internal_bCombine: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_SetCombineMode".}
 else:
   static :
     hint("Declaration of " & "setCombineMode" &
         " already exists, not redeclaring")
 when not declared(isInCombineMode):
-  proc isInCombineMode*(internal_zName: cstring): orxBOOL_520095038 {.cdecl,
+  proc isInCombineMode*(internal_zName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxInput_IsInCombineMode".}
 else:
   static :
     hint("Declaration of " & "isInCombineMode" &
         " already exists, not redeclaring")
 when not declared(inputBind):
-  proc inputBind*(internal_zName: cstring; internal_eType: orxINPUT_TYPE_520095347;
-                  internal_eID: orxENUM_520095048;
-                  internal_eMode: orxINPUT_MODE_520095351;
-                  internal_s32BindingIndex: orxS32_520095032): orxSTATUS_520095066 {.
+  proc inputBind*(internal_zName: cstring; internal_eType: orxINPUT_TYPE_520095310;
+                  internal_eID: orxENUM_520095011;
+                  internal_eMode: orxINPUT_MODE_520095314;
+                  internal_s32BindingIndex: orxS32_520094995): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_Bind".}
 else:
   static :
     hint("Declaration of " & "inputBind" & " already exists, not redeclaring")
 when not declared(inputUnbind):
-  proc inputUnbind*(internal_zName: cstring; internal_s32BindingIndex: orxS32_520095032): orxSTATUS_520095066 {.
+  proc inputUnbind*(internal_zName: cstring; internal_s32BindingIndex: orxS32_520094995): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_Unbind".}
 else:
   static :
     hint("Declaration of " & "inputUnbind" & " already exists, not redeclaring")
 when not declared(getBoundInputCount):
-  proc getBoundInputCount*(internal_eType: orxINPUT_TYPE_520095347;
-                           internal_eID: orxENUM_520095048;
-                           internal_eMode: orxINPUT_MODE_520095351): orxU32_520095024 {.
+  proc getBoundInputCount*(internal_eType: orxINPUT_TYPE_520095310;
+                           internal_eID: orxENUM_520095011;
+                           internal_eMode: orxINPUT_MODE_520095314): orxU32_520094987 {.
       cdecl, importc: "orxInput_GetBoundInputCount".}
 else:
   static :
     hint("Declaration of " & "getBoundInputCount" &
         " already exists, not redeclaring")
 when not declared(getBoundInput):
-  proc getBoundInput*(internal_eType: orxINPUT_TYPE_520095347;
-                      internal_eID: orxENUM_520095048;
-                      internal_eMode: orxINPUT_MODE_520095351;
-                      internal_u32InputIndex: orxU32_520095024;
+  proc getBoundInput*(internal_eType: orxINPUT_TYPE_520095310;
+                      internal_eID: orxENUM_520095011;
+                      internal_eMode: orxINPUT_MODE_520095314;
+                      internal_u32InputIndex: orxU32_520094987;
                       internal_pzName: ptr cstring;
-                      internal_pu32BindingIndex: ptr orxU32_520095024): orxSTATUS_520095066 {.
+                      internal_pu32BindingIndex: ptr orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_GetBoundInput".}
 else:
   static :
     hint("Declaration of " & "getBoundInput" &
         " already exists, not redeclaring")
 when not declared(getBinding):
-  proc getBinding*(internal_zName: cstring; internal_u32BindingIndex: orxU32_520095024;
-                   internal_peType: ptr orxINPUT_TYPE_520095347;
-                   internal_peID: ptr orxENUM_520095048;
-                   internal_peMode: ptr orxINPUT_MODE_520095351): orxSTATUS_520095066 {.
+  proc getBinding*(internal_zName: cstring; internal_u32BindingIndex: orxU32_520094987;
+                   internal_peType: ptr orxINPUT_TYPE_520095310;
+                   internal_peID: ptr orxENUM_520095011;
+                   internal_peMode: ptr orxINPUT_MODE_520095314): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_GetBinding".}
 else:
   static :
     hint("Declaration of " & "getBinding" & " already exists, not redeclaring")
 when not declared(getBindingList):
   proc getBindingList*(internal_zName: cstring;
-                       internal_aeTypeList: array[16'i64, orxINPUT_TYPE_520095347];
-                       internal_aeIDList: array[16'i64, orxENUM_520095048];
-                       internal_aeModeList: array[16'i64, orxINPUT_MODE_520095351]): orxSTATUS_520095066 {.
+                       internal_aeTypeList: array[16'i64, orxINPUT_TYPE_520095310];
+                       internal_aeIDList: array[16'i64, orxENUM_520095011];
+                       internal_aeModeList: array[16'i64, orxINPUT_MODE_520095314]): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_GetBindingList".}
 else:
   static :
     hint("Declaration of " & "getBindingList" &
         " already exists, not redeclaring")
 when not declared(getBindingName):
-  proc getBindingName*(internal_eType: orxINPUT_TYPE_520095347;
-                       internal_eID: orxENUM_520095048;
-                       internal_eMode: orxINPUT_MODE_520095351): cstring {.
+  proc getBindingName*(internal_eType: orxINPUT_TYPE_520095310;
+                       internal_eID: orxENUM_520095011;
+                       internal_eMode: orxINPUT_MODE_520095314): cstring {.
       cdecl, importc: "orxInput_GetBindingName".}
 else:
   static :
@@ -14611,18 +14611,18 @@ else:
         " already exists, not redeclaring")
 when not declared(getBindingType):
   proc getBindingType*(internal_zName: cstring;
-                       internal_peType: ptr orxINPUT_TYPE_520095347;
-                       internal_peID: ptr orxENUM_520095048;
-                       internal_peMode: ptr orxINPUT_MODE_520095351): orxSTATUS_520095066 {.
+                       internal_peType: ptr orxINPUT_TYPE_520095310;
+                       internal_peID: ptr orxENUM_520095011;
+                       internal_peMode: ptr orxINPUT_MODE_520095314): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_GetBindingType".}
 else:
   static :
     hint("Declaration of " & "getBindingType" &
         " already exists, not redeclaring")
 when not declared(getActiveBinding):
-  proc getActiveBinding*(internal_peType: ptr orxINPUT_TYPE_520095347;
-                         internal_peID: ptr orxENUM_520095048;
-                         internal_pfValue: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc getActiveBinding*(internal_peType: ptr orxINPUT_TYPE_520095310;
+                         internal_peID: ptr orxENUM_520095011;
+                         internal_pfValue: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxInput_GetActiveBinding".}
 else:
   static :
@@ -14634,7 +14634,7 @@ else:
   static :
     hint("Declaration of " & "consoleSetup" & " already exists, not redeclaring")
 when not declared(consoleInit):
-  proc consoleInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxConsole_Init".}
+  proc consoleInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxConsole_Init".}
 else:
   static :
     hint("Declaration of " & "consoleInit" & " already exists, not redeclaring")
@@ -14644,101 +14644,101 @@ else:
   static :
     hint("Declaration of " & "consoleExit" & " already exists, not redeclaring")
 when not declared(orxConsole_Enable):
-  proc orxConsole_Enable*(internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxConsole_Enable*(internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxConsole_Enable".}
 else:
   static :
     hint("Declaration of " & "orxConsole_Enable" &
         " already exists, not redeclaring")
 when not declared(orxConsole_IsEnabled):
-  proc orxConsole_IsEnabled*(): orxBOOL_520095038 {.cdecl,
+  proc orxConsole_IsEnabled*(): orxBOOL_520095001 {.cdecl,
       importc: "orxConsole_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxConsole_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxConsole_IsInsertMode):
-  proc orxConsole_IsInsertMode*(): orxBOOL_520095038 {.cdecl,
+  proc orxConsole_IsInsertMode*(): orxBOOL_520095001 {.cdecl,
       importc: "orxConsole_IsInsertMode".}
 else:
   static :
     hint("Declaration of " & "orxConsole_IsInsertMode" &
         " already exists, not redeclaring")
 when not declared(orxConsole_SetToggle):
-  proc orxConsole_SetToggle*(internal_eInputType: orxINPUT_TYPE_520095347;
-                             internal_eInputID: orxENUM_520095048;
-                             internal_eInputMode: orxINPUT_MODE_520095351): orxSTATUS_520095066 {.
+  proc orxConsole_SetToggle*(internal_eInputType: orxINPUT_TYPE_520095310;
+                             internal_eInputID: orxENUM_520095011;
+                             internal_eInputMode: orxINPUT_MODE_520095314): orxSTATUS_520095029 {.
       cdecl, importc: "orxConsole_SetToggle".}
 else:
   static :
     hint("Declaration of " & "orxConsole_SetToggle" &
         " already exists, not redeclaring")
 when not declared(orxConsole_Log):
-  proc orxConsole_Log*(internal_zText: cstring): orxSTATUS_520095066 {.cdecl,
+  proc orxConsole_Log*(internal_zText: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxConsole_Log".}
 else:
   static :
     hint("Declaration of " & "orxConsole_Log" &
         " already exists, not redeclaring")
 when not declared(orxConsole_SetFont):
-  proc orxConsole_SetFont*(internal_pstFont: ptr orxFONT_520095323): orxSTATUS_520095066 {.
+  proc orxConsole_SetFont*(internal_pstFont: ptr orxFONT_520095286): orxSTATUS_520095029 {.
       cdecl, importc: "orxConsole_SetFont".}
 else:
   static :
     hint("Declaration of " & "orxConsole_SetFont" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetFont):
-  proc orxConsole_GetFont*(): ptr orxFONT_520095323 {.cdecl,
+  proc orxConsole_GetFont*(): ptr orxFONT_520095286 {.cdecl,
       importc: "orxConsole_GetFont".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetFont" &
         " already exists, not redeclaring")
 when not declared(orxConsole_SetLogLineLength):
-  proc orxConsole_SetLogLineLength*(internal_u32LineLength: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxConsole_SetLogLineLength*(internal_u32LineLength: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxConsole_SetLogLineLength".}
 else:
   static :
     hint("Declaration of " & "orxConsole_SetLogLineLength" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetLogLineLength):
-  proc orxConsole_GetLogLineLength*(): orxU32_520095024 {.cdecl,
+  proc orxConsole_GetLogLineLength*(): orxU32_520094987 {.cdecl,
       importc: "orxConsole_GetLogLineLength".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetLogLineLength" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetCompletionCount):
-  proc orxConsole_GetCompletionCount*(internal_pu32MaxLength: ptr orxU32_520095024): orxU32_520095024 {.
+  proc orxConsole_GetCompletionCount*(internal_pu32MaxLength: ptr orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxConsole_GetCompletionCount".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetCompletionCount" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetCompletion):
-  proc orxConsole_GetCompletion*(internal_u32Index: orxU32_520095024;
-                                 internal_pbActive: ptr orxBOOL_520095038): cstring {.
+  proc orxConsole_GetCompletion*(internal_u32Index: orxU32_520094987;
+                                 internal_pbActive: ptr orxBOOL_520095001): cstring {.
       cdecl, importc: "orxConsole_GetCompletion".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetCompletion" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetTrailLogLine):
-  proc orxConsole_GetTrailLogLine*(internal_u32TrailLineIndex: orxU32_520095024): cstring {.
+  proc orxConsole_GetTrailLogLine*(internal_u32TrailLineIndex: orxU32_520094987): cstring {.
       cdecl, importc: "orxConsole_GetTrailLogLine".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetTrailLogLine" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetTrailLogLineOffset):
-  proc orxConsole_GetTrailLogLineOffset*(): orxU32_520095024 {.cdecl,
+  proc orxConsole_GetTrailLogLineOffset*(): orxU32_520094987 {.cdecl,
       importc: "orxConsole_GetTrailLogLineOffset".}
 else:
   static :
     hint("Declaration of " & "orxConsole_GetTrailLogLineOffset" &
         " already exists, not redeclaring")
 when not declared(orxConsole_GetInput):
-  proc orxConsole_GetInput*(internal_pu32CursorIndex: ptr orxU32_520095024): cstring {.
+  proc orxConsole_GetInput*(internal_pu32CursorIndex: ptr orxU32_520094987): cstring {.
       cdecl, importc: "orxConsole_GetInput".}
 else:
   static :
@@ -14750,7 +14750,7 @@ else:
   static :
     hint("Declaration of " & "eventSetup" & " already exists, not redeclaring")
 when not declared(eventInit):
-  proc eventInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxEvent_Init".}
+  proc eventInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxEvent_Init".}
 else:
   static :
     hint("Declaration of " & "eventInit" & " already exists, not redeclaring")
@@ -14760,65 +14760,65 @@ else:
   static :
     hint("Declaration of " & "eventExit" & " already exists, not redeclaring")
 when not declared(addHandler):
-  proc addHandler*(internal_eEventType: orxEVENT_TYPE_520095363;
-                   internal_pfnEventHandler: orxEVENT_HANDLER_520095369): orxSTATUS_520095066 {.
+  proc addHandler*(internal_eEventType: orxEVENT_TYPE_520095326;
+                   internal_pfnEventHandler: orxEVENT_HANDLER_520095332): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_AddHandler".}
 else:
   static :
     hint("Declaration of " & "addHandler" & " already exists, not redeclaring")
 when not declared(addHandlerWithContext):
-  proc addHandlerWithContext*(internal_eEventType: orxEVENT_TYPE_520095363;
-                              internal_pfnEventHandler: orxEVENT_HANDLER_520095369;
-                              internal_pContext: pointer): orxSTATUS_520095066 {.
+  proc addHandlerWithContext*(internal_eEventType: orxEVENT_TYPE_520095326;
+                              internal_pfnEventHandler: orxEVENT_HANDLER_520095332;
+                              internal_pContext: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_AddHandlerWithContext".}
 else:
   static :
     hint("Declaration of " & "addHandlerWithContext" &
         " already exists, not redeclaring")
 when not declared(removeHandler):
-  proc removeHandler*(internal_eEventType: orxEVENT_TYPE_520095363;
-                      internal_pfnEventHandler: orxEVENT_HANDLER_520095369): orxSTATUS_520095066 {.
+  proc removeHandler*(internal_eEventType: orxEVENT_TYPE_520095326;
+                      internal_pfnEventHandler: orxEVENT_HANDLER_520095332): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_RemoveHandler".}
 else:
   static :
     hint("Declaration of " & "removeHandler" &
         " already exists, not redeclaring")
 when not declared(removeHandlerWithContext):
-  proc removeHandlerWithContext*(internal_eEventType: orxEVENT_TYPE_520095363;
-                                 internal_pfnEventHandler: orxEVENT_HANDLER_520095369;
-                                 internal_pContext: pointer): orxSTATUS_520095066 {.
+  proc removeHandlerWithContext*(internal_eEventType: orxEVENT_TYPE_520095326;
+                                 internal_pfnEventHandler: orxEVENT_HANDLER_520095332;
+                                 internal_pContext: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_RemoveHandlerWithContext".}
 else:
   static :
     hint("Declaration of " & "removeHandlerWithContext" &
         " already exists, not redeclaring")
 when not declared(setHandlerIDFlags):
-  proc setHandlerIDFlags*(internal_pfnEventHandler: orxEVENT_HANDLER_520095369;
-                          internal_eEventType: orxEVENT_TYPE_520095363;
+  proc setHandlerIDFlags*(internal_pfnEventHandler: orxEVENT_HANDLER_520095332;
+                          internal_eEventType: orxEVENT_TYPE_520095326;
                           internal_pContext: pointer;
-                          internal_u32AddIDFlags: orxU32_520095024;
-                          internal_u32RemoveIDFlags: orxU32_520095024): orxSTATUS_520095066 {.
+                          internal_u32AddIDFlags: orxU32_520094987;
+                          internal_u32RemoveIDFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_SetHandlerIDFlags".}
 else:
   static :
     hint("Declaration of " & "setHandlerIDFlags" &
         " already exists, not redeclaring")
 when not declared(eventSend):
-  proc eventSend*(internal_pstEvent: ptr orxEVENT_520095367): orxSTATUS_520095066 {.
+  proc eventSend*(internal_pstEvent: ptr orxEVENT_520095330): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_Send".}
 else:
   static :
     hint("Declaration of " & "eventSend" & " already exists, not redeclaring")
 when not declared(eventSendShort):
-  proc eventSendShort*(internal_eEventType: orxEVENT_TYPE_520095363;
-                       internal_eEventID: orxENUM_520095048): orxSTATUS_520095066 {.
+  proc eventSendShort*(internal_eEventType: orxEVENT_TYPE_520095326;
+                       internal_eEventID: orxENUM_520095011): orxSTATUS_520095029 {.
       cdecl, importc: "orxEvent_SendShort".}
 else:
   static :
     hint("Declaration of " & "eventSendShort" &
         " already exists, not redeclaring")
 when not declared(isSending):
-  proc isSending*(): orxBOOL_520095038 {.cdecl, importc: "orxEvent_IsSending".}
+  proc isSending*(): orxBOOL_520095001 {.cdecl, importc: "orxEvent_IsSending".}
 else:
   static :
     hint("Declaration of " & "isSending" & " already exists, not redeclaring")
@@ -14828,7 +14828,7 @@ else:
   static :
     hint("Declaration of " & "localeSetup" & " already exists, not redeclaring")
 when not declared(localeInit):
-  proc localeInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxLocale_Init".}
+  proc localeInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxLocale_Init".}
 else:
   static :
     hint("Declaration of " & "localeInit" & " already exists, not redeclaring")
@@ -14839,7 +14839,7 @@ else:
     hint("Declaration of " & "localeExit" & " already exists, not redeclaring")
 when not declared(orxLocale_SelectLanguage):
   proc orxLocale_SelectLanguage*(internal_zLanguage: cstring;
-                                 internal_zGroup: cstring): orxSTATUS_520095066 {.
+                                 internal_zGroup: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxLocale_SelectLanguage".}
 else:
   static :
@@ -14853,28 +14853,28 @@ else:
     hint("Declaration of " & "orxLocale_GetCurrentLanguage" &
         " already exists, not redeclaring")
 when not declared(orxLocale_HasLanguage):
-  proc orxLocale_HasLanguage*(internal_zLanguage: cstring): orxBOOL_520095038 {.
+  proc orxLocale_HasLanguage*(internal_zLanguage: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxLocale_HasLanguage".}
 else:
   static :
     hint("Declaration of " & "orxLocale_HasLanguage" &
         " already exists, not redeclaring")
 when not declared(orxLocale_GetLanguageCount):
-  proc orxLocale_GetLanguageCount*(): orxU32_520095024 {.cdecl,
+  proc orxLocale_GetLanguageCount*(): orxU32_520094987 {.cdecl,
       importc: "orxLocale_GetLanguageCount".}
 else:
   static :
     hint("Declaration of " & "orxLocale_GetLanguageCount" &
         " already exists, not redeclaring")
 when not declared(orxLocale_GetLanguage):
-  proc orxLocale_GetLanguage*(internal_u32LanguageIndex: orxU32_520095024): cstring {.
+  proc orxLocale_GetLanguage*(internal_u32LanguageIndex: orxU32_520094987): cstring {.
       cdecl, importc: "orxLocale_GetLanguage".}
 else:
   static :
     hint("Declaration of " & "orxLocale_GetLanguage" &
         " already exists, not redeclaring")
 when not declared(orxLocale_HasString):
-  proc orxLocale_HasString*(internal_zKey: cstring; internal_zGroup: cstring): orxBOOL_520095038 {.
+  proc orxLocale_HasString*(internal_zKey: cstring; internal_zGroup: cstring): orxBOOL_520095001 {.
       cdecl, importc: "orxLocale_HasString".}
 else:
   static :
@@ -14889,21 +14889,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxLocale_SetString):
   proc orxLocale_SetString*(internal_zKey: cstring; internal_zValue: cstring;
-                            internal_zGroup: cstring): orxSTATUS_520095066 {.
+                            internal_zGroup: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxLocale_SetString".}
 else:
   static :
     hint("Declaration of " & "orxLocale_SetString" &
         " already exists, not redeclaring")
 when not declared(orxLocale_GetKeyCount):
-  proc orxLocale_GetKeyCount*(internal_zGroup: cstring): orxU32_520095024 {.
+  proc orxLocale_GetKeyCount*(internal_zGroup: cstring): orxU32_520094987 {.
       cdecl, importc: "orxLocale_GetKeyCount".}
 else:
   static :
     hint("Declaration of " & "orxLocale_GetKeyCount" &
         " already exists, not redeclaring")
 when not declared(orxLocale_GetKey):
-  proc orxLocale_GetKey*(internal_u32KeyIndex: orxU32_520095024;
+  proc orxLocale_GetKey*(internal_u32KeyIndex: orxU32_520094987;
                          internal_zGroup: cstring): cstring {.cdecl,
       importc: "orxLocale_GetKey".}
 else:
@@ -14917,7 +14917,7 @@ else:
     hint("Declaration of " & "resourceSetup" &
         " already exists, not redeclaring")
 when not declared(resourceInit):
-  proc resourceInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxResource_Init".}
+  proc resourceInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxResource_Init".}
 else:
   static :
     hint("Declaration of " & "resourceInit" & " already exists, not redeclaring")
@@ -14927,47 +14927,47 @@ else:
   static :
     hint("Declaration of " & "resourceExit" & " already exists, not redeclaring")
 when not declared(getGroupCount):
-  proc getGroupCount*(): orxU32_520095024 {.cdecl,
+  proc getGroupCount*(): orxU32_520094987 {.cdecl,
       importc: "orxResource_GetGroupCount".}
 else:
   static :
     hint("Declaration of " & "getGroupCount" &
         " already exists, not redeclaring")
 when not declared(getGroup):
-  proc getGroup*(internal_u32Index: orxU32_520095024): cstring {.cdecl,
+  proc getGroup*(internal_u32Index: orxU32_520094987): cstring {.cdecl,
       importc: "orxResource_GetGroup".}
 else:
   static :
     hint("Declaration of " & "getGroup" & " already exists, not redeclaring")
 when not declared(addStorage):
   proc addStorage*(internal_zGroup: cstring; internal_zStorage: cstring;
-                   internal_bAddFirst: orxBOOL_520095038): orxSTATUS_520095066 {.
+                   internal_bAddFirst: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxResource_AddStorage".}
 else:
   static :
     hint("Declaration of " & "addStorage" & " already exists, not redeclaring")
 when not declared(removeStorage):
-  proc removeStorage*(internal_zGroup: cstring; internal_zStorage: cstring): orxSTATUS_520095066 {.
+  proc removeStorage*(internal_zGroup: cstring; internal_zStorage: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxResource_RemoveStorage".}
 else:
   static :
     hint("Declaration of " & "removeStorage" &
         " already exists, not redeclaring")
 when not declared(getStorageCount):
-  proc getStorageCount*(internal_zGroup: cstring): orxU32_520095024 {.cdecl,
+  proc getStorageCount*(internal_zGroup: cstring): orxU32_520094987 {.cdecl,
       importc: "orxResource_GetStorageCount".}
 else:
   static :
     hint("Declaration of " & "getStorageCount" &
         " already exists, not redeclaring")
 when not declared(getStorage):
-  proc getStorage*(internal_zGroup: cstring; internal_u32Index: orxU32_520095024): cstring {.
+  proc getStorage*(internal_zGroup: cstring; internal_u32Index: orxU32_520094987): cstring {.
       cdecl, importc: "orxResource_GetStorage".}
 else:
   static :
     hint("Declaration of " & "getStorage" & " already exists, not redeclaring")
 when not declared(reloadStorage):
-  proc reloadStorage*(): orxSTATUS_520095066 {.cdecl,
+  proc reloadStorage*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxResource_ReloadStorage".}
 else:
   static :
@@ -14994,133 +14994,133 @@ else:
   static :
     hint("Declaration of " & "getPath" & " already exists, not redeclaring")
 when not declared(getType):
-  proc getType*(internal_zLocation: cstring): ptr orxRESOURCE_TYPE_INFO_520095403 {.
+  proc getType*(internal_zLocation: cstring): ptr orxRESOURCE_TYPE_INFO_520095366 {.
       cdecl, importc: "orxResource_GetType".}
 else:
   static :
     hint("Declaration of " & "getType" & " already exists, not redeclaring")
 when not declared(getTime_proc):
-  proc getTime_proc*(internal_zLocation: cstring): orxS64_520095030 {.cdecl,
+  proc getTime_proc*(internal_zLocation: cstring): orxS64_520094993 {.cdecl,
       importc: "orxResource_GetTime".}
 else:
   static :
     hint("Declaration of " & "getTime_proc" & " already exists, not redeclaring")
 when not declared(open):
-  proc open*(internal_zLocation: cstring; internal_bEraseMode: orxBOOL_520095038): orxHANDLE_520095050 {.
+  proc open*(internal_zLocation: cstring; internal_bEraseMode: orxBOOL_520095001): orxHANDLE_520095013 {.
       cdecl, importc: "orxResource_Open".}
 else:
   static :
     hint("Declaration of " & "open" & " already exists, not redeclaring")
 when not declared(close):
-  proc close*(internal_hResource: orxHANDLE_520095050): void {.cdecl,
+  proc close*(internal_hResource: orxHANDLE_520095013): void {.cdecl,
       importc: "orxResource_Close".}
 else:
   static :
     hint("Declaration of " & "close" & " already exists, not redeclaring")
 when not declared(getLocation):
-  proc getLocation*(internal_hResource: orxHANDLE_520095050): cstring {.cdecl,
+  proc getLocation*(internal_hResource: orxHANDLE_520095013): cstring {.cdecl,
       importc: "orxResource_GetLocation".}
 else:
   static :
     hint("Declaration of " & "getLocation" & " already exists, not redeclaring")
 when not declared(getSize):
-  proc getSize*(internal_hResource: orxHANDLE_520095050): orxS64_520095030 {.
+  proc getSize*(internal_hResource: orxHANDLE_520095013): orxS64_520094993 {.
       cdecl, importc: "orxResource_GetSize".}
 else:
   static :
     hint("Declaration of " & "getSize" & " already exists, not redeclaring")
 when not declared(seek):
-  proc seek*(internal_hResource: orxHANDLE_520095050;
-             internal_s64Offset: orxS64_520095030;
-             internal_eWhence: orxSEEK_OFFSET_WHENCE_520095058): orxS64_520095030 {.
+  proc seek*(internal_hResource: orxHANDLE_520095013;
+             internal_s64Offset: orxS64_520094993;
+             internal_eWhence: orxSEEK_OFFSET_WHENCE_520095021): orxS64_520094993 {.
       cdecl, importc: "orxResource_Seek".}
 else:
   static :
     hint("Declaration of " & "seek" & " already exists, not redeclaring")
 when not declared(tell):
-  proc tell*(internal_hResource: orxHANDLE_520095050): orxS64_520095030 {.cdecl,
+  proc tell*(internal_hResource: orxHANDLE_520095013): orxS64_520094993 {.cdecl,
       importc: "orxResource_Tell".}
 else:
   static :
     hint("Declaration of " & "tell" & " already exists, not redeclaring")
 when not declared(read):
-  proc read*(internal_hResource: orxHANDLE_520095050; internal_s64Size: orxS64_520095030;
+  proc read*(internal_hResource: orxHANDLE_520095013; internal_s64Size: orxS64_520094993;
              internal_pBuffer: pointer;
-             internal_pfnCallback: orxRESOURCE_OP_FUNCTION_520095379;
-             internal_pContext: pointer): orxS64_520095030 {.cdecl,
+             internal_pfnCallback: orxRESOURCE_OP_FUNCTION_520095342;
+             internal_pContext: pointer): orxS64_520094993 {.cdecl,
       importc: "orxResource_Read".}
 else:
   static :
     hint("Declaration of " & "read" & " already exists, not redeclaring")
 when not declared(write):
-  proc write*(internal_hResource: orxHANDLE_520095050; internal_s64Size: orxS64_520095030;
+  proc write*(internal_hResource: orxHANDLE_520095013; internal_s64Size: orxS64_520094993;
               internal_pBuffer: pointer;
-              internal_pfnCallback: orxRESOURCE_OP_FUNCTION_520095379;
-              internal_pContext: pointer): orxS64_520095030 {.cdecl,
+              internal_pfnCallback: orxRESOURCE_OP_FUNCTION_520095342;
+              internal_pContext: pointer): orxS64_520094993 {.cdecl,
       importc: "orxResource_Write".}
 else:
   static :
     hint("Declaration of " & "write" & " already exists, not redeclaring")
 when not declared(resourceDelete):
-  proc resourceDelete*(internal_zLocation: cstring): orxSTATUS_520095066 {.
+  proc resourceDelete*(internal_zLocation: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxResource_Delete".}
 else:
   static :
     hint("Declaration of " & "resourceDelete" &
         " already exists, not redeclaring")
 when not declared(getPendingOpCount):
-  proc getPendingOpCount*(internal_hResource: orxHANDLE_520095050): orxU32_520095024 {.
+  proc getPendingOpCount*(internal_hResource: orxHANDLE_520095013): orxU32_520094987 {.
       cdecl, importc: "orxResource_GetPendingOpCount".}
 else:
   static :
     hint("Declaration of " & "getPendingOpCount" &
         " already exists, not redeclaring")
 when not declared(getTotalPendingOpCount):
-  proc getTotalPendingOpCount*(): orxU32_520095024 {.cdecl,
+  proc getTotalPendingOpCount*(): orxU32_520094987 {.cdecl,
       importc: "orxResource_GetTotalPendingOpCount".}
 else:
   static :
     hint("Declaration of " & "getTotalPendingOpCount" &
         " already exists, not redeclaring")
 when not declared(registerType):
-  proc registerType*(internal_pstInfo: ptr orxRESOURCE_TYPE_INFO_520095403): orxSTATUS_520095066 {.
+  proc registerType*(internal_pstInfo: ptr orxRESOURCE_TYPE_INFO_520095366): orxSTATUS_520095029 {.
       cdecl, importc: "orxResource_RegisterType".}
 else:
   static :
     hint("Declaration of " & "registerType" & " already exists, not redeclaring")
 when not declared(unregisterType):
-  proc unregisterType*(internal_zTypeTag: cstring): orxSTATUS_520095066 {.cdecl,
+  proc unregisterType*(internal_zTypeTag: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxResource_UnregisterType".}
 else:
   static :
     hint("Declaration of " & "unregisterType" &
         " already exists, not redeclaring")
 when not declared(getTypeCount):
-  proc getTypeCount*(): orxU32_520095024 {.cdecl,
+  proc getTypeCount*(): orxU32_520094987 {.cdecl,
       importc: "orxResource_GetTypeCount".}
 else:
   static :
     hint("Declaration of " & "getTypeCount" & " already exists, not redeclaring")
 when not declared(getTypeTag):
-  proc getTypeTag*(internal_u32Index: orxU32_520095024): cstring {.cdecl,
+  proc getTypeTag*(internal_u32Index: orxU32_520094987): cstring {.cdecl,
       importc: "orxResource_GetTypeTag".}
 else:
   static :
     hint("Declaration of " & "getTypeTag" & " already exists, not redeclaring")
 when not declared(sync):
-  proc sync*(internal_zGroup: cstring): orxSTATUS_520095066 {.cdecl,
+  proc sync*(internal_zGroup: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxResource_Sync".}
 else:
   static :
     hint("Declaration of " & "sync" & " already exists, not redeclaring")
 when not declared(clearCache):
-  proc clearCache*(internal_zGroup: cstring): orxSTATUS_520095066 {.cdecl,
+  proc clearCache*(internal_zGroup: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxResource_ClearCache".}
 else:
   static :
     hint("Declaration of " & "clearCache" & " already exists, not redeclaring")
 when not declared(getCacheCount):
-  proc getCacheCount*(internal_zGroup: cstring): orxU32_520095024 {.cdecl,
+  proc getCacheCount*(internal_zGroup: cstring): orxU32_520094987 {.cdecl,
       importc: "orxResource_GetCacheCount".}
 else:
   static :
@@ -15128,18 +15128,18 @@ else:
         " already exists, not redeclaring")
 when not declared(getNextCachedLocation):
   proc getNextCachedLocation*(internal_zGroup: cstring;
-                              internal_hIterator: orxHANDLE_520095050;
+                              internal_hIterator: orxHANDLE_520095013;
                               internal_pzLocation: ptr cstring;
                               internal_pzStorage: ptr cstring;
-                              internal_pzName: ptr cstring): orxHANDLE_520095050 {.
+                              internal_pzName: ptr cstring): orxHANDLE_520095013 {.
       cdecl, importc: "orxResource_GetNextCachedLocation".}
 else:
   static :
     hint("Declaration of " & "getNextCachedLocation" &
         " already exists, not redeclaring")
 when not declared(setMemoryResource):
-  proc setMemoryResource*(internal_zName: cstring; internal_s64Size: orxS64_520095030;
-                          internal_pBuffer: pointer): orxSTATUS_520095066 {.
+  proc setMemoryResource*(internal_zName: cstring; internal_s64Size: orxS64_520094993;
+                          internal_pBuffer: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxResource_SetMemoryResource".}
 else:
   static :
@@ -15151,7 +15151,7 @@ else:
   static :
     hint("Declaration of " & "threadSetup" & " already exists, not redeclaring")
 when not declared(threadInit):
-  proc threadInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxThread_Init".}
+  proc threadInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxThread_Init".}
 else:
   static :
     hint("Declaration of " & "threadInit" & " already exists, not redeclaring")
@@ -15161,44 +15161,44 @@ else:
   static :
     hint("Declaration of " & "threadExit" & " already exists, not redeclaring")
 when not declared(orxThread_Start):
-  proc orxThread_Start*(internal_pfnRun: orxTHREAD_FUNCTION_520095415;
-                        internal_zName: cstring; internal_pContext: pointer): orxU32_520095024 {.
+  proc orxThread_Start*(internal_pfnRun: orxTHREAD_FUNCTION_520095378;
+                        internal_zName: cstring; internal_pContext: pointer): orxU32_520094987 {.
       cdecl, importc: "orxThread_Start".}
 else:
   static :
     hint("Declaration of " & "orxThread_Start" &
         " already exists, not redeclaring")
 when not declared(orxThread_Join):
-  proc orxThread_Join*(internal_u32ThreadID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxThread_Join*(internal_u32ThreadID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_Join".}
 else:
   static :
     hint("Declaration of " & "orxThread_Join" &
         " already exists, not redeclaring")
 when not declared(orxThread_JoinAll):
-  proc orxThread_JoinAll*(): orxSTATUS_520095066 {.cdecl,
+  proc orxThread_JoinAll*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxThread_JoinAll".}
 else:
   static :
     hint("Declaration of " & "orxThread_JoinAll" &
         " already exists, not redeclaring")
 when not declared(orxThread_GetName):
-  proc orxThread_GetName*(internal_u32ThreadID: orxU32_520095024): cstring {.
+  proc orxThread_GetName*(internal_u32ThreadID: orxU32_520094987): cstring {.
       cdecl, importc: "orxThread_GetName".}
 else:
   static :
     hint("Declaration of " & "orxThread_GetName" &
         " already exists, not redeclaring")
 when not declared(orxThread_Enable):
-  proc orxThread_Enable*(internal_u32EnableThreads: orxU32_520095024;
-                         internal_u32DisableThreads: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxThread_Enable*(internal_u32EnableThreads: orxU32_520094987;
+                         internal_u32DisableThreads: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_Enable".}
 else:
   static :
     hint("Declaration of " & "orxThread_Enable" &
         " already exists, not redeclaring")
 when not declared(orxThread_GetCurrent):
-  proc orxThread_GetCurrent*(): orxU32_520095024 {.cdecl,
+  proc orxThread_GetCurrent*(): orxU32_520094987 {.cdecl,
       importc: "orxThread_GetCurrent".}
 else:
   static :
@@ -15211,54 +15211,54 @@ else:
     hint("Declaration of " & "orxThread_Yield" &
         " already exists, not redeclaring")
 when not declared(orxThread_CreateSemaphore):
-  proc orxThread_CreateSemaphore*(internal_u32Value: orxU32_520095024): ptr orxTHREAD_SEMAPHORE_520095413 {.
+  proc orxThread_CreateSemaphore*(internal_u32Value: orxU32_520094987): ptr orxTHREAD_SEMAPHORE_520095376 {.
       cdecl, importc: "orxThread_CreateSemaphore".}
 else:
   static :
     hint("Declaration of " & "orxThread_CreateSemaphore" &
         " already exists, not redeclaring")
 when not declared(orxThread_DeleteSemaphore):
-  proc orxThread_DeleteSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095413): orxSTATUS_520095066 {.
+  proc orxThread_DeleteSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095376): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_DeleteSemaphore".}
 else:
   static :
     hint("Declaration of " & "orxThread_DeleteSemaphore" &
         " already exists, not redeclaring")
 when not declared(orxThread_WaitSemaphore):
-  proc orxThread_WaitSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095413): orxSTATUS_520095066 {.
+  proc orxThread_WaitSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095376): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_WaitSemaphore".}
 else:
   static :
     hint("Declaration of " & "orxThread_WaitSemaphore" &
         " already exists, not redeclaring")
 when not declared(orxThread_SignalSemaphore):
-  proc orxThread_SignalSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095413): orxSTATUS_520095066 {.
+  proc orxThread_SignalSemaphore*(internal_pstSemaphore: ptr orxTHREAD_SEMAPHORE_520095376): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_SignalSemaphore".}
 else:
   static :
     hint("Declaration of " & "orxThread_SignalSemaphore" &
         " already exists, not redeclaring")
 when not declared(orxThread_RunTask):
-  proc orxThread_RunTask*(internal_pfnRun: orxTHREAD_FUNCTION_520095415;
-                          internal_pfnThen: orxTHREAD_FUNCTION_520095415;
-                          internal_pfnElse: orxTHREAD_FUNCTION_520095415;
-                          internal_pContext: pointer): orxSTATUS_520095066 {.
+  proc orxThread_RunTask*(internal_pfnRun: orxTHREAD_FUNCTION_520095378;
+                          internal_pfnThen: orxTHREAD_FUNCTION_520095378;
+                          internal_pfnElse: orxTHREAD_FUNCTION_520095378;
+                          internal_pContext: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_RunTask".}
 else:
   static :
     hint("Declaration of " & "orxThread_RunTask" &
         " already exists, not redeclaring")
 when not declared(orxThread_GetTaskCount):
-  proc orxThread_GetTaskCount*(): orxU32_520095024 {.cdecl,
+  proc orxThread_GetTaskCount*(): orxU32_520094987 {.cdecl,
       importc: "orxThread_GetTaskCount".}
 else:
   static :
     hint("Declaration of " & "orxThread_GetTaskCount" &
         " already exists, not redeclaring")
 when not declared(orxThread_SetCallbacks):
-  proc orxThread_SetCallbacks*(internal_pfnStart: orxTHREAD_FUNCTION_520095415;
-                               internal_pfnStop: orxTHREAD_FUNCTION_520095415;
-                               internal_pContext: pointer): orxSTATUS_520095066 {.
+  proc orxThread_SetCallbacks*(internal_pfnStart: orxTHREAD_FUNCTION_520095378;
+                               internal_pfnStop: orxTHREAD_FUNCTION_520095378;
+                               internal_pContext: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxThread_SetCallbacks".}
 else:
   static :
@@ -15270,7 +15270,7 @@ else:
   static :
     hint("Declaration of " & "fPSSetup" & " already exists, not redeclaring")
 when not declared(fPSInit):
-  proc fPSInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxFPS_Init".}
+  proc fPSInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxFPS_Init".}
 else:
   static :
     hint("Declaration of " & "fPSInit" & " already exists, not redeclaring")
@@ -15287,7 +15287,7 @@ else:
     hint("Declaration of " & "orxFPS_IncreaseFrameCount" &
         " already exists, not redeclaring")
 when not declared(orxFPS_GetFPS):
-  proc orxFPS_GetFPS*(): orxU32_520095024 {.cdecl, importc: "orxFPS_GetFPS".}
+  proc orxFPS_GetFPS*(): orxU32_520094987 {.cdecl, importc: "orxFPS_GetFPS".}
 else:
   static :
     hint("Declaration of " & "orxFPS_GetFPS" &
@@ -15299,7 +15299,7 @@ else:
     hint("Declaration of " & "profilerSetup" &
         " already exists, not redeclaring")
 when not declared(profilerInit):
-  proc profilerInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxProfiler_Init".}
+  proc profilerInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxProfiler_Init".}
 else:
   static :
     hint("Declaration of " & "profilerInit" & " already exists, not redeclaring")
@@ -15309,21 +15309,21 @@ else:
   static :
     hint("Declaration of " & "profilerExit" & " already exists, not redeclaring")
 when not declared(orxProfiler_GetIDFromName):
-  proc orxProfiler_GetIDFromName*(internal_zName: cstring): orxS32_520095032 {.
+  proc orxProfiler_GetIDFromName*(internal_zName: cstring): orxS32_520094995 {.
       cdecl, importc: "orxProfiler_GetIDFromName".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetIDFromName" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_IsMarkerIDValid):
-  proc orxProfiler_IsMarkerIDValid*(internal_s32MarkerID: orxS32_520095032): orxBOOL_520095038 {.
+  proc orxProfiler_IsMarkerIDValid*(internal_s32MarkerID: orxS32_520094995): orxBOOL_520095001 {.
       cdecl, importc: "orxProfiler_IsMarkerIDValid".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_IsMarkerIDValid" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_PushMarker):
-  proc orxProfiler_PushMarker*(internal_s32MarkerID: orxS32_520095032): void {.
+  proc orxProfiler_PushMarker*(internal_s32MarkerID: orxS32_520094995): void {.
       cdecl, importc: "orxProfiler_PushMarker".}
 else:
   static :
@@ -15336,28 +15336,28 @@ else:
     hint("Declaration of " & "orxProfiler_PopMarker" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_EnableMarkerOperations):
-  proc orxProfiler_EnableMarkerOperations*(internal_bEnable: orxBOOL_520095038): void {.
+  proc orxProfiler_EnableMarkerOperations*(internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxProfiler_EnableMarkerOperations".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_EnableMarkerOperations" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_AreMarkerOperationsEnabled):
-  proc orxProfiler_AreMarkerOperationsEnabled*(): orxBOOL_520095038 {.cdecl,
+  proc orxProfiler_AreMarkerOperationsEnabled*(): orxBOOL_520095001 {.cdecl,
       importc: "orxProfiler_AreMarkerOperationsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_AreMarkerOperationsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_Pause):
-  proc orxProfiler_Pause*(internal_bPause: orxBOOL_520095038): void {.cdecl,
+  proc orxProfiler_Pause*(internal_bPause: orxBOOL_520095001): void {.cdecl,
       importc: "orxProfiler_Pause".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_Pause" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_IsPaused):
-  proc orxProfiler_IsPaused*(): orxBOOL_520095038 {.cdecl,
+  proc orxProfiler_IsPaused*(): orxBOOL_520095001 {.cdecl,
       importc: "orxProfiler_IsPaused".}
 else:
   static :
@@ -15378,92 +15378,92 @@ else:
     hint("Declaration of " & "orxProfiler_ResetAllMaxima" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetResetTime):
-  proc orxProfiler_GetResetTime*(): orxDOUBLE_520095042 {.cdecl,
+  proc orxProfiler_GetResetTime*(): orxDOUBLE_520095005 {.cdecl,
       importc: "orxProfiler_GetResetTime".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetResetTime" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMaxResetTime):
-  proc orxProfiler_GetMaxResetTime*(): orxDOUBLE_520095042 {.cdecl,
+  proc orxProfiler_GetMaxResetTime*(): orxDOUBLE_520095005 {.cdecl,
       importc: "orxProfiler_GetMaxResetTime".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMaxResetTime" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMarkerCount):
-  proc orxProfiler_GetMarkerCount*(): orxS32_520095032 {.cdecl,
+  proc orxProfiler_GetMarkerCount*(): orxS32_520094995 {.cdecl,
       importc: "orxProfiler_GetMarkerCount".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMarkerCount" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetNextMarkerID):
-  proc orxProfiler_GetNextMarkerID*(internal_s32MarkerID: orxS32_520095032): orxS32_520095032 {.
+  proc orxProfiler_GetNextMarkerID*(internal_s32MarkerID: orxS32_520094995): orxS32_520094995 {.
       cdecl, importc: "orxProfiler_GetNextMarkerID".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetNextMarkerID" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetNextSortedMarkerID):
-  proc orxProfiler_GetNextSortedMarkerID*(internal_s32MarkerID: orxS32_520095032): orxS32_520095032 {.
+  proc orxProfiler_GetNextSortedMarkerID*(internal_s32MarkerID: orxS32_520094995): orxS32_520094995 {.
       cdecl, importc: "orxProfiler_GetNextSortedMarkerID".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetNextSortedMarkerID" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_SelectQueryFrame):
-  proc orxProfiler_SelectQueryFrame*(internal_u32QueryFrame: orxU32_520095024;
-                                     internal_u32ThreadID: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxProfiler_SelectQueryFrame*(internal_u32QueryFrame: orxU32_520094987;
+                                     internal_u32ThreadID: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxProfiler_SelectQueryFrame".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_SelectQueryFrame" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMarkerTime):
-  proc orxProfiler_GetMarkerTime*(internal_s32MarkerID: orxS32_520095032): orxDOUBLE_520095042 {.
+  proc orxProfiler_GetMarkerTime*(internal_s32MarkerID: orxS32_520094995): orxDOUBLE_520095005 {.
       cdecl, importc: "orxProfiler_GetMarkerTime".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMarkerTime" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMarkerMaxTime):
-  proc orxProfiler_GetMarkerMaxTime*(internal_s32MarkerID: orxS32_520095032): orxDOUBLE_520095042 {.
+  proc orxProfiler_GetMarkerMaxTime*(internal_s32MarkerID: orxS32_520094995): orxDOUBLE_520095005 {.
       cdecl, importc: "orxProfiler_GetMarkerMaxTime".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMarkerMaxTime" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMarkerName):
-  proc orxProfiler_GetMarkerName*(internal_s32MarkerID: orxS32_520095032): cstring {.
+  proc orxProfiler_GetMarkerName*(internal_s32MarkerID: orxS32_520094995): cstring {.
       cdecl, importc: "orxProfiler_GetMarkerName".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMarkerName" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetMarkerPushCount):
-  proc orxProfiler_GetMarkerPushCount*(internal_s32MarkerID: orxS32_520095032): orxU32_520095024 {.
+  proc orxProfiler_GetMarkerPushCount*(internal_s32MarkerID: orxS32_520094995): orxU32_520094987 {.
       cdecl, importc: "orxProfiler_GetMarkerPushCount".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetMarkerPushCount" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_IsUniqueMarker):
-  proc orxProfiler_IsUniqueMarker*(internal_s32MarkerID: orxS32_520095032): orxBOOL_520095038 {.
+  proc orxProfiler_IsUniqueMarker*(internal_s32MarkerID: orxS32_520094995): orxBOOL_520095001 {.
       cdecl, importc: "orxProfiler_IsUniqueMarker".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_IsUniqueMarker" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetUniqueMarkerStartTime):
-  proc orxProfiler_GetUniqueMarkerStartTime*(internal_s32MarkerID: orxS32_520095032): orxDOUBLE_520095042 {.
+  proc orxProfiler_GetUniqueMarkerStartTime*(internal_s32MarkerID: orxS32_520094995): orxDOUBLE_520095005 {.
       cdecl, importc: "orxProfiler_GetUniqueMarkerStartTime".}
 else:
   static :
     hint("Declaration of " & "orxProfiler_GetUniqueMarkerStartTime" &
         " already exists, not redeclaring")
 when not declared(orxProfiler_GetUniqueMarkerDepth):
-  proc orxProfiler_GetUniqueMarkerDepth*(internal_s32MarkerID: orxS32_520095032): orxU32_520095024 {.
+  proc orxProfiler_GetUniqueMarkerDepth*(internal_s32MarkerID: orxS32_520094995): orxU32_520094987 {.
       cdecl, importc: "orxProfiler_GetUniqueMarkerDepth".}
 else:
   static :
@@ -15475,7 +15475,7 @@ else:
   static :
     hint("Declaration of " & "graphicSetup" & " already exists, not redeclaring")
 when not declared(graphicInit):
-  proc graphicInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxGraphic_Init".}
+  proc graphicInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxGraphic_Init".}
 else:
   static :
     hint("Declaration of " & "graphicInit" & " already exists, not redeclaring")
@@ -15485,239 +15485,239 @@ else:
   static :
     hint("Declaration of " & "graphicExit" & " already exists, not redeclaring")
 when not declared(orxGraphic_GetAlignFlags):
-  proc orxGraphic_GetAlignFlags*(internal_zAlign: cstring): orxU32_520095024 {.
+  proc orxGraphic_GetAlignFlags*(internal_zAlign: cstring): orxU32_520094987 {.
       cdecl, importc: "orxGraphic_GetAlignFlags".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetAlignFlags" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_AlignVector):
-  proc orxGraphic_AlignVector*(internal_u32AlignFlags: orxU32_520095024;
-                               internal_pstBox: ptr orxAABOX_520095419;
-                               internal_pvValue: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxGraphic_AlignVector*(internal_u32AlignFlags: orxU32_520094987;
+                               internal_pstBox: ptr orxAABOX_520095382;
+                               internal_pvValue: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxGraphic_AlignVector".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_AlignVector" &
         " already exists, not redeclaring")
 when not declared(graphicCreate):
-  proc graphicCreate*(): ptr orxGRAPHIC_520095421 {.cdecl,
+  proc graphicCreate*(): ptr orxGRAPHIC_520095384 {.cdecl,
       importc: "orxGraphic_Create".}
 else:
   static :
     hint("Declaration of " & "graphicCreate" &
         " already exists, not redeclaring")
 when not declared(graphicCreateFromConfig):
-  proc graphicCreateFromConfig*(internal_zConfigID: cstring): ptr orxGRAPHIC_520095421 {.
+  proc graphicCreateFromConfig*(internal_zConfigID: cstring): ptr orxGRAPHIC_520095384 {.
       cdecl, importc: "orxGraphic_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "graphicCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(graphicDelete):
-  proc graphicDelete*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
+  proc graphicDelete*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_Delete".}
 else:
   static :
     hint("Declaration of " & "graphicDelete" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_Clone):
-  proc orxGraphic_Clone*(internal_pstGraphic: ptr orxGRAPHIC_520095421): ptr orxGRAPHIC_520095421 {.
+  proc orxGraphic_Clone*(internal_pstGraphic: ptr orxGRAPHIC_520095384): ptr orxGRAPHIC_520095384 {.
       cdecl, importc: "orxGraphic_Clone".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_Clone" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetName):
-  proc orxGraphic_GetName*(internal_pstGraphic: ptr orxGRAPHIC_520095421): cstring {.
+  proc orxGraphic_GetName*(internal_pstGraphic: ptr orxGRAPHIC_520095384): cstring {.
       cdecl, importc: "orxGraphic_GetName".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetName" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetData):
-  proc orxGraphic_SetData*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                           internal_pstData: ptr orxSTRUCTURE_520095159): orxSTATUS_520095066 {.
+  proc orxGraphic_SetData*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                           internal_pstData: ptr orxSTRUCTURE_520095122): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetData".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetData" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetData):
-  proc orxGraphic_GetData*(internal_pstGraphic: ptr orxGRAPHIC_520095421): ptr orxSTRUCTURE_520095159 {.
+  proc orxGraphic_GetData*(internal_pstGraphic: ptr orxGRAPHIC_520095384): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxGraphic_GetData".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetData" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetFlip):
-  proc orxGraphic_SetFlip*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                           internal_bFlipX: orxBOOL_520095038;
-                           internal_bFlipY: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxGraphic_SetFlip*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                           internal_bFlipX: orxBOOL_520095001;
+                           internal_bFlipY: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetFlip".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetFlip" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetFlip):
-  proc orxGraphic_GetFlip*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                           internal_pbFlipX: ptr orxBOOL_520095038;
-                           internal_pbFlipY: ptr orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxGraphic_GetFlip*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                           internal_pbFlipX: ptr orxBOOL_520095001;
+                           internal_pbFlipY: ptr orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_GetFlip".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetFlip" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetPivot):
-  proc orxGraphic_SetPivot*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                            internal_pvPivot: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxGraphic_SetPivot*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                            internal_pvPivot: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetPivot".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetPivot" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetRelativePivot):
-  proc orxGraphic_SetRelativePivot*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                                    internal_u32AlignFlags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxGraphic_SetRelativePivot*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                                    internal_u32AlignFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetRelativePivot".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetRelativePivot" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetPivot):
-  proc orxGraphic_GetPivot*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                            internal_pvPivot: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxGraphic_GetPivot*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                            internal_pvPivot: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxGraphic_GetPivot".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetPivot" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetSize):
-  proc orxGraphic_SetSize*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                           internal_pvSize: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxGraphic_SetSize*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                           internal_pvSize: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetSize".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetSize" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetSize):
-  proc orxGraphic_GetSize*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                           internal_pvSize: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxGraphic_GetSize*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                           internal_pvSize: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxGraphic_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetSize" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetColor):
-  proc orxGraphic_SetColor*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                            internal_pstColor: ptr orxCOLOR_520095307): orxSTATUS_520095066 {.
+  proc orxGraphic_SetColor*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                            internal_pstColor: ptr orxCOLOR_520095270): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetColor".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetColor" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetRepeat):
-  proc orxGraphic_SetRepeat*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                             internal_fRepeatX: orxFLOAT_520095040;
-                             internal_fRepeatY: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxGraphic_SetRepeat*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                             internal_fRepeatX: orxFLOAT_520095003;
+                             internal_fRepeatY: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetRepeat".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetRepeat" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_ClearColor):
-  proc orxGraphic_ClearColor*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
+  proc orxGraphic_ClearColor*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_ClearColor".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_ClearColor" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_HasColor):
-  proc orxGraphic_HasColor*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxBOOL_520095038 {.
+  proc orxGraphic_HasColor*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxBOOL_520095001 {.
       cdecl, importc: "orxGraphic_HasColor".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_HasColor" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetColor):
-  proc orxGraphic_GetColor*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                            internal_pstColor: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxGraphic_GetColor*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                            internal_pstColor: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxGraphic_GetColor".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetColor" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetRepeat):
-  proc orxGraphic_GetRepeat*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                             internal_pfRepeatX: ptr orxFLOAT_520095040;
-                             internal_pfRepeatY: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxGraphic_GetRepeat*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                             internal_pfRepeatX: ptr orxFLOAT_520095003;
+                             internal_pfRepeatY: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_GetRepeat".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetRepeat" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetOrigin):
-  proc orxGraphic_SetOrigin*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                             internal_pvOrigin: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxGraphic_SetOrigin*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                             internal_pvOrigin: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetOrigin".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetOrigin" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetOrigin):
-  proc orxGraphic_GetOrigin*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                             internal_pvOrigin: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxGraphic_GetOrigin*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                             internal_pvOrigin: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxGraphic_GetOrigin".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetOrigin" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_UpdateSize):
-  proc orxGraphic_UpdateSize*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
+  proc orxGraphic_UpdateSize*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_UpdateSize".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_UpdateSize" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetSmoothing):
-  proc orxGraphic_SetSmoothing*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                                internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299): orxSTATUS_520095066 {.
+  proc orxGraphic_SetSmoothing*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                                internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetSmoothing".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetSmoothing" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetSmoothing):
-  proc orxGraphic_GetSmoothing*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxDISPLAY_SMOOTHING_520095299 {.
+  proc orxGraphic_GetSmoothing*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxDISPLAY_SMOOTHING_520095262 {.
       cdecl, importc: "orxGraphic_GetSmoothing".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_GetSmoothing" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_SetBlendMode):
-  proc orxGraphic_SetBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095421;
-                                internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc orxGraphic_SetBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095384;
+                                internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_SetBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_SetBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_ClearBlendMode):
-  proc orxGraphic_ClearBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxSTATUS_520095066 {.
+  proc orxGraphic_ClearBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxSTATUS_520095029 {.
       cdecl, importc: "orxGraphic_ClearBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_ClearBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_HasBlendMode):
-  proc orxGraphic_HasBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxBOOL_520095038 {.
+  proc orxGraphic_HasBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxBOOL_520095001 {.
       cdecl, importc: "orxGraphic_HasBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxGraphic_HasBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxGraphic_GetBlendMode):
-  proc orxGraphic_GetBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095421): orxDISPLAY_BLEND_MODE_520095303 {.
+  proc orxGraphic_GetBlendMode*(internal_pstGraphic: ptr orxGRAPHIC_520095384): orxDISPLAY_BLEND_MODE_520095266 {.
       cdecl, importc: "orxGraphic_GetBlendMode".}
 else:
   static :
@@ -15730,7 +15730,7 @@ else:
     hint("Declaration of " & "screenshotSetup" &
         " already exists, not redeclaring")
 when not declared(screenshotInit):
-  proc screenshotInit*(): orxSTATUS_520095066 {.cdecl,
+  proc screenshotInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxScreenshot_Init".}
 else:
   static :
@@ -15743,7 +15743,7 @@ else:
     hint("Declaration of " & "screenshotExit" &
         " already exists, not redeclaring")
 when not declared(orxScreenshot_Capture):
-  proc orxScreenshot_Capture*(): orxSTATUS_520095066 {.cdecl,
+  proc orxScreenshot_Capture*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxScreenshot_Capture".}
 else:
   static :
@@ -15755,7 +15755,7 @@ else:
   static :
     hint("Declaration of " & "textSetup" & " already exists, not redeclaring")
 when not declared(textInit):
-  proc textInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxText_Init".}
+  proc textInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxText_Init".}
 else:
   static :
     hint("Declaration of " & "textInit" & " already exists, not redeclaring")
@@ -15765,98 +15765,98 @@ else:
   static :
     hint("Declaration of " & "textExit" & " already exists, not redeclaring")
 when not declared(textCreate):
-  proc textCreate*(): ptr orxTEXT_520095423 {.cdecl, importc: "orxText_Create".}
+  proc textCreate*(): ptr orxTEXT_520095386 {.cdecl, importc: "orxText_Create".}
 else:
   static :
     hint("Declaration of " & "textCreate" & " already exists, not redeclaring")
 when not declared(textCreateFromConfig):
-  proc textCreateFromConfig*(internal_zConfigID: cstring): ptr orxTEXT_520095423 {.
+  proc textCreateFromConfig*(internal_zConfigID: cstring): ptr orxTEXT_520095386 {.
       cdecl, importc: "orxText_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "textCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(textDelete):
-  proc textDelete*(internal_pstText: ptr orxTEXT_520095423): orxSTATUS_520095066 {.
+  proc textDelete*(internal_pstText: ptr orxTEXT_520095386): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_Delete".}
 else:
   static :
     hint("Declaration of " & "textDelete" & " already exists, not redeclaring")
 when not declared(orxText_GetName):
-  proc orxText_GetName*(internal_pstText: ptr orxTEXT_520095423): cstring {.
+  proc orxText_GetName*(internal_pstText: ptr orxTEXT_520095386): cstring {.
       cdecl, importc: "orxText_GetName".}
 else:
   static :
     hint("Declaration of " & "orxText_GetName" &
         " already exists, not redeclaring")
 when not declared(orxText_GetLineCount):
-  proc orxText_GetLineCount*(internal_pstText: ptr orxTEXT_520095423): orxU32_520095024 {.
+  proc orxText_GetLineCount*(internal_pstText: ptr orxTEXT_520095386): orxU32_520094987 {.
       cdecl, importc: "orxText_GetLineCount".}
 else:
   static :
     hint("Declaration of " & "orxText_GetLineCount" &
         " already exists, not redeclaring")
 when not declared(orxText_GetLineSize):
-  proc orxText_GetLineSize*(internal_pstText: ptr orxTEXT_520095423;
-                            internal_u32Line: orxU32_520095024;
-                            internal_pfWidth: ptr orxFLOAT_520095040;
-                            internal_pfHeight: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxText_GetLineSize*(internal_pstText: ptr orxTEXT_520095386;
+                            internal_u32Line: orxU32_520094987;
+                            internal_pfWidth: ptr orxFLOAT_520095003;
+                            internal_pfHeight: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_GetLineSize".}
 else:
   static :
     hint("Declaration of " & "orxText_GetLineSize" &
         " already exists, not redeclaring")
 when not declared(orxText_IsFixedSize):
-  proc orxText_IsFixedSize*(internal_pstText: ptr orxTEXT_520095423): orxBOOL_520095038 {.
+  proc orxText_IsFixedSize*(internal_pstText: ptr orxTEXT_520095386): orxBOOL_520095001 {.
       cdecl, importc: "orxText_IsFixedSize".}
 else:
   static :
     hint("Declaration of " & "orxText_IsFixedSize" &
         " already exists, not redeclaring")
 when not declared(orxText_GetSize):
-  proc orxText_GetSize*(internal_pstText: ptr orxTEXT_520095423;
-                        internal_pfWidth: ptr orxFLOAT_520095040;
-                        internal_pfHeight: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxText_GetSize*(internal_pstText: ptr orxTEXT_520095386;
+                        internal_pfWidth: ptr orxFLOAT_520095003;
+                        internal_pfHeight: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxText_GetSize" &
         " already exists, not redeclaring")
 when not declared(orxText_GetString):
-  proc orxText_GetString*(internal_pstText: ptr orxTEXT_520095423): cstring {.
+  proc orxText_GetString*(internal_pstText: ptr orxTEXT_520095386): cstring {.
       cdecl, importc: "orxText_GetString".}
 else:
   static :
     hint("Declaration of " & "orxText_GetString" &
         " already exists, not redeclaring")
 when not declared(orxText_GetFont):
-  proc orxText_GetFont*(internal_pstText: ptr orxTEXT_520095423): ptr orxFONT_520095323 {.
+  proc orxText_GetFont*(internal_pstText: ptr orxTEXT_520095386): ptr orxFONT_520095286 {.
       cdecl, importc: "orxText_GetFont".}
 else:
   static :
     hint("Declaration of " & "orxText_GetFont" &
         " already exists, not redeclaring")
 when not declared(orxText_SetSize):
-  proc orxText_SetSize*(internal_pstText: ptr orxTEXT_520095423;
-                        internal_fWidth: orxFLOAT_520095040;
-                        internal_fHeight: orxFLOAT_520095040;
-                        internal_pzExtra: ptr cstring): orxSTATUS_520095066 {.
+  proc orxText_SetSize*(internal_pstText: ptr orxTEXT_520095386;
+                        internal_fWidth: orxFLOAT_520095003;
+                        internal_fHeight: orxFLOAT_520095003;
+                        internal_pzExtra: ptr cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_SetSize".}
 else:
   static :
     hint("Declaration of " & "orxText_SetSize" &
         " already exists, not redeclaring")
 when not declared(orxText_SetString):
-  proc orxText_SetString*(internal_pstText: ptr orxTEXT_520095423;
-                          internal_zString: cstring): orxSTATUS_520095066 {.
+  proc orxText_SetString*(internal_pstText: ptr orxTEXT_520095386;
+                          internal_zString: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_SetString".}
 else:
   static :
     hint("Declaration of " & "orxText_SetString" &
         " already exists, not redeclaring")
 when not declared(orxText_SetFont):
-  proc orxText_SetFont*(internal_pstText: ptr orxTEXT_520095423;
-                        internal_pstFont: ptr orxFONT_520095323): orxSTATUS_520095066 {.
+  proc orxText_SetFont*(internal_pstText: ptr orxTEXT_520095386;
+                        internal_pstFont: ptr orxFONT_520095286): orxSTATUS_520095029 {.
       cdecl, importc: "orxText_SetFont".}
 else:
   static :
@@ -15868,7 +15868,7 @@ else:
   static :
     hint("Declaration of " & "fileSetup" & " already exists, not redeclaring")
 when not declared(fileInit):
-  proc fileInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxFile_Init".}
+  proc fileInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxFile_Init".}
 else:
   static :
     hint("Declaration of " & "fileInit" & " already exists, not redeclaring")
@@ -15892,7 +15892,7 @@ else:
     hint("Declaration of " & "orxFile_GetApplicationSaveDirectory" &
         " already exists, not redeclaring")
 when not declared(orxFile_Exists):
-  proc orxFile_Exists*(internal_zFileName: cstring): orxBOOL_520095038 {.cdecl,
+  proc orxFile_Exists*(internal_zFileName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxFile_Exists".}
 else:
   static :
@@ -15900,21 +15900,21 @@ else:
         " already exists, not redeclaring")
 when not declared(orxFile_FindFirst):
   proc orxFile_FindFirst*(internal_zSearchPattern: cstring;
-                          internal_pstFileInfo: ptr orxFILE_INFO_520095427): orxSTATUS_520095066 {.
+                          internal_pstFileInfo: ptr orxFILE_INFO_520095390): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_FindFirst".}
 else:
   static :
     hint("Declaration of " & "orxFile_FindFirst" &
         " already exists, not redeclaring")
 when not declared(orxFile_FindNext):
-  proc orxFile_FindNext*(internal_pstFileInfo: ptr orxFILE_INFO_520095427): orxSTATUS_520095066 {.
+  proc orxFile_FindNext*(internal_pstFileInfo: ptr orxFILE_INFO_520095390): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_FindNext".}
 else:
   static :
     hint("Declaration of " & "orxFile_FindNext" &
         " already exists, not redeclaring")
 when not declared(orxFile_FindClose):
-  proc orxFile_FindClose*(internal_pstFileInfo: ptr orxFILE_INFO_520095427): void {.
+  proc orxFile_FindClose*(internal_pstFileInfo: ptr orxFILE_INFO_520095390): void {.
       cdecl, importc: "orxFile_FindClose".}
 else:
   static :
@@ -15922,94 +15922,94 @@ else:
         " already exists, not redeclaring")
 when not declared(orxFile_GetInfo):
   proc orxFile_GetInfo*(internal_zFileName: cstring;
-                        internal_pstFileInfo: ptr orxFILE_INFO_520095427): orxSTATUS_520095066 {.
+                        internal_pstFileInfo: ptr orxFILE_INFO_520095390): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_GetInfo".}
 else:
   static :
     hint("Declaration of " & "orxFile_GetInfo" &
         " already exists, not redeclaring")
 when not declared(orxFile_Remove):
-  proc orxFile_Remove*(internal_zFileName: cstring): orxSTATUS_520095066 {.
+  proc orxFile_Remove*(internal_zFileName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_Remove".}
 else:
   static :
     hint("Declaration of " & "orxFile_Remove" &
         " already exists, not redeclaring")
 when not declared(orxFile_MakeDirectory):
-  proc orxFile_MakeDirectory*(internal_zName: cstring): orxSTATUS_520095066 {.
+  proc orxFile_MakeDirectory*(internal_zName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_MakeDirectory".}
 else:
   static :
     hint("Declaration of " & "orxFile_MakeDirectory" &
         " already exists, not redeclaring")
 when not declared(orxFile_Open):
-  proc orxFile_Open*(internal_zFileName: cstring; internal_u32OpenFlags: orxU32_520095024): ptr orxFILE_520095429 {.
+  proc orxFile_Open*(internal_zFileName: cstring; internal_u32OpenFlags: orxU32_520094987): ptr orxFILE_520095392 {.
       cdecl, importc: "orxFile_Open".}
 else:
   static :
     hint("Declaration of " & "orxFile_Open" & " already exists, not redeclaring")
 when not declared(orxFile_Read):
-  proc orxFile_Read*(internal_pReadData: pointer; internal_s64ElemSize: orxS64_520095030;
-                     internal_s64NbElem: orxS64_520095030;
-                     internal_pstFile: ptr orxFILE_520095429): orxS64_520095030 {.
+  proc orxFile_Read*(internal_pReadData: pointer; internal_s64ElemSize: orxS64_520094993;
+                     internal_s64NbElem: orxS64_520094993;
+                     internal_pstFile: ptr orxFILE_520095392): orxS64_520094993 {.
       cdecl, importc: "orxFile_Read".}
 else:
   static :
     hint("Declaration of " & "orxFile_Read" & " already exists, not redeclaring")
 when not declared(orxFile_Write):
   proc orxFile_Write*(internal_pDataToWrite: pointer;
-                      internal_s64ElemSize: orxS64_520095030;
-                      internal_s64NbElem: orxS64_520095030;
-                      internal_pstFile: ptr orxFILE_520095429): orxS64_520095030 {.
+                      internal_s64ElemSize: orxS64_520094993;
+                      internal_s64NbElem: orxS64_520094993;
+                      internal_pstFile: ptr orxFILE_520095392): orxS64_520094993 {.
       cdecl, importc: "orxFile_Write".}
 else:
   static :
     hint("Declaration of " & "orxFile_Write" &
         " already exists, not redeclaring")
 when not declared(fileDelete):
-  proc fileDelete*(internal_zFileName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc fileDelete*(internal_zFileName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxFile_Delete".}
 else:
   static :
     hint("Declaration of " & "fileDelete" & " already exists, not redeclaring")
 when not declared(orxFile_Seek):
-  proc orxFile_Seek*(internal_pstFile: ptr orxFILE_520095429;
-                     internal_s64Position: orxS64_520095030;
-                     internal_eWhence: orxSEEK_OFFSET_WHENCE_520095058): orxS64_520095030 {.
+  proc orxFile_Seek*(internal_pstFile: ptr orxFILE_520095392;
+                     internal_s64Position: orxS64_520094993;
+                     internal_eWhence: orxSEEK_OFFSET_WHENCE_520095021): orxS64_520094993 {.
       cdecl, importc: "orxFile_Seek".}
 else:
   static :
     hint("Declaration of " & "orxFile_Seek" & " already exists, not redeclaring")
 when not declared(orxFile_Tell):
-  proc orxFile_Tell*(internal_pstFile: ptr orxFILE_520095429): orxS64_520095030 {.
+  proc orxFile_Tell*(internal_pstFile: ptr orxFILE_520095392): orxS64_520094993 {.
       cdecl, importc: "orxFile_Tell".}
 else:
   static :
     hint("Declaration of " & "orxFile_Tell" & " already exists, not redeclaring")
 when not declared(orxFile_GetSize):
-  proc orxFile_GetSize*(internal_pstFile: ptr orxFILE_520095429): orxS64_520095030 {.
+  proc orxFile_GetSize*(internal_pstFile: ptr orxFILE_520095392): orxS64_520094993 {.
       cdecl, importc: "orxFile_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxFile_GetSize" &
         " already exists, not redeclaring")
 when not declared(orxFile_GetTime):
-  proc orxFile_GetTime*(internal_pstFile: ptr orxFILE_520095429): orxS64_520095030 {.
+  proc orxFile_GetTime*(internal_pstFile: ptr orxFILE_520095392): orxS64_520094993 {.
       cdecl, importc: "orxFile_GetTime".}
 else:
   static :
     hint("Declaration of " & "orxFile_GetTime" &
         " already exists, not redeclaring")
 when not declared(orxFile_Print):
-  proc orxFile_Print*(internal_pstFile: ptr orxFILE_520095429;
-                      internal_zString: cstring): orxS32_520095032 {.cdecl,
+  proc orxFile_Print*(internal_pstFile: ptr orxFILE_520095392;
+                      internal_zString: cstring): orxS32_520094995 {.cdecl,
       varargs, importc: "orxFile_Print".}
 else:
   static :
     hint("Declaration of " & "orxFile_Print" &
         " already exists, not redeclaring")
 when not declared(orxFile_Close):
-  proc orxFile_Close*(internal_pstFile: ptr orxFILE_520095429): orxSTATUS_520095066 {.
+  proc orxFile_Close*(internal_pstFile: ptr orxFILE_520095392): orxSTATUS_520095029 {.
       cdecl, importc: "orxFile_Close".}
 else:
   static :
@@ -16021,7 +16021,7 @@ else:
   static :
     hint("Declaration of " & "paramSetup" & " already exists, not redeclaring")
 when not declared(paramInit):
-  proc paramInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxParam_Init".}
+  proc paramInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxParam_Init".}
 else:
   static :
     hint("Declaration of " & "paramInit" & " already exists, not redeclaring")
@@ -16031,22 +16031,22 @@ else:
   static :
     hint("Declaration of " & "paramExit" & " already exists, not redeclaring")
 when not declared(paramRegister):
-  proc paramRegister*(internal_pstParam: ptr orxPARAM_520095435): orxSTATUS_520095066 {.
+  proc paramRegister*(internal_pstParam: ptr orxPARAM_520095398): orxSTATUS_520095029 {.
       cdecl, importc: "orxParam_Register".}
 else:
   static :
     hint("Declaration of " & "paramRegister" &
         " already exists, not redeclaring")
 when not declared(orxParam_DisplayHelp):
-  proc orxParam_DisplayHelp*(): orxSTATUS_520095066 {.cdecl,
+  proc orxParam_DisplayHelp*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxParam_DisplayHelp".}
 else:
   static :
     hint("Declaration of " & "orxParam_DisplayHelp" &
         " already exists, not redeclaring")
 when not declared(orxParam_SetArgs):
-  proc orxParam_SetArgs*(internal_u32NbParams: orxU32_520095024;
-                         internal_azParams: ptr UncheckedArray[cstring]): orxSTATUS_520095066 {.
+  proc orxParam_SetArgs*(internal_u32NbParams: orxU32_520094987;
+                         internal_azParams: ptr UncheckedArray[cstring]): orxSTATUS_520095029 {.
       cdecl, importc: "orxParam_SetArgs".}
 else:
   static :
@@ -16059,7 +16059,7 @@ else:
     hint("Declaration of " & "soundSystemSetup" &
         " already exists, not redeclaring")
 when not declared(soundSystemInit):
-  proc soundSystemInit*(): orxSTATUS_520095066 {.cdecl,
+  proc soundSystemInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundSystem_Init".}
 else:
   static :
@@ -16072,172 +16072,172 @@ else:
     hint("Declaration of " & "soundSystemExit" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_CreateSample):
-  proc orxSoundSystem_CreateSample*(internal_u32ChannelNumber: orxU32_520095024;
-                                    internal_u32FrameNumber: orxU32_520095024;
-                                    internal_u32SampleRate: orxU32_520095024): ptr orxSOUNDSYSTEM_SAMPLE_520095439 {.
+  proc orxSoundSystem_CreateSample*(internal_u32ChannelNumber: orxU32_520094987;
+                                    internal_u32FrameNumber: orxU32_520094987;
+                                    internal_u32SampleRate: orxU32_520094987): ptr orxSOUNDSYSTEM_SAMPLE_520095402 {.
       cdecl, importc: "orxSoundSystem_CreateSample".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_CreateSample" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_LoadSample):
-  proc orxSoundSystem_LoadSample*(internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SAMPLE_520095439 {.
+  proc orxSoundSystem_LoadSample*(internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SAMPLE_520095402 {.
       cdecl, importc: "orxSoundSystem_LoadSample".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_LoadSample" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_DeleteSample):
-  proc orxSoundSystem_DeleteSample*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095439): orxSTATUS_520095066 {.
+  proc orxSoundSystem_DeleteSample*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095402): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_DeleteSample".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_DeleteSample" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetSampleInfo):
-  proc orxSoundSystem_GetSampleInfo*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095439;
-                                     internal_pu32ChannelNumber: ptr orxU32_520095024;
-                                     internal_pu32FrameNumber: ptr orxU32_520095024;
-                                     internal_pu32SampleRate: ptr orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxSoundSystem_GetSampleInfo*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095402;
+                                     internal_pu32ChannelNumber: ptr orxU32_520094987;
+                                     internal_pu32FrameNumber: ptr orxU32_520094987;
+                                     internal_pu32SampleRate: ptr orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_GetSampleInfo".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetSampleInfo" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetSampleData):
-  proc orxSoundSystem_SetSampleData*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095439;
-                                     internal_afData: ptr orxFLOAT_520095040;
-                                     internal_u32SampleNumber: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetSampleData*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095402;
+                                     internal_afData: ptr orxFLOAT_520095003;
+                                     internal_u32SampleNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetSampleData".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetSampleData" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_CreateFromSample):
-  proc orxSoundSystem_CreateFromSample*(internal_hUserData: orxHANDLE_520095050;
-      internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095439): ptr orxSOUNDSYSTEM_SOUND_520095437 {.
+  proc orxSoundSystem_CreateFromSample*(internal_hUserData: orxHANDLE_520095013;
+      internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE_520095402): ptr orxSOUNDSYSTEM_SOUND_520095400 {.
       cdecl, importc: "orxSoundSystem_CreateFromSample".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_CreateFromSample" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_CreateStream):
-  proc orxSoundSystem_CreateStream*(internal_hUserData: orxHANDLE_520095050;
-                                    internal_eType: orxSOUNDSYSTEM_STREAM_TYPE_520095443;
-                                    internal_u32ChannelNumber: orxU32_520095024;
-                                    internal_u32SampleRate: orxU32_520095024): ptr orxSOUNDSYSTEM_SOUND_520095437 {.
+  proc orxSoundSystem_CreateStream*(internal_hUserData: orxHANDLE_520095013;
+                                    internal_eType: orxSOUNDSYSTEM_STREAM_TYPE_520095406;
+                                    internal_u32ChannelNumber: orxU32_520094987;
+                                    internal_u32SampleRate: orxU32_520094987): ptr orxSOUNDSYSTEM_SOUND_520095400 {.
       cdecl, importc: "orxSoundSystem_CreateStream".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_CreateStream" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_LoadStream):
-  proc orxSoundSystem_LoadStream*(internal_hUserData: orxHANDLE_520095050;
-                                  internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SOUND_520095437 {.
+  proc orxSoundSystem_LoadStream*(internal_hUserData: orxHANDLE_520095013;
+                                  internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SOUND_520095400 {.
       cdecl, importc: "orxSoundSystem_LoadStream".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_LoadStream" &
         " already exists, not redeclaring")
 when not declared(soundSystemDelete):
-  proc soundSystemDelete*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc soundSystemDelete*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_Delete".}
 else:
   static :
     hint("Declaration of " & "soundSystemDelete" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_Play):
-  proc orxSoundSystem_Play*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc orxSoundSystem_Play*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_Play".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_Play" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_Pause):
-  proc orxSoundSystem_Pause*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc orxSoundSystem_Pause*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_Pause".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_Pause" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_Stop):
-  proc orxSoundSystem_Stop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc orxSoundSystem_Stop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_Stop".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_Stop" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_AddFilter):
-  proc orxSoundSystem_AddFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095457;
-                                 internal_bUseCustomParam: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundSystem_AddFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095420;
+                                 internal_bUseCustomParam: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_AddFilter".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_AddFilter" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_RemoveLastFilter):
-  proc orxSoundSystem_RemoveLastFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc orxSoundSystem_RemoveLastFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_RemoveLastFilter".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_RemoveLastFilter" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_RemoveAllFilters):
-  proc orxSoundSystem_RemoveAllFilters*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSTATUS_520095066 {.
+  proc orxSoundSystem_RemoveAllFilters*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_RemoveAllFilters".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_RemoveAllFilters" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_CreateBus):
-  proc orxSoundSystem_CreateBus*(internal_stBusID: orxSTRINGID_520095046): orxHANDLE_520095050 {.
+  proc orxSoundSystem_CreateBus*(internal_stBusID: orxSTRINGID_520095009): orxHANDLE_520095013 {.
       cdecl, importc: "orxSoundSystem_CreateBus".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_CreateBus" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_DeleteBus):
-  proc orxSoundSystem_DeleteBus*(internal_hBus: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxSoundSystem_DeleteBus*(internal_hBus: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_DeleteBus".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_DeleteBus" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetBus):
-  proc orxSoundSystem_SetBus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                              internal_hBus: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetBus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                              internal_hBus: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetBus".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetBus" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetBusParent):
-  proc orxSoundSystem_SetBusParent*(internal_hBus: orxHANDLE_520095050;
-                                    internal_hParentBus: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetBusParent*(internal_hBus: orxHANDLE_520095013;
+                                    internal_hParentBus: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetBusParent".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetBusParent" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_AddBusFilter):
-  proc orxSoundSystem_AddBusFilter*(internal_hBus: orxHANDLE_520095050;
-      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095457;
-                                    internal_bUseCustomParam: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundSystem_AddBusFilter*(internal_hBus: orxHANDLE_520095013;
+      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095420;
+                                    internal_bUseCustomParam: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_AddBusFilter".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_AddBusFilter" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_RemoveLastBusFilter):
-  proc orxSoundSystem_RemoveLastBusFilter*(internal_hBus: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxSoundSystem_RemoveLastBusFilter*(internal_hBus: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_RemoveLastBusFilter".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_RemoveLastBusFilter" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_RemoveAllBusFilters):
-  proc orxSoundSystem_RemoveAllBusFilters*(internal_hBus: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxSoundSystem_RemoveAllBusFilters*(internal_hBus: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_RemoveAllBusFilters".}
 else:
   static :
@@ -16245,55 +16245,55 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_StartRecording):
   proc orxSoundSystem_StartRecording*(internal_zName: cstring;
-                                      internal_bWriteToFile: orxBOOL_520095038;
-                                      internal_u32SampleRate: orxU32_520095024;
-                                      internal_u32ChannelNumber: orxU32_520095024): orxSTATUS_520095066 {.
+                                      internal_bWriteToFile: orxBOOL_520095001;
+                                      internal_u32SampleRate: orxU32_520094987;
+                                      internal_u32ChannelNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_StartRecording".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_StartRecording" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_StopRecording):
-  proc orxSoundSystem_StopRecording*(): orxSTATUS_520095066 {.cdecl,
+  proc orxSoundSystem_StopRecording*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundSystem_StopRecording".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_StopRecording" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_HasRecordingSupport):
-  proc orxSoundSystem_HasRecordingSupport*(): orxBOOL_520095038 {.cdecl,
+  proc orxSoundSystem_HasRecordingSupport*(): orxBOOL_520095001 {.cdecl,
       importc: "orxSoundSystem_HasRecordingSupport".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_HasRecordingSupport" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetVolume):
-  proc orxSoundSystem_SetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                 internal_fVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                 internal_fVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetVolume".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetVolume" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetPitch):
-  proc orxSoundSystem_SetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                internal_fPitch: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                internal_fPitch: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetPitch".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetPitch" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetTime):
-  proc orxSoundSystem_SetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                               internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                               internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetTime".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetTime" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetPosition):
-  proc orxSoundSystem_SetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                   internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                   internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetPosition".}
 else:
   static :
@@ -16301,56 +16301,56 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetSpatialization):
   proc orxSoundSystem_SetSpatialization*(
-      internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-      internal_fMinDistance: orxFLOAT_520095040;
-      internal_fMaxDistance: orxFLOAT_520095040; internal_fMinGain: orxFLOAT_520095040;
-      internal_fMaxGain: orxFLOAT_520095040; internal_fRollOff: orxFLOAT_520095040): orxSTATUS_520095066 {.
+      internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+      internal_fMinDistance: orxFLOAT_520095003;
+      internal_fMaxDistance: orxFLOAT_520095003; internal_fMinGain: orxFLOAT_520095003;
+      internal_fMaxGain: orxFLOAT_520095003; internal_fRollOff: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetSpatialization".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetSpatialization" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetPanning):
-  proc orxSoundSystem_SetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                  internal_fPanning: orxFLOAT_520095040;
-                                  internal_bMix: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                  internal_fPanning: orxFLOAT_520095003;
+                                  internal_bMix: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetPanning".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetPanning" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_Loop):
-  proc orxSoundSystem_Loop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                            internal_bLoop: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundSystem_Loop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                            internal_bLoop: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_Loop".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_Loop" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetVolume):
-  proc orxSoundSystem_GetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxFLOAT_520095040 {.
+  proc orxSoundSystem_GetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxFLOAT_520095003 {.
       cdecl, importc: "orxSoundSystem_GetVolume".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetVolume" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetPitch):
-  proc orxSoundSystem_GetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxFLOAT_520095040 {.
+  proc orxSoundSystem_GetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxFLOAT_520095003 {.
       cdecl, importc: "orxSoundSystem_GetPitch".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetPitch" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetTime):
-  proc orxSoundSystem_GetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxFLOAT_520095040 {.
+  proc orxSoundSystem_GetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxFLOAT_520095003 {.
       cdecl, importc: "orxSoundSystem_GetTime".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetTime" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetPosition):
-  proc orxSoundSystem_GetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                   internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSoundSystem_GetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                   internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSoundSystem_GetPosition".}
 else:
   static :
@@ -16358,94 +16358,94 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetSpatialization):
   proc orxSoundSystem_GetSpatialization*(
-      internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-      internal_pfMinDistance: ptr orxFLOAT_520095040;
-      internal_pfMaxDistance: ptr orxFLOAT_520095040;
-      internal_pfMinGain: ptr orxFLOAT_520095040;
-      internal_pfMaxGain: ptr orxFLOAT_520095040;
-      internal_pfRollOff: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.cdecl,
+      internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+      internal_pfMinDistance: ptr orxFLOAT_520095003;
+      internal_pfMaxDistance: ptr orxFLOAT_520095003;
+      internal_pfMinGain: ptr orxFLOAT_520095003;
+      internal_pfMaxGain: ptr orxFLOAT_520095003;
+      internal_pfRollOff: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundSystem_GetSpatialization".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetSpatialization" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetPanning):
-  proc orxSoundSystem_GetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437;
-                                  internal_pfPanning: ptr orxFLOAT_520095040;
-                                  internal_pbMix: ptr orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundSystem_GetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400;
+                                  internal_pfPanning: ptr orxFLOAT_520095003;
+                                  internal_pbMix: ptr orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_GetPanning".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetPanning" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_IsLooping):
-  proc orxSoundSystem_IsLooping*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxBOOL_520095038 {.
+  proc orxSoundSystem_IsLooping*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxBOOL_520095001 {.
       cdecl, importc: "orxSoundSystem_IsLooping".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_IsLooping" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetDuration):
-  proc orxSoundSystem_GetDuration*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxFLOAT_520095040 {.
+  proc orxSoundSystem_GetDuration*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxFLOAT_520095003 {.
       cdecl, importc: "orxSoundSystem_GetDuration".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetDuration" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetStatus):
-  proc orxSoundSystem_GetStatus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095437): orxSOUNDSYSTEM_STATUS_520095447 {.
+  proc orxSoundSystem_GetStatus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND_520095400): orxSOUNDSYSTEM_STATUS_520095410 {.
       cdecl, importc: "orxSoundSystem_GetStatus".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetStatus" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetGlobalVolume):
-  proc orxSoundSystem_SetGlobalVolume*(internal_fGlobalVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetGlobalVolume*(internal_fGlobalVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetGlobalVolume".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetGlobalVolume" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetGlobalVolume):
-  proc orxSoundSystem_GetGlobalVolume*(): orxFLOAT_520095040 {.cdecl,
+  proc orxSoundSystem_GetGlobalVolume*(): orxFLOAT_520095003 {.cdecl,
       importc: "orxSoundSystem_GetGlobalVolume".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetGlobalVolume" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetListenerCount):
-  proc orxSoundSystem_GetListenerCount*(): orxU32_520095024 {.cdecl,
+  proc orxSoundSystem_GetListenerCount*(): orxU32_520094987 {.cdecl,
       importc: "orxSoundSystem_GetListenerCount".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_GetListenerCount" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_EnableListener):
-  proc orxSoundSystem_EnableListener*(internal_u32ListenerIndex: orxU32_520095024;
-                                      internal_bEnable: orxBOOL_520095038): void {.
+  proc orxSoundSystem_EnableListener*(internal_u32ListenerIndex: orxU32_520094987;
+                                      internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxSoundSystem_EnableListener".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_EnableListener" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_IsListenerEnabled):
-  proc orxSoundSystem_IsListenerEnabled*(internal_u32ListenerIndex: orxU32_520095024): orxBOOL_520095038 {.
+  proc orxSoundSystem_IsListenerEnabled*(internal_u32ListenerIndex: orxU32_520094987): orxBOOL_520095001 {.
       cdecl, importc: "orxSoundSystem_IsListenerEnabled".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_IsListenerEnabled" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_SetListenerPosition):
-  proc orxSoundSystem_SetListenerPosition*(internal_u32Index: orxU32_520095024;
-      internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxSoundSystem_SetListenerPosition*(internal_u32Index: orxU32_520094987;
+      internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundSystem_SetListenerPosition".}
 else:
   static :
     hint("Declaration of " & "orxSoundSystem_SetListenerPosition" &
         " already exists, not redeclaring")
 when not declared(orxSoundSystem_GetListenerPosition):
-  proc orxSoundSystem_GetListenerPosition*(internal_u32Index: orxU32_520095024;
-      internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSoundSystem_GetListenerPosition*(internal_u32Index: orxU32_520094987;
+      internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSoundSystem_GetListenerPosition".}
 else:
   static :
@@ -16457,7 +16457,7 @@ else:
   static :
     hint("Declaration of " & "soundSetup" & " already exists, not redeclaring")
 when not declared(soundInit):
-  proc soundInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxSound_Init".}
+  proc soundInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxSound_Init".}
 else:
   static :
     hint("Declaration of " & "soundInit" & " already exists, not redeclaring")
@@ -16467,446 +16467,410 @@ else:
   static :
     hint("Declaration of " & "soundExit" & " already exists, not redeclaring")
 when not declared(soundCreate):
-  proc soundCreate*(): ptr orxSOUND_520095463 {.cdecl,
+  proc soundCreate*(): ptr orxSOUND_520095426 {.cdecl,
       importc: "orxSound_Create".}
 else:
   static :
     hint("Declaration of " & "soundCreate" & " already exists, not redeclaring")
 when not declared(soundCreateFromConfig):
-  proc soundCreateFromConfig*(internal_zConfigID: cstring): ptr orxSOUND_520095463 {.
+  proc soundCreateFromConfig*(internal_zConfigID: cstring): ptr orxSOUND_520095426 {.
       cdecl, importc: "orxSound_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "soundCreateFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxSound_CreateWithEmptyStream):
-  proc orxSound_CreateWithEmptyStream*(internal_u32ChannelNumber: orxU32_520095024;
-                                       internal_u32SampleRate: orxU32_520095024;
-                                       internal_zName: cstring): ptr orxSOUND_520095463 {.
+when not declared(createWithEmptyStream):
+  proc createWithEmptyStream*(internal_u32ChannelNumber: orxU32_520094987;
+                              internal_u32SampleRate: orxU32_520094987;
+                              internal_zName: cstring): ptr orxSOUND_520095426 {.
       cdecl, importc: "orxSound_CreateWithEmptyStream".}
 else:
   static :
-    hint("Declaration of " & "orxSound_CreateWithEmptyStream" &
+    hint("Declaration of " & "createWithEmptyStream" &
         " already exists, not redeclaring")
 when not declared(soundDelete):
-  proc soundDelete*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+  proc soundDelete*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_Delete".}
 else:
   static :
     hint("Declaration of " & "soundDelete" & " already exists, not redeclaring")
-when not declared(orxSound_ClearCache):
-  proc orxSound_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+when not declared(clearCache_proc):
+  proc clearCache_proc*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxSound_ClearCache".}
 else:
   static :
-    hint("Declaration of " & "orxSound_ClearCache" &
+    hint("Declaration of " & "clearCache_proc" &
         " already exists, not redeclaring")
-when not declared(orxSound_CreateSample):
-  proc orxSound_CreateSample*(internal_u32ChannelNumber: orxU32_520095024;
-                              internal_u32FrameNumber: orxU32_520095024;
-                              internal_u32SampleRate: orxU32_520095024;
-                              internal_zName: cstring): ptr orxSOUND_SAMPLE_520095465 {.
+when not declared(createSample):
+  proc createSample*(internal_u32ChannelNumber: orxU32_520094987;
+                     internal_u32FrameNumber: orxU32_520094987;
+                     internal_u32SampleRate: orxU32_520094987;
+                     internal_zName: cstring): ptr orxSOUND_SAMPLE_520095428 {.
       cdecl, importc: "orxSound_CreateSample".}
 else:
   static :
-    hint("Declaration of " & "orxSound_CreateSample" &
-        " already exists, not redeclaring")
-when not declared(orxSound_DeleteSample):
-  proc orxSound_DeleteSample*(internal_pstSample: ptr orxSOUND_SAMPLE_520095465): orxSTATUS_520095066 {.
+    hint("Declaration of " & "createSample" & " already exists, not redeclaring")
+when not declared(deleteSample):
+  proc deleteSample*(internal_pstSample: ptr orxSOUND_SAMPLE_520095428): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_DeleteSample".}
 else:
   static :
-    hint("Declaration of " & "orxSound_DeleteSample" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetSampleInfo):
-  proc orxSound_GetSampleInfo*(internal_pstSample: ptr orxSOUND_SAMPLE_520095465;
-                               internal_pu32ChannelNumber: ptr orxU32_520095024;
-                               internal_pu32FrameNumber: ptr orxU32_520095024;
-                               internal_pu32SampleRate: ptr orxU32_520095024): orxSTATUS_520095066 {.
+    hint("Declaration of " & "deleteSample" & " already exists, not redeclaring")
+when not declared(getSampleInfo):
+  proc getSampleInfo*(internal_pstSample: ptr orxSOUND_SAMPLE_520095428;
+                      internal_pu32ChannelNumber: ptr orxU32_520094987;
+                      internal_pu32FrameNumber: ptr orxU32_520094987;
+                      internal_pu32SampleRate: ptr orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_GetSampleInfo".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetSampleInfo" &
+    hint("Declaration of " & "getSampleInfo" &
         " already exists, not redeclaring")
-when not declared(orxSound_SetSampleData):
-  proc orxSound_SetSampleData*(internal_pstSample: ptr orxSOUND_SAMPLE_520095465;
-                               internal_afData: ptr orxFLOAT_520095040;
-                               internal_u32SampleNumber: orxU32_520095024): orxSTATUS_520095066 {.
+when not declared(setSampleData):
+  proc setSampleData*(internal_pstSample: ptr orxSOUND_SAMPLE_520095428;
+                      internal_afData: ptr orxFLOAT_520095003;
+                      internal_u32SampleNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetSampleData".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetSampleData" &
+    hint("Declaration of " & "setSampleData" &
         " already exists, not redeclaring")
-when not declared(orxSound_LinkSample):
-  proc orxSound_LinkSample*(internal_pstSound: ptr orxSOUND_520095463;
-                            internal_zSampleName: cstring): orxSTATUS_520095066 {.
-      cdecl, importc: "orxSound_LinkSample".}
+when not declared(linkSample):
+  proc linkSample*(internal_pstSound: ptr orxSOUND_520095426;
+                   internal_zSampleName: cstring): orxSTATUS_520095029 {.cdecl,
+      importc: "orxSound_LinkSample".}
 else:
   static :
-    hint("Declaration of " & "orxSound_LinkSample" &
-        " already exists, not redeclaring")
-when not declared(orxSound_UnlinkSample):
-  proc orxSound_UnlinkSample*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+    hint("Declaration of " & "linkSample" & " already exists, not redeclaring")
+when not declared(unlinkSample):
+  proc unlinkSample*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_UnlinkSample".}
 else:
   static :
-    hint("Declaration of " & "orxSound_UnlinkSample" &
-        " already exists, not redeclaring")
-when not declared(orxSound_IsStream):
-  proc orxSound_IsStream*(internal_pstSound: ptr orxSOUND_520095463): orxBOOL_520095038 {.
+    hint("Declaration of " & "unlinkSample" & " already exists, not redeclaring")
+when not declared(isStream):
+  proc isStream*(internal_pstSound: ptr orxSOUND_520095426): orxBOOL_520095001 {.
       cdecl, importc: "orxSound_IsStream".}
 else:
   static :
-    hint("Declaration of " & "orxSound_IsStream" &
-        " already exists, not redeclaring")
-when not declared(orxSound_Play):
-  proc orxSound_Play*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+    hint("Declaration of " & "isStream" & " already exists, not redeclaring")
+when not declared(play):
+  proc play*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_Play".}
 else:
   static :
-    hint("Declaration of " & "orxSound_Play" &
-        " already exists, not redeclaring")
-when not declared(orxSound_Pause):
-  proc orxSound_Pause*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+    hint("Declaration of " & "play" & " already exists, not redeclaring")
+when not declared(pause_proc):
+  proc pause_proc*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_Pause".}
 else:
   static :
-    hint("Declaration of " & "orxSound_Pause" &
-        " already exists, not redeclaring")
-when not declared(orxSound_Stop):
-  proc orxSound_Stop*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+    hint("Declaration of " & "pause_proc" & " already exists, not redeclaring")
+when not declared(stop):
+  proc stop*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_Stop".}
 else:
   static :
-    hint("Declaration of " & "orxSound_Stop" &
-        " already exists, not redeclaring")
-when not declared(orxSound_AddFilter):
-  proc orxSound_AddFilter*(internal_pstSound: ptr orxSOUND_520095463;
-                           internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095457;
-                           internal_bUseCustomParam: orxBOOL_520095038): orxSTATUS_520095066 {.
+    hint("Declaration of " & "stop" & " already exists, not redeclaring")
+when not declared(addFilter):
+  proc addFilter*(internal_pstSound: ptr orxSOUND_520095426;
+                  internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095420;
+                  internal_bUseCustomParam: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_AddFilter".}
 else:
   static :
-    hint("Declaration of " & "orxSound_AddFilter" &
-        " already exists, not redeclaring")
-when not declared(orxSound_RemoveLastFilter):
-  proc orxSound_RemoveLastFilter*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+    hint("Declaration of " & "addFilter" & " already exists, not redeclaring")
+when not declared(removeLastFilter):
+  proc removeLastFilter*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_RemoveLastFilter".}
 else:
   static :
-    hint("Declaration of " & "orxSound_RemoveLastFilter" &
+    hint("Declaration of " & "removeLastFilter" &
         " already exists, not redeclaring")
-when not declared(orxSound_RemoveAllFilters):
-  proc orxSound_RemoveAllFilters*(internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+when not declared(removeAllFilters):
+  proc removeAllFilters*(internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_RemoveAllFilters".}
 else:
   static :
-    hint("Declaration of " & "orxSound_RemoveAllFilters" &
+    hint("Declaration of " & "removeAllFilters" &
         " already exists, not redeclaring")
-when not declared(orxSound_AddFilterFromConfig):
-  proc orxSound_AddFilterFromConfig*(internal_pstSound: ptr orxSOUND_520095463;
-                                     internal_zFilterConfigID: cstring): orxSTATUS_520095066 {.
+when not declared(addFilterFromConfig):
+  proc addFilterFromConfig*(internal_pstSound: ptr orxSOUND_520095426;
+                            internal_zFilterConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_AddFilterFromConfig".}
 else:
   static :
-    hint("Declaration of " & "orxSound_AddFilterFromConfig" &
+    hint("Declaration of " & "addFilterFromConfig" &
         " already exists, not redeclaring")
-when not declared(orxSound_StartRecording):
-  proc orxSound_StartRecording*(internal_zName: cstring;
-                                internal_bWriteToFile: orxBOOL_520095038;
-                                internal_u32SampleRate: orxU32_520095024;
-                                internal_u32ChannelNumber: orxU32_520095024): orxSTATUS_520095066 {.
+when not declared(startRecording):
+  proc startRecording*(internal_zName: cstring; internal_bWriteToFile: orxBOOL_520095001;
+                       internal_u32SampleRate: orxU32_520094987;
+                       internal_u32ChannelNumber: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_StartRecording".}
 else:
   static :
-    hint("Declaration of " & "orxSound_StartRecording" &
+    hint("Declaration of " & "startRecording" &
         " already exists, not redeclaring")
-when not declared(orxSound_StopRecording):
-  proc orxSound_StopRecording*(): orxSTATUS_520095066 {.cdecl,
+when not declared(stopRecording):
+  proc stopRecording*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxSound_StopRecording".}
 else:
   static :
-    hint("Declaration of " & "orxSound_StopRecording" &
+    hint("Declaration of " & "stopRecording" &
         " already exists, not redeclaring")
-when not declared(orxSound_HasRecordingSupport):
-  proc orxSound_HasRecordingSupport*(): orxBOOL_520095038 {.cdecl,
+when not declared(hasRecordingSupport):
+  proc hasRecordingSupport*(): orxBOOL_520095001 {.cdecl,
       importc: "orxSound_HasRecordingSupport".}
 else:
   static :
-    hint("Declaration of " & "orxSound_HasRecordingSupport" &
+    hint("Declaration of " & "hasRecordingSupport" &
         " already exists, not redeclaring")
-when not declared(orxSound_SetVolume):
-  proc orxSound_SetVolume*(internal_pstSound: ptr orxSOUND_520095463;
-                           internal_fVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+when not declared(setVolume):
+  proc setVolume*(internal_pstSound: ptr orxSOUND_520095426;
+                  internal_fVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetVolume".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetVolume" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetPitch):
-  proc orxSound_SetPitch*(internal_pstSound: ptr orxSOUND_520095463;
-                          internal_fPitch: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setVolume" & " already exists, not redeclaring")
+when not declared(setPitch):
+  proc setPitch*(internal_pstSound: ptr orxSOUND_520095426;
+                 internal_fPitch: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetPitch".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetPitch" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetTime):
-  proc orxSound_SetTime*(internal_pstSound: ptr orxSOUND_520095463;
-                         internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setPitch" & " already exists, not redeclaring")
+when not declared(setTime):
+  proc setTime*(internal_pstSound: ptr orxSOUND_520095426;
+                internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetTime".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetTime" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetPosition):
-  proc orxSound_SetPosition*(internal_pstSound: ptr orxSOUND_520095463;
-                             internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setTime" & " already exists, not redeclaring")
+when not declared(setPosition):
+  proc setPosition*(internal_pstSound: ptr orxSOUND_520095426;
+                    internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetPosition".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetPosition" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetSpatialization):
-  proc orxSound_SetSpatialization*(internal_pstSound: ptr orxSOUND_520095463;
-                                   internal_fMinDistance: orxFLOAT_520095040;
-                                   internal_fMaxDistance: orxFLOAT_520095040;
-                                   internal_fMinGain: orxFLOAT_520095040;
-                                   internal_fMaxGain: orxFLOAT_520095040;
-                                   internal_fRollOff: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setPosition" & " already exists, not redeclaring")
+when not declared(setSpatialization):
+  proc setSpatialization*(internal_pstSound: ptr orxSOUND_520095426;
+                          internal_fMinDistance: orxFLOAT_520095003;
+                          internal_fMaxDistance: orxFLOAT_520095003;
+                          internal_fMinGain: orxFLOAT_520095003;
+                          internal_fMaxGain: orxFLOAT_520095003;
+                          internal_fRollOff: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetSpatialization".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetSpatialization" &
+    hint("Declaration of " & "setSpatialization" &
         " already exists, not redeclaring")
-when not declared(orxSound_SetPanning):
-  proc orxSound_SetPanning*(internal_pstSound: ptr orxSOUND_520095463;
-                            internal_fPanning: orxFLOAT_520095040;
-                            internal_bMix: orxBOOL_520095038): orxSTATUS_520095066 {.
+when not declared(setPanning):
+  proc setPanning*(internal_pstSound: ptr orxSOUND_520095426;
+                   internal_fPanning: orxFLOAT_520095003; internal_bMix: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetPanning".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetPanning" &
-        " already exists, not redeclaring")
-when not declared(orxSound_Loop):
-  proc orxSound_Loop*(internal_pstSound: ptr orxSOUND_520095463;
-                      internal_bLoop: orxBOOL_520095038): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setPanning" & " already exists, not redeclaring")
+when not declared(loop):
+  proc loop*(internal_pstSound: ptr orxSOUND_520095426; internal_bLoop: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_Loop".}
 else:
   static :
-    hint("Declaration of " & "orxSound_Loop" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetVolume):
-  proc orxSound_GetVolume*(internal_pstSound: ptr orxSOUND_520095463): orxFLOAT_520095040 {.
+    hint("Declaration of " & "loop" & " already exists, not redeclaring")
+when not declared(getVolume):
+  proc getVolume*(internal_pstSound: ptr orxSOUND_520095426): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetVolume".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetVolume" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetPitch):
-  proc orxSound_GetPitch*(internal_pstSound: ptr orxSOUND_520095463): orxFLOAT_520095040 {.
+    hint("Declaration of " & "getVolume" & " already exists, not redeclaring")
+when not declared(getPitch):
+  proc getPitch*(internal_pstSound: ptr orxSOUND_520095426): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetPitch".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetPitch" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetTime):
-  proc orxSound_GetTime*(internal_pstSound: ptr orxSOUND_520095463): orxFLOAT_520095040 {.
+    hint("Declaration of " & "getPitch" & " already exists, not redeclaring")
+when not declared(getTime_proc_A7ADAEBC):
+  proc getTime_proc_A7ADAEBC*(internal_pstSound: ptr orxSOUND_520095426): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetTime".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetTime" &
+    hint("Declaration of " & "getTime_proc_A7ADAEBC" &
         " already exists, not redeclaring")
-when not declared(orxSound_GetPosition):
-  proc orxSound_GetPosition*(internal_pstSound: ptr orxSOUND_520095463;
-                             internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+when not declared(getPosition):
+  proc getPosition*(internal_pstSound: ptr orxSOUND_520095426;
+                    internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSound_GetPosition".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetPosition" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetSpatialization):
-  proc orxSound_GetSpatialization*(internal_pstSound: ptr orxSOUND_520095463;
-                                   internal_pfMinDistance: ptr orxFLOAT_520095040;
-                                   internal_pfMaxDistance: ptr orxFLOAT_520095040;
-                                   internal_pfMinGain: ptr orxFLOAT_520095040;
-                                   internal_pfMaxGain: ptr orxFLOAT_520095040;
-                                   internal_pfRollOff: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "getPosition" & " already exists, not redeclaring")
+when not declared(getSpatialization):
+  proc getSpatialization*(internal_pstSound: ptr orxSOUND_520095426;
+                          internal_pfMinDistance: ptr orxFLOAT_520095003;
+                          internal_pfMaxDistance: ptr orxFLOAT_520095003;
+                          internal_pfMinGain: ptr orxFLOAT_520095003;
+                          internal_pfMaxGain: ptr orxFLOAT_520095003;
+                          internal_pfRollOff: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_GetSpatialization".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetSpatialization" &
+    hint("Declaration of " & "getSpatialization" &
         " already exists, not redeclaring")
-when not declared(orxSound_GetPanning):
-  proc orxSound_GetPanning*(internal_pstSound: ptr orxSOUND_520095463;
-                            internal_pfPanning: ptr orxFLOAT_520095040;
-                            internal_pbMix: ptr orxBOOL_520095038): orxSTATUS_520095066 {.
+when not declared(getPanning):
+  proc getPanning*(internal_pstSound: ptr orxSOUND_520095426;
+                   internal_pfPanning: ptr orxFLOAT_520095003;
+                   internal_pbMix: ptr orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_GetPanning".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetPanning" &
-        " already exists, not redeclaring")
-when not declared(orxSound_IsLooping):
-  proc orxSound_IsLooping*(internal_pstSound: ptr orxSOUND_520095463): orxBOOL_520095038 {.
+    hint("Declaration of " & "getPanning" & " already exists, not redeclaring")
+when not declared(isLooping):
+  proc isLooping*(internal_pstSound: ptr orxSOUND_520095426): orxBOOL_520095001 {.
       cdecl, importc: "orxSound_IsLooping".}
 else:
   static :
-    hint("Declaration of " & "orxSound_IsLooping" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetDuration):
-  proc orxSound_GetDuration*(internal_pstSound: ptr orxSOUND_520095463): orxFLOAT_520095040 {.
+    hint("Declaration of " & "isLooping" & " already exists, not redeclaring")
+when not declared(getDuration):
+  proc getDuration*(internal_pstSound: ptr orxSOUND_520095426): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetDuration".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetDuration" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetStatus):
-  proc orxSound_GetStatus*(internal_pstSound: ptr orxSOUND_520095463): orxSOUND_STATUS_520095461 {.
+    hint("Declaration of " & "getDuration" & " already exists, not redeclaring")
+when not declared(getStatus):
+  proc getStatus*(internal_pstSound: ptr orxSOUND_520095426): orxSOUND_STATUS_520095424 {.
       cdecl, importc: "orxSound_GetStatus".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetStatus" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetName):
-  proc orxSound_GetName*(internal_pstSound: ptr orxSOUND_520095463): cstring {.
+    hint("Declaration of " & "getStatus" & " already exists, not redeclaring")
+when not declared(getName_proc_F23A41E1):
+  proc getName_proc_F23A41E1*(internal_pstSound: ptr orxSOUND_520095426): cstring {.
       cdecl, importc: "orxSound_GetName".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetName" &
+    hint("Declaration of " & "getName_proc_F23A41E1" &
         " already exists, not redeclaring")
-when not declared(orxSound_GetMasterBusID):
-  proc orxSound_GetMasterBusID*(): orxSTRINGID_520095046 {.cdecl,
+when not declared(getMasterBusID):
+  proc getMasterBusID*(): orxSTRINGID_520095009 {.cdecl,
       importc: "orxSound_GetMasterBusID".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetMasterBusID" &
+    hint("Declaration of " & "getMasterBusID" &
         " already exists, not redeclaring")
-when not declared(orxSound_GetBusID):
-  proc orxSound_GetBusID*(internal_pstSound: ptr orxSOUND_520095463): orxSTRINGID_520095046 {.
+when not declared(getBusID):
+  proc getBusID*(internal_pstSound: ptr orxSOUND_520095426): orxSTRINGID_520095009 {.
       cdecl, importc: "orxSound_GetBusID".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusID" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetBusID):
-  proc orxSound_SetBusID*(internal_pstSound: ptr orxSOUND_520095463;
-                          internal_stBusID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+    hint("Declaration of " & "getBusID" & " already exists, not redeclaring")
+when not declared(setBusID):
+  proc setBusID*(internal_pstSound: ptr orxSOUND_520095426;
+                 internal_stBusID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetBusID".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetBusID" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetNext):
-  proc orxSound_GetNext*(internal_pstSound: ptr orxSOUND_520095463;
-                         internal_stBusID: orxSTRINGID_520095046): ptr orxSOUND_520095463 {.
+    hint("Declaration of " & "setBusID" & " already exists, not redeclaring")
+when not declared(getNext_proc):
+  proc getNext_proc*(internal_pstSound: ptr orxSOUND_520095426;
+                     internal_stBusID: orxSTRINGID_520095009): ptr orxSOUND_520095426 {.
       cdecl, importc: "orxSound_GetNext".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetNext" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusParent):
-  proc orxSound_GetBusParent*(internal_stBusID: orxSTRINGID_520095046): orxSTRINGID_520095046 {.
+    hint("Declaration of " & "getNext_proc" & " already exists, not redeclaring")
+when not declared(getBusParent):
+  proc getBusParent*(internal_stBusID: orxSTRINGID_520095009): orxSTRINGID_520095009 {.
       cdecl, importc: "orxSound_GetBusParent".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusParent" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusChild):
-  proc orxSound_GetBusChild*(internal_stBusID: orxSTRINGID_520095046): orxSTRINGID_520095046 {.
+    hint("Declaration of " & "getBusParent" & " already exists, not redeclaring")
+when not declared(getBusChild):
+  proc getBusChild*(internal_stBusID: orxSTRINGID_520095009): orxSTRINGID_520095009 {.
       cdecl, importc: "orxSound_GetBusChild".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusChild" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusSibling):
-  proc orxSound_GetBusSibling*(internal_stBusID: orxSTRINGID_520095046): orxSTRINGID_520095046 {.
+    hint("Declaration of " & "getBusChild" & " already exists, not redeclaring")
+when not declared(getBusSibling):
+  proc getBusSibling*(internal_stBusID: orxSTRINGID_520095009): orxSTRINGID_520095009 {.
       cdecl, importc: "orxSound_GetBusSibling".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusSibling" &
+    hint("Declaration of " & "getBusSibling" &
         " already exists, not redeclaring")
-when not declared(orxSound_SetBusParent):
-  proc orxSound_SetBusParent*(internal_stBusID: orxSTRINGID_520095046;
-                              internal_stParentBusID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+when not declared(setBusParent):
+  proc setBusParent*(internal_stBusID: orxSTRINGID_520095009;
+                     internal_stParentBusID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetBusParent".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetBusParent" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusVolume):
-  proc orxSound_GetBusVolume*(internal_stBusID: orxSTRINGID_520095046): orxFLOAT_520095040 {.
+    hint("Declaration of " & "setBusParent" & " already exists, not redeclaring")
+when not declared(getBusVolume):
+  proc getBusVolume*(internal_stBusID: orxSTRINGID_520095009): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetBusVolume".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusVolume" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusPitch):
-  proc orxSound_GetBusPitch*(internal_stBusID: orxSTRINGID_520095046): orxFLOAT_520095040 {.
+    hint("Declaration of " & "getBusVolume" & " already exists, not redeclaring")
+when not declared(getBusPitch):
+  proc getBusPitch*(internal_stBusID: orxSTRINGID_520095009): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetBusPitch".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusPitch" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetBusVolume):
-  proc orxSound_SetBusVolume*(internal_stBusID: orxSTRINGID_520095046;
-                              internal_fVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "getBusPitch" & " already exists, not redeclaring")
+when not declared(setBusVolume):
+  proc setBusVolume*(internal_stBusID: orxSTRINGID_520095009;
+                     internal_fVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetBusVolume".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetBusVolume" &
-        " already exists, not redeclaring")
-when not declared(orxSound_SetBusPitch):
-  proc orxSound_SetBusPitch*(internal_stBusID: orxSTRINGID_520095046;
-                             internal_fPitch: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setBusVolume" & " already exists, not redeclaring")
+when not declared(setBusPitch):
+  proc setBusPitch*(internal_stBusID: orxSTRINGID_520095009;
+                    internal_fPitch: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_SetBusPitch".}
 else:
   static :
-    hint("Declaration of " & "orxSound_SetBusPitch" &
-        " already exists, not redeclaring")
-when not declared(orxSound_GetBusGlobalVolume):
-  proc orxSound_GetBusGlobalVolume*(internal_stBusID: orxSTRINGID_520095046): orxFLOAT_520095040 {.
+    hint("Declaration of " & "setBusPitch" & " already exists, not redeclaring")
+when not declared(getBusGlobalVolume):
+  proc getBusGlobalVolume*(internal_stBusID: orxSTRINGID_520095009): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetBusGlobalVolume".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusGlobalVolume" &
+    hint("Declaration of " & "getBusGlobalVolume" &
         " already exists, not redeclaring")
-when not declared(orxSound_GetBusGlobalPitch):
-  proc orxSound_GetBusGlobalPitch*(internal_stBusID: orxSTRINGID_520095046): orxFLOAT_520095040 {.
+when not declared(getBusGlobalPitch):
+  proc getBusGlobalPitch*(internal_stBusID: orxSTRINGID_520095009): orxFLOAT_520095003 {.
       cdecl, importc: "orxSound_GetBusGlobalPitch".}
 else:
   static :
-    hint("Declaration of " & "orxSound_GetBusGlobalPitch" &
+    hint("Declaration of " & "getBusGlobalPitch" &
         " already exists, not redeclaring")
-when not declared(orxSound_AddBusFilter):
-  proc orxSound_AddBusFilter*(internal_stBusID: orxSTRINGID_520095046;
-                              internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095457;
-                              internal_bUseCustomParam: orxBOOL_520095038): orxSTATUS_520095066 {.
+when not declared(addBusFilter):
+  proc addBusFilter*(internal_stBusID: orxSTRINGID_520095009;
+                     internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095420;
+                     internal_bUseCustomParam: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_AddBusFilter".}
 else:
   static :
-    hint("Declaration of " & "orxSound_AddBusFilter" &
-        " already exists, not redeclaring")
-when not declared(orxSound_RemoveLastBusFilter):
-  proc orxSound_RemoveLastBusFilter*(internal_stBusID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+    hint("Declaration of " & "addBusFilter" & " already exists, not redeclaring")
+when not declared(removeLastBusFilter):
+  proc removeLastBusFilter*(internal_stBusID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_RemoveLastBusFilter".}
 else:
   static :
-    hint("Declaration of " & "orxSound_RemoveLastBusFilter" &
+    hint("Declaration of " & "removeLastBusFilter" &
         " already exists, not redeclaring")
-when not declared(orxSound_RemoveAllBusFilters):
-  proc orxSound_RemoveAllBusFilters*(internal_stBusID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+when not declared(removeAllBusFilters):
+  proc removeAllBusFilters*(internal_stBusID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_RemoveAllBusFilters".}
 else:
   static :
-    hint("Declaration of " & "orxSound_RemoveAllBusFilters" &
+    hint("Declaration of " & "removeAllBusFilters" &
         " already exists, not redeclaring")
-when not declared(orxSound_AddBusFilterFromConfig):
-  proc orxSound_AddBusFilterFromConfig*(internal_stBusID: orxSTRINGID_520095046;
-                                        internal_zFilterConfigID: cstring): orxSTATUS_520095066 {.
+when not declared(addBusFilterFromConfig):
+  proc addBusFilterFromConfig*(internal_stBusID: orxSTRINGID_520095009;
+                               internal_zFilterConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxSound_AddBusFilterFromConfig".}
 else:
   static :
-    hint("Declaration of " & "orxSound_AddBusFilterFromConfig" &
+    hint("Declaration of " & "addBusFilterFromConfig" &
         " already exists, not redeclaring")
 when not declared(objectSetup):
   proc objectSetup*(): void {.cdecl, importc: "orxObject_Setup".}
@@ -16914,7 +16878,7 @@ else:
   static :
     hint("Declaration of " & "objectSetup" & " already exists, not redeclaring")
 when not declared(objectInit):
-  proc objectInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxObject_Init".}
+  proc objectInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxObject_Init".}
 else:
   static :
     hint("Declaration of " & "objectInit" & " already exists, not redeclaring")
@@ -16924,470 +16888,473 @@ else:
   static :
     hint("Declaration of " & "objectExit" & " already exists, not redeclaring")
 when not declared(objectCreate):
-  proc objectCreate*(): ptr orxOBJECT_520095487 {.cdecl,
+  proc objectCreate*(): ptr orxOBJECT_520095450 {.cdecl,
       importc: "orxObject_Create".}
 else:
   static :
     hint("Declaration of " & "objectCreate" & " already exists, not redeclaring")
 when not declared(objectCreateFromConfig):
-  proc objectCreateFromConfig*(internal_zConfigID: cstring): ptr orxOBJECT_520095487 {.
+  proc objectCreateFromConfig*(internal_zConfigID: cstring): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "objectCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(objectDelete):
-  proc objectDelete*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc objectDelete*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_Delete".}
 else:
   static :
     hint("Declaration of " & "objectDelete" & " already exists, not redeclaring")
 when not declared(objectUpdate):
-  proc objectUpdate*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_pstClockInfo: ptr orxCLOCK_INFO_520095123): orxSTATUS_520095066 {.
+  proc objectUpdate*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_pstClockInfo: ptr orxCLOCK_INFO_520095086): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_Update".}
 else:
   static :
     hint("Declaration of " & "objectUpdate" & " already exists, not redeclaring")
 when not declared(enable):
-  proc enable*(internal_pstObject: ptr orxOBJECT_520095487;
-               internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc enable*(internal_pstObject: ptr orxOBJECT_520095450;
+               internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_Enable".}
 else:
   static :
     hint("Declaration of " & "enable" & " already exists, not redeclaring")
 when not declared(enableRecursive):
-  proc enableRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                        internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc enableRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                        internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_EnableRecursive".}
 else:
   static :
     hint("Declaration of " & "enableRecursive" &
         " already exists, not redeclaring")
 when not declared(isEnabled):
-  proc isEnabled*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc isEnabled*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "isEnabled" & " already exists, not redeclaring")
-when not declared(pause_proc):
-  proc pause_proc*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_bPause: orxBOOL_520095038): void {.cdecl,
+when not declared(pause_proc_1ACCD83A):
+  proc pause_proc_1ACCD83A*(internal_pstObject: ptr orxOBJECT_520095450;
+                            internal_bPause: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_Pause".}
 else:
   static :
-    hint("Declaration of " & "pause_proc" & " already exists, not redeclaring")
+    hint("Declaration of " & "pause_proc_1ACCD83A" &
+        " already exists, not redeclaring")
 when not declared(pauseRecursive):
-  proc pauseRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_bPause: orxBOOL_520095038): void {.cdecl,
+  proc pauseRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_bPause: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_PauseRecursive".}
 else:
   static :
     hint("Declaration of " & "pauseRecursive" &
         " already exists, not redeclaring")
 when not declared(isPaused_proc):
-  proc isPaused_proc*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc isPaused_proc*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_IsPaused".}
 else:
   static :
     hint("Declaration of " & "isPaused_proc" &
         " already exists, not redeclaring")
 when not declared(setUserData):
-  proc setUserData*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc setUserData*(internal_pstObject: ptr orxOBJECT_520095450;
                     internal_pUserData: pointer): void {.cdecl,
       importc: "orxObject_SetUserData".}
 else:
   static :
     hint("Declaration of " & "setUserData" & " already exists, not redeclaring")
 when not declared(getUserData):
-  proc getUserData*(internal_pstObject: ptr orxOBJECT_520095487): pointer {.
+  proc getUserData*(internal_pstObject: ptr orxOBJECT_520095450): pointer {.
       cdecl, importc: "orxObject_GetUserData".}
 else:
   static :
     hint("Declaration of " & "getUserData" & " already exists, not redeclaring")
 when not declared(setOwner):
-  proc setOwner*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc setOwner*(internal_pstObject: ptr orxOBJECT_520095450;
                  internal_pOwner: pointer): void {.cdecl,
       importc: "orxObject_SetOwner".}
 else:
   static :
     hint("Declaration of " & "setOwner" & " already exists, not redeclaring")
 when not declared(getOwner):
-  proc getOwner*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxSTRUCTURE_520095159 {.
+  proc getOwner*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxObject_GetOwner".}
 else:
   static :
     hint("Declaration of " & "getOwner" & " already exists, not redeclaring")
 when not declared(getOwnedChild):
-  proc getOwnedChild*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxOBJECT_520095487 {.
+  proc getOwnedChild*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetOwnedChild".}
 else:
   static :
     hint("Declaration of " & "getOwnedChild" &
         " already exists, not redeclaring")
 when not declared(getOwnedSibling):
-  proc getOwnedSibling*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxOBJECT_520095487 {.
+  proc getOwnedSibling*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetOwnedSibling".}
 else:
   static :
     hint("Declaration of " & "getOwnedSibling" &
         " already exists, not redeclaring")
 when not declared(findOwnedChild):
-  proc findOwnedChild*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_zPath: cstring): ptr orxOBJECT_520095487 {.
+  proc findOwnedChild*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_zPath: cstring): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_FindOwnedChild".}
 else:
   static :
     hint("Declaration of " & "findOwnedChild" &
         " already exists, not redeclaring")
 when not declared(setClock):
-  proc setClock*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pstClock: ptr orxCLOCK_520095129): orxSTATUS_520095066 {.
+  proc setClock*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pstClock: ptr orxCLOCK_520095092): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetClock".}
 else:
   static :
     hint("Declaration of " & "setClock" & " already exists, not redeclaring")
 when not declared(setClockRecursive):
-  proc setClockRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                          internal_pstClock: ptr orxCLOCK_520095129): void {.
+  proc setClockRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                          internal_pstClock: ptr orxCLOCK_520095092): void {.
       cdecl, importc: "orxObject_SetClockRecursive".}
 else:
   static :
     hint("Declaration of " & "setClockRecursive" &
         " already exists, not redeclaring")
 when not declared(getClock):
-  proc getClock*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxCLOCK_520095129 {.
+  proc getClock*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxCLOCK_520095092 {.
       cdecl, importc: "orxObject_GetClock".}
 else:
   static :
     hint("Declaration of " & "getClock" & " already exists, not redeclaring")
 when not declared(linkStructure):
-  proc linkStructure*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_pstStructure: ptr orxSTRUCTURE_520095159): orxSTATUS_520095066 {.
+  proc linkStructure*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_pstStructure: ptr orxSTRUCTURE_520095122): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_LinkStructure".}
 else:
   static :
     hint("Declaration of " & "linkStructure" &
         " already exists, not redeclaring")
 when not declared(unlinkStructure):
-  proc unlinkStructure*(internal_pstObject: ptr orxOBJECT_520095487;
-                        internal_eStructureID: orxSTRUCTURE_ID_520095151): void {.
+  proc unlinkStructure*(internal_pstObject: ptr orxOBJECT_520095450;
+                        internal_eStructureID: orxSTRUCTURE_ID_520095114): void {.
       cdecl, importc: "orxObject_UnlinkStructure".}
 else:
   static :
     hint("Declaration of " & "unlinkStructure" &
         " already exists, not redeclaring")
 when not declared(internal_orxObject_GetStructure):
-  proc internal_orxObject_GetStructure*(internal_pstObject: ptr orxOBJECT_520095487;
-                                        internal_eStructureID: orxSTRUCTURE_ID_520095151): ptr orxSTRUCTURE_520095159 {.
+  proc internal_orxObject_GetStructure*(internal_pstObject: ptr orxOBJECT_520095450;
+                                        internal_eStructureID: orxSTRUCTURE_ID_520095114): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "_orxObject_GetStructure".}
 else:
   static :
     hint("Declaration of " & "internal_orxObject_GetStructure" &
         " already exists, not redeclaring")
 when not declared(setFlip):
-  proc setFlip*(internal_pstObject: ptr orxOBJECT_520095487;
-                internal_bFlipX: orxBOOL_520095038; internal_bFlipY: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc setFlip*(internal_pstObject: ptr orxOBJECT_520095450;
+                internal_bFlipX: orxBOOL_520095001; internal_bFlipY: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetFlip".}
 else:
   static :
     hint("Declaration of " & "setFlip" & " already exists, not redeclaring")
 when not declared(getFlip):
-  proc getFlip*(internal_pstObject: ptr orxOBJECT_520095487;
-                internal_pbFlipX: ptr orxBOOL_520095038;
-                internal_pbFlipY: ptr orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc getFlip*(internal_pstObject: ptr orxOBJECT_520095450;
+                internal_pbFlipX: ptr orxBOOL_520095001;
+                internal_pbFlipY: ptr orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_GetFlip".}
 else:
   static :
     hint("Declaration of " & "getFlip" & " already exists, not redeclaring")
 when not declared(setPivot):
-  proc setPivot*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvPivot: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setPivot*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvPivot: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetPivot".}
 else:
   static :
     hint("Declaration of " & "setPivot" & " already exists, not redeclaring")
 when not declared(setRelativePivot):
-  proc setRelativePivot*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_u32AlignFlags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc setRelativePivot*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_u32AlignFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetRelativePivot".}
 else:
   static :
     hint("Declaration of " & "setRelativePivot" &
         " already exists, not redeclaring")
 when not declared(setOrigin):
-  proc setOrigin*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_pvOrigin: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setOrigin*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_pvOrigin: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetOrigin".}
 else:
   static :
     hint("Declaration of " & "setOrigin" & " already exists, not redeclaring")
 when not declared(setSize):
-  proc setSize*(internal_pstObject: ptr orxOBJECT_520095487;
-                internal_pvSize: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setSize*(internal_pstObject: ptr orxOBJECT_520095450;
+                internal_pvSize: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetSize".}
 else:
   static :
     hint("Declaration of " & "setSize" & " already exists, not redeclaring")
 when not declared(getPivot):
-  proc getPivot*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvPivot: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getPivot*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvPivot: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetPivot".}
 else:
   static :
     hint("Declaration of " & "getPivot" & " already exists, not redeclaring")
 when not declared(getOrigin):
-  proc getOrigin*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_pvOrigin: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getOrigin*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_pvOrigin: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetOrigin".}
 else:
   static :
     hint("Declaration of " & "getOrigin" & " already exists, not redeclaring")
 when not declared(getSize_proc):
-  proc getSize_proc*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_pvSize: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getSize_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_pvSize: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetSize".}
 else:
   static :
     hint("Declaration of " & "getSize_proc" & " already exists, not redeclaring")
-when not declared(setPosition):
-  proc setPosition*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+when not declared(setPosition_proc):
+  proc setPosition_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetPosition".}
 else:
   static :
-    hint("Declaration of " & "setPosition" & " already exists, not redeclaring")
+    hint("Declaration of " & "setPosition_proc" &
+        " already exists, not redeclaring")
 when not declared(setWorldPosition):
-  proc setWorldPosition*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setWorldPosition*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetWorldPosition".}
 else:
   static :
     hint("Declaration of " & "setWorldPosition" &
         " already exists, not redeclaring")
 when not declared(setRotation):
-  proc setRotation*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setRotation*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetRotation".}
 else:
   static :
     hint("Declaration of " & "setRotation" & " already exists, not redeclaring")
 when not declared(setWorldRotation):
-  proc setWorldRotation*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setWorldRotation*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetWorldRotation".}
 else:
   static :
     hint("Declaration of " & "setWorldRotation" &
         " already exists, not redeclaring")
 when not declared(setScale):
-  proc setScale*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvScale: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setScale*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvScale: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetScale".}
 else:
   static :
     hint("Declaration of " & "setScale" & " already exists, not redeclaring")
 when not declared(setWorldScale):
-  proc setWorldScale*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_pvScale: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setWorldScale*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_pvScale: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetWorldScale".}
 else:
   static :
     hint("Declaration of " & "setWorldScale" &
         " already exists, not redeclaring")
-when not declared(getPosition):
-  proc getPosition*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+when not declared(getPosition_proc):
+  proc getPosition_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetPosition".}
 else:
   static :
-    hint("Declaration of " & "getPosition" & " already exists, not redeclaring")
+    hint("Declaration of " & "getPosition_proc" &
+        " already exists, not redeclaring")
 when not declared(getWorldPosition):
-  proc getWorldPosition*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getWorldPosition*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetWorldPosition".}
 else:
   static :
     hint("Declaration of " & "getWorldPosition" &
         " already exists, not redeclaring")
 when not declared(getRotation):
-  proc getRotation*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getRotation*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetRotation".}
 else:
   static :
     hint("Declaration of " & "getRotation" & " already exists, not redeclaring")
 when not declared(getWorldRotation):
-  proc getWorldRotation*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getWorldRotation*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetWorldRotation".}
 else:
   static :
     hint("Declaration of " & "getWorldRotation" &
         " already exists, not redeclaring")
 when not declared(getScale):
-  proc getScale*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getScale*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetScale".}
 else:
   static :
     hint("Declaration of " & "getScale" & " already exists, not redeclaring")
 when not declared(getWorldScale):
-  proc getWorldScale*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getWorldScale*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetWorldScale".}
 else:
   static :
     hint("Declaration of " & "getWorldScale" &
         " already exists, not redeclaring")
 when not declared(setParent):
-  proc setParent*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_pParent: pointer): orxSTATUS_520095066 {.cdecl,
+  proc setParent*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_pParent: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_SetParent".}
 else:
   static :
     hint("Declaration of " & "setParent" & " already exists, not redeclaring")
 when not declared(getParent):
-  proc getParent*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxSTRUCTURE_520095159 {.
+  proc getParent*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxObject_GetParent".}
 else:
   static :
     hint("Declaration of " & "getParent" & " already exists, not redeclaring")
 when not declared(getChild):
-  proc getChild*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxOBJECT_520095487 {.
+  proc getChild*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetChild".}
 else:
   static :
     hint("Declaration of " & "getChild" & " already exists, not redeclaring")
 when not declared(getSibling):
-  proc getSibling*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxOBJECT_520095487 {.
+  proc getSibling*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetSibling".}
 else:
   static :
     hint("Declaration of " & "getSibling" & " already exists, not redeclaring")
 when not declared(getNextChild):
-  proc getNextChild*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc getNextChild*(internal_pstObject: ptr orxOBJECT_520095450;
                      internal_pChild: pointer;
-                     internal_eStructureID: orxSTRUCTURE_ID_520095151): ptr orxSTRUCTURE_520095159 {.
+                     internal_eStructureID: orxSTRUCTURE_ID_520095114): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxObject_GetNextChild".}
 else:
   static :
     hint("Declaration of " & "getNextChild" & " already exists, not redeclaring")
 when not declared(findChild):
-  proc findChild*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_zPath: cstring): ptr orxOBJECT_520095487 {.cdecl,
+  proc findChild*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_zPath: cstring): ptr orxOBJECT_520095450 {.cdecl,
       importc: "orxObject_FindChild".}
 else:
   static :
     hint("Declaration of " & "findChild" & " already exists, not redeclaring")
 when not declared(attach):
-  proc attach*(internal_pstObject: ptr orxOBJECT_520095487;
-               internal_pParent: pointer): orxSTATUS_520095066 {.cdecl,
+  proc attach*(internal_pstObject: ptr orxOBJECT_520095450;
+               internal_pParent: pointer): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_Attach".}
 else:
   static :
     hint("Declaration of " & "attach" & " already exists, not redeclaring")
 when not declared(detach):
-  proc detach*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc detach*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_Detach".}
 else:
   static :
     hint("Declaration of " & "detach" & " already exists, not redeclaring")
 when not declared(setIgnoreFlags):
-  proc setIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_u32IgnoreFlags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc setIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_u32IgnoreFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetIgnoreFlags".}
 else:
   static :
     hint("Declaration of " & "setIgnoreFlags" &
         " already exists, not redeclaring")
 when not declared(setLiteralIgnoreFlags):
-  proc setLiteralIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095487;
-                              internal_zIgnoreFlags: cstring): orxSTATUS_520095066 {.
+  proc setLiteralIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095450;
+                              internal_zIgnoreFlags: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetLiteralIgnoreFlags".}
 else:
   static :
     hint("Declaration of " & "setLiteralIgnoreFlags" &
         " already exists, not redeclaring")
 when not declared(getIgnoreFlags):
-  proc getIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095487): orxU32_520095024 {.
+  proc getIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095450): orxU32_520094987 {.
       cdecl, importc: "orxObject_GetIgnoreFlags".}
 else:
   static :
     hint("Declaration of " & "getIgnoreFlags" &
         " already exists, not redeclaring")
 when not declared(getLiteralIgnoreFlags):
-  proc getLiteralIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095487): cstring {.
+  proc getLiteralIgnoreFlags*(internal_pstObject: ptr orxOBJECT_520095450): cstring {.
       cdecl, importc: "orxObject_GetLiteralIgnoreFlags".}
 else:
   static :
     hint("Declaration of " & "getLiteralIgnoreFlags" &
         " already exists, not redeclaring")
 when not declared(logParents):
-  proc logParents*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc logParents*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_LogParents".}
 else:
   static :
     hint("Declaration of " & "logParents" & " already exists, not redeclaring")
 when not declared(setAnimSet):
-  proc setAnimSet*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_pstAnimSet: ptr orxANIMSET_520095177): orxSTATUS_520095066 {.
+  proc setAnimSet*(internal_pstObject: ptr orxOBJECT_520095450;
+                   internal_pstAnimSet: ptr orxANIMSET_520095140): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetAnimSet".}
 else:
   static :
     hint("Declaration of " & "setAnimSet" & " already exists, not redeclaring")
 when not declared(setAnimFrequency):
-  proc setAnimFrequency*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_fFrequency: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setAnimFrequency*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_fFrequency: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetAnimFrequency".}
 else:
   static :
     hint("Declaration of " & "setAnimFrequency" &
         " already exists, not redeclaring")
 when not declared(setAnimFrequencyRecursive):
-  proc setAnimFrequencyRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                                  internal_fFrequency: orxFLOAT_520095040): void {.
+  proc setAnimFrequencyRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                                  internal_fFrequency: orxFLOAT_520095003): void {.
       cdecl, importc: "orxObject_SetAnimFrequencyRecursive".}
 else:
   static :
     hint("Declaration of " & "setAnimFrequencyRecursive" &
         " already exists, not redeclaring")
 when not declared(getAnimFrequency):
-  proc getAnimFrequency*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getAnimFrequency*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetAnimFrequency".}
 else:
   static :
     hint("Declaration of " & "getAnimFrequency" &
         " already exists, not redeclaring")
 when not declared(setAnimTime):
-  proc setAnimTime*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setAnimTime*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetAnimTime".}
 else:
   static :
     hint("Declaration of " & "setAnimTime" & " already exists, not redeclaring")
 when not declared(setAnimTimeRecursive):
-  proc setAnimTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                             internal_fTime: orxFLOAT_520095040): void {.cdecl,
+  proc setAnimTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                             internal_fTime: orxFLOAT_520095003): void {.cdecl,
       importc: "orxObject_SetAnimTimeRecursive".}
 else:
   static :
     hint("Declaration of " & "setAnimTimeRecursive" &
         " already exists, not redeclaring")
 when not declared(getAnimTime):
-  proc getAnimTime*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getAnimTime*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetAnimTime".}
 else:
   static :
     hint("Declaration of " & "getAnimTime" & " already exists, not redeclaring")
 when not declared(setCurrentAnim):
-  proc setCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_zAnimName: cstring): orxSTATUS_520095066 {.
+  proc setCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_zAnimName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetCurrentAnim".}
 else:
   static :
     hint("Declaration of " & "setCurrentAnim" &
         " already exists, not redeclaring")
 when not declared(setCurrentAnimRecursive):
-  proc setCurrentAnimRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc setCurrentAnimRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                                 internal_zAnimName: cstring): void {.cdecl,
       importc: "orxObject_SetCurrentAnimRecursive".}
 else:
@@ -17395,15 +17362,15 @@ else:
     hint("Declaration of " & "setCurrentAnimRecursive" &
         " already exists, not redeclaring")
 when not declared(setTargetAnim):
-  proc setTargetAnim*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_zAnimName: cstring): orxSTATUS_520095066 {.cdecl,
+  proc setTargetAnim*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_zAnimName: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_SetTargetAnim".}
 else:
   static :
     hint("Declaration of " & "setTargetAnim" &
         " already exists, not redeclaring")
 when not declared(setTargetAnimRecursive):
-  proc setTargetAnimRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc setTargetAnimRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                                internal_zAnimName: cstring): void {.cdecl,
       importc: "orxObject_SetTargetAnimRecursive".}
 else:
@@ -17411,208 +17378,208 @@ else:
     hint("Declaration of " & "setTargetAnimRecursive" &
         " already exists, not redeclaring")
 when not declared(getCurrentAnim):
-  proc getCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095487): cstring {.
+  proc getCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095450): cstring {.
       cdecl, importc: "orxObject_GetCurrentAnim".}
 else:
   static :
     hint("Declaration of " & "getCurrentAnim" &
         " already exists, not redeclaring")
 when not declared(getTargetAnim):
-  proc getTargetAnim*(internal_pstObject: ptr orxOBJECT_520095487): cstring {.
+  proc getTargetAnim*(internal_pstObject: ptr orxOBJECT_520095450): cstring {.
       cdecl, importc: "orxObject_GetTargetAnim".}
 else:
   static :
     hint("Declaration of " & "getTargetAnim" &
         " already exists, not redeclaring")
 when not declared(isCurrentAnim):
-  proc isCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_zAnimName: cstring): orxBOOL_520095038 {.cdecl,
+  proc isCurrentAnim*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_zAnimName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxObject_IsCurrentAnim".}
 else:
   static :
     hint("Declaration of " & "isCurrentAnim" &
         " already exists, not redeclaring")
 when not declared(isTargetAnim):
-  proc isTargetAnim*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_zAnimName: cstring): orxBOOL_520095038 {.cdecl,
+  proc isTargetAnim*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_zAnimName: cstring): orxBOOL_520095001 {.cdecl,
       importc: "orxObject_IsTargetAnim".}
 else:
   static :
     hint("Declaration of " & "isTargetAnim" & " already exists, not redeclaring")
 when not declared(setSpeed):
-  proc setSpeed*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvSpeed: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setSpeed*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvSpeed: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetSpeed".}
 else:
   static :
     hint("Declaration of " & "setSpeed" & " already exists, not redeclaring")
 when not declared(setRelativeSpeed):
-  proc setRelativeSpeed*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvRelativeSpeed: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setRelativeSpeed*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvRelativeSpeed: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetRelativeSpeed".}
 else:
   static :
     hint("Declaration of " & "setRelativeSpeed" &
         " already exists, not redeclaring")
 when not declared(setAngularVelocity):
-  proc setAngularVelocity*(internal_pstObject: ptr orxOBJECT_520095487;
-                           internal_fVelocity: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setAngularVelocity*(internal_pstObject: ptr orxOBJECT_520095450;
+                           internal_fVelocity: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "setAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(setCustomGravity):
-  proc setCustomGravity*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvCustomGravity: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setCustomGravity*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvCustomGravity: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "setCustomGravity" &
         " already exists, not redeclaring")
 when not declared(getSpeed):
-  proc getSpeed*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pvSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getSpeed*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pvSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetSpeed".}
 else:
   static :
     hint("Declaration of " & "getSpeed" & " already exists, not redeclaring")
 when not declared(getRelativeSpeed):
-  proc getRelativeSpeed*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvRelativeSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getRelativeSpeed*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvRelativeSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetRelativeSpeed".}
 else:
   static :
     hint("Declaration of " & "getRelativeSpeed" &
         " already exists, not redeclaring")
 when not declared(getAngularVelocity):
-  proc getAngularVelocity*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getAngularVelocity*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "getAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(getCustomGravity):
-  proc getCustomGravity*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_pvCustomGravity: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getCustomGravity*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_pvCustomGravity: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "getCustomGravity" &
         " already exists, not redeclaring")
 when not declared(getMass):
-  proc getMass*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getMass*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetMass".}
 else:
   static :
     hint("Declaration of " & "getMass" & " already exists, not redeclaring")
 when not declared(getMassCenter):
-  proc getMassCenter*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_pvMassCenter: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getMassCenter*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_pvMassCenter: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetMassCenter".}
 else:
   static :
     hint("Declaration of " & "getMassCenter" &
         " already exists, not redeclaring")
 when not declared(applyTorque):
-  proc applyTorque*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_fTorque: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc applyTorque*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_fTorque: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_ApplyTorque".}
 else:
   static :
     hint("Declaration of " & "applyTorque" & " already exists, not redeclaring")
 when not declared(applyForce):
-  proc applyForce*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_pvForce: ptr orxVECTOR_520095096;
-                   internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc applyForce*(internal_pstObject: ptr orxOBJECT_520095450;
+                   internal_pvForce: ptr orxVECTOR_520095059;
+                   internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_ApplyForce".}
 else:
   static :
     hint("Declaration of " & "applyForce" & " already exists, not redeclaring")
 when not declared(applyImpulse):
-  proc applyImpulse*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_pvImpulse: ptr orxVECTOR_520095096;
-                     internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc applyImpulse*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_pvImpulse: ptr orxVECTOR_520095059;
+                     internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_ApplyImpulse".}
 else:
   static :
     hint("Declaration of " & "applyImpulse" & " already exists, not redeclaring")
 when not declared(raycast):
-  proc raycast*(internal_pvBegin: ptr orxVECTOR_520095096;
-                internal_pvEnd: ptr orxVECTOR_520095096;
-                internal_u16SelfFlags: orxU16_520095026;
-                internal_u16CheckMask: orxU16_520095026;
-                internal_bEarlyExit: orxBOOL_520095038;
-                internal_pvContact: ptr orxVECTOR_520095096;
-                internal_pvNormal: ptr orxVECTOR_520095096): ptr orxOBJECT_520095487 {.
+  proc raycast*(internal_pvBegin: ptr orxVECTOR_520095059;
+                internal_pvEnd: ptr orxVECTOR_520095059;
+                internal_u16SelfFlags: orxU16_520094989;
+                internal_u16CheckMask: orxU16_520094989;
+                internal_bEarlyExit: orxBOOL_520095001;
+                internal_pvContact: ptr orxVECTOR_520095059;
+                internal_pvNormal: ptr orxVECTOR_520095059): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_Raycast".}
 else:
   static :
     hint("Declaration of " & "raycast" & " already exists, not redeclaring")
 when not declared(setTextString):
-  proc setTextString*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_zString: cstring): orxSTATUS_520095066 {.cdecl,
+  proc setTextString*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_zString: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_SetTextString".}
 else:
   static :
     hint("Declaration of " & "setTextString" &
         " already exists, not redeclaring")
 when not declared(getTextString):
-  proc getTextString*(internal_pstObject: ptr orxOBJECT_520095487): cstring {.
+  proc getTextString*(internal_pstObject: ptr orxOBJECT_520095450): cstring {.
       cdecl, importc: "orxObject_GetTextString".}
 else:
   static :
     hint("Declaration of " & "getTextString" &
         " already exists, not redeclaring")
 when not declared(getBoundingBox):
-  proc getBoundingBox*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_pstBoundingBox: ptr orxOBOX_520095257): ptr orxOBOX_520095257 {.
+  proc getBoundingBox*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_pstBoundingBox: ptr orxOBOX_520095220): ptr orxOBOX_520095220 {.
       cdecl, importc: "orxObject_GetBoundingBox".}
 else:
   static :
     hint("Declaration of " & "getBoundingBox" &
         " already exists, not redeclaring")
 when not declared(addFX):
-  proc addFX*(internal_pstObject: ptr orxOBJECT_520095487;
-              internal_zFXConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+  proc addFX*(internal_pstObject: ptr orxOBJECT_520095450;
+              internal_zFXConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_AddFX".}
 else:
   static :
     hint("Declaration of " & "addFX" & " already exists, not redeclaring")
 when not declared(addFXRecursive):
-  proc addFXRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc addFXRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                        internal_zFXConfigID: cstring;
-                       internal_fPropagationDelay: orxFLOAT_520095040): void {.
+                       internal_fPropagationDelay: orxFLOAT_520095003): void {.
       cdecl, importc: "orxObject_AddFXRecursive".}
 else:
   static :
     hint("Declaration of " & "addFXRecursive" &
         " already exists, not redeclaring")
 when not declared(addUniqueFX):
-  proc addUniqueFX*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_zFXConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+  proc addUniqueFX*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_zFXConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_AddUniqueFX".}
 else:
   static :
     hint("Declaration of " & "addUniqueFX" & " already exists, not redeclaring")
 when not declared(addUniqueFXRecursive):
-  proc addUniqueFXRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc addUniqueFXRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                              internal_zFXConfigID: cstring;
-                             internal_fPropagationDelay: orxFLOAT_520095040): void {.
+                             internal_fPropagationDelay: orxFLOAT_520095003): void {.
       cdecl, importc: "orxObject_AddUniqueFXRecursive".}
 else:
   static :
     hint("Declaration of " & "addUniqueFXRecursive" &
         " already exists, not redeclaring")
 when not declared(removeFX):
-  proc removeFX*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_zFXConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+  proc removeFX*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_zFXConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_RemoveFX".}
 else:
   static :
     hint("Declaration of " & "removeFX" & " already exists, not redeclaring")
 when not declared(removeFXRecursive):
-  proc removeFXRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc removeFXRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                           internal_zFXConfigID: cstring): void {.cdecl,
       importc: "orxObject_RemoveFXRecursive".}
 else:
@@ -17620,161 +17587,166 @@ else:
     hint("Declaration of " & "removeFXRecursive" &
         " already exists, not redeclaring")
 when not declared(removeAllFXs):
-  proc removeAllFXs*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc removeAllFXs*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveAllFXs".}
 else:
   static :
     hint("Declaration of " & "removeAllFXs" & " already exists, not redeclaring")
 when not declared(removeAllFXsRecursive):
-  proc removeAllFXsRecursive*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc removeAllFXsRecursive*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveAllFXsRecursive".}
 else:
   static :
     hint("Declaration of " & "removeAllFXsRecursive" &
         " already exists, not redeclaring")
 when not declared(setFXFrequency):
-  proc setFXFrequency*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_fFrequency: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setFXFrequency*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_fFrequency: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetFXFrequency".}
 else:
   static :
     hint("Declaration of " & "setFXFrequency" &
         " already exists, not redeclaring")
 when not declared(setFXFrequencyRecursive):
-  proc setFXFrequencyRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                                internal_fFrequency: orxFLOAT_520095040): void {.
+  proc setFXFrequencyRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                                internal_fFrequency: orxFLOAT_520095003): void {.
       cdecl, importc: "orxObject_SetFXFrequencyRecursive".}
 else:
   static :
     hint("Declaration of " & "setFXFrequencyRecursive" &
         " already exists, not redeclaring")
 when not declared(getFXFrequency):
-  proc getFXFrequency*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getFXFrequency*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetFXFrequency".}
 else:
   static :
     hint("Declaration of " & "getFXFrequency" &
         " already exists, not redeclaring")
 when not declared(setFXTime):
-  proc setFXTime*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setFXTime*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetFXTime".}
 else:
   static :
     hint("Declaration of " & "setFXTime" & " already exists, not redeclaring")
 when not declared(setFXTimeRecursive):
-  proc setFXTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                           internal_fTime: orxFLOAT_520095040): void {.cdecl,
+  proc setFXTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                           internal_fTime: orxFLOAT_520095003): void {.cdecl,
       importc: "orxObject_SetFXTimeRecursive".}
 else:
   static :
     hint("Declaration of " & "setFXTimeRecursive" &
         " already exists, not redeclaring")
 when not declared(getFXTime):
-  proc getFXTime*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getFXTime*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetFXTime".}
 else:
   static :
     hint("Declaration of " & "getFXTime" & " already exists, not redeclaring")
 when not declared(synchronizeFX):
-  proc synchronizeFX*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_pstModel: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc synchronizeFX*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_pstModel: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SynchronizeFX".}
 else:
   static :
     hint("Declaration of " & "synchronizeFX" &
         " already exists, not redeclaring")
 when not declared(addSound):
-  proc addSound*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_zSoundConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+  proc addSound*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_zSoundConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxObject_AddSound".}
 else:
   static :
     hint("Declaration of " & "addSound" & " already exists, not redeclaring")
 when not declared(removeSound):
-  proc removeSound*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_zSoundConfigID: cstring): orxSTATUS_520095066 {.
+  proc removeSound*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_zSoundConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveSound".}
 else:
   static :
     hint("Declaration of " & "removeSound" & " already exists, not redeclaring")
 when not declared(removeAllSounds):
-  proc removeAllSounds*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc removeAllSounds*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveAllSounds".}
 else:
   static :
     hint("Declaration of " & "removeAllSounds" &
         " already exists, not redeclaring")
 when not declared(getLastAddedSound):
-  proc getLastAddedSound*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxSOUND_520095463 {.
+  proc getLastAddedSound*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxSOUND_520095426 {.
       cdecl, importc: "orxObject_GetLastAddedSound".}
 else:
   static :
     hint("Declaration of " & "getLastAddedSound" &
         " already exists, not redeclaring")
-when not declared(setVolume):
-  proc setVolume*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_fVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+when not declared(setVolume_proc):
+  proc setVolume_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_fVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetVolume".}
 else:
   static :
-    hint("Declaration of " & "setVolume" & " already exists, not redeclaring")
-when not declared(setPitch):
-  proc setPitch*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_fPitch: orxFLOAT_520095040): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setVolume_proc" &
+        " already exists, not redeclaring")
+when not declared(setPitch_proc):
+  proc setPitch_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_fPitch: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetPitch".}
 else:
   static :
-    hint("Declaration of " & "setPitch" & " already exists, not redeclaring")
-when not declared(setPanning):
-  proc setPanning*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_fPanning: orxFLOAT_520095040; internal_bMix: orxBOOL_520095038): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setPitch_proc" &
+        " already exists, not redeclaring")
+when not declared(setPanning_proc):
+  proc setPanning_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                        internal_fPanning: orxFLOAT_520095003;
+                        internal_bMix: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetPanning".}
 else:
   static :
-    hint("Declaration of " & "setPanning" & " already exists, not redeclaring")
-when not declared(play):
-  proc play*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+    hint("Declaration of " & "setPanning_proc" &
+        " already exists, not redeclaring")
+when not declared(play_proc):
+  proc play_proc*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_Play".}
 else:
   static :
-    hint("Declaration of " & "play" & " already exists, not redeclaring")
-when not declared(stop):
-  proc stop*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+    hint("Declaration of " & "play_proc" & " already exists, not redeclaring")
+when not declared(stop_proc):
+  proc stop_proc*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_Stop".}
 else:
   static :
-    hint("Declaration of " & "stop" & " already exists, not redeclaring")
-when not declared(addFilter):
-  proc addFilter*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_zFilterConfigID: cstring): orxSTATUS_520095066 {.
+    hint("Declaration of " & "stop_proc" & " already exists, not redeclaring")
+when not declared(addFilter_proc):
+  proc addFilter_proc*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_zFilterConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_AddFilter".}
 else:
   static :
-    hint("Declaration of " & "addFilter" & " already exists, not redeclaring")
-when not declared(removeLastFilter):
-  proc removeLastFilter*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+    hint("Declaration of " & "addFilter_proc" &
+        " already exists, not redeclaring")
+when not declared(removeLastFilter_proc):
+  proc removeLastFilter_proc*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveLastFilter".}
 else:
   static :
-    hint("Declaration of " & "removeLastFilter" &
+    hint("Declaration of " & "removeLastFilter_proc" &
         " already exists, not redeclaring")
-when not declared(removeAllFilters):
-  proc removeAllFilters*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+when not declared(removeAllFilters_proc):
+  proc removeAllFilters_proc*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveAllFilters".}
 else:
   static :
-    hint("Declaration of " & "removeAllFilters" &
+    hint("Declaration of " & "removeAllFilters_proc" &
         " already exists, not redeclaring")
 when not declared(addShader):
-  proc addShader*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.
+  proc addShader*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_AddShader".}
 else:
   static :
     hint("Declaration of " & "addShader" & " already exists, not redeclaring")
 when not declared(addShaderRecursive):
-  proc addShaderRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc addShaderRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                            internal_zShaderConfigID: cstring): void {.cdecl,
       importc: "orxObject_AddShaderRecursive".}
 else:
@@ -17782,14 +17754,14 @@ else:
     hint("Declaration of " & "addShaderRecursive" &
         " already exists, not redeclaring")
 when not declared(removeShader):
-  proc removeShader*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.
+  proc removeShader*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveShader".}
 else:
   static :
     hint("Declaration of " & "removeShader" & " already exists, not redeclaring")
 when not declared(removeShaderRecursive):
-  proc removeShaderRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc removeShaderRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                               internal_zShaderConfigID: cstring): void {.cdecl,
       importc: "orxObject_RemoveShaderRecursive".}
 else:
@@ -17797,29 +17769,29 @@ else:
     hint("Declaration of " & "removeShaderRecursive" &
         " already exists, not redeclaring")
 when not declared(enableShader):
-  proc enableShader*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc enableShader*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_EnableShader".}
 else:
   static :
     hint("Declaration of " & "enableShader" & " already exists, not redeclaring")
 when not declared(isShaderEnabled):
-  proc isShaderEnabled*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc isShaderEnabled*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_IsShaderEnabled".}
 else:
   static :
     hint("Declaration of " & "isShaderEnabled" &
         " already exists, not redeclaring")
 when not declared(addTimeLineTrack):
-  proc addTimeLineTrack*(internal_pstObject: ptr orxOBJECT_520095487;
-                         internal_zTrackConfigID: cstring): orxSTATUS_520095066 {.
+  proc addTimeLineTrack*(internal_pstObject: ptr orxOBJECT_520095450;
+                         internal_zTrackConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_AddTimeLineTrack".}
 else:
   static :
     hint("Declaration of " & "addTimeLineTrack" &
         " already exists, not redeclaring")
 when not declared(addTimeLineTrackRecursive):
-  proc addTimeLineTrackRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc addTimeLineTrackRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                                   internal_zTrackConfigID: cstring): void {.
       cdecl, importc: "orxObject_AddTimeLineTrackRecursive".}
 else:
@@ -17827,15 +17799,15 @@ else:
     hint("Declaration of " & "addTimeLineTrackRecursive" &
         " already exists, not redeclaring")
 when not declared(removeTimeLineTrack):
-  proc removeTimeLineTrack*(internal_pstObject: ptr orxOBJECT_520095487;
-                            internal_zTrackConfigID: cstring): orxSTATUS_520095066 {.
+  proc removeTimeLineTrack*(internal_pstObject: ptr orxOBJECT_520095450;
+                            internal_zTrackConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveTimeLineTrack".}
 else:
   static :
     hint("Declaration of " & "removeTimeLineTrack" &
         " already exists, not redeclaring")
 when not declared(removeTimeLineTrackRecursive):
-  proc removeTimeLineTrackRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc removeTimeLineTrackRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                                      internal_zTrackConfigID: cstring): void {.
       cdecl, importc: "orxObject_RemoveTimeLineTrackRecursive".}
 else:
@@ -17843,29 +17815,29 @@ else:
     hint("Declaration of " & "removeTimeLineTrackRecursive" &
         " already exists, not redeclaring")
 when not declared(enableTimeLine):
-  proc enableTimeLine*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc enableTimeLine*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxObject_EnableTimeLine".}
 else:
   static :
     hint("Declaration of " & "enableTimeLine" &
         " already exists, not redeclaring")
 when not declared(isTimeLineEnabled):
-  proc isTimeLineEnabled*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc isTimeLineEnabled*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_IsTimeLineEnabled".}
 else:
   static :
     hint("Declaration of " & "isTimeLineEnabled" &
         " already exists, not redeclaring")
 when not declared(addTrigger):
-  proc addTrigger*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_zTriggerConfigID: cstring): orxSTATUS_520095066 {.
+  proc addTrigger*(internal_pstObject: ptr orxOBJECT_520095450;
+                   internal_zTriggerConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_AddTrigger".}
 else:
   static :
     hint("Declaration of " & "addTrigger" & " already exists, not redeclaring")
 when not declared(addTriggerRecursive):
-  proc addTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc addTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                             internal_zTriggerConfigID: cstring): void {.cdecl,
       importc: "orxObject_AddTriggerRecursive".}
 else:
@@ -17873,15 +17845,15 @@ else:
     hint("Declaration of " & "addTriggerRecursive" &
         " already exists, not redeclaring")
 when not declared(removeTrigger):
-  proc removeTrigger*(internal_pstObject: ptr orxOBJECT_520095487;
-                      internal_zTriggerConfigID: cstring): orxSTATUS_520095066 {.
+  proc removeTrigger*(internal_pstObject: ptr orxOBJECT_520095450;
+                      internal_zTriggerConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_RemoveTrigger".}
 else:
   static :
     hint("Declaration of " & "removeTrigger" &
         " already exists, not redeclaring")
 when not declared(removeTriggerRecursive):
-  proc removeTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc removeTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                                internal_zTriggerConfigID: cstring): void {.
       cdecl, importc: "orxObject_RemoveTriggerRecursive".}
 else:
@@ -17889,290 +17861,291 @@ else:
     hint("Declaration of " & "removeTriggerRecursive" &
         " already exists, not redeclaring")
 when not declared(fireTrigger):
-  proc fireTrigger*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc fireTrigger*(internal_pstObject: ptr orxOBJECT_520095450;
                     internal_zEvent: cstring;
                     internal_azRefinementList: ptr cstring;
-                    internal_u32Size: orxU32_520095024): orxSTATUS_520095066 {.
+                    internal_u32Size: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_FireTrigger".}
 else:
   static :
     hint("Declaration of " & "fireTrigger" & " already exists, not redeclaring")
 when not declared(fireTriggerRecursive):
-  proc fireTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
+  proc fireTriggerRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
                              internal_zEvent: cstring;
                              internal_azRefinementList: ptr cstring;
-                             internal_u32Size: orxU32_520095024): void {.cdecl,
+                             internal_u32Size: orxU32_520094987): void {.cdecl,
       importc: "orxObject_FireTriggerRecursive".}
 else:
   static :
     hint("Declaration of " & "fireTriggerRecursive" &
         " already exists, not redeclaring")
 when not declared(getName_proc_E4A30159):
-  proc getName_proc_E4A30159*(internal_pstObject: ptr orxOBJECT_520095487): cstring {.
+  proc getName_proc_E4A30159*(internal_pstObject: ptr orxOBJECT_520095450): cstring {.
       cdecl, importc: "orxObject_GetName".}
 else:
   static :
     hint("Declaration of " & "getName_proc_E4A30159" &
         " already exists, not redeclaring")
 when not declared(createNeighborList):
-  proc createNeighborList*(internal_pstCheckBox: ptr orxOBOX_520095257;
-                           internal_stGroupID: orxSTRINGID_520095046): ptr orxBANK_520095259 {.
+  proc createNeighborList*(internal_pstCheckBox: ptr orxOBOX_520095220;
+                           internal_stGroupID: orxSTRINGID_520095009): ptr orxBANK_520095222 {.
       cdecl, importc: "orxObject_CreateNeighborList".}
 else:
   static :
     hint("Declaration of " & "createNeighborList" &
         " already exists, not redeclaring")
 when not declared(deleteNeighborList):
-  proc deleteNeighborList*(internal_pstObjectList: ptr orxBANK_520095259): void {.
+  proc deleteNeighborList*(internal_pstObjectList: ptr orxBANK_520095222): void {.
       cdecl, importc: "orxObject_DeleteNeighborList".}
 else:
   static :
     hint("Declaration of " & "deleteNeighborList" &
         " already exists, not redeclaring")
 when not declared(setSmoothing):
-  proc setSmoothing*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299): orxSTATUS_520095066 {.
+  proc setSmoothing*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetSmoothing".}
 else:
   static :
     hint("Declaration of " & "setSmoothing" & " already exists, not redeclaring")
 when not declared(setSmoothingRecursive):
-  proc setSmoothingRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                              internal_eSmoothing: orxDISPLAY_SMOOTHING_520095299): void {.
+  proc setSmoothingRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                              internal_eSmoothing: orxDISPLAY_SMOOTHING_520095262): void {.
       cdecl, importc: "orxObject_SetSmoothingRecursive".}
 else:
   static :
     hint("Declaration of " & "setSmoothingRecursive" &
         " already exists, not redeclaring")
 when not declared(getSmoothing):
-  proc getSmoothing*(internal_pstObject: ptr orxOBJECT_520095487): orxDISPLAY_SMOOTHING_520095299 {.
+  proc getSmoothing*(internal_pstObject: ptr orxOBJECT_520095450): orxDISPLAY_SMOOTHING_520095262 {.
       cdecl, importc: "orxObject_GetSmoothing".}
 else:
   static :
     hint("Declaration of " & "getSmoothing" & " already exists, not redeclaring")
 when not declared(getWorkingTexture):
-  proc getWorkingTexture*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxTEXTURE_520095321 {.
+  proc getWorkingTexture*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxTEXTURE_520095284 {.
       cdecl, importc: "orxObject_GetWorkingTexture".}
 else:
   static :
     hint("Declaration of " & "getWorkingTexture" &
         " already exists, not redeclaring")
 when not declared(getWorkingGraphic):
-  proc getWorkingGraphic*(internal_pstObject: ptr orxOBJECT_520095487): ptr orxGRAPHIC_520095421 {.
+  proc getWorkingGraphic*(internal_pstObject: ptr orxOBJECT_520095450): ptr orxGRAPHIC_520095384 {.
       cdecl, importc: "orxObject_GetWorkingGraphic".}
 else:
   static :
     hint("Declaration of " & "getWorkingGraphic" &
         " already exists, not redeclaring")
 when not declared(setColor):
-  proc setColor*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pstColor: ptr orxCOLOR_520095307): orxSTATUS_520095066 {.
+  proc setColor*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pstColor: ptr orxCOLOR_520095270): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetColor".}
 else:
   static :
     hint("Declaration of " & "setColor" & " already exists, not redeclaring")
 when not declared(setColorRecursive):
-  proc setColorRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                          internal_pstColor: ptr orxCOLOR_520095307): void {.
+  proc setColorRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                          internal_pstColor: ptr orxCOLOR_520095270): void {.
       cdecl, importc: "orxObject_SetColorRecursive".}
 else:
   static :
     hint("Declaration of " & "setColorRecursive" &
         " already exists, not redeclaring")
 when not declared(hasColor):
-  proc hasColor*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc hasColor*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_HasColor".}
 else:
   static :
     hint("Declaration of " & "hasColor" & " already exists, not redeclaring")
 when not declared(getColor):
-  proc getColor*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_pstColor: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc getColor*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_pstColor: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxObject_GetColor".}
 else:
   static :
     hint("Declaration of " & "getColor" & " already exists, not redeclaring")
 when not declared(setRGB):
-  proc setRGB*(internal_pstObject: ptr orxOBJECT_520095487;
-               internal_pvRGB: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc setRGB*(internal_pstObject: ptr orxOBJECT_520095450;
+               internal_pvRGB: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetRGB".}
 else:
   static :
     hint("Declaration of " & "setRGB" & " already exists, not redeclaring")
 when not declared(setRGBRecursive):
-  proc setRGBRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                        internal_pvRGB: ptr orxVECTOR_520095096): void {.cdecl,
+  proc setRGBRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                        internal_pvRGB: ptr orxVECTOR_520095059): void {.cdecl,
       importc: "orxObject_SetRGBRecursive".}
 else:
   static :
     hint("Declaration of " & "setRGBRecursive" &
         " already exists, not redeclaring")
 when not declared(getRGB):
-  proc getRGB*(internal_pstObject: ptr orxOBJECT_520095487;
-               internal_pvRGB: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc getRGB*(internal_pstObject: ptr orxOBJECT_520095450;
+               internal_pvRGB: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxObject_GetRGB".}
 else:
   static :
     hint("Declaration of " & "getRGB" & " already exists, not redeclaring")
 when not declared(setAlpha):
-  proc setAlpha*(internal_pstObject: ptr orxOBJECT_520095487;
-                 internal_fAlpha: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setAlpha*(internal_pstObject: ptr orxOBJECT_520095450;
+                 internal_fAlpha: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetAlpha".}
 else:
   static :
     hint("Declaration of " & "setAlpha" & " already exists, not redeclaring")
 when not declared(setAlphaRecursive):
-  proc setAlphaRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                          internal_fAlpha: orxFLOAT_520095040): void {.cdecl,
+  proc setAlphaRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                          internal_fAlpha: orxFLOAT_520095003): void {.cdecl,
       importc: "orxObject_SetAlphaRecursive".}
 else:
   static :
     hint("Declaration of " & "setAlphaRecursive" &
         " already exists, not redeclaring")
 when not declared(getAlpha):
-  proc getAlpha*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getAlpha*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetAlpha".}
 else:
   static :
     hint("Declaration of " & "getAlpha" & " already exists, not redeclaring")
 when not declared(setRepeat):
-  proc setRepeat*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_fRepeatX: orxFLOAT_520095040;
-                  internal_fRepeatY: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setRepeat*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_fRepeatX: orxFLOAT_520095003;
+                  internal_fRepeatY: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetRepeat".}
 else:
   static :
     hint("Declaration of " & "setRepeat" & " already exists, not redeclaring")
 when not declared(getRepeat):
-  proc getRepeat*(internal_pstObject: ptr orxOBJECT_520095487;
-                  internal_pfRepeatX: ptr orxFLOAT_520095040;
-                  internal_pfRepeatY: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc getRepeat*(internal_pstObject: ptr orxOBJECT_520095450;
+                  internal_pfRepeatX: ptr orxFLOAT_520095003;
+                  internal_pfRepeatY: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_GetRepeat".}
 else:
   static :
     hint("Declaration of " & "getRepeat" & " already exists, not redeclaring")
 when not declared(setBlendMode):
-  proc setBlendMode*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc setBlendMode*(internal_pstObject: ptr orxOBJECT_520095450;
+                     internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetBlendMode".}
 else:
   static :
     hint("Declaration of " & "setBlendMode" & " already exists, not redeclaring")
 when not declared(setBlendModeRecursive):
-  proc setBlendModeRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                              internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): void {.
+  proc setBlendModeRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                              internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): void {.
       cdecl, importc: "orxObject_SetBlendModeRecursive".}
 else:
   static :
     hint("Declaration of " & "setBlendModeRecursive" &
         " already exists, not redeclaring")
 when not declared(hasBlendMode):
-  proc hasBlendMode*(internal_pstObject: ptr orxOBJECT_520095487): orxBOOL_520095038 {.
+  proc hasBlendMode*(internal_pstObject: ptr orxOBJECT_520095450): orxBOOL_520095001 {.
       cdecl, importc: "orxObject_HasBlendMode".}
 else:
   static :
     hint("Declaration of " & "hasBlendMode" & " already exists, not redeclaring")
 when not declared(getBlendMode):
-  proc getBlendMode*(internal_pstObject: ptr orxOBJECT_520095487): orxDISPLAY_BLEND_MODE_520095303 {.
+  proc getBlendMode*(internal_pstObject: ptr orxOBJECT_520095450): orxDISPLAY_BLEND_MODE_520095266 {.
       cdecl, importc: "orxObject_GetBlendMode".}
 else:
   static :
     hint("Declaration of " & "getBlendMode" & " already exists, not redeclaring")
 when not declared(setLiteralLifeTime):
-  proc setLiteralLifeTime*(internal_pstObject: ptr orxOBJECT_520095487;
-                           internal_zLifeTime: cstring): orxSTATUS_520095066 {.
+  proc setLiteralLifeTime*(internal_pstObject: ptr orxOBJECT_520095450;
+                           internal_zLifeTime: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetLiteralLifeTime".}
 else:
   static :
     hint("Declaration of " & "setLiteralLifeTime" &
         " already exists, not redeclaring")
 when not declared(setLifeTime):
-  proc setLifeTime*(internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_fLifeTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc setLifeTime*(internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_fLifeTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetLifeTime".}
 else:
   static :
     hint("Declaration of " & "setLifeTime" & " already exists, not redeclaring")
 when not declared(getLifeTime):
-  proc getLifeTime*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getLifeTime*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetLifeTime".}
 else:
   static :
     hint("Declaration of " & "getLifeTime" & " already exists, not redeclaring")
 when not declared(getActiveTime):
-  proc getActiveTime*(internal_pstObject: ptr orxOBJECT_520095487): orxFLOAT_520095040 {.
+  proc getActiveTime*(internal_pstObject: ptr orxOBJECT_520095450): orxFLOAT_520095003 {.
       cdecl, importc: "orxObject_GetActiveTime".}
 else:
   static :
     hint("Declaration of " & "getActiveTime" &
         " already exists, not redeclaring")
 when not declared(resetActiveTime):
-  proc resetActiveTime*(internal_pstObject: ptr orxOBJECT_520095487): orxSTATUS_520095066 {.
+  proc resetActiveTime*(internal_pstObject: ptr orxOBJECT_520095450): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_ResetActiveTime".}
 else:
   static :
     hint("Declaration of " & "resetActiveTime" &
         " already exists, not redeclaring")
 when not declared(resetActiveTimeRecursive):
-  proc resetActiveTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095487): void {.
+  proc resetActiveTimeRecursive*(internal_pstObject: ptr orxOBJECT_520095450): void {.
       cdecl, importc: "orxObject_ResetActiveTimeRecursive".}
 else:
   static :
     hint("Declaration of " & "resetActiveTimeRecursive" &
         " already exists, not redeclaring")
 when not declared(getDefaultGroupID):
-  proc getDefaultGroupID*(): orxSTRINGID_520095046 {.cdecl,
+  proc getDefaultGroupID*(): orxSTRINGID_520095009 {.cdecl,
       importc: "orxObject_GetDefaultGroupID".}
 else:
   static :
     hint("Declaration of " & "getDefaultGroupID" &
         " already exists, not redeclaring")
 when not declared(getGroupID):
-  proc getGroupID*(internal_pstObject: ptr orxOBJECT_520095487): orxSTRINGID_520095046 {.
+  proc getGroupID*(internal_pstObject: ptr orxOBJECT_520095450): orxSTRINGID_520095009 {.
       cdecl, importc: "orxObject_GetGroupID".}
 else:
   static :
     hint("Declaration of " & "getGroupID" & " already exists, not redeclaring")
 when not declared(setGroupID):
-  proc setGroupID*(internal_pstObject: ptr orxOBJECT_520095487;
-                   internal_stGroupID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+  proc setGroupID*(internal_pstObject: ptr orxOBJECT_520095450;
+                   internal_stGroupID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxObject_SetGroupID".}
 else:
   static :
     hint("Declaration of " & "setGroupID" & " already exists, not redeclaring")
 when not declared(setGroupIDRecursive):
-  proc setGroupIDRecursive*(internal_pstObject: ptr orxOBJECT_520095487;
-                            internal_stGroupID: orxSTRINGID_520095046): void {.
+  proc setGroupIDRecursive*(internal_pstObject: ptr orxOBJECT_520095450;
+                            internal_stGroupID: orxSTRINGID_520095009): void {.
       cdecl, importc: "orxObject_SetGroupIDRecursive".}
 else:
   static :
     hint("Declaration of " & "setGroupIDRecursive" &
         " already exists, not redeclaring")
-when not declared(getNext_proc):
-  proc getNext_proc*(internal_pstObject: ptr orxOBJECT_520095487;
-                     internal_stGroupID: orxSTRINGID_520095046): ptr orxOBJECT_520095487 {.
+when not declared(getNext_proc_844ECC9F):
+  proc getNext_proc_844ECC9F*(internal_pstObject: ptr orxOBJECT_520095450;
+                              internal_stGroupID: orxSTRINGID_520095009): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetNext".}
 else:
   static :
-    hint("Declaration of " & "getNext_proc" & " already exists, not redeclaring")
+    hint("Declaration of " & "getNext_proc_844ECC9F" &
+        " already exists, not redeclaring")
 when not declared(getNextEnabled):
-  proc getNextEnabled*(internal_pstObject: ptr orxOBJECT_520095487;
-                       internal_stGroupID: orxSTRINGID_520095046): ptr orxOBJECT_520095487 {.
+  proc getNextEnabled*(internal_pstObject: ptr orxOBJECT_520095450;
+                       internal_stGroupID: orxSTRINGID_520095009): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_GetNextEnabled".}
 else:
   static :
     hint("Declaration of " & "getNextEnabled" &
         " already exists, not redeclaring")
 when not declared(pick):
-  proc pick*(internal_pvPosition: ptr orxVECTOR_520095096;
-             internal_stGroupID: orxSTRINGID_520095046): ptr orxOBJECT_520095487 {.
+  proc pick*(internal_pvPosition: ptr orxVECTOR_520095059;
+             internal_stGroupID: orxSTRINGID_520095009): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_Pick".}
 else:
   static :
     hint("Declaration of " & "pick" & " already exists, not redeclaring")
 when not declared(boxPick):
-  proc boxPick*(internal_pstBox: ptr orxOBOX_520095257;
-                internal_stGroupID: orxSTRINGID_520095046): ptr orxOBJECT_520095487 {.
+  proc boxPick*(internal_pstBox: ptr orxOBOX_520095220;
+                internal_stGroupID: orxSTRINGID_520095009): ptr orxOBJECT_520095450 {.
       cdecl, importc: "orxObject_BoxPick".}
 else:
   static :
@@ -18183,7 +18156,7 @@ else:
   static :
     hint("Declaration of " & "fXSetup" & " already exists, not redeclaring")
 when not declared(fXInit):
-  proc fXInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxFX_Init".}
+  proc fXInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxFX_Init".}
 else:
   static :
     hint("Declaration of " & "fXInit" & " already exists, not redeclaring")
@@ -18193,130 +18166,130 @@ else:
   static :
     hint("Declaration of " & "fXExit" & " already exists, not redeclaring")
 when not declared(fXCreate):
-  proc fXCreate*(): ptr orxFX_520095501 {.cdecl, importc: "orxFX_Create".}
+  proc fXCreate*(): ptr orxFX_520095464 {.cdecl, importc: "orxFX_Create".}
 else:
   static :
     hint("Declaration of " & "fXCreate" & " already exists, not redeclaring")
 when not declared(fXCreateFromConfig):
-  proc fXCreateFromConfig*(internal_zConfigID: cstring): ptr orxFX_520095501 {.
+  proc fXCreateFromConfig*(internal_zConfigID: cstring): ptr orxFX_520095464 {.
       cdecl, importc: "orxFX_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "fXCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(fXDelete):
-  proc fXDelete*(internal_pstFX: ptr orxFX_520095501): orxSTATUS_520095066 {.
+  proc fXDelete*(internal_pstFX: ptr orxFX_520095464): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_Delete".}
 else:
   static :
     hint("Declaration of " & "fXDelete" & " already exists, not redeclaring")
 when not declared(orxFX_ClearCache):
-  proc orxFX_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxFX_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxFX_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxFX_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxFX_Apply):
-  proc orxFX_Apply*(internal_pstFX: ptr orxFX_520095501;
-                    internal_pstObject: ptr orxOBJECT_520095487;
-                    internal_fPreviousTime: orxFLOAT_520095040;
-                    internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFX_Apply*(internal_pstFX: ptr orxFX_520095464;
+                    internal_pstObject: ptr orxOBJECT_520095450;
+                    internal_fPreviousTime: orxFLOAT_520095003;
+                    internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_Apply".}
 else:
   static :
     hint("Declaration of " & "orxFX_Apply" & " already exists, not redeclaring")
 when not declared(orxFX_GetFloat):
-  proc orxFX_GetFloat*(internal_pstFX: ptr orxFX_520095501;
-                       internal_fPreviousTime: orxFLOAT_520095040;
-                       internal_fTime: orxFLOAT_520095040): orxFLOAT_520095040 {.
+  proc orxFX_GetFloat*(internal_pstFX: ptr orxFX_520095464;
+                       internal_fPreviousTime: orxFLOAT_520095003;
+                       internal_fTime: orxFLOAT_520095003): orxFLOAT_520095003 {.
       cdecl, importc: "orxFX_GetFloat".}
 else:
   static :
     hint("Declaration of " & "orxFX_GetFloat" &
         " already exists, not redeclaring")
 when not declared(orxFX_GetVector):
-  proc orxFX_GetVector*(internal_pstFX: ptr orxFX_520095501;
-                        internal_fPreviousTime: orxFLOAT_520095040;
-                        internal_fTime: orxFLOAT_520095040;
-                        internal_pvVector: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFX_GetVector*(internal_pstFX: ptr orxFX_520095464;
+                        internal_fPreviousTime: orxFLOAT_520095003;
+                        internal_fTime: orxFLOAT_520095003;
+                        internal_pvVector: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFX_GetVector".}
 else:
   static :
     hint("Declaration of " & "orxFX_GetVector" &
         " already exists, not redeclaring")
 when not declared(orxFX_Enable):
-  proc orxFX_Enable*(internal_pstFX: ptr orxFX_520095501;
-                     internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxFX_Enable*(internal_pstFX: ptr orxFX_520095464;
+                     internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxFX_Enable".}
 else:
   static :
     hint("Declaration of " & "orxFX_Enable" & " already exists, not redeclaring")
 when not declared(orxFX_IsEnabled):
-  proc orxFX_IsEnabled*(internal_pstFX: ptr orxFX_520095501): orxBOOL_520095038 {.
+  proc orxFX_IsEnabled*(internal_pstFX: ptr orxFX_520095464): orxBOOL_520095001 {.
       cdecl, importc: "orxFX_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxFX_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxFX_AddSlot):
-  proc orxFX_AddSlot*(internal_pstFX: ptr orxFX_520095501;
-                      internal_eType: orxFX_TYPE_520095491;
-                      internal_eCurve: orxFX_CURVE_520095495;
-                      internal_pstCurveParam: ptr orxFX_CURVE_PARAM_520095499;
-                      internal_u32Flags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxFX_AddSlot*(internal_pstFX: ptr orxFX_520095464;
+                      internal_eType: orxFX_TYPE_520095454;
+                      internal_eCurve: orxFX_CURVE_520095458;
+                      internal_pstCurveParam: ptr orxFX_CURVE_PARAM_520095462;
+                      internal_u32Flags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_AddSlot".}
 else:
   static :
     hint("Declaration of " & "orxFX_AddSlot" &
         " already exists, not redeclaring")
 when not declared(orxFX_AddSlotFromConfig):
-  proc orxFX_AddSlotFromConfig*(internal_pstFX: ptr orxFX_520095501;
-                                internal_zSlotID: cstring): orxSTATUS_520095066 {.
+  proc orxFX_AddSlotFromConfig*(internal_pstFX: ptr orxFX_520095464;
+                                internal_zSlotID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_AddSlotFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxFX_AddSlotFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxFX_GetDuration):
-  proc orxFX_GetDuration*(internal_pstFX: ptr orxFX_520095501): orxFLOAT_520095040 {.
+  proc orxFX_GetDuration*(internal_pstFX: ptr orxFX_520095464): orxFLOAT_520095003 {.
       cdecl, importc: "orxFX_GetDuration".}
 else:
   static :
     hint("Declaration of " & "orxFX_GetDuration" &
         " already exists, not redeclaring")
 when not declared(orxFX_GetName):
-  proc orxFX_GetName*(internal_pstFX: ptr orxFX_520095501): cstring {.cdecl,
+  proc orxFX_GetName*(internal_pstFX: ptr orxFX_520095464): cstring {.cdecl,
       importc: "orxFX_GetName".}
 else:
   static :
     hint("Declaration of " & "orxFX_GetName" &
         " already exists, not redeclaring")
 when not declared(orxFX_Loop):
-  proc orxFX_Loop*(internal_pstFX: ptr orxFX_520095501; internal_bLoop: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxFX_Loop*(internal_pstFX: ptr orxFX_520095464; internal_bLoop: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_Loop".}
 else:
   static :
     hint("Declaration of " & "orxFX_Loop" & " already exists, not redeclaring")
 when not declared(orxFX_IsLooping):
-  proc orxFX_IsLooping*(internal_pstFX: ptr orxFX_520095501): orxBOOL_520095038 {.
+  proc orxFX_IsLooping*(internal_pstFX: ptr orxFX_520095464): orxBOOL_520095001 {.
       cdecl, importc: "orxFX_IsLooping".}
 else:
   static :
     hint("Declaration of " & "orxFX_IsLooping" &
         " already exists, not redeclaring")
 when not declared(orxFX_SetStagger):
-  proc orxFX_SetStagger*(internal_pstFX: ptr orxFX_520095501;
-                         internal_bStagger: orxBOOL_520095038;
-                         internal_fOffset: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFX_SetStagger*(internal_pstFX: ptr orxFX_520095464;
+                         internal_bStagger: orxBOOL_520095001;
+                         internal_fOffset: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFX_SetStagger".}
 else:
   static :
     hint("Declaration of " & "orxFX_SetStagger" &
         " already exists, not redeclaring")
 when not declared(orxFX_GetStagger):
-  proc orxFX_GetStagger*(internal_pstFX: ptr orxFX_520095501;
-                         internal_pfOffset: ptr orxFLOAT_520095040): orxBOOL_520095038 {.
+  proc orxFX_GetStagger*(internal_pstFX: ptr orxFX_520095464;
+                         internal_pfOffset: ptr orxFLOAT_520095003): orxBOOL_520095001 {.
       cdecl, importc: "orxFX_GetStagger".}
 else:
   static :
@@ -18329,7 +18302,7 @@ else:
     hint("Declaration of " & "fXPointerSetup" &
         " already exists, not redeclaring")
 when not declared(fXPointerInit):
-  proc fXPointerInit*(): orxSTATUS_520095066 {.cdecl,
+  proc fXPointerInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxFXPointer_Init".}
 else:
   static :
@@ -18342,69 +18315,69 @@ else:
     hint("Declaration of " & "fXPointerExit" &
         " already exists, not redeclaring")
 when not declared(fXPointerCreate):
-  proc fXPointerCreate*(): ptr orxFXPOINTER_520095511 {.cdecl,
+  proc fXPointerCreate*(): ptr orxFXPOINTER_520095474 {.cdecl,
       importc: "orxFXPointer_Create".}
 else:
   static :
     hint("Declaration of " & "fXPointerCreate" &
         " already exists, not redeclaring")
 when not declared(fXPointerDelete):
-  proc fXPointerDelete*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxSTATUS_520095066 {.
+  proc fXPointerDelete*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_Delete".}
 else:
   static :
     hint("Declaration of " & "fXPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_Enable):
-  proc orxFXPointer_Enable*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                            internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxFXPointer_Enable*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                            internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxFXPointer_Enable".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_Enable" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_IsEnabled):
-  proc orxFXPointer_IsEnabled*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxBOOL_520095038 {.
+  proc orxFXPointer_IsEnabled*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxBOOL_520095001 {.
       cdecl, importc: "orxFXPointer_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddFX):
-  proc orxFXPointer_AddFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                           internal_pstFX: ptr orxFX_520095501): orxSTATUS_520095066 {.
+  proc orxFXPointer_AddFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                           internal_pstFX: ptr orxFX_520095464): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_AddFX".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_AddFX" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddDelayedFX):
-  proc orxFXPointer_AddDelayedFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                                  internal_pstFX: ptr orxFX_520095501;
-                                  internal_fDelay: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFXPointer_AddDelayedFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                                  internal_pstFX: ptr orxFX_520095464;
+                                  internal_fDelay: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_AddDelayedFX".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_AddDelayedFX" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_RemoveFX):
-  proc orxFXPointer_RemoveFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                              internal_pstFX: ptr orxFX_520095501): orxSTATUS_520095066 {.
+  proc orxFXPointer_RemoveFX*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                              internal_pstFX: ptr orxFX_520095464): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_RemoveFX".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_RemoveFX" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_RemoveAllFXs):
-  proc orxFXPointer_RemoveAllFXs*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxSTATUS_520095066 {.
+  proc orxFXPointer_RemoveAllFXs*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_RemoveAllFXs".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_RemoveAllFXs" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddFXFromConfig):
-  proc orxFXPointer_AddFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                                     internal_zFXConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxFXPointer_AddFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                                     internal_zFXConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_AddFXFromConfig".}
 else:
   static :
@@ -18412,8 +18385,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddUniqueFXFromConfig):
   proc orxFXPointer_AddUniqueFXFromConfig*(
-      internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-      internal_zFXConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+      internal_zFXConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxFXPointer_AddUniqueFXFromConfig".}
 else:
   static :
@@ -18421,8 +18394,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddDelayedFXFromConfig):
   proc orxFXPointer_AddDelayedFXFromConfig*(
-      internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-      internal_zFXConfigID: cstring; internal_fDelay: orxFLOAT_520095040): orxSTATUS_520095066 {.
+      internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+      internal_zFXConfigID: cstring; internal_fDelay: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_AddDelayedFXFromConfig".}
 else:
   static :
@@ -18430,75 +18403,75 @@ else:
         " already exists, not redeclaring")
 when not declared(orxFXPointer_AddUniqueDelayedFXFromConfig):
   proc orxFXPointer_AddUniqueDelayedFXFromConfig*(
-      internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-      internal_zFXConfigID: cstring; internal_fDelay: orxFLOAT_520095040): orxSTATUS_520095066 {.
+      internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+      internal_zFXConfigID: cstring; internal_fDelay: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_AddUniqueDelayedFXFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_AddUniqueDelayedFXFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_RemoveFXFromConfig):
-  proc orxFXPointer_RemoveFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                                        internal_zFXConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxFXPointer_RemoveFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                                        internal_zFXConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_RemoveFXFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_RemoveFXFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_Synchronize):
-  proc orxFXPointer_Synchronize*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                                 internal_pstModel: ptr orxFXPOINTER_520095511): orxSTATUS_520095066 {.
+  proc orxFXPointer_Synchronize*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                                 internal_pstModel: ptr orxFXPOINTER_520095474): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_Synchronize".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_Synchronize" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_GetTime):
-  proc orxFXPointer_GetTime*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxFLOAT_520095040 {.
+  proc orxFXPointer_GetTime*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxFLOAT_520095003 {.
       cdecl, importc: "orxFXPointer_GetTime".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_GetTime" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_GetCount):
-  proc orxFXPointer_GetCount*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxU32_520095024 {.
+  proc orxFXPointer_GetCount*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxU32_520094987 {.
       cdecl, importc: "orxFXPointer_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_GetCount" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_GetFrequency):
-  proc orxFXPointer_GetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER_520095511): orxFLOAT_520095040 {.
+  proc orxFXPointer_GetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER_520095474): orxFLOAT_520095003 {.
       cdecl, importc: "orxFXPointer_GetFrequency".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_GetFrequency" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_SetTime):
-  proc orxFXPointer_SetTime*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                             internal_fTime: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFXPointer_SetTime*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                             internal_fTime: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_SetTime".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_SetTime" &
         " already exists, not redeclaring")
 when not declared(orxFXPointer_SetFrequency):
-  proc orxFXPointer_SetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER_520095511;
-                                  internal_fFrequency: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxFXPointer_SetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER_520095474;
+                                  internal_fFrequency: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxFXPointer_SetFrequency".}
 else:
   static :
     hint("Declaration of " & "orxFXPointer_SetFrequency" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetIgnoreFlagValues):
-  proc orxFrame_GetIgnoreFlagValues*(internal_zFlags: cstring): orxU32_520095024 {.
+  proc orxFrame_GetIgnoreFlagValues*(internal_zFlags: cstring): orxU32_520094987 {.
       cdecl, importc: "orxFrame_GetIgnoreFlagValues".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetIgnoreFlagValues" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetIgnoreFlagNames):
-  proc orxFrame_GetIgnoreFlagNames*(internal_u32Flags: orxU32_520095024): cstring {.
+  proc orxFrame_GetIgnoreFlagNames*(internal_u32Flags: orxU32_520094987): cstring {.
       cdecl, importc: "orxFrame_GetIgnoreFlagNames".}
 else:
   static :
@@ -18510,7 +18483,7 @@ else:
   static :
     hint("Declaration of " & "frameSetup" & " already exists, not redeclaring")
 when not declared(frameInit):
-  proc frameInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxFrame_Init".}
+  proc frameInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxFrame_Init".}
 else:
   static :
     hint("Declaration of " & "frameInit" & " already exists, not redeclaring")
@@ -18520,128 +18493,128 @@ else:
   static :
     hint("Declaration of " & "frameExit" & " already exists, not redeclaring")
 when not declared(frameCreate):
-  proc frameCreate*(internal_u32Flags: orxU32_520095024): ptr orxFRAME_520095517 {.
+  proc frameCreate*(internal_u32Flags: orxU32_520094987): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxFrame_Create".}
 else:
   static :
     hint("Declaration of " & "frameCreate" & " already exists, not redeclaring")
 when not declared(frameDelete):
-  proc frameDelete*(internal_pstFrame: ptr orxFRAME_520095517): orxSTATUS_520095066 {.
+  proc frameDelete*(internal_pstFrame: ptr orxFRAME_520095480): orxSTATUS_520095029 {.
       cdecl, importc: "orxFrame_Delete".}
 else:
   static :
     hint("Declaration of " & "frameDelete" & " already exists, not redeclaring")
 when not declared(orxFrame_SetParent):
-  proc orxFrame_SetParent*(internal_pstFrame: ptr orxFRAME_520095517;
-                           internal_pstParent: ptr orxFRAME_520095517): void {.
+  proc orxFrame_SetParent*(internal_pstFrame: ptr orxFRAME_520095480;
+                           internal_pstParent: ptr orxFRAME_520095480): void {.
       cdecl, importc: "orxFrame_SetParent".}
 else:
   static :
     hint("Declaration of " & "orxFrame_SetParent" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetParent):
-  proc orxFrame_GetParent*(internal_pstFrame: ptr orxFRAME_520095517): ptr orxFRAME_520095517 {.
+  proc orxFrame_GetParent*(internal_pstFrame: ptr orxFRAME_520095480): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxFrame_GetParent".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetParent" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetChild):
-  proc orxFrame_GetChild*(internal_pstFrame: ptr orxFRAME_520095517): ptr orxFRAME_520095517 {.
+  proc orxFrame_GetChild*(internal_pstFrame: ptr orxFRAME_520095480): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxFrame_GetChild".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetChild" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetSibling):
-  proc orxFrame_GetSibling*(internal_pstFrame: ptr orxFRAME_520095517): ptr orxFRAME_520095517 {.
+  proc orxFrame_GetSibling*(internal_pstFrame: ptr orxFRAME_520095480): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxFrame_GetSibling".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetSibling" &
         " already exists, not redeclaring")
 when not declared(orxFrame_IsRootChild):
-  proc orxFrame_IsRootChild*(internal_pstFrame: ptr orxFRAME_520095517): orxBOOL_520095038 {.
+  proc orxFrame_IsRootChild*(internal_pstFrame: ptr orxFRAME_520095480): orxBOOL_520095001 {.
       cdecl, importc: "orxFrame_IsRootChild".}
 else:
   static :
     hint("Declaration of " & "orxFrame_IsRootChild" &
         " already exists, not redeclaring")
 when not declared(orxFrame_SetPosition):
-  proc orxFrame_SetPosition*(internal_pstFrame: ptr orxFRAME_520095517;
-                             internal_eSpace: orxFRAME_SPACE_520095515;
-                             internal_pvPos: ptr orxVECTOR_520095096): void {.
+  proc orxFrame_SetPosition*(internal_pstFrame: ptr orxFRAME_520095480;
+                             internal_eSpace: orxFRAME_SPACE_520095478;
+                             internal_pvPos: ptr orxVECTOR_520095059): void {.
       cdecl, importc: "orxFrame_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxFrame_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxFrame_SetRotation):
-  proc orxFrame_SetRotation*(internal_pstFrame: ptr orxFRAME_520095517;
-                             internal_eSpace: orxFRAME_SPACE_520095515;
-                             internal_fRotation: orxFLOAT_520095040): void {.
+  proc orxFrame_SetRotation*(internal_pstFrame: ptr orxFRAME_520095480;
+                             internal_eSpace: orxFRAME_SPACE_520095478;
+                             internal_fRotation: orxFLOAT_520095003): void {.
       cdecl, importc: "orxFrame_SetRotation".}
 else:
   static :
     hint("Declaration of " & "orxFrame_SetRotation" &
         " already exists, not redeclaring")
 when not declared(orxFrame_SetScale):
-  proc orxFrame_SetScale*(internal_pstFrame: ptr orxFRAME_520095517;
-                          internal_eSpace: orxFRAME_SPACE_520095515;
-                          internal_pvScale: ptr orxVECTOR_520095096): void {.
+  proc orxFrame_SetScale*(internal_pstFrame: ptr orxFRAME_520095480;
+                          internal_eSpace: orxFRAME_SPACE_520095478;
+                          internal_pvScale: ptr orxVECTOR_520095059): void {.
       cdecl, importc: "orxFrame_SetScale".}
 else:
   static :
     hint("Declaration of " & "orxFrame_SetScale" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetPosition):
-  proc orxFrame_GetPosition*(internal_pstFrame: ptr orxFRAME_520095517;
-                             internal_eSpace: orxFRAME_SPACE_520095515;
-                             internal_pvPos: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFrame_GetPosition*(internal_pstFrame: ptr orxFRAME_520095480;
+                             internal_eSpace: orxFRAME_SPACE_520095478;
+                             internal_pvPos: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFrame_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetRotation):
-  proc orxFrame_GetRotation*(internal_pstFrame: ptr orxFRAME_520095517;
-                             internal_eSpace: orxFRAME_SPACE_520095515): orxFLOAT_520095040 {.
+  proc orxFrame_GetRotation*(internal_pstFrame: ptr orxFRAME_520095480;
+                             internal_eSpace: orxFRAME_SPACE_520095478): orxFLOAT_520095003 {.
       cdecl, importc: "orxFrame_GetRotation".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetRotation" &
         " already exists, not redeclaring")
 when not declared(orxFrame_GetScale):
-  proc orxFrame_GetScale*(internal_pstFrame: ptr orxFRAME_520095517;
-                          internal_eSpace: orxFRAME_SPACE_520095515;
-                          internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFrame_GetScale*(internal_pstFrame: ptr orxFRAME_520095480;
+                          internal_eSpace: orxFRAME_SPACE_520095478;
+                          internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFrame_GetScale".}
 else:
   static :
     hint("Declaration of " & "orxFrame_GetScale" &
         " already exists, not redeclaring")
 when not declared(orxFrame_TransformPosition):
-  proc orxFrame_TransformPosition*(internal_pstFrame: ptr orxFRAME_520095517;
-                                   internal_eSpace: orxFRAME_SPACE_520095515;
-                                   internal_pvPos: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFrame_TransformPosition*(internal_pstFrame: ptr orxFRAME_520095480;
+                                   internal_eSpace: orxFRAME_SPACE_520095478;
+                                   internal_pvPos: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFrame_TransformPosition".}
 else:
   static :
     hint("Declaration of " & "orxFrame_TransformPosition" &
         " already exists, not redeclaring")
 when not declared(orxFrame_TransformRotation):
-  proc orxFrame_TransformRotation*(internal_pstFrame: ptr orxFRAME_520095517;
-                                   internal_eSpace: orxFRAME_SPACE_520095515;
-                                   internal_fRotation: orxFLOAT_520095040): orxFLOAT_520095040 {.
+  proc orxFrame_TransformRotation*(internal_pstFrame: ptr orxFRAME_520095480;
+                                   internal_eSpace: orxFRAME_SPACE_520095478;
+                                   internal_fRotation: orxFLOAT_520095003): orxFLOAT_520095003 {.
       cdecl, importc: "orxFrame_TransformRotation".}
 else:
   static :
     hint("Declaration of " & "orxFrame_TransformRotation" &
         " already exists, not redeclaring")
 when not declared(orxFrame_TransformScale):
-  proc orxFrame_TransformScale*(internal_pstFrame: ptr orxFRAME_520095517;
-                                internal_eSpace: orxFRAME_SPACE_520095515;
-                                internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxFrame_TransformScale*(internal_pstFrame: ptr orxFRAME_520095480;
+                                internal_eSpace: orxFRAME_SPACE_520095478;
+                                internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxFrame_TransformScale".}
 else:
   static :
@@ -18653,7 +18626,7 @@ else:
   static :
     hint("Declaration of " & "spawnerSetup" & " already exists, not redeclaring")
 when not declared(spawnerInit):
-  proc spawnerInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxSpawner_Init".}
+  proc spawnerInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxSpawner_Init".}
 else:
   static :
     hint("Declaration of " & "spawnerInit" & " already exists, not redeclaring")
@@ -18663,255 +18636,255 @@ else:
   static :
     hint("Declaration of " & "spawnerExit" & " already exists, not redeclaring")
 when not declared(spawnerCreate):
-  proc spawnerCreate*(): ptr orxSPAWNER_520095523 {.cdecl,
+  proc spawnerCreate*(): ptr orxSPAWNER_520095486 {.cdecl,
       importc: "orxSpawner_Create".}
 else:
   static :
     hint("Declaration of " & "spawnerCreate" &
         " already exists, not redeclaring")
 when not declared(spawnerCreateFromConfig):
-  proc spawnerCreateFromConfig*(internal_zConfigID: cstring): ptr orxSPAWNER_520095523 {.
+  proc spawnerCreateFromConfig*(internal_zConfigID: cstring): ptr orxSPAWNER_520095486 {.
       cdecl, importc: "orxSpawner_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "spawnerCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(spawnerDelete):
-  proc spawnerDelete*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxSTATUS_520095066 {.
+  proc spawnerDelete*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_Delete".}
 else:
   static :
     hint("Declaration of " & "spawnerDelete" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_Enable):
-  proc orxSpawner_Enable*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                          internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxSpawner_Enable*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                          internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxSpawner_Enable".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_Enable" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_IsEnabled):
-  proc orxSpawner_IsEnabled*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxBOOL_520095038 {.
+  proc orxSpawner_IsEnabled*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxBOOL_520095001 {.
       cdecl, importc: "orxSpawner_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_Reset):
-  proc orxSpawner_Reset*(internal_pstSpawner: ptr orxSPAWNER_520095523): void {.
+  proc orxSpawner_Reset*(internal_pstSpawner: ptr orxSPAWNER_520095486): void {.
       cdecl, importc: "orxSpawner_Reset".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_Reset" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetTotalObjectLimit):
-  proc orxSpawner_SetTotalObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                       internal_u32TotalObjectLimit: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxSpawner_SetTotalObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                       internal_u32TotalObjectLimit: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetTotalObjectLimit".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetTotalObjectLimit" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetActiveObjectLimit):
-  proc orxSpawner_SetActiveObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                        internal_u32ActiveObjectLimit: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxSpawner_SetActiveObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                        internal_u32ActiveObjectLimit: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetActiveObjectLimit".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetActiveObjectLimit" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetTotalObjectLimit):
-  proc orxSpawner_GetTotalObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxU32_520095024 {.
+  proc orxSpawner_GetTotalObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_GetTotalObjectLimit".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetTotalObjectLimit" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetActiveObjectLimit):
-  proc orxSpawner_GetActiveObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxU32_520095024 {.
+  proc orxSpawner_GetActiveObjectLimit*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_GetActiveObjectLimit".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetActiveObjectLimit" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetTotalObjectCount):
-  proc orxSpawner_GetTotalObjectCount*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxU32_520095024 {.
+  proc orxSpawner_GetTotalObjectCount*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_GetTotalObjectCount".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetTotalObjectCount" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetActiveObjectCount):
-  proc orxSpawner_GetActiveObjectCount*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxU32_520095024 {.
+  proc orxSpawner_GetActiveObjectCount*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_GetActiveObjectCount".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetActiveObjectCount" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetWaveSize):
-  proc orxSpawner_SetWaveSize*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                               internal_u32WaveSize: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxSpawner_SetWaveSize*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                               internal_u32WaveSize: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetWaveSize".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetWaveSize" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetWaveDelay):
-  proc orxSpawner_SetWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                internal_fWaveDelay: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSpawner_SetWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                internal_fWaveDelay: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetWaveDelay".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetWaveDelay" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetNextWaveDelay):
-  proc orxSpawner_SetNextWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                    internal_fWaveDelay: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSpawner_SetNextWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                    internal_fWaveDelay: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetNextWaveDelay".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetNextWaveDelay" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetWaveSize):
-  proc orxSpawner_GetWaveSize*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxU32_520095024 {.
+  proc orxSpawner_GetWaveSize*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_GetWaveSize".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetWaveSize" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetWaveDelay):
-  proc orxSpawner_GetWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxFLOAT_520095040 {.
+  proc orxSpawner_GetWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxFLOAT_520095003 {.
       cdecl, importc: "orxSpawner_GetWaveDelay".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetWaveDelay" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetNextWaveDelay):
-  proc orxSpawner_GetNextWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxFLOAT_520095040 {.
+  proc orxSpawner_GetNextWaveDelay*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxFLOAT_520095003 {.
       cdecl, importc: "orxSpawner_GetNextWaveDelay".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetNextWaveDelay" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetObjectSpeed):
-  proc orxSpawner_SetObjectSpeed*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                  internal_pvObjectSpeed: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxSpawner_SetObjectSpeed*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                  internal_pvObjectSpeed: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetObjectSpeed".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetObjectSpeed" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetObjectSpeed):
-  proc orxSpawner_GetObjectSpeed*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                  internal_pvObjectSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSpawner_GetObjectSpeed*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                  internal_pvObjectSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSpawner_GetObjectSpeed".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetObjectSpeed" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_Spawn):
-  proc orxSpawner_Spawn*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                         internal_u32Number: orxU32_520095024): orxU32_520095024 {.
+  proc orxSpawner_Spawn*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                         internal_u32Number: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxSpawner_Spawn".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_Spawn" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetFrame):
-  proc orxSpawner_GetFrame*(internal_pstSpawner: ptr orxSPAWNER_520095523): ptr orxFRAME_520095517 {.
+  proc orxSpawner_GetFrame*(internal_pstSpawner: ptr orxSPAWNER_520095486): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxSpawner_GetFrame".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetFrame" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetPosition):
-  proc orxSpawner_SetPosition*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                               internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxSpawner_SetPosition*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                               internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetRotation):
-  proc orxSpawner_SetRotation*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                               internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSpawner_SetRotation*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                               internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetRotation".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetRotation" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetScale):
-  proc orxSpawner_SetScale*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                            internal_pvScale: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxSpawner_SetScale*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                            internal_pvScale: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetScale".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetScale" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetPosition):
-  proc orxSpawner_GetPosition*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                               internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSpawner_GetPosition*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                               internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSpawner_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetWorldPosition):
-  proc orxSpawner_GetWorldPosition*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                    internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSpawner_GetWorldPosition*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                    internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSpawner_GetWorldPosition".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetWorldPosition" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetRotation):
-  proc orxSpawner_GetRotation*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxFLOAT_520095040 {.
+  proc orxSpawner_GetRotation*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxFLOAT_520095003 {.
       cdecl, importc: "orxSpawner_GetRotation".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetRotation" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetWorldRotation):
-  proc orxSpawner_GetWorldRotation*(internal_pstSpawner: ptr orxSPAWNER_520095523): orxFLOAT_520095040 {.
+  proc orxSpawner_GetWorldRotation*(internal_pstSpawner: ptr orxSPAWNER_520095486): orxFLOAT_520095003 {.
       cdecl, importc: "orxSpawner_GetWorldRotation".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetWorldRotation" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetScale):
-  proc orxSpawner_GetScale*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                            internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSpawner_GetScale*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                            internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSpawner_GetScale".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetScale" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetWorldScale):
-  proc orxSpawner_GetWorldScale*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                                 internal_pvScale: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxSpawner_GetWorldScale*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                                 internal_pvScale: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxSpawner_GetWorldScale".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetWorldScale" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_SetParent):
-  proc orxSpawner_SetParent*(internal_pstSpawner: ptr orxSPAWNER_520095523;
-                             internal_pParent: pointer): orxSTATUS_520095066 {.
+  proc orxSpawner_SetParent*(internal_pstSpawner: ptr orxSPAWNER_520095486;
+                             internal_pParent: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxSpawner_SetParent".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_SetParent" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetParent):
-  proc orxSpawner_GetParent*(internal_pstSpawner: ptr orxSPAWNER_520095523): ptr orxSTRUCTURE_520095159 {.
+  proc orxSpawner_GetParent*(internal_pstSpawner: ptr orxSPAWNER_520095486): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxSpawner_GetParent".}
 else:
   static :
     hint("Declaration of " & "orxSpawner_GetParent" &
         " already exists, not redeclaring")
 when not declared(orxSpawner_GetName):
-  proc orxSpawner_GetName*(internal_pstSpawner: ptr orxSPAWNER_520095523): cstring {.
+  proc orxSpawner_GetName*(internal_pstSpawner: ptr orxSPAWNER_520095486): cstring {.
       cdecl, importc: "orxSpawner_GetName".}
 else:
   static :
@@ -18924,7 +18897,7 @@ else:
     hint("Declaration of " & "timeLineSetup" &
         " already exists, not redeclaring")
 when not declared(timeLineInit):
-  proc timeLineInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxTimeLine_Init".}
+  proc timeLineInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxTimeLine_Init".}
 else:
   static :
     hint("Declaration of " & "timeLineInit" & " already exists, not redeclaring")
@@ -18934,66 +18907,66 @@ else:
   static :
     hint("Declaration of " & "timeLineExit" & " already exists, not redeclaring")
 when not declared(timeLineCreate):
-  proc timeLineCreate*(): ptr orxTIMELINE_520095525 {.cdecl,
+  proc timeLineCreate*(): ptr orxTIMELINE_520095488 {.cdecl,
       importc: "orxTimeLine_Create".}
 else:
   static :
     hint("Declaration of " & "timeLineCreate" &
         " already exists, not redeclaring")
 when not declared(timeLineDelete):
-  proc timeLineDelete*(internal_pstTimeLine: ptr orxTIMELINE_520095525): orxSTATUS_520095066 {.
+  proc timeLineDelete*(internal_pstTimeLine: ptr orxTIMELINE_520095488): orxSTATUS_520095029 {.
       cdecl, importc: "orxTimeLine_Delete".}
 else:
   static :
     hint("Declaration of " & "timeLineDelete" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_ClearCache):
-  proc orxTimeLine_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxTimeLine_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxTimeLine_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_Enable):
-  proc orxTimeLine_Enable*(internal_pstTimeLine: ptr orxTIMELINE_520095525;
-                           internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxTimeLine_Enable*(internal_pstTimeLine: ptr orxTIMELINE_520095488;
+                           internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxTimeLine_Enable".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_Enable" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_IsEnabled):
-  proc orxTimeLine_IsEnabled*(internal_pstTimeLine: ptr orxTIMELINE_520095525): orxBOOL_520095038 {.
+  proc orxTimeLine_IsEnabled*(internal_pstTimeLine: ptr orxTIMELINE_520095488): orxBOOL_520095001 {.
       cdecl, importc: "orxTimeLine_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_AddTrackFromConfig):
-  proc orxTimeLine_AddTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE_520095525;
-                                       internal_zTrackID: cstring): orxSTATUS_520095066 {.
+  proc orxTimeLine_AddTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE_520095488;
+                                       internal_zTrackID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxTimeLine_AddTrackFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_AddTrackFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_RemoveTrackFromConfig):
-  proc orxTimeLine_RemoveTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE_520095525;
-      internal_zTrackID: cstring): orxSTATUS_520095066 {.cdecl,
+  proc orxTimeLine_RemoveTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE_520095488;
+      internal_zTrackID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxTimeLine_RemoveTrackFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_RemoveTrackFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_GetCount):
-  proc orxTimeLine_GetCount*(internal_pstTimeLine: ptr orxTIMELINE_520095525): orxU32_520095024 {.
+  proc orxTimeLine_GetCount*(internal_pstTimeLine: ptr orxTIMELINE_520095488): orxU32_520094987 {.
       cdecl, importc: "orxTimeLine_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxTimeLine_GetCount" &
         " already exists, not redeclaring")
 when not declared(orxTimeLine_GetTrackDuration):
-  proc orxTimeLine_GetTrackDuration*(internal_zTrackID: cstring): orxFLOAT_520095040 {.
+  proc orxTimeLine_GetTrackDuration*(internal_zTrackID: cstring): orxFLOAT_520095003 {.
       cdecl, importc: "orxTimeLine_GetTrackDuration".}
 else:
   static :
@@ -19005,7 +18978,7 @@ else:
   static :
     hint("Declaration of " & "triggerSetup" & " already exists, not redeclaring")
 when not declared(triggerInit):
-  proc triggerInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxTrigger_Init".}
+  proc triggerInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxTrigger_Init".}
 else:
   static :
     hint("Declaration of " & "triggerInit" & " already exists, not redeclaring")
@@ -19015,69 +18988,69 @@ else:
   static :
     hint("Declaration of " & "triggerExit" & " already exists, not redeclaring")
 when not declared(triggerCreate):
-  proc triggerCreate*(): ptr orxTRIGGER_520095535 {.cdecl,
+  proc triggerCreate*(): ptr orxTRIGGER_520095498 {.cdecl,
       importc: "orxTrigger_Create".}
 else:
   static :
     hint("Declaration of " & "triggerCreate" &
         " already exists, not redeclaring")
 when not declared(triggerDelete):
-  proc triggerDelete*(internal_pstTrigger: ptr orxTRIGGER_520095535): orxSTATUS_520095066 {.
+  proc triggerDelete*(internal_pstTrigger: ptr orxTRIGGER_520095498): orxSTATUS_520095029 {.
       cdecl, importc: "orxTrigger_Delete".}
 else:
   static :
     hint("Declaration of " & "triggerDelete" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_ClearCache):
-  proc orxTrigger_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxTrigger_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxTrigger_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_Enable):
-  proc orxTrigger_Enable*(internal_pstTrigger: ptr orxTRIGGER_520095535;
-                          internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxTrigger_Enable*(internal_pstTrigger: ptr orxTRIGGER_520095498;
+                          internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxTrigger_Enable".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_Enable" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_IsEnabled):
-  proc orxTrigger_IsEnabled*(internal_pstTrigger: ptr orxTRIGGER_520095535): orxBOOL_520095038 {.
+  proc orxTrigger_IsEnabled*(internal_pstTrigger: ptr orxTRIGGER_520095498): orxBOOL_520095001 {.
       cdecl, importc: "orxTrigger_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_AddSetFromConfig):
-  proc orxTrigger_AddSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER_520095535;
-                                    internal_zConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxTrigger_AddSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER_520095498;
+                                    internal_zConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxTrigger_AddSetFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_AddSetFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_RemoveSetFromConfig):
-  proc orxTrigger_RemoveSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER_520095535;
-                                       internal_zConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxTrigger_RemoveSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER_520095498;
+                                       internal_zConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxTrigger_RemoveSetFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_RemoveSetFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_GetCount):
-  proc orxTrigger_GetCount*(internal_pstTrigger: ptr orxTRIGGER_520095535): orxU32_520095024 {.
+  proc orxTrigger_GetCount*(internal_pstTrigger: ptr orxTRIGGER_520095498): orxU32_520094987 {.
       cdecl, importc: "orxTrigger_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxTrigger_GetCount" &
         " already exists, not redeclaring")
 when not declared(orxTrigger_Fire):
-  proc orxTrigger_Fire*(internal_pstTrigger: ptr orxTRIGGER_520095535;
+  proc orxTrigger_Fire*(internal_pstTrigger: ptr orxTRIGGER_520095498;
                         internal_zEvent: cstring;
                         internal_azRefinementList: ptr cstring;
-                        internal_u32Size: orxU32_520095024): orxSTATUS_520095066 {.
+                        internal_u32Size: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxTrigger_Fire".}
 else:
   static :
@@ -19089,7 +19062,7 @@ else:
   static :
     hint("Declaration of " & "pluginSetup" & " already exists, not redeclaring")
 when not declared(pluginInit):
-  proc pluginInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxPlugin_Init".}
+  proc pluginInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxPlugin_Init".}
 else:
   static :
     hint("Declaration of " & "pluginInit" & " already exists, not redeclaring")
@@ -19100,7 +19073,7 @@ else:
     hint("Declaration of " & "pluginExit" & " already exists, not redeclaring")
 when not declared(orxPlugin_Load):
   proc orxPlugin_Load*(internal_zPluginFileName: cstring;
-                       internal_zPluginName: cstring): orxHANDLE_520095050 {.
+                       internal_zPluginName: cstring): orxHANDLE_520095013 {.
       cdecl, importc: "orxPlugin_Load".}
 else:
   static :
@@ -19108,36 +19081,36 @@ else:
         " already exists, not redeclaring")
 when not declared(orxPlugin_LoadUsingExt):
   proc orxPlugin_LoadUsingExt*(internal_zPluginFileName: cstring;
-                               internal_zPluginName: cstring): orxHANDLE_520095050 {.
+                               internal_zPluginName: cstring): orxHANDLE_520095013 {.
       cdecl, importc: "orxPlugin_LoadUsingExt".}
 else:
   static :
     hint("Declaration of " & "orxPlugin_LoadUsingExt" &
         " already exists, not redeclaring")
 when not declared(orxPlugin_Unload):
-  proc orxPlugin_Unload*(internal_hPluginHandle: orxHANDLE_520095050): orxSTATUS_520095066 {.
+  proc orxPlugin_Unload*(internal_hPluginHandle: orxHANDLE_520095013): orxSTATUS_520095029 {.
       cdecl, importc: "orxPlugin_Unload".}
 else:
   static :
     hint("Declaration of " & "orxPlugin_Unload" &
         " already exists, not redeclaring")
 when not declared(orxPlugin_GetFunction):
-  proc orxPlugin_GetFunction*(internal_hPluginHandle: orxHANDLE_520095050;
-                              internal_zFunctionName: cstring): orxPLUGIN_FUNCTION_520095211 {.
+  proc orxPlugin_GetFunction*(internal_hPluginHandle: orxHANDLE_520095013;
+                              internal_zFunctionName: cstring): orxPLUGIN_FUNCTION_520095174 {.
       cdecl, importc: "orxPlugin_GetFunction".}
 else:
   static :
     hint("Declaration of " & "orxPlugin_GetFunction" &
         " already exists, not redeclaring")
 when not declared(orxPlugin_GetHandle):
-  proc orxPlugin_GetHandle*(internal_zPluginName: cstring): orxHANDLE_520095050 {.
+  proc orxPlugin_GetHandle*(internal_zPluginName: cstring): orxHANDLE_520095013 {.
       cdecl, importc: "orxPlugin_GetHandle".}
 else:
   static :
     hint("Declaration of " & "orxPlugin_GetHandle" &
         " already exists, not redeclaring")
 when not declared(orxPlugin_GetName):
-  proc orxPlugin_GetName*(internal_hPluginHandle: orxHANDLE_520095050): cstring {.
+  proc orxPlugin_GetName*(internal_hPluginHandle: orxHANDLE_520095013): cstring {.
       cdecl, importc: "orxPlugin_GetName".}
 else:
   static :
@@ -19149,21 +19122,21 @@ else:
   static :
     hint("Declaration of " & "physicsSetup" & " already exists, not redeclaring")
 when not declared(orxPhysics_GetCollisionFlagName):
-  proc orxPhysics_GetCollisionFlagName*(internal_u32Flag: orxU32_520095024): cstring {.
+  proc orxPhysics_GetCollisionFlagName*(internal_u32Flag: orxU32_520094987): cstring {.
       cdecl, importc: "orxPhysics_GetCollisionFlagName".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetCollisionFlagName" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetCollisionFlagValue):
-  proc orxPhysics_GetCollisionFlagValue*(internal_zFlag: cstring): orxU32_520095024 {.
+  proc orxPhysics_GetCollisionFlagValue*(internal_zFlag: cstring): orxU32_520094987 {.
       cdecl, importc: "orxPhysics_GetCollisionFlagValue".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetCollisionFlagValue" &
         " already exists, not redeclaring")
 when not declared(physicsInit):
-  proc physicsInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxPhysics_Init".}
+  proc physicsInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxPhysics_Init".}
 else:
   static :
     hint("Declaration of " & "physicsInit" & " already exists, not redeclaring")
@@ -19173,149 +19146,149 @@ else:
   static :
     hint("Declaration of " & "physicsExit" & " already exists, not redeclaring")
 when not declared(orxPhysics_SetGravity):
-  proc orxPhysics_SetGravity*(internal_pvGravity: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_SetGravity*(internal_pvGravity: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetGravity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetGravity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetGravity):
-  proc orxPhysics_GetGravity*(internal_pvGravity: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxPhysics_GetGravity*(internal_pvGravity: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetGravity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetGravity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_CreateBody):
-  proc orxPhysics_CreateBody*(internal_hUserData: orxHANDLE_520095050;
-                              internal_pstBodyDef: ptr orxBODY_DEF_520095547): ptr orxPHYSICS_BODY_520095565 {.
+  proc orxPhysics_CreateBody*(internal_hUserData: orxHANDLE_520095013;
+                              internal_pstBodyDef: ptr orxBODY_DEF_520095510): ptr orxPHYSICS_BODY_520095528 {.
       cdecl, importc: "orxPhysics_CreateBody".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_CreateBody" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_DeleteBody):
-  proc orxPhysics_DeleteBody*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): void {.
+  proc orxPhysics_DeleteBody*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): void {.
       cdecl, importc: "orxPhysics_DeleteBody".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_DeleteBody" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_CreatePart):
-  proc orxPhysics_CreatePart*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                              internal_hUserData: orxHANDLE_520095050;
-                              internal_pstBodyPartDef: ptr orxBODY_PART_DEF_520095551): ptr orxPHYSICS_BODY_PART_520095567 {.
+  proc orxPhysics_CreatePart*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                              internal_hUserData: orxHANDLE_520095013;
+                              internal_pstBodyPartDef: ptr orxBODY_PART_DEF_520095514): ptr orxPHYSICS_BODY_PART_520095530 {.
       cdecl, importc: "orxPhysics_CreatePart".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_CreatePart" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_DeletePart):
-  proc orxPhysics_DeletePart*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): void {.
+  proc orxPhysics_DeletePart*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): void {.
       cdecl, importc: "orxPhysics_DeletePart".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_DeletePart" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_CreateJoint):
-  proc orxPhysics_CreateJoint*(internal_pstSrcBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_pstDstBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_hUserData: orxHANDLE_520095050;
-                               internal_pstBodyJointDef: ptr orxBODY_JOINT_DEF_520095555): ptr orxPHYSICS_BODY_JOINT_520095569 {.
+  proc orxPhysics_CreateJoint*(internal_pstSrcBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_pstDstBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_hUserData: orxHANDLE_520095013;
+                               internal_pstBodyJointDef: ptr orxBODY_JOINT_DEF_520095518): ptr orxPHYSICS_BODY_JOINT_520095532 {.
       cdecl, importc: "orxPhysics_CreateJoint".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_CreateJoint" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_DeleteJoint):
-  proc orxPhysics_DeleteJoint*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569): void {.
+  proc orxPhysics_DeleteJoint*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532): void {.
       cdecl, importc: "orxPhysics_DeleteJoint".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_DeleteJoint" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPosition):
-  proc orxPhysics_SetPosition*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPosition*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetRotation):
-  proc orxPhysics_SetRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetRotation".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetRotation" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetSpeed):
-  proc orxPhysics_SetSpeed*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                            internal_pvSpeed: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_SetSpeed*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                            internal_pvSpeed: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetSpeed".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetSpeed" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetAngularVelocity):
-  proc orxPhysics_SetAngularVelocity*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                      internal_fVelocity: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetAngularVelocity*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                      internal_fVelocity: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetCustomGravity):
-  proc orxPhysics_SetCustomGravity*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                    internal_pvCustomGravity: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_SetCustomGravity*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                    internal_pvCustomGravity: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetCustomGravity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetFixedRotation):
-  proc orxPhysics_SetFixedRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                    internal_bFixed: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxPhysics_SetFixedRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                    internal_bFixed: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetFixedRotation".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetFixedRotation" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetDynamic):
-  proc orxPhysics_SetDynamic*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                              internal_bDynamic: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxPhysics_SetDynamic*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                              internal_bDynamic: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetDynamic".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetDynamic" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetAllowMoving):
-  proc orxPhysics_SetAllowMoving*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                  internal_bAllowMoving: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxPhysics_SetAllowMoving*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                  internal_bAllowMoving: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetAllowMoving".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetAllowMoving" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPosition):
-  proc orxPhysics_GetPosition*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxPhysics_GetPosition*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetRotation):
-  proc orxPhysics_GetRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxFLOAT_520095040 {.
+  proc orxPhysics_GetRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetRotation".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetRotation" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetSpeed):
-  proc orxPhysics_GetSpeed*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                            internal_pvSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxPhysics_GetSpeed*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                            internal_pvSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetSpeed".}
 else:
   static :
@@ -19323,216 +19296,216 @@ else:
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetSpeedAtWorldPosition):
   proc orxPhysics_GetSpeedAtWorldPosition*(
-      internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-      internal_pvPosition: ptr orxVECTOR_520095096;
-      internal_pvSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+      internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+      internal_pvPosition: ptr orxVECTOR_520095059;
+      internal_pvSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetSpeedAtWorldPosition".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetSpeedAtWorldPosition" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetAngularVelocity):
-  proc orxPhysics_GetAngularVelocity*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxFLOAT_520095040 {.
+  proc orxPhysics_GetAngularVelocity*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetCustomGravity):
-  proc orxPhysics_GetCustomGravity*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                    internal_pvCustomGravity: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxPhysics_GetCustomGravity*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                    internal_pvCustomGravity: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetCustomGravity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_IsFixedRotation):
-  proc orxPhysics_IsFixedRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxBOOL_520095038 {.
+  proc orxPhysics_IsFixedRotation*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxBOOL_520095001 {.
       cdecl, importc: "orxPhysics_IsFixedRotation".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_IsFixedRotation" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetMass):
-  proc orxPhysics_GetMass*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxFLOAT_520095040 {.
+  proc orxPhysics_GetMass*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetMass".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetMass" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetMassCenter):
-  proc orxPhysics_GetMassCenter*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                 internal_pvMassCenter: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxPhysics_GetMassCenter*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                 internal_pvMassCenter: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetMassCenter".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetMassCenter" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetLinearDamping):
-  proc orxPhysics_SetLinearDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                    internal_fDamping: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetLinearDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                    internal_fDamping: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetLinearDamping".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetLinearDamping" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetAngularDamping):
-  proc orxPhysics_SetAngularDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                     internal_fDamping: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetAngularDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                     internal_fDamping: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetAngularDamping".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetAngularDamping" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetLinearDamping):
-  proc orxPhysics_GetLinearDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxFLOAT_520095040 {.
+  proc orxPhysics_GetLinearDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetLinearDamping".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetLinearDamping" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetAngularDamping):
-  proc orxPhysics_GetAngularDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095565): orxFLOAT_520095040 {.
+  proc orxPhysics_GetAngularDamping*(internal_pstBody: ptr orxPHYSICS_BODY_520095528): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetAngularDamping".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetAngularDamping" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_ApplyTorque):
-  proc orxPhysics_ApplyTorque*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                               internal_fTorque: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_ApplyTorque*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                               internal_fTorque: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_ApplyTorque".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_ApplyTorque" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_ApplyForce):
-  proc orxPhysics_ApplyForce*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                              internal_pvForce: ptr orxVECTOR_520095096;
-                              internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_ApplyForce*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                              internal_pvForce: ptr orxVECTOR_520095059;
+                              internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_ApplyForce".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_ApplyForce" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_ApplyImpulse):
-  proc orxPhysics_ApplyImpulse*(internal_pstBody: ptr orxPHYSICS_BODY_520095565;
-                                internal_pvImpulse: ptr orxVECTOR_520095096;
-                                internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxPhysics_ApplyImpulse*(internal_pstBody: ptr orxPHYSICS_BODY_520095528;
+                                internal_pvImpulse: ptr orxVECTOR_520095059;
+                                internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_ApplyImpulse".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_ApplyImpulse" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartSelfFlags):
-  proc orxPhysics_SetPartSelfFlags*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                    internal_u16SelfFlags: orxU16_520095026): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartSelfFlags*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                    internal_u16SelfFlags: orxU16_520094989): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartSelfFlags".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartSelfFlags" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartCheckMask):
-  proc orxPhysics_SetPartCheckMask*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                    internal_u16CheckMask: orxU16_520095026): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartCheckMask*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                    internal_u16CheckMask: orxU16_520094989): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartCheckMask".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartCheckMask" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPartSelfFlags):
-  proc orxPhysics_GetPartSelfFlags*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxU16_520095026 {.
+  proc orxPhysics_GetPartSelfFlags*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxU16_520094989 {.
       cdecl, importc: "orxPhysics_GetPartSelfFlags".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPartSelfFlags" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPartCheckMask):
-  proc orxPhysics_GetPartCheckMask*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxU16_520095026 {.
+  proc orxPhysics_GetPartCheckMask*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxU16_520094989 {.
       cdecl, importc: "orxPhysics_GetPartCheckMask".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPartCheckMask" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartSolid):
-  proc orxPhysics_SetPartSolid*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                internal_bSolid: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartSolid*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                internal_bSolid: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartSolid".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartSolid" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_IsPartSolid):
-  proc orxPhysics_IsPartSolid*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxBOOL_520095038 {.
+  proc orxPhysics_IsPartSolid*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxBOOL_520095001 {.
       cdecl, importc: "orxPhysics_IsPartSolid".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_IsPartSolid" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartFriction):
-  proc orxPhysics_SetPartFriction*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                   internal_fFriction: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartFriction*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                   internal_fFriction: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartFriction".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartFriction" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPartFriction):
-  proc orxPhysics_GetPartFriction*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxFLOAT_520095040 {.
+  proc orxPhysics_GetPartFriction*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetPartFriction".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPartFriction" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartRestitution):
-  proc orxPhysics_SetPartRestitution*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                      internal_fRestitution: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartRestitution*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                      internal_fRestitution: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartRestitution".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartRestitution" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPartRestitution):
-  proc orxPhysics_GetPartRestitution*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxFLOAT_520095040 {.
+  proc orxPhysics_GetPartRestitution*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetPartRestitution".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPartRestitution" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetPartDensity):
-  proc orxPhysics_SetPartDensity*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                  internal_fDensity: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxPhysics_SetPartDensity*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                  internal_fDensity: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxPhysics_SetPartDensity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_SetPartDensity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetPartDensity):
-  proc orxPhysics_GetPartDensity*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567): orxFLOAT_520095040 {.
+  proc orxPhysics_GetPartDensity*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetPartDensity".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetPartDensity" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_IsInsidePart):
-  proc orxPhysics_IsInsidePart*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095567;
-                                internal_pvPosition: ptr orxVECTOR_520095096): orxBOOL_520095038 {.
+  proc orxPhysics_IsInsidePart*(internal_pstBodyPart: ptr orxPHYSICS_BODY_PART_520095530;
+                                internal_pvPosition: ptr orxVECTOR_520095059): orxBOOL_520095001 {.
       cdecl, importc: "orxPhysics_IsInsidePart".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_IsInsidePart" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_EnableMotor):
-  proc orxPhysics_EnableMotor*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569;
-                               internal_bEnable: orxBOOL_520095038): void {.
+  proc orxPhysics_EnableMotor*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532;
+                               internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxPhysics_EnableMotor".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_EnableMotor" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetJointMotorSpeed):
-  proc orxPhysics_SetJointMotorSpeed*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569;
-                                      internal_fSpeed: orxFLOAT_520095040): void {.
+  proc orxPhysics_SetJointMotorSpeed*(internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532;
+                                      internal_fSpeed: orxFLOAT_520095003): void {.
       cdecl, importc: "orxPhysics_SetJointMotorSpeed".}
 else:
   static :
@@ -19540,8 +19513,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxPhysics_SetJointMaxMotorTorque):
   proc orxPhysics_SetJointMaxMotorTorque*(
-      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569;
-      internal_fMaxTorque: orxFLOAT_520095040): void {.cdecl,
+      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532;
+      internal_fMaxTorque: orxFLOAT_520095003): void {.cdecl,
       importc: "orxPhysics_SetJointMaxMotorTorque".}
 else:
   static :
@@ -19549,8 +19522,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetJointReactionForce):
   proc orxPhysics_GetJointReactionForce*(
-      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569;
-      internal_pvForce: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532;
+      internal_pvForce: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxPhysics_GetJointReactionForce".}
 else:
   static :
@@ -19558,38 +19531,38 @@ else:
         " already exists, not redeclaring")
 when not declared(orxPhysics_GetJointReactionTorque):
   proc orxPhysics_GetJointReactionTorque*(
-      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095569): orxFLOAT_520095040 {.
+      internal_pstBodyJoint: ptr orxPHYSICS_BODY_JOINT_520095532): orxFLOAT_520095003 {.
       cdecl, importc: "orxPhysics_GetJointReactionTorque".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_GetJointReactionTorque" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_Raycast):
-  proc orxPhysics_Raycast*(internal_pvBegin: ptr orxVECTOR_520095096;
-                           internal_pvEnd: ptr orxVECTOR_520095096;
-                           internal_u16SelfFlags: orxU16_520095026;
-                           internal_u16CheckMask: orxU16_520095026;
-                           internal_bEarlyExit: orxBOOL_520095038;
-                           internal_pvContact: ptr orxVECTOR_520095096;
-                           internal_pvNormal: ptr orxVECTOR_520095096): orxHANDLE_520095050 {.
+  proc orxPhysics_Raycast*(internal_pvBegin: ptr orxVECTOR_520095059;
+                           internal_pvEnd: ptr orxVECTOR_520095059;
+                           internal_u16SelfFlags: orxU16_520094989;
+                           internal_u16CheckMask: orxU16_520094989;
+                           internal_bEarlyExit: orxBOOL_520095001;
+                           internal_pvContact: ptr orxVECTOR_520095059;
+                           internal_pvNormal: ptr orxVECTOR_520095059): orxHANDLE_520095013 {.
       cdecl, importc: "orxPhysics_Raycast".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_Raycast" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_BoxPick):
-  proc orxPhysics_BoxPick*(internal_pstBox: ptr orxAABOX_520095419;
-                           internal_u16SelfFlags: orxU16_520095026;
-                           internal_u16CheckMask: orxU16_520095026;
-      internal_ahUserDataList: ptr UncheckedArray[orxHANDLE_520095050];
-                           internal_u32Number: orxU32_520095024): orxU32_520095024 {.
+  proc orxPhysics_BoxPick*(internal_pstBox: ptr orxAABOX_520095382;
+                           internal_u16SelfFlags: orxU16_520094989;
+                           internal_u16CheckMask: orxU16_520094989;
+      internal_ahUserDataList: ptr UncheckedArray[orxHANDLE_520095013];
+                           internal_u32Number: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxPhysics_BoxPick".}
 else:
   static :
     hint("Declaration of " & "orxPhysics_BoxPick" &
         " already exists, not redeclaring")
 when not declared(orxPhysics_EnableSimulation):
-  proc orxPhysics_EnableSimulation*(internal_bEnable: orxBOOL_520095038): void {.
+  proc orxPhysics_EnableSimulation*(internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxPhysics_EnableSimulation".}
 else:
   static :
@@ -19601,7 +19574,7 @@ else:
   static :
     hint("Declaration of " & "bodySetup" & " already exists, not redeclaring")
 when not declared(bodyInit):
-  proc bodyInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxBody_Init".}
+  proc bodyInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxBody_Init".}
 else:
   static :
     hint("Declaration of " & "bodyInit" & " already exists, not redeclaring")
@@ -19611,532 +19584,532 @@ else:
   static :
     hint("Declaration of " & "bodyExit" & " already exists, not redeclaring")
 when not declared(bodyCreate):
-  proc bodyCreate*(internal_pstOwner: ptr orxSTRUCTURE_520095159;
-                   internal_pstBodyDef: ptr orxBODY_DEF_520095547): ptr orxBODY_520095571 {.
+  proc bodyCreate*(internal_pstOwner: ptr orxSTRUCTURE_520095122;
+                   internal_pstBodyDef: ptr orxBODY_DEF_520095510): ptr orxBODY_520095534 {.
       cdecl, importc: "orxBody_Create".}
 else:
   static :
     hint("Declaration of " & "bodyCreate" & " already exists, not redeclaring")
 when not declared(bodyCreateFromConfig):
-  proc bodyCreateFromConfig*(internal_pstOwner: ptr orxSTRUCTURE_520095159;
-                             internal_zConfigID: cstring): ptr orxBODY_520095571 {.
+  proc bodyCreateFromConfig*(internal_pstOwner: ptr orxSTRUCTURE_520095122;
+                             internal_zConfigID: cstring): ptr orxBODY_520095534 {.
       cdecl, importc: "orxBody_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "bodyCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(bodyDelete):
-  proc bodyDelete*(internal_pstBody: ptr orxBODY_520095571): orxSTATUS_520095066 {.
+  proc bodyDelete*(internal_pstBody: ptr orxBODY_520095534): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_Delete".}
 else:
   static :
     hint("Declaration of " & "bodyDelete" & " already exists, not redeclaring")
 when not declared(orxBody_GetName):
-  proc orxBody_GetName*(internal_pstBody: ptr orxBODY_520095571): cstring {.
+  proc orxBody_GetName*(internal_pstBody: ptr orxBODY_520095534): cstring {.
       cdecl, importc: "orxBody_GetName".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetName" &
         " already exists, not redeclaring")
 when not declared(orxBody_TestDefFlags):
-  proc orxBody_TestDefFlags*(internal_pstBody: ptr orxBODY_520095571;
-                             internal_u32Flags: orxU32_520095024): orxBOOL_520095038 {.
+  proc orxBody_TestDefFlags*(internal_pstBody: ptr orxBODY_520095534;
+                             internal_u32Flags: orxU32_520094987): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_TestDefFlags".}
 else:
   static :
     hint("Declaration of " & "orxBody_TestDefFlags" &
         " already exists, not redeclaring")
 when not declared(orxBody_TestAllDefFlags):
-  proc orxBody_TestAllDefFlags*(internal_pstBody: ptr orxBODY_520095571;
-                                internal_u32Flags: orxU32_520095024): orxBOOL_520095038 {.
+  proc orxBody_TestAllDefFlags*(internal_pstBody: ptr orxBODY_520095534;
+                                internal_u32Flags: orxU32_520094987): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_TestAllDefFlags".}
 else:
   static :
     hint("Declaration of " & "orxBody_TestAllDefFlags" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetDefFlags):
-  proc orxBody_GetDefFlags*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_u32Mask: orxU32_520095024): orxU32_520095024 {.
+  proc orxBody_GetDefFlags*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_u32Mask: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxBody_GetDefFlags".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetDefFlags" &
         " already exists, not redeclaring")
 when not declared(orxBody_AddPart):
-  proc orxBody_AddPart*(internal_pstBody: ptr orxBODY_520095571;
-                        internal_pstBodyPartDef: ptr orxBODY_PART_DEF_520095551): ptr orxBODY_PART_520095573 {.
+  proc orxBody_AddPart*(internal_pstBody: ptr orxBODY_520095534;
+                        internal_pstBodyPartDef: ptr orxBODY_PART_DEF_520095514): ptr orxBODY_PART_520095536 {.
       cdecl, importc: "orxBody_AddPart".}
 else:
   static :
     hint("Declaration of " & "orxBody_AddPart" &
         " already exists, not redeclaring")
 when not declared(orxBody_AddPartFromConfig):
-  proc orxBody_AddPartFromConfig*(internal_pstBody: ptr orxBODY_520095571;
-                                  internal_zConfigID: cstring): ptr orxBODY_PART_520095573 {.
+  proc orxBody_AddPartFromConfig*(internal_pstBody: ptr orxBODY_520095534;
+                                  internal_zConfigID: cstring): ptr orxBODY_PART_520095536 {.
       cdecl, importc: "orxBody_AddPartFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxBody_AddPartFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxBody_RemovePartFromConfig):
-  proc orxBody_RemovePartFromConfig*(internal_pstBody: ptr orxBODY_520095571;
-                                     internal_zConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxBody_RemovePartFromConfig*(internal_pstBody: ptr orxBODY_520095534;
+                                     internal_zConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_RemovePartFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxBody_RemovePartFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetNextPart):
-  proc orxBody_GetNextPart*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_pstBodyPart: ptr orxBODY_PART_520095573): ptr orxBODY_PART_520095573 {.
+  proc orxBody_GetNextPart*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_pstBodyPart: ptr orxBODY_PART_520095536): ptr orxBODY_PART_520095536 {.
       cdecl, importc: "orxBody_GetNextPart".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetNextPart" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartName):
-  proc orxBody_GetPartName*(internal_pstBodyPart: ptr orxBODY_PART_520095573): cstring {.
+  proc orxBody_GetPartName*(internal_pstBodyPart: ptr orxBODY_PART_520095536): cstring {.
       cdecl, importc: "orxBody_GetPartName".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartName" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartDef):
-  proc orxBody_GetPartDef*(internal_pstBodyPart: ptr orxBODY_PART_520095573): ptr orxBODY_PART_DEF_520095551 {.
+  proc orxBody_GetPartDef*(internal_pstBodyPart: ptr orxBODY_PART_520095536): ptr orxBODY_PART_DEF_520095514 {.
       cdecl, importc: "orxBody_GetPartDef".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartDef" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartBody):
-  proc orxBody_GetPartBody*(internal_pstBodyPart: ptr orxBODY_PART_520095573): ptr orxBODY_520095571 {.
+  proc orxBody_GetPartBody*(internal_pstBodyPart: ptr orxBODY_PART_520095536): ptr orxBODY_520095534 {.
       cdecl, importc: "orxBody_GetPartBody".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartBody" &
         " already exists, not redeclaring")
 when not declared(orxBody_RemovePart):
-  proc orxBody_RemovePart*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxSTATUS_520095066 {.
+  proc orxBody_RemovePart*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_RemovePart".}
 else:
   static :
     hint("Declaration of " & "orxBody_RemovePart" &
         " already exists, not redeclaring")
 when not declared(orxBody_AddJoint):
-  proc orxBody_AddJoint*(internal_pstSrcBody: ptr orxBODY_520095571;
-                         internal_pstDstBody: ptr orxBODY_520095571;
-                         internal_pstBodyJointDef: ptr orxBODY_JOINT_DEF_520095555): ptr orxBODY_JOINT_520095575 {.
+  proc orxBody_AddJoint*(internal_pstSrcBody: ptr orxBODY_520095534;
+                         internal_pstDstBody: ptr orxBODY_520095534;
+                         internal_pstBodyJointDef: ptr orxBODY_JOINT_DEF_520095518): ptr orxBODY_JOINT_520095538 {.
       cdecl, importc: "orxBody_AddJoint".}
 else:
   static :
     hint("Declaration of " & "orxBody_AddJoint" &
         " already exists, not redeclaring")
 when not declared(orxBody_AddJointFromConfig):
-  proc orxBody_AddJointFromConfig*(internal_pstSrcBody: ptr orxBODY_520095571;
-                                   internal_pstDstBody: ptr orxBODY_520095571;
-                                   internal_zConfigID: cstring): ptr orxBODY_JOINT_520095575 {.
+  proc orxBody_AddJointFromConfig*(internal_pstSrcBody: ptr orxBODY_520095534;
+                                   internal_pstDstBody: ptr orxBODY_520095534;
+                                   internal_zConfigID: cstring): ptr orxBODY_JOINT_520095538 {.
       cdecl, importc: "orxBody_AddJointFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxBody_AddJointFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetNextJoint):
-  proc orxBody_GetNextJoint*(internal_pstBody: ptr orxBODY_520095571;
-                             internal_pstBodyJoint: ptr orxBODY_JOINT_520095575): ptr orxBODY_JOINT_520095575 {.
+  proc orxBody_GetNextJoint*(internal_pstBody: ptr orxBODY_520095534;
+                             internal_pstBodyJoint: ptr orxBODY_JOINT_520095538): ptr orxBODY_JOINT_520095538 {.
       cdecl, importc: "orxBody_GetNextJoint".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetNextJoint" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetJointName):
-  proc orxBody_GetJointName*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575): cstring {.
+  proc orxBody_GetJointName*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538): cstring {.
       cdecl, importc: "orxBody_GetJointName".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetJointName" &
         " already exists, not redeclaring")
 when not declared(orxBody_RemoveJoint):
-  proc orxBody_RemoveJoint*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575): orxSTATUS_520095066 {.
+  proc orxBody_RemoveJoint*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_RemoveJoint".}
 else:
   static :
     hint("Declaration of " & "orxBody_RemoveJoint" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPosition):
-  proc orxBody_SetPosition*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_SetPosition*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetRotation):
-  proc orxBody_SetRotation*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetRotation*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetRotation".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetRotation" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetScale):
-  proc orxBody_SetScale*(internal_pstBody: ptr orxBODY_520095571;
-                         internal_pvScale: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_SetScale*(internal_pstBody: ptr orxBODY_520095534;
+                         internal_pvScale: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetScale".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetScale" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetSpeed):
-  proc orxBody_SetSpeed*(internal_pstBody: ptr orxBODY_520095571;
-                         internal_pvSpeed: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_SetSpeed*(internal_pstBody: ptr orxBODY_520095534;
+                         internal_pvSpeed: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetSpeed".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetSpeed" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetAngularVelocity):
-  proc orxBody_SetAngularVelocity*(internal_pstBody: ptr orxBODY_520095571;
-                                   internal_fVelocity: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetAngularVelocity*(internal_pstBody: ptr orxBODY_520095534;
+                                   internal_fVelocity: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetCustomGravity):
-  proc orxBody_SetCustomGravity*(internal_pstBody: ptr orxBODY_520095571;
-                                 internal_pvCustomGravity: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_SetCustomGravity*(internal_pstBody: ptr orxBODY_520095534;
+                                 internal_pvCustomGravity: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetCustomGravity" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetFixedRotation):
-  proc orxBody_SetFixedRotation*(internal_pstBody: ptr orxBODY_520095571;
-                                 internal_bFixed: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxBody_SetFixedRotation*(internal_pstBody: ptr orxBODY_520095534;
+                                 internal_bFixed: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetFixedRotation".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetFixedRotation" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetDynamic):
-  proc orxBody_SetDynamic*(internal_pstBody: ptr orxBODY_520095571;
-                           internal_bDynamic: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxBody_SetDynamic*(internal_pstBody: ptr orxBODY_520095534;
+                           internal_bDynamic: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetDynamic".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetDynamic" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetAllowMoving):
-  proc orxBody_SetAllowMoving*(internal_pstBody: ptr orxBODY_520095571;
-                               internal_bAllowMoving: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxBody_SetAllowMoving*(internal_pstBody: ptr orxBODY_520095534;
+                               internal_bAllowMoving: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetAllowMoving".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetAllowMoving" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPosition):
-  proc orxBody_GetPosition*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetPosition*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetRotation):
-  proc orxBody_GetRotation*(internal_pstBody: ptr orxBODY_520095571): orxFLOAT_520095040 {.
+  proc orxBody_GetRotation*(internal_pstBody: ptr orxBODY_520095534): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetRotation".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetRotation" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetSpeed):
-  proc orxBody_GetSpeed*(internal_pstBody: ptr orxBODY_520095571;
-                         internal_pvSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetSpeed*(internal_pstBody: ptr orxBODY_520095534;
+                         internal_pvSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetSpeed".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetSpeed" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetSpeedAtWorldPosition):
-  proc orxBody_GetSpeedAtWorldPosition*(internal_pstBody: ptr orxBODY_520095571;
-                                        internal_pvPosition: ptr orxVECTOR_520095096;
-                                        internal_pvSpeed: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetSpeedAtWorldPosition*(internal_pstBody: ptr orxBODY_520095534;
+                                        internal_pvPosition: ptr orxVECTOR_520095059;
+                                        internal_pvSpeed: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetSpeedAtWorldPosition".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetSpeedAtWorldPosition" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetAngularVelocity):
-  proc orxBody_GetAngularVelocity*(internal_pstBody: ptr orxBODY_520095571): orxFLOAT_520095040 {.
+  proc orxBody_GetAngularVelocity*(internal_pstBody: ptr orxBODY_520095534): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetAngularVelocity".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetAngularVelocity" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetCustomGravity):
-  proc orxBody_GetCustomGravity*(internal_pstBody: ptr orxBODY_520095571;
-                                 internal_pvCustomGravity: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetCustomGravity*(internal_pstBody: ptr orxBODY_520095534;
+                                 internal_pvCustomGravity: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetCustomGravity".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetCustomGravity" &
         " already exists, not redeclaring")
 when not declared(orxBody_IsFixedRotation):
-  proc orxBody_IsFixedRotation*(internal_pstBody: ptr orxBODY_520095571): orxBOOL_520095038 {.
+  proc orxBody_IsFixedRotation*(internal_pstBody: ptr orxBODY_520095534): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_IsFixedRotation".}
 else:
   static :
     hint("Declaration of " & "orxBody_IsFixedRotation" &
         " already exists, not redeclaring")
 when not declared(orxBody_IsDynamic):
-  proc orxBody_IsDynamic*(internal_pstBody: ptr orxBODY_520095571): orxBOOL_520095038 {.
+  proc orxBody_IsDynamic*(internal_pstBody: ptr orxBODY_520095534): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_IsDynamic".}
 else:
   static :
     hint("Declaration of " & "orxBody_IsDynamic" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetAllowMoving):
-  proc orxBody_GetAllowMoving*(internal_pstBody: ptr orxBODY_520095571): orxBOOL_520095038 {.
+  proc orxBody_GetAllowMoving*(internal_pstBody: ptr orxBODY_520095534): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_GetAllowMoving".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetAllowMoving" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetMass):
-  proc orxBody_GetMass*(internal_pstBody: ptr orxBODY_520095571): orxFLOAT_520095040 {.
+  proc orxBody_GetMass*(internal_pstBody: ptr orxBODY_520095534): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetMass".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetMass" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetMassCenter):
-  proc orxBody_GetMassCenter*(internal_pstBody: ptr orxBODY_520095571;
-                              internal_pvMassCenter: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetMassCenter*(internal_pstBody: ptr orxBODY_520095534;
+                              internal_pvMassCenter: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetMassCenter".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetMassCenter" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetLinearDamping):
-  proc orxBody_SetLinearDamping*(internal_pstBody: ptr orxBODY_520095571;
-                                 internal_fDamping: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetLinearDamping*(internal_pstBody: ptr orxBODY_520095534;
+                                 internal_fDamping: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetLinearDamping".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetLinearDamping" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetAngularDamping):
-  proc orxBody_SetAngularDamping*(internal_pstBody: ptr orxBODY_520095571;
-                                  internal_fDamping: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetAngularDamping*(internal_pstBody: ptr orxBODY_520095534;
+                                  internal_fDamping: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetAngularDamping".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetAngularDamping" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetLinearDamping):
-  proc orxBody_GetLinearDamping*(internal_pstBody: ptr orxBODY_520095571): orxFLOAT_520095040 {.
+  proc orxBody_GetLinearDamping*(internal_pstBody: ptr orxBODY_520095534): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetLinearDamping".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetLinearDamping" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetAngularDamping):
-  proc orxBody_GetAngularDamping*(internal_pstBody: ptr orxBODY_520095571): orxFLOAT_520095040 {.
+  proc orxBody_GetAngularDamping*(internal_pstBody: ptr orxBODY_520095534): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetAngularDamping".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetAngularDamping" &
         " already exists, not redeclaring")
 when not declared(orxBody_IsInside):
-  proc orxBody_IsInside*(internal_pstBody: ptr orxBODY_520095571;
-                         internal_pvPosition: ptr orxVECTOR_520095096): orxBOOL_520095038 {.
+  proc orxBody_IsInside*(internal_pstBody: ptr orxBODY_520095534;
+                         internal_pvPosition: ptr orxVECTOR_520095059): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_IsInside".}
 else:
   static :
     hint("Declaration of " & "orxBody_IsInside" &
         " already exists, not redeclaring")
 when not declared(orxBody_ApplyTorque):
-  proc orxBody_ApplyTorque*(internal_pstBody: ptr orxBODY_520095571;
-                            internal_fTorque: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_ApplyTorque*(internal_pstBody: ptr orxBODY_520095534;
+                            internal_fTorque: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_ApplyTorque".}
 else:
   static :
     hint("Declaration of " & "orxBody_ApplyTorque" &
         " already exists, not redeclaring")
 when not declared(orxBody_ApplyForce):
-  proc orxBody_ApplyForce*(internal_pstBody: ptr orxBODY_520095571;
-                           internal_pvForce: ptr orxVECTOR_520095096;
-                           internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_ApplyForce*(internal_pstBody: ptr orxBODY_520095534;
+                           internal_pvForce: ptr orxVECTOR_520095059;
+                           internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_ApplyForce".}
 else:
   static :
     hint("Declaration of " & "orxBody_ApplyForce" &
         " already exists, not redeclaring")
 when not declared(orxBody_ApplyImpulse):
-  proc orxBody_ApplyImpulse*(internal_pstBody: ptr orxBODY_520095571;
-                             internal_pvImpulse: ptr orxVECTOR_520095096;
-                             internal_pvPoint: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxBody_ApplyImpulse*(internal_pstBody: ptr orxBODY_520095534;
+                             internal_pvImpulse: ptr orxVECTOR_520095059;
+                             internal_pvPoint: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_ApplyImpulse".}
 else:
   static :
     hint("Declaration of " & "orxBody_ApplyImpulse" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartSelfFlags):
-  proc orxBody_SetPartSelfFlags*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                                 internal_u16SelfFlags: orxU16_520095026): orxSTATUS_520095066 {.
+  proc orxBody_SetPartSelfFlags*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                                 internal_u16SelfFlags: orxU16_520094989): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartSelfFlags".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartSelfFlags" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartCheckMask):
-  proc orxBody_SetPartCheckMask*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                                 internal_u16CheckMask: orxU16_520095026): orxSTATUS_520095066 {.
+  proc orxBody_SetPartCheckMask*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                                 internal_u16CheckMask: orxU16_520094989): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartCheckMask".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartCheckMask" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartSelfFlags):
-  proc orxBody_GetPartSelfFlags*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxU16_520095026 {.
+  proc orxBody_GetPartSelfFlags*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxU16_520094989 {.
       cdecl, importc: "orxBody_GetPartSelfFlags".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartSelfFlags" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartCheckMask):
-  proc orxBody_GetPartCheckMask*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxU16_520095026 {.
+  proc orxBody_GetPartCheckMask*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxU16_520094989 {.
       cdecl, importc: "orxBody_GetPartCheckMask".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartCheckMask" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartSolid):
-  proc orxBody_SetPartSolid*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                             internal_bSolid: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxBody_SetPartSolid*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                             internal_bSolid: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartSolid".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartSolid" &
         " already exists, not redeclaring")
 when not declared(orxBody_IsPartSolid):
-  proc orxBody_IsPartSolid*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxBOOL_520095038 {.
+  proc orxBody_IsPartSolid*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_IsPartSolid".}
 else:
   static :
     hint("Declaration of " & "orxBody_IsPartSolid" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartFriction):
-  proc orxBody_SetPartFriction*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                                internal_fFriction: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetPartFriction*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                                internal_fFriction: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartFriction".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartFriction" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartFriction):
-  proc orxBody_GetPartFriction*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxFLOAT_520095040 {.
+  proc orxBody_GetPartFriction*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetPartFriction".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartFriction" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartRestitution):
-  proc orxBody_SetPartRestitution*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                                   internal_fRestitution: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetPartRestitution*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                                   internal_fRestitution: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartRestitution".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartRestitution" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartRestitution):
-  proc orxBody_GetPartRestitution*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxFLOAT_520095040 {.
+  proc orxBody_GetPartRestitution*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetPartRestitution".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartRestitution" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetPartDensity):
-  proc orxBody_SetPartDensity*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                               internal_fDensity: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetPartDensity*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                               internal_fDensity: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetPartDensity".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetPartDensity" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetPartDensity):
-  proc orxBody_GetPartDensity*(internal_pstBodyPart: ptr orxBODY_PART_520095573): orxFLOAT_520095040 {.
+  proc orxBody_GetPartDensity*(internal_pstBodyPart: ptr orxBODY_PART_520095536): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetPartDensity".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetPartDensity" &
         " already exists, not redeclaring")
 when not declared(orxBody_IsInsidePart):
-  proc orxBody_IsInsidePart*(internal_pstBodyPart: ptr orxBODY_PART_520095573;
-                             internal_pvPosition: ptr orxVECTOR_520095096): orxBOOL_520095038 {.
+  proc orxBody_IsInsidePart*(internal_pstBodyPart: ptr orxBODY_PART_520095536;
+                             internal_pvPosition: ptr orxVECTOR_520095059): orxBOOL_520095001 {.
       cdecl, importc: "orxBody_IsInsidePart".}
 else:
   static :
     hint("Declaration of " & "orxBody_IsInsidePart" &
         " already exists, not redeclaring")
 when not declared(orxBody_EnableMotor):
-  proc orxBody_EnableMotor*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575;
-                            internal_bEnable: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxBody_EnableMotor*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538;
+                            internal_bEnable: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_EnableMotor".}
 else:
   static :
     hint("Declaration of " & "orxBody_EnableMotor" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetJointMotorSpeed):
-  proc orxBody_SetJointMotorSpeed*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575;
-                                   internal_fSpeed: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetJointMotorSpeed*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538;
+                                   internal_fSpeed: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetJointMotorSpeed".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetJointMotorSpeed" &
         " already exists, not redeclaring")
 when not declared(orxBody_SetJointMaxMotorTorque):
-  proc orxBody_SetJointMaxMotorTorque*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575;
-                                       internal_fMaxTorque: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxBody_SetJointMaxMotorTorque*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538;
+                                       internal_fMaxTorque: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxBody_SetJointMaxMotorTorque".}
 else:
   static :
     hint("Declaration of " & "orxBody_SetJointMaxMotorTorque" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetJointReactionForce):
-  proc orxBody_GetJointReactionForce*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575;
-                                      internal_pvForce: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxBody_GetJointReactionForce*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538;
+                                      internal_pvForce: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxBody_GetJointReactionForce".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetJointReactionForce" &
         " already exists, not redeclaring")
 when not declared(orxBody_GetJointReactionTorque):
-  proc orxBody_GetJointReactionTorque*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095575): orxFLOAT_520095040 {.
+  proc orxBody_GetJointReactionTorque*(internal_pstBodyJoint: ptr orxBODY_JOINT_520095538): orxFLOAT_520095003 {.
       cdecl, importc: "orxBody_GetJointReactionTorque".}
 else:
   static :
     hint("Declaration of " & "orxBody_GetJointReactionTorque" &
         " already exists, not redeclaring")
 when not declared(orxBody_Raycast):
-  proc orxBody_Raycast*(internal_pvBegin: ptr orxVECTOR_520095096;
-                        internal_pvEnd: ptr orxVECTOR_520095096;
-                        internal_u16SelfFlags: orxU16_520095026;
-                        internal_u16CheckMask: orxU16_520095026;
-                        internal_bEarlyExit: orxBOOL_520095038;
-                        internal_pvContact: ptr orxVECTOR_520095096;
-                        internal_pvNormal: ptr orxVECTOR_520095096): ptr orxBODY_520095571 {.
+  proc orxBody_Raycast*(internal_pvBegin: ptr orxVECTOR_520095059;
+                        internal_pvEnd: ptr orxVECTOR_520095059;
+                        internal_u16SelfFlags: orxU16_520094989;
+                        internal_u16CheckMask: orxU16_520094989;
+                        internal_bEarlyExit: orxBOOL_520095001;
+                        internal_pvContact: ptr orxVECTOR_520095059;
+                        internal_pvNormal: ptr orxVECTOR_520095059): ptr orxBODY_520095534 {.
       cdecl, importc: "orxBody_Raycast".}
 else:
   static :
     hint("Declaration of " & "orxBody_Raycast" &
         " already exists, not redeclaring")
 when not declared(orxBody_BoxPick):
-  proc orxBody_BoxPick*(internal_pstBox: ptr orxAABOX_520095419;
-                        internal_u16SelfFlags: orxU16_520095026;
-                        internal_u16CheckMask: orxU16_520095026;
-                        internal_apstBodyList: ptr UncheckedArray[ptr orxBODY_520095571];
-                        internal_u32Number: orxU32_520095024): orxU32_520095024 {.
+  proc orxBody_BoxPick*(internal_pstBox: ptr orxAABOX_520095382;
+                        internal_u16SelfFlags: orxU16_520094989;
+                        internal_u16CheckMask: orxU16_520094989;
+                        internal_apstBodyList: ptr UncheckedArray[ptr orxBODY_520095534];
+                        internal_u32Number: orxU32_520094987): orxU32_520094987 {.
       cdecl, importc: "orxBody_BoxPick".}
 else:
   static :
@@ -20148,7 +20121,7 @@ else:
   static :
     hint("Declaration of " & "cameraSetup" & " already exists, not redeclaring")
 when not declared(cameraInit):
-  proc cameraInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxCamera_Init".}
+  proc cameraInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxCamera_Init".}
 else:
   static :
     hint("Declaration of " & "cameraInit" & " already exists, not redeclaring")
@@ -20158,168 +20131,168 @@ else:
   static :
     hint("Declaration of " & "cameraExit" & " already exists, not redeclaring")
 when not declared(cameraCreate):
-  proc cameraCreate*(internal_u32Flags: orxU32_520095024): ptr orxCAMERA_520095577 {.
+  proc cameraCreate*(internal_u32Flags: orxU32_520094987): ptr orxCAMERA_520095540 {.
       cdecl, importc: "orxCamera_Create".}
 else:
   static :
     hint("Declaration of " & "cameraCreate" & " already exists, not redeclaring")
 when not declared(cameraCreateFromConfig):
-  proc cameraCreateFromConfig*(internal_zConfigID: cstring): ptr orxCAMERA_520095577 {.
+  proc cameraCreateFromConfig*(internal_zConfigID: cstring): ptr orxCAMERA_520095540 {.
       cdecl, importc: "orxCamera_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "cameraCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(cameraDelete):
-  proc cameraDelete*(internal_pstCamera: ptr orxCAMERA_520095577): orxSTATUS_520095066 {.
+  proc cameraDelete*(internal_pstCamera: ptr orxCAMERA_520095540): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_Delete".}
 else:
   static :
     hint("Declaration of " & "cameraDelete" & " already exists, not redeclaring")
 when not declared(orxCamera_AddGroupID):
-  proc orxCamera_AddGroupID*(internal_pstCamera: ptr orxCAMERA_520095577;
-                             internal_stGroupID: orxSTRINGID_520095046;
-                             internal_bAddFirst: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxCamera_AddGroupID*(internal_pstCamera: ptr orxCAMERA_520095540;
+                             internal_stGroupID: orxSTRINGID_520095009;
+                             internal_bAddFirst: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_AddGroupID".}
 else:
   static :
     hint("Declaration of " & "orxCamera_AddGroupID" &
         " already exists, not redeclaring")
 when not declared(orxCamera_RemoveGroupID):
-  proc orxCamera_RemoveGroupID*(internal_pstCamera: ptr orxCAMERA_520095577;
-                                internal_stGroupID: orxSTRINGID_520095046): orxSTATUS_520095066 {.
+  proc orxCamera_RemoveGroupID*(internal_pstCamera: ptr orxCAMERA_520095540;
+                                internal_stGroupID: orxSTRINGID_520095009): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_RemoveGroupID".}
 else:
   static :
     hint("Declaration of " & "orxCamera_RemoveGroupID" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetGroupIDCount):
-  proc orxCamera_GetGroupIDCount*(internal_pstCamera: ptr orxCAMERA_520095577): orxU32_520095024 {.
+  proc orxCamera_GetGroupIDCount*(internal_pstCamera: ptr orxCAMERA_520095540): orxU32_520094987 {.
       cdecl, importc: "orxCamera_GetGroupIDCount".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetGroupIDCount" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetGroupID):
-  proc orxCamera_GetGroupID*(internal_pstCamera: ptr orxCAMERA_520095577;
-                             internal_u32Index: orxU32_520095024): orxSTRINGID_520095046 {.
+  proc orxCamera_GetGroupID*(internal_pstCamera: ptr orxCAMERA_520095540;
+                             internal_u32Index: orxU32_520094987): orxSTRINGID_520095009 {.
       cdecl, importc: "orxCamera_GetGroupID".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetGroupID" &
         " already exists, not redeclaring")
 when not declared(orxCamera_EnableGroupIDSorting):
-  proc orxCamera_EnableGroupIDSorting*(internal_pstCamera: ptr orxCAMERA_520095577;
-                                       internal_u32Index: orxU32_520095024;
-                                       internal_bEnable: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxCamera_EnableGroupIDSorting*(internal_pstCamera: ptr orxCAMERA_520095540;
+                                       internal_u32Index: orxU32_520094987;
+                                       internal_bEnable: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_EnableGroupIDSorting".}
 else:
   static :
     hint("Declaration of " & "orxCamera_EnableGroupIDSorting" &
         " already exists, not redeclaring")
 when not declared(orxCamera_IsGroupIDSortingEnabled):
-  proc orxCamera_IsGroupIDSortingEnabled*(internal_pstCamera: ptr orxCAMERA_520095577;
-      internal_u32Index: orxU32_520095024): orxBOOL_520095038 {.cdecl,
+  proc orxCamera_IsGroupIDSortingEnabled*(internal_pstCamera: ptr orxCAMERA_520095540;
+      internal_u32Index: orxU32_520094987): orxBOOL_520095001 {.cdecl,
       importc: "orxCamera_IsGroupIDSortingEnabled".}
 else:
   static :
     hint("Declaration of " & "orxCamera_IsGroupIDSortingEnabled" &
         " already exists, not redeclaring")
 when not declared(orxCamera_SetFrustum):
-  proc orxCamera_SetFrustum*(internal_pstCamera: ptr orxCAMERA_520095577;
-                             internal_fWidth: orxFLOAT_520095040;
-                             internal_fHeight: orxFLOAT_520095040;
-                             internal_fNear: orxFLOAT_520095040;
-                             internal_fFar: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxCamera_SetFrustum*(internal_pstCamera: ptr orxCAMERA_520095540;
+                             internal_fWidth: orxFLOAT_520095003;
+                             internal_fHeight: orxFLOAT_520095003;
+                             internal_fNear: orxFLOAT_520095003;
+                             internal_fFar: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_SetFrustum".}
 else:
   static :
     hint("Declaration of " & "orxCamera_SetFrustum" &
         " already exists, not redeclaring")
 when not declared(orxCamera_SetPosition):
-  proc orxCamera_SetPosition*(internal_pstCamera: ptr orxCAMERA_520095577;
-                              internal_pvPosition: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+  proc orxCamera_SetPosition*(internal_pstCamera: ptr orxCAMERA_520095540;
+                              internal_pvPosition: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxCamera_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxCamera_SetRotation):
-  proc orxCamera_SetRotation*(internal_pstCamera: ptr orxCAMERA_520095577;
-                              internal_fRotation: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxCamera_SetRotation*(internal_pstCamera: ptr orxCAMERA_520095540;
+                              internal_fRotation: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_SetRotation".}
 else:
   static :
     hint("Declaration of " & "orxCamera_SetRotation" &
         " already exists, not redeclaring")
 when not declared(orxCamera_SetZoom):
-  proc orxCamera_SetZoom*(internal_pstCamera: ptr orxCAMERA_520095577;
-                          internal_fZoom: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxCamera_SetZoom*(internal_pstCamera: ptr orxCAMERA_520095540;
+                          internal_fZoom: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_SetZoom".}
 else:
   static :
     hint("Declaration of " & "orxCamera_SetZoom" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetFrustum):
-  proc orxCamera_GetFrustum*(internal_pstCamera: ptr orxCAMERA_520095577;
-                             internal_pstFrustum: ptr orxAABOX_520095419): ptr orxAABOX_520095419 {.
+  proc orxCamera_GetFrustum*(internal_pstCamera: ptr orxCAMERA_520095540;
+                             internal_pstFrustum: ptr orxAABOX_520095382): ptr orxAABOX_520095382 {.
       cdecl, importc: "orxCamera_GetFrustum".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetFrustum" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetPosition):
-  proc orxCamera_GetPosition*(internal_pstCamera: ptr orxCAMERA_520095577;
-                              internal_pvPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxCamera_GetPosition*(internal_pstCamera: ptr orxCAMERA_520095540;
+                              internal_pvPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxCamera_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetRotation):
-  proc orxCamera_GetRotation*(internal_pstCamera: ptr orxCAMERA_520095577): orxFLOAT_520095040 {.
+  proc orxCamera_GetRotation*(internal_pstCamera: ptr orxCAMERA_520095540): orxFLOAT_520095003 {.
       cdecl, importc: "orxCamera_GetRotation".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetRotation" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetZoom):
-  proc orxCamera_GetZoom*(internal_pstCamera: ptr orxCAMERA_520095577): orxFLOAT_520095040 {.
+  proc orxCamera_GetZoom*(internal_pstCamera: ptr orxCAMERA_520095540): orxFLOAT_520095003 {.
       cdecl, importc: "orxCamera_GetZoom".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetZoom" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetName):
-  proc orxCamera_GetName*(internal_pstCamera: ptr orxCAMERA_520095577): cstring {.
+  proc orxCamera_GetName*(internal_pstCamera: ptr orxCAMERA_520095540): cstring {.
       cdecl, importc: "orxCamera_GetName".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetName" &
         " already exists, not redeclaring")
 when not declared(cameraGet):
-  proc cameraGet*(internal_zName: cstring): ptr orxCAMERA_520095577 {.cdecl,
+  proc cameraGet*(internal_zName: cstring): ptr orxCAMERA_520095540 {.cdecl,
       importc: "orxCamera_Get".}
 else:
   static :
     hint("Declaration of " & "cameraGet" & " already exists, not redeclaring")
 when not declared(orxCamera_GetFrame):
-  proc orxCamera_GetFrame*(internal_pstCamera: ptr orxCAMERA_520095577): ptr orxFRAME_520095517 {.
+  proc orxCamera_GetFrame*(internal_pstCamera: ptr orxCAMERA_520095540): ptr orxFRAME_520095480 {.
       cdecl, importc: "orxCamera_GetFrame".}
 else:
   static :
     hint("Declaration of " & "orxCamera_GetFrame" &
         " already exists, not redeclaring")
 when not declared(orxCamera_SetParent):
-  proc orxCamera_SetParent*(internal_pstCamera: ptr orxCAMERA_520095577;
-                            internal_pParent: pointer): orxSTATUS_520095066 {.
+  proc orxCamera_SetParent*(internal_pstCamera: ptr orxCAMERA_520095540;
+                            internal_pParent: pointer): orxSTATUS_520095029 {.
       cdecl, importc: "orxCamera_SetParent".}
 else:
   static :
     hint("Declaration of " & "orxCamera_SetParent" &
         " already exists, not redeclaring")
 when not declared(orxCamera_GetParent):
-  proc orxCamera_GetParent*(internal_pstCamera: ptr orxCAMERA_520095577): ptr orxSTRUCTURE_520095159 {.
+  proc orxCamera_GetParent*(internal_pstCamera: ptr orxCAMERA_520095540): ptr orxSTRUCTURE_520095122 {.
       cdecl, importc: "orxCamera_GetParent".}
 else:
   static :
@@ -20331,7 +20304,7 @@ else:
   static :
     hint("Declaration of " & "shaderSetup" & " already exists, not redeclaring")
 when not declared(shaderInit):
-  proc shaderInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxShader_Init".}
+  proc shaderInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxShader_Init".}
 else:
   static :
     hint("Declaration of " & "shaderInit" & " already exists, not redeclaring")
@@ -20341,149 +20314,149 @@ else:
   static :
     hint("Declaration of " & "shaderExit" & " already exists, not redeclaring")
 when not declared(shaderCreate):
-  proc shaderCreate*(): ptr orxSHADER_520095587 {.cdecl,
+  proc shaderCreate*(): ptr orxSHADER_520095550 {.cdecl,
       importc: "orxShader_Create".}
 else:
   static :
     hint("Declaration of " & "shaderCreate" & " already exists, not redeclaring")
 when not declared(shaderCreateFromConfig):
-  proc shaderCreateFromConfig*(internal_zConfigID: cstring): ptr orxSHADER_520095587 {.
+  proc shaderCreateFromConfig*(internal_zConfigID: cstring): ptr orxSHADER_520095550 {.
       cdecl, importc: "orxShader_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "shaderCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(shaderDelete):
-  proc shaderDelete*(internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
+  proc shaderDelete*(internal_pstShader: ptr orxSHADER_520095550): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_Delete".}
 else:
   static :
     hint("Declaration of " & "shaderDelete" & " already exists, not redeclaring")
 when not declared(orxShader_ClearCache):
-  proc orxShader_ClearCache*(): orxSTATUS_520095066 {.cdecl,
+  proc orxShader_ClearCache*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxShader_ClearCache".}
 else:
   static :
     hint("Declaration of " & "orxShader_ClearCache" &
         " already exists, not redeclaring")
 when not declared(orxShader_Start):
-  proc orxShader_Start*(internal_pstShader: ptr orxSHADER_520095587;
-                        internal_pstOwner: ptr orxSTRUCTURE_520095159): orxSTATUS_520095066 {.
+  proc orxShader_Start*(internal_pstShader: ptr orxSHADER_520095550;
+                        internal_pstOwner: ptr orxSTRUCTURE_520095122): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_Start".}
 else:
   static :
     hint("Declaration of " & "orxShader_Start" &
         " already exists, not redeclaring")
 when not declared(orxShader_Stop):
-  proc orxShader_Stop*(internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
+  proc orxShader_Stop*(internal_pstShader: ptr orxSHADER_520095550): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_Stop".}
 else:
   static :
     hint("Declaration of " & "orxShader_Stop" &
         " already exists, not redeclaring")
 when not declared(orxShader_AddFloatParam):
-  proc orxShader_AddFloatParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_AddFloatParam*(internal_pstShader: ptr orxSHADER_520095550;
                                 internal_zName: cstring;
-                                internal_u32ArraySize: orxU32_520095024;
-                                internal_afValueList: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+                                internal_u32ArraySize: orxU32_520094987;
+                                internal_afValueList: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_AddFloatParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_AddFloatParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_AddTextureParam):
-  proc orxShader_AddTextureParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_AddTextureParam*(internal_pstShader: ptr orxSHADER_520095550;
                                   internal_zName: cstring;
-                                  internal_u32ArraySize: orxU32_520095024;
-                                  internal_apstValueList: ptr ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+                                  internal_u32ArraySize: orxU32_520094987;
+                                  internal_apstValueList: ptr ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_AddTextureParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_AddTextureParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_AddVectorParam):
-  proc orxShader_AddVectorParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_AddVectorParam*(internal_pstShader: ptr orxSHADER_520095550;
                                  internal_zName: cstring;
-                                 internal_u32ArraySize: orxU32_520095024;
-                                 internal_avValueList: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+                                 internal_u32ArraySize: orxU32_520094987;
+                                 internal_avValueList: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_AddVectorParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_AddVectorParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_AddTimeParam):
-  proc orxShader_AddTimeParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_AddTimeParam*(internal_pstShader: ptr orxSHADER_520095550;
                                internal_zName: cstring;
-                               internal_fWrap: orxFLOAT_520095040;
-                               internal_zFXName: cstring): orxSTATUS_520095066 {.
+                               internal_fWrap: orxFLOAT_520095003;
+                               internal_zFXName: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_AddTimeParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_AddTimeParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_SetFloatParam):
-  proc orxShader_SetFloatParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_SetFloatParam*(internal_pstShader: ptr orxSHADER_520095550;
                                 internal_zName: cstring;
-                                internal_u32ArraySize: orxU32_520095024;
-                                internal_afValueList: ptr orxFLOAT_520095040): orxSTATUS_520095066 {.
+                                internal_u32ArraySize: orxU32_520094987;
+                                internal_afValueList: ptr orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_SetFloatParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_SetFloatParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_SetTextureParam):
-  proc orxShader_SetTextureParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_SetTextureParam*(internal_pstShader: ptr orxSHADER_520095550;
                                   internal_zName: cstring;
-                                  internal_u32ArraySize: orxU32_520095024;
-                                  internal_apstValueList: ptr ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+                                  internal_u32ArraySize: orxU32_520094987;
+                                  internal_apstValueList: ptr ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_SetTextureParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_SetTextureParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_SetVectorParam):
-  proc orxShader_SetVectorParam*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_SetVectorParam*(internal_pstShader: ptr orxSHADER_520095550;
                                  internal_zName: cstring;
-                                 internal_u32ArraySize: orxU32_520095024;
-                                 internal_avValueList: ptr orxVECTOR_520095096): orxSTATUS_520095066 {.
+                                 internal_u32ArraySize: orxU32_520094987;
+                                 internal_avValueList: ptr orxVECTOR_520095059): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_SetVectorParam".}
 else:
   static :
     hint("Declaration of " & "orxShader_SetVectorParam" &
         " already exists, not redeclaring")
 when not declared(orxShader_CompileCode):
-  proc orxShader_CompileCode*(internal_pstShader: ptr orxSHADER_520095587;
+  proc orxShader_CompileCode*(internal_pstShader: ptr orxSHADER_520095550;
                               internal_azCodeList: ptr cstring;
-                              internal_u32Size: orxU32_520095024): orxSTATUS_520095066 {.
+                              internal_u32Size: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxShader_CompileCode".}
 else:
   static :
     hint("Declaration of " & "orxShader_CompileCode" &
         " already exists, not redeclaring")
 when not declared(orxShader_Enable):
-  proc orxShader_Enable*(internal_pstShader: ptr orxSHADER_520095587;
-                         internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxShader_Enable*(internal_pstShader: ptr orxSHADER_520095550;
+                         internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxShader_Enable".}
 else:
   static :
     hint("Declaration of " & "orxShader_Enable" &
         " already exists, not redeclaring")
 when not declared(orxShader_IsEnabled):
-  proc orxShader_IsEnabled*(internal_pstShader: ptr orxSHADER_520095587): orxBOOL_520095038 {.
+  proc orxShader_IsEnabled*(internal_pstShader: ptr orxSHADER_520095550): orxBOOL_520095001 {.
       cdecl, importc: "orxShader_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxShader_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxShader_GetName):
-  proc orxShader_GetName*(internal_pstShader: ptr orxSHADER_520095587): cstring {.
+  proc orxShader_GetName*(internal_pstShader: ptr orxSHADER_520095550): cstring {.
       cdecl, importc: "orxShader_GetName".}
 else:
   static :
     hint("Declaration of " & "orxShader_GetName" &
         " already exists, not redeclaring")
 when not declared(orxShader_GetID):
-  proc orxShader_GetID*(internal_pstShader: ptr orxSHADER_520095587): orxU32_520095024 {.
+  proc orxShader_GetID*(internal_pstShader: ptr orxSHADER_520095550): orxU32_520094987 {.
       cdecl, importc: "orxShader_GetID".}
 else:
   static :
@@ -20496,7 +20469,7 @@ else:
     hint("Declaration of " & "shaderPointerSetup" &
         " already exists, not redeclaring")
 when not declared(shaderPointerInit):
-  proc shaderPointerInit*(): orxSTATUS_520095066 {.cdecl,
+  proc shaderPointerInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxShaderPointer_Init".}
 else:
   static :
@@ -20509,67 +20482,67 @@ else:
     hint("Declaration of " & "shaderPointerExit" &
         " already exists, not redeclaring")
 when not declared(shaderPointerCreate):
-  proc shaderPointerCreate*(): ptr orxSHADERPOINTER_520095597 {.cdecl,
+  proc shaderPointerCreate*(): ptr orxSHADERPOINTER_520095560 {.cdecl,
       importc: "orxShaderPointer_Create".}
 else:
   static :
     hint("Declaration of " & "shaderPointerCreate" &
         " already exists, not redeclaring")
 when not declared(shaderPointerDelete):
-  proc shaderPointerDelete*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
+  proc shaderPointerDelete*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560): orxSTATUS_520095029 {.
       cdecl, importc: "orxShaderPointer_Delete".}
 else:
   static :
     hint("Declaration of " & "shaderPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_Start):
-  proc orxShaderPointer_Start*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
+  proc orxShaderPointer_Start*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560): orxSTATUS_520095029 {.
       cdecl, importc: "orxShaderPointer_Start".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_Start" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_Stop):
-  proc orxShaderPointer_Stop*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxSTATUS_520095066 {.
+  proc orxShaderPointer_Stop*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560): orxSTATUS_520095029 {.
       cdecl, importc: "orxShaderPointer_Stop".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_Stop" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_Enable):
-  proc orxShaderPointer_Enable*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-                                internal_bEnable: orxBOOL_520095038): void {.
+  proc orxShaderPointer_Enable*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+                                internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxShaderPointer_Enable".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_Enable" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_IsEnabled):
-  proc orxShaderPointer_IsEnabled*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597): orxBOOL_520095038 {.
+  proc orxShaderPointer_IsEnabled*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560): orxBOOL_520095001 {.
       cdecl, importc: "orxShaderPointer_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_AddShader):
-  proc orxShaderPointer_AddShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-                                   internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
+  proc orxShaderPointer_AddShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+                                   internal_pstShader: ptr orxSHADER_520095550): orxSTATUS_520095029 {.
       cdecl, importc: "orxShaderPointer_AddShader".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_AddShader" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_RemoveShader):
-  proc orxShaderPointer_RemoveShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-                                      internal_pstShader: ptr orxSHADER_520095587): orxSTATUS_520095066 {.
+  proc orxShaderPointer_RemoveShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+                                      internal_pstShader: ptr orxSHADER_520095550): orxSTATUS_520095029 {.
       cdecl, importc: "orxShaderPointer_RemoveShader".}
 else:
   static :
     hint("Declaration of " & "orxShaderPointer_RemoveShader" &
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_GetShader):
-  proc orxShaderPointer_GetShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-                                   internal_u32Index: orxU32_520095024): ptr orxSHADER_520095587 {.
+  proc orxShaderPointer_GetShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+                                   internal_u32Index: orxU32_520094987): ptr orxSHADER_520095550 {.
       cdecl, importc: "orxShaderPointer_GetShader".}
 else:
   static :
@@ -20577,8 +20550,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_AddShaderFromConfig):
   proc orxShaderPointer_AddShaderFromConfig*(
-      internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-      internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+      internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxShaderPointer_AddShaderFromConfig".}
 else:
   static :
@@ -20586,8 +20559,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxShaderPointer_RemoveShaderFromConfig):
   proc orxShaderPointer_RemoveShaderFromConfig*(
-      internal_pstShaderPointer: ptr orxSHADERPOINTER_520095597;
-      internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstShaderPointer: ptr orxSHADERPOINTER_520095560;
+      internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxShaderPointer_RemoveShaderFromConfig".}
 else:
   static :
@@ -20600,7 +20573,7 @@ else:
     hint("Declaration of " & "viewportSetup" &
         " already exists, not redeclaring")
 when not declared(viewportInit):
-  proc viewportInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxViewport_Init".}
+  proc viewportInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxViewport_Init".}
 else:
   static :
     hint("Declaration of " & "viewportInit" & " already exists, not redeclaring")
@@ -20610,250 +20583,250 @@ else:
   static :
     hint("Declaration of " & "viewportExit" & " already exists, not redeclaring")
 when not declared(viewportCreate):
-  proc viewportCreate*(): ptr orxVIEWPORT_520095599 {.cdecl,
+  proc viewportCreate*(): ptr orxVIEWPORT_520095562 {.cdecl,
       importc: "orxViewport_Create".}
 else:
   static :
     hint("Declaration of " & "viewportCreate" &
         " already exists, not redeclaring")
 when not declared(viewportCreateFromConfig):
-  proc viewportCreateFromConfig*(internal_zConfigID: cstring): ptr orxVIEWPORT_520095599 {.
+  proc viewportCreateFromConfig*(internal_zConfigID: cstring): ptr orxVIEWPORT_520095562 {.
       cdecl, importc: "orxViewport_CreateFromConfig".}
 else:
   static :
     hint("Declaration of " & "viewportCreateFromConfig" &
         " already exists, not redeclaring")
 when not declared(viewportDelete):
-  proc viewportDelete*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxSTATUS_520095066 {.
+  proc viewportDelete*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_Delete".}
 else:
   static :
     hint("Declaration of " & "viewportDelete" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetTextureList):
-  proc orxViewport_SetTextureList*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                   internal_u32TextureNumber: orxU32_520095024;
-                                   internal_apstTextureList: ptr ptr orxTEXTURE_520095321): void {.
+  proc orxViewport_SetTextureList*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                   internal_u32TextureNumber: orxU32_520094987;
+                                   internal_apstTextureList: ptr ptr orxTEXTURE_520095284): void {.
       cdecl, importc: "orxViewport_SetTextureList".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetTextureList" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetTextureList):
-  proc orxViewport_GetTextureList*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                   internal_u32TextureNumber: orxU32_520095024;
-                                   internal_apstTextureList: ptr ptr orxTEXTURE_520095321): orxSTATUS_520095066 {.
+  proc orxViewport_GetTextureList*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                   internal_u32TextureNumber: orxU32_520094987;
+                                   internal_apstTextureList: ptr ptr orxTEXTURE_520095284): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_GetTextureList".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetTextureList" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetTextureCount):
-  proc orxViewport_GetTextureCount*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxU32_520095024 {.
+  proc orxViewport_GetTextureCount*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxU32_520094987 {.
       cdecl, importc: "orxViewport_GetTextureCount".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetTextureCount" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetBackgroundColor):
-  proc orxViewport_SetBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                       internal_pstColor: ptr orxCOLOR_520095307): orxSTATUS_520095066 {.
+  proc orxViewport_SetBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                       internal_pstColor: ptr orxCOLOR_520095270): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_SetBackgroundColor".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetBackgroundColor" &
         " already exists, not redeclaring")
 when not declared(orxViewport_ClearBackgroundColor):
-  proc orxViewport_ClearBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxSTATUS_520095066 {.
+  proc orxViewport_ClearBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_ClearBackgroundColor".}
 else:
   static :
     hint("Declaration of " & "orxViewport_ClearBackgroundColor" &
         " already exists, not redeclaring")
 when not declared(orxViewport_HasBackgroundColor):
-  proc orxViewport_HasBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxBOOL_520095038 {.
+  proc orxViewport_HasBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxBOOL_520095001 {.
       cdecl, importc: "orxViewport_HasBackgroundColor".}
 else:
   static :
     hint("Declaration of " & "orxViewport_HasBackgroundColor" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetBackgroundColor):
-  proc orxViewport_GetBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                       internal_pstColor: ptr orxCOLOR_520095307): ptr orxCOLOR_520095307 {.
+  proc orxViewport_GetBackgroundColor*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                       internal_pstColor: ptr orxCOLOR_520095270): ptr orxCOLOR_520095270 {.
       cdecl, importc: "orxViewport_GetBackgroundColor".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetBackgroundColor" &
         " already exists, not redeclaring")
 when not declared(orxViewport_Enable):
-  proc orxViewport_Enable*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                           internal_bEnable: orxBOOL_520095038): void {.cdecl,
+  proc orxViewport_Enable*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                           internal_bEnable: orxBOOL_520095001): void {.cdecl,
       importc: "orxViewport_Enable".}
 else:
   static :
     hint("Declaration of " & "orxViewport_Enable" &
         " already exists, not redeclaring")
 when not declared(orxViewport_IsEnabled):
-  proc orxViewport_IsEnabled*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxBOOL_520095038 {.
+  proc orxViewport_IsEnabled*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxBOOL_520095001 {.
       cdecl, importc: "orxViewport_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxViewport_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetCamera):
-  proc orxViewport_SetCamera*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                              internal_pstCamera: ptr orxCAMERA_520095577): void {.
+  proc orxViewport_SetCamera*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                              internal_pstCamera: ptr orxCAMERA_520095540): void {.
       cdecl, importc: "orxViewport_SetCamera".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetCamera" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetCamera):
-  proc orxViewport_GetCamera*(internal_pstViewport: ptr orxVIEWPORT_520095599): ptr orxCAMERA_520095577 {.
+  proc orxViewport_GetCamera*(internal_pstViewport: ptr orxVIEWPORT_520095562): ptr orxCAMERA_520095540 {.
       cdecl, importc: "orxViewport_GetCamera".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetCamera" &
         " already exists, not redeclaring")
 when not declared(orxViewport_AddShader):
-  proc orxViewport_AddShader*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                              internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxViewport_AddShader*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                              internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_AddShader".}
 else:
   static :
     hint("Declaration of " & "orxViewport_AddShader" &
         " already exists, not redeclaring")
 when not declared(orxViewport_RemoveShader):
-  proc orxViewport_RemoveShader*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                 internal_zShaderConfigID: cstring): orxSTATUS_520095066 {.
+  proc orxViewport_RemoveShader*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                 internal_zShaderConfigID: cstring): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_RemoveShader".}
 else:
   static :
     hint("Declaration of " & "orxViewport_RemoveShader" &
         " already exists, not redeclaring")
 when not declared(orxViewport_EnableShader):
-  proc orxViewport_EnableShader*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                 internal_bEnable: orxBOOL_520095038): void {.
+  proc orxViewport_EnableShader*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                 internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxViewport_EnableShader".}
 else:
   static :
     hint("Declaration of " & "orxViewport_EnableShader" &
         " already exists, not redeclaring")
 when not declared(orxViewport_IsShaderEnabled):
-  proc orxViewport_IsShaderEnabled*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxBOOL_520095038 {.
+  proc orxViewport_IsShaderEnabled*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxBOOL_520095001 {.
       cdecl, importc: "orxViewport_IsShaderEnabled".}
 else:
   static :
     hint("Declaration of " & "orxViewport_IsShaderEnabled" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetShaderPointer):
-  proc orxViewport_GetShaderPointer*(internal_pstViewport: ptr orxVIEWPORT_520095599): ptr orxSHADERPOINTER_520095597 {.
+  proc orxViewport_GetShaderPointer*(internal_pstViewport: ptr orxVIEWPORT_520095562): ptr orxSHADERPOINTER_520095560 {.
       cdecl, importc: "orxViewport_GetShaderPointer".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetShaderPointer" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetBlendMode):
-  proc orxViewport_SetBlendMode*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                 internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095303): orxSTATUS_520095066 {.
+  proc orxViewport_SetBlendMode*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                 internal_eBlendMode: orxDISPLAY_BLEND_MODE_520095266): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_SetBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetBlendMode):
-  proc orxViewport_GetBlendMode*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxDISPLAY_BLEND_MODE_520095303 {.
+  proc orxViewport_GetBlendMode*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxDISPLAY_BLEND_MODE_520095266 {.
       cdecl, importc: "orxViewport_GetBlendMode".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetBlendMode" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetPosition):
-  proc orxViewport_SetPosition*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                internal_fX: orxFLOAT_520095040;
-                                internal_fY: orxFLOAT_520095040): void {.cdecl,
+  proc orxViewport_SetPosition*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                internal_fX: orxFLOAT_520095003;
+                                internal_fY: orxFLOAT_520095003): void {.cdecl,
       importc: "orxViewport_SetPosition".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetPosition" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetRelativePosition):
-  proc orxViewport_SetRelativePosition*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                        internal_u32AlignFlags: orxU32_520095024): orxSTATUS_520095066 {.
+  proc orxViewport_SetRelativePosition*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                        internal_u32AlignFlags: orxU32_520094987): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_SetRelativePosition".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetRelativePosition" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetPosition):
-  proc orxViewport_GetPosition*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                internal_pfX: ptr orxFLOAT_520095040;
-                                internal_pfY: ptr orxFLOAT_520095040): void {.
+  proc orxViewport_GetPosition*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                internal_pfX: ptr orxFLOAT_520095003;
+                                internal_pfY: ptr orxFLOAT_520095003): void {.
       cdecl, importc: "orxViewport_GetPosition".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetPosition" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetSize):
-  proc orxViewport_SetSize*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                            internal_fWidth: orxFLOAT_520095040;
-                            internal_fHeight: orxFLOAT_520095040): void {.cdecl,
+  proc orxViewport_SetSize*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                            internal_fWidth: orxFLOAT_520095003;
+                            internal_fHeight: orxFLOAT_520095003): void {.cdecl,
       importc: "orxViewport_SetSize".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetSize" &
         " already exists, not redeclaring")
 when not declared(orxViewport_SetRelativeSize):
-  proc orxViewport_SetRelativeSize*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                    internal_fWidth: orxFLOAT_520095040;
-                                    internal_fHeight: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxViewport_SetRelativeSize*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                    internal_fWidth: orxFLOAT_520095003;
+                                    internal_fHeight: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxViewport_SetRelativeSize".}
 else:
   static :
     hint("Declaration of " & "orxViewport_SetRelativeSize" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetSize):
-  proc orxViewport_GetSize*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                            internal_pfWidth: ptr orxFLOAT_520095040;
-                            internal_pfHeight: ptr orxFLOAT_520095040): void {.
+  proc orxViewport_GetSize*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                            internal_pfWidth: ptr orxFLOAT_520095003;
+                            internal_pfHeight: ptr orxFLOAT_520095003): void {.
       cdecl, importc: "orxViewport_GetSize".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetSize" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetRelativeSize):
-  proc orxViewport_GetRelativeSize*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                    internal_pfWidth: ptr orxFLOAT_520095040;
-                                    internal_pfHeight: ptr orxFLOAT_520095040): void {.
+  proc orxViewport_GetRelativeSize*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                    internal_pfWidth: ptr orxFLOAT_520095003;
+                                    internal_pfHeight: ptr orxFLOAT_520095003): void {.
       cdecl, importc: "orxViewport_GetRelativeSize".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetRelativeSize" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetBox):
-  proc orxViewport_GetBox*(internal_pstViewport: ptr orxVIEWPORT_520095599;
-                           internal_pstBox: ptr orxAABOX_520095419): ptr orxAABOX_520095419 {.
+  proc orxViewport_GetBox*(internal_pstViewport: ptr orxVIEWPORT_520095562;
+                           internal_pstBox: ptr orxAABOX_520095382): ptr orxAABOX_520095382 {.
       cdecl, importc: "orxViewport_GetBox".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetBox" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetCorrectionRatio):
-  proc orxViewport_GetCorrectionRatio*(internal_pstViewport: ptr orxVIEWPORT_520095599): orxFLOAT_520095040 {.
+  proc orxViewport_GetCorrectionRatio*(internal_pstViewport: ptr orxVIEWPORT_520095562): orxFLOAT_520095003 {.
       cdecl, importc: "orxViewport_GetCorrectionRatio".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetCorrectionRatio" &
         " already exists, not redeclaring")
 when not declared(orxViewport_GetName):
-  proc orxViewport_GetName*(internal_pstViewport: ptr orxVIEWPORT_520095599): cstring {.
+  proc orxViewport_GetName*(internal_pstViewport: ptr orxVIEWPORT_520095562): cstring {.
       cdecl, importc: "orxViewport_GetName".}
 else:
   static :
     hint("Declaration of " & "orxViewport_GetName" &
         " already exists, not redeclaring")
 when not declared(viewportGet):
-  proc viewportGet*(internal_zName: cstring): ptr orxVIEWPORT_520095599 {.cdecl,
+  proc viewportGet*(internal_zName: cstring): ptr orxVIEWPORT_520095562 {.cdecl,
       importc: "orxViewport_Get".}
 else:
   static :
@@ -20864,7 +20837,7 @@ else:
   static :
     hint("Declaration of " & "renderSetup" & " already exists, not redeclaring")
 when not declared(renderInit):
-  proc renderInit*(): orxSTATUS_520095066 {.cdecl, importc: "orxRender_Init".}
+  proc renderInit*(): orxSTATUS_520095029 {.cdecl, importc: "orxRender_Init".}
 else:
   static :
     hint("Declaration of " & "renderInit" & " already exists, not redeclaring")
@@ -20874,18 +20847,18 @@ else:
   static :
     hint("Declaration of " & "renderExit" & " already exists, not redeclaring")
 when not declared(orxRender_GetWorldPosition):
-  proc orxRender_GetWorldPosition*(internal_pvScreenPosition: ptr orxVECTOR_520095096;
-                                   internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                   internal_pvWorldPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxRender_GetWorldPosition*(internal_pvScreenPosition: ptr orxVECTOR_520095059;
+                                   internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                   internal_pvWorldPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxRender_GetWorldPosition".}
 else:
   static :
     hint("Declaration of " & "orxRender_GetWorldPosition" &
         " already exists, not redeclaring")
 when not declared(orxRender_GetScreenPosition):
-  proc orxRender_GetScreenPosition*(internal_pvWorldPosition: ptr orxVECTOR_520095096;
-                                    internal_pstViewport: ptr orxVIEWPORT_520095599;
-                                    internal_pvScreenPosition: ptr orxVECTOR_520095096): ptr orxVECTOR_520095096 {.
+  proc orxRender_GetScreenPosition*(internal_pvWorldPosition: ptr orxVECTOR_520095059;
+                                    internal_pstViewport: ptr orxVIEWPORT_520095562;
+                                    internal_pvScreenPosition: ptr orxVECTOR_520095059): ptr orxVECTOR_520095059 {.
       cdecl, importc: "orxRender_GetScreenPosition".}
 else:
   static :
@@ -20898,7 +20871,7 @@ else:
     hint("Declaration of " & "soundPointerSetup" &
         " already exists, not redeclaring")
 when not declared(soundPointerInit):
-  proc soundPointerInit*(): orxSTATUS_520095066 {.cdecl,
+  proc soundPointerInit*(): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundPointer_Init".}
 else:
   static :
@@ -20911,98 +20884,98 @@ else:
     hint("Declaration of " & "soundPointerExit" &
         " already exists, not redeclaring")
 when not declared(soundPointerCreate):
-  proc soundPointerCreate*(): ptr orxSOUNDPOINTER_520095613 {.cdecl,
+  proc soundPointerCreate*(): ptr orxSOUNDPOINTER_520095576 {.cdecl,
       importc: "orxSoundPointer_Create".}
 else:
   static :
     hint("Declaration of " & "soundPointerCreate" &
         " already exists, not redeclaring")
 when not declared(soundPointerDelete):
-  proc soundPointerDelete*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+  proc soundPointerDelete*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_Delete".}
 else:
   static :
     hint("Declaration of " & "soundPointerDelete" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_Enable):
-  proc orxSoundPointer_Enable*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                               internal_bEnable: orxBOOL_520095038): void {.
+  proc orxSoundPointer_Enable*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                               internal_bEnable: orxBOOL_520095001): void {.
       cdecl, importc: "orxSoundPointer_Enable".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_Enable" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_IsEnabled):
-  proc orxSoundPointer_IsEnabled*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxBOOL_520095038 {.
+  proc orxSoundPointer_IsEnabled*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxBOOL_520095001 {.
       cdecl, importc: "orxSoundPointer_IsEnabled".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_IsEnabled" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_SetVolume):
-  proc orxSoundPointer_SetVolume*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                                  internal_fVolume: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundPointer_SetVolume*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                                  internal_fVolume: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_SetVolume".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_SetVolume" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_SetPitch):
-  proc orxSoundPointer_SetPitch*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                                 internal_fPitch: orxFLOAT_520095040): orxSTATUS_520095066 {.
+  proc orxSoundPointer_SetPitch*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                                 internal_fPitch: orxFLOAT_520095003): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_SetPitch".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_SetPitch" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_SetPanning):
-  proc orxSoundPointer_SetPanning*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                                   internal_fPanning: orxFLOAT_520095040;
-                                   internal_bMix: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundPointer_SetPanning*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                                   internal_fPanning: orxFLOAT_520095003;
+                                   internal_bMix: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_SetPanning".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_SetPanning" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_Play):
-  proc orxSoundPointer_Play*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+  proc orxSoundPointer_Play*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_Play".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_Play" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_Pause):
-  proc orxSoundPointer_Pause*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+  proc orxSoundPointer_Pause*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_Pause".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_Pause" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_Stop):
-  proc orxSoundPointer_Stop*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+  proc orxSoundPointer_Stop*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_Stop".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_Stop" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_AddSound):
-  proc orxSoundPointer_AddSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                                 internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+  proc orxSoundPointer_AddSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                                 internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_AddSound".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_AddSound" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_RemoveSound):
-  proc orxSoundPointer_RemoveSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-                                    internal_pstSound: ptr orxSOUND_520095463): orxSTATUS_520095066 {.
+  proc orxSoundPointer_RemoveSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+                                    internal_pstSound: ptr orxSOUND_520095426): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_RemoveSound".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_RemoveSound" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_RemoveAllSounds):
-  proc orxSoundPointer_RemoveAllSounds*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+  proc orxSoundPointer_RemoveAllSounds*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_RemoveAllSounds".}
 else:
   static :
@@ -21010,8 +20983,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_AddSoundFromConfig):
   proc orxSoundPointer_AddSoundFromConfig*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-      internal_zSoundConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+      internal_zSoundConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundPointer_AddSoundFromConfig".}
 else:
   static :
@@ -21019,8 +20992,8 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_RemoveSoundFromConfig):
   proc orxSoundPointer_RemoveSoundFromConfig*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-      internal_zSoundConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+      internal_zSoundConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundPointer_RemoveSoundFromConfig".}
 else:
   static :
@@ -21028,16 +21001,16 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_GetLastAddedSound):
   proc orxSoundPointer_GetLastAddedSound*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): ptr orxSOUND_520095463 {.
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): ptr orxSOUND_520095426 {.
       cdecl, importc: "orxSoundPointer_GetLastAddedSound".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_GetLastAddedSound" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_AddFilter):
-  proc orxSoundPointer_AddFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095457;
-                                  internal_bUseCustomParam: orxBOOL_520095038): orxSTATUS_520095066 {.
+  proc orxSoundPointer_AddFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+      internal_pstFilterData: ptr orxSOUND_FILTER_DATA_520095420;
+                                  internal_bUseCustomParam: orxBOOL_520095001): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_AddFilter".}
 else:
   static :
@@ -21045,7 +21018,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_RemoveLastFilter):
   proc orxSoundPointer_RemoveLastFilter*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_RemoveLastFilter".}
 else:
   static :
@@ -21053,7 +21026,7 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_RemoveAllFilters):
   proc orxSoundPointer_RemoveAllFilters*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxSTATUS_520095066 {.
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxSTATUS_520095029 {.
       cdecl, importc: "orxSoundPointer_RemoveAllFilters".}
 else:
   static :
@@ -21061,28 +21034,28 @@ else:
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_AddFilterFromConfig):
   proc orxSoundPointer_AddFilterFromConfig*(
-      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613;
-      internal_zFilterConfigID: cstring): orxSTATUS_520095066 {.cdecl,
+      internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576;
+      internal_zFilterConfigID: cstring): orxSTATUS_520095029 {.cdecl,
       importc: "orxSoundPointer_AddFilterFromConfig".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_AddFilterFromConfig" &
         " already exists, not redeclaring")
 when not declared(orxSoundPointer_GetCount):
-  proc orxSoundPointer_GetCount*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095613): orxU32_520095024 {.
+  proc orxSoundPointer_GetCount*(internal_pstSoundPointer: ptr orxSOUNDPOINTER_520095576): orxU32_520094987 {.
       cdecl, importc: "orxSoundPointer_GetCount".}
 else:
   static :
     hint("Declaration of " & "orxSoundPointer_GetCount" &
         " already exists, not redeclaring")
 when not declared(sbStopByEvent):
-  var sbStopByEvent*: orxBOOL_520095038
+  var sbStopByEvent*: orxBOOL_520095001
 else:
   static :
     hint("Declaration of " & "sbStopByEvent" &
         " already exists, not redeclaring")
 when not declared(orx_DefaultEventHandler):
-  proc orx_DefaultEventHandler*(internal_pstEvent: ptr orxEVENT_520095367): orxSTATUS_520095066 {.
+  proc orx_DefaultEventHandler*(internal_pstEvent: ptr orxEVENT_520095330): orxSTATUS_520095029 {.
       cdecl, importc: "orx_DefaultEventHandler".}
 else:
   static :

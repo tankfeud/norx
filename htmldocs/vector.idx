@@ -1,6 +1,6 @@
 nimTitle	vector	vector.html	module src/vector		0
-nim	orxVECTOR	vector.html#orxVECTOR.t,untyped,untyped,untyped	template orxVECTOR(x, y, z: untyped): orxVECTOR		3
-nim	orxSPVECTOR	vector.html#orxSPVECTOR.t,untyped,untyped,untyped	template orxSPVECTOR(rho, theta, phi: untyped): orxVECTOR		10
-nim	orxRGBVECTOR	vector.html#orxRGBVECTOR.t,untyped,untyped,untyped	template orxRGBVECTOR(r, g, b: untyped): orxVECTOR		17
-nim	orxHSLVECTOR	vector.html#orxHSLVECTOR.t,untyped,untyped,untyped	template orxHSLVECTOR(h, s, l: untyped): orxVECTOR		24
-nim	orxHSVVECTOR	vector.html#orxHSVVECTOR.t,untyped,untyped,untyped	template orxHSVVECTOR(h, s, v: untyped): orxVECTOR		31
+nim	orxVECTOR	vector.html#orxVECTOR.t,untyped,untyped,untyped	template orxVECTOR(x, y, z: untyped): orxVECTOR		8
+nim	orxSPVECTOR	vector.html#orxSPVECTOR.t,untyped,untyped,untyped	template orxSPVECTOR(rho, theta, phi: untyped): orxVECTOR		15
+nim	orxRGBVECTOR	vector.html#orxRGBVECTOR.t,untyped,untyped,untyped	template orxRGBVECTOR(r, g, b: untyped): orxVECTOR		22
+nim	orxHSLVECTOR	vector.html#orxHSLVECTOR.t,untyped,untyped,untyped	template orxHSLVECTOR(h, s, l: untyped): orxVECTOR		29
+nim	orxHSVVECTOR	vector.html#orxHSVVECTOR.t,untyped,untyped,untyped	template orxHSVVECTOR(h, s, v: untyped): orxVECTOR		36

@@ -2,6 +2,10 @@ import os
 import wrapper, vector, joystick
 export wrapper, vector, joystick
 
+when defined(processAnnotations):
+  import annotation
+  static: processAnnotations(currentSourcePath())
+
 #[ ##  Windows
 when defined(Windows):
   type
@@ -99,6 +103,7 @@ else:
  ]#
 
 ## Version constants
+## @file orx/code/include/base/orxVersion.h:"#define __orxVERSION_STRING__":11:58e2bd59921beea7c331cd2ee64ea8a7
 const
   ORX_VERSION_STRING* = $compiler_orxVERSION_MAJOR_private & "." & $compiler_orxVERSION_MINOR_private & "-" & $compiler_orxVERSION_RELEASE_private
   ORX_VERSION_FULL_STRING* = $compiler_orxVERSION_MAJOR_private & "." & $compiler_orxVERSION_MINOR_private & "." & $compiler_orxVERSION_BUILD_private & "-" & $compiler_orxVERSION_RELEASE_private
