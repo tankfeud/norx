@@ -7,16 +7,33 @@ const wrapperPath = norxRoot / "wrapper.nim"
 
 const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline}) 
 
-# These names are too short so we protect them so they will be renamed with the module name as prefix
+# These names are not unique enough so we protect them so they will keep the module name as prefix
 const protectedNames = ["Setup", "Init", "Exit", "Create", "Update", "Delete", "CreateFromConfig",
-  "Get", "Register", "Send", "SendShort", "Bind", "Unbind"]
-# These modules will have their proc names shortened
-const shortenedModules = ["input", "system", "object", "event", "clock",
-  "resource", "module", "joystick", "sound", "keyboard"]
+  "Get", "Register", "Send", "SendShort", "Bind", "Unbind",
+  "Set", "Mod", "Div", "Yield", # These are reserved words in nim
+  "Load", "ClearCache", "Raycast"] # These caused collisions due to same argument types
+# These modules will not have their proc names shortened
+const shortenedModules = [
+  "anim", "animpointer", "animset",
+  "module",
+  "clock", "command", "config", "console", "event", "locale", "resource", "system", "thread", 
+  "debug", "fps", "profiler",
+  "display", "font", "graphic", "screenshot", "text", "texture",
+  "file", "input", "joystick", "keyboard", "mouse",
+  "param",
+  "aabox", "math", "obox", "vector",
+  "bank", "memory",
+  "frame", "fx", "fxpointer", "object", "spawner", "structure", "timeline", "trigger",
+  "body", "physics",
+  "plugin",
+  "camera", "render", "shader", "shaderpointer", "viewport",
+  "sound", "soundpointer", "soundsystem",
+  "hashtable", "linklist", "string", "tree"]
 
 # Rename logic
-proc renameCallback(n, k: string, p = ""): string =
+proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   # For enumval and const we just remove the orx prefix
+  allowReuse = false
   if k == "enumval" or k == "const":
     if n.startsWith("orx"):
       return n[3..^1]
@@ -39,6 +56,7 @@ proc renameCallback(n, k: string, p = ""): string =
   # Treat protected names by prepending module name.
   if name in protectedNames:
     return module & name
+  allowReuse = true
   # For these modules we use just the name
   if module in shortenedModules:
     result = name
