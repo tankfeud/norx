@@ -280,7 +280,7 @@ when not defined(PLUGIN):
         var argv: cstringArray = nargv.allocCStringArray()
         inc(argc)
         ##  Sends the command line arguments to orxParam module
-        if orxParam_SetArgs(argc.orxU32, argv) != STATUS_FAILURE:
+        if setArgs(argc.orxU32, argv) != STATUS_FAILURE:
           ##  Inits the engine
           if moduleInit(MODULE_ID_MAIN) != STATUS_FAILURE:
             var
