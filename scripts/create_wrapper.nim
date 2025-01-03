@@ -11,29 +11,36 @@ const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline})
 const protectedNames = ["Setup", "Init", "Exit", "Create", "Update", "Delete", "CreateFromConfig",
   "Get", "Register", "Send", "SendShort", "Bind", "Unbind",
   "Set", "Mod", "Div", "Yield", # These are reserved words in nim
-  "Load", "ClearCache", "Raycast"] # These caused collisions due to same argument types
+  "Load", "ClearCache", "Raycast", "StartRecording", # These caused collisions due to same argument types
+  "StopRecording", "HasRecordingSupport"] # These caused collisions due to same argument types
+
 # These modules will not have their proc names shortened
 const shortenedModules = [
-  "anim", "animpointer", "animset",
+  "anim", "animPointer", "animSet",
   "module",
   "clock", "command", "config", "console", "event", "locale", "resource", "system", "thread", 
-  "debug", "fps", "profiler",
-  "display", "font", "graphic", "screenshot", "text", "texture",
+  "debug", "fPS", "profiler",
+  "display", "font", "graphic", "screenshot", "text", "texture", "color",
   "file", "input", "joystick", "keyboard", "mouse",
   "param",
   "aabox", "math", "obox", "vector",
   "bank", "memory",
-  "frame", "fx", "fxpointer", "object", "spawner", "structure", "timeline", "trigger",
+  "frame", "fX", "fXPointer", "object", "spawner", "structure", "timeline", "trigger",
   "body", "physics",
   "plugin",
-  "camera", "render", "shader", "shaderpointer", "viewport",
-  "sound", "soundpointer", "soundsystem",
-  "hashtable", "linklist", "string", "tree"]
+  "camera", "render", "shader", "shaderPointer", "viewport",
+  "sound", "soundPointer", "soundSystem",
+  "hashTable", "linkList", "string", "tree", "timeLine",
+  "orx" ]
 
 # Rename logic
 proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   # For enumval and const we just remove the orx prefix
   allowReuse = false
+  # We do not change the name of typedefs
+  if k == "typedef":
+    return n
+  # For enumval and const we just remove the orx prefix
   if k == "enumval" or k == "const":
     if n.startsWith("orx"):
       return n[3..^1]
@@ -49,6 +56,7 @@ proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   var module = splits[0]
   # Remove the orx prefix of the module name and ensure
   # the first module character is lowercase
+  echo "n: ", n, " k: ", k, " splits: ", splits, " module: ", module
   if module.len > 3 and module.startsWith("orx"):
     module = module[3..^1]
   module[0] = module[0].toLowerAscii()
@@ -59,6 +67,7 @@ proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   allowReuse = true
   # For these modules we use just the name
   if module in shortenedModules:
+    echo "module in shortenedModules: ", module, " name: ", name
     result = name
   else:
     result = n
@@ -95,7 +104,7 @@ macro generateImportcCall(): untyped =
       return cmp(a, b)
 
   # Find all headers
-  var headers = findHeaders(orxRoot / "code" / "include")
+  var headers = findHeaders(orxInclude)
   # Remove selected headers
   headers.delete(headers.find("main/android/orxAndroid.h"))
   headers.delete(headers.find("main/android/orxAndroidActivity.h"))

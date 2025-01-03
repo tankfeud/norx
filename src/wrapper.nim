@@ -3917,22 +3917,22 @@ proc addGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION;
 proc removeGlobalTimer*(internal_pfnCallback: orxCLOCK_FUNCTION;
                         internal_fDelay: orxFLOAT; internal_pContext: pointer): orxSTATUS {.
     cdecl, importc: "orxClock_RemoveGlobalTimer".}
-proc orxLinkList_Clean*(internal_pstList: ptr orxLINKLIST): orxSTATUS {.cdecl,
+proc clean*(internal_pstList: ptr orxLINKLIST): orxSTATUS {.cdecl,
     importc: "orxLinkList_Clean".}
-proc orxLinkList_AddStart*(internal_pstList: ptr orxLINKLIST;
-                           internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.
-    cdecl, importc: "orxLinkList_AddStart".}
-proc orxLinkList_AddEnd*(internal_pstList: ptr orxLINKLIST;
-                         internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.
-    cdecl, importc: "orxLinkList_AddEnd".}
-proc orxLinkList_AddBefore*(internal_pstRefNode: ptr orxLINKLIST_NODE;
-                            internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.
-    cdecl, importc: "orxLinkList_AddBefore".}
-proc orxLinkList_AddAfter*(internal_pstRefNode: ptr orxLINKLIST_NODE;
-                           internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.
-    cdecl, importc: "orxLinkList_AddAfter".}
-proc orxLinkList_Remove*(internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.
-    cdecl, importc: "orxLinkList_Remove".}
+proc addStart*(internal_pstList: ptr orxLINKLIST;
+               internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.cdecl,
+    importc: "orxLinkList_AddStart".}
+proc addEnd*(internal_pstList: ptr orxLINKLIST;
+             internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.cdecl,
+    importc: "orxLinkList_AddEnd".}
+proc addBefore*(internal_pstRefNode: ptr orxLINKLIST_NODE;
+                internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.cdecl,
+    importc: "orxLinkList_AddBefore".}
+proc addAfter*(internal_pstRefNode: ptr orxLINKLIST_NODE;
+               internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.cdecl,
+    importc: "orxLinkList_AddAfter".}
+proc remove*(internal_pstNode: ptr orxLINKLIST_NODE): orxSTATUS {.cdecl,
+    importc: "orxLinkList_Remove".}
 proc clean*(internal_pstTree: ptr orxTREE): orxSTATUS {.cdecl,
     importc: "orxTree_Clean".}
 proc addRoot*(internal_pstTree: ptr orxTREE; internal_pstNode: ptr orxTREE_NODE): orxSTATUS {.
@@ -4050,65 +4050,55 @@ proc animSetCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMSET {.
 proc animSetDelete*(internal_pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
     importc: "orxAnimSet_Delete".}
 proc animSetClearCache*(): orxSTATUS {.cdecl, importc: "orxAnimSet_ClearCache".}
-proc orxAnimSet_AddReference*(internal_pstAnimSet: ptr orxANIMSET): void {.
-    cdecl, importc: "orxAnimSet_AddReference".}
-proc orxAnimSet_RemoveReference*(internal_pstAnimSet: ptr orxANIMSET): void {.
-    cdecl, importc: "orxAnimSet_RemoveReference".}
-proc orxAnimSet_CloneLinkTable*(internal_pstAnimSet: ptr orxANIMSET): ptr orxANIMSET_LINK_TABLE {.
+proc addReference*(internal_pstAnimSet: ptr orxANIMSET): void {.cdecl,
+    importc: "orxAnimSet_AddReference".}
+proc removeReference*(internal_pstAnimSet: ptr orxANIMSET): void {.cdecl,
+    importc: "orxAnimSet_RemoveReference".}
+proc cloneLinkTable*(internal_pstAnimSet: ptr orxANIMSET): ptr orxANIMSET_LINK_TABLE {.
     cdecl, importc: "orxAnimSet_CloneLinkTable".}
-proc orxAnimSet_DeleteLinkTable*(internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE): void {.
+proc deleteLinkTable*(internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE): void {.
     cdecl, importc: "orxAnimSet_DeleteLinkTable".}
-proc orxAnimSet_AddAnim*(internal_pstAnimSet: ptr orxANIMSET;
-                         internal_pstAnim: ptr orxANIM): orxU32 {.cdecl,
-    importc: "orxAnimSet_AddAnim".}
-proc orxAnimSet_RemoveAnim*(internal_pstAnimSet: ptr orxANIMSET;
-                            internal_u32AnimID: orxU32): orxSTATUS {.cdecl,
-    importc: "orxAnimSet_RemoveAnim".}
-proc orxAnimSet_RemoveAllAnims*(internal_pstAnimSet: ptr orxANIMSET): orxSTATUS {.
-    cdecl, importc: "orxAnimSet_RemoveAllAnims".}
-proc orxAnimSet_AddLink*(internal_pstAnimSet: ptr orxANIMSET;
-                         internal_u32SrcAnim: orxU32;
-                         internal_u32DstAnim: orxU32): orxU32 {.cdecl,
+proc addAnim*(internal_pstAnimSet: ptr orxANIMSET; internal_pstAnim: ptr orxANIM): orxU32 {.
+    cdecl, importc: "orxAnimSet_AddAnim".}
+proc removeAnim*(internal_pstAnimSet: ptr orxANIMSET; internal_u32AnimID: orxU32): orxSTATUS {.
+    cdecl, importc: "orxAnimSet_RemoveAnim".}
+proc removeAllAnims*(internal_pstAnimSet: ptr orxANIMSET): orxSTATUS {.cdecl,
+    importc: "orxAnimSet_RemoveAllAnims".}
+proc addLink*(internal_pstAnimSet: ptr orxANIMSET; internal_u32SrcAnim: orxU32;
+              internal_u32DstAnim: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_AddLink".}
-proc orxAnimSet_RemoveLink*(internal_pstAnimSet: ptr orxANIMSET;
-                            internal_u32LinkID: orxU32): orxSTATUS {.cdecl,
-    importc: "orxAnimSet_RemoveLink".}
-proc orxAnimSet_GetLink*(internal_pstAnimSet: ptr orxANIMSET;
-                         internal_u32SrcAnim: orxU32;
-                         internal_u32DstAnim: orxU32): orxU32 {.cdecl,
+proc removeLink*(internal_pstAnimSet: ptr orxANIMSET; internal_u32LinkID: orxU32): orxSTATUS {.
+    cdecl, importc: "orxAnimSet_RemoveLink".}
+proc getLink*(internal_pstAnimSet: ptr orxANIMSET; internal_u32SrcAnim: orxU32;
+              internal_u32DstAnim: orxU32): orxU32 {.cdecl,
     importc: "orxAnimSet_GetLink".}
-proc orxAnimSet_SetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET;
-                                 internal_u32LinkID: orxU32;
-                                 internal_u32Property: orxU32;
-                                 internal_u32Value: orxU32): orxSTATUS {.cdecl,
+proc setLinkProperty*(internal_pstAnimSet: ptr orxANIMSET;
+                      internal_u32LinkID: orxU32; internal_u32Property: orxU32;
+                      internal_u32Value: orxU32): orxSTATUS {.cdecl,
     importc: "orxAnimSet_SetLinkProperty".}
-proc orxAnimSet_GetLinkProperty*(internal_pstAnimSet: ptr orxANIMSET;
-                                 internal_u32LinkID: orxU32;
-                                 internal_u32Property: orxU32): orxU32 {.cdecl,
-    importc: "orxAnimSet_GetLinkProperty".}
-proc orxAnimSet_ComputeAnim*(internal_pstAnimSet: ptr orxANIMSET;
-                             internal_u32SrcAnim: orxU32;
-                             internal_u32DstAnim: orxU32;
-                             internal_pfTime: ptr orxFLOAT;
-                             internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE;
-                             internal_pbCut: ptr orxBOOL;
-                             internal_pbClearTarget: ptr orxBOOL): orxU32 {.
-    cdecl, importc: "orxAnimSet_ComputeAnim".}
-proc orxAnimSet_FindNextAnim*(internal_pstAnimSet: ptr orxANIMSET;
-                              internal_u32SrcAnim: orxU32;
-                              internal_u32DstAnim: orxU32): orxU32 {.cdecl,
-    importc: "orxAnimSet_FindNextAnim".}
-proc orxAnimSet_GetAnim*(internal_pstAnimSet: ptr orxANIMSET;
-                         internal_u32AnimID: orxU32): ptr orxANIM {.cdecl,
-    importc: "orxAnimSet_GetAnim".}
-proc orxAnimSet_GetAnimStorageSize*(internal_pstAnimSet: ptr orxANIMSET): orxU32 {.
-    cdecl, importc: "orxAnimSet_GetAnimStorageSize".}
-proc orxAnimSet_GetAnimCount*(internal_pstAnimSet: ptr orxANIMSET): orxU32 {.
-    cdecl, importc: "orxAnimSet_GetAnimCount".}
-proc orxAnimSet_GetAnimIDFromName*(internal_pstAnimSet: ptr orxANIMSET;
-                                   internal_zAnimName: cstring): orxU32 {.cdecl,
+proc getLinkProperty*(internal_pstAnimSet: ptr orxANIMSET;
+                      internal_u32LinkID: orxU32; internal_u32Property: orxU32): orxU32 {.
+    cdecl, importc: "orxAnimSet_GetLinkProperty".}
+proc computeAnim*(internal_pstAnimSet: ptr orxANIMSET;
+                  internal_u32SrcAnim: orxU32; internal_u32DstAnim: orxU32;
+                  internal_pfTime: ptr orxFLOAT;
+                  internal_pstLinkTable: ptr orxANIMSET_LINK_TABLE;
+                  internal_pbCut: ptr orxBOOL;
+                  internal_pbClearTarget: ptr orxBOOL): orxU32 {.cdecl,
+    importc: "orxAnimSet_ComputeAnim".}
+proc findNextAnim*(internal_pstAnimSet: ptr orxANIMSET;
+                   internal_u32SrcAnim: orxU32; internal_u32DstAnim: orxU32): orxU32 {.
+    cdecl, importc: "orxAnimSet_FindNextAnim".}
+proc getAnim*(internal_pstAnimSet: ptr orxANIMSET; internal_u32AnimID: orxU32): ptr orxANIM {.
+    cdecl, importc: "orxAnimSet_GetAnim".}
+proc getAnimStorageSize*(internal_pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
+    importc: "orxAnimSet_GetAnimStorageSize".}
+proc getAnimCount*(internal_pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
+    importc: "orxAnimSet_GetAnimCount".}
+proc getAnimIDFromName*(internal_pstAnimSet: ptr orxANIMSET;
+                        internal_zAnimName: cstring): orxU32 {.cdecl,
     importc: "orxAnimSet_GetAnimIDFromName".}
-proc orxAnimSet_GetName*(internal_pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
+proc getName*(internal_pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
     importc: "orxAnimSet_GetName".}
 proc animPointerSetup*(): void {.cdecl, importc: "orxAnimPointer_Setup".}
 proc animPointerInit*(): orxSTATUS {.cdecl, importc: "orxAnimPointer_Init".}
@@ -4119,42 +4109,42 @@ proc animPointerCreateFromConfig*(internal_zConfigID: cstring): ptr orxANIMPOINT
     cdecl, importc: "orxAnimPointer_CreateFromConfig".}
 proc animPointerDelete*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxSTATUS {.
     cdecl, importc: "orxAnimPointer_Delete".}
-proc orxAnimPointer_GetAnimSet*(internal_pstAnimPointer: ptr orxANIMPOINTER): ptr orxANIMSET {.
+proc getAnimSet*(internal_pstAnimPointer: ptr orxANIMPOINTER): ptr orxANIMSET {.
     cdecl, importc: "orxAnimPointer_GetAnimSet".}
-proc orxAnimPointer_GetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxU32 {.
+proc getCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxU32 {.
     cdecl, importc: "orxAnimPointer_GetCurrentAnim".}
-proc orxAnimPointer_GetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxU32 {.
+proc getTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxU32 {.
     cdecl, importc: "orxAnimPointer_GetTargetAnim".}
-proc orxAnimPointer_GetCurrentAnimName*(internal_pstAnimPointer: ptr orxANIMPOINTER): cstring {.
+proc getCurrentAnimName*(internal_pstAnimPointer: ptr orxANIMPOINTER): cstring {.
     cdecl, importc: "orxAnimPointer_GetCurrentAnimName".}
-proc orxAnimPointer_GetTargetAnimName*(internal_pstAnimPointer: ptr orxANIMPOINTER): cstring {.
+proc getTargetAnimName*(internal_pstAnimPointer: ptr orxANIMPOINTER): cstring {.
     cdecl, importc: "orxAnimPointer_GetTargetAnimName".}
-proc orxAnimPointer_GetCurrentAnimData*(internal_pstAnimPointer: ptr orxANIMPOINTER): ptr orxSTRUCTURE {.
+proc getCurrentAnimData*(internal_pstAnimPointer: ptr orxANIMPOINTER): ptr orxSTRUCTURE {.
     cdecl, importc: "orxAnimPointer_GetCurrentAnimData".}
-proc orxAnimPointer_GetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.
-    cdecl, importc: "orxAnimPointer_GetTime".}
-proc orxAnimPointer_GetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.
+proc getTime*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.cdecl,
+    importc: "orxAnimPointer_GetTime".}
+proc getFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.
     cdecl, importc: "orxAnimPointer_GetFrequency".}
-proc orxAnimPointer_SetCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER;
-                                    internal_u32AnimID: orxU32): orxSTATUS {.
-    cdecl, importc: "orxAnimPointer_SetCurrentAnim".}
-proc orxAnimPointer_SetTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER;
-                                   internal_u32AnimID: orxU32): orxSTATUS {.
-    cdecl, importc: "orxAnimPointer_SetTargetAnim".}
-proc orxAnimPointer_SetCurrentAnimFromName*(
-    internal_pstAnimPointer: ptr orxANIMPOINTER; internal_zAnimName: cstring): orxSTATUS {.
-    cdecl, importc: "orxAnimPointer_SetCurrentAnimFromName".}
-proc orxAnimPointer_SetTargetAnimFromName*(
-    internal_pstAnimPointer: ptr orxANIMPOINTER; internal_zAnimName: cstring): orxSTATUS {.
-    cdecl, importc: "orxAnimPointer_SetTargetAnimFromName".}
-proc orxAnimPointer_SetTime*(internal_pstAnimPointer: ptr orxANIMPOINTER;
-                             internal_fTime: orxFLOAT): orxSTATUS {.cdecl,
+proc setCurrentAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+                     internal_u32AnimID: orxU32): orxSTATUS {.cdecl,
+    importc: "orxAnimPointer_SetCurrentAnim".}
+proc setTargetAnim*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+                    internal_u32AnimID: orxU32): orxSTATUS {.cdecl,
+    importc: "orxAnimPointer_SetTargetAnim".}
+proc setCurrentAnimFromName*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+                             internal_zAnimName: cstring): orxSTATUS {.cdecl,
+    importc: "orxAnimPointer_SetCurrentAnimFromName".}
+proc setTargetAnimFromName*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+                            internal_zAnimName: cstring): orxSTATUS {.cdecl,
+    importc: "orxAnimPointer_SetTargetAnimFromName".}
+proc setTime*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+              internal_fTime: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxAnimPointer_SetTime".}
-proc orxAnimPointer_SetFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER;
-                                  internal_fFrequency: orxFLOAT): orxSTATUS {.
-    cdecl, importc: "orxAnimPointer_SetFrequency".}
-proc orxAnimPointer_Pause*(internal_pstAnimPointer: ptr orxANIMPOINTER;
-                           internal_bPause: orxBOOL): orxSTATUS {.cdecl,
+proc setFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+                   internal_fFrequency: orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxAnimPointer_SetFrequency".}
+proc pause*(internal_pstAnimPointer: ptr orxANIMPOINTER;
+            internal_bPause: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxAnimPointer_Pause".}
 proc commandSetup*(): void {.cdecl, importc: "orxCommand_Setup".}
 proc commandInit*(): orxSTATUS {.cdecl, importc: "orxCommand_Init".}
@@ -4413,44 +4403,37 @@ proc hashTableCreate*(internal_u32NbKey: orxU32; internal_u32Flags: orxU32;
     cdecl, importc: "orxHashTable_Create".}
 proc hashTableDelete*(internal_pstHashTable: ptr orxHASHTABLE): orxSTATUS {.
     cdecl, importc: "orxHashTable_Delete".}
-proc orxHashTable_Clear*(internal_pstHashTable: ptr orxHASHTABLE): orxSTATUS {.
-    cdecl, importc: "orxHashTable_Clear".}
-proc orxHashTable_GetCount*(internal_pstHashTable: ptr orxHASHTABLE): orxU32 {.
-    cdecl, importc: "orxHashTable_GetCount".}
+proc clear*(internal_pstHashTable: ptr orxHASHTABLE): orxSTATUS {.cdecl,
+    importc: "orxHashTable_Clear".}
+proc getCount*(internal_pstHashTable: ptr orxHASHTABLE): orxU32 {.cdecl,
+    importc: "orxHashTable_GetCount".}
 proc hashTableGet*(internal_pstHashTable: ptr orxHASHTABLE;
                    internal_u64Key: orxU64): pointer {.cdecl,
     importc: "orxHashTable_Get".}
-proc orxHashTable_Retrieve*(internal_pstHashTable: ptr orxHASHTABLE;
-                            internal_u64Key: orxU64): ptr pointer {.cdecl,
-    importc: "orxHashTable_Retrieve".}
+proc retrieve*(internal_pstHashTable: ptr orxHASHTABLE; internal_u64Key: orxU64): ptr pointer {.
+    cdecl, importc: "orxHashTable_Retrieve".}
 proc hashTableSet*(internal_pstHashTable: ptr orxHASHTABLE;
                    internal_u64Key: orxU64; internal_pData: pointer): orxSTATUS {.
     cdecl, importc: "orxHashTable_Set".}
-proc orxHashTable_Add*(internal_pstHashTable: ptr orxHASHTABLE;
-                       internal_u64Key: orxU64; internal_pData: pointer): orxSTATUS {.
-    cdecl, importc: "orxHashTable_Add".}
-proc orxHashTable_Remove*(internal_pstHashTable: ptr orxHASHTABLE;
-                          internal_u64Key: orxU64): orxSTATUS {.cdecl,
-    importc: "orxHashTable_Remove".}
-proc orxHashTable_GetNext*(internal_pstHashTable: ptr orxHASHTABLE;
-                           internal_hIterator: orxHANDLE;
-                           internal_pu64Key: ptr orxU64;
-                           internal_ppData: ptr pointer): orxHANDLE {.cdecl,
+proc add*(internal_pstHashTable: ptr orxHASHTABLE; internal_u64Key: orxU64;
+          internal_pData: pointer): orxSTATUS {.cdecl,
+    importc: "orxHashTable_Add".}
+proc remove*(internal_pstHashTable: ptr orxHASHTABLE; internal_u64Key: orxU64): orxSTATUS {.
+    cdecl, importc: "orxHashTable_Remove".}
+proc getNext*(internal_pstHashTable: ptr orxHASHTABLE;
+              internal_hIterator: orxHANDLE; internal_pu64Key: ptr orxU64;
+              internal_ppData: ptr pointer): orxHANDLE {.cdecl,
     importc: "orxHashTable_GetNext".}
-proc orxHashTable_Optimize*(internal_pstHashTable: ptr orxHASHTABLE): orxSTATUS {.
-    cdecl, importc: "orxHashTable_Optimize".}
+proc optimize*(internal_pstHashTable: ptr orxHASHTABLE): orxSTATUS {.cdecl,
+    importc: "orxHashTable_Optimize".}
 proc displaySetup*(): void {.cdecl, importc: "orxDisplay_Setup".}
-proc orxColor_FromRGBToHSL*(internal_pstDst: ptr orxCOLOR;
-                            internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
+proc fromRGBToHSL*(internal_pstDst: ptr orxCOLOR; internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
     cdecl, importc: "orxColor_FromRGBToHSL".}
-proc orxColor_FromHSLToRGB*(internal_pstDst: ptr orxCOLOR;
-                            internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
+proc fromHSLToRGB*(internal_pstDst: ptr orxCOLOR; internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
     cdecl, importc: "orxColor_FromHSLToRGB".}
-proc orxColor_FromRGBToHSV*(internal_pstDst: ptr orxCOLOR;
-                            internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
+proc fromRGBToHSV*(internal_pstDst: ptr orxCOLOR; internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
     cdecl, importc: "orxColor_FromRGBToHSV".}
-proc orxColor_FromHSVToRGB*(internal_pstDst: ptr orxCOLOR;
-                            internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
+proc fromHSVToRGB*(internal_pstDst: ptr orxCOLOR; internal_pstSrc: ptr orxCOLOR): ptr orxCOLOR {.
     cdecl, importc: "orxColor_FromHSVToRGB".}
 proc getBlendModeFromString*(internal_zBlendMode: cstring): orxDISPLAY_BLEND_MODE {.
     cdecl, importc: "orxDisplay_GetBlendModeFromString".}
@@ -4984,9 +4967,8 @@ proc setCallbacks*(internal_pfnStart: orxTHREAD_FUNCTION;
 proc fPSSetup*(): void {.cdecl, importc: "orxFPS_Setup".}
 proc fPSInit*(): orxSTATUS {.cdecl, importc: "orxFPS_Init".}
 proc fPSExit*(): void {.cdecl, importc: "orxFPS_Exit".}
-proc orxFPS_IncreaseFrameCount*(): void {.cdecl,
-    importc: "orxFPS_IncreaseFrameCount".}
-proc orxFPS_GetFPS*(): orxU32 {.cdecl, importc: "orxFPS_GetFPS".}
+proc increaseFrameCount*(): void {.cdecl, importc: "orxFPS_IncreaseFrameCount".}
+proc getFPS*(): orxU32 {.cdecl, importc: "orxFPS_GetFPS".}
 proc profilerSetup*(): void {.cdecl, importc: "orxProfiler_Setup".}
 proc profilerInit*(): orxSTATUS {.cdecl, importc: "orxProfiler_Init".}
 proc profilerExit*(): void {.cdecl, importc: "orxProfiler_Exit".}
@@ -5207,146 +5189,140 @@ proc setArgs*(internal_u32NbParams: orxU32;
 proc soundSystemSetup*(): void {.cdecl, importc: "orxSoundSystem_Setup".}
 proc soundSystemInit*(): orxSTATUS {.cdecl, importc: "orxSoundSystem_Init".}
 proc soundSystemExit*(): void {.cdecl, importc: "orxSoundSystem_Exit".}
-proc orxSoundSystem_CreateSample*(internal_u32ChannelNumber: orxU32;
-                                  internal_u32FrameNumber: orxU32;
-                                  internal_u32SampleRate: orxU32): ptr orxSOUNDSYSTEM_SAMPLE {.
+proc createSample*(internal_u32ChannelNumber: orxU32;
+                   internal_u32FrameNumber: orxU32;
+                   internal_u32SampleRate: orxU32): ptr orxSOUNDSYSTEM_SAMPLE {.
     cdecl, importc: "orxSoundSystem_CreateSample".}
-proc orxSoundSystem_LoadSample*(internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SAMPLE {.
+proc loadSample*(internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SAMPLE {.
     cdecl, importc: "orxSoundSystem_LoadSample".}
-proc orxSoundSystem_DeleteSample*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE): orxSTATUS {.
+proc deleteSample*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_DeleteSample".}
-proc orxSoundSystem_GetSampleInfo*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE;
-                                   internal_pu32ChannelNumber: ptr orxU32;
-                                   internal_pu32FrameNumber: ptr orxU32;
-                                   internal_pu32SampleRate: ptr orxU32): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_GetSampleInfo".}
-proc orxSoundSystem_SetSampleData*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE;
-                                   internal_afData: ptr orxFLOAT;
-                                   internal_u32SampleNumber: orxU32): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_SetSampleData".}
-proc orxSoundSystem_CreateFromSample*(internal_hUserData: orxHANDLE;
-    internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE): ptr orxSOUNDSYSTEM_SOUND {.
+proc getSampleInfo*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE;
+                    internal_pu32ChannelNumber: ptr orxU32;
+                    internal_pu32FrameNumber: ptr orxU32;
+                    internal_pu32SampleRate: ptr orxU32): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_GetSampleInfo".}
+proc setSampleData*(internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE;
+                    internal_afData: ptr orxFLOAT;
+                    internal_u32SampleNumber: orxU32): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_SetSampleData".}
+proc createFromSample*(internal_hUserData: orxHANDLE;
+                       internal_pstSample: ptr orxSOUNDSYSTEM_SAMPLE): ptr orxSOUNDSYSTEM_SOUND {.
     cdecl, importc: "orxSoundSystem_CreateFromSample".}
-proc orxSoundSystem_CreateStream*(internal_hUserData: orxHANDLE;
-                                  internal_eType: orxSOUNDSYSTEM_STREAM_TYPE;
-                                  internal_u32ChannelNumber: orxU32;
-                                  internal_u32SampleRate: orxU32): ptr orxSOUNDSYSTEM_SOUND {.
+proc createStream*(internal_hUserData: orxHANDLE;
+                   internal_eType: orxSOUNDSYSTEM_STREAM_TYPE;
+                   internal_u32ChannelNumber: orxU32;
+                   internal_u32SampleRate: orxU32): ptr orxSOUNDSYSTEM_SOUND {.
     cdecl, importc: "orxSoundSystem_CreateStream".}
-proc orxSoundSystem_LoadStream*(internal_hUserData: orxHANDLE;
-                                internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SOUND {.
+proc loadStream*(internal_hUserData: orxHANDLE; internal_zFilename: cstring): ptr orxSOUNDSYSTEM_SOUND {.
     cdecl, importc: "orxSoundSystem_LoadStream".}
 proc soundSystemDelete*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_Delete".}
-proc orxSoundSystem_Play*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_Play".}
-proc orxSoundSystem_Pause*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_Pause".}
-proc orxSoundSystem_Stop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_Stop".}
-proc orxSoundSystem_AddFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-    internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
-                               internal_bUseCustomParam: orxBOOL): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_AddFilter".}
-proc orxSoundSystem_RemoveLastFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
+proc play*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_Play".}
+proc pause*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_Pause".}
+proc stop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_Stop".}
+proc addFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
+                internal_bUseCustomParam: orxBOOL): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_AddFilter".}
+proc removeLastFilter*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_RemoveLastFilter".}
-proc orxSoundSystem_RemoveAllFilters*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
+proc removeAllFilters*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_RemoveAllFilters".}
-proc orxSoundSystem_CreateBus*(internal_stBusID: orxSTRINGID): orxHANDLE {.
-    cdecl, importc: "orxSoundSystem_CreateBus".}
-proc orxSoundSystem_DeleteBus*(internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
+proc createBus*(internal_stBusID: orxSTRINGID): orxHANDLE {.cdecl,
+    importc: "orxSoundSystem_CreateBus".}
+proc deleteBus*(internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_DeleteBus".}
-proc orxSoundSystem_SetBus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                            internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
+proc setBus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+             internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_SetBus".}
-proc orxSoundSystem_SetBusParent*(internal_hBus: orxHANDLE;
-                                  internal_hParentBus: orxHANDLE): orxSTATUS {.
+proc setBusParent*(internal_hBus: orxHANDLE; internal_hParentBus: orxHANDLE): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_SetBusParent".}
-proc orxSoundSystem_AddBusFilter*(internal_hBus: orxHANDLE;
-    internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
-                                  internal_bUseCustomParam: orxBOOL): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_AddBusFilter".}
-proc orxSoundSystem_RemoveLastBusFilter*(internal_hBus: orxHANDLE): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_RemoveLastBusFilter".}
-proc orxSoundSystem_RemoveAllBusFilters*(internal_hBus: orxHANDLE): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_RemoveAllBusFilters".}
-proc orxSoundSystem_StartRecording*(internal_zName: cstring;
-                                    internal_bWriteToFile: orxBOOL;
-                                    internal_u32SampleRate: orxU32;
-                                    internal_u32ChannelNumber: orxU32): orxSTATUS {.
+proc addBusFilter*(internal_hBus: orxHANDLE;
+                   internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
+                   internal_bUseCustomParam: orxBOOL): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_AddBusFilter".}
+proc removeLastBusFilter*(internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_RemoveLastBusFilter".}
+proc removeAllBusFilters*(internal_hBus: orxHANDLE): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_RemoveAllBusFilters".}
+proc soundSystemStartRecording*(internal_zName: cstring;
+                                internal_bWriteToFile: orxBOOL;
+                                internal_u32SampleRate: orxU32;
+                                internal_u32ChannelNumber: orxU32): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_StartRecording".}
-proc orxSoundSystem_StopRecording*(): orxSTATUS {.cdecl,
+proc soundSystemStopRecording*(): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_StopRecording".}
-proc orxSoundSystem_HasRecordingSupport*(): orxBOOL {.cdecl,
+proc soundSystemHasRecordingSupport*(): orxBOOL {.cdecl,
     importc: "orxSoundSystem_HasRecordingSupport".}
-proc orxSoundSystem_SetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                               internal_fVolume: orxFLOAT): orxSTATUS {.cdecl,
+proc setVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                internal_fVolume: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_SetVolume".}
-proc orxSoundSystem_SetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                              internal_fPitch: orxFLOAT): orxSTATUS {.cdecl,
+proc setPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+               internal_fPitch: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_SetPitch".}
-proc orxSoundSystem_SetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                             internal_fTime: orxFLOAT): orxSTATUS {.cdecl,
+proc setTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+              internal_fTime: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundSystem_SetTime".}
-proc orxSoundSystem_SetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                 internal_pvPosition: ptr orxVECTOR): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_SetPosition".}
-proc orxSoundSystem_SetSpatialization*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                       internal_fMinDistance: orxFLOAT;
-                                       internal_fMaxDistance: orxFLOAT;
-                                       internal_fMinGain: orxFLOAT;
-                                       internal_fMaxGain: orxFLOAT;
-                                       internal_fRollOff: orxFLOAT): orxSTATUS {.
+proc setPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                  internal_pvPosition: ptr orxVECTOR): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_SetPosition".}
+proc setSpatialization*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                        internal_fMinDistance: orxFLOAT;
+                        internal_fMaxDistance: orxFLOAT;
+                        internal_fMinGain: orxFLOAT;
+                        internal_fMaxGain: orxFLOAT; internal_fRollOff: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxSoundSystem_SetSpatialization".}
-proc orxSoundSystem_SetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                internal_fPanning: orxFLOAT;
-                                internal_bMix: orxBOOL): orxSTATUS {.cdecl,
-    importc: "orxSoundSystem_SetPanning".}
-proc orxSoundSystem_Loop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                          internal_bLoop: orxBOOL): orxSTATUS {.cdecl,
-    importc: "orxSoundSystem_Loop".}
-proc orxSoundSystem_GetVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.
-    cdecl, importc: "orxSoundSystem_GetVolume".}
-proc orxSoundSystem_GetPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.
-    cdecl, importc: "orxSoundSystem_GetPitch".}
-proc orxSoundSystem_GetTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.
-    cdecl, importc: "orxSoundSystem_GetTime".}
-proc orxSoundSystem_GetPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                 internal_pvPosition: ptr orxVECTOR): ptr orxVECTOR {.
-    cdecl, importc: "orxSoundSystem_GetPosition".}
-proc orxSoundSystem_GetSpatialization*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                       internal_pfMinDistance: ptr orxFLOAT;
-                                       internal_pfMaxDistance: ptr orxFLOAT;
-                                       internal_pfMinGain: ptr orxFLOAT;
-                                       internal_pfMaxGain: ptr orxFLOAT;
-                                       internal_pfRollOff: ptr orxFLOAT): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_GetSpatialization".}
-proc orxSoundSystem_GetPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
-                                internal_pfPanning: ptr orxFLOAT;
-                                internal_pbMix: ptr orxBOOL): orxSTATUS {.cdecl,
-    importc: "orxSoundSystem_GetPanning".}
-proc orxSoundSystem_IsLooping*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxBOOL {.
-    cdecl, importc: "orxSoundSystem_IsLooping".}
-proc orxSoundSystem_GetDuration*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.
+proc setPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                 internal_fPanning: orxFLOAT; internal_bMix: orxBOOL): orxSTATUS {.
+    cdecl, importc: "orxSoundSystem_SetPanning".}
+proc loop*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND; internal_bLoop: orxBOOL): orxSTATUS {.
+    cdecl, importc: "orxSoundSystem_Loop".}
+proc getVolume*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.cdecl,
+    importc: "orxSoundSystem_GetVolume".}
+proc getPitch*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.cdecl,
+    importc: "orxSoundSystem_GetPitch".}
+proc getTime*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.cdecl,
+    importc: "orxSoundSystem_GetTime".}
+proc getPosition*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                  internal_pvPosition: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
+    importc: "orxSoundSystem_GetPosition".}
+proc getSpatialization*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                        internal_pfMinDistance: ptr orxFLOAT;
+                        internal_pfMaxDistance: ptr orxFLOAT;
+                        internal_pfMinGain: ptr orxFLOAT;
+                        internal_pfMaxGain: ptr orxFLOAT;
+                        internal_pfRollOff: ptr orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_GetSpatialization".}
+proc getPanning*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND;
+                 internal_pfPanning: ptr orxFLOAT; internal_pbMix: ptr orxBOOL): orxSTATUS {.
+    cdecl, importc: "orxSoundSystem_GetPanning".}
+proc isLooping*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxBOOL {.cdecl,
+    importc: "orxSoundSystem_IsLooping".}
+proc getDuration*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxFLOAT {.
     cdecl, importc: "orxSoundSystem_GetDuration".}
-proc orxSoundSystem_GetStatus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSOUNDSYSTEM_STATUS {.
+proc getStatus*(internal_pstSound: ptr orxSOUNDSYSTEM_SOUND): orxSOUNDSYSTEM_STATUS {.
     cdecl, importc: "orxSoundSystem_GetStatus".}
-proc orxSoundSystem_SetGlobalVolume*(internal_fGlobalVolume: orxFLOAT): orxSTATUS {.
-    cdecl, importc: "orxSoundSystem_SetGlobalVolume".}
-proc orxSoundSystem_GetGlobalVolume*(): orxFLOAT {.cdecl,
-    importc: "orxSoundSystem_GetGlobalVolume".}
-proc orxSoundSystem_GetListenerCount*(): orxU32 {.cdecl,
-    importc: "orxSoundSystem_GetListenerCount".}
-proc orxSoundSystem_EnableListener*(internal_u32ListenerIndex: orxU32;
-                                    internal_bEnable: orxBOOL): void {.cdecl,
+proc setGlobalVolume*(internal_fGlobalVolume: orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxSoundSystem_SetGlobalVolume".}
+proc getGlobalVolume*(): orxFLOAT {.cdecl,
+                                    importc: "orxSoundSystem_GetGlobalVolume".}
+proc getListenerCount*(): orxU32 {.cdecl,
+                                   importc: "orxSoundSystem_GetListenerCount".}
+proc enableListener*(internal_u32ListenerIndex: orxU32;
+                     internal_bEnable: orxBOOL): void {.cdecl,
     importc: "orxSoundSystem_EnableListener".}
-proc orxSoundSystem_IsListenerEnabled*(internal_u32ListenerIndex: orxU32): orxBOOL {.
-    cdecl, importc: "orxSoundSystem_IsListenerEnabled".}
-proc orxSoundSystem_SetListenerPosition*(internal_u32Index: orxU32;
-    internal_pvPosition: ptr orxVECTOR): orxSTATUS {.cdecl,
-    importc: "orxSoundSystem_SetListenerPosition".}
-proc orxSoundSystem_GetListenerPosition*(internal_u32Index: orxU32;
-    internal_pvPosition: ptr orxVECTOR): ptr orxVECTOR {.cdecl,
-    importc: "orxSoundSystem_GetListenerPosition".}
+proc isListenerEnabled*(internal_u32ListenerIndex: orxU32): orxBOOL {.cdecl,
+    importc: "orxSoundSystem_IsListenerEnabled".}
+proc setListenerPosition*(internal_u32Index: orxU32;
+                          internal_pvPosition: ptr orxVECTOR): orxSTATUS {.
+    cdecl, importc: "orxSoundSystem_SetListenerPosition".}
+proc getListenerPosition*(internal_u32Index: orxU32;
+                          internal_pvPosition: ptr orxVECTOR): ptr orxVECTOR {.
+    cdecl, importc: "orxSoundSystem_GetListenerPosition".}
 proc soundSetup*(): void {.cdecl, importc: "orxSound_Setup".}
 proc soundInit*(): orxSTATUS {.cdecl, importc: "orxSound_Init".}
 proc soundExit*(): void {.cdecl, importc: "orxSound_Exit".}
@@ -5398,13 +5374,14 @@ proc removeAllFilters*(internal_pstSound: ptr orxSOUND): orxSTATUS {.cdecl,
 proc addFilterFromConfig*(internal_pstSound: ptr orxSOUND;
                           internal_zFilterConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxSound_AddFilterFromConfig".}
-proc startRecording*(internal_zName: cstring; internal_bWriteToFile: orxBOOL;
-                     internal_u32SampleRate: orxU32;
-                     internal_u32ChannelNumber: orxU32): orxSTATUS {.cdecl,
+proc soundStartRecording*(internal_zName: cstring;
+                          internal_bWriteToFile: orxBOOL;
+                          internal_u32SampleRate: orxU32;
+                          internal_u32ChannelNumber: orxU32): orxSTATUS {.cdecl,
     importc: "orxSound_StartRecording".}
-proc stopRecording*(): orxSTATUS {.cdecl, importc: "orxSound_StopRecording".}
-proc hasRecordingSupport*(): orxBOOL {.cdecl,
-                                       importc: "orxSound_HasRecordingSupport".}
+proc soundStopRecording*(): orxSTATUS {.cdecl, importc: "orxSound_StopRecording".}
+proc soundHasRecordingSupport*(): orxBOOL {.cdecl,
+    importc: "orxSound_HasRecordingSupport".}
 proc setVolume*(internal_pstSound: ptr orxSOUND; internal_fVolume: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxSound_SetVolume".}
 proc setPitch*(internal_pstSound: ptr orxSOUND; internal_fPitch: orxFLOAT): orxSTATUS {.
@@ -5951,42 +5928,39 @@ proc fXCreateFromConfig*(internal_zConfigID: cstring): ptr orxFX {.cdecl,
 proc fXDelete*(internal_pstFX: ptr orxFX): orxSTATUS {.cdecl,
     importc: "orxFX_Delete".}
 proc fXClearCache*(): orxSTATUS {.cdecl, importc: "orxFX_ClearCache".}
-proc orxFX_Apply*(internal_pstFX: ptr orxFX; internal_pstObject: ptr orxOBJECT;
-                  internal_fPreviousTime: orxFLOAT; internal_fTime: orxFLOAT): orxSTATUS {.
+proc apply*(internal_pstFX: ptr orxFX; internal_pstObject: ptr orxOBJECT;
+            internal_fPreviousTime: orxFLOAT; internal_fTime: orxFLOAT): orxSTATUS {.
     cdecl, importc: "orxFX_Apply".}
-proc orxFX_GetFloat*(internal_pstFX: ptr orxFX;
-                     internal_fPreviousTime: orxFLOAT; internal_fTime: orxFLOAT): orxFLOAT {.
-    cdecl, importc: "orxFX_GetFloat".}
-proc orxFX_GetVector*(internal_pstFX: ptr orxFX;
-                      internal_fPreviousTime: orxFLOAT;
-                      internal_fTime: orxFLOAT; internal_pvVector: ptr orxVECTOR): ptr orxVECTOR {.
+proc getFloat*(internal_pstFX: ptr orxFX; internal_fPreviousTime: orxFLOAT;
+               internal_fTime: orxFLOAT): orxFLOAT {.cdecl,
+    importc: "orxFX_GetFloat".}
+proc getVector*(internal_pstFX: ptr orxFX; internal_fPreviousTime: orxFLOAT;
+                internal_fTime: orxFLOAT; internal_pvVector: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxFX_GetVector".}
-proc orxFX_Enable*(internal_pstFX: ptr orxFX; internal_bEnable: orxBOOL): void {.
+proc enable*(internal_pstFX: ptr orxFX; internal_bEnable: orxBOOL): void {.
     cdecl, importc: "orxFX_Enable".}
-proc orxFX_IsEnabled*(internal_pstFX: ptr orxFX): orxBOOL {.cdecl,
+proc isEnabled*(internal_pstFX: ptr orxFX): orxBOOL {.cdecl,
     importc: "orxFX_IsEnabled".}
-proc orxFX_AddSlot*(internal_pstFX: ptr orxFX; internal_eType: orxFX_TYPE;
-                    internal_eCurve: orxFX_CURVE;
-                    internal_pstCurveParam: ptr orxFX_CURVE_PARAM;
-                    internal_u32Flags: orxU32): orxSTATUS {.cdecl,
+proc addSlot*(internal_pstFX: ptr orxFX; internal_eType: orxFX_TYPE;
+              internal_eCurve: orxFX_CURVE;
+              internal_pstCurveParam: ptr orxFX_CURVE_PARAM;
+              internal_u32Flags: orxU32): orxSTATUS {.cdecl,
     importc: "orxFX_AddSlot".}
-proc orxFX_AddSlotFromConfig*(internal_pstFX: ptr orxFX;
-                              internal_zSlotID: cstring): orxSTATUS {.cdecl,
-    importc: "orxFX_AddSlotFromConfig".}
-proc orxFX_GetDuration*(internal_pstFX: ptr orxFX): orxFLOAT {.cdecl,
+proc addSlotFromConfig*(internal_pstFX: ptr orxFX; internal_zSlotID: cstring): orxSTATUS {.
+    cdecl, importc: "orxFX_AddSlotFromConfig".}
+proc getDuration*(internal_pstFX: ptr orxFX): orxFLOAT {.cdecl,
     importc: "orxFX_GetDuration".}
-proc orxFX_GetName*(internal_pstFX: ptr orxFX): cstring {.cdecl,
+proc getName*(internal_pstFX: ptr orxFX): cstring {.cdecl,
     importc: "orxFX_GetName".}
-proc orxFX_Loop*(internal_pstFX: ptr orxFX; internal_bLoop: orxBOOL): orxSTATUS {.
+proc loop*(internal_pstFX: ptr orxFX; internal_bLoop: orxBOOL): orxSTATUS {.
     cdecl, importc: "orxFX_Loop".}
-proc orxFX_IsLooping*(internal_pstFX: ptr orxFX): orxBOOL {.cdecl,
+proc isLooping*(internal_pstFX: ptr orxFX): orxBOOL {.cdecl,
     importc: "orxFX_IsLooping".}
-proc orxFX_SetStagger*(internal_pstFX: ptr orxFX; internal_bStagger: orxBOOL;
-                       internal_fOffset: orxFLOAT): orxSTATUS {.cdecl,
+proc setStagger*(internal_pstFX: ptr orxFX; internal_bStagger: orxBOOL;
+                 internal_fOffset: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxFX_SetStagger".}
-proc orxFX_GetStagger*(internal_pstFX: ptr orxFX;
-                       internal_pfOffset: ptr orxFLOAT): orxBOOL {.cdecl,
-    importc: "orxFX_GetStagger".}
+proc getStagger*(internal_pstFX: ptr orxFX; internal_pfOffset: ptr orxFLOAT): orxBOOL {.
+    cdecl, importc: "orxFX_GetStagger".}
 proc fXPointerSetup*(): void {.cdecl, importc: "orxFXPointer_Setup".}
 proc fXPointerInit*(): orxSTATUS {.cdecl, importc: "orxFXPointer_Init".}
 proc fXPointerExit*(): void {.cdecl, importc: "orxFXPointer_Exit".}
@@ -5994,55 +5968,51 @@ proc fXPointerCreate*(): ptr orxFXPOINTER {.cdecl,
     importc: "orxFXPointer_Create".}
 proc fXPointerDelete*(internal_pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.
     cdecl, importc: "orxFXPointer_Delete".}
-proc orxFXPointer_Enable*(internal_pstFXPointer: ptr orxFXPOINTER;
-                          internal_bEnable: orxBOOL): void {.cdecl,
-    importc: "orxFXPointer_Enable".}
-proc orxFXPointer_IsEnabled*(internal_pstFXPointer: ptr orxFXPOINTER): orxBOOL {.
-    cdecl, importc: "orxFXPointer_IsEnabled".}
-proc orxFXPointer_AddFX*(internal_pstFXPointer: ptr orxFXPOINTER;
-                         internal_pstFX: ptr orxFX): orxSTATUS {.cdecl,
-    importc: "orxFXPointer_AddFX".}
-proc orxFXPointer_AddDelayedFX*(internal_pstFXPointer: ptr orxFXPOINTER;
-                                internal_pstFX: ptr orxFX;
-                                internal_fDelay: orxFLOAT): orxSTATUS {.cdecl,
-    importc: "orxFXPointer_AddDelayedFX".}
-proc orxFXPointer_RemoveFX*(internal_pstFXPointer: ptr orxFXPOINTER;
-                            internal_pstFX: ptr orxFX): orxSTATUS {.cdecl,
+proc enable*(internal_pstFXPointer: ptr orxFXPOINTER; internal_bEnable: orxBOOL): void {.
+    cdecl, importc: "orxFXPointer_Enable".}
+proc isEnabled*(internal_pstFXPointer: ptr orxFXPOINTER): orxBOOL {.cdecl,
+    importc: "orxFXPointer_IsEnabled".}
+proc addFX*(internal_pstFXPointer: ptr orxFXPOINTER; internal_pstFX: ptr orxFX): orxSTATUS {.
+    cdecl, importc: "orxFXPointer_AddFX".}
+proc addDelayedFX*(internal_pstFXPointer: ptr orxFXPOINTER;
+                   internal_pstFX: ptr orxFX; internal_fDelay: orxFLOAT): orxSTATUS {.
+    cdecl, importc: "orxFXPointer_AddDelayedFX".}
+proc removeFX*(internal_pstFXPointer: ptr orxFXPOINTER;
+               internal_pstFX: ptr orxFX): orxSTATUS {.cdecl,
     importc: "orxFXPointer_RemoveFX".}
-proc orxFXPointer_RemoveAllFXs*(internal_pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_RemoveAllFXs".}
-proc orxFXPointer_AddFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
-                                   internal_zFXConfigID: cstring): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_AddFXFromConfig".}
-proc orxFXPointer_AddUniqueFXFromConfig*(
-    internal_pstFXPointer: ptr orxFXPOINTER; internal_zFXConfigID: cstring): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_AddUniqueFXFromConfig".}
-proc orxFXPointer_AddDelayedFXFromConfig*(
-    internal_pstFXPointer: ptr orxFXPOINTER; internal_zFXConfigID: cstring;
-    internal_fDelay: orxFLOAT): orxSTATUS {.cdecl,
+proc removeAllFXs*(internal_pstFXPointer: ptr orxFXPOINTER): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_RemoveAllFXs".}
+proc addFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
+                      internal_zFXConfigID: cstring): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_AddFXFromConfig".}
+proc addUniqueFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
+                            internal_zFXConfigID: cstring): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_AddUniqueFXFromConfig".}
+proc addDelayedFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
+                             internal_zFXConfigID: cstring;
+                             internal_fDelay: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxFXPointer_AddDelayedFXFromConfig".}
-proc orxFXPointer_AddUniqueDelayedFXFromConfig*(
-    internal_pstFXPointer: ptr orxFXPOINTER; internal_zFXConfigID: cstring;
-    internal_fDelay: orxFLOAT): orxSTATUS {.cdecl,
-    importc: "orxFXPointer_AddUniqueDelayedFXFromConfig".}
-proc orxFXPointer_RemoveFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
-                                      internal_zFXConfigID: cstring): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_RemoveFXFromConfig".}
-proc orxFXPointer_Synchronize*(internal_pstFXPointer: ptr orxFXPOINTER;
-                               internal_pstModel: ptr orxFXPOINTER): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_Synchronize".}
-proc orxFXPointer_GetTime*(internal_pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.
-    cdecl, importc: "orxFXPointer_GetTime".}
-proc orxFXPointer_GetCount*(internal_pstFXPointer: ptr orxFXPOINTER): orxU32 {.
-    cdecl, importc: "orxFXPointer_GetCount".}
-proc orxFXPointer_GetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.
-    cdecl, importc: "orxFXPointer_GetFrequency".}
-proc orxFXPointer_SetTime*(internal_pstFXPointer: ptr orxFXPOINTER;
-                           internal_fTime: orxFLOAT): orxSTATUS {.cdecl,
-    importc: "orxFXPointer_SetTime".}
-proc orxFXPointer_SetFrequency*(internal_pstFXPointer: ptr orxFXPOINTER;
-                                internal_fFrequency: orxFLOAT): orxSTATUS {.
-    cdecl, importc: "orxFXPointer_SetFrequency".}
+proc addUniqueDelayedFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
+                                   internal_zFXConfigID: cstring;
+                                   internal_fDelay: orxFLOAT): orxSTATUS {.
+    cdecl, importc: "orxFXPointer_AddUniqueDelayedFXFromConfig".}
+proc removeFXFromConfig*(internal_pstFXPointer: ptr orxFXPOINTER;
+                         internal_zFXConfigID: cstring): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_RemoveFXFromConfig".}
+proc synchronize*(internal_pstFXPointer: ptr orxFXPOINTER;
+                  internal_pstModel: ptr orxFXPOINTER): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_Synchronize".}
+proc getTime*(internal_pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.cdecl,
+    importc: "orxFXPointer_GetTime".}
+proc getCount*(internal_pstFXPointer: ptr orxFXPOINTER): orxU32 {.cdecl,
+    importc: "orxFXPointer_GetCount".}
+proc getFrequency*(internal_pstFXPointer: ptr orxFXPOINTER): orxFLOAT {.cdecl,
+    importc: "orxFXPointer_GetFrequency".}
+proc setTime*(internal_pstFXPointer: ptr orxFXPOINTER; internal_fTime: orxFLOAT): orxSTATUS {.
+    cdecl, importc: "orxFXPointer_SetTime".}
+proc setFrequency*(internal_pstFXPointer: ptr orxFXPOINTER;
+                   internal_fFrequency: orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxFXPointer_SetFrequency".}
 proc getIgnoreFlagValues*(internal_zFlags: cstring): orxU32 {.cdecl,
     importc: "orxFrame_GetIgnoreFlagValues".}
 proc getIgnoreFlagNames*(internal_u32Flags: orxU32): cstring {.cdecl,
@@ -6186,21 +6156,20 @@ proc timeLineCreate*(): ptr orxTIMELINE {.cdecl, importc: "orxTimeLine_Create".}
 proc timeLineDelete*(internal_pstTimeLine: ptr orxTIMELINE): orxSTATUS {.cdecl,
     importc: "orxTimeLine_Delete".}
 proc timeLineClearCache*(): orxSTATUS {.cdecl, importc: "orxTimeLine_ClearCache".}
-proc orxTimeLine_Enable*(internal_pstTimeLine: ptr orxTIMELINE;
-                         internal_bEnable: orxBOOL): void {.cdecl,
-    importc: "orxTimeLine_Enable".}
-proc orxTimeLine_IsEnabled*(internal_pstTimeLine: ptr orxTIMELINE): orxBOOL {.
-    cdecl, importc: "orxTimeLine_IsEnabled".}
-proc orxTimeLine_AddTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE;
-                                     internal_zTrackID: cstring): orxSTATUS {.
-    cdecl, importc: "orxTimeLine_AddTrackFromConfig".}
-proc orxTimeLine_RemoveTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE;
-                                        internal_zTrackID: cstring): orxSTATUS {.
-    cdecl, importc: "orxTimeLine_RemoveTrackFromConfig".}
-proc orxTimeLine_GetCount*(internal_pstTimeLine: ptr orxTIMELINE): orxU32 {.
-    cdecl, importc: "orxTimeLine_GetCount".}
-proc orxTimeLine_GetTrackDuration*(internal_zTrackID: cstring): orxFLOAT {.
-    cdecl, importc: "orxTimeLine_GetTrackDuration".}
+proc enable*(internal_pstTimeLine: ptr orxTIMELINE; internal_bEnable: orxBOOL): void {.
+    cdecl, importc: "orxTimeLine_Enable".}
+proc isEnabled*(internal_pstTimeLine: ptr orxTIMELINE): orxBOOL {.cdecl,
+    importc: "orxTimeLine_IsEnabled".}
+proc addTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE;
+                         internal_zTrackID: cstring): orxSTATUS {.cdecl,
+    importc: "orxTimeLine_AddTrackFromConfig".}
+proc removeTrackFromConfig*(internal_pstTimeLine: ptr orxTIMELINE;
+                            internal_zTrackID: cstring): orxSTATUS {.cdecl,
+    importc: "orxTimeLine_RemoveTrackFromConfig".}
+proc getCount*(internal_pstTimeLine: ptr orxTIMELINE): orxU32 {.cdecl,
+    importc: "orxTimeLine_GetCount".}
+proc getTrackDuration*(internal_zTrackID: cstring): orxFLOAT {.cdecl,
+    importc: "orxTimeLine_GetTrackDuration".}
 proc triggerSetup*(): void {.cdecl, importc: "orxTrigger_Setup".}
 proc triggerInit*(): orxSTATUS {.cdecl, importc: "orxTrigger_Init".}
 proc triggerExit*(): void {.cdecl, importc: "orxTrigger_Exit".}
@@ -6699,32 +6668,30 @@ proc shaderPointerCreate*(): ptr orxSHADERPOINTER {.cdecl,
     importc: "orxShaderPointer_Create".}
 proc shaderPointerDelete*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.
     cdecl, importc: "orxShaderPointer_Delete".}
-proc orxShaderPointer_Start*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_Start".}
-proc orxShaderPointer_Stop*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_Stop".}
-proc orxShaderPointer_Enable*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                              internal_bEnable: orxBOOL): void {.cdecl,
+proc start*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.cdecl,
+    importc: "orxShaderPointer_Start".}
+proc stop*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.cdecl,
+    importc: "orxShaderPointer_Stop".}
+proc enable*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+             internal_bEnable: orxBOOL): void {.cdecl,
     importc: "orxShaderPointer_Enable".}
-proc orxShaderPointer_IsEnabled*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxBOOL {.
+proc isEnabled*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxBOOL {.
     cdecl, importc: "orxShaderPointer_IsEnabled".}
-proc orxShaderPointer_AddShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                                 internal_pstShader: ptr orxSHADER): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_AddShader".}
-proc orxShaderPointer_RemoveShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                                    internal_pstShader: ptr orxSHADER): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_RemoveShader".}
-proc orxShaderPointer_GetShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                                 internal_u32Index: orxU32): ptr orxSHADER {.
-    cdecl, importc: "orxShaderPointer_GetShader".}
-proc orxShaderPointer_AddShaderFromConfig*(
-    internal_pstShaderPointer: ptr orxSHADERPOINTER;
-    internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
+proc addShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+                internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxShaderPointer_AddShader".}
+proc removeShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+                   internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxShaderPointer_RemoveShader".}
+proc getShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+                internal_u32Index: orxU32): ptr orxSHADER {.cdecl,
+    importc: "orxShaderPointer_GetShader".}
+proc addShaderFromConfig*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+                          internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxShaderPointer_AddShaderFromConfig".}
-proc orxShaderPointer_RemoveShaderFromConfig*(
-    internal_pstShaderPointer: ptr orxSHADERPOINTER;
-    internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_RemoveShaderFromConfig".}
+proc removeShaderFromConfig*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
+                             internal_zShaderConfigID: cstring): orxSTATUS {.
+    cdecl, importc: "orxShaderPointer_RemoveShaderFromConfig".}
 proc viewportSetup*(): void {.cdecl, importc: "orxViewport_Setup".}
 proc viewportInit*(): orxSTATUS {.cdecl, importc: "orxViewport_Init".}
 proc viewportExit*(): void {.cdecl, importc: "orxViewport_Exit".}
@@ -6829,60 +6796,56 @@ proc soundPointerCreate*(): ptr orxSOUNDPOINTER {.cdecl,
     importc: "orxSoundPointer_Create".}
 proc soundPointerDelete*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_Delete".}
-proc orxSoundPointer_Enable*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                             internal_bEnable: orxBOOL): void {.cdecl,
+proc enable*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+             internal_bEnable: orxBOOL): void {.cdecl,
     importc: "orxSoundPointer_Enable".}
-proc orxSoundPointer_IsEnabled*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxBOOL {.
-    cdecl, importc: "orxSoundPointer_IsEnabled".}
-proc orxSoundPointer_SetVolume*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                                internal_fVolume: orxFLOAT): orxSTATUS {.cdecl,
+proc isEnabled*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxBOOL {.cdecl,
+    importc: "orxSoundPointer_IsEnabled".}
+proc setVolume*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                internal_fVolume: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_SetVolume".}
-proc orxSoundPointer_SetPitch*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                               internal_fPitch: orxFLOAT): orxSTATUS {.cdecl,
+proc setPitch*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+               internal_fPitch: orxFLOAT): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_SetPitch".}
-proc orxSoundPointer_SetPanning*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                                 internal_fPanning: orxFLOAT;
-                                 internal_bMix: orxBOOL): orxSTATUS {.cdecl,
-    importc: "orxSoundPointer_SetPanning".}
-proc orxSoundPointer_Play*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_Play".}
-proc orxSoundPointer_Pause*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_Pause".}
-proc orxSoundPointer_Stop*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_Stop".}
-proc orxSoundPointer_AddSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                               internal_pstSound: ptr orxSOUND): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_AddSound".}
-proc orxSoundPointer_RemoveSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-                                  internal_pstSound: ptr orxSOUND): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_RemoveSound".}
-proc orxSoundPointer_RemoveAllSounds*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
+proc setPanning*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                 internal_fPanning: orxFLOAT; internal_bMix: orxBOOL): orxSTATUS {.
+    cdecl, importc: "orxSoundPointer_SetPanning".}
+proc play*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_Play".}
+proc pause*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_Pause".}
+proc stop*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_Stop".}
+proc addSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+               internal_pstSound: ptr orxSOUND): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_AddSound".}
+proc removeSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                  internal_pstSound: ptr orxSOUND): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_RemoveSound".}
+proc removeAllSounds*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_RemoveAllSounds".}
-proc orxSoundPointer_AddSoundFromConfig*(
-    internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-    internal_zSoundConfigID: cstring): orxSTATUS {.cdecl,
+proc addSoundFromConfig*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                         internal_zSoundConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_AddSoundFromConfig".}
-proc orxSoundPointer_RemoveSoundFromConfig*(
-    internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-    internal_zSoundConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxSoundPointer_RemoveSoundFromConfig".}
-proc orxSoundPointer_GetLastAddedSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): ptr orxSOUND {.
+proc removeSoundFromConfig*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                            internal_zSoundConfigID: cstring): orxSTATUS {.
+    cdecl, importc: "orxSoundPointer_RemoveSoundFromConfig".}
+proc getLastAddedSound*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): ptr orxSOUND {.
     cdecl, importc: "orxSoundPointer_GetLastAddedSound".}
-proc orxSoundPointer_AddFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-    internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
-                                internal_bUseCustomParam: orxBOOL): orxSTATUS {.
-    cdecl, importc: "orxSoundPointer_AddFilter".}
-proc orxSoundPointer_RemoveLastFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
+proc addFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                internal_pstFilterData: ptr orxSOUND_FILTER_DATA;
+                internal_bUseCustomParam: orxBOOL): orxSTATUS {.cdecl,
+    importc: "orxSoundPointer_AddFilter".}
+proc removeLastFilter*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_RemoveLastFilter".}
-proc orxSoundPointer_RemoveAllFilters*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
+proc removeAllFilters*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxSTATUS {.
     cdecl, importc: "orxSoundPointer_RemoveAllFilters".}
-proc orxSoundPointer_AddFilterFromConfig*(
-    internal_pstSoundPointer: ptr orxSOUNDPOINTER;
-    internal_zFilterConfigID: cstring): orxSTATUS {.cdecl,
+proc addFilterFromConfig*(internal_pstSoundPointer: ptr orxSOUNDPOINTER;
+                          internal_zFilterConfigID: cstring): orxSTATUS {.cdecl,
     importc: "orxSoundPointer_AddFilterFromConfig".}
-proc orxSoundPointer_GetCount*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxU32 {.
-    cdecl, importc: "orxSoundPointer_GetCount".}
+proc getCount*(internal_pstSoundPointer: ptr orxSOUNDPOINTER): orxU32 {.cdecl,
+    importc: "orxSoundPointer_GetCount".}
 var sbStopByEvent*: orxBOOL
-proc orx_DefaultEventHandler*(internal_pstEvent: ptr orxEVENT): orxSTATUS {.
-    cdecl, importc: "orx_DefaultEventHandler".}
-proc orx_MainSetup*(): void {.cdecl, importc: "orx_MainSetup".}
+proc defaultEventHandler*(internal_pstEvent: ptr orxEVENT): orxSTATUS {.cdecl,
+    importc: "orx_DefaultEventHandler".}
+proc mainSetup*(): void {.cdecl, importc: "orx_MainSetup".}
