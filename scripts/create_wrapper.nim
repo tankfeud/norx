@@ -56,7 +56,6 @@ proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   var module = splits[0]
   # Remove the orx prefix of the module name and ensure
   # the first module character is lowercase
-  echo "n: ", n, " k: ", k, " splits: ", splits, " module: ", module
   if module.len > 3 and module.startsWith("orx"):
     module = module[3..^1]
   module[0] = module[0].toLowerAscii()
@@ -67,7 +66,6 @@ proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   allowReuse = true
   # For these modules we use just the name
   if module in shortenedModules:
-    echo "module in shortenedModules: ", module, " name: ", name
     result = name
   else:
     result = n
