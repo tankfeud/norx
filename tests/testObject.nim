@@ -15,7 +15,7 @@ proc bootstrap(): orxSTATUS =
 
 proc initORXforTest*() =
   # Initialize ORX without starting it, see norx.nim
-  discard orxConfig_SetBootstrap(bootstrap)
+  discard setBootstrap(bootstrap)
   debugInitMacro()
   moduleRegister(MODULE_ID_MAIN, "MAIN", mainSetup, init, exit)
   require moduleInit(MODULE_ID_MAIN) == STATUS_SUCCESS
