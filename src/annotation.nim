@@ -11,14 +11,26 @@ const projectRoot = currentSourcePath().parentDir.parentDir
 ## - path is the path to the file to reference relative to the project root
 ## - marker is the string to match at start of line, within quotes
 ## - count is the number of lines to include from the line where marker is found
-## - hash is the MD5 hash of the content of the referenced lines and is optional
+## - hash is the MD5 hash of the content of the referenced lines (and can be empty from the start)
+## 
+## An example from vector.nim:
+## 
+## ## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":28:8a7559931c2824bb9ef4556d058b7c7a
+## 
+## You can start with an empty hash and it will be updated with the first compile, like this:
+## 
+## ## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":28:
+## 
+## Note that you need the last colon to be present.
 ## 
 ## If you compile with `-d:updateAnnotations` all file annotations with outdated hashes will be updated.
 ## Only do this when you are sure you have made the necessary changes based on the referenced content.
 ##
-## Every file with these annotations will be processed at compile time if the file has the following line:
+## Every file with these annotations will be processed at compile time if the file has the following lines:
 ## ```
-## static: processAnnotations(currentSourcePath())
+## when defined(processAnnotations):
+##   import annotation
+##   static: processAnnotations(currentSourcePath())
 ## ```
 
 type
@@ -39,11 +51,15 @@ proc findMarkerPosition(content: string, marker: string): int =
 proc parseFileAnnotation(line: string): tuple[path: string, marker: string, lineCount: int, hash: string] =
   ## Parses: ## @file path:"marker":count:hash
   try:
-    var parts = line.split(" ", maxSplit = 2)[2].split({':'})
+    let content = line.splitWhitespace(maxSplit = 2)[2]
+    var parts = content.split({':'}, maxSplit = 1)
     let path = parts[0]
-    let marker = parts[1].strip(chars = {'"'})
-    let lineCount = parseInt(parts[2])
-    let hash = if parts.len > 3: parts[3] else: ""
+    parts = parts[1].rsplit({':'}, maxSplit = 2)
+    if parts.len < 3:
+      raise newException(Exception, "Too few ':' in file reference")
+    let marker = parts[0].strip(chars = {'"'})
+    let lineCount = parseInt(parts[1])
+    let hash = parts[2]
     result = (path, marker, lineCount, hash)
   except Exception as e:
     error("Invalid file reference format: " & line & "\n" & e.msg)

@@ -2,6 +2,11 @@ import os
 import wrapper, vector, joystick
 export wrapper, vector, joystick
 
+## This is the Norx high level wrapper module for the ORX library.
+## It is generated from the ORX sources using the create_wrapper.nim script.
+## You should usually only need to import this module.
+
+# This is only used during development to check that the wrapper is up to date with ORX sources.
 when defined(processAnnotations):
   import annotation
   static: processAnnotations(currentSourcePath())
