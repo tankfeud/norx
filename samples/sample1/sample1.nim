@@ -49,7 +49,7 @@ proc bootstrap(): orxSTATUS =
 
 # Main program
 when isMainModule:
-  if orxConfig_SetBootstrap(bootstrap) == STATUS_SUCCESS:
+  if setBootstrap(bootstrap) == STATUS_SUCCESS:
     echo "Bootstrap was set"
     execute(init, run, exit)
   

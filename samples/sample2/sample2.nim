@@ -46,7 +46,7 @@ proc bootstrap(): orxSTATUS {.cdecl, gcsafe.} =
   return STATUS_SUCCESS
 
 # Set the bootstrap function to provide at least one resource storage before loading any config files
-discard orxConfig_SetBootstrap(bootstrap)
+discard setBootstrap(bootstrap)
 
 #
 # From here and below is where we implement our own main loop.
@@ -87,7 +87,7 @@ var argv: cstringArray = nargv.allocCStringArray()
 inc(argc)
 
 # Sends the command line arguments to orxParam module
-if orxParam_SetArgs(argc.orxU32, argv) != STATUS_FAILURE:
+if setArgs(argc.orxU32, argv) != STATUS_FAILURE:
   # Inits the engine
   if moduleInit(MODULE_ID_MAIN) != STATUS_FAILURE:
     var
