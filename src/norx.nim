@@ -184,13 +184,13 @@ when not defined(PLUGIN):
   ## Should stop execution by default event handling?
   var sbStopByEvent* = false
 
-  proc mainSetup*() {.cdecl.} =
+  proc norxMainSetup*() {.cdecl.} =
     ##  Adds module dependencies
     addDependency(MODULE_ID_MAIN, MODULE_ID_OBJECT)
     addDependency(MODULE_ID_MAIN, MODULE_ID_RENDER)
     addOptionalDependency(MODULE_ID_MAIN, MODULE_ID_SCREENSHOT)
 
-  proc defaultEventHandler*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
+  proc norxDefaultEventHandler*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
     ##  Check for close event
     assert(pstEvent.eType == EVENT_TYPE_SYSTEM)
     if pstEvent.eID == ord(SYSTEM_EVENT_CLOSE):
@@ -268,7 +268,7 @@ when not defined(PLUGIN):
         ## Checks
         assert(runProc != nil)
         ##  Registers main module
-        moduleRegister(MODULE_ID_MAIN, "MAIN", mainSetup, initProc, exitProc)
+        moduleRegister(MODULE_ID_MAIN, "MAIN", norxMainSetup, initProc, exitProc)
         # Hack to produce C style argc/argv to pass on
         var argc = paramCount()
         var nargv = newSeq[string](argc + 1)
@@ -288,8 +288,8 @@ when not defined(PLUGIN):
               eClockStatus: orxSTATUS
               eMainStatus: orxSTATUS
             ##  Registers default event handler
-            var st = addHandler(EVENT_TYPE_SYSTEM, defaultEventHandler)
-            # ?? discard orxEvent_SetHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
+            var st = addHandler(EVENT_TYPE_SYSTEM, norxDefaultEventHandler)
+            #discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
             ##  Clears payload
             zeroMem(addr(stPayload), sizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t).orxU32)
             ##  Main loop
@@ -310,7 +310,7 @@ when not defined(PLUGIN):
               bStop = (sbStopByEvent or (eMainStatus == STATUS_FAILURE) or (eClockStatus == STATUS_FAILURE))
 
             ##  Removes event handler
-            discard removeHandler(EVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](defaultEventHandler))
+            discard removeHandler(EVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](norxDefaultEventHandler))
             ##  Exits from the engine
             moduleExit(MODULE_ID_MAIN)
         debugExitMacro()

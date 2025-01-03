@@ -77,3 +77,4 @@ if $gendocs; then
         exit 1
     fi
 fi
+echo "Done"
