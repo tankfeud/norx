@@ -12,7 +12,7 @@ const protectedNames = ["Setup", "Init", "Exit", "Create", "Update", "Delete", "
   "Get", "Register", "Send", "SendShort", "Bind", "Unbind"]
 # These modules will have their proc names shortened
 const shortenedModules = ["input", "system", "object", "event", "clock",
-  "resource", "module", "joystick", "sound"]
+  "resource", "module", "joystick", "sound", "keyboard"]
 
 # Rename logic
 proc renameCallback(n, k: string, p = ""): string =
