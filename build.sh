@@ -25,7 +25,7 @@ rm -f ./scripts/create_wrapper
 # if the wrapper is out of date with ORX sources.
 echo "Checking that wrapper is up to date with ORX sources by compiling norx.nim"
 if ! nim c -d:processAnnotations -d:errorOnAnnotationChange src/norx.nim; then
-    echo "ERROR: wrapper is out of date with ORX sources" >&2
+    echo "ERROR: Compilation of norx.nim failed, wrapper possibly out of date with ORX sources?" >&2
     exit 1
 fi
 

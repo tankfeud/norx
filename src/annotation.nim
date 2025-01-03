@@ -26,7 +26,7 @@ const projectRoot = currentSourcePath().parentDir.parentDir
 ## If you compile with `-d:updateAnnotations` all file annotations with outdated hashes will be updated.
 ## Only do this when you are sure you have made the necessary changes based on the referenced content.
 ##
-## Every file with these annotations will be processed at compile time if the file has the following lines:
+## Each file with annotations will be processed at compile time if the file has the following lines:
 ## ```
 ## when defined(processAnnotations):
 ##   import annotation
