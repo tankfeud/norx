@@ -6,7 +6,7 @@ license       = "Zlib"
 srcDir        = "src"
 
 # Since we test it only with latest stable Nim we like to require that (might work with older)
-requires "nim >= 2.0.10"
+requires "nim >= 2.2.2"
 # These are only used with android targets
 requires "https://github.com/yglukhov/android"
 requires "jnim"
