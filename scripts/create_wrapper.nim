@@ -35,10 +35,10 @@ const shortenedModules = [
 
 proc c2nim(header: string) =
   if os.execShellCmd("c2nim " & header) != 0:
-    echo "FAILURE ", header
+    echo "Failed to run c2nim on ", header
     quit(1)
   else:
-    echo "SUCCESS ", header
+    echo "Ran c2nim on ", header
 
 # Rename logic
 proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
