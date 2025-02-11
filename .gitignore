@@ -13,3 +13,4 @@ src/norx
 **/.idea
 **/*.elf
 **/*.so
+.aider*
