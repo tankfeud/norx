@@ -33,6 +33,13 @@ const shortenedModules = [
   "hashTable", "linkList", "string", "tree", "timeLine",
   "orx" ]
 
+proc c2nim(header: string) =
+  if os.execShellCmd("c2nim " & header) != 0:
+    echo "FAILURE ", header
+    quit(1)
+  else:
+    echo "SUCCESS ", header
+
 # Rename logic
 proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   # For enumval and const we just remove the orx prefix
@@ -103,6 +110,7 @@ macro generateImportcCall(): untyped =
 
   # Find all headers
   var headers = findHeaders(orxInclude)
+ 
   # Remove selected headers
   headers.delete(headers.find("main/android/orxAndroid.h"))
   headers.delete(headers.find("main/android/orxAndroidActivity.h"))
@@ -110,6 +118,10 @@ macro generateImportcCall(): untyped =
   for header in headers:
     result.add newStrLitNode(header)
 
+ 
+# Run c2nim on specific headers so that we can later include
+# parts from them in the high level nim files
+c2nim(orxInclude / "object/orxStructure.h")
 
 generateImportcCall()
 

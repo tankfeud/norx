@@ -31,12 +31,14 @@ SCRIPT=$(readlink -f "$0")
 DIR=$(dirname "$SCRIPT")
 
 # Make sure dependencies are installed for create_wrapper.nim
+echo "Installing dependencies ..."
 if ! (cd scripts && nimble install -d); then
     echo "ERROR: Failed to install dependencies" >&2
     exit 1
 fi
 
 # Recreate wrapper.nim using Futhark from ORX sources
+echo "Generating wrapper.nim ..."
 rm -f ./src/wrapper.nim ./scripts/create_wrapper # -f prevents errors if file doesn't exist
 if ! nim c -r --maxLoopIterationsVM:100000000 -d:futharkRebuild ./scripts/create_wrapper.nim; then
     echo "ERROR: Failed to generate wrapper.nim" >&2
