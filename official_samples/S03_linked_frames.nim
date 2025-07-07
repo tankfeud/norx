@@ -45,7 +45,7 @@
 ]#
 
 import strformat
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render]
+import norx
 
 
 # global , for storing our invisible object.
