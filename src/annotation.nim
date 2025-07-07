@@ -1,10 +1,17 @@
-import macros, strutils, os, checksums/md5
+import macros, strutils, sequtils, os, checksums/md5
 
 const projectRoot = currentSourcePath().parentDir.parentDir
 
-## This module provides compile-time support for embedding references to code snippets
-## from external files into source code comments like this:
+## This module provides compile-time support for two things:
+## 1. Embedding in source comments, references to code sections from external files.
+## 2. Copy code sections from external files.
+##
+## A reference is used to ensure a code section in another file has not changed since we last
+## generated the wrapper. This is a way to ensure that hand coded Nim equivalent code likely does not
+## need to change, since the original code it was based on has not changed.
 ## 
+## A reference looks like this:
+##
 ## ## @file path:"marker":count:hash
 ## 
 ## Where:
@@ -26,7 +33,17 @@ const projectRoot = currentSourcePath().parentDir.parentDir
 ## If you compile with `-d:updateAnnotations` all file annotations with outdated hashes will be updated.
 ## Only do this when you are sure you have made the necessary changes based on the referenced content.
 ##
-## Each file with annotations will be processed at compile time if the file has the following lines:
+## The second feature is to simply copy code sections from external files and looks like this:
+##
+## ## @copy orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":28:
+##
+## It works similarly but if there is no hash, the content is simply copied and added into the source file starting
+## at the line below the reference and the hash is calculated from the content and inserted into the annotation.
+##
+## If there is a hash, the content is only copied if you compile with `-d:updateAnnotations`, and the hash has changed.
+## Then the existing content, same number of lines, is replaced and the hash is updated.
+##
+## Each file with annotations will be processed at compile time if the file has the following lines at the top:
 ## ```
 ## when defined(processAnnotations):
 ##   import annotation
@@ -73,47 +90,78 @@ proc processAnnotations*(sourcePath: string) {.compileTime.} =
   var sourceEdited = false
   var sourceContent = readFile(sourcePath)
   var sourceLines = sourceContent.splitLines()
-  for i, line in sourceLines:
-    if line.strip().startsWith("## @file"):
-      let (path, marker, lineCount, previousHash) = parseFileAnnotation(line)
-      if path == "": continue
+  var i = 0
+  while i < sourceLines.len:
+    let line = sourceLines[i]
+    let lineStripped = line.strip()
+    if lineStripped.startsWith("## @"):
+      let isFileLine = lineStripped.startsWith("## @file")
+      let isCopyLine = lineStripped.startsWith("## @copy")
       
-      # Read and process the referenced file
-      let filePath = projectRoot / path
-      if not fileExists(filePath):
-        warning("Referenced file does not exist: " & path)
-        continue
+      if isFileLine or isCopyLine:
+        let (path, marker, lineCount, previousHash) = parseFileAnnotation(line)
+        if path == "": continue
         
-      let content = readFile(filePath)
-      let markerPos = findMarkerPosition(content, marker)
-      
-      if markerPos == -1:
-        warning("Marker '" & marker & "' not found in " & filePath)
-        continue
+        # Read and process the referenced file
+        let filePath = projectRoot / path
+        if not fileExists(filePath):
+          warning("Referenced file does not exist: " & path)
+          continue
+          
+        let content = readFile(filePath)
+        let markerPos = findMarkerPosition(content, marker)
         
-      let lines = content.splitLines()[markerPos ..< (markerPos + lineCount)]
-      let contentSlice = lines.join("\n")
-      let currentHash = getMD5(contentSlice)
-      
-      if previousHash == "":
-        # First time seeing this file reference, add the hash
-        echo "Adding hash for ", path, " marker '", marker, "' count ", lineCount
-        sourceLines[i] = updateFileAnnotation(line, currentHash)
-        sourceEdited = true
-      elif previousHash != currentHash:
-        # Content has changed
-        let message = "Content changed in " & path & " at marker '" & marker & "' lines " & $markerPos & "-" & $(markerPos + lineCount) &
-                "\nPrevious hash: " & previousHash & "current hash: " & currentHash
-        if defined(errorOnAnnotationChange):
-          error(message)
-        else:
-          warning(message)
-        # Update the hash if updateAnnotations is defined
-        if defined(updateAnnotations):
-          echo "Updating hash for ", path, " marker '", marker, "' lines ", markerPos, "-", markerPos + lineCount
-          sourceLines[i] = updateFileAnnotation(line, currentHash)
-          sourceEdited = true
+        if markerPos == -1:
+          warning("Marker '" & marker & "' not found in " & filePath)
+          continue
+          
+        let lines = content.splitLines()[markerPos ..< (markerPos + lineCount)]
+        let contentSlice = lines.join("\n")
+        let currentHash = getMD5(contentSlice)
+        
+        if isCopyLine:
+          if previousHash == "":
+            # Insert first time or replace the content
+            if previousHash == "":
+              # First time copy, insert content
+              echo "Adding copy hash for ", path, " marker '", marker, "' count ", lineCount
+              sourceLines[i] = updateFileAnnotation(line, currentHash)
+              sourceEdited = true
+              sourceLines.insert(lines, i + 1)
+            elif previousHash != currentHash:
+              let message = "Copy content changed in " & path & " at marker '" & marker & "' lines " & $markerPos & "-" & $(markerPos + lineCount)
+              if defined(errorOnAnnotationChange):
+                error(message)
+              else:
+                warning(message)
+              if defined(updateAnnotations):
+                echo "Updating copy hash and copying content for ", path, " marker '", marker, "' lines ", markerPos, "-", markerPos + lineCount
+                sourceLines[i] = updateFileAnnotation(line, currentHash)
+                sourceEdited = true          
+                # Replace existing content
+                var endLine = i + 1
+                while endLine < sourceLines.len and not sourceLines[endLine].strip().startsWith("##"):
+                  inc endLine
+                sourceLines.delete(i + 1 .. endLine - 1)
+                sourceLines.insert(lines, i + 1)
+                i += lines.len  # Skip past inserted content            
+        else:  # @file case - existing behavior
+          if previousHash == "":
+            echo "Adding file hash for ", path, " marker '", marker, "' count ", lineCount
+            sourceLines[i] = updateFileAnnotation(line, currentHash)
+            sourceEdited = true
+          elif previousHash != currentHash:
+            let message = "File content changed in " & path & " at marker '" & marker & "' lines " & $markerPos & "-" & $(markerPos + lineCount)
+            if defined(errorOnAnnotationChange):
+              error(message)
+            else:
+              warning(message)
+            if defined(updateAnnotations):
+              echo "Updating file hash for ", path, " marker '", marker, "' lines ", markerPos, "-", markerPos + lineCount
+              sourceLines[i] = updateFileAnnotation(line, currentHash)
+              sourceEdited = true
+    inc i
 
-  # If we modified any annotations, write back to the source file
+  # If we modified any annotations or content, write back to the source file
   if sourceEdited:
     writeFile(sourcePath, sourceLines.join("\n"))
