@@ -4,6 +4,7 @@ const orxRoot = currentSourcePath.parentDir.parentDir / "orx"
 const orxInclude = orxRoot / "code" / "include"
 const norxRoot = currentSourcePath.parentDir.parentDir / "src"
 const wrapperPath = norxRoot / "wrapper.nim"
+const scriptPath = currentSourcePath.parentDir
 
 const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline}) 
 
@@ -33,8 +34,9 @@ const shortenedModules = [
   "hashTable", "linkList", "string", "tree", "timeLine",
   "orx" ]
 
-proc c2nim(header: string) =
-  if os.execShellCmd("c2nim " & header) != 0:
+proc c2nim(header: string, prefix: string = "") =
+  echo "Running: c2nim --reordercomments --prefix:", prefix, " ", scriptPath / "common.c2nim ", header
+  if os.execShellCmd("c2nim --reordercomments --prefix:" & prefix & " " & scriptPath / "common.c2nim " & header) != 0:
     echo "Failed to run c2nim on ", header
     quit(1)
   else:
@@ -122,6 +124,7 @@ macro generateImportcCall(): untyped =
 # Run c2nim on specific headers so that we can later include
 # parts from them in the high level nim files
 c2nim(orxInclude / "object/orxStructure.h")
+c2nim(orxInclude / "math/orxMath.h", "orxMath_")
 
 generateImportcCall()
 
