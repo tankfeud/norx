@@ -34,13 +34,29 @@ const shortenedModules = [
   "hashTable", "linkList", "string", "tree", "timeLine",
   "orx" ]
 
-proc c2nim(header: string, prefix: string = "") =
-  echo "Running: c2nim --reordercomments --prefix:", prefix, " ", scriptPath / "common.c2nim ", header
-  if os.execShellCmd("c2nim --reordercomments --prefix:" & prefix & " " & scriptPath / "common.c2nim " & header) != 0:
+proc replace(filePath: string, patterns: seq[(string, string)]) =
+  ## The replace proc uses sed with:
+  ## - -i flag for in-place editing
+  ## - Multiple -e expressions for batch replacements
+  ## - Proper escaping of forward slashes and ampersands
+  ## - Global replacement (/g flag)
+  var sedCmd = "sed -i"
+  for (search, replacement) in patterns:
+    let escapedSearch = search.replace("/", "\\/").replace("&", "\\&")
+    let escapedReplacement = replacement.replace("/", "\\/").replace("&", "\\&")
+    sedCmd.add(" -e 's/" & escapedSearch & "/" & escapedReplacement & "/g'")
+  sedCmd.add(" " & filePath)
+  if execShellCmd(sedCmd) != 0:
+    echo "Failed to run sed command: ", sedCmd
+    quit(1)
+
+proc c2nim(header: string, outfile: string, prefix: string = "") =
+  echo "Running: c2nim --reordercomments --prefix:", prefix, " ", scriptPath / "common.c2nim ", header , " -o:" , outfile
+  if os.execShellCmd("c2nim --reordercomments --prefix:" & prefix & " " & scriptPath / "common.c2nim " & header & " -o:" & outfile) != 0:
     echo "Failed to run c2nim on ", header
     quit(1)
   else:
-    echo "Ran c2nim on ", header
+    echo "Ran c2nim on ", header, " generating ", outfile
 
 # Rename logic
 proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
@@ -123,8 +139,9 @@ macro generateImportcCall(): untyped =
  
 # Run c2nim on specific headers so that we can later include
 # parts from them in the high level nim files
-c2nim(orxInclude / "object/orxStructure.h")
-c2nim(orxInclude / "math/orxMath.h", "orxMath_")
+c2nim(orxInclude / "object/orxStructure.h", norxRoot / "orxStructure.nim")
+c2nim(orxInclude / "math/orxMath.h", norxRoot / "orxMath.nim", "orxMath_")
+replace(norxRoot / "orxMath.nim", @[("orxASSERT", "assertr")])
 
 generateImportcCall()
 
