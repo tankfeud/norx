@@ -1,6 +1,6 @@
 import os
-import wrapper, vector, joystick
-export wrapper, vector, joystick
+import wrapper, math, vector, joystick
+export wrapper, math, vector, joystick
 
 ## This is the Norx high level wrapper module for the ORX library.
 ## It is generated from the ORX sources using the create_wrapper.nim script.
@@ -132,6 +132,11 @@ converter toBool*(x: orxBOOL): bool = cint(x) != 0
 
 converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
   ## Converts bool to orxBOOL
+
+converter toCstring*(x: string): cstring = x.cstring
+
+converter fromCstring*(x: cstring): string = $x
+
 
 ## From orxEvent.h
 template eventGetFlag*(ID: untyped): untyped =
