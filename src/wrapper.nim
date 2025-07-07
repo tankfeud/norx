@@ -948,83 +948,83 @@ type
     RENDER_EVENT_PROFILER_START = 8, RENDER_EVENT_PROFILER_STOP = 9,
     RENDER_EVENT_NUMBER = 10
 type
+  struct_orxSOUND_t* = object
+type
+  struct_orxTIMELINE_t* = object
+type
+  struct_orxFILE_t* = object
+type
+  struct_orxFXPOINTER_t* = object
+type
+  struct_orxFONT_t* = object
+type
   struct_orxSPAWNER_t* = object
 type
-  struct_orxSHADER_t* = object
+  struct_orxSOUND_SAMPLE_t* = object
+type
+  struct_orxANIMPOINTER_t* = object
+type
+  struct_orxSHADERPOINTER_t* = object
+type
+  struct_orxSOUNDSYSTEM_SAMPLE_t* = object
+type
+  struct_orxSOUNDPOINTER_t* = object
+type
+  struct_orxGRAPHIC_t* = object
+type
+  struct_orxPHYSICS_BODY_PART_t* = object
+type
+  struct_orxANIMSET_LINK_TABLE_t* = object
+type
+  struct_orxHASHTABLE_t* = object
 type
   struct_orxCAMERA_t* = object
 type
-  struct_orxCLOCK_t* = object
+  struct_orxSHADER_t* = object
+type
+  struct_orxANIM_t* = object
+type
+  struct_orxBITMAP_t* = object
+type
+  mainInit* = object
+type
+  struct_orxBANK_t* = object
+type
+  struct_orxTEXTURE_t* = object
 type
   struct_orxOBJECT_t* = object
 type
   inline* = object
 type
-  struct_orxSOUNDSYSTEM_SAMPLE_t* = object
+  struct_orxVIEWPORT_t* = object
 type
-  struct_orxSOUND_t* = object
-type
-  struct_orxPHYSICS_BODY_PART_t* = object
-type
-  struct_orxTEXTURE_t* = object
+  struct_orxFRAME_t* = object
 type
   struct_orxTHREAD_SEMAPHORE_t* = object
 type
-  struct_orxHASHTABLE_t* = object
-type
-  struct_orxSHADERPOINTER_t* = object
-type
-  struct_orxFILE_t* = object
-type
-  struct_orxSOUNDSYSTEM_SOUND_t* = object
-type
-  struct_orxTRIGGER_t* = object
-type
-  struct_orxFX_t* = object
-type
-  struct_orxBODY_JOINT_t* = object
-type
-  struct_orxANIMPOINTER_t* = object
-type
-  struct_orxANIMSET_LINK_TABLE_t* = object
-type
-  mainInit* = object
-type
   struct_orxPHYSICS_BODY_t* = object
-type
-  struct_orxBANK_t* = object
-type
-  struct_orxBITMAP_t* = object
-type
-  struct_orxTEXT_t* = object
-type
-  struct_orxBODY_t* = object
-type
-  struct_orxANIM_t* = object
-type
-  struct_orxANIMSET_t* = object
-type
-  struct_orxGRAPHIC_t* = object
-type
-  struct_orxFXPOINTER_t* = object
-type
-  struct_orxTIMELINE_t* = object
-type
-  struct_orxFONT_t* = object
 type
   struct_orxBODY_PART_t* = object
 type
-  struct_orxSOUND_SAMPLE_t* = object
+  struct_orxBODY_JOINT_t* = object
 type
-  struct_orxPHYSICS_BODY_JOINT_t* = object
+  struct_orxTEXT_t* = object
+type
+  struct_orxANIMSET_t* = object
+type
+  struct_orxCLOCK_t* = object
+type
+  struct_orxFX_t* = object
+type
+  struct_orxBODY_t* = object
+type
+  struct_orxSOUNDSYSTEM_SOUND_t* = object
 type
   dev* = object
 type
-  struct_orxVIEWPORT_t* = object
+  struct_orxTRIGGER_t* = object
 type
-  struct_orxSOUNDPOINTER_t* = object
-type
-  struct_orxFRAME_t* = object
+  struct_orxPHYSICS_BODY_JOINT_t* = object
 type
   orxU64* = culonglong
   orxU32* = cuint

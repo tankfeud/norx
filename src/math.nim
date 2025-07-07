@@ -4,7 +4,7 @@ when defined(processAnnotations):
   import annotation
   static: processAnnotations(currentSourcePath())
 
-## @copy orx/code/include/math/orxMath.nim:"##  Lerps between two values given a parameter T [0, 1]":81:f3586f5b5bd823aed9dfa0389c8a1993
+## @copy src/orxMath.nim:"##  Lerps between two values given a parameter T [0, 1]":81:f3586f5b5bd823aed9dfa0389c8a1993
 ##  Lerps between two values given a parameter T [0, 1]
 ##  @param[in]   A                               First value (will be selected for T = 0)
 ##  @param[in]   B                               Second value (will be selected for T = 1)
@@ -88,7 +88,7 @@ template orxS2F*(V: untyped): untyped =
   ((orxFLOAT)(V))
 
 
-## @copy orx/code/include/math/orxMath.nim:"proc GetBitCount*(u32Value: orxU32): orxU32 {.inline, cdecl.} =":292:e4512b48dbf676d954b3265ff27e7fb6
+## @copy src/orxMath.nim:"proc GetBitCount*(u32Value: orxU32): orxU32 {.inline, cdecl.} =":292:e4512b48dbf676d954b3265ff27e7fb6
 proc GetBitCount*(u32Value: orxU32): orxU32 {.inline, cdecl.} =
   ## * Inlined functions ***
   ##  Gets the count of bit in an orxU32
