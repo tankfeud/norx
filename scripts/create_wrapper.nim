@@ -46,6 +46,7 @@ proc replace(filePath: string, patterns: seq[(string, string)]) =
     let escapedReplacement = replacement.replace("/", "\\/").replace("&", "\\&")
     sedCmd.add(" -e 's/" & escapedSearch & "/" & escapedReplacement & "/g'")
   sedCmd.add(" " & filePath)
+  echo "Running replace: ", sedCmd
   if execShellCmd(sedCmd) != 0:
     echo "Failed to run sed command: ", sedCmd
     quit(1)
@@ -138,10 +139,19 @@ macro generateImportcCall(): untyped =
 
  
 # Run c2nim on specific headers so that we can later include
-# parts from them in the high level nim files
-c2nim(orxInclude / "object/orxStructure.h", norxRoot / "orxStructure.nim")
-c2nim(orxInclude / "math/orxMath.h", norxRoot / "orxMath.nim", "orxMath_")
-replace(norxRoot / "orxMath.nim", @[("orxASSERT", "assertr")])
+# parts from in the high level nim files.
+#
+#c2nim(orxInclude / "object/orxStructure.h", norxRoot / "orxStructure.nim")
+#
+# Removed all about orxMath.h, it only has "regular" math functions that we
+# instead rely on Nim for.
+#
+#c2nim(orxInclude / "math/orxMath.h", norxRoot / "orxMath.nim", "orxMath_")
+#replace(norxRoot / "orxMath.nim", @[
+#  ("orxASSERT", "assert"),
+#  ("builtin_popcount", "countSetBits"), 
+#  ("builtin_ctzll","countTrailingZeroBits"),
+#  ("builtin_ctz","countTrailingZeroBits"), ("div", "/"), ("orx2F", "orxFLOAT") ])
 
 generateImportcCall()
 

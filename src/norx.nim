@@ -1,6 +1,6 @@
 import os
-import wrapper, math, vector, joystick
-export wrapper, math, vector, joystick
+import basics, wrapper, vector, joystick
+export basics, wrapper, vector, joystick
 
 ## This is the Norx high level wrapper module for the ORX library.
 ## It is generated from the ORX sources using the create_wrapper.nim script.
@@ -121,21 +121,6 @@ const
   ORX_VERSION*: int64 = (((compiler_orxVERSION_MAJOR_private shl ORX_VERSION_SHIFT_MAJOR) and ORX_VERSION_MASK_MAJOR) or
       ((compiler_orxVERSION_MINOR_private shl ORX_VERSION_SHIFT_MINOR) and ORX_VERSION_MASK_MINOR) or
       ((compiler_orxVERSION_BUILD_private shl ORX_VERSION_SHIFT_BUILD) and ORX_VERSION_MASK_BUILD))
-
-## Boolean constants
-const
-  orxFALSE* = 0.orxBOOL
-  orxTRUE* = 1.orxBOOL
-
-converter toBool*(x: orxBOOL): bool = cint(x) != 0
-  ## Converts orxBOOL to bool
-
-converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
-  ## Converts bool to orxBOOL
-
-converter toCstring*(x: string): cstring = x.cstring
-
-converter fromCstring*(x: cstring): string = $x
 
 
 ## From orxEvent.h

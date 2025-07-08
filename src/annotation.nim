@@ -106,14 +106,14 @@ proc processAnnotations*(sourcePath: string) {.compileTime.} =
         let filePath = projectRoot / path
         if not fileExists(filePath):
           warning("Referenced file does not exist: " & path)
-          continue
+          quit(1)
           
         let content = readFile(filePath)
         let markerPos = findMarkerPosition(content, marker)
         
         if markerPos == -1:
           warning("Marker '" & marker & "' not found in " & filePath)
-          continue
+          quit(1)
           
         let lines = content.splitLines()[markerPos ..< (markerPos + lineCount)]
         let contentSlice = lines.join("\n")
