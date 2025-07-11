@@ -3,8 +3,8 @@ Norx is a Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) lib
 
 The wrapper consists of two parts:
 
-* The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is fully automatically generated from the C header files.
-* The high level modules like `norx.nim` created by hand to use Nim style and Nim types and introduces useful Nim templates, converters and macros.
+* The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is fully automatically generated from the C header files. This represents all the functionality in the ORX dynamic library.
+* The higher level files like `norx.nim`, `basics.nim`, `vector.nim` created by hand to use Nim style and Nim types and introduces useful Nim templates, converters and macros.
 
 The `norx.nim` module is the one you should import in your Nim code, it also exports the low level `wrapper.nim` for direct access to ORX functions and types.
 
@@ -44,10 +44,7 @@ These are the "differences" that you should be aware of when you read ORX docume
 * Generally all ORX things are `ptr orxBLABLA` and not wrapped by Norx. If you keep such around, remember that they may disappear on you when ORX deallocates!
 * Passing procs as callbacks to ORX works fine, as long as they are marked with the Nim pragma `{.cdecl.}`, this can be seen in the examples where the update, run, exit, update procs are marked that way.
 * The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`. See `sample2` which does that. Note that this style is NOT the recommended ORX style, since that loop varies depending on platform (Android has some special parts) and normally that loop is in the ORX codebase so if ORX evolves it may change how it is supposed to work.
-
-TODO, how are these handled now with Futhark?
-* Vectors are represented as Nim tuples right now. **We are still considering how to best handle these, and Colors too**.
-* Some ORX structs use anonymous unions, this doesn't really work in Nim so... for example in Vector, which has 3 floats, I created in Nim different types depending on what kind of Vector it is. They are all tuple of three floats however, so should be compatible. Again, this may change.
+* Vectors are represented as Nim tuples right now. This makes them easier to work with in Nim.
 * ORX builds three libraries. `liborx.so[dll|dylib]` is the release version of ORX. `liborxd.so[dll|dylib]` is the debug version. `liborxp.so[dll|dylib]` is the profile version. Norx will pick which one to dynamically load according to:
   * Pass `-d:release` to load the release version. This is the normal way to build a release binary with Nim.
   * Pass `-d:debug` to load the debug version. This is the normal way to build a debug binary with Nim.
@@ -68,6 +65,7 @@ This wrapper was created through the following steps:
 2. Checkout ORX submodule of specific new version and run `setup.sh` to get all dependencies and to generate `orxBuild.h`:
    ```
    cd orx
+   git fetch
    git checkout 1.15
    ./setup.sh
    ```
@@ -75,13 +73,9 @@ This wrapper was created through the following steps:
    ```
    ./build.sh
    ```
-
-
-# norx 0.5.0 - Upgrade to Orx release 1.12
-This was not done by the steps above but manually merging corresponding header changes directly into nim files.
-1. Compare orx header changes, between versions 2020-07 and 1.12 tag.
-2. Added build.nim containing value from orxBuild.h after running setup.sh in Orx from version at git tag 1.12.
-3. Problematic orxColorList.h was referenced by macro in orxVector.h generating list of colors of the orxVECTOR 
-   This is solved by running new script in scripts/crreateNimColors.sh that generates colors in src/norx/colorList.nim
-4. Verifying all official samples works with Orx library compiled from 1.12 tag
+4. The build should fail if some of the parts in ORX has been modified that we have manually "rewritten"
+   in Nim style, like `vector.nim` for example. We us `annotations.nim` to detect via hash if specific parts of the ORX
+   codebase has changed. Futhark captures everything in the library, but inline functions and C defines and macros are not
+   captured this way and that is why we use `annotations.nim`. If the build fails you need to analyze and update Nim code
+   and update the hashes.
 
