@@ -1062,27 +1062,12 @@ type
                                       a2: cstring; a3: orxU32; a4: cstring): orxSTATUS {.
       cdecl.}
   orxMEMORY_TYPE* = enum_orxMEMORY_TYPE_t
-  struct_orxVECTOR_t_anon0_t* {.union, bycopy.} = object
-    fX*: orxFLOAT
-    fRho*: orxFLOAT
-    fR*: orxFLOAT
-    fH*: orxFLOAT
-  struct_orxVECTOR_t_anon1_t* {.union, bycopy.} = object
-    fY*: orxFLOAT
-    fTheta*: orxFLOAT
-    fG*: orxFLOAT
-    fS*: orxFLOAT
-  struct_orxVECTOR_t_anon2_t* {.union, bycopy.} = object
-    fZ*: orxFLOAT
-    fPhi*: orxFLOAT
-    fB*: orxFLOAT
-    fL*: orxFLOAT
-    fV*: orxFLOAT
-  struct_orxVECTOR_t* {.pure, inheritable, bycopy.} = object
-    anon0*: struct_orxVECTOR_t_anon0_t
-    anon1*: struct_orxVECTOR_t_anon1_t
-    anon2*: struct_orxVECTOR_t_anon2_t
-  orxVECTOR* = struct_orxVECTOR_t
+  ## Following 5 types replace the complicated nested union Futhark generates
+  orxVECTOR* {.bycopy.} = tuple[fX: orxFLOAT, fY: orxFLOAT, fZ: orxFLOAT]
+  orxSPVECTOR* {.bycopy.} = tuple[fRho: orxFLOAT, fTheta: orxFLOAT, fPhi: orxFLOAT]
+  orxRGBVECTOR* {.bycopy.} = tuple[fR: orxFLOAT, fG: orxFLOAT, fB: orxFLOAT]
+  orxHSLVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fL: orxFLOAT]
+  orxHSVVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fV: orxFLOAT]
   orxSYSTEM_EVENT* = enum_orxSYSTEM_EVENT_t
   struct_orxSYSTEM_EVENT_PAYLOAD_t_anon0_t_stTouch_t* {.pure, inheritable,
       bycopy.} = object
