@@ -1,4 +1,4 @@
-import os, macros, algorithm, std/dirs, sequtils, futhark, strutils, regex
+import os, macros, algorithm, std/dirs, sequtils, futhark, strutils, regex, times
 
 const orxRoot = currentSourcePath.parentDir.parentDir / "orx"
 const orxInclude = orxRoot / "code" / "include"
@@ -6,7 +6,24 @@ const norxRoot = currentSourcePath.parentDir.parentDir / "src"
 const wrapperPath = norxRoot / "wrapper.nim"
 const scriptPath = currentSourcePath.parentDir
 
-const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline}) 
+const commentRe = re2(r"\s*## Generated based on .+$", {regexMultiline})
+
+var tempDir: string
+
+proc copyToTemp*(filePath: string): string =
+  ## Copy a file to a temporary directory and return the temp file path
+  if tempDir.len == 0:
+    tempDir = getTempDir() / "norx_wrapper_" & $getTime().toUnix()
+    createDir(tempDir)
+  let fileName = extractFilename(filePath)
+  result = tempDir / fileName
+  copyFile(filePath, result)
+
+proc cleanupTemp*() =
+  ## Clean up the temporary directory
+  if tempDir.len > 0 and dirExists(tempDir):
+    removeDir(tempDir)
+    tempDir = "" 
 
 # These names are not unique enough so we protect them so they will keep the module name as prefix
 const protectedNames = ["Setup", "Init", "Exit", "Create", "Update", "Delete", "CreateFromConfig",
@@ -35,21 +52,36 @@ const shortenedModules = [
   "orx" ]
 
 proc replace(filePath: string, patterns: seq[(string, string)]) =
-  ## The replace proc uses sed with:
-  ## - -i flag for in-place editing
-  ## - Multiple -e expressions for batch replacements
-  ## - Proper escaping of forward slashes and ampersands
-  ## - Global replacement (/g flag)
-  var sedCmd = "sed -i"
+  ## Replace patterns in a file
+  var content = readFile(filePath)
   for (search, replacement) in patterns:
-    let escapedSearch = search.replace("/", "\\/").replace("&", "\\&")
-    let escapedReplacement = replacement.replace("/", "\\/").replace("&", "\\&")
-    sedCmd.add(" -e 's/" & escapedSearch & "/" & escapedReplacement & "/g'")
-  sedCmd.add(" " & filePath)
-  echo "Running replace: ", sedCmd
-  if execShellCmd(sedCmd) != 0:
-    echo "Failed to run sed command: ", sedCmd
-    quit(1)
+    content = content.replace(search, replacement)
+  writeFile(filePath, content)
+
+proc replaceLines(filePath: string, startPattern: string, numLines: int, replacement: string = "") =
+  ## Replace numLines starting from the line containing startPattern
+  var lines = readFile(filePath).split('\n')
+  var found = false
+  for i in 0..<lines.len:
+    if startPattern in lines[i]:
+      # Replace the found line and the next numLines-1 lines
+      let endIdx = min(i + numLines - 1, lines.len - 1)
+      if replacement.len > 0:
+        lines[i] = replacement
+        # Remove the subsequent lines
+        for j in countdown(endIdx, i + 1):
+          lines.delete(j)
+      else:
+        # Remove all the lines
+        for j in countdown(endIdx, i):
+          lines.delete(j)
+      found = true
+      break
+  
+  if not found:
+    echo "Warning: Pattern '", startPattern, "' not found in ", filePath
+  
+  writeFile(filePath, lines.join("\n"))
 
 proc c2nim(header: string, outfile: string, prefix: string = "") =
   echo "Running: c2nim --reordercomments --prefix:", prefix, " ", scriptPath / "common.c2nim ", header , " -o:" , outfile
@@ -138,8 +170,6 @@ macro generateImportcCall(): untyped =
     result.add newStrLitNode(header)
 
  
-# Run c2nim on specific headers so that we can later include
-# parts from in the high level nim files.
 #
 #c2nim(orxInclude / "object/orxStructure.h", norxRoot / "orxStructure.nim")
 #
@@ -169,9 +199,50 @@ proc processWrapperFile*(prefix: string) =
   defer: outF.close
   outF.write(prefix & content)
 
+proc prepareFiles() =
+  ## Make initial replacements and c2nim executions.
+  ## NOTE: We do not use these techniques now.
 
-processWrapperFile("""
+  # Ensure temp directory is cleaned up when script exits
+  #defer: cleanupTemp()
+
+  # Run replacements and c2nim on specific headers so that we can later include
+  # parts from in the high level nim files.
+  # var orxVector = copyToTemp(orxInclude / "math/orxVector.h")
+  # replace(orxVector, @[
+  #  ("orxASSERT", "assert"), # Nim assert instead
+  #  ("orxINLINE", "inline"), # Do not confuse c2nim
+  #  ("orxCLAMP", "clamp"),   # Nim clamp instead
+  #  ("orxMIN", "min"),       # Nim min instead
+  #  ("orxMAX", "max"),       # Nim max instead
+  #  ("orxLERP", "lerp"),     # Norx lerp
+  #  ("orxREMAP", "remap"),   # Norx remap
+  #  ("orxDLLAPI", ""),       # Do not confuse c2nim
+  #  ("orxFASTCALL", ""),     # Do not confuse c2nim
+  #  ("orxVector_", ""),      # Strip prefix
+  #  ("orxFLOAT_0", "0.0"),   # 0.0 is fine
+  #  ("orxFLOAT_1", "1.0"),   # 1.0 is fine
+  #  ("2DRotate", "rotate2D"),# Can not start with "2"
+  #  ("2DDot", "dot2D"),      # Can not start with "2"
+  #  ])               
+  #replaceLines(orxVector, "#include \"display/orxColorList.inc\"", 9)
+
+proc postProcess() =
+  ## Final tweaks to wrapper.nim and other files
+  replaceLines(norxRoot / "wrapper.nim", "struct_orxVECTOR_t_anon0_t* {.union, bycopy.} = object", 21,
+  """
+  ## Following 5 types replace the complicated nested union Futhark generates
+  orxVECTOR* {.bycopy.} = tuple[fX: orxFLOAT, fY: orxFLOAT, fZ: orxFLOAT]
+  orxSPVECTOR* {.bycopy.} = tuple[fRho: orxFLOAT, fTheta: orxFLOAT, fPhi: orxFLOAT]
+  orxRGBVECTOR* {.bycopy.} = tuple[fR: orxFLOAT, fG: orxFLOAT, fB: orxFLOAT]
+  orxHSLVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fL: orxFLOAT]
+  orxHSVVECTOR* {.bycopy.} = tuple[fH: orxFLOAT, fS: orxFLOAT, fV: orxFLOAT]""")
+
+when isMainModule:
+  #prepareFiles()
+  processWrapperFile("""
 # This was generated by futhark, and should not be edited directly.
 
 ## This file should not be imported/included directly, instead import `norx`.
 """)
+  postProcess()
