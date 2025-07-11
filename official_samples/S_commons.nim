@@ -3,14 +3,14 @@
    Thus, readability should be improved, as sample code will be centered on new notions.
 ]#
 
-import norx/[typ, input]
+import norx
 import strformat
 
 proc run*(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS #by default, won't quit
-  if (input.isActive("Quit")):
+  result = STATUS_SUCCESS #by default, won't quit
+  if (isActive("Quit")):
     # Updates result
-    result = orxSTATUS_FAILURE
+    result = STATUS_FAILURE
 
 proc exit*() {.cdecl.} =
   # We're a bit lazy here so we let orx clean all our mess! :)
@@ -24,7 +24,7 @@ proc get_input_name*(input_name: string) :cstring =
   var eMode: orxINPUT_MODE
 
   var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == orxSTATUS_SUCCESS:
+  if is_ok == STATUS_SUCCESS:
     result = getBindingName( eType, eID, eMode)
     #echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
   else:

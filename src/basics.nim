@@ -6,6 +6,10 @@ when defined(processAnnotations):
 
   static: processAnnotations(currentSourcePath())
 
+# Hack to get orxLOG to compile
+proc orxLOG*(s: string) =
+  echo(s)
+
 ## Boolean constants
 const
   orxFALSE* = 0.orxBOOL

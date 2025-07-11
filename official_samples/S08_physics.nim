@@ -133,13 +133,13 @@ proc init() :orxSTATUS {.cdecl.} =
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
   
   # and get the camera attached to this viewport
   cam = getCamera( vp);
 
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   ## the event handler (for managing the bump of the boxes)
   discard addHandler( orxEVENT_TYPE_PHYSICS, EventHandler);

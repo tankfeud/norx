@@ -88,12 +88,12 @@ proc load_config() :orxSTATUS =
 
   # clear all config data
   result = config.clear( nil)
-  if result != orxSTATUS_SUCCESS:
+  if result != STATUS_SUCCESS:
     echo "⚠  problem when deleting config !"
 
   # loads main config and selects tutorial section
   result = config.load( config.getMainFileName() )
-  if result != orxSTATUS_SUCCESS:
+  if result != STATUS_SUCCESS:
     echo fmt"⚠  problem when loading {config.getMainFileName()} !"
 
   result = config.selectSection( "Tutorial")
@@ -106,7 +106,7 @@ proc load_config() :orxSTATUS =
     # Can load it?
     echo fmt"try to load {config_file}"
     result = config.load( config_file)
-    if result == orxSTATUS_SUCCESS:
+    if result == STATUS_SUCCESS:
       # pushes tutorial section
       discard config.pushSection( "Tutorial")
 
@@ -139,7 +139,7 @@ proc init() :orxSTATUS {.cdecl.} =
 # This time, we don't have callback function , called at a certain rate (Hz) by a clock.
 # The I/O polling will be done entirely in the mainloop.
 proc mainloop() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   if hasBeenActivated( "NextConfig"):
     configID.inc
     if configID == config.getListCount( "ConfigList"):
@@ -153,7 +153,7 @@ proc mainloop() :orxSTATUS {.cdecl.} =
     result = load_config()
 
   if hasBeenActivated( "Quit"):
-    result = orxSTATUS_FAILURE
+    result = STATUS_FAILURE
 
 
 

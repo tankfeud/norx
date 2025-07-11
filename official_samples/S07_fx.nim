@@ -105,7 +105,7 @@ proc display_hints() =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
   if event.eType == orxEVENT_TYPE_INPUT:
     # the input handling part, where we only display which keys have been used for every active input.
@@ -175,22 +175,22 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   display_hints()
 
   # create viewport
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
 
   # the soldier, the box.
   soldier = objectCreateFromConfig( "Soldier")
   box = objectCreateFromConfig( "Box")
 
   # Gets the main clock, and register our update callback
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   # Registers event handler for the sound
   result = addHandler( orxEVENT_TYPE_FX, EventHandler)

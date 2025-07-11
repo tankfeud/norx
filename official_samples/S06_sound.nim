@@ -89,7 +89,7 @@ proc display_hints() =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
   if event.hRecipient == soldier:
     # Gets event payload (payload has type « pointer », must be casted)
@@ -109,7 +109,7 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
       else:
         # unknown event
         echo "unknown event ", $orxEVENT_TYPE(event.eID)
-        result = orxSTATUS_FAILURE
+        result = STATUS_FAILURE
 
 
 
@@ -160,21 +160,21 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   display_hints()
 
   # create viewport
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
 
   # our brave little soldier, always here.
   soldier = objectCreateFromConfig( "Soldier")
 
   # Gets the main clock, and register our update callback
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   # Registers event handler for the sound
   result = addHandler( orxEVENT_TYPE_SOUND, EventHandler)

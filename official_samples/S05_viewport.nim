@@ -64,7 +64,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display]
+import norx
 
 # the shared functions
 import S_commons
@@ -155,27 +155,27 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   ### camera control ###
   var camera:ptr orxCAMERA = viewports_list[0].getCamera()
-  if input.isActive("CameraRotateLeft"):
-    discard camera.setRotation( camera.getRotation() + orx2F(-4.0f) * clockInfo.fDT )
-  if input.isActive("CameraRotateRight"):
-    discard camera.setRotation( camera.getRotation() - orx2F(-4.0f) * clockInfo.fDT )
+  if isActive("CameraRotateLeft"):
+    discard camera.setRotation( camera.getRotation() + -4.0f * clockInfo.fDT )
+  if isActive("CameraRotateRight"):
+    discard camera.setRotation( camera.getRotation() - -4.0f * clockInfo.fDT )
 
-  if input.isActive("CameraZoomIn"):
-    discard camera.setZoom( camera.getZoom() * orx2F( 1.02f) )
-  if input.isActive("CameraZoomOut"):
-    discard camera.setZoom( camera.getZoom() * orx2F( 0.98f) )
+  if isActive("CameraZoomIn"):
+    discard camera.setZoom( camera.getZoom() *  1.02f)
+  if isActive("CameraZoomOut"):
+    discard camera.setZoom( camera.getZoom() *  0.98f)
 
   var vDummy:orxVECTOR = (0f,0f,0f) # camera.getPosition needs an initialized orxVECTOR as param.
   var cam_pos:ptr orxVECTOR
   cam_pos = camera.getPosition( addr vDummy)
 
-  if input.isActive("CameraLeft"):
+  if isActive("CameraLeft"):
     cam_pos.fX -= orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraRight"):
+  if isActive("CameraRight"):
     cam_pos.fX += orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraUp"):
+  if isActive("CameraUp"):
     cam_pos.fY -= orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraDown"):
+  if isActive("CameraDown"):
     cam_pos.fY += orx2F(500) * clockInfo.fDT;
 
   # we need to update the camera position to see changes
@@ -188,10 +188,10 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vp_width, vp_height:orxFLOAT
   getRelativeSize( viewports_list[0], addr vp_width, addr vp_height)
 
-  if input.isActive("ViewportScaleUp"):
+  if isActive("ViewportScaleUp"):
     vp_width *= orx2F( 1.02f);
     vp_height*= orx2F( 1.02f);
-  if input.isActive("ViewportScaleDown"):
+  if isActive("ViewportScaleDown"):
     vp_width *= orx2F( 0.98f);
     vp_height *= orx2F( 0.98f);
   # update viewport size.
@@ -200,13 +200,13 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   # viewport position
   var vp_x, vp_y:orxFLOAT
   getPosition( viewports_list[0], addr vp_x, addr vp_y)
-  if input.isActive("ViewportRight"):
+  if isActive("ViewportRight"):
     vp_x += orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportLeft"):
+  if isActive("ViewportLeft"):
     vp_x -= orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportDown"):
+  if isActive("ViewportDown"):
     vp_y += orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportUp"):
+  if isActive("ViewportUp"):
     vp_y -= orx2F(500) * clockInfo.fDT
   
   setPosition( viewports_list[0], vp_x, vp_y)
@@ -259,7 +259,7 @@ proc init() :orxSTATUS {.cdecl.} =
     if viewports_list[3-i].isNil:
       # in case of error, we need to adjust the Viewport «real» name.
       echo &"couldn't create viewport {4-i}"
-      return orxSTATUS_FAILURE
+      return STATUS_FAILURE
 
   # BTW, since the original tutorial was written, there has been a new function
   # called « orxViewport_Get » (C API), and « viewportGet » (Nim API).
@@ -272,11 +272,11 @@ proc init() :orxSTATUS {.cdecl.} =
   soldier = objectCreateFromConfig( "Soldier")
 
   # Gets the main clock
-  var mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+  var mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
 
   # Registers our update callback
-  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
-  orxSTATUS_SUCCESS
+  status = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
+  STATUS_SUCCESS
 
 
 proc Main =

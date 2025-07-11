@@ -92,7 +92,7 @@ proc clear_all_lights() :orxSTATUS =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
   # set shader param ?
   if event.eType == orxEVENT_TYPE_SHADER and event.eID == ord(orxSHADER_EVENT_SET_PARAM):
@@ -143,7 +143,7 @@ proc display_hints() =
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   ## usual things
   display_hints()
 
@@ -158,7 +158,7 @@ proc init() :orxSTATUS {.cdecl.} =
   vp = viewportCreateFromConfig( "Viewport")
 
   result = clear_all_lights()
-  if result == orxSTATUS_FAILURE:
+  if result == STATUS_FAILURE:
     echo "⚠  problem when calling clear_all_lights()"
 
 
@@ -173,7 +173,7 @@ proc init() :orxSTATUS {.cdecl.} =
 # This time, we don't have callback function , called at a certain rate (Hz) by a clock.
 # The I/O polling will be done entirely in the mainloop.
 proc mainloop() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
   # current light position is the mouse position
   discard mouse.getPosition( addr light_list[light_index].pos)
@@ -196,7 +196,7 @@ proc mainloop() :orxSTATUS {.cdecl.} =
     light_list[light_index].color.fAlpha = 1.5f - light_list[light_index].color.fAlpha
 
   if hasBeenActivated( "Quit"):
-    result = orxSTATUS_FAILURE
+    result = STATUS_FAILURE
 
 
 
