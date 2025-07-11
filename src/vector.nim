@@ -347,17 +347,17 @@ proc cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): p
   pvRes
 
 # Vector constructor templates updated for tuple-based orxVECTOR type
-template orxVECTOR*(x, y, z: untyped): orxVECTOR =
+template newVECTOR*(x, y, z: untyped): orxVECTOR =
   (fX: x.orxFLOAT, fY: y.orxFLOAT, fZ: z.orxFLOAT)
 
-template orxSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
+template newSeqSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
   (fX: rho.orxFLOAT, fY: theta.orxFLOAT, fZ: phi.orxFLOAT)
 
-template orxRGBVECTOR*(r, g, b: untyped): orxRGBVECTOR =
+template newRGBVECTOR*(r, g, b: untyped): orxRGBVECTOR =
   (fX: r.orxFLOAT, fY: g.orxFLOAT, fZ: b.orxFLOAT)
 
-template orxHSLVECTOR*(h, s, l: untyped): orxHSLVECTOR =
+template newHSLVECTOR*(h, s, l: untyped): orxHSLVECTOR =
   (fX: h.orxFLOAT, fY: s.orxFLOAT, fZ: l.orxFLOAT)
 
-template orxHSVVECTOR*(h, s, v: untyped): orxHSVVECTOR =
+template newHSVVECTOR*(h, s, v: untyped): orxHSVVECTOR =
   (fX: h.orxFLOAT, fY: s.orxFLOAT, fZ: v.orxFLOAT)
