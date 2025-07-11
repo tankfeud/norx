@@ -5,7 +5,7 @@ when defined(processAnnotations):
 
   static: processAnnotations(currentSourcePath())
 
-## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":870:
+## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":870:161691da497b699536268fb4fa43ec4f
 
 proc set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.inline, cdecl.} =
   ## Sets vector XYZ values

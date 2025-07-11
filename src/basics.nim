@@ -26,7 +26,7 @@ converter toCstring*(x: string): cstring = x.cstring
 converter fromCstring*(x: cstring): string = $x
 
 
-## @file orx/code/include/math/orxMath.h:"//** Lerps between two":18:
+## @file orx/code/include/math/orxMath.h:"/** Lerps between two":18:680b439acca9c9c662595407a702b823
 
 template lerp*(a, b, t: untyped): untyped =
   ## Lerps between two values given a coefficient t [0, 1]
@@ -44,7 +44,7 @@ template remap*(A1, B1, A2, B2, V: untyped): untyped =
   (((V) - (A1)) / ((B1) - (A1)) * ((B2) - (A2)) + (A2))
 
 ## Math constants
-## @file orx/code/include/math/orxMath.h:"/*** Math Definitions ***/":14:
+## @file orx/code/include/math/orxMath.h:"/*** Math Definitions ***/":14:bde650962dd25e8c65265ee07a174eb5
 const
   PI* = 3.141592654'f32
   PI2* = 6.283185307'f32           # 2 * PI
