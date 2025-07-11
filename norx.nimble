@@ -1,5 +1,5 @@
 # Package
-version       = "0.6.0"
+version       = "0.7.0"
 author        = "Göran Krampe"
 description   = "A wrapper of the ORX 2.5D game engine"
 license       = "Zlib"
