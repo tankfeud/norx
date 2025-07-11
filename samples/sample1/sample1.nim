@@ -5,7 +5,7 @@ import norx
 # We need cdecl for all functions, as they are called from C code
 {.push cdecl.}
 
-proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) =
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):

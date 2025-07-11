@@ -61,7 +61,7 @@ proc bootstrap(): orxSTATUS {.cdecl.} =
 
 when isMainModule:
   # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = orxConfig_SetBootstrap(bootstrap)
+  var status = setBootstrap(bootstrap)
   if status == STATUS_SUCCESS:
     echo "Bootstrap was set"
 

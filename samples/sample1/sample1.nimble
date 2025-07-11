@@ -8,4 +8,4 @@ bin           = @["sample1"]
 
 # Dependencies
 requires "nim >= 2.0.10"
-requires "norx"
+requires "norx >= 0.7.0"

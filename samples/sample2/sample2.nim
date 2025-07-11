@@ -5,7 +5,7 @@
 import os
 import norx
 
-proc update(clockInfo: ptr struct_orxCLOCK_INFO_t, context: pointer) {.cdecl.} =
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ## Update function registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):

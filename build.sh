@@ -55,10 +55,6 @@ if ! nim c -d:processAnnotations -d:errorOnAnnotationChange src/norx.nim; then
     exit 1
 fi
 
-echo "Removing temp files"
-#rm "$DIR/src/orxMath.nim"
-#rm "$DIR/src/orxStructure.nim"
-
 if $gendocs; then
     # Generate documentation if wrapper.nim exists
     if [ -f ./src/wrapper.nim ]; then
