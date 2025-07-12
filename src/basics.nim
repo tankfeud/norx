@@ -61,38 +61,6 @@ const
   RAD_TO_DEG* = 57.29577951'f32    # 180 / PI
 
 
-## @file orx/code/include/display/orxDisplay.h:"#define orx2RGBA(R, G, B, A)":10:1aaa54d3a45275ae7f0b700b1e9faec7
-template orx2RGBA*(r, g, b, a: untyped): orxRGBA =
-  ## Creates RGBA color value from components  
-  result.anon0.anon0.u8R = orxU8(r)
-  result.anon0.anon0.u8G = orxU8(g)
-  result.anon0.anon0.u8B = orxU8(b)
-  result.anon0.anon0.u8A = orxU8(a)
-
-template rgbaR*(rgba: orxRGBA): orxU32 =
-  ## Extracts red component from RGBA
-  orxU32(rgba) and 0xFF
-
-template rgbaG*(rgba: orxRGBA): orxU32 =
-  ## Extracts green component from RGBA
-  (orxU32(rgba) shr 8) and 0xFF
-
-template rgbaB*(rgba: orxRGBA): orxU32 =
-  ## Extracts blue component from RGBA
-  (orxU32(rgba) shr 16) and 0xFF
-
-template rgbaA*(rgba: orxRGBA): orxU32 =
-  ## Extracts alpha component from RGBA
-  (orxU32(rgba) shr 24) and 0xFF
-
-const colorNormalizer* = 1.0f / 255.0f
-  ## Normalizes color values
-
-const colorDenormalizer* = 255.0f
-  ## Denormalizes color values
-
-
-
 
 ## @file orx/code/include/base/orxDecl.h:"#define orxFLAG_TEST(X, F)":15:188929753103752d202743776aee3429
 template flagTest*(x, f: untyped): bool =

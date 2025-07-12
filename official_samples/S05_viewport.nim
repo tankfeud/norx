@@ -143,16 +143,10 @@ proc getScreenPosition*(pvWorldPosition: ptr orxVECTOR;
   ##  @return      orxVECTOR if found (can be off-screen), nil otherwise
 ]#
 
-  var color: orxRGBA
-  color.anon0.anon0.u8R = 0
-  color.anon0.anon0.u8G = 0
-  color.anon0.anon0.u8B = 0
-  color.anon0.anon0.u8A = 255
-  var screen_pos:ptr orxVECTOR
-  var spos_dummy:orxVECTOR = newVECTOR(0.0, 0.0, 0.0)
-  screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
+  let color = orx2RGBA(0,0,0,255)
+  var spos_dummy = newVECTOR(0.0, 0.0, 0.0)
+  var screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
   discard drawCircle( screen_pos, 10.0f, color, true)
-
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =

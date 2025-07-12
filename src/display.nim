@@ -6,6 +6,35 @@ when defined(processAnnotations):
 
   static: processAnnotations(currentSourcePath())
 
+
+## @file orx/code/include/display/orxDisplay.h:"#define orx2RGBA(R, G, B, A)":10:1aaa54d3a45275ae7f0b700b1e9faec7
+template orx2RGBA*(r, g, b, a: untyped): orxRGBA =
+  ## Creates RGBA color value from components  
+  rgbaSet(r, g, b, a)
+
+template rgbaR*(rgba: orxRGBA): orxU32 =
+  ## Extracts red component from RGBA
+  orxU32(rgba) and 0xFF
+
+template rgbaG*(rgba: orxRGBA): orxU32 =
+  ## Extracts green component from RGBA
+  (orxU32(rgba) shr 8) and 0xFF
+
+template rgbaB*(rgba: orxRGBA): orxU32 =
+  ## Extracts blue component from RGBA
+  (orxU32(rgba) shr 16) and 0xFF
+
+template rgbaA*(rgba: orxRGBA): orxU32 =
+  ## Extracts alpha component from RGBA
+  (orxU32(rgba) shr 24) and 0xFF
+
+const colorNormalizer* = 1.0f / 255.0f
+  ## Normalizes color values
+
+const colorDenormalizer* = 255.0f
+  ## Denormalizes color values
+
+
 ## @file orx/code/include/display/orxDisplay.h:"/** Sets all components of an orxRGBA":368:1aaa54d3a45275ae7f0b700b1e9faec7
 
 proc rgbaSet*(r: orxU8, g: orxU8, b: orxU8, a: orxU8): orxRGBA {.inline.} =
