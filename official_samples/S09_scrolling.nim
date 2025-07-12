@@ -61,7 +61,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display]
+import norx
 
 # the shared functions
 import S_commons
@@ -94,7 +94,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     orxlog( "Error while pushing section.")
 
   # update scroll speed
-  mulf( addr vScrollSpeed, addr vScrollSpeed, clockInfo.fDT)
+  discard mulf( addr vScrollSpeed, addr vScrollSpeed, clockInfo.fDT)
   
   if isActive("CameraLeft"): vMove.fX -= vScrollSpeed.fX
   if isActive("CameraRight"): vMove.fX += vScrollSpeed.fX

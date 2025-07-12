@@ -56,7 +56,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, locale]
+import norx
 
 # the shared functions
 import S_commons
@@ -65,7 +65,7 @@ var language_index:orxU32 = 0
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
   result = STATUS_SUCCESS
-  if event.eID == ord(orxLOCALE_EVENT_SELECT_LANGUAGE):
+  if event.eID == ord(LOCALE_EVENT_SELECT_LANGUAGE):
     var payload = cast[ptr orxLOCALE_EVENT_PAYLOAD]( event.pstPayload)
     orxLOG( fmt"Switching to {payload.zLanguage}")
   return result
@@ -84,7 +84,7 @@ proc display_hints() =
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = addHandler( orxEVENT_TYPE_LOCALE, EventHandler)
+  result = addHandler( EVENT_TYPE_LOCALE, EventHandler)
 
   if result == STATUS_SUCCESS:
     # create logo object and displays child
@@ -117,7 +117,7 @@ proc mainloop() :orxSTATUS {.cdecl.} =
       language_index = 0
 
     # select it
-    discard selectLanguage( getLanguage( language_index))
+    discard selectLanguage( getLanguage( language_index), cast[cstring](NULL))
 
   if isActive("Quit"):
     orxLOG( "Quit action triggered, exiting!")

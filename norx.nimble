@@ -13,3 +13,8 @@ requires "jnim"
 # These are only used during development
 requires "checksums"
 requires "regex"
+
+task samples, "Check that all samples compile":
+  # Check official samples
+  echo "Checking official_samples..."
+  exec "find official_samples -name '*.nim' -exec nim check {} \\;"

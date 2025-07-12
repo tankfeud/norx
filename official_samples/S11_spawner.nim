@@ -50,7 +50,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, structure]
+import norx
 
 # the shared functions
 import S_commons
@@ -75,50 +75,50 @@ proc load_config() :orxSTATUS =
 
   # begin by deleting current scene
   if current_scene != nil:
-    discard obj.delete( current_scene)
+    discard objectDelete( current_scene)
     echo fmt"scene {current_scene.repr} has been deleted."
     current_scene = nil
 
   # and then destroy all viewports
-  var orx_struct:ptr orxSTRUCTURE = getFirst( orxSTRUCTURE_ID_VIEWPORT)
+  var orx_struct:ptr orxSTRUCTURE = getFirst( STRUCTURE_ID_VIEWPORT)
   while orx_struct != nil:
-    result = viewport.delete( cast[ptr orxVIEWPORT]( orx_struct) )
+    result = viewportDelete( cast[ptr orxVIEWPORT]( orx_struct) )
     echo fmt"viewport {orx_struct.u64GUID} has been deleted."
-    orx_struct = getFirst( orxSTRUCTURE_ID_VIEWPORT)
+    orx_struct = getFirst( STRUCTURE_ID_VIEWPORT)
 
   # clear all config data
-  result = config.clear( nil)
+  result = clear(cast[orxCONFIG_CLEAR_FUNCTION](NULL))
   if result != STATUS_SUCCESS:
     echo "⚠  problem when deleting config !"
 
   # loads main config and selects tutorial section
-  result = config.load( config.getMainFileName() )
+  result = configLoad( getMainFileName() )
   if result != STATUS_SUCCESS:
-    echo fmt"⚠  problem when loading {config.getMainFileName()} !"
+    echo fmt"⚠  problem when loading {getMainFileName()} !"
 
-  result = config.selectSection( "Tutorial")
+  result = selectSection( "Tutorial")
 
   # Is current ID valid?
-  if configID < config.getListCount( "ConfigList"):
+  if configID < getListCount( "ConfigList"):
     # gets config file
-    var config_file = config.getListString( "ConfigList", configID)
+    var config_file = getListString( "ConfigList", configID)
 
     # Can load it?
     echo fmt"try to load {config_file}"
-    result = config.load( config_file)
+    result = configLoad( config_file)
     if result == STATUS_SUCCESS:
       # pushes tutorial section
-      discard config.pushSection( "Tutorial")
+      discard pushSection( "Tutorial")
 
       # for all defined viewports
-      for i in 0..<config.getListCount( "ViewportList"):
+      for i in 0..<getListCount( "ViewportList"):
         # Creates it (we are not interested by the viewport pointer returned)
-        discard viewportCreateFromConfig( config.getListString( "ViewportList", i) )
+        discard viewportCreateFromConfig( getListString( "ViewportList", i) )
 
       # finally, creates our scene
       current_scene = objectCreateFromConfig( "Scene")
 
-      discard config.popSection()
+      discard popSection()
       echo fmt"finished loading {config_file}"
 
     else:
@@ -142,14 +142,14 @@ proc mainloop() :orxSTATUS {.cdecl.} =
   result = STATUS_SUCCESS
   if hasBeenActivated( "NextConfig"):
     configID.inc
-    if configID == config.getListCount( "ConfigList"):
+    if configID == getListCount( "ConfigList"):
       configID = 0
     result = load_config()
 
   if hasBeenActivated( "PreviousConfig"):
     configID.dec
     if configID < 0:
-      configID = config.getListCount( "ConfigList") - 1
+      configID = getListCount( "ConfigList") - 1
     result = load_config()
 
   if hasBeenActivated( "Quit"):

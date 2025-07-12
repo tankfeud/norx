@@ -143,9 +143,13 @@ proc getScreenPosition*(pvWorldPosition: ptr orxVECTOR;
   ##  @return      orxVECTOR if found (can be off-screen), nil otherwise
 ]#
 
-  let color = orx2RGBA( 0,0,0, 255)
+  var color: orxRGBA
+  color.anon0.anon0.u8R = 0
+  color.anon0.anon0.u8G = 0
+  color.anon0.anon0.u8B = 0
+  color.anon0.anon0.u8A = 255
   var screen_pos:ptr orxVECTOR
-  var spos_dummy:orxVECTOR = (0f,0f,0f)
+  var spos_dummy:orxVECTOR = newVECTOR(0.0, 0.0, 0.0)
   screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
   discard drawCircle( screen_pos, 10.0f, color, true)
 
@@ -170,13 +174,13 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   cam_pos = camera.getPosition( addr vDummy)
 
   if isActive("CameraLeft"):
-    cam_pos.fX -= orx2F(500) * clockInfo.fDT;
+    cam_pos.fX -= 500.0 * clockInfo.fDT;
   if isActive("CameraRight"):
-    cam_pos.fX += orx2F(500) * clockInfo.fDT;
+    cam_pos.fX += 500.0 * clockInfo.fDT;
   if isActive("CameraUp"):
-    cam_pos.fY -= orx2F(500) * clockInfo.fDT;
+    cam_pos.fY -= 500.0 * clockInfo.fDT;
   if isActive("CameraDown"):
-    cam_pos.fY += orx2F(500) * clockInfo.fDT;
+    cam_pos.fY += 500.0 * clockInfo.fDT;
 
   # we need to update the camera position to see changes
   discard camera.setPosition( cam_pos)
@@ -189,11 +193,11 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   getRelativeSize( viewports_list[0], addr vp_width, addr vp_height)
 
   if isActive("ViewportScaleUp"):
-    vp_width *= orx2F( 1.02f);
-    vp_height*= orx2F( 1.02f);
+    vp_width *= 1.02;
+    vp_height *= 1.02;
   if isActive("ViewportScaleDown"):
-    vp_width *= orx2F( 0.98f);
-    vp_height *= orx2F( 0.98f);
+    vp_width *= 0.98;
+    vp_height *= 0.98;
   # update viewport size.
   discard setRelativeSize( viewports_list[0], vp_width, vp_height)
 
@@ -201,13 +205,13 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vp_x, vp_y:orxFLOAT
   getPosition( viewports_list[0], addr vp_x, addr vp_y)
   if isActive("ViewportRight"):
-    vp_x += orx2F(500) * clockInfo.fDT
+    vp_x += 500.0 * clockInfo.fDT
   if isActive("ViewportLeft"):
-    vp_x -= orx2F(500) * clockInfo.fDT
+    vp_x -= 500.0 * clockInfo.fDT
   if isActive("ViewportDown"):
-    vp_y += orx2F(500) * clockInfo.fDT
+    vp_y += 500.0 * clockInfo.fDT
   if isActive("ViewportUp"):
-    vp_y -= orx2F(500) * clockInfo.fDT
+    vp_y -= 500.0 * clockInfo.fDT
   
   setPosition( viewports_list[0], vp_x, vp_y)
 

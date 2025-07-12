@@ -63,8 +63,11 @@ const
 
 ## @file orx/code/include/display/orxDisplay.h:"#define orx2RGBA(R, G, B, A)":10:1aaa54d3a45275ae7f0b700b1e9faec7
 template orx2RGBA*(r, g, b, a: untyped): orxRGBA =
-  ## Creates RGBA color value from components
-  orxRGBA(((orxU32(a) and 0xFF) shl 24) or ((orxU32(b) and 0xFF) shl 16) or ((orxU32(g) and 0xFF) shl 8) or (orxU32(r) and 0xFF))
+  ## Creates RGBA color value from components  
+  result.anon0.anon0.u8R = orxU8(r)
+  result.anon0.anon0.u8G = orxU8(g)
+  result.anon0.anon0.u8B = orxU8(b)
+  result.anon0.anon0.u8A = orxU8(a)
 
 template rgbaR*(rgba: orxRGBA): orxU32 =
   ## Extracts red component from RGBA
@@ -87,6 +90,8 @@ const colorNormalizer* = 1.0f / 255.0f
 
 const colorDenormalizer* = 255.0f
   ## Denormalizes color values
+
+
 
 
 ## @file orx/code/include/base/orxDecl.h:"#define orxFLAG_TEST(X, F)":15:188929753103752d202743776aee3429
