@@ -5,7 +5,7 @@ when defined(processAnnotations):
 
   static: processAnnotations(currentSourcePath())
 
-## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":870:161691da497b699536268fb4fa43ec4f
+## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":891:1571c6f58bc4b8ca144d540649ac7bf1
 
 proc set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.inline, cdecl.} =
   ## Sets vector XYZ values
@@ -94,6 +94,16 @@ proc modv*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): pt
   pvRes.fX = pvOp1.fX mod pvOp2.fX
   pvRes.fY = pvOp1.fY mod pvOp2.fY
   pvRes.fZ = pvOp1.fZ mod pvOp2.fZ
+  pvRes
+
+proc powv*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR {.inline, cdecl.} =
+  ## Gets the power of a vector by another vector and stores result in a third one
+  assert(pvRes != nil)
+  assert(pvOp1 != nil)
+  assert(pvOp2 != nil)
+  pvRes.fX = pow(pvOp1.fX, pvOp2.fX)
+  pvRes.fY = pow(pvOp1.fY, pvOp2.fY)
+  pvRes.fZ = pow(pvOp1.fZ, pvOp2.fZ)
   pvRes
 
 proc lerpv*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR; fOp: orxFLOAT): ptr orxVECTOR {.inline, cdecl.} =

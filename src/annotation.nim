@@ -100,20 +100,20 @@ proc processAnnotations*(sourcePath: string) {.compileTime.} =
       
       if isFileLine or isCopyLine:
         let (path, marker, lineCount, previousHash) = parseFileAnnotation(line)
-        if path == "": continue
+        if path == "":
+          inc i
+          continue
         
         # Read and process the referenced file
         let filePath = projectRoot / path
         if not fileExists(filePath):
-          warning("Referenced file does not exist: " & path)
-          quit(1)
+          error("Referenced file does not exist: " & path)
           
         let content = readFile(filePath)
         let markerPos = findMarkerPosition(content, marker)
         
         if markerPos == -1:
-          warning("Marker '" & marker & "' not found in " & filePath)
-          quit(1)
+          error("Marker '" & marker & "' not found in " & filePath)
           
         let lines = content.splitLines()[markerPos ..< (markerPos + lineCount)]
         let contentSlice = lines.join("\n")

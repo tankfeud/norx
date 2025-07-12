@@ -59,3 +59,117 @@ const
   TINY_EPSILON* = 1.0e-037'f32     # Tiny epsilon
   DEG_TO_RAD* = 0.017453293'f32    # PI / 180
   RAD_TO_DEG* = 57.29577951'f32    # 180 / PI
+
+
+## @file orx/code/include/display/orxDisplay.h:"#define orx2RGBA(R, G, B, A)":10:1aaa54d3a45275ae7f0b700b1e9faec7
+template orx2RGBA*(r, g, b, a: untyped): orxRGBA =
+  ## Creates RGBA color value from components
+  orxRGBA(((orxU32(a) and 0xFF) shl 24) or ((orxU32(b) and 0xFF) shl 16) or ((orxU32(g) and 0xFF) shl 8) or (orxU32(r) and 0xFF))
+
+template rgbaR*(rgba: orxRGBA): orxU32 =
+  ## Extracts red component from RGBA
+  orxU32(rgba) and 0xFF
+
+template rgbaG*(rgba: orxRGBA): orxU32 =
+  ## Extracts green component from RGBA
+  (orxU32(rgba) shr 8) and 0xFF
+
+template rgbaB*(rgba: orxRGBA): orxU32 =
+  ## Extracts blue component from RGBA
+  (orxU32(rgba) shr 16) and 0xFF
+
+template rgbaA*(rgba: orxRGBA): orxU32 =
+  ## Extracts alpha component from RGBA
+  (orxU32(rgba) shr 24) and 0xFF
+
+const colorNormalizer* = 1.0f / 255.0f
+  ## Normalizes color values
+
+const colorDenormalizer* = 255.0f
+  ## Denormalizes color values
+
+
+## @file orx/code/include/base/orxDecl.h:"#define orxFLAG_TEST(X, F)":15:188929753103752d202743776aee3429
+template flagTest*(x, f: untyped): bool =
+  ## Tests any flags
+  ((x) and (f)) != 0
+
+template flagTestAll*(x, f: untyped): bool =
+  ## Tests all flags
+  ((x) and (f)) == (f)
+
+template flagGet*(x, m: untyped): untyped =
+  ## Gets masked flags
+  ((x) and (m))
+
+template flagSet*(x, a, r: untyped): untyped =
+  ## Sets/unsets flags
+  ((x) or (a)) and (not (r))
+
+template flagSwap*(x, s: untyped): untyped =
+  ## Swaps flags
+  ((x) xor (s))
+
+template align*(value, blockSize: untyped): untyped =
+  ## Memory alignment
+  (((value) + (blockSize) - 1) and (not ((blockSize) - 1)))
+
+template arrayGetItemCount*(arr: untyped): int =
+  ## Gets array element count
+  (sizeof(arr) div sizeof(arr[0]))
+
+
+## @file orx/code/include/utils/orxTree.h:"/** Gets a node tree":90:005429c555f2327224e897d719506f79
+proc getTree*(node: ptr orxTREE_NODE): ptr orxTREE {.inline.} =
+  ## Gets node's tree
+  if node != nil: node.pstTree else: nil
+
+proc getParent*(node: ptr orxTREE_NODE): ptr orxTREE_NODE {.inline.} =
+  ## Gets parent node
+  if node != nil and node.pstTree != nil: node.pstParent else: nil
+
+proc getChild*(node: ptr orxTREE_NODE): ptr orxTREE_NODE {.inline.} =
+  ## Gets first child node
+  if node != nil and node.pstTree != nil: node.pstChild else: nil
+
+proc getSibling*(node: ptr orxTREE_NODE): ptr orxTREE_NODE {.inline.} =
+  ## Gets next sibling node
+  if node != nil and node.pstTree != nil: node.pstSibling else: nil
+
+proc getPrevious*(node: ptr orxTREE_NODE): ptr orxTREE_NODE {.inline.} =
+  ## Gets previous sibling node
+  if node != nil and node.pstTree != nil: node.pstPrevious else: nil
+
+proc getRoot*(tree: ptr orxTREE): ptr orxTREE_NODE {.inline.} =
+  ## Gets tree root node
+  if tree != nil: tree.pstRoot else: nil
+
+proc getCount*(tree: ptr orxTREE): orxU32 {.inline.} =
+  ## Gets tree node count
+  if tree != nil: tree.u32Count else: 0
+
+
+## @file orx/code/include/utils/orxLinkList.h:"/** Gets a node list":78:39b5eec5116416ef99a14620fbf1ec5a
+proc getList*(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST {.inline.} =
+  ## Gets node's list
+  if node != nil: node.pstList else: nil
+
+proc getPrevious*(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST_NODE {.inline.} =
+  ## Gets previous node
+  if node != nil and node.pstList != nil: node.pstPrevious else: nil
+
+proc getNext*(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST_NODE {.inline.} =
+  ## Gets next node
+  if node != nil and node.pstList != nil: node.pstNext else: nil
+
+proc getFirst*(list: ptr orxLINKLIST): ptr orxLINKLIST_NODE {.inline.} =
+  ## Gets first node in list
+  if list != nil: list.pstFirst else: nil
+
+proc getLast*(list: ptr orxLINKLIST): ptr orxLINKLIST_NODE {.inline.} =
+  ## Gets last node in list
+  if list != nil: list.pstLast else: nil
+
+proc getCount*(list: ptr orxLINKLIST): orxU32 {.inline.} =
+  ## Gets list node count
+  if list != nil: list.u32Count else: 0

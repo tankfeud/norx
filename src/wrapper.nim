@@ -28,12 +28,11 @@ type
     MODULE_ID_OBJECT = 26, MODULE_ID_PARAM = 27, MODULE_ID_PHYSICS = 28,
     MODULE_ID_PLUGIN = 29, MODULE_ID_PROFILER = 30, MODULE_ID_RENDER = 31,
     MODULE_ID_RESOURCE = 32, MODULE_ID_SCREENSHOT = 33, MODULE_ID_SHADER = 34,
-    MODULE_ID_SHADERPOINTER = 35, MODULE_ID_SOUND = 36,
-    MODULE_ID_SOUNDPOINTER = 37, MODULE_ID_SOUNDSYSTEM = 38,
-    MODULE_ID_SPAWNER = 39, MODULE_ID_STRING = 40, MODULE_ID_STRUCTURE = 41,
-    MODULE_ID_SYSTEM = 42, MODULE_ID_TEXT = 43, MODULE_ID_TEXTURE = 44,
-    MODULE_ID_THREAD = 45, MODULE_ID_TIMELINE = 46, MODULE_ID_TRIGGER = 47,
-    MODULE_ID_VIEWPORT = 48, MODULE_ID_CORE_NUMBER = 49,
+    MODULE_ID_SOUND = 35, MODULE_ID_SOUNDPOINTER = 36,
+    MODULE_ID_SOUNDSYSTEM = 37, MODULE_ID_SPAWNER = 38, MODULE_ID_STRING = 39,
+    MODULE_ID_STRUCTURE = 40, MODULE_ID_SYSTEM = 41, MODULE_ID_TEXT = 42,
+    MODULE_ID_TEXTURE = 43, MODULE_ID_THREAD = 44, MODULE_ID_TIMELINE = 45,
+    MODULE_ID_TRIGGER = 46, MODULE_ID_VIEWPORT = 47, MODULE_ID_CORE_NUMBER = 48,
     MODULE_ID_TOTAL_NUMBER = 64
 const
   MODULE_ID_USER_DEFINED* = enum_orxMODULE_ID_t.MODULE_ID_CORE_NUMBER
@@ -86,14 +85,14 @@ type
   enum_orxSTRUCTURE_ID_t* {.size: sizeof(cuint).} = enum
     STRUCTURE_ID_NONE = -1, STRUCTURE_ID_ANIMPOINTER = 0, STRUCTURE_ID_BODY = 1,
     STRUCTURE_ID_CLOCK = 2, STRUCTURE_ID_FRAME = 3, STRUCTURE_ID_FXPOINTER = 4,
-    STRUCTURE_ID_GRAPHIC = 5, STRUCTURE_ID_SHADERPOINTER = 6,
+    STRUCTURE_ID_GRAPHIC = 5, STRUCTURE_ID_SHADER = 6,
     STRUCTURE_ID_SOUNDPOINTER = 7, STRUCTURE_ID_SPAWNER = 8,
     STRUCTURE_ID_TIMELINE = 9, STRUCTURE_ID_TRIGGER = 10,
     STRUCTURE_ID_LINKABLE_NUMBER = 11, STRUCTURE_ID_ANIMSET = 12,
     STRUCTURE_ID_CAMERA = 13, STRUCTURE_ID_FONT = 14, STRUCTURE_ID_FX = 15,
-    STRUCTURE_ID_OBJECT = 16, STRUCTURE_ID_SHADER = 17, STRUCTURE_ID_SOUND = 18,
-    STRUCTURE_ID_TEXT = 19, STRUCTURE_ID_TEXTURE = 20,
-    STRUCTURE_ID_VIEWPORT = 21, STRUCTURE_ID_NUMBER = 22
+    STRUCTURE_ID_OBJECT = 16, STRUCTURE_ID_SOUND = 17, STRUCTURE_ID_TEXT = 18,
+    STRUCTURE_ID_TEXTURE = 19, STRUCTURE_ID_VIEWPORT = 20,
+    STRUCTURE_ID_NUMBER = 21
 const
   STRUCTURE_ID_ANIM* = enum_orxSTRUCTURE_ID_t.STRUCTURE_ID_LINKABLE_NUMBER
 type
@@ -118,6 +117,11 @@ type
     CONFIG_EVENT_NONE = -1, CONFIG_EVENT_RELOAD_START = 0,
     CONFIG_EVENT_RELOAD_STOP = 1, CONFIG_EVENT_NUMBER = 2
 type
+  enum_orxPLUGIN_ENTRY_MODE_t* {.size: sizeof(cuint).} = enum
+    PLUGIN_ENTRY_MODE_NONE = -1, PLUGIN_ENTRY_MODE_INIT = 0,
+    PLUGIN_ENTRY_MODE_EXIT = 1, PLUGIN_ENTRY_MODE_SWAP_IN = 2,
+    PLUGIN_ENTRY_MODE_SWAP_OUT = 3, PLUGIN_ENTRY_MODE_NUMBER = 4
+type
   enum_orxPLUGIN_FUNCTION_ID_t* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_ID_NONE = -1
 type
@@ -139,44 +143,45 @@ type
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_DELETE_BITMAP = 6,
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_LOAD_BITMAP = 7,
     PLUGIN_FUNCTION_BASE_ID_DISPLAY_SAVE_BITMAP = 8,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_TEMP_BITMAP = 9,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_TEMP_BITMAP = 10,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_DESTINATION_BITMAPS = 11,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_CLEAR_BITMAP = 12,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BLEND_MODE = 13,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BITMAP_CLIPPING = 14,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BITMAP_DATA = 15,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_DATA = 16,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_PARTIAL_BITMAP_DATA = 17,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_SIZE = 18,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_ID = 19,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_TRANSFORM_BITMAP = 20,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_TRANSFORM_TEXT = 21,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_LINE = 22,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_POLYLINE = 23,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_POLYGON = 24,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_CIRCLE = 25,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_OBOX = 26,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_MESH = 27,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_HAS_SHADER_SUPPORT = 28,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_CREATE_SHADER = 29,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DELETE_SHADER = 30,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_START_SHADER = 31,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_STOP_SHADER = 32,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_PARAMETER_ID = 33,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_BITMAP = 34,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_FLOAT = 35,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_VECTOR = 36,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_SHADER_ID = 37,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_ENABLE_VSYNC = 38,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_VSYNC_ENABLED = 39,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_FULL_SCREEN = 40,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_FULL_SCREEN = 41,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_VIDEO_MODE_COUNT = 42,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_VIDEO_MODE = 43,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_VIDEO_MODE = 44,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_VIDEO_MODE_AVAILABLE = 45,
-    PLUGIN_FUNCTION_BASE_ID_DISPLAY_NUMBER = 46
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_LOAD_FONT = 9,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_TEMP_BITMAP = 10,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_TEMP_BITMAP = 11,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_DESTINATION_BITMAPS = 12,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_CLEAR_BITMAP = 13,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BLEND_MODE = 14,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BITMAP_CLIPPING = 15,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_BITMAP_DATA = 16,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_DATA = 17,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_PARTIAL_BITMAP_DATA = 18,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_SIZE = 19,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_BITMAP_ID = 20,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_TRANSFORM_BITMAP = 21,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_TRANSFORM_TEXT = 22,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_LINE = 23,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_POLYLINE = 24,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_POLYGON = 25,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_CIRCLE = 26,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_OBOX = 27,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DRAW_MESH = 28,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_HAS_SHADER_SUPPORT = 29,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_CREATE_SHADER = 30,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_DELETE_SHADER = 31,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_START_SHADER = 32,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_STOP_SHADER = 33,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_PARAMETER_ID = 34,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_BITMAP = 35,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_FLOAT = 36,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_SHADER_VECTOR = 37,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_SHADER_ID = 38,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_ENABLE_VSYNC = 39,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_VSYNC_ENABLED = 40,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_FULL_SCREEN = 41,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_FULL_SCREEN = 42,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_VIDEO_MODE_COUNT = 43,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_GET_VIDEO_MODE = 44,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_SET_VIDEO_MODE = 45,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_IS_VIDEO_MODE_AVAILABLE = 46,
+    PLUGIN_FUNCTION_BASE_ID_DISPLAY_NUMBER = 47
 type
   enum_orxPLUGIN_FUNCTION_BASE_ID_JOYSTICK_t* {.size: sizeof(cuint).} = enum
     PLUGIN_FUNCTION_BASE_ID_JOYSTICK_NONE = -1,
@@ -333,6 +338,11 @@ type
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_GET_LISTENER_POSITION = 49,
     PLUGIN_FUNCTION_BASE_ID_SOUNDSYSTEM_NUMBER = 50
 type
+  enum_orxDISPLAY_ORIENTATION_t* {.size: sizeof(cuint).} = enum
+    DISPLAY_ORIENTATION_NONE = -1, DISPLAY_ORIENTATION_UP = 0,
+    DISPLAY_ORIENTATION_LEFT = 1, DISPLAY_ORIENTATION_DOWN = 2,
+    DISPLAY_ORIENTATION_RIGHT = 3, DISPLAY_ORIENTATION_NUMBER = 4
+type
   enum_orxDISPLAY_PRIMITIVE_t* {.size: sizeof(cuint).} = enum
     DISPLAY_PRIMITIVE_NONE = -1, DISPLAY_PRIMITIVE_POINTS = 0,
     DISPLAY_PRIMITIVE_LINES = 1, DISPLAY_PRIMITIVE_LINE_LOOP = 2,
@@ -357,6 +367,14 @@ type
   enum_orxTEXTURE_EVENT_t* {.size: sizeof(cuint).} = enum
     TEXTURE_EVENT_NONE = -1, TEXTURE_EVENT_CREATE = 0, TEXTURE_EVENT_DELETE = 1,
     TEXTURE_EVENT_LOAD = 2, TEXTURE_EVENT_NUMBER = 3
+type
+  enum_orxSHADER_PARAM_TYPE_t* {.size: sizeof(cuint).} = enum
+    SHADER_PARAM_TYPE_NONE = -1, SHADER_PARAM_TYPE_FLOAT = 0,
+    SHADER_PARAM_TYPE_TEXTURE = 1, SHADER_PARAM_TYPE_VECTOR = 2,
+    SHADER_PARAM_TYPE_NUMBER = 3
+type
+  enum_orxSHADER_EVENT_t* {.size: sizeof(cuint).} = enum
+    SHADER_EVENT_NONE = -1, SHADER_EVENT_SET_PARAM = 0, SHADER_EVENT_NUMBER = 1
 type
   enum_orxJOYSTICK_BUTTON_t* {.size: sizeof(cuint).} = enum
     JOYSTICK_BUTTON_NONE = -1, JOYSTICK_BUTTON_A_1 = 0, JOYSTICK_BUTTON_B_1 = 1,
@@ -818,7 +836,8 @@ type
     EVENT_TYPE_SYSTEM = 14, EVENT_TYPE_TEXTURE = 15, EVENT_TYPE_TIMELINE = 16,
     EVENT_TYPE_TRIGGER = 17, EVENT_TYPE_VIEWPORT = 18,
     EVENT_TYPE_CORE_NUMBER = 19, EVENT_TYPE_LAST_RESERVED = 255,
-    EVENT_TYPE_USER_DEFINED = 256
+    EVENT_TYPE_FIRST_EXTENSION = 256, EVENT_TYPE_LAST_EXTENSION = 32767,
+    EVENT_TYPE_USER_DEFINED = 32768
 const
   EVENT_TYPE_FIRST_RESERVED* = enum_orxEVENT_TYPE_t.EVENT_TYPE_CORE_NUMBER
 type
@@ -928,14 +947,6 @@ type
     PHYSICS_EVENT_NONE = -1, PHYSICS_EVENT_CONTACT_ADD = 0,
     PHYSICS_EVENT_CONTACT_REMOVE = 1, PHYSICS_EVENT_NUMBER = 2
 type
-  enum_orxSHADER_PARAM_TYPE_t* {.size: sizeof(cuint).} = enum
-    SHADER_PARAM_TYPE_NONE = -1, SHADER_PARAM_TYPE_FLOAT = 0,
-    SHADER_PARAM_TYPE_TEXTURE = 1, SHADER_PARAM_TYPE_VECTOR = 2,
-    SHADER_PARAM_TYPE_TIME = 3, SHADER_PARAM_TYPE_NUMBER = 4
-type
-  enum_orxSHADER_EVENT_t* {.size: sizeof(cuint).} = enum
-    SHADER_EVENT_NONE = -1, SHADER_EVENT_SET_PARAM = 0, SHADER_EVENT_NUMBER = 1
-type
   enum_orxVIEWPORT_EVENT_t* {.size: sizeof(cuint).} = enum
     VIEWPORT_EVENT_NONE = -1, VIEWPORT_EVENT_RESIZE = 0,
     VIEWPORT_EVENT_NUMBER = 1
@@ -960,11 +971,11 @@ type
 type
   struct_orxSPAWNER_t* = object
 type
+  entry_Exit* = object
+type
   struct_orxSOUND_SAMPLE_t* = object
 type
   struct_orxANIMPOINTER_t* = object
-type
-  struct_orxSHADERPOINTER_t* = object
 type
   struct_orxSOUNDSYSTEM_SAMPLE_t* = object
 type
@@ -986,8 +997,6 @@ type
 type
   struct_orxBITMAP_t* = object
 type
-  mainInit* = object
-type
   struct_orxBANK_t* = object
 type
   struct_orxTEXTURE_t* = object
@@ -1008,9 +1017,13 @@ type
 type
   struct_orxBODY_JOINT_t* = object
 type
+  entry_Swap* = object
+type
   struct_orxTEXT_t* = object
 type
   struct_orxANIMSET_t* = object
+type
+  entry_Init* = object
 type
   struct_orxCLOCK_t* = object
 type
@@ -1195,6 +1208,9 @@ type
                                    a3: orxBOOL): orxBOOL {.cdecl.}
   orxCONFIG_CLEAR_FUNCTION* = proc (a0: cstring; a1: cstring): orxBOOL {.cdecl.}
   orxCONFIG_BOOTSTRAP_FUNCTION* = proc (): orxSTATUS {.cdecl.}
+  orxCONFIG_KEY_FUNCTION* = proc (a0: cstring; a1: cstring; a2: pointer): orxBOOL {.
+      cdecl.}
+  orxPLUGIN_ENTRY_MODE* = enum_orxPLUGIN_ENTRY_MODE_t
   orxPLUGIN_FUNCTION_ID* = enum_orxPLUGIN_FUNCTION_ID_t
   orxPLUGIN_FUNCTION* = proc (): orxSTATUS {.cdecl.}
   orxPLUGIN_CORE_ID* = enum_orxPLUGIN_CORE_ID_t
@@ -1219,6 +1235,8 @@ type
   orxPLUGIN_INIT_FUNCTION* = proc (a0: ptr orxU32;
                                    a1: ptr ptr orxPLUGIN_USER_FUNCTION_INFO): orxSTATUS {.
       cdecl.}
+  orxPLUGIN_SWAP_FUNCTION* = proc (a0: orxPLUGIN_ENTRY_MODE): orxSTATUS {.cdecl.}
+  orxPLUGIN_EXIT_FUNCTION* = proc (a0: orxPLUGIN_ENTRY_MODE): orxSTATUS {.cdecl.}
   struct_orxOBOX_t* {.pure, inheritable, bycopy.} = object
     vPosition*: orxVECTOR
     vPivot*: orxVECTOR
@@ -1240,6 +1258,7 @@ type
     anon0*: struct_orxRGBA_t_anon0_t
   orxRGBA* = struct_orxRGBA_t
   orxBITMAP* = struct_orxBITMAP_t
+  orxDISPLAY_ORIENTATION* = enum_orxDISPLAY_ORIENTATION_t
   struct_orxDISPLAY_VERTEX_t* {.pure, inheritable, bycopy.} = object
     fX*: orxFLOAT
     fY*: orxFLOAT
@@ -1257,6 +1276,7 @@ type
     fScaleX*: orxFLOAT
     fScaleY*: orxFLOAT
     fRotation*: orxFLOAT
+    eOrientation*: orxDISPLAY_ORIENTATION
   orxDISPLAY_TRANSFORM* = struct_orxDISPLAY_TRANSFORM_t
   orxDISPLAY_PRIMITIVE* = enum_orxDISPLAY_PRIMITIVE_t
   struct_orxDISPLAY_MESH_t* {.pure, inheritable, bycopy.} = object
@@ -1279,9 +1299,9 @@ type
     fWidth*: orxFLOAT
   orxCHARACTER_GLYPH* = struct_orxCHARACTER_GLYPH_t
   struct_orxCHARACTER_MAP_t* {.pure, inheritable, bycopy.} = object
-    fCharacterHeight*: orxFLOAT
     pstCharacterBank*: ptr orxBANK
     pstCharacterTable*: ptr orxHASHTABLE
+    fCharacterHeight*: orxFLOAT
   orxCHARACTER_MAP* = struct_orxCHARACTER_MAP_t
   orxDISPLAY_SMOOTHING* = enum_orxDISPLAY_SMOOTHING_t
   orxDISPLAY_BLEND_MODE* = enum_orxDISPLAY_BLEND_MODE_t
@@ -1318,6 +1338,27 @@ type
   orxDISPLAY_EVENT_PAYLOAD* = struct_orxDISPLAY_EVENT_PAYLOAD_t
   orxTEXTURE_EVENT* = enum_orxTEXTURE_EVENT_t
   orxTEXTURE* = struct_orxTEXTURE_t
+  orxSHADER_PARAM_TYPE* = enum_orxSHADER_PARAM_TYPE_t
+  struct_orxSHADER_PARAM_t* {.pure, inheritable, bycopy.} = object
+    stNode*: orxLINKLIST_NODE
+    zName*: cstring
+    eType*: orxSHADER_PARAM_TYPE
+    u32ArraySize*: orxU32
+  orxSHADER_PARAM* = struct_orxSHADER_PARAM_t
+  orxSHADER* = struct_orxSHADER_t
+  orxSHADER_EVENT* = enum_orxSHADER_EVENT_t
+  struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t* {.union, bycopy.} = object
+    fValue*: orxFLOAT
+    pstValue*: ptr orxTEXTURE
+    vValue*: orxVECTOR
+  struct_orxSHADER_EVENT_PAYLOAD_t* {.pure, inheritable, bycopy.} = object
+    pstShader*: ptr orxSHADER
+    zShaderName*: cstring
+    zParamName*: cstring
+    eParamType*: orxSHADER_PARAM_TYPE
+    s32ParamIndex*: orxS32
+    anon0*: struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t
+  orxSHADER_EVENT_PAYLOAD* = struct_orxSHADER_EVENT_PAYLOAD_t
   orxFONT* = struct_orxFONT_t
   orxJOYSTICK_BUTTON* = enum_orxJOYSTICK_BUTTON_t
   orxJOYSTICK_AXIS* = enum_orxJOYSTICK_AXIS_t
@@ -1352,6 +1393,8 @@ type
     zStringKey*: cstring
     zStringValue*: cstring
   orxLOCALE_EVENT_PAYLOAD* = struct_orxLOCALE_EVENT_PAYLOAD_t
+  orxLOCALE_KEY_FUNCTION* = proc (a0: cstring; a1: cstring; a2: pointer): orxBOOL {.
+      cdecl.}
   orxRESOURCE_OP_FUNCTION* = proc (a0: orxHANDLE; a1: orxS64; a2: pointer;
                                    a3: pointer): void {.cdecl.}
   orxRESOURCE_FUNCTION_LOCATE* = proc (a0: cstring; a1: cstring; a2: cstring;
@@ -1516,6 +1559,8 @@ type
   orxSOUND_EVENT_PAYLOAD* = struct_orxSOUND_EVENT_PAYLOAD_t
   orxOBJECT_EVENT* = enum_orxOBJECT_EVENT_t
   orxOBJECT* = struct_orxOBJECT_t
+  orxOBJECT_NEIGHBOR_FUNCTION* = proc (a0: ptr orxOBJECT; a1: pointer): orxBOOL {.
+      cdecl.}
   orxFX_TYPE* = enum_orxFX_TYPE_t
   orxFX_CURVE* = enum_orxFX_CURVE_t
   struct_orxFX_CURVE_PARAM_t_anon0_t_anon0_t* {.pure, inheritable, bycopy.} = object
@@ -1563,8 +1608,13 @@ type
   struct_orxTRIGGER_EVENT_PAYLOAD_t* {.pure, inheritable, bycopy.} = object
     pstTrigger*: ptr orxTRIGGER
     zSetName*: cstring
-    zEvent*: cstring
+    zEventName*: cstring
+    zEventValue*: cstring
+    azRefinementList*: ptr cstring
+    u32RefinementCount*: orxU32
+    u32RefinementIndex*: orxU32
   orxTRIGGER_EVENT_PAYLOAD* = struct_orxTRIGGER_EVENT_PAYLOAD_t
+  orxPLUGIN_ENTRY_POINT* = proc (a0: orxPLUGIN_ENTRY_MODE): orxSTATUS {.cdecl.}
   struct_orxBODY_DEF_t* {.pure, inheritable, bycopy.} = object
     vPosition*: orxVECTOR
     fRotation*: orxFLOAT
@@ -1686,28 +1736,6 @@ type
   orxBODY_PART* = struct_orxBODY_PART_t
   orxBODY_JOINT* = struct_orxBODY_JOINT_t
   orxCAMERA* = struct_orxCAMERA_t
-  orxSHADER_PARAM_TYPE* = enum_orxSHADER_PARAM_TYPE_t
-  struct_orxSHADER_PARAM_t* {.pure, inheritable, bycopy.} = object
-    stNode*: orxLINKLIST_NODE
-    zName*: cstring
-    eType*: orxSHADER_PARAM_TYPE
-    u32ArraySize*: orxU32
-  orxSHADER_PARAM* = struct_orxSHADER_PARAM_t
-  orxSHADER* = struct_orxSHADER_t
-  orxSHADER_EVENT* = enum_orxSHADER_EVENT_t
-  struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t* {.union, bycopy.} = object
-    fValue*: orxFLOAT
-    pstValue*: ptr orxTEXTURE
-    vValue*: orxVECTOR
-  struct_orxSHADER_EVENT_PAYLOAD_t* {.pure, inheritable, bycopy.} = object
-    pstShader*: ptr orxSHADER
-    zShaderName*: cstring
-    zParamName*: cstring
-    eParamType*: orxSHADER_PARAM_TYPE
-    s32ParamIndex*: orxS32
-    anon0*: struct_orxSHADER_EVENT_PAYLOAD_t_anon0_t
-  orxSHADER_EVENT_PAYLOAD* = struct_orxSHADER_EVENT_PAYLOAD_t
-  orxSHADERPOINTER* = struct_orxSHADERPOINTER_t
   orxVIEWPORT* = struct_orxVIEWPORT_t
   orxVIEWPORT_EVENT* = enum_orxVIEWPORT_EVENT_t
   orxRENDER_EVENT* = enum_orxRENDER_EVENT_t
@@ -1901,11 +1929,11 @@ when 1 is static:
     compiler_orxVERSION_MAJOR_private* = 1
 else:
   let compiler_orxVERSION_MAJOR_private* = 1
-when 15 is static:
+when 17 is static:
   const
-    compiler_orxVERSION_MINOR_private* = 15
+    compiler_orxVERSION_MINOR_private* = 17
 else:
-  let compiler_orxVERSION_MINOR_private* = 15
+  let compiler_orxVERSION_MINOR_private* = 17
 when dev is typedesc:
   type
     compiler_orxVERSION_RELEASE_private* = dev
@@ -2062,11 +2090,11 @@ when "ModifierList" is static:
     CLOCK_KZ_CONFIG_MODIFIER_LIST* = "ModifierList"
 else:
   let CLOCK_KZ_CONFIG_MODIFIER_LIST* = "ModifierList"
-when "core" is static:
+when "orx:clock:core" is static:
   const
-    CLOCK_KZ_CORE* = "core"
+    CLOCK_KZ_CORE* = "orx:clock:core"
 else:
-  let CLOCK_KZ_CORE* = "core"
+  let CLOCK_KZ_CORE* = "orx:clock:core"
 when cast[culonglong](-2379362056627437346'i64) is static:
   const
     STRUCTURE_GUID_MAGIC_TAG_DELETED* = cast[culonglong](-2379362056627437346'i64)
@@ -2382,31 +2410,121 @@ when "Texture" is static:
     TEXTURE_KZ_LOCALE_GROUP* = "Texture"
 else:
   let TEXTURE_KZ_LOCALE_GROUP* = "Texture"
-when "screen" is static:
+when "orx:texture:screen" is static:
   const
-    TEXTURE_KZ_SCREEN* = "screen"
+    TEXTURE_KZ_SCREEN_NAME* = "orx:texture:screen"
 else:
-  let TEXTURE_KZ_SCREEN* = "screen"
-when "pixel" is static:
+  let TEXTURE_KZ_SCREEN_NAME* = "orx:texture:screen"
+when "orx:texture:pixel" is static:
   const
-    TEXTURE_KZ_PIXEL* = "pixel"
+    TEXTURE_KZ_PIXEL_NAME* = "orx:texture:pixel"
 else:
-  let TEXTURE_KZ_PIXEL* = "pixel"
-when "transparent" is static:
+  let TEXTURE_KZ_PIXEL_NAME* = "orx:texture:pixel"
+when "orx:texture:transparent" is static:
   const
-    TEXTURE_KZ_TRANSPARENT* = "transparent"
+    TEXTURE_KZ_TRANSPARENT_NAME* = "orx:texture:transparent"
 else:
-  let TEXTURE_KZ_TRANSPARENT* = "transparent"
+  let TEXTURE_KZ_TRANSPARENT_NAME* = "orx:texture:transparent"
 when "orx:texture:logo" is static:
   const
     TEXTURE_KZ_LOGO_NAME* = "orx:texture:logo"
 else:
   let TEXTURE_KZ_LOGO_NAME* = "orx:texture:logo"
+when "Texture" is static:
+  const
+    FONT_KZ_CONFIG_TEXTURE_NAME* = "Texture"
+else:
+  let FONT_KZ_CONFIG_TEXTURE_NAME* = "Texture"
+when "CharacterList" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_LIST* = "CharacterList"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_LIST* = "CharacterList"
+when "CharacterSize" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_SIZE* = "CharacterSize"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_SIZE* = "CharacterSize"
+when "CharacterHeight" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_HEIGHT* = "CharacterHeight"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_HEIGHT* = "CharacterHeight"
+when "CharacterWidthList" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_WIDTH_LIST* = "CharacterWidthList"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_WIDTH_LIST* = "CharacterWidthList"
+when "CharacterSpacing" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_SPACING* = "CharacterSpacing"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_SPACING* = "CharacterSpacing"
+when "CharacterPadding" is static:
+  const
+    FONT_KZ_CONFIG_CHARACTER_PADDING* = "CharacterPadding"
+else:
+  let FONT_KZ_CONFIG_CHARACTER_PADDING* = "CharacterPadding"
+when "TextureOrigin" is static:
+  const
+    FONT_KZ_CONFIG_TEXTURE_ORIGIN* = "TextureOrigin"
+else:
+  let FONT_KZ_CONFIG_TEXTURE_ORIGIN* = "TextureOrigin"
+when "TextureSize" is static:
+  const
+    FONT_KZ_CONFIG_TEXTURE_SIZE* = "TextureSize"
+else:
+  let FONT_KZ_CONFIG_TEXTURE_SIZE* = "TextureSize"
+when "KeepInCache" is static:
+  const
+    FONT_KZ_CONFIG_KEEP_IN_CACHE* = "KeepInCache"
+else:
+  let FONT_KZ_CONFIG_KEEP_IN_CACHE* = "KeepInCache"
+when "Typeface" is static:
+  const
+    FONT_KZ_CONFIG_TYPEFACE* = "Typeface"
+else:
+  let FONT_KZ_CONFIG_TYPEFACE* = "Typeface"
+when "SDF" is static:
+  const
+    FONT_KZ_CONFIG_SDF* = "SDF"
+else:
+  let FONT_KZ_CONFIG_SDF* = "SDF"
+when "Shader" is static:
+  const
+    FONT_KZ_CONFIG_SHADER* = "Shader"
+else:
+  let FONT_KZ_CONFIG_SHADER* = "Shader"
+when "ascii" is static:
+  const
+    FONT_KZ_ASCII* = "ascii"
+else:
+  let FONT_KZ_ASCII* = "ascii"
+when "ansi" is static:
+  const
+    FONT_KZ_ANSI* = "ansi"
+else:
+  let FONT_KZ_ANSI* = "ansi"
 when "orx:font:default" is static:
   const
     FONT_KZ_DEFAULT_FONT_NAME* = "orx:font:default"
 else:
   let FONT_KZ_DEFAULT_FONT_NAME* = "orx:font:default"
+when "orx:texture:font:default" is static:
+  const
+    FONT_KZ_DEFAULT_TEXTURE_NAME* = "orx:texture:font:default"
+else:
+  let FONT_KZ_DEFAULT_TEXTURE_NAME* = "orx:texture:font:default"
+when "orx:shader:font:sdf" is static:
+  const
+    FONT_KZ_SDF_SHADER_NAME* = "orx:shader:font:sdf"
+else:
+  let FONT_KZ_SDF_SHADER_NAME* = "orx:shader:font:sdf"
+when "Font" is static:
+  const
+    FONT_KZ_RESOURCE_GROUP* = "Font"
+else:
+  let FONT_KZ_RESOURCE_GROUP* = "Font"
 when 1 is static:
   const
     JOYSTICK_KU32_MIN_ID* = 1
@@ -2567,6 +2685,16 @@ when 4294967295 is static:
     EVENT_KU32_MASK_ID_ALL* = 4294967295'i64
 else:
   let EVENT_KU32_MASK_ID_ALL* = 4294967295'i64
+when "Resource" is static:
+  const
+    RESOURCE_KZ_CONFIG_SECTION* = "Resource"
+else:
+  let RESOURCE_KZ_CONFIG_SECTION* = "Resource"
+when "WatchList" is static:
+  const
+    RESOURCE_KZ_CONFIG_WATCH_LIST* = "WatchList"
+else:
+  let RESOURCE_KZ_CONFIG_WATCH_LIST* = "WatchList"
 when "." is static:
   const
     RESOURCE_KZ_DEFAULT_STORAGE* = "."
@@ -2597,11 +2725,11 @@ when 0 is static:
     THREAD_KU32_FLAG_NONE* = 0
 else:
   let THREAD_KU32_FLAG_NONE* = 0
-when "fps" is static:
+when "orx:clock:fps" is static:
   const
-    FPS_KZ_CLOCK_NAME* = "fps"
+    FPS_KZ_CLOCK_NAME* = "orx:clock:fps"
 else:
-  let FPS_KZ_CLOCK_NAME* = "fps"
+  let FPS_KZ_CLOCK_NAME* = "orx:clock:fps"
 when 2 is static:
   const
     PROFILER_KU32_HISTORY_LENGTH* = 2
@@ -2619,14 +2747,19 @@ else:
   let GRAPHIC_KU32_FLAG_NONE* = 0
 when 1 is static:
   const
-    GRAPHIC_KU32_FLAG_2D* = 1
+    GRAPHIC_KU32_FLAG_QUAD* = 1
 else:
-  let GRAPHIC_KU32_FLAG_2D* = 1
+  let GRAPHIC_KU32_FLAG_QUAD* = 1
 when 2 is static:
   const
     GRAPHIC_KU32_FLAG_TEXT* = 2
 else:
   let GRAPHIC_KU32_FLAG_TEXT* = 2
+when 3 is static:
+  const
+    GRAPHIC_KU32_MASK_2D* = 3
+else:
+  let GRAPHIC_KU32_MASK_2D* = 3
 when 3 is static:
   const
     GRAPHIC_KU32_MASK_TYPE* = 3
@@ -2677,11 +2810,6 @@ when 256 is static:
     GRAPHIC_KU32_FLAG_ALIGN_TRUNCATE* = 256
 else:
   let GRAPHIC_KU32_FLAG_ALIGN_TRUNCATE* = 256
-when 512 is static:
-  const
-    GRAPHIC_KU32_FLAG_ALIGN_ROUND* = 512
-else:
-  let GRAPHIC_KU32_FLAG_ALIGN_ROUND* = 512
 when 1008 is static:
   const
     GRAPHIC_KU32_MASK_ALIGN* = 1008
@@ -2872,6 +3000,11 @@ when "Listeners" is static:
     SOUNDSYSTEM_KZ_CONFIG_LISTENERS* = "Listeners"
 else:
   let SOUNDSYSTEM_KZ_CONFIG_LISTENERS* = "Listeners"
+when "Channels" is static:
+  const
+    SOUNDSYSTEM_KZ_CONFIG_CHANNELS* = "Channels"
+else:
+  let SOUNDSYSTEM_KZ_CONFIG_CHANNELS* = "Channels"
 when "Sound" is static:
   const
     SOUND_KZ_RESOURCE_GROUP* = "Sound"
@@ -2942,21 +3075,6 @@ when 4 is static:
     FRAME_KU32_FLAG_DEPTH_SCALE* = 4
 else:
   let FRAME_KU32_FLAG_DEPTH_SCALE* = 4
-when 16 is static:
-  const
-    FRAME_KU32_FLAG_FLIP_X* = 16
-else:
-  let FRAME_KU32_FLAG_FLIP_X* = 16
-when 32 is static:
-  const
-    FRAME_KU32_FLAG_FLIP_Y* = 32
-else:
-  let FRAME_KU32_FLAG_FLIP_Y* = 32
-when 48 is static:
-  const
-    FRAME_KU32_MASK_FLIP_BOTH* = 48
-else:
-  let FRAME_KU32_MASK_FLIP_BOTH* = 48
 when 0 is static:
   const
     FRAME_KU32_FLAG_IGNORE_NONE* = 0
@@ -3059,64 +3177,79 @@ else:
   let SPAWNER_KU32_FLAG_AUTO_DELETE* = 1
 when 2 is static:
   const
-    SPAWNER_KU32_FLAG_AUTO_RESET* = 2
+    SPAWNER_KU32_FLAG_AUTO_RESET_COUNT* = 2
 else:
-  let SPAWNER_KU32_FLAG_AUTO_RESET* = 2
+  let SPAWNER_KU32_FLAG_AUTO_RESET_COUNT* = 2
 when 4 is static:
   const
-    SPAWNER_KU32_FLAG_USE_ALPHA* = 4
+    SPAWNER_KU32_FLAG_AUTO_RESET_DELAY* = 4
 else:
-  let SPAWNER_KU32_FLAG_USE_ALPHA* = 4
+  let SPAWNER_KU32_FLAG_AUTO_RESET_DELAY* = 4
+when 6 is static:
+  const
+    SPAWNER_KU32_MASK_AUTO_RESET* = 6
+else:
+  let SPAWNER_KU32_MASK_AUTO_RESET* = 6
 when 8 is static:
   const
-    SPAWNER_KU32_FLAG_USE_COLOR* = 8
+    SPAWNER_KU32_FLAG_CLEAN_ON_DELETE* = 8
 else:
-  let SPAWNER_KU32_FLAG_USE_COLOR* = 8
+  let SPAWNER_KU32_FLAG_CLEAN_ON_DELETE* = 8
 when 16 is static:
   const
-    SPAWNER_KU32_FLAG_USE_ROTATION* = 16
+    SPAWNER_KU32_FLAG_USE_ALPHA* = 16
 else:
-  let SPAWNER_KU32_FLAG_USE_ROTATION* = 16
+  let SPAWNER_KU32_FLAG_USE_ALPHA* = 16
 when 32 is static:
   const
-    SPAWNER_KU32_FLAG_USE_SCALE* = 32
+    SPAWNER_KU32_FLAG_USE_COLOR* = 32
 else:
-  let SPAWNER_KU32_FLAG_USE_SCALE* = 32
+  let SPAWNER_KU32_FLAG_USE_COLOR* = 32
 when 64 is static:
   const
-    SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_OBJECT* = 64
+    SPAWNER_KU32_FLAG_USE_ROTATION* = 64
 else:
-  let SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_OBJECT* = 64
+  let SPAWNER_KU32_FLAG_USE_ROTATION* = 64
 when 128 is static:
   const
-    SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_SPAWNER* = 128
+    SPAWNER_KU32_FLAG_USE_SCALE* = 128
 else:
-  let SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_SPAWNER* = 128
-when 192 is static:
-  const
-    SPAWNER_KU32_MASK_USE_RELATIVE_SPEED* = 192
-else:
-  let SPAWNER_KU32_MASK_USE_RELATIVE_SPEED* = 192
+  let SPAWNER_KU32_FLAG_USE_SCALE* = 128
 when 256 is static:
   const
-    SPAWNER_KU32_FLAG_USE_SELF_AS_PARENT* = 256
+    SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_OBJECT* = 256
 else:
-  let SPAWNER_KU32_FLAG_USE_SELF_AS_PARENT* = 256
+  let SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_OBJECT* = 256
 when 512 is static:
   const
-    SPAWNER_KU32_FLAG_CLEAN_ON_DELETE* = 512
+    SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_SPAWNER* = 512
 else:
-  let SPAWNER_KU32_FLAG_CLEAN_ON_DELETE* = 512
+  let SPAWNER_KU32_FLAG_USE_RELATIVE_SPEED_SPAWNER* = 512
+when 768 is static:
+  const
+    SPAWNER_KU32_MASK_USE_RELATIVE_SPEED* = 768
+else:
+  let SPAWNER_KU32_MASK_USE_RELATIVE_SPEED* = 768
 when 1024 is static:
   const
-    SPAWNER_KU32_FLAG_INTERPOLATE* = 1024
+    SPAWNER_KU32_FLAG_USE_SELF_AS_PARENT* = 1024
 else:
-  let SPAWNER_KU32_FLAG_INTERPOLATE* = 1024
-when 1279 is static:
+  let SPAWNER_KU32_FLAG_USE_SELF_AS_PARENT* = 1024
+when 2048 is static:
   const
-    SPAWNER_KU32_MASK_USER_ALL* = 1279
+    SPAWNER_KU32_FLAG_INTERPOLATE* = 2048
 else:
-  let SPAWNER_KU32_MASK_USER_ALL* = 1279
+  let SPAWNER_KU32_FLAG_INTERPOLATE* = 2048
+when 4095 is static:
+  const
+    SPAWNER_KU32_MASK_USER_ALL* = 4095
+else:
+  let SPAWNER_KU32_MASK_USER_ALL* = 4095
+when "Plugin" is static:
+  const
+    PLUGIN_KZ_RESOURCE_GROUP* = "Plugin"
+else:
+  let PLUGIN_KZ_RESOURCE_GROUP* = "Plugin"
 when 0 is static:
   const
     BODY_DEF_KU32_FLAG_NONE* = 0
@@ -3352,11 +3485,6 @@ when 32 is static:
     CAMERA_KU32_GROUP_ID_NUMBER* = 32
 else:
   let CAMERA_KU32_GROUP_ID_NUMBER* = 32
-when 4 is static:
-  const
-    SHADERPOINTER_KU32_SHADER_NUMBER* = 4
-else:
-  let SHADERPOINTER_KU32_SHADER_NUMBER* = 4
 when 0 is static:
   const
     VIEWPORT_KU32_FLAG_ALIGN_CENTER* = 0
@@ -3596,6 +3724,8 @@ proc internal_orxDebug_SetLogCallback*(internal_pfnLogCallback: orxDEBUG_CALLBAC
 proc memorySetup*(): void {.cdecl, importc: "orxMemory_Setup".}
 proc memoryInit*(): orxSTATUS {.cdecl, importc: "orxMemory_Init".}
 proc memoryExit*(): void {.cdecl, importc: "orxMemory_Exit".}
+proc initThread*(): orxSTATUS {.cdecl, importc: "orxMemory_InitThread".}
+proc exitThread*(): void {.cdecl, importc: "orxMemory_ExitThread".}
 proc allocate*(internal_u32Size: orxU32; internal_eMemType: orxMEMORY_TYPE): pointer {.
     cdecl, importc: "orxMemory_Allocate".}
 proc reallocate*(internal_pMem: pointer; internal_u32Size: orxU32;
@@ -3837,6 +3967,8 @@ proc store*(internal_zString: cstring): cstring {.cdecl,
 proc clockSetup*(): void {.cdecl, importc: "orxClock_Setup".}
 proc clockInit*(): orxSTATUS {.cdecl, importc: "orxClock_Init".}
 proc clockExit*(): void {.cdecl, importc: "orxClock_Exit".}
+proc computeDT*(internal_pstClock: ptr orxCLOCK; internal_fDT: orxFLOAT): orxFLOAT {.
+    cdecl, importc: "orxClock_ComputeDT".}
 proc clockUpdate*(): orxSTATUS {.cdecl, importc: "orxClock_Update".}
 proc clockCreate*(internal_fTickSize: orxFLOAT): ptr orxCLOCK {.cdecl,
     importc: "orxClock_Create".}
@@ -4021,8 +4153,8 @@ proc getEventStorageSize*(internal_pstAnim: ptr orxANIM): orxU32 {.cdecl,
     importc: "orxAnim_GetEventStorageSize".}
 proc getEventCount*(internal_pstAnim: ptr orxANIM): orxU32 {.cdecl,
     importc: "orxAnim_GetEventCount".}
-proc getLength*(internal_pstAnim: ptr orxANIM): orxFLOAT {.cdecl,
-    importc: "orxAnim_GetLength".}
+proc getDuration*(internal_pstAnim: ptr orxANIM): orxFLOAT {.cdecl,
+    importc: "orxAnim_GetDuration".}
 proc getName*(internal_pstAnim: ptr orxANIM): cstring {.cdecl,
     importc: "orxAnim_GetName".}
 proc animSetSetup*(): void {.cdecl, importc: "orxAnimSet_Setup".}
@@ -4083,6 +4215,8 @@ proc getAnimCount*(internal_pstAnimSet: ptr orxANIMSET): orxU32 {.cdecl,
 proc getAnimIDFromName*(internal_pstAnimSet: ptr orxANIMSET;
                         internal_zAnimName: cstring): orxU32 {.cdecl,
     importc: "orxAnimSet_GetAnimIDFromName".}
+proc animSetGet*(internal_zName: cstring): ptr orxANIMSET {.cdecl,
+    importc: "orxAnimSet_Get".}
 proc getName*(internal_pstAnimSet: ptr orxANIMSET): cstring {.cdecl,
     importc: "orxAnimSet_GetName".}
 proc animPointerSetup*(): void {.cdecl, importc: "orxAnimPointer_Setup".}
@@ -4213,10 +4347,15 @@ proc getOrigin*(internal_zSectionName: cstring): cstring {.cdecl,
     importc: "orxConfig_GetOrigin".}
 proc getOriginID*(internal_zSectionName: cstring): orxSTRINGID {.cdecl,
     importc: "orxConfig_GetOriginID".}
+proc setOrigin*(internal_zSectionName: cstring; internal_zOrigin: cstring): orxSTATUS {.
+    cdecl, importc: "orxConfig_SetOrigin".}
 proc setParent*(internal_zSectionName: cstring; internal_zParentName: cstring): orxSTATUS {.
     cdecl, importc: "orxConfig_SetParent".}
 proc getParent*(internal_zSectionName: cstring): cstring {.cdecl,
     importc: "orxConfig_GetParent".}
+proc getParentDistance*(internal_zSectionName: cstring;
+                        internal_zParentName: cstring): orxU32 {.cdecl,
+    importc: "orxConfig_GetParentDistance".}
 proc setDefaultParent*(internal_zSectionName: cstring): orxSTATUS {.cdecl,
     importc: "orxConfig_SetDefaultParent".}
 proc getDefaultParent*(): cstring {.cdecl, importc: "orxConfig_GetDefaultParent".}
@@ -4327,9 +4466,14 @@ proc appendListString*(internal_zKey: cstring;
                        internal_azValue: ptr UncheckedArray[cstring];
                        internal_u32Number: orxU32): orxSTATUS {.cdecl,
     importc: "orxConfig_AppendListString".}
+proc appendString*(internal_zKey: cstring; internal_zValue: cstring): orxSTATUS {.
+    cdecl, importc: "orxConfig_AppendString".}
 proc getKeyCount*(): orxU32 {.cdecl, importc: "orxConfig_GetKeyCount".}
 proc getKey*(internal_u32KeyIndex: orxU32): cstring {.cdecl,
     importc: "orxConfig_GetKey".}
+proc forAllKeys*(internal_pfnKeyCallback: orxCONFIG_KEY_FUNCTION;
+                 internal_bIncludeParents: orxBOOL; internal_pContext: pointer): orxSTATUS {.
+    cdecl, importc: "orxConfig_ForAllKeys".}
 proc internal_registerFunction_DISPLAY*(): void {.cdecl,
     importc: "_registerFunction_DISPLAY".}
 proc internal_registerFunction_JOYSTICK*(): void {.cdecl,
@@ -4438,6 +4582,13 @@ proc loadBitmap*(internal_zFileName: cstring): ptr orxBITMAP {.cdecl,
     importc: "orxDisplay_LoadBitmap".}
 proc saveBitmap*(internal_pstBitmap: ptr orxBITMAP; internal_zFileName: cstring): orxSTATUS {.
     cdecl, importc: "orxDisplay_SaveBitmap".}
+proc loadFont*(internal_zFileName: cstring; internal_zCharacterList: cstring;
+               internal_pvCharacterSize: ptr orxVECTOR;
+               internal_pvCharacterSpacing: ptr orxVECTOR;
+               internal_pvCharacterPadding: ptr orxVECTOR;
+               internal_bSDF: orxBOOL;
+               internal_afCharacterWidthList: ptr orxFLOAT): ptr orxBITMAP {.
+    cdecl, importc: "orxDisplay_LoadFont".}
 proc setTempBitmap*(internal_pstBitmap: ptr orxBITMAP): orxSTATUS {.cdecl,
     importc: "orxDisplay_SetTempBitmap".}
 proc getTempBitmap*(): ptr orxBITMAP {.cdecl,
@@ -4572,6 +4723,60 @@ proc getName*(internal_pstTexture: ptr orxTEXTURE): cstring {.cdecl,
 proc getScreenTexture*(): ptr orxTEXTURE {.cdecl,
     importc: "orxTexture_GetScreenTexture".}
 proc getLoadCount*(): orxU32 {.cdecl, importc: "orxTexture_GetLoadCount".}
+proc shaderSetup*(): void {.cdecl, importc: "orxShader_Setup".}
+proc shaderInit*(): orxSTATUS {.cdecl, importc: "orxShader_Init".}
+proc shaderExit*(): void {.cdecl, importc: "orxShader_Exit".}
+proc shaderCreate*(): ptr orxSHADER {.cdecl, importc: "orxShader_Create".}
+proc shaderCreateFromConfig*(internal_zConfigID: cstring): ptr orxSHADER {.
+    cdecl, importc: "orxShader_CreateFromConfig".}
+proc shaderDelete*(internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxShader_Delete".}
+proc shaderClearCache*(): orxSTATUS {.cdecl, importc: "orxShader_ClearCache".}
+proc start*(internal_pstShader: ptr orxSHADER;
+            internal_pstOwner: ptr orxSTRUCTURE): orxSTATUS {.cdecl,
+    importc: "orxShader_Start".}
+proc stop*(internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxShader_Stop".}
+proc addFloatParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
+                    internal_u32ArraySize: orxU32;
+                    internal_afValueList: ptr orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxShader_AddFloatParam".}
+proc addTextureParam*(internal_pstShader: ptr orxSHADER;
+                      internal_zName: cstring; internal_u32ArraySize: orxU32;
+                      internal_apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.
+    cdecl, importc: "orxShader_AddTextureParam".}
+proc addVectorParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
+                     internal_u32ArraySize: orxU32;
+                     internal_avValueList: ptr orxVECTOR): orxSTATUS {.cdecl,
+    importc: "orxShader_AddVectorParam".}
+proc addTimeParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
+                   internal_fWrap: orxFLOAT; internal_zFXName: cstring): orxSTATUS {.
+    cdecl, importc: "orxShader_AddTimeParam".}
+proc setFloatParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
+                    internal_u32ArraySize: orxU32;
+                    internal_afValueList: ptr orxFLOAT): orxSTATUS {.cdecl,
+    importc: "orxShader_SetFloatParam".}
+proc setTextureParam*(internal_pstShader: ptr orxSHADER;
+                      internal_zName: cstring; internal_u32ArraySize: orxU32;
+                      internal_apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.
+    cdecl, importc: "orxShader_SetTextureParam".}
+proc setVectorParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
+                     internal_u32ArraySize: orxU32;
+                     internal_avValueList: ptr orxVECTOR): orxSTATUS {.cdecl,
+    importc: "orxShader_SetVectorParam".}
+proc compileCode*(internal_pstShader: ptr orxSHADER;
+                  internal_azCodeList: ptr cstring; internal_u32Size: orxU32): orxSTATUS {.
+    cdecl, importc: "orxShader_CompileCode".}
+proc enable*(internal_pstShader: ptr orxSHADER; internal_bEnable: orxBOOL): void {.
+    cdecl, importc: "orxShader_Enable".}
+proc isEnabled*(internal_pstShader: ptr orxSHADER): orxBOOL {.cdecl,
+    importc: "orxShader_IsEnabled".}
+proc shaderGet*(internal_zName: cstring): ptr orxSHADER {.cdecl,
+    importc: "orxShader_Get".}
+proc getName*(internal_pstShader: ptr orxSHADER): cstring {.cdecl,
+    importc: "orxShader_GetName".}
+proc getID*(internal_pstShader: ptr orxSHADER): orxU32 {.cdecl,
+    importc: "orxShader_GetID".}
 proc fontSetup*(): void {.cdecl, importc: "orxFont_Setup".}
 proc fontInit*(): orxSTATUS {.cdecl, importc: "orxFont_Init".}
 proc fontExit*(): void {.cdecl, importc: "orxFont_Exit".}
@@ -4580,7 +4785,7 @@ proc fontCreateFromConfig*(internal_zConfigID: cstring): ptr orxFONT {.cdecl,
     importc: "orxFont_CreateFromConfig".}
 proc fontDelete*(internal_pstFont: ptr orxFONT): orxSTATUS {.cdecl,
     importc: "orxFont_Delete".}
-proc getDefaultFont*(): ptr orxFONT {.cdecl, importc: "orxFont_GetDefaultFont".}
+proc fontClearCache*(): orxSTATUS {.cdecl, importc: "orxFont_ClearCache".}
 proc setTexture*(internal_pstFont: ptr orxFONT;
                  internal_pstTexture: ptr orxTEXTURE): orxSTATUS {.cdecl,
     importc: "orxFont_SetTexture".}
@@ -4600,6 +4805,11 @@ proc setOrigin*(internal_pstFont: ptr orxFONT; internal_pvOrigin: ptr orxVECTOR)
     cdecl, importc: "orxFont_SetOrigin".}
 proc setSize*(internal_pstFont: ptr orxFONT; internal_pvSize: ptr orxVECTOR): orxSTATUS {.
     cdecl, importc: "orxFont_SetSize".}
+proc setShader*(internal_pstFont: ptr orxFONT; internal_pstShader: ptr orxSHADER): orxSTATUS {.
+    cdecl, importc: "orxFont_SetShader".}
+proc setShaderFromConfig*(internal_pstFont: ptr orxFONT;
+                          internal_zShaderID: cstring): orxSTATUS {.cdecl,
+    importc: "orxFont_SetShaderFromConfig".}
 proc getTexture*(internal_pstFont: ptr orxFONT): ptr orxTEXTURE {.cdecl,
     importc: "orxFont_GetTexture".}
 proc getCharacterList*(internal_pstFont: ptr orxFONT): cstring {.cdecl,
@@ -4616,8 +4826,14 @@ proc getOrigin*(internal_pstFont: ptr orxFONT; internal_pvOrigin: ptr orxVECTOR)
     cdecl, importc: "orxFont_GetOrigin".}
 proc getSize*(internal_pstFont: ptr orxFONT; internal_pvSize: ptr orxVECTOR): ptr orxVECTOR {.
     cdecl, importc: "orxFont_GetSize".}
+proc getShader*(internal_pstFont: ptr orxFONT): ptr orxSHADER {.cdecl,
+    importc: "orxFont_GetShader".}
+proc isSDF*(internal_pstFont: ptr orxFONT): orxBOOL {.cdecl,
+    importc: "orxFont_IsSDF".}
 proc getMap*(internal_pstFont: ptr orxFONT): ptr orxCHARACTER_MAP {.cdecl,
     importc: "orxFont_GetMap".}
+proc fontGet*(internal_zName: cstring): ptr orxFONT {.cdecl,
+    importc: "orxFont_Get".}
 proc getName*(internal_pstFont: ptr orxFONT): cstring {.cdecl,
     importc: "orxFont_GetName".}
 proc joystickSetup*(): void {.cdecl, importc: "orxJoystick_Setup".}
@@ -4834,10 +5050,9 @@ proc getString*(internal_zKey: cstring; internal_zGroup: cstring): cstring {.
 proc setString*(internal_zKey: cstring; internal_zValue: cstring;
                 internal_zGroup: cstring): orxSTATUS {.cdecl,
     importc: "orxLocale_SetString".}
-proc getKeyCount*(internal_zGroup: cstring): orxU32 {.cdecl,
-    importc: "orxLocale_GetKeyCount".}
-proc getKey*(internal_u32KeyIndex: orxU32; internal_zGroup: cstring): cstring {.
-    cdecl, importc: "orxLocale_GetKey".}
+proc forAllKeys*(internal_pfnKeyCallback: orxLOCALE_KEY_FUNCTION;
+                 internal_zGroup: cstring; internal_pContext: pointer): orxSTATUS {.
+    cdecl, importc: "orxLocale_ForAllKeys".}
 proc resourceSetup*(): void {.cdecl, importc: "orxResource_Setup".}
 proc resourceInit*(): orxSTATUS {.cdecl, importc: "orxResource_Init".}
 proc resourceExit*(): void {.cdecl, importc: "orxResource_Exit".}
@@ -4913,7 +5128,8 @@ proc getNextCachedLocation*(internal_zGroup: cstring;
                             internal_pzStorage: ptr cstring;
                             internal_pzName: ptr cstring): orxHANDLE {.cdecl,
     importc: "orxResource_GetNextCachedLocation".}
-proc setMemoryResource*(internal_zName: cstring; internal_s64Size: orxS64;
+proc setMemoryResource*(internal_zGroup: cstring; internal_zStorage: cstring;
+                        internal_zName: cstring; internal_s64Size: orxS64;
                         internal_pBuffer: pointer): orxSTATUS {.cdecl,
     importc: "orxResource_SetMemoryResource".}
 proc threadSetup*(): void {.cdecl, importc: "orxThread_Setup".}
@@ -5023,6 +5239,10 @@ proc getData*(internal_pstGraphic: ptr orxGRAPHIC): ptr orxSTRUCTURE {.cdecl,
 proc setFlip*(internal_pstGraphic: ptr orxGRAPHIC; internal_bFlipX: orxBOOL;
               internal_bFlipY: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxGraphic_SetFlip".}
+proc clearFlip*(internal_pstGraphic: ptr orxGRAPHIC): orxSTATUS {.cdecl,
+    importc: "orxGraphic_ClearFlip".}
+proc hasFlip*(internal_pstGraphic: ptr orxGRAPHIC): orxBOOL {.cdecl,
+    importc: "orxGraphic_HasFlip".}
 proc getFlip*(internal_pstGraphic: ptr orxGRAPHIC;
               internal_pbFlipX: ptr orxBOOL; internal_pbFlipY: ptr orxBOOL): orxSTATUS {.
     cdecl, importc: "orxGraphic_GetFlip".}
@@ -5080,6 +5300,8 @@ proc hasBlendMode*(internal_pstGraphic: ptr orxGRAPHIC): orxBOOL {.cdecl,
     importc: "orxGraphic_HasBlendMode".}
 proc getBlendMode*(internal_pstGraphic: ptr orxGRAPHIC): orxDISPLAY_BLEND_MODE {.
     cdecl, importc: "orxGraphic_GetBlendMode".}
+proc getOrientation*(internal_pstGraphic: ptr orxGRAPHIC): orxDISPLAY_ORIENTATION {.
+    cdecl, importc: "orxGraphic_GetOrientation".}
 proc screenshotSetup*(): void {.cdecl, importc: "orxScreenshot_Setup".}
 proc screenshotInit*(): orxSTATUS {.cdecl, importc: "orxScreenshot_Init".}
 proc screenshotExit*(): void {.cdecl, importc: "orxScreenshot_Exit".}
@@ -5135,16 +5357,14 @@ proc findClose*(internal_pstFileInfo: ptr orxFILE_INFO): void {.cdecl,
 proc getInfo*(internal_zFileName: cstring;
               internal_pstFileInfo: ptr orxFILE_INFO): orxSTATUS {.cdecl,
     importc: "orxFile_GetInfo".}
-proc remove*(internal_zFileName: cstring): orxSTATUS {.cdecl,
-    importc: "orxFile_Remove".}
 proc makeDirectory*(internal_zName: cstring): orxSTATUS {.cdecl,
     importc: "orxFile_MakeDirectory".}
-proc open*(internal_zFileName: cstring; internal_u32OpenFlags: orxU32): ptr orxFILE {.
+proc open*(internal_zFileName: cstring; internal_u32Flags: orxU32): ptr orxFILE {.
     cdecl, importc: "orxFile_Open".}
-proc read*(internal_pReadData: pointer; internal_s64ElemSize: orxS64;
+proc read*(internal_pBuffer: pointer; internal_s64ElemSize: orxS64;
            internal_s64NbElem: orxS64; internal_pstFile: ptr orxFILE): orxS64 {.
     cdecl, importc: "orxFile_Read".}
-proc write*(internal_pDataToWrite: pointer; internal_s64ElemSize: orxS64;
+proc write*(internal_pBuffer: pointer; internal_s64ElemSize: orxS64;
             internal_s64NbElem: orxS64; internal_pstFile: ptr orxFILE): orxS64 {.
     cdecl, importc: "orxFile_Write".}
 proc fileDelete*(internal_zFileName: cstring): orxSTATUS {.cdecl,
@@ -5511,6 +5731,10 @@ proc internal_orxObject_GetStructure*(internal_pstObject: ptr orxOBJECT;
 proc setFlip*(internal_pstObject: ptr orxOBJECT; internal_bFlipX: orxBOOL;
               internal_bFlipY: orxBOOL): orxSTATUS {.cdecl,
     importc: "orxObject_SetFlip".}
+proc clearFlip*(internal_pstObject: ptr orxOBJECT): orxSTATUS {.cdecl,
+    importc: "orxObject_ClearFlip".}
+proc hasFlip*(internal_pstObject: ptr orxOBJECT): orxBOOL {.cdecl,
+    importc: "orxObject_HasFlip".}
 proc getFlip*(internal_pstObject: ptr orxOBJECT; internal_pbFlipX: ptr orxBOOL;
               internal_pbFlipY: ptr orxBOOL): orxSTATUS {.cdecl,
     importc: "orxObject_GetFlip".}
@@ -5756,18 +5980,20 @@ proc removeLastFilter*(internal_pstObject: ptr orxOBJECT): orxSTATUS {.cdecl,
     importc: "orxObject_RemoveLastFilter".}
 proc removeAllFilters*(internal_pstObject: ptr orxOBJECT): orxSTATUS {.cdecl,
     importc: "orxObject_RemoveAllFilters".}
-proc addShader*(internal_pstObject: ptr orxOBJECT;
-                internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxObject_AddShader".}
-proc addShaderRecursive*(internal_pstObject: ptr orxOBJECT;
-                         internal_zShaderConfigID: cstring): void {.cdecl,
-    importc: "orxObject_AddShaderRecursive".}
-proc removeShader*(internal_pstObject: ptr orxOBJECT;
-                   internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxObject_RemoveShader".}
-proc removeShaderRecursive*(internal_pstObject: ptr orxOBJECT;
-                            internal_zShaderConfigID: cstring): void {.cdecl,
-    importc: "orxObject_RemoveShaderRecursive".}
+proc setShader*(internal_pstObject: ptr orxOBJECT;
+                internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxObject_SetShader".}
+proc setShaderRecursive*(internal_pstObject: ptr orxOBJECT;
+                         internal_pstShader: ptr orxSHADER): void {.cdecl,
+    importc: "orxObject_SetShaderRecursive".}
+proc setShaderFromConfig*(internal_pstObject: ptr orxOBJECT;
+                          internal_zShaderID: cstring): orxSTATUS {.cdecl,
+    importc: "orxObject_SetShaderFromConfig".}
+proc setShaderFromConfigRecursive*(internal_pstObject: ptr orxOBJECT;
+                                   internal_zShaderID: cstring): void {.cdecl,
+    importc: "orxObject_SetShaderFromConfigRecursive".}
+proc getShader*(internal_pstObject: ptr orxOBJECT): ptr orxSHADER {.cdecl,
+    importc: "orxObject_GetShader".}
 proc enableShader*(internal_pstObject: ptr orxOBJECT; internal_bEnable: orxBOOL): void {.
     cdecl, importc: "orxObject_EnableShader".}
 proc isShaderEnabled*(internal_pstObject: ptr orxOBJECT): orxBOOL {.cdecl,
@@ -5803,20 +6029,20 @@ proc removeTriggerRecursive*(internal_pstObject: ptr orxOBJECT;
     importc: "orxObject_RemoveTriggerRecursive".}
 proc fireTrigger*(internal_pstObject: ptr orxOBJECT; internal_zEvent: cstring;
                   internal_azRefinementList: ptr cstring;
-                  internal_u32Size: orxU32): orxSTATUS {.cdecl,
+                  internal_u32Count: orxU32): orxSTATUS {.cdecl,
     importc: "orxObject_FireTrigger".}
 proc fireTriggerRecursive*(internal_pstObject: ptr orxOBJECT;
                            internal_zEvent: cstring;
                            internal_azRefinementList: ptr cstring;
-                           internal_u32Size: orxU32): void {.cdecl,
+                           internal_u32Count: orxU32): void {.cdecl,
     importc: "orxObject_FireTriggerRecursive".}
 proc getName*(internal_pstObject: ptr orxOBJECT): cstring {.cdecl,
     importc: "orxObject_GetName".}
-proc createNeighborList*(internal_pstCheckBox: ptr orxOBOX;
-                         internal_stGroupID: orxSTRINGID): ptr orxBANK {.cdecl,
-    importc: "orxObject_CreateNeighborList".}
-proc deleteNeighborList*(internal_pstObjectList: ptr orxBANK): void {.cdecl,
-    importc: "orxObject_DeleteNeighborList".}
+proc forAllNeighbors*(internal_pfnNeighborCallback: orxOBJECT_NEIGHBOR_FUNCTION;
+                      internal_pstCheckBox: ptr orxOBOX;
+                      internal_stGroupID: orxSTRINGID;
+                      internal_bEnabled: orxBOOL; internal_pContext: pointer): orxSTATUS {.
+    cdecl, importc: "orxObject_ForAllNeighbors".}
 proc setSmoothing*(internal_pstObject: ptr orxOBJECT;
                    internal_eSmoothing: orxDISPLAY_SMOOTHING): orxSTATUS {.
     cdecl, importc: "orxObject_SetSmoothing".}
@@ -5935,6 +6161,7 @@ proc addSlotFromConfig*(internal_pstFX: ptr orxFX; internal_zSlotID: cstring): o
     cdecl, importc: "orxFX_AddSlotFromConfig".}
 proc getDuration*(internal_pstFX: ptr orxFX): orxFLOAT {.cdecl,
     importc: "orxFX_GetDuration".}
+proc fXGet*(internal_zName: cstring): ptr orxFX {.cdecl, importc: "orxFX_Get".}
 proc getName*(internal_pstFX: ptr orxFX): cstring {.cdecl,
     importc: "orxFX_GetName".}
 proc loop*(internal_pstFX: ptr orxFX; internal_bLoop: orxBOOL): orxSTATUS {.
@@ -6062,7 +6289,8 @@ proc enable*(internal_pstSpawner: ptr orxSPAWNER; internal_bEnable: orxBOOL): vo
     cdecl, importc: "orxSpawner_Enable".}
 proc isEnabled*(internal_pstSpawner: ptr orxSPAWNER): orxBOOL {.cdecl,
     importc: "orxSpawner_IsEnabled".}
-proc reset*(internal_pstSpawner: ptr orxSPAWNER): void {.cdecl,
+proc reset*(internal_pstSpawner: ptr orxSPAWNER; internal_bResetCount: orxBOOL;
+            internal_bResetTimer: orxBOOL): void {.cdecl,
     importc: "orxSpawner_Reset".}
 proc setTotalObjectLimit*(internal_pstSpawner: ptr orxSPAWNER;
                           internal_u32TotalObjectLimit: orxU32): orxSTATUS {.
@@ -6175,17 +6403,13 @@ proc removeSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER;
 proc getCount*(internal_pstTrigger: ptr orxTRIGGER): orxU32 {.cdecl,
     importc: "orxTrigger_GetCount".}
 proc fire*(internal_pstTrigger: ptr orxTRIGGER; internal_zEvent: cstring;
-           internal_azRefinementList: ptr cstring; internal_u32Size: orxU32): orxSTATUS {.
+           internal_azRefinementList: ptr cstring; internal_u32Count: orxU32): orxSTATUS {.
     cdecl, importc: "orxTrigger_Fire".}
 proc pluginSetup*(): void {.cdecl, importc: "orxPlugin_Setup".}
 proc pluginInit*(): orxSTATUS {.cdecl, importc: "orxPlugin_Init".}
 proc pluginExit*(): void {.cdecl, importc: "orxPlugin_Exit".}
-proc pluginLoad*(internal_zPluginFileName: cstring;
-                 internal_zPluginName: cstring): orxHANDLE {.cdecl,
+proc pluginLoad*(internal_zPluginName: cstring): orxHANDLE {.cdecl,
     importc: "orxPlugin_Load".}
-proc loadUsingExt*(internal_zPluginFileName: cstring;
-                   internal_zPluginName: cstring): orxHANDLE {.cdecl,
-    importc: "orxPlugin_LoadUsingExt".}
 proc unload*(internal_hPluginHandle: orxHANDLE): orxSTATUS {.cdecl,
     importc: "orxPlugin_Unload".}
 proc getFunction*(internal_hPluginHandle: orxHANDLE;
@@ -6594,89 +6818,6 @@ proc setParent*(internal_pstCamera: ptr orxCAMERA; internal_pParent: pointer): o
     cdecl, importc: "orxCamera_SetParent".}
 proc getParent*(internal_pstCamera: ptr orxCAMERA): ptr orxSTRUCTURE {.cdecl,
     importc: "orxCamera_GetParent".}
-proc shaderSetup*(): void {.cdecl, importc: "orxShader_Setup".}
-proc shaderInit*(): orxSTATUS {.cdecl, importc: "orxShader_Init".}
-proc shaderExit*(): void {.cdecl, importc: "orxShader_Exit".}
-proc shaderCreate*(): ptr orxSHADER {.cdecl, importc: "orxShader_Create".}
-proc shaderCreateFromConfig*(internal_zConfigID: cstring): ptr orxSHADER {.
-    cdecl, importc: "orxShader_CreateFromConfig".}
-proc shaderDelete*(internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
-    importc: "orxShader_Delete".}
-proc shaderClearCache*(): orxSTATUS {.cdecl, importc: "orxShader_ClearCache".}
-proc start*(internal_pstShader: ptr orxSHADER;
-            internal_pstOwner: ptr orxSTRUCTURE): orxSTATUS {.cdecl,
-    importc: "orxShader_Start".}
-proc stop*(internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
-    importc: "orxShader_Stop".}
-proc addFloatParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
-                    internal_u32ArraySize: orxU32;
-                    internal_afValueList: ptr orxFLOAT): orxSTATUS {.cdecl,
-    importc: "orxShader_AddFloatParam".}
-proc addTextureParam*(internal_pstShader: ptr orxSHADER;
-                      internal_zName: cstring; internal_u32ArraySize: orxU32;
-                      internal_apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.
-    cdecl, importc: "orxShader_AddTextureParam".}
-proc addVectorParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
-                     internal_u32ArraySize: orxU32;
-                     internal_avValueList: ptr orxVECTOR): orxSTATUS {.cdecl,
-    importc: "orxShader_AddVectorParam".}
-proc addTimeParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
-                   internal_fWrap: orxFLOAT; internal_zFXName: cstring): orxSTATUS {.
-    cdecl, importc: "orxShader_AddTimeParam".}
-proc setFloatParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
-                    internal_u32ArraySize: orxU32;
-                    internal_afValueList: ptr orxFLOAT): orxSTATUS {.cdecl,
-    importc: "orxShader_SetFloatParam".}
-proc setTextureParam*(internal_pstShader: ptr orxSHADER;
-                      internal_zName: cstring; internal_u32ArraySize: orxU32;
-                      internal_apstValueList: ptr ptr orxTEXTURE): orxSTATUS {.
-    cdecl, importc: "orxShader_SetTextureParam".}
-proc setVectorParam*(internal_pstShader: ptr orxSHADER; internal_zName: cstring;
-                     internal_u32ArraySize: orxU32;
-                     internal_avValueList: ptr orxVECTOR): orxSTATUS {.cdecl,
-    importc: "orxShader_SetVectorParam".}
-proc compileCode*(internal_pstShader: ptr orxSHADER;
-                  internal_azCodeList: ptr cstring; internal_u32Size: orxU32): orxSTATUS {.
-    cdecl, importc: "orxShader_CompileCode".}
-proc enable*(internal_pstShader: ptr orxSHADER; internal_bEnable: orxBOOL): void {.
-    cdecl, importc: "orxShader_Enable".}
-proc isEnabled*(internal_pstShader: ptr orxSHADER): orxBOOL {.cdecl,
-    importc: "orxShader_IsEnabled".}
-proc getName*(internal_pstShader: ptr orxSHADER): cstring {.cdecl,
-    importc: "orxShader_GetName".}
-proc getID*(internal_pstShader: ptr orxSHADER): orxU32 {.cdecl,
-    importc: "orxShader_GetID".}
-proc shaderPointerSetup*(): void {.cdecl, importc: "orxShaderPointer_Setup".}
-proc shaderPointerInit*(): orxSTATUS {.cdecl, importc: "orxShaderPointer_Init".}
-proc shaderPointerExit*(): void {.cdecl, importc: "orxShaderPointer_Exit".}
-proc shaderPointerCreate*(): ptr orxSHADERPOINTER {.cdecl,
-    importc: "orxShaderPointer_Create".}
-proc shaderPointerDelete*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_Delete".}
-proc start*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_Start".}
-proc stop*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_Stop".}
-proc enable*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-             internal_bEnable: orxBOOL): void {.cdecl,
-    importc: "orxShaderPointer_Enable".}
-proc isEnabled*(internal_pstShaderPointer: ptr orxSHADERPOINTER): orxBOOL {.
-    cdecl, importc: "orxShaderPointer_IsEnabled".}
-proc addShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_AddShader".}
-proc removeShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                   internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_RemoveShader".}
-proc getShader*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                internal_u32Index: orxU32): ptr orxSHADER {.cdecl,
-    importc: "orxShaderPointer_GetShader".}
-proc addShaderFromConfig*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                          internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxShaderPointer_AddShaderFromConfig".}
-proc removeShaderFromConfig*(internal_pstShaderPointer: ptr orxSHADERPOINTER;
-                             internal_zShaderConfigID: cstring): orxSTATUS {.
-    cdecl, importc: "orxShaderPointer_RemoveShaderFromConfig".}
 proc viewportSetup*(): void {.cdecl, importc: "orxViewport_Setup".}
 proc viewportInit*(): orxSTATUS {.cdecl, importc: "orxViewport_Init".}
 proc viewportExit*(): void {.cdecl, importc: "orxViewport_Exit".}
@@ -6714,19 +6855,19 @@ proc setCamera*(internal_pstViewport: ptr orxVIEWPORT;
     importc: "orxViewport_SetCamera".}
 proc getCamera*(internal_pstViewport: ptr orxVIEWPORT): ptr orxCAMERA {.cdecl,
     importc: "orxViewport_GetCamera".}
-proc addShader*(internal_pstViewport: ptr orxVIEWPORT;
-                internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxViewport_AddShader".}
-proc removeShader*(internal_pstViewport: ptr orxVIEWPORT;
-                   internal_zShaderConfigID: cstring): orxSTATUS {.cdecl,
-    importc: "orxViewport_RemoveShader".}
+proc setShader*(internal_pstViewport: ptr orxVIEWPORT;
+                internal_pstShader: ptr orxSHADER): orxSTATUS {.cdecl,
+    importc: "orxViewport_SetShader".}
+proc setShaderFromConfig*(internal_pstViewport: ptr orxVIEWPORT;
+                          internal_zShaderID: cstring): orxSTATUS {.cdecl,
+    importc: "orxViewport_SetShaderFromConfig".}
 proc enableShader*(internal_pstViewport: ptr orxVIEWPORT;
                    internal_bEnable: orxBOOL): void {.cdecl,
     importc: "orxViewport_EnableShader".}
 proc isShaderEnabled*(internal_pstViewport: ptr orxVIEWPORT): orxBOOL {.cdecl,
     importc: "orxViewport_IsShaderEnabled".}
-proc getShaderPointer*(internal_pstViewport: ptr orxVIEWPORT): ptr orxSHADERPOINTER {.
-    cdecl, importc: "orxViewport_GetShaderPointer".}
+proc getShader*(internal_pstViewport: ptr orxVIEWPORT): ptr orxSHADER {.cdecl,
+    importc: "orxViewport_GetShader".}
 proc setBlendMode*(internal_pstViewport: ptr orxVIEWPORT;
                    internal_eBlendMode: orxDISPLAY_BLEND_MODE): orxSTATUS {.
     cdecl, importc: "orxViewport_SetBlendMode".}
