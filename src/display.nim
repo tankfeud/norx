@@ -35,7 +35,7 @@ const colorDenormalizer* = 255.0f
   ## Denormalizes color values
 
 
-## @file orx/code/include/display/orxDisplay.h:"/** Sets all components of an orxRGBA":368:1aaa54d3a45275ae7f0b700b1e9faec7
+## @file orx/code/include/display/orxDisplay.h:"/** Sets all components of an orxRGBA":153:56d10fcb3e2a7528d005fe761dd5b11c
 
 proc rgbaSet*(r: orxU8, g: orxU8, b: orxU8, a: orxU8): orxRGBA {.inline.} =
   ## Sets all components of an orxRGBA
