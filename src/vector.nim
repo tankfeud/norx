@@ -360,8 +360,14 @@ proc cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): p
 template newVECTOR*(x, y, z: untyped): orxVECTOR =
   (fX: x.orxFLOAT, fY: y.orxFLOAT, fZ: z.orxFLOAT)
 
-template newSeqSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
+template newVECTOR*(): orxVECTOR =
+  (0, 0, 0)
+
+template newSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
   (fX: rho.orxFLOAT, fY: theta.orxFLOAT, fZ: phi.orxFLOAT)
+
+template newSPVECTOR*(): orxSPVECTOR =
+  (0, 0, 0)
 
 template newRGBVECTOR*(r, g, b: untyped): orxRGBVECTOR =
   (fX: r.orxFLOAT, fY: g.orxFLOAT, fZ: b.orxFLOAT)
