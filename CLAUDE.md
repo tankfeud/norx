@@ -8,20 +8,21 @@ Norx is a Nim wrapper for the ORX 2.5D game engine library. ORX is a C99 game en
 
 The wrapper consists of two main parts:
 
-1. **Low-level wrapper (`src/wrapper.nim`)**: Automatically generated from ORX C headers using Futhark. Uses C types and provides direct access to ORX functions.
+1. **Low-level wrapper (`src/wrapper.nim`)**: Automatically generated from ORX C headers using Futhark. Uses C types and provides direct access to ORX functions. Generated low-level bindings (do NOT edit directly!)
 
-2. **High-level modules (`src/norx.nim`)**: Hand-written Nim modules that provide idiomatic Nim APIs, including:
-   - `src/norx.nim` - Main high-level wrapper module (import this)
-   - `src/math.nim` - Mathematical utilities
-   - `src/vector.nim` - Vector operations
+2. **High-level modules**: Hand-written Nim modules that provide idiomatic Nim APIs, including:
+   - `src/norx.nim` - Main high-level wrapper module that also exports `src/wrapper.nim` (import this)
+   - `src/basics.nim` - Various fundamental bits and pieces
+   - `src/vector.nim` - Vector operations, based on inline functions from ORX
+   - `src/display.nim` - Color related functions
    - `src/joystick.nim` - Joystick input handling
+   - `src/annotation.nim` - A Nim meta mechanism which we use to keep the Norx wrapper in sync with underlying ORX sources 
 
-The high-level `norx.nim` module exports the low-level wrapper for direct access when needed.
 
 ## Key Components
 
 - **ORX Submodule**: Contains the actual ORX C library sources in the `orx/` directory
-- **Wrapper Generation**: Uses Futhark to automatically generate Nim bindings from C headers
+- **Wrapper Generation**: Uses Futhark (https://github.com/PMunch/futhark) to automatically generate Nim bindings from C headers
 - **Samples**: Multiple sample projects demonstrating usage in `samples/` and `official_samples/`
 - **Build System**: Uses Nimble for package management and a custom `build.sh` script
 
@@ -33,9 +34,9 @@ The high-level `norx.nim` module exports the low-level wrapper for direct access
 ./build.sh --docs        # Also generate HTML documentation
 ```
 
-### Installing Dependencies
+### Installing
 ```bash
-nimble install           # Install the Norx package
+nimble install           # Install the Norx package locally
 ```
 
 ### Running Samples
@@ -66,18 +67,11 @@ nim c -r testObject.nim
 
 ## Key Files for Development
 
-- `src/norx.nim` - Main module to import, contains high-level APIs
-- `src/wrapper.nim` - Generated low-level bindings (don't edit directly)
 - `scripts/create_wrapper.nim` - Script that generates the wrapper using Futhark
 - `build.sh` - Main build script for regenerating wrapper and docs
 - `norx.nimble` - Package configuration
 - `orx/` - ORX C library submodule
 
-## Platform Support
-
-- Linux, macOS, Windows
-- Android (via android-native sample)
-- iOS (with platform-specific considerations)
 
 ## Important Notes
 
@@ -115,6 +109,3 @@ nim c -r testObject.nim
 - When implementing new architecture patterns, completely remove the old implementation patterns
 - Delete deprecated methods, unused types, and obsolete code paths immediately
 - Keep the codebase lean and focused on the current architectural approach
-
-### Async and Concurrency Guidelines
-- **DO NOT USE `asyncdispatch`** - This project explicitly avoids asyncdispatch for concurrency

@@ -361,13 +361,13 @@ template newVECTOR*(x, y, z: untyped): orxVECTOR =
   (fX: x.orxFLOAT, fY: y.orxFLOAT, fZ: z.orxFLOAT)
 
 template newVECTOR*(): orxVECTOR =
-  (0, 0, 0)
+  (0.orxFLOAT, 0.orxFLOAT, 0.orxFLOAT)
 
 template newSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
   (fX: rho.orxFLOAT, fY: theta.orxFLOAT, fZ: phi.orxFLOAT)
 
 template newSPVECTOR*(): orxSPVECTOR =
-  (0, 0, 0)
+  (0.orxFLOAT, 0.orxFLOAT, 0.orxFLOAT)
 
 template newRGBVECTOR*(r, g, b: untyped): orxRGBVECTOR =
   (fX: r.orxFLOAT, fY: g.orxFLOAT, fZ: b.orxFLOAT)

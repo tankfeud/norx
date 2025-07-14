@@ -146,3 +146,24 @@ proc getLast*(list: ptr orxLINKLIST): ptr orxLINKLIST_NODE {.inline.} =
 proc getCount*(list: ptr orxLINKLIST): orxU32 {.inline.} =
   ## Gets list node count
   if list != nil: list.u32Count else: 0
+
+## @file orx/code/include/io/orxJoystick.h:"#define orxJOYSTICK_KU32_MIN_ID":2:1a8c79cb86a49314bdd7c1aa7f6f09cf
+const JOYSTICK_KU32_MIN_ID = 1
+const JOYSTICK_KU32_MAX_ID = (JOYSTICK_BUTTON_NUMBER.ord / JOYSTICK_BUTTON_SINGLE_NUMBER.ord).int
+
+## @file orx/code/include/io/orxJoystick.h:"#define orxJOYSTICK_GET_AXIS":5:699cbeef04bfd5c2dfffb1479b9f3ead
+template getJoystickAxis*(axis, id: untyped): untyped =
+  ## Gets joystick axis for specific controller ID
+  ((axis.orxU32 mod JOYSTICK_AXIS_SINGLE_NUMBER) + ((id - 1) * JOYSTICK_AXIS_SINGLE_NUMBER))
+
+template getJoystickButton*(button, id: untyped): untyped =
+  ## Gets joystick button for specific controller ID  
+  ((button.orxU32 mod JOYSTICK_BUTTON_SINGLE_NUMBER) + ((id - 1) * JOYSTICK_BUTTON_SINGLE_NUMBER))
+
+template getJoystickIdFromAxis*(axis: untyped): untyped =
+  ## Gets controller ID from joystick axis
+  ((axis.orxU32 div JOYSTICK_AXIS_SINGLE_NUMBER) + 1)
+
+template getJoystickIdFromButton*(button: untyped): untyped =
+  ## Gets controller ID from joystick button
+  ((button.orxU32 div JOYSTICK_BUTTON_SINGLE_NUMBER) + 1)

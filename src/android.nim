@@ -1,8 +1,8 @@
-import norx/[incl, lib, event, joystick]
+import norx
 
 import android/ndk/anative_window, jnim
 
-const orxANDROID_KU32_MAX_JOYSTICK_NUMBER* = orxJOYSTICK_KU32_MAX_ID
+const orxANDROID_KU32_MAX_JOYSTICK_NUMBER* = JOYSTICK_KU32_MAX_ID
 
 const
   KZ_CONFIG_ANDROID* = "Android"
