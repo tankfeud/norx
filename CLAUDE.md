@@ -4,6 +4,9 @@
 
 Norx is a Nim wrapper for the ORX 2.5D game engine library. ORX is a C99 game engine that is highly performant and cross-platform. The wrapper provides both low-level C bindings and high-level Nim abstractions.
 
+ORX website: https://orx-project.org/
+ORX docs: https://orx-project.org/wiki/
+
 ## Architecture
 
 The wrapper consists of two main parts:
@@ -43,6 +46,10 @@ nimble install           # Install the Norx package locally
 ```bash
 cd samples/sample1
 nimble run
+```
+
+```bash
+nim c -r official_samples/S01_object.nim
 ```
 
 ### Testing
