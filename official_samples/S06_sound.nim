@@ -108,7 +108,7 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
 
       else:
         # unknown event
-        echo "unknown event ", $orxEVENT_TYPE(event.eID)
+        echo "unknown event ", $event.eID
         result = STATUS_FAILURE
 
 

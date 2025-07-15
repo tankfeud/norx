@@ -251,7 +251,7 @@ proc init() :orxSTATUS {.cdecl.} =
   var viewports_names = [ "Viewport4", "Viewport3", "Viewport2", "Viewport1" ]
 
   for i,vn in viewports_names:
-    viewports_list[3-i]= viewportCreateFromConfig( vn)
+    viewports_list[3-i]= viewportCreateFromConfig( vn.cstring)
     # the index trick (3-i) is because we create viewports in reverse order.
     # this is awful. Don't do this at home.
     if viewports_list[3-i].isNil:

@@ -71,7 +71,7 @@ proc get_input_name(input_name: string) :cstring =
     echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
     return binding_name
 
-  return fmt"key {input_name} not found"
+  return ("key " & input_name & " not found").cstring
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var status:orxSTATUS

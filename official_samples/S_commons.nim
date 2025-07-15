@@ -4,7 +4,6 @@
 ]#
 
 import norx
-import strformat
 
 proc run*(): orxSTATUS {.cdecl.} =
   result = STATUS_SUCCESS #by default, won't quit
@@ -29,5 +28,5 @@ proc get_input_name*(input_name: string) :cstring =
     #echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
   else:
     echo "couldn't get binding"
-    result = fmt"key {input_name} not found"
+    result = ("key " & input_name & " not found").cstring
 

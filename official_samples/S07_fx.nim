@@ -162,14 +162,14 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ("SelectFlash","FlashFX"), ("SelectMove","MoveFX"), ("SelectFlip","FlipFX") ]
 
   for tup in key_fx:
-    if isActive( tup.key):
+    if isActive( tup.key.cstring):
       selected_fx = tup.fx
       break
 
   let soldier_userdata = cast[ptr Userdata]( soldier.getUserData())
   if hasBeenActivated( "ApplyFX"):
     if not soldier_userdata.is_locked:
-      discard soldier.addFX( selected_fx)
+      discard soldier.addFX( selected_fx.cstring)
     else:
       orxlog( "ApplyFX activated, but soldier is locked: cancel ApplyFX.")
 
