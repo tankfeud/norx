@@ -110,6 +110,13 @@ when not defined(PLUGIN):
         inc(argc)
         ##  Sends the command line arguments to orxParam module
         if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
+          # Check for startup test flag
+          var isStartupTest = false
+          for i in 0..<argc:
+            if nargv[i] == "--startup-test":
+              isStartupTest = true
+              break
+          
           ##  Inits the engine
           if moduleInit(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
             var
@@ -121,21 +128,26 @@ when not defined(PLUGIN):
             discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
             ##  Clears payload
             zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
-            ##  Main loop
-            var bStop = false
-            sbStopByEvent = false
-            while not bStop:
-              ##  Sends frame start event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
-              ##  Runs game specific code
-              eMainStatus = runProc()
-              ##  Updates clock system
-              eClockStatus = update()
-              ##  Sends frame stop event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
-              ##  Updates frame count
-              stPayload.u32FrameCount += 1
-              bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
+            
+            # Handle startup test mode vs normal main loop
+            if isStartupTest:
+              echo "Startup test mode - ORX framework initialized successfully"
+            else:
+              ##  Main loop
+              var bStop = false
+              sbStopByEvent = false
+              while not bStop:
+                ##  Sends frame start event
+                orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
+                ##  Runs game specific code
+                eMainStatus = runProc()
+                ##  Updates clock system
+                eClockStatus = update()
+                ##  Sends frame stop event
+                orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
+                ##  Updates frame count
+                stPayload.u32FrameCount += 1
+                bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
 
             ##  Removes event handler
             discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
