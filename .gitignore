@@ -3,6 +3,11 @@
 !/**/
 !*.*
 
+# Claude local
+.claude
+
+# ORX console history
+**/*.cih
 
 **/*.log
 **/*.dSYM
