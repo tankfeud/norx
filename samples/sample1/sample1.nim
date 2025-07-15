@@ -1,81 +1,56 @@
 ## This is a port of the trivial sample that ORX comes with.
-
 import os
+import norx
 
-import norx, norx/[incl, clock, event, system, config, resource, input,
-    viewport, obj, version, joystick]
+# We need cdecl for all functions, as they are called from C code
+{.push cdecl.}
 
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   ## Update function, it has been registered to be called every tick of the core clock
   # Should we quit due to user pressing ESC?
   if isActive("Quit"):
     # Send close event
     echo "User quitting"
-    discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
+    discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
 
-# Convert from joyNr:int & buttonIdx:int to orxJOYSTICK_BUTTON
-proc toJoystickButton*(joyNr: int, buttonIdx: int): orxJOYSTICK_BUTTON =
-  var eID: int = buttonIdx + (joyNr-1)*orxJOYSTICK_BUTTON_SINGLE_NUMBER
-  return orxJOYSTICK_BUTTON(uint(eID))
+proc init(): orxSTATUS =
+  echo "Sample1 starting (Version: " & $getVersionFullString() & ")"
+  
+  # Setup game objects
+  let viewport = viewportCreateFromConfig("MainViewport")
+  if viewport.isNil: return STATUS_FAILURE
+  echo "Viewport created"
 
-proc init(): orxSTATUS {.cdecl.} =
-  ## Init function, it is called when all orx's modules have been initialized
-  orxLOG("Sample1 starting")
+  let scene = objectCreateFromConfig("Scene")
+  if scene.isNil: return STATUS_FAILURE
+  echo "Scene created"
 
-  var btnFromOrd: orxJOYSTICK_BUTTON = toJoystickButton(3, 4); # Verify enum can be constructed from ordinal
-  orxlog("btnFromOrd: " & $btnFromOrd) # should print orxJOYSTICK_3_BUTTON_LBUMPER
-
-  orxlog("VERSION_FULL_STRING: " & $ORX_VERSION_FULL_STRING)
-
-  # Create the viewport
-  var v = viewportCreateFromConfig("MainViewport")
-  if not v.isNil:
-    echo "Viewport created"
-
-  # Create the scene
-  var s = objectCreateFromConfig("Scene")
-  if not s.isNil:
-    echo "Scene created"
-
-  # Register the Update function to the core clock
-  let clock = clockGet(orxCLOCK_KZ_CORE)
-  if not clock.isNil:
-    echo "Clock gotten"
-  var status = clock.register(Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-  if status == orxSTATUS_SUCCESS:
+  # Setup update callback
+  let clock = clockGet(CLOCK_KZ_CORE)
+  if clock.isNil: return STATUS_FAILURE
+  
+  let status = clockRegister(clock, update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+  if status == STATUS_SUCCESS:
     echo "Clock registered"
+    return STATUS_SUCCESS
+  
+  return STATUS_FAILURE
 
-  # Done!
-  return orxSTATUS_SUCCESS
+proc run(): orxSTATUS = STATUS_SUCCESS
 
-proc run(): orxSTATUS {.cdecl.} =
-  ## Run function, it should not contain any game logic
-  # Return orxSTATUS_FAILURE to instruct orx to quit
-  return orxSTATUS_SUCCESS
+proc exit() = echo "Exit called"
 
-proc exit() {.cdecl.} =
-  ## Exit function, it is called before exiting from orx
-  echo "Exit called"
-
-proc bootstrap(): orxSTATUS {.cdecl.} =
-  ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
-  # Add a config storage to find the initial config file
-  var dir = getCurrentDir()
-  var status = addStorage(orxCONFIG_KZ_RESOURCE_GROUP, cstring(dir &
-      "/data/config"), false)
-  if status == orxSTATUS_SUCCESS:
+proc bootstrap(): orxSTATUS =
+  # Setup initial config storage
+  let configPath = getCurrentDir() & "/data/config"
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, cstring(configPath), false)
+  if result == STATUS_SUCCESS:
     echo "Added storage"
-  # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
-  return orxSTATUS_SUCCESS
 
+# Main program
 when isMainModule:
-  # Set the bootstrap function to provide at least one resource storage before loading any config files
-  var status = setBootstrap(bootstrap)
-  if status == orxSTATUS_SUCCESS:
+  if setBootstrap(bootstrap) == STATUS_SUCCESS:
     echo "Bootstrap was set"
-
-  # Execute our game
-  execute(init, run, exit)
-
-  # Done!
+    execute(init, run, exit)
+  
   quit(0)

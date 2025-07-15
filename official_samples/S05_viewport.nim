@@ -64,7 +64,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display]
+import norx
 
 # the shared functions
 import S_commons
@@ -143,40 +143,38 @@ proc getScreenPosition*(pvWorldPosition: ptr orxVECTOR;
   ##  @return      orxVECTOR if found (can be off-screen), nil otherwise
 ]#
 
-  let color = orx2RGBA( 0,0,0, 255)
-  var screen_pos:ptr orxVECTOR
-  var spos_dummy:orxVECTOR = (0f,0f,0f)
-  screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
+  let color = orx2RGBA(0,0,0,255)
+  var spos_dummy = newVECTOR(0.0, 0.0, 0.0)
+  var screen_pos = getScreenPosition( cam_pos, viewports_list[0], addr spos_dummy)
   discard drawCircle( screen_pos, 10.0f, color, true)
-
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   ### camera control ###
   var camera:ptr orxCAMERA = viewports_list[0].getCamera()
-  if input.isActive("CameraRotateLeft"):
-    discard camera.setRotation( camera.getRotation() + orx2F(-4.0f) * clockInfo.fDT )
-  if input.isActive("CameraRotateRight"):
-    discard camera.setRotation( camera.getRotation() - orx2F(-4.0f) * clockInfo.fDT )
+  if isActive("CameraRotateLeft"):
+    discard camera.setRotation( camera.getRotation() + -4.0f * clockInfo.fDT )
+  if isActive("CameraRotateRight"):
+    discard camera.setRotation( camera.getRotation() - -4.0f * clockInfo.fDT )
 
-  if input.isActive("CameraZoomIn"):
-    discard camera.setZoom( camera.getZoom() * orx2F( 1.02f) )
-  if input.isActive("CameraZoomOut"):
-    discard camera.setZoom( camera.getZoom() * orx2F( 0.98f) )
+  if isActive("CameraZoomIn"):
+    discard camera.setZoom( camera.getZoom() *  1.02f)
+  if isActive("CameraZoomOut"):
+    discard camera.setZoom( camera.getZoom() *  0.98f)
 
   var vDummy:orxVECTOR = (0f,0f,0f) # camera.getPosition needs an initialized orxVECTOR as param.
   var cam_pos:ptr orxVECTOR
   cam_pos = camera.getPosition( addr vDummy)
 
-  if input.isActive("CameraLeft"):
-    cam_pos.fX -= orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraRight"):
-    cam_pos.fX += orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraUp"):
-    cam_pos.fY -= orx2F(500) * clockInfo.fDT;
-  if input.isActive("CameraDown"):
-    cam_pos.fY += orx2F(500) * clockInfo.fDT;
+  if isActive("CameraLeft"):
+    cam_pos.fX -= 500.0 * clockInfo.fDT;
+  if isActive("CameraRight"):
+    cam_pos.fX += 500.0 * clockInfo.fDT;
+  if isActive("CameraUp"):
+    cam_pos.fY -= 500.0 * clockInfo.fDT;
+  if isActive("CameraDown"):
+    cam_pos.fY += 500.0 * clockInfo.fDT;
 
   # we need to update the camera position to see changes
   discard camera.setPosition( cam_pos)
@@ -188,26 +186,26 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vp_width, vp_height:orxFLOAT
   getRelativeSize( viewports_list[0], addr vp_width, addr vp_height)
 
-  if input.isActive("ViewportScaleUp"):
-    vp_width *= orx2F( 1.02f);
-    vp_height*= orx2F( 1.02f);
-  if input.isActive("ViewportScaleDown"):
-    vp_width *= orx2F( 0.98f);
-    vp_height *= orx2F( 0.98f);
+  if isActive("ViewportScaleUp"):
+    vp_width *= 1.02;
+    vp_height *= 1.02;
+  if isActive("ViewportScaleDown"):
+    vp_width *= 0.98;
+    vp_height *= 0.98;
   # update viewport size.
   discard setRelativeSize( viewports_list[0], vp_width, vp_height)
 
   # viewport position
   var vp_x, vp_y:orxFLOAT
   getPosition( viewports_list[0], addr vp_x, addr vp_y)
-  if input.isActive("ViewportRight"):
-    vp_x += orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportLeft"):
-    vp_x -= orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportDown"):
-    vp_y += orx2F(500) * clockInfo.fDT
-  if input.isActive("ViewportUp"):
-    vp_y -= orx2F(500) * clockInfo.fDT
+  if isActive("ViewportRight"):
+    vp_x += 500.0 * clockInfo.fDT
+  if isActive("ViewportLeft"):
+    vp_x -= 500.0 * clockInfo.fDT
+  if isActive("ViewportDown"):
+    vp_y += 500.0 * clockInfo.fDT
+  if isActive("ViewportUp"):
+    vp_y -= 500.0 * clockInfo.fDT
   
   setPosition( viewports_list[0], vp_x, vp_y)
 
@@ -253,13 +251,13 @@ proc init() :orxSTATUS {.cdecl.} =
   var viewports_names = [ "Viewport4", "Viewport3", "Viewport2", "Viewport1" ]
 
   for i,vn in viewports_names:
-    viewports_list[3-i]= viewportCreateFromConfig( vn)
+    viewports_list[3-i]= viewportCreateFromConfig( vn.cstring)
     # the index trick (3-i) is because we create viewports in reverse order.
     # this is awful. Don't do this at home.
     if viewports_list[3-i].isNil:
       # in case of error, we need to adjust the Viewport «real» name.
       echo &"couldn't create viewport {4-i}"
-      return orxSTATUS_FAILURE
+      return STATUS_FAILURE
 
   # BTW, since the original tutorial was written, there has been a new function
   # called « orxViewport_Get » (C API), and « viewportGet » (Nim API).
@@ -272,11 +270,11 @@ proc init() :orxSTATUS {.cdecl.} =
   soldier = objectCreateFromConfig( "Soldier")
 
   # Gets the main clock
-  var mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
+  var mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
 
   # Registers our update callback
-  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
-  orxSTATUS_SUCCESS
+  status = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
+  STATUS_SUCCESS
 
 
 proc Main =

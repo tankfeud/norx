@@ -71,7 +71,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, physics]
+import norx
 
 # the shared functions
 import S_commons
@@ -91,7 +91,7 @@ proc display_hints() =
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
 
-  if event.eID == ord(orxPHYSICS_EVENT_CONTACT_ADD):
+  if event.eID == ord(PHYSICS_EVENT_CONTACT_ADD):
     # it's a new contact
     # we get the colliding boxes
     var box1 = cast[ptr orxOBJECT]( event.hRecipient)
@@ -106,9 +106,9 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var deltaRot:orxFLOAT = orxFLOAT_0
 
   if isActive( "RotateLeft"):
-    deltaRot = orx2F( 4.0f) * clockInfo.fDT;
+    deltaRot = 4.0 * clockInfo.fDT;
   if isActive( "RotateRight"):
-    deltaRot = orx2F( -4.0f) * clockInfo.fDT;
+    deltaRot = -4.0 * clockInfo.fDT;
 
   # has turned ?
   if deltaRot != orxFLOAT_0:
@@ -120,7 +120,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     # Gets gravity
     discard getGravity( addr gravity)
     # and updates it
-    discard twoDRotate( addr gravity, addr gravity, deltaRot)
+    discard rotate2D( addr gravity, addr gravity, deltaRot)
     # apply new gravity
     discard setGravity( addr gravity)
 
@@ -133,16 +133,16 @@ proc init() :orxSTATUS {.cdecl.} =
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
   
   # and get the camera attached to this viewport
   cam = getCamera( vp);
 
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   ## the event handler (for managing the bump of the boxes)
-  discard addHandler( orxEVENT_TYPE_PHYSICS, EventHandler);
+  discard addHandler( EVENT_TYPE_PHYSICS, EventHandler);
 
   ## create the whole scene (see the magic in .ini)
   discard objectCreateFromConfig( "Scene")

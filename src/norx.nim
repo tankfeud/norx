@@ -1,37 +1,198 @@
 import os
+import basics, wrapper, vector, joystick, display
+export basics, wrapper, vector, joystick, display
 
-import norx/[incl, param, module, event, clock]
+## This is the Norx high level wrapper module for the ORX library.
+## It is generated from the ORX sources using the create_wrapper.nim script.
+## You should usually only need to import this module.
+
+# This is only used during development to check that the wrapper is up to date with ORX sources.
+when defined(processAnnotations):
+  import annotation
+  static: processAnnotations(currentSourcePath())
+
+#[ ##  Windows
+when defined(Windows):
+  type
+    orxHANDLE* = pointer
+  when defined(X86_64):
+    type
+      orxU32* = cuint
+      orxU16* = cushort
+      orxU8* = uint8
+      orxS32* = cint
+      orxS16* = cshort
+      orxS8* = cchar
+      orxBOOL* = distinct cuint
+  else:
+    type
+      orxU32* = culong
+      orxU16* = cushort
+      orxU8* = uint8
+      orxS32* = clong
+      orxS16* = cshort
+      orxS8* = cchar
+      orxBOOL* = distinct culong
+
+  ##  Compiler specific
+  when defined(GCC):
+    type
+      orxU64* = culonglong
+      orxS64* = clonglong
+  when defined(LLVM):
+    type
+      orxU64* = culonglong
+      orxS64* = clonglong
+
+  type
+    orxFLOAT* = cfloat
+    orxDOUBLE* = cdouble
+    orxCHAR* = char
+  type
+    orxSTRINGID* = orxU32
+    orxENUM* = orxU32
+  template orx2F*(V: untyped): untyped =
+    ((orxFLOAT)(V))
+
+  template orx2D*(V: untyped): untyped =
+    ((orxDOUBLE)(V))
+
+  const
+    orxENUM_NONE* = 0xFFFFFFFF
+
+else:
+  ##  Linux / Mac / iOS / Android
+  when defined(Linux) or defined(MacOSX) or defined(iOS) or defined(Android) or
+      defined(ANDROID_NATIVE):
+    type
+      orxHANDLE* = pointer
+    when declared(orx64):
+      type
+        orxU64* = culonglong
+        orxU32* = cuint
+        orxU16* = cushort
+        orxU8* = uint8
+        orxS64* = clonglong
+        orxS32* = cint
+        orxS16* = cshort
+        orxS8* = cchar
+        orxBOOL* = distinct cuint
+    else:
+      type
+        orxU64* = culonglong
+        orxU32* = culong
+        orxU16* = cushort
+        orxU8* = uint8
+        orxS64* = clonglong
+        orxS32* = clong
+        orxS16* = cshort
+        orxS8* = cchar
+        orxBOOL* = distinct culong
+    type
+      orxFLOAT* = cfloat
+      orxDOUBLE* = cdouble
+      orxCHAR* = char
+    type
+      orxSTRINGID* = orxU64
+      orxENUM* = orxU32
+    template orx2F*(V: untyped): untyped =
+      ((orxFLOAT)(V))
+
+    template orx2D*(V: untyped): untyped =
+      ((orxDOUBLE)(V))
+
+    const
+      orxENUM_NONE* = 0xFFFFFFFF
+      # orxENUM_NONE* = -1 # TODO: this value was 0xFFFFFFFF used as a commaon NONE-enum for many Enum but Nim can't handle a Range from 0 to 0xFFFFFFFF when we need to iterate Enum values.
+
+ ]#
+
+## Version constants
+## @file orx/code/include/base/orxVersion.h:"#define __orxVERSION_STRING__":11:58e2bd59921beea7c331cd2ee64ea8a7
+const
+  ORX_VERSION_STRING* = $compiler_orxVERSION_MAJOR_private & "." & $compiler_orxVERSION_MINOR_private & "-" & $compiler_orxVERSION_RELEASE_private
+  ORX_VERSION_FULL_STRING* = $compiler_orxVERSION_MAJOR_private & "." & $compiler_orxVERSION_MINOR_private & "." & $compiler_orxVERSION_BUILD_private & "-" & $compiler_orxVERSION_RELEASE_private
+  ORX_VERSION_MASK_MAJOR = 0xFF000000
+  ORX_VERSION_SHIFT_MAJOR = 24
+  ORX_VERSION_MASK_MINOR = 0x00FF0000
+  ORX_VERSION_SHIFT_MINOR = 16
+  ORX_VERSION_MASK_BUILD = 0x0000FFFF
+  ORX_VERSION_SHIFT_BUILD = 0
+  ORX_VERSION*: int64 = (((compiler_orxVERSION_MAJOR_private shl ORX_VERSION_SHIFT_MAJOR) and ORX_VERSION_MASK_MAJOR) or
+      ((compiler_orxVERSION_MINOR_private shl ORX_VERSION_SHIFT_MINOR) and ORX_VERSION_MASK_MINOR) or
+      ((compiler_orxVERSION_BUILD_private shl ORX_VERSION_SHIFT_BUILD) and ORX_VERSION_MASK_BUILD))
+
+
+## From orxEvent.h
+template eventGetFlag*(ID: untyped): untyped =
+  ((orxU32)(1 shl (orxU32)(ID)))
+
+## From orxStructure.h
+proc getPointer*(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE {.
+    inline, cdecl.} =
+  ## Gets structure pointer / debug mode
+  ##  @param[in]   _pStructure    Concerned structure
+  ##  @param[in]   _eStructureID   ID to test the structure against
+  ##  @return      Valid orxSTRUCTURE, nil otherwise
+  if pStructure.isNil:
+    return nil
+  let uid = (cast[ptr orxSTRUCTURE](pStructure)).u64GUID
+  if ((uid and STRUCTURE_GUID_MASK_STRUCTURE_ID) shr STRUCTURE_GUID_SHIFT_STRUCTURE_ID) == eStructureID.uint64:
+    return cast[ptr orxSTRUCTURE](pStructure)
+  else:
+    return cast[ptr orxSTRUCTURE](nil)
+
+template debugInitMacro*(): void =
+  var u32DebugFlags: orxU32
+  discard internal_orxDebug_Init()
+  u32DebugFlags = internal_orxDebug_GetFlags()
+  internal_orxDebug_SetFlags(DEBUG_KU32_STATIC_MASK_DEBUG, DEBUG_KU32_STATIC_MASK_USER_ALL)
+  #echo "ORX_VERSION: ", ORX_VERSION
+  #echo "Version Numeric: ", getVersionNumeric().int64
+  if getVersionNumeric().int64 < ORX_VERSION:
+    echo("The version of the runtime library [" & $getVersionFullString() &
+      "] is older than the version used when compiling this program [" & ORX_VERSION_FULL_STRING & "].\n\nProblems will likely ensue!")
+  elif getVersionNumeric().int64 > ORX_VERSION:
+    echo("The version of the runtime library [" & $getVersionFullString() &
+      "] is more recent than the version used when compiling this program [" & ORX_VERSION_FULL_STRING & "].\n\nProblems may arise due to possible incompatibilities!")
+  internal_orxDebug_SetFlags(u32DebugFlags, DEBUG_KU32_STATIC_MASK_USER_ALL)
+
+
+template debugExitMacro*(): untyped =
+  internal_orxDebug_Exit()
+
+template eventSendMacro*(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): void =
+  var stEvent: orxEVENT
+  stEvent.eType = cast[orxEVENT_TYPE](TYPE)
+  stEvent.eID = cast[orxENUM](ID)
+  stEvent.hSender = cast[orxHANDLE](SENDER)
+  stEvent.hRecipient = cast[orxHANDLE](RECIPIENT)
+  stEvent.pstPayload = cast[pointer](PAYLOAD)
+  discard eventSend(addr(stEvent))
 
 when not defined(PLUGIN):
   ## Should stop execution by default event handling?
   var sbStopByEvent* = false
 
-  ##  Orx default basic event handler
-  ##  @param[in]   pstEvent                     Sent event
-  ##  @return      orxSTATUS_SUCCESS if handled / orxSTATUS_FAILURE otherwise
-  proc orx_DefaultEventHandler*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
-    ##  Checks
-    assert(pstEvent.eType == orxEVENT_TYPE_SYSTEM)
-    assert(pstEvent.eID == ord(orxSYSTEM_EVENT_CLOSE))
-    #echo "pstEvent.eType: " & $pstEvent.eType
-    #echo "pstEvent.eID: " & $pstEvent.eID
-    ##  Updates status
-    sbStopByEvent = true
-    ##  Done!
-    return orxSTATUS_SUCCESS
-
-  ## Default main setup (module dependencies)
-  proc orx_MainSetup*() {.cdecl.} =
+  proc norxMainSetup*() {.cdecl.} =
     ##  Adds module dependencies
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_OBJECT)
-    addDependency(orxMODULE_ID_MAIN, orxMODULE_ID_RENDER)
-    addOptionalDependency(orxMODULE_ID_MAIN, orxMODULE_ID_SCREENSHOT)
+    addDependency(MODULE_ID_MAIN, MODULE_ID_OBJECT)
+    addDependency(MODULE_ID_MAIN, MODULE_ID_RENDER)
+    addOptionalDependency(MODULE_ID_MAIN, MODULE_ID_SCREENSHOT)
+
+  proc norxDefaultEventHandler*(pstEvent: ptr orxEVENT): orxSTATUS {.cdecl.} =
+    ##  Check for close event
+    assert(pstEvent.eType == EVENT_TYPE_SYSTEM)
+    if pstEvent.eID == ord(SYSTEM_EVENT_CLOSE):
+      sbStopByEvent = true
+    return STATUS_SUCCESS
+
 
   when defined(iOS):
     discard
   else:
     when defined(Android) or defined(ANDROID_NATIVE):
-      import norx/[android, thread]
+      import android
 
       ## Orx main execution function
       ##  @param[in]   initProc      Main init function (should init all the main stuff and register the main event handler to override the default one)
@@ -41,19 +202,19 @@ when not defined(PLUGIN):
                        runProc: proc(): orxSTATUS {.cdecl.};
                        exitProc: proc() {.cdecl.}) {.inline} =
         ## Inits the Debug System
-        orxDEBUG_INIT_MACRO()
+        debugInitMacro()
         ## Checks
         assert(runProc != nil)
         ##  Registers main module
-        register(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, initProc, exitProc)
+        register(MODULE_ID_MAIN, "MAIN", mainSetup, initProc, exitProc)
         ## On Android this is 0, null.
-        if setArgs(0, nil) != orxSTATUS_FAILURE:
+        if setArgs(0, nil) != STATUS_FAILURE:
           ##  Sets thread callbacks
           discard setCallbacks(orxAndroid_JNI_SetupThread, nil, nil)
           ##  Inits the engine
-          if moduleInit(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
+          if moduleInit(MODULE_ID_MAIN) != STATUS_FAILURE:
             var
-              stPayload: orxSYSTEM_EVENT_PAYLOAD
+              stPayload: struct_orxSYSTEM_EVENT_PAYLOAD_t
               eClockStatus: orxSTATUS
               eMainStatus: orxSTATUS
 
@@ -77,27 +238,27 @@ when not defined(PLUGIN):
               orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
               ##  Updates frame count
               stPayload.u32FrameCount += 1
-              bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
+              bStop = (sbStopByEvent or (eMainStatus == STATUS_FAILURE) or (eClockStatus == STATUS_FAILURE))
 
             ##  Removes event handler
             discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
             ##  Exits from the engine
             moduleExit(orxMODULE_ID_MAIN)
-        orxDEBUG_EXIT_MACRO()
+        debugExitMacro()
     else:
       ## Orx main execution function
       ##  @param[in]   initProc      Main init function (should init all the main stuff and register the main event handler to override the default one)
       ##  @param[in]   runProc       Main run function (will be called once per frame, should return orxSTATUS_SUCCESS to continue processing)
       ##  @param[in]   exitProc      Main exit function (should clean all the main stuff)
       proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                       runProc: proc(): orxSTATUS {.cdecl.};
-                       exitProc: proc() {.cdecl.}) {.inline} =
+                            runProc: proc(): orxSTATUS {.cdecl.};
+                            exitProc: proc() {.cdecl.}) {.inline} =
         ## Inits the Debug System
-        orxDEBUG_INIT_MACRO()
+        debugInitMacro()
         ## Checks
         assert(runProc != nil)
         ##  Registers main module
-        register(orxMODULE_ID_MAIN, "MAIN", orx_MainSetup, initProc, exitProc)
+        moduleRegister(MODULE_ID_MAIN, "MAIN", norxMainSetup, initProc, exitProc)
         # Hack to produce C style argc/argv to pass on
         var argc = paramCount()
         var nargv = newSeq[string](argc + 1)
@@ -109,36 +270,37 @@ when not defined(PLUGIN):
         var argv: cstringArray = nargv.allocCStringArray()
         inc(argc)
         ##  Sends the command line arguments to orxParam module
-        if setArgs(argc.orxU32, argv) != orxSTATUS_FAILURE:
+        if setArgs(argc.orxU32, argv) != STATUS_FAILURE:
           ##  Inits the engine
-          if moduleInit(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE:
+          if moduleInit(MODULE_ID_MAIN) != STATUS_FAILURE:
             var
-              stPayload: orxSYSTEM_EVENT_PAYLOAD
+              stPayload: struct_orxSYSTEM_EVENT_PAYLOAD_t
               eClockStatus: orxSTATUS
               eMainStatus: orxSTATUS
             ##  Registers default event handler
-            var st = addHandler(orxEVENT_TYPE_SYSTEM, orx_DefaultEventHandler)
-            discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
+            var st = addHandler(EVENT_TYPE_SYSTEM, norxDefaultEventHandler)
+            #discard setHandlerIDFlags(orx_DefaultEventHandler, orxEVENT_TYPE_SYSTEM, nil, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL)
             ##  Clears payload
-            zeroMem(addr(stPayload), sizeof(orxSYSTEM_EVENT_PAYLOAD).orxU32)
+            zeroMem(addr(stPayload), sizeof(struct_orxSYSTEM_EVENT_PAYLOAD_t).orxU32)
             ##  Main loop
-            var bStop = false
+            var
+              bStop = false
             sbStopByEvent = false
             while not bStop:
               ##  Sends frame start event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
+              eventSendMacro(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_GAME_LOOP_START, nil, nil, addr(stPayload))
               ##  Runs game specific code
               eMainStatus = runProc()
               ##  Updates clock system
-              eClockStatus = update()
+              eClockStatus = clockUpdate()
               ##  Sends frame stop event
-              orxEVENT_SEND_MACRO(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
+              eventSendMacro(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_GAME_LOOP_STOP, nil, nil, addr(stPayload))
               ##  Updates frame count
-              stPayload.u32FrameCount += 1
-              bStop = (sbStopByEvent or (eMainStatus == orxSTATUS_FAILURE) or (eClockStatus == orxSTATUS_FAILURE))
+              stPayload.anon0.u32FrameCount += 1
+              bStop = (sbStopByEvent or (eMainStatus == STATUS_FAILURE) or (eClockStatus == STATUS_FAILURE))
 
             ##  Removes event handler
-            discard removeHandler(orxEVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](orx_DefaultEventHandler))
+            discard removeHandler(EVENT_TYPE_SYSTEM, cast[orxEVENT_HANDLER](norxDefaultEventHandler))
             ##  Exits from the engine
-            moduleExit(orxMODULE_ID_MAIN)
-        orxDEBUG_EXIT_MACRO()
+            moduleExit(MODULE_ID_MAIN)
+        debugExitMacro()

@@ -1,18 +1,19 @@
-# Ignore binary (no extension)
-*
-!/**/
-!*.*
+# Ignore binaries
+samples/sample1/sample1
+samples/sample2/sample2
+samples/qr-code/show_qr
+official_samples/S01_object
+scripts/create_wrapper
+src/norx
 
 # Claude local
 .claude
 
-# ORX console history
-**/*.cih
-
 **/*.log
+**/*.cih
 **/*.dSYM
 **/*.iml
 **/.idea
 **/*.elf
 **/*.so
-
+.aider*

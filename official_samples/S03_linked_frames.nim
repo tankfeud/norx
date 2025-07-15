@@ -45,7 +45,7 @@
 ]#
 
 import strformat
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render]
+import norx
 
 
 # global , for storing our invisible object.
@@ -54,10 +54,10 @@ var parentObject:ptr orxObject
 
 
 proc run(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS #by default, won't quit
-  if (input.isActive("Quit")):
+  result = STATUS_SUCCESS #by default, won't quit
+  if (isActive("Quit")):
     # Updates result
-    result = orxSTATUS_FAILURE
+    result = STATUS_FAILURE
 
 proc get_input_name(input_name: string) :cstring =
   ## Returns the keycode corresponding to the physical key defined in .ini
@@ -66,12 +66,12 @@ proc get_input_name(input_name: string) :cstring =
   var eMode: orxINPUT_MODE
 
   var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == orxSTATUS_SUCCESS:
+  if is_ok == STATUS_SUCCESS:
     let binding_name:cstring = getBindingName( eType, eID, eMode)
     echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
     return binding_name
 
-  return fmt"key {input_name} not found"
+  return ("key " & input_name & " not found").cstring
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var status:orxSTATUS
@@ -79,11 +79,11 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   # when RotateLeft pressed , rotate parent object CCW
   # the four child objects will follow
   if isActive("RotateLeft"):
-    var rot:float32 = getRotation( parentObject) - orxMATH_KF_PI * clockInfo.fDT
+    var rot:float32 = getRotation( parentObject) - PI * clockInfo.fDT
     status = setRotation( parentObject, rot)
   # same principle for RotateRigh, except parent rotates CW
   if isActive("RotateRight"):
-    var rot:float32 = getRotation( parentObject) + orxMATH_KF_PI * clockInfo.fDT
+    var rot:float32 = getRotation( parentObject) + PI * clockInfo.fDT
     status = setRotation( parentObject, rot)
 
   # scaling up or down if needed
@@ -93,12 +93,12 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     # it will be initialized at correct value by the getScale function
     var vDummy:orxVector = (123f, 456f, 789f)
     # of course, you need the « addr » prefix to convert variable to a ptr on it.
-    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), orx2F(1.02f) )
+    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), 1.02f)
     status = setScale( parentObject, vScale)
   # for scaling down, only scale factor changes, same principles appliy.
   if isActive("ScaleDown"):
     var vDummy:orxVector = (123f, 456f, 789f)
-    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), orx2F(0.98f) )
+    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), 0.98f)
     status = setScale( parentObject, vScale)
    
   # now, if mouse is in viewport, follow the pointer !
@@ -145,7 +145,7 @@ proc init(): orxSTATUS {.cdecl.} =
   # Creates viewport
   var viewport = viewportCreateFromConfig("Viewport")
   if viewport.isNil:
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
 
   # Creates Parent object
   # it is not shown on the screen
@@ -167,13 +167,13 @@ proc init(): orxSTATUS {.cdecl.} =
   # no code is needed for them
 
   # Gets main clock
-  mainclock = clockGet(orxCLOCK_KZ_CORE);
+  mainclock = clockGet(CLOCK_KZ_CORE);
 
   # Registers our update callback
   # nil can replace orxNULL (defined in the C API)
-  status = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  status = clockRegister(mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
 
 proc exit() {.cdecl.} =

@@ -63,7 +63,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, FX]
+import norx
 
 # the shared functions
 import S_commons
@@ -105,14 +105,14 @@ proc display_hints() =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
-  if event.eType == orxEVENT_TYPE_INPUT:
+  if event.eType == EVENT_TYPE_INPUT:
     # the input handling part, where we only display which keys have been used for every active input.
-    if event.eID == ord(orxINPUT_EVENT_ON):
+    if event.eID == ord(INPUT_EVENT_ON):
       var payload = cast[ptr orxINPUT_EVENT_PAYLOAD](event.pstPayload)
 
-      if payload.aeType[1] != orxINPUT_TYPE_NONE:
+      if payload.aeType[1] != INPUT_TYPE_NONE:
         # multi-input detected (that is: several key has been pressed at same time).
         # You can define combinations like this in the .ini file :
         #   [MyInputs]
@@ -133,19 +133,19 @@ proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
         # it's a single key press
         orxlog( fmt"{payload.zInputName} triggered by {getBindingName( payload.aeType[0], payload.aeID[0], payload.aeMode[0])}")
 
-  if event.eType == orxEVENT_TYPE_FX:
+  if event.eType == EVENT_TYPE_FX:
     var payload = cast[ptr orxFX_EVENT_PAYLOAD](event.pstPayload)
     var obj_recipient = cast[ptr orxOBJECT]( event.hRecipient)
 
     case event.eID:
-      of ord(orxFX_EVENT_START):
+      of ord(FX_EVENT_START):
         orxlog( fmt"FX {payload.zFXName} {getName( obj_recipient)} has started!")
         # was it the soldier who trigger the event ?
         if obj_recipient == soldier:
           # a new effect has started, lock the soldier to prevent another one to occur.
            cast[ptr Userdata]( soldier.getUserData()).is_locked = true;
 
-      of ord(orxFX_EVENT_STOP):
+      of ord(FX_EVENT_STOP):
         orxlog( fmt"FX {payload.zFXName} {getName( obj_recipient)} has stopped!")
         # was it the soldier who trigger the event ?
         if obj_recipient == soldier:
@@ -162,39 +162,39 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   ("SelectFlash","FlashFX"), ("SelectMove","MoveFX"), ("SelectFlip","FlipFX") ]
 
   for tup in key_fx:
-    if isActive( tup.key):
+    if isActive( tup.key.cstring):
       selected_fx = tup.fx
       break
 
   let soldier_userdata = cast[ptr Userdata]( soldier.getUserData())
   if hasBeenActivated( "ApplyFX"):
     if not soldier_userdata.is_locked:
-      discard soldier.addFX( selected_fx)
+      discard soldier.addFX( selected_fx.cstring)
     else:
       orxlog( "ApplyFX activated, but soldier is locked: cancel ApplyFX.")
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   display_hints()
 
   # create viewport
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
 
   # the soldier, the box.
   soldier = objectCreateFromConfig( "Soldier")
   box = objectCreateFromConfig( "Box")
 
   # Gets the main clock, and register our update callback
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   # Registers event handler for the sound
-  result = addHandler( orxEVENT_TYPE_FX, EventHandler)
-  result = addHandler( orxEVENT_TYPE_INPUT, EventHandler)
+  result = addHandler( EVENT_TYPE_FX, EventHandler)
+  result = addHandler( EVENT_TYPE_INPUT, EventHandler)
 
   ### bind the userdata object to the soldier
 

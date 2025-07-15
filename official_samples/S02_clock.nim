@@ -10,10 +10,6 @@
   nim c -d:release --skipProjcfg S01_object
   (skip nim project cfg, liborx.so loaded at runtime)
 
-  Note from gokr:
-  The choice of the lib is made in lib.nim
-  It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
-
   See tutorial S01_object.nim for more info about the basic object creation.
 
   For details about Orx side , please refer to the tutorial of the C++ sample:
@@ -36,8 +32,10 @@
   of tick size = 1 second.
 ]#
 
-import strformat
-import norx, norx/[incl, config, viewport, obj, input, keyboard, clock, math]
+import strformat, math
+import norx
+
+{.push cdecl.}
 
 proc getBindingName(input_name: string): cstring =
   ## Returns the keycode corresponding to the physical key defined in .ini
@@ -46,130 +44,74 @@ proc getBindingName(input_name: string): cstring =
   var eMode: orxINPUT_MODE
 
   var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == orxSTATUS_SUCCESS:
+  if is_ok == STATUS_SUCCESS:
     echo getKeyDisplayName(eID.orxKEYBOARD_KEY)
     return getKeyDisplayName(eID.orxKEYBOARD_KEY)
 
-  return fmt"key {input_name} not found"
+  return fmt"key {input_name} not found".cstring
 
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  #### LOG DISPLAY SECTION ####
-  # Push Main on section stack for accessing informations related to this section.
-  var status = pushSection("Main")
-
+proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
+  # Log display section
+  discard pushSection("Main")
   if getBool("DisplayLog"):
-    # clock.getFromInfo( :ptr orxCLOCK_INFO): ptr orxCLOCK
-    # clock.getName : returns the orxCLOCK name as a cstring
-    # cast , convert, use echo directly, or $ which convert cstring to string (safe but slow)
     let clockName = $clockInfo.getFromInfo.getName
-    orxLOG(&"{clockName} time:{clockInfo.fTime:3.2f} delta:{clockInfo.fDT:1.4f}")
+    echo (&"{clockName} time:{clockInfo.fTime:3.2f} delta:{clockInfo.fDT:1.4f}")
+  discard popSection()
 
-  # Pop "Main" , still no test on orxStatus.
-  status = popSection()
-
-  #### OBJECT UPDATE SECTION ####
-  # gets object from the context
+  # Object update section
   var obj = cast[ptr orxOBJECT](context)
+  discard obj.setRotation(PI * clockInfo.fTime)
 
-  # Rotates it according to elapsed time (complete rotation every 2 seconds)
-  status = obj.setRotation(orxMATH_KF_PI * clock_info.fTime)
-
-
-proc inputUpdate(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  # note : the ESC test for exiting is called by the main clock in " run " proc.
-
-  #### LOG DISPLAY SECTION ####
-  # push Main on section stack for accessing informations related to this section.
-  var status = pushSection("Main")
-
-  # Is "Log" key has been pressed ?
+proc inputUpdate(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
+  discard pushSection("Main")
   if hasBeenActivated("Log"):
-    # Toggles logging on / off
-    status = setBool("DisplayLog", not getBool("DisplayLog"))
+    discard setBool("DisplayLog", not getBool("DisplayLog"))
+  discard popSection()
 
-  # Pops config section
-  status = popSection()
-
-  #### CLOCK TIME STRETCHING SECTION ####
-  # Finds clock1.
-  # We could have stored the clock at creation, of course, but this is done here for didactic purpose.
   var clock1 = clockGet("Clock1")
-
-  # this time, we test keyboard only if we could get the first Clock (which makes turning the box)
   if clock1 != nil:
     if isActive("Faster"):
-      # Makes this clock go four time faster
-      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orx2F(4.0f))
-
+      discard clock1.setModifier(CLOCK_MODIFIER_MULTIPLY, 4.0f)
     elif isActive("Slower"):
-      # Makes this clock go four time slower
-      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orx2F(0.25f))
-
+      discard clock1.setModifier(CLOCK_MODIFIER_MULTIPLY, 0.25f)
     elif isActive("Normal"):
-      # Clears multiply modifier from this clock
-      status = clock1.setModifier(orxCLOCK_MODIFIER_MULTIPLY, orxFLOAT_0)
+      discard clock1.setModifier(CLOCK_MODIFIER_MULTIPLY, 0f)
 
-
-proc init(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
-
-  # Displays a small hint in console.
-  orxLOG(&"""
+proc init(): orxSTATUS =
+  result = STATUS_SUCCESS
+  echo(&"""
 * Press {getBindingName("Log")} to toggle log display
-
 * To stretch time for the first clock (updating the box):
 * Press key {getBindingName("Faster")} to set it 4 times faster
 * Press key {getBindingName("Slower")} to set it 4 times slower
 * Press key {getBindingName("Normal")} to set it back to normal""")
 
-  # Creates viewport
+  # Creates viewport and objects
   var viewport = viewportCreateFromConfig("Viewport")
-  if viewport.isNil:
-    return orxSTATUS_FAILURE
-
-  # Creates object
+  if viewport.isNil: return STATUS_FAILURE
+  
   var object1 = objectCreateFromConfig("Object1")
-  if object1.isNil:
-    return orxSTATUS_FAILURE
+  if object1.isNil: return STATUS_FAILURE
+  
   var object2 = objectCreateFromConfig("Object2")
-  if object2.isNil:
-    return orxSTATUS_FAILURE
+  if object2.isNil: return STATUS_FAILURE
 
-  # Creates two user clocks: a 100Hz and a 5Hz
+  # Creates clocks and registers callbacks
   var clock1 = clockCreateFromConfig("Clock1")
   var clock2 = clockCreateFromConfig("Clock2")
+  discard clock1.clockRegister(Update, object1, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+  discard clock2.clockRegister(Update, object2, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
 
-  #[ Registers our update callback to these clocks with both object as context.
-     The module ID is used to skip the call to this callback if the corresponding module
-     is either not loaded or paused, which won't happen in this tutorial. ]#
-  var status = register(clock1, Update, object1, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-  # you can also call register with clock2 as first implicit parameter.
-  status = clock2.register(Update, object2, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
+  var clockMain = clockGet(CLOCK_KZ_CORE)
+  discard clockMain.clockRegister(inputUpdate, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
 
-  var clockMain = clockGet(orxCLOCK_KZ_CORE) #or clock_get if you prefer snake_case
+proc run(): orxSTATUS =
+  # Should quit?
+  if isActive("Quit"):
+    return STATUS_FAILURE
+  return STATUS_SUCCESS
 
-  #[ Registers our input update callback to it
-    !!IMPORTANT!! *DO NOT* handle inputs in clock callbacks that are *NOT* registered to the main clock
-     you might miss input status updates if the user clock runs slower than the main one ]#
-  status = register(clockMain, inputUpdate, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-
-proc run(): orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS #by default, won't quit
-  if (input.isActive("Quit")):
-    # Updates result
-    result = orxSTATUS_FAILURE
-
-proc exit() {.cdecl.} =
-  # We're a bit lazy here so we let orx clean all our mess! :)
+proc exit() =
   quit(0)
 
-proc Main =
-  #[ execute is declared in norx.nim , and needs 3 functions:
-      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                    runProc: proc(): orxSTATUS {.cdecl.};
-                    exitProc: proc() {.cdecl.}
-                   )
-  ]#
-  execute(init, run, exit)
-
-Main()
+execute(init, run, exit)

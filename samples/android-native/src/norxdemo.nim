@@ -1,4 +1,4 @@
-import norx, norx/[input, incl, clock, event, system, config, resource, viewport, obj, sound]
+import norx
 
 var
   introScene: ptr orxOBJECT
@@ -15,7 +15,7 @@ proc toggleMusic() =
 proc update(pstClockInfo: ptr orxCLOCK_INFO, pContext: pointer) {.cdecl.} =
   ## Update function, it has been registered to be called every tick of the core clock
   if isActive("Quit"):
-    discard sendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE.orxU32)
+    discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
   if isActive("ToggleMusic"):
     toggleMusic()
 
@@ -29,15 +29,15 @@ proc init(): orxSTATUS {.cdecl.} =
   music = soundCreateFromConfig("IntroMusic")
   toggleMusic()
   # Register the Update function to the core clock
-  let clock = clockGet(orxCLOCK_KZ_CORE)
-  var status = clock.register(norxdemo.update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL)
-  if status == orxSTATUS_SUCCESS:
-    return orxSTATUS_SUCCESS
-  return orxSTATUS_FAILURE
+  let clock = clockGet(CLOCK_KZ_CORE)
+  var status = clockRegister(clock, norxdemo.update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+  if status == STATUS_SUCCESS:
+    return STATUS_SUCCESS
+  return STATUS_FAILURE
 
 proc run(): orxSTATUS {.cdecl.} =
   ## Run function, it is called once per frame
-  return orxSTATUS_SUCCESS
+  return STATUS_SUCCESS
 
 proc exit() {.cdecl.} =
   ## Exit function, it is called before exiting from orx
@@ -46,9 +46,9 @@ proc exit() {.cdecl.} =
 proc bootstrap(): orxSTATUS {.cdecl.} =
   ## Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
   discard setBaseName("norxdemo")
-  discard addStorage(orxCONFIG_KZ_RESOURCE_GROUP, "data", false)
-  # Return orxSTATUS_FAILURE to prevent orx from loading the default config file
-  return orxSTATUS_SUCCESS
+  discard addStorage(CONFIG_KZ_RESOURCE_GROUP, "data", false)
+  # Return STATUS_FAILURE to prevent orx from loading the default config file
+  return STATUS_SUCCESS
 
 proc start() =
   # Set the bootstrap function to provide at least one resource storage before loading any config files

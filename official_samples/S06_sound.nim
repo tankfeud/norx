@@ -58,7 +58,7 @@
 
 import strformat
 from strutils import unindent
-import norx, norx/[incl, config, viewport, obj, input, keyboard, mouse, clock, math, vector, render, event, anim, camera, display, sound]
+import norx
 
 # the shared functions
 import S_commons
@@ -89,33 +89,35 @@ proc display_hints() =
 
 
 proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
 
   if event.hRecipient == soldier:
     # Gets event payload (payload has type « pointer », must be casted)
-    var payload:ptr orx_SOUND_EVENT_PAYLOAD = cast[ptr orx_SOUND_EVENT_PAYLOAD](event.pstPayload)
+    var payload:ptr orxSOUND_EVENT_PAYLOAD = cast[ptr orxSOUND_EVENT_PAYLOAD](event.pstPayload)
 
-    let sound_name = getName( payload.ano_orxSound_143.pstSound) # autogen by wrapper, see sound.nim
+    let sound_name = getName( payload.pstSound)
     # we have to cast to orxOBJECT, because event.hRecipient is anonymous pointer (an orxHANDLE)
     let recipient_name = getName( cast[ptr orxOBJECT](event.hRecipient))
 
     case event.eID:
-      of ord(orxSOUND_EVENT_START):
+      of ord(SOUND_EVENT_START):
         echo fmt"Sound {sound_name} @ {recipient_name} has started !"
 
-      of ord(orxSOUND_EVENT_STOP):
+      of ord(SOUND_EVENT_STOP):
         echo fmt"Sound {sound_name} @ {recipient_name} has stopped !"
 
       else:
         # unknown event
-        echo "unknown event ", $orxEVENT_TYPE(event.eID)
-        result = orxSTATUS_FAILURE
+        echo "unknown event ", $event.eID
+        result = STATUS_FAILURE
 
 
 
 proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
   var vect_color:orxVECTOR
-  var color:orxCOLOR = ( cast[orxRGBVector](orxVECTOR_WHITE), 1.0f ) #default color
+  var color:orxCOLOR
+  color.anon0.vRGB = orxVECTOR_WHITE
+  color.fAlpha = 1.0
   var res:orxSTATUS
 
   ## SOUND
@@ -128,7 +130,8 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     res = pushSection( "Tutorial")
     # orxCOLOR {...} = tuple[vRGB: orxRGBVECTOR, fAlpha: orxFLOAT]
     discard getVector( "RandomColor", addr vect_color)
-    color = ( cast[orxRGBVector](vect_color) , 1.0f)
+    color.anon0.vRGB = vect_color
+    color.fAlpha = 1.0
     res = setColor( soldier, addr color)
     res = popSection()
 
@@ -142,42 +145,42 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     enable( soldier, not isEnabled(soldier))
 
   if hasBeenActivated("PitchUp"):
-    res = setPitch( music, getPitch( music) + orx2F(0.01f))
-    res = setRotation( soldier, getRotation( soldier) + orx2F(4.0f) * clockInfo.fDT);
+    res = setPitch( music, getPitch( music) + 0.01)
+    res = setRotation( soldier, getRotation( soldier) + 4.0 * clockInfo.fDT);
   if hasBeenActivated("PitchDown"):
-    res = setPitch( music, getPitch( music) - orx2F(0.01f))
-    res = setRotation( soldier, getRotation( soldier) - orx2F(4.0f) * clockInfo.fDT);
+    res = setPitch( music, getPitch( music) - 0.01)
+    res = setRotation( soldier, getRotation( soldier) - 4.0 * clockInfo.fDT);
 
   if hasBeenActivated("VolumeDown"):
-    res = setVolume( music, getVolume( music) - orx2F(0.05f))
+    res = setVolume( music, getVolume( music) - 0.05)
     var v:orxVECTOR = (1.0f,1.0f,1.0f)
-    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), orx2F(0.98f)));
+    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), 0.98));
   if hasBeenActivated("VolumeUp"):
-    res = setVolume( music, getVolume( music) + orx2F(0.05f))
+    res = setVolume( music, getVolume( music) + 0.05)
     var v:orxVECTOR = (1.0f,1.0f,1.0f)
-    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), orx2F(1.02f)));
+    res = setScale( soldier, mulf(addr v, getScale( soldier, addr v), 1.02));
 
 
 
 proc init() :orxSTATUS {.cdecl.} =
-  result = orxSTATUS_SUCCESS
+  result = STATUS_SUCCESS
   display_hints()
 
   # create viewport
   let vp = viewportCreateFromConfig( "Viewport")
   if vp.isNil:
     echo "Couldn't create viewport"
-    return orxSTATUS_FAILURE
+    return STATUS_FAILURE
 
   # our brave little soldier, always here.
   soldier = objectCreateFromConfig( "Soldier")
 
   # Gets the main clock, and register our update callback
-  let mainclock:ptr orxClock = clockGet(orxCLOCK_KZ_CORE);
-  result = register( mainclock, Update, nil, orxMODULE_ID_MAIN, orxCLOCK_PRIORITY_NORMAL);
+  let mainclock:ptr orxClock = clockGet(CLOCK_KZ_CORE);
+  result = clockRegister( mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
 
   # Registers event handler for the sound
-  result = addHandler( orxEVENT_TYPE_SOUND, EventHandler)
+  result = addHandler( EVENT_TYPE_SOUND, EventHandler)
 
   # add background music to the soldier
   result = addSound( soldier, "Music")
