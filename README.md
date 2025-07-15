@@ -1,17 +1,23 @@
 # Norx
-Norx is a Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform.
+Norx is a **highly automated** Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform. Norx makes it quite easy to make ORX based game in Nim.
 
 The wrapper consists of two parts:
 
 * The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is fully automatically generated from the C header files. This represents all the functionality in the ORX dynamic library.
-* The higher level files like `norx.nim`, `basics.nim`, `vector.nim` created by hand to use Nim style and Nim types and introduces useful Nim templates, converters and macros.
+* The higher level files like `norx.nim`, `basics.nim`, `vector.nim` created by hand to use Nim style and Nim types and introduces useful Nim templates, converters and macros. These are kept up to date manually with new versions of ORX, but an annotation mechanism makes it easier to detect if changes needs to be made.
 
-The `norx.nim` module is the one you should import in your Nim code, it also exports the low level `wrapper.nim` for direct access to ORX functions and types.
+The `norx.nim` module is the one you should import in your Nim code, it exports the other modules including the low level `wrapper.nim` for direct access to ORX functions and types.
 
 The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path. However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
 
 # Build and install ORX
-First build ORX as dynamic libraries (liborx, liborxd and liborxp).
+First checkout the ORX submodule and build ORX as dynamic libraries (liborx, liborxd and liborxp).
+
+## Initialize the ORX submodule
+If this is a fresh clone, run:
+```bash
+git submodule update --init
+```
 
 This works on my Ubuntu 64 bit (after installing normal C tools needed, more specifically `sudo apt-get install gcc g++ make`):
 
@@ -30,6 +36,29 @@ Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | 
 # Install Norx
 Install the Norx wrapper by running  `nimble install` in this directory.
 
+# Library Linking Configuration
+Norx uses a build-time linking approach through `config.nims` files. Each Norx project (including samples) contains a `config.nims` file that automatically selects the appropriate ORX library version based on your build configuration:
+
+```nim
+when defined(release):
+  switch("passL", "-lorx")      # Release version
+elif defined(profile):
+  switch("passL", "-lorxp")     # Profile version  
+else:
+  switch("passL", "-lorxd")     # Debug version (default)
+```
+
+## Library Selection
+* **Debug builds** (default): Links to `liborxd` - includes debug symbols and assertions
+* **Release builds** (`-d:release`): Links to `liborx` - optimized for performance
+* **Profile builds** (`-d:profile`): Links to `liborxp` - optimized with profiling support
+
+## Platform Compatibility
+The system linker automatically handles platform-specific library extensions:
+* **Linux**: `liborx.so`, `liborxd.so`, `liborxp.so`
+* **macOS**: `liborx.dylib`, `liborxd.dylib`, `liborxp.dylib`
+* **Windows**: `liborx.dll`, `liborxd.dll`, `liborxp.dll`
+
 # Samples
 See `samples` directory, `official_samples` directory (contributed by @jseb) or [norxsample](https://github.com/gokr/norxsample). The samples should run fine in at least Linux and OSX. The android-native sample can also be built for Android.
 
@@ -37,7 +66,7 @@ See `samples` directory, `official_samples` directory (contributed by @jseb) or 
 These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:
 
 * Norx wrappers have been stripped of "module prefixes", so in ORX you have `orxObject_SetSpeed` but in Norx it's `setSpeed`, first character lower case.
-* Some very common function names (that lots of modules share) have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` and `Get` in basically all modules. Of those you normally would only use `Get` yourself.
+* Some very common function names (that lots of modules share) have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` and `Get` in basically all modules. You can see the list of **protectedNames** in `create_wrapper.nim`.
 * All memory allocation/deallocation of ORX things are done by ORX. If you stick to "normal" Nim code, all Nim memory is garbage collected by Nim.
 * `orxCHAR *` has been mapped to `cstring` so you can pass Nim strings into all ORX functions just fine, since they are compatible with `cstring`. Remember that Nim strings are garbage collected by Nim so passing temporary strings into ORX can be dangerous if ORX keeps that pointer around. I haven't looked at ORX source to see if that is a common pattern, I suspect not.
 * If you get a `cstring` from ORX you can either keep it as such, but then beware that ORX decides when to deallocate it, or convert it to a Nim string using `$` but that will cause a copy of course. The positive is that you are then safe.
@@ -45,10 +74,7 @@ These are the "differences" that you should be aware of when you read ORX docume
 * Passing procs as callbacks to ORX works fine, as long as they are marked with the Nim pragma `{.cdecl.}`, this can be seen in the examples where the update, run, exit, update procs are marked that way.
 * The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`. See `sample2` which does that. Note that this style is NOT the recommended ORX style, since that loop varies depending on platform (Android has some special parts) and normally that loop is in the ORX codebase so if ORX evolves it may change how it is supposed to work.
 * Vectors are represented as Nim tuples right now. This makes them easier to work with in Nim.
-* ORX builds three libraries. `liborx.so[dll|dylib]` is the release version of ORX. `liborxd.so[dll|dylib]` is the debug version. `liborxp.so[dll|dylib]` is the profile version. Norx will pick which one to dynamically load according to:
-  * Pass `-d:release` to load the release version. This is the normal way to build a release binary with Nim.
-  * Pass `-d:debug` to load the debug version. This is the normal way to build a debug binary with Nim.
-  * Pass `-d:profile` to load the profile version.
+* ORX builds three different library versions (release, debug, profile). Norx automatically selects the appropriate version based on your build configuration through `config.nims` files. See the "Library Linking Configuration" section above for details.
 * ...and well, I will add to this list as things come up.
 
 # How to generate HTML docs
@@ -59,17 +85,17 @@ There is a bash script `build.sh` that will regenerate the wrapper and the conte
 
 
 # How it was made
-This wrapper was created through the following steps:
+This wrapper is kept up to date through the following steps:
 
 1. If this is a fresh clone, run `git submodule update --init` to get the ORX submodule.
 2. Checkout ORX submodule of specific new version and run `setup.sh` to get all dependencies and to generate `orxBuild.h`:
    ```
    cd orx
    git fetch
-   git checkout 1.15
+   git checkout 1.16
    ./setup.sh
    ```
-3. Build and install ORX as described above in this file.
+3. Build and install ORX libraries as described above in this file.
 4. Run `build.sh` in top level directory to regenerate the wrapper and generate the docs:
    ```
    ./build.sh

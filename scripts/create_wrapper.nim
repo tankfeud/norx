@@ -122,7 +122,7 @@ proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
   if name in protectedNames:
     return module & name
   allowReuse = true
-  # For these modules we use just the name
+  # For these modules we use the short name
   if module in shortenedModules:
     result = name
   else:
