@@ -10,10 +10,37 @@ when defined(processAnnotations):
 proc orxLOG*(s: string) =
   echo(s)
 
+## TODO: Fix wrapper not to delclare them or to define them instead of here
+## Constants from orxType.h
+
 ## Boolean constants
 const
   orxFALSE* = 0.orxBOOL
   orxTRUE* = 1.orxBOOL
+
+## Float constants
+const
+  orxFLOAT_0* = 0.0f.orxFLOAT
+  orxFLOAT_1* = 1.0f.orxFLOAT
+  orxFLOAT_MAX* = 3.402823466e+38f.orxFLOAT
+
+## Double constants
+const
+  orxDOUBLE_0* = 0.0.orxDOUBLE
+  orxDOUBLE_1* = 1.0.orxDOUBLE
+  orxDOUBLE_MAX* = 1.7976931348623158e+308.orxDOUBLE
+
+## Undefined constants
+const
+  orxU64_UNDEFINED*: orxU64 = cast[orxU64](-1)
+  orxU32_UNDEFINED*: orxU32 = cast[orxU32](-1)
+  orxU16_UNDEFINED*: orxU16 = cast[orxU16](-1)
+  orxU8_UNDEFINED*: orxU8 = cast[orxU8](-1)
+  orxHANDLE_UNDEFINED*: orxHANDLE = cast[orxHANDLE](-1)
+  orxSTRINGID_UNDEFINED*: orxSTRINGID = cast[orxSTRINGID](-1)
+
+# TODO: Missing const from orxType.h
+#/* *** String & character constants *** */
 
 converter toFloat32*(x: orxFLOAT): float32 = float32(x)
 
