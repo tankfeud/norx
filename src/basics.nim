@@ -59,18 +59,11 @@ converter fromCstring*(x: cstring): string = $x
 ## @file orx/code/include/math/orxMath.h:"/** Lerps between two":18:680b439acca9c9c662595407a702b823
 
 template lerp*(a, b, t: untyped): untyped =
-  ## Lerps between two values given a coefficient t [0, 1]
-  ## For t = 1 the result is b and for t = 0 the result is a.
+  ## Linearly interpolates between `a` and `b` using coefficient `t` [0, 1].
   a + (t * (b - a))
 
 template remap*(A1, B1, A2, B2, V: untyped): untyped =
-  ##  Remaps a value from one interval to another one
-  ##  @param[in]   A1                              First interval's low boundary
-  ##  @param[in]   B1                              First interval's high boundary
-  ##  @param[in]   A2                              Second interval's low boundary
-  ##  @param[in]   B2                              Second interval's high boundary
-  ##  @param[in]   V                               Value to remap from the first interval to the second one
-  ##  @return      Remaped value
+  ## Remaps value `V` from interval [`A1`, `B1`] to interval [`A2`, `B2`].
   (((V) - (A1)) / ((B1) - (A1)) * ((B2) - (A2)) + (A2))
 
 ## Math constants

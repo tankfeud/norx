@@ -3,8 +3,8 @@ import basics, wrapper, vector, joystick, display
 export basics, wrapper, vector, joystick, display
 
 ## This is the Norx high level wrapper module for the ORX library.
-## It is generated from the ORX sources using the create_wrapper.nim script.
-## You should usually only need to import this module.
+## You should usually only need to import this module as it exports all the others.
+## The module wrapper.nim is generated from ORX C headers using Futhark.
 
 # This is only used during development to check that the wrapper is up to date with ORX sources.
 when defined(processAnnotations):
