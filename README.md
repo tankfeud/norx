@@ -1,5 +1,5 @@
 # Norx
-Norx is a **highly automated** Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform. Norx makes it quite easy to make ORX based game in Nim.
+[Norx](https://tankfeud.github.io/norx/index.html) is a **highly automated** Nim wrapper of the [ORX 2.5D game engine](http://orx-project.org/) library. ORX is written in C99, highly performant and cross platform. Norx makes it quite easy to make ORX based game in Nim.
 
 The wrapper consists of two parts:
 
@@ -78,10 +78,12 @@ These are the "differences" that you should be aware of when you read ORX docume
 * ...and well, I will add to this list as things come up.
 
 # How to generate HTML docs
-There is a bash script `build.sh` that will regenerate the wrapper and the contents of the `docs` directory. The documentation is unfortunately not searchable when viewed through the local filesystem, but you can reach the current docs via GitHub Pages:
+There is a bash script `build.sh` that will regenerate the wrapper and the contents of the `docs` directory.
 
-* https://tankfeud.github.io/norx/norx.html - The top level norx.nim doc. TODO: I need to add better comments!
-* https://tankfeud.github.io/norx/theindex.html - The index of all the docs.
+The documentation is unfortunately not searchable when viewed through the local filesystem, but you can reach the current docs via GitHub Pages:
+
+* https://tankfeud.github.io/norx/index/norx.html - The top level norx.nim doc. TODO: I need to add better comments!
+* https://tankfeud.github.io/norx/index/theindex.html - The index of all the docs.
 
 To enable GitHub Pages: Go to repository Settings → Pages → Source: Deploy from branch → Branch: master, Folder: /docs
 
