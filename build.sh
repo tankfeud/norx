@@ -39,11 +39,14 @@ fi
 
 # Recreate wrapper.nim using Futhark from ORX sources
 echo "Generating wrapper.nim ..."
+# Removed wrapper itself and the compiled create_wrapper binary to force regeneration
 rm -f ./src/wrapper.nim ./scripts/create_wrapper # -f prevents errors if file doesn't exist
+# Compile and run create_wrapper.nim
 if ! nim c -r --maxLoopIterationsVM:100000000 -d:futharkRebuild ./scripts/create_wrapper.nim; then
     echo "ERROR: Failed to generate wrapper.nim" >&2
     exit 1
 fi
+# Clean up compiled create_wrapper binary
 rm -f ./scripts/create_wrapper
 
 # Check that wrapper is up to date with ORX sources by compiling norx.nim

@@ -3669,19 +3669,6 @@ when 4 is static:
     SOUNDPOINTER_KU32_SOUND_NUMBER* = 4
 else:
   let SOUNDPOINTER_KU32_SOUND_NUMBER* = 4
-
-#var orxFLOAT_0*: orxFLOAT
-#var orxFLOAT_1*: orxFLOAT
-#var orxFLOAT_MAX*: orxFLOAT
-#var orxDOUBLE_0*: orxDOUBLE
-#var orxDOUBLE_1*: orxDOUBLE
-#var orxDOUBLE_MAX*: orxDOUBLE
-#var orxU64_UNDEFINED*: orxU64
-#var orxU32_UNDEFINED*: orxU32
-#var orxU16_UNDEFINED*: orxU16
-#var orxU8_UNDEFINED*: orxU8
-#var orxHANDLE_UNDEFINED*: orxHANDLE
-#var orxSTRINGID_UNDEFINED*: orxSTRINGID
 var orxSTRING_EMPTY* {.importc: "orxSTRING_EMPTY".}: cstring
 var orxSTRING_TRUE* {.importc: "orxSTRING_TRUE".}: cstring
 var orxSTRING_FALSE* {.importc: "orxSTRING_FALSE".}: cstring

@@ -10,8 +10,7 @@ when defined(processAnnotations):
 proc orxLOG*(s: string) =
   echo(s)
 
-## TODO: Fix wrapper not to delclare them or to define them instead of here
-## Constants from orxType.h
+## @file orx/code/include/base/orxType.h:"/* *** Boolean constants":24:4fe621ff98a401dcb4c8ec303d698eb3
 
 ## Boolean constants
 const
