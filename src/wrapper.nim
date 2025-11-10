@@ -2063,6 +2063,15 @@ when 2048 is static:
     DEBUG_KS32_BUFFER_OUTPUT_SIZE* = 2048
 else:
   let DEBUG_KS32_BUFFER_OUTPUT_SIZE* = 2048
+when int is typedesc:
+  type
+    STRTO_CAST* = int
+else:
+  when int is static:
+    const
+      STRTO_CAST* = int
+  else:
+    let STRTO_CAST* = int
 proc hash*(internal_zString: cstring): orxSTRINGID {.cdecl,
     importc: "orxString_Hash".}
 when 16 is static:
