@@ -92,41 +92,41 @@ proc c2nim(header: string, outfile: string, prefix: string = "") =
     echo "Ran c2nim on ", header, " generating ", outfile
 
 # Rename logic
-proc renameCallback(n, k: string, allowReuse: var bool, p = ""): string =
+proc renameCallback(name: string, kind: SymbolKind, partof = "", overloading: var bool): string =
   # For enumval and const we just remove the orx prefix
-  allowReuse = false
+  overloading = false
   # We do not change the name of typedefs
-  if k == "typedef":
-    return n
+  if kind == SymbolKind.Typedef:
+    return name
   # For enumval and const we just remove the orx prefix
-  if k == "enumval" or k == "const":
-    if n.startsWith("orx"):
-      return n[3..^1]
+  if kind == SymbolKind.EnumVal or kind == SymbolKind.Const:
+    if name.startsWith("orx"):
+      return name[3..^1]
     else:
-      return n
+      return name
   # We don't want to rename anything that starts with an underscore
-  if n.startsWith("_"):
-    return n
+  if name.startsWith("_"):
+    return name
   # Split out the module name
-  let splits = n.split("_", maxsplit=1)
+  let splits = name.split("_", maxsplit=1)
   if splits.len == 1:
-    return n
+    return name
   var module = splits[0]
   # Remove the orx prefix of the module name and ensure
   # the first module character is lowercase
   if module.len > 3 and module.startsWith("orx"):
     module = module[3..^1]
   module[0] = module[0].toLowerAscii()
-  let name = splits[1]
+  let shortName: string = splits[1]
   # Treat protected names by prepending module name.
-  if name in protectedNames:
-    return module & name
-  allowReuse = true
+  if shortName in protectedNames:
+    return module & shortName
+  overloading = true
   # For these modules we use the short name
   if module in shortenedModules:
-    result = name
+    result = shortName
   else:
-    result = n
+    result = name
   # Ensure the first character is lowercase
   result[0] = result[0].toLowerAscii()
 
