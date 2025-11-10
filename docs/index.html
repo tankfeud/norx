@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norx - Nim wrapper for ORX Game Engine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .header .tagline {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .intro a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .intro a:hover {
+            border-bottom-color: #667eea;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            border-left-width: 6px;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            color: #667eea;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .links {
+            margin-top: 30px;
+            text-align: center;
+            color: #888;
+        }
+
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 15px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Norx</h1>
+            <div class="tagline">Nim wrapper for the ORX Game Engine</div>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <strong>Norx</strong> brings together the best of both worlds: the power of <a href="https://orx-project.org/" target="_blank"><strong>ORX</strong></a>,
+                a mature cross-platform 2.5D game engine, with the elegance of <a href="https://nim-lang.org/" target="_blank"><strong>Nim</strong></a>,
+                a high-performance language that makes coding a joy.
+            </div>
+
+            <div class="intro">
+                Norx was created as a base for the <a href="https://www.tankfeud.com" target="_blank"><strong>Tankfeud</strong></a> game, soon to be released.
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>ORX Engine</h3>
+                    <p>
+                        A solid, data-driven 2.5D game engine written in C99. Cross-platform,
+                        highly performant, and battle-tested. Perfect for creating professional games
+                        with minimal effort.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Nim Language</h3>
+                    <p>
+                        Combines Python-like syntax with C-like performance. Statically typed,
+                        compiled, and ergonomic with automatic memory management. Write beautiful code that runs blazingly fast.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Data-Driven Design</h3>
+                    <p>
+                        Configure your game with simple INI files. Iterate quickly without recompiling.
+                        ORX's data-driven approach means less code and faster development.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Automated Wrapper</h3>
+                    <p>
+                        Norx provides both low-level C bindings and high-level Nim abstractions.
+                        Automatically generated and carefully maintained to stay in sync with ORX.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Get Started</h2>
+                <div class="cta-buttons">
+                    <a href="https://github.com/tankfeud/norx/blob/master/TUTORIAL.md" class="btn btn-primary" target="_blank">Read Tutorial</a>
+                    <a href="index/norx.html" class="btn btn-secondary">View Documentation</a>
+                    <a href="index/theindex.html" class="btn btn-secondary">Browse API Index</a>
+                </div>
+
+                <div class="links">
+                    <a href="https://github.com/tankfeud/norx" target="_blank">GitHub Repository</a>
+                    <span>•</span>
+                    <a href="https://orx-project.org/" target="_blank">ORX Homepage</a>
+                    <span>•</span>
+                    <a href="https://nim-lang.org/" target="_blank">Nim Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
