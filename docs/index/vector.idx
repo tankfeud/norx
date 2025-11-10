@@ -1,0 +1,44 @@
+nimTitle	vector	vector.html	module src/vector		0
+nim	set	vector.html#set,ptr.orxVECTOR,orxFLOAT,orxFLOAT,orxFLOAT	proc set(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR		10
+nim	setAll	vector.html#setAll,ptr.orxVECTOR,orxFLOAT	proc setAll(pvVec: ptr orxVECTOR; fValue: orxFLOAT): ptr orxVECTOR		18
+nim	copy	vector.html#copy,ptr.orxVECTOR,ptr.orxVECTOR	proc copy(pvDst: ptr orxVECTOR; pvSrc: ptr orxVECTOR): ptr orxVECTOR		22
+nim	add	vector.html#add,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc add(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		29
+nim	sub	vector.html#sub,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc sub(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		39
+nim	mulf	vector.html#mulf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc mulf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR		49
+nim	mul	vector.html#mul,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc mul(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		58
+nim	divf	vector.html#divf,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc divf(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; fOp2: orxFLOAT): ptr orxVECTOR		68
+nim	divv	vector.html#divv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc divv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		79
+nim	modv	vector.html#modv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc modv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		89
+nim	powv	vector.html#powv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc powv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		99
+nim	lerpv	vector.html#lerpv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc lerpv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR;\n      fOp: orxFLOAT): ptr orxVECTOR		109
+nim	remapv	vector.html#remapv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc remapv(pvRes: ptr orxVECTOR; pvA1: ptr orxVECTOR; pvB1: ptr orxVECTOR;\n       pvA2: ptr orxVECTOR; pvB2: ptr orxVECTOR; pvV: ptr orxVECTOR): ptr orxVECTOR		119
+nim	minv	vector.html#minv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc minv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		133
+nim	maxv	vector.html#maxv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc maxv(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		143
+nim	clampv	vector.html#clampv,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc clampv(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; pvMin: ptr orxVECTOR;\n       pvMax: ptr orxVECTOR): ptr orxVECTOR		153
+nim	absv	vector.html#absv,ptr.orxVECTOR,ptr.orxVECTOR	proc absv(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		165
+nim	neg	vector.html#neg,ptr.orxVECTOR,ptr.orxVECTOR	proc neg(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		174
+nim	rec	vector.html#rec,ptr.orxVECTOR,ptr.orxVECTOR	proc rec(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		183
+nim	floorv	vector.html#floorv,ptr.orxVECTOR,ptr.orxVECTOR	proc floorv(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		192
+nim	roundv	vector.html#roundv,ptr.orxVECTOR,ptr.orxVECTOR	proc roundv(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		201
+nim	getSquareSize	vector.html#getSquareSize,ptr.orxVECTOR	proc getSquareSize(pvOp: ptr orxVECTOR): orxFLOAT		210
+nim	getSize	vector.html#getSize,ptr.orxVECTOR	proc getSize(pvOp: ptr orxVECTOR): orxFLOAT		215
+nim	getSquareDistance	vector.html#getSquareDistance,ptr.orxVECTOR,ptr.orxVECTOR	proc getSquareDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		220
+nim	getDistance	vector.html#getDistance,ptr.orxVECTOR,ptr.orxVECTOR	proc getDistance(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		228
+nim	normalize	vector.html#normalize,ptr.orxVECTOR,ptr.orxVECTOR	proc normalize(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		236
+nim	rotate2D	vector.html#rotate2D,ptr.orxVECTOR,ptr.orxVECTOR,orxFLOAT	proc rotate2D(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR; fAngle: orxFLOAT): ptr orxVECTOR		247
+nim	isNull	vector.html#isNull,ptr.orxVECTOR	proc isNull(pvOp: ptr orxVECTOR): orxBOOL		265
+nim	areEqual	vector.html#areEqual,ptr.orxVECTOR,ptr.orxVECTOR	proc areEqual(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxBOOL		270
+nim	fromCartesianToSpherical	vector.html#fromCartesianToSpherical,ptr.orxVECTOR,ptr.orxVECTOR	proc fromCartesianToSpherical(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		276
+nim	fromSphericalToCartesian	vector.html#fromSphericalToCartesian,ptr.orxVECTOR,ptr.orxVECTOR	proc fromSphericalToCartesian(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR		311
+nim	dot	vector.html#dot,ptr.orxVECTOR,ptr.orxVECTOR	proc dot(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		335
+nim	dot2D	vector.html#dot2D,ptr.orxVECTOR,ptr.orxVECTOR	proc dot2D(pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): orxFLOAT		341
+nim	cross	vector.html#cross,ptr.orxVECTOR,ptr.orxVECTOR,ptr.orxVECTOR	proc cross(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): ptr orxVECTOR		347
+nim	newVECTOR	vector.html#newVECTOR.t,untyped,untyped,untyped	template newVECTOR(x, y, z: untyped): orxVECTOR		360
+nim	newVECTOR	vector.html#newVECTOR.t	template newVECTOR(): orxVECTOR		363
+nim	newSPVECTOR	vector.html#newSPVECTOR.t,untyped,untyped,untyped	template newSPVECTOR(rho, theta, phi: untyped): orxSPVECTOR		366
+nim	newSPVECTOR	vector.html#newSPVECTOR.t	template newSPVECTOR(): orxSPVECTOR		369
+nim	newRGBVECTOR	vector.html#newRGBVECTOR.t,untyped,untyped,untyped	template newRGBVECTOR(r, g, b: untyped): orxRGBVECTOR		372
+nim	newHSLVECTOR	vector.html#newHSLVECTOR.t,untyped,untyped,untyped	template newHSLVECTOR(h, s, l: untyped): orxHSLVECTOR		375
+nim	newHSVVECTOR	vector.html#newHSVVECTOR.t,untyped,untyped,untyped	template newHSVVECTOR(h, s, v: untyped): orxHSVVECTOR		378
+nimgrp	newspvector	vector.html#newSPVECTOR-templates-all	template		366
+nimgrp	newvector	vector.html#newVECTOR-templates-all	template		360

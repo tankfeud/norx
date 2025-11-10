@@ -1,0 +1,59 @@
+nimTitle	basics	basics.html	module src/basics		0
+nim	orxLOG	basics.html#orxLOG,string	proc orxLOG(s: string)		10
+nim	orxFALSE	basics.html#orxFALSE	const orxFALSE		17
+nim	orxTRUE	basics.html#orxTRUE	const orxTRUE		18
+nim	orxFLOAT_0	basics.html#orxFLOAT_0	const orxFLOAT_0		22
+nim	orxFLOAT_1	basics.html#orxFLOAT_1	const orxFLOAT_1		23
+nim	orxFLOAT_MAX	basics.html#orxFLOAT_MAX	const orxFLOAT_MAX		24
+nim	orxDOUBLE_0	basics.html#orxDOUBLE_0	const orxDOUBLE_0		28
+nim	orxDOUBLE_1	basics.html#orxDOUBLE_1	const orxDOUBLE_1		29
+nim	orxDOUBLE_MAX	basics.html#orxDOUBLE_MAX	const orxDOUBLE_MAX		30
+nim	orxU64_UNDEFINED	basics.html#orxU64_UNDEFINED	const orxU64_UNDEFINED		34
+nim	orxU32_UNDEFINED	basics.html#orxU32_UNDEFINED	const orxU32_UNDEFINED		35
+nim	orxU16_UNDEFINED	basics.html#orxU16_UNDEFINED	const orxU16_UNDEFINED		36
+nim	orxU8_UNDEFINED	basics.html#orxU8_UNDEFINED	const orxU8_UNDEFINED		37
+nim	orxHANDLE_UNDEFINED	basics.html#orxHANDLE_UNDEFINED	const orxHANDLE_UNDEFINED		38
+nim	orxSTRINGID_UNDEFINED	basics.html#orxSTRINGID_UNDEFINED	const orxSTRINGID_UNDEFINED		39
+nim	toFloat32	basics.html#toFloat32.c,orxFLOAT	converter toFloat32(x: orxFLOAT): float32		44
+nim	fromFloat32	basics.html#fromFloat32.c,float32	converter fromFloat32(x: float32): orxFLOAT		46
+nim	toBool	basics.html#toBool.c,orxBOOL	converter toBool(x: orxBOOL): bool		48
+nim	toOrxBOOL	basics.html#toOrxBOOL.c,bool	converter toOrxBOOL(x: bool): orxBOOL		51
+nim	toCstring	basics.html#toCstring.c,string	converter toCstring(x: string): cstring		54
+nim	fromCstring	basics.html#fromCstring.c,cstring	converter fromCstring(x: cstring): string		56
+nim	lerp	basics.html#lerp.t,untyped,untyped,untyped	template lerp(a, b, t: untyped): untyped		61
+nim	remap	basics.html#remap.t,untyped,untyped,untyped,untyped,untyped	template remap(A1, B1, A2, B2, V: untyped): untyped		65
+nim	PI	basics.html#PI	const PI		72
+nim	PI2	basics.html#PI2	const PI2		73
+nim	PI_BY_2	basics.html#PI_BY_2	const PI_BY_2		74
+nim	PI_BY_4	basics.html#PI_BY_4	const PI_BY_4		75
+nim	SQRT_2	basics.html#SQRT_2	const SQRT_2		76
+nim	EPSILON	basics.html#EPSILON	const EPSILON		77
+nim	TINY_EPSILON	basics.html#TINY_EPSILON	const TINY_EPSILON		78
+nim	DEG_TO_RAD	basics.html#DEG_TO_RAD	const DEG_TO_RAD		79
+nim	RAD_TO_DEG	basics.html#RAD_TO_DEG	const RAD_TO_DEG		80
+nim	flagTest	basics.html#flagTest.t,untyped,untyped	template flagTest(x, f: untyped): bool		85
+nim	flagTestAll	basics.html#flagTestAll.t,untyped,untyped	template flagTestAll(x, f: untyped): bool		89
+nim	flagGet	basics.html#flagGet.t,untyped,untyped	template flagGet(x, m: untyped): untyped		93
+nim	flagSet	basics.html#flagSet.t,untyped,untyped,untyped	template flagSet(x, a, r: untyped): untyped		97
+nim	flagSwap	basics.html#flagSwap.t,untyped,untyped	template flagSwap(x, s: untyped): untyped		101
+nim	align	basics.html#align.t,untyped,untyped	template align(value, blockSize: untyped): untyped		105
+nim	arrayGetItemCount	basics.html#arrayGetItemCount.t,untyped	template arrayGetItemCount(arr: untyped): int		109
+nim	getTree	basics.html#getTree,ptr.struct_orxTREE_NODE_t	proc getTree(node: ptr orxTREE_NODE): ptr orxTREE		115
+nim	getParent	basics.html#getParent,ptr.struct_orxTREE_NODE_t	proc getParent(node: ptr orxTREE_NODE): ptr orxTREE_NODE		119
+nim	getChild	basics.html#getChild,ptr.struct_orxTREE_NODE_t	proc getChild(node: ptr orxTREE_NODE): ptr orxTREE_NODE		123
+nim	getSibling	basics.html#getSibling,ptr.struct_orxTREE_NODE_t	proc getSibling(node: ptr orxTREE_NODE): ptr orxTREE_NODE		127
+nim	getPrevious	basics.html#getPrevious,ptr.struct_orxTREE_NODE_t	proc getPrevious(node: ptr orxTREE_NODE): ptr orxTREE_NODE		131
+nim	getRoot	basics.html#getRoot,ptr.struct_orxTREE_t	proc getRoot(tree: ptr orxTREE): ptr orxTREE_NODE		135
+nim	getCount	basics.html#getCount,ptr.struct_orxTREE_t	proc getCount(tree: ptr orxTREE): orxU32		139
+nim	getList	basics.html#getList,ptr.struct_orxLINKLIST_NODE_t	proc getList(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST		145
+nim	getPrevious	basics.html#getPrevious,ptr.struct_orxLINKLIST_NODE_t	proc getPrevious(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST_NODE		149
+nim	getNext	basics.html#getNext,ptr.struct_orxLINKLIST_NODE_t	proc getNext(node: ptr orxLINKLIST_NODE): ptr orxLINKLIST_NODE		153
+nim	getFirst	basics.html#getFirst,ptr.struct_orxLINKLIST_t	proc getFirst(list: ptr orxLINKLIST): ptr orxLINKLIST_NODE		157
+nim	getLast	basics.html#getLast,ptr.struct_orxLINKLIST_t	proc getLast(list: ptr orxLINKLIST): ptr orxLINKLIST_NODE		161
+nim	getCount	basics.html#getCount,ptr.struct_orxLINKLIST_t	proc getCount(list: ptr orxLINKLIST): orxU32		165
+nim	getJoystickAxis	basics.html#getJoystickAxis.t,untyped,untyped	template getJoystickAxis(axis, id: untyped): untyped		174
+nim	getJoystickButton	basics.html#getJoystickButton.t,untyped,untyped	template getJoystickButton(button, id: untyped): untyped		178
+nim	getJoystickIdFromAxis	basics.html#getJoystickIdFromAxis.t,untyped	template getJoystickIdFromAxis(axis: untyped): untyped		182
+nim	getJoystickIdFromButton	basics.html#getJoystickIdFromButton.t,untyped	template getJoystickIdFromButton(button: untyped): untyped		186
+nimgrp	getprevious	basics.html#getPrevious-procs-all	proc		131
+nimgrp	getcount	basics.html#getCount-procs-all	proc		139

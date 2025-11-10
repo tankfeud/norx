@@ -1,0 +1,13 @@
+nimTitle	norx	norx.html	module src/norx		0
+nim	ORX_VERSION_STRING	norx.html#ORX_VERSION_STRING	const ORX_VERSION_STRING		113
+nim	ORX_VERSION_FULL_STRING	norx.html#ORX_VERSION_FULL_STRING	const ORX_VERSION_FULL_STRING		114
+nim	ORX_VERSION	norx.html#ORX_VERSION	const ORX_VERSION		121
+nim	eventGetFlag	norx.html#eventGetFlag.t,untyped	template eventGetFlag(ID: untyped): untyped		127
+nim	getPointer	norx.html#getPointer,pointer,enum_orxSTRUCTURE_ID_t	proc getPointer(pStructure: pointer; eStructureID: orxSTRUCTURE_ID): ptr orxSTRUCTURE		131
+nim	debugInitMacro	norx.html#debugInitMacro.t	template debugInitMacro(): void		145
+nim	debugExitMacro	norx.html#debugExitMacro.t	template debugExitMacro(): untyped		161
+nim	eventSendMacro	norx.html#eventSendMacro.t,untyped,untyped,untyped,untyped,untyped	template eventSendMacro(TYPE, ID, SENDER, RECIPIENT, PAYLOAD: untyped): void		164
+nim	sbStopByEvent	norx.html#sbStopByEvent_4	var sbStopByEvent		175
+nim	norxMainSetup	norx.html#norxMainSetup	proc norxMainSetup()		177
+nim	norxDefaultEventHandler	norx.html#norxDefaultEventHandler,ptr.struct_orxEVENT_t	proc norxDefaultEventHandler(pstEvent: ptr orxEVENT): orxSTATUS		183
+nim	execute	norx.html#execute,proc),proc),proc)	proc execute(initProc: proc (): orxSTATUS {.cdecl.};\n        runProc: proc (): orxSTATUS {.cdecl.}; exitProc: proc () {.cdecl.})		253

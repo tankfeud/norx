@@ -67,9 +67,9 @@ if $gendocs; then
         }
         echo "Generating documentation for commit/tag: $TAG"
         
-        rm -rf "$DIR/htmldocs/"* # Quote directory path
+        rm -rf "$DIR/docs/index/"* # Quote directory path
         if ! nim doc --project \
-            --outdir:"$DIR/htmldocs" \
+            --outdir:"$DIR/docs/index/" \
             --index:on \
             --git.url:https://github.com/tankfeud/norx \
             --git.commit:"$TAG" \

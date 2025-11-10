@@ -1,0 +1,15 @@
+nimTitle	display	display.html	module src/display		0
+nim	orx2RGBA	display.html#orx2RGBA.t,untyped,untyped,untyped,untyped	template orx2RGBA(r, g, b, a: untyped): orxRGBA		11
+nim	rgbaR	display.html#rgbaR.t,struct_orxRGBA_t	template rgbaR(rgba: orxRGBA): orxU32		15
+nim	rgbaG	display.html#rgbaG.t,struct_orxRGBA_t	template rgbaG(rgba: orxRGBA): orxU32		19
+nim	rgbaB	display.html#rgbaB.t,struct_orxRGBA_t	template rgbaB(rgba: orxRGBA): orxU32		23
+nim	rgbaA	display.html#rgbaA.t,struct_orxRGBA_t	template rgbaA(rgba: orxRGBA): orxU32		27
+nim	colorNormalizer	display.html#colorNormalizer	const colorNormalizer		31
+nim	colorDenormalizer	display.html#colorDenormalizer	const colorDenormalizer		34
+nim	rgbaSet	display.html#rgbaSet,orxU8,orxU8,orxU8,orxU8	proc rgbaSet(r: orxU8; g: orxU8; b: orxU8; a: orxU8): orxRGBA		40
+nim	setRGBA	display.html#setRGBA,ptr.struct_orxCOLOR_t,struct_orxRGBA_t	proc setRGBA(pstColor: ptr orxCOLOR; stRGBA: orxRGBA): ptr orxCOLOR		47
+nim	setColor	display.html#setColor,ptr.struct_orxCOLOR_t,ptr.orxVECTOR,orxFLOAT	proc setColor(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR; fAlpha: orxFLOAT): ptr orxCOLOR		59
+nim	setRGB	display.html#setRGB,ptr.struct_orxCOLOR_t,ptr.orxVECTOR	proc setRGB(pstColor: ptr orxCOLOR; pvRGB: ptr orxVECTOR): ptr orxCOLOR		68
+nim	setAlpha	display.html#setAlpha,ptr.struct_orxCOLOR_t,orxFLOAT	proc setAlpha(pstColor: ptr orxCOLOR; fAlpha: orxFLOAT): ptr orxCOLOR		76
+nim	toRGBA	display.html#toRGBA,ptr.struct_orxCOLOR_t	proc toRGBA(pstColor: ptr orxCOLOR): orxRGBA		83
+nim	copyColor	display.html#copyColor,ptr.struct_orxCOLOR_t,ptr.struct_orxCOLOR_t	proc copyColor(pstDst: ptr orxCOLOR; pstSrc: ptr orxCOLOR): ptr orxCOLOR		97
