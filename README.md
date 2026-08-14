@@ -96,17 +96,17 @@ This wrapper is kept up to date through the following steps:
    ```
    cd orx
    git fetch
-   git checkout 1.16
+   git checkout 1.17
    ./setup.sh
    ```
 3. Build and install ORX libraries as described above in this file.
-4. Run `build.sh` in top level directory to regenerate the wrapper and generate the docs:
+4. Run `build.sh` in the top-level directory to regenerate and validate the wrapper:
    ```
    ./build.sh
    ```
-5. The build should fail if some of the parts in ORX has been modified that we have manually "rewritten"
-   in Nim style, like `vector.nim` for example. We us `annotations.nim` to detect via hash if specific parts of the ORX
+   Pass `--docs` to regenerate the API documentation as well.
+5. The build should fail if some of the parts in ORX have been modified that we have manually "rewritten"
+   in Nim style, like `vector.nim` for example. We use `annotation.nim` to detect via hash if specific parts of the ORX
    codebase has changed. Futhark captures everything in the library, but inline functions and C defines and macros are not
-   captured this way and that is why we use `annotations.nim`. If the build fails you need to analyze and update Nim code
+   captured this way and that is why we use `annotation.nim`. If the build fails you need to analyze and update Nim code
    and update the hashes.
-

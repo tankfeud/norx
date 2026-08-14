@@ -5,7 +5,7 @@ when defined(processAnnotations):
 
   static: processAnnotations(currentSourcePath())
 
-## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":891:1571c6f58bc4b8ca144d540649ac7bf1
+## @file orx/code/include/math/orxVector.h:"typedef struct __orxVECTOR_t":911:393f40d3832605d3bc8d1725d1746a05
 
 proc set*(pvVec: ptr orxVECTOR; fX: orxFLOAT; fY: orxFLOAT; fZ: orxFLOAT): ptr orxVECTOR {.inline, cdecl.} =
   ## Sets vector XYZ values
@@ -196,6 +196,15 @@ proc floorv*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline,
   pvRes.fX = floor(pvOp.fX)
   pvRes.fY = floor(pvOp.fY)
   pvRes.fZ = floor(pvOp.fZ)
+  pvRes
+
+proc ceilv*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline, cdecl.} =
+  ## Gets ceiled vector and stores the result in another one
+  assert(pvRes != nil)
+  assert(pvOp != nil)
+  pvRes.fX = ceil(pvOp.fX)
+  pvRes.fY = ceil(pvOp.fY)
+  pvRes.fZ = ceil(pvOp.fZ)
   pvRes
 
 proc roundv*(pvRes: ptr orxVECTOR; pvOp: ptr orxVECTOR): ptr orxVECTOR {.inline, cdecl.} =

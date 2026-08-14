@@ -229,6 +229,7 @@ proc prepareFiles() =
 
 proc postProcess() =
   ## Final tweaks to wrapper.nim and other files
+  replaceLines(norxRoot / "wrapper.nim", "var orxFLOAT_0*: orxFLOAT", 12)
   replaceLines(norxRoot / "wrapper.nim", "struct_orxVECTOR_t_anon0_t* {.union, bycopy.} = object", 21,
   """
   ## Following 5 types replace the complicated nested union Futhark generates

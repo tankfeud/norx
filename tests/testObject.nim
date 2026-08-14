@@ -17,7 +17,7 @@ proc initORXforTest*() =
   # Initialize ORX without starting it, see norx.nim
   discard setBootstrap(bootstrap)
   debugInitMacro()
-  moduleRegister(MODULE_ID_MAIN, "MAIN", mainSetup, init, exit)
+  moduleRegister(MODULE_ID_MAIN, "MAIN", norxMainSetup, init, exit)
   require moduleInit(MODULE_ID_MAIN) == STATUS_SUCCESS
 
 suite "Suite ORX Object":
@@ -50,3 +50,9 @@ suite "Suite ORX Object":
     strPtr = getPointer(objectPtr, STRUCTURE_ID_OBJECT)
     require strPtr.isNil
 
+  test "Can ceil vector components":
+    var input = newVECTOR(1.2, -1.2, 0.0)
+    var output: orxVECTOR
+
+    require ceilv(addr(output), addr(input)) == addr(output)
+    check output == newVECTOR(2.0, -1.0, 0.0)

@@ -2409,6 +2409,11 @@ when "_right" is static:
     DISPLAY_KZ_SHADER_SUFFIX_RIGHT* = "_right"
 else:
   let DISPLAY_KZ_SHADER_SUFFIX_RIGHT* = "_right"
+when "_size" is static:
+  const
+    DISPLAY_KZ_SHADER_SUFFIX_SIZE* = "_size"
+else:
+  let DISPLAY_KZ_SHADER_SUFFIX_SIZE* = "_size"
 when "Texture" is static:
   const
     TEXTURE_KZ_RESOURCE_GROUP* = "Texture"
@@ -2724,11 +2729,11 @@ when 0 is static:
     THREAD_KU32_MAIN_THREAD_ID* = 0
 else:
   let THREAD_KU32_MAIN_THREAD_ID* = 0
-when 16 is static:
+when 64 is static:
   const
-    THREAD_KU32_MAX_THREAD_NUMBER* = 16
+    THREAD_KU32_MAX_THREAD_NUMBER* = 64
 else:
-  let THREAD_KU32_MAX_THREAD_NUMBER* = 16
+  let THREAD_KU32_MAX_THREAD_NUMBER* = 64
 when 0 is static:
   const
     THREAD_KU32_FLAG_NONE* = 0
@@ -2909,6 +2914,11 @@ when "KeepInCache" is static:
     GRAPHIC_KZ_CONFIG_KEEP_IN_CACHE* = "KeepInCache"
 else:
   let GRAPHIC_KZ_CONFIG_KEEP_IN_CACHE* = "KeepInCache"
+when "Locale" is static:
+  const
+    GRAPHIC_KZ_CONFIG_LOCALE_GROUP* = "Locale"
+else:
+  let GRAPHIC_KZ_CONFIG_LOCALE_GROUP* = "Locale"
 when "." is static:
   const
     SCREENSHOT_KZ_DEFAULT_DIRECTORY_NAME* = "."
@@ -3961,6 +3971,8 @@ proc getFromID*(internal_stID: orxSTRINGID): cstring {.cdecl,
     importc: "orxString_GetFromID".}
 proc store*(internal_zString: cstring): cstring {.cdecl,
     importc: "orxString_Store".}
+proc erase*(internal_stID: orxSTRINGID): orxSTATUS {.cdecl,
+    importc: "orxString_Erase".}
 proc clockSetup*(): void {.cdecl, importc: "orxClock_Setup".}
 proc clockInit*(): orxSTATUS {.cdecl, importc: "orxClock_Init".}
 proc clockExit*(): void {.cdecl, importc: "orxClock_Exit".}
@@ -4002,15 +4014,9 @@ proc clockRegister*(internal_pstClock: ptr orxCLOCK;
                     internal_ePriority: orxCLOCK_PRIORITY): orxSTATUS {.cdecl,
     importc: "orxClock_Register".}
 proc unregister*(internal_pstClock: ptr orxCLOCK;
-                 internal_pfnCallback: orxCLOCK_FUNCTION): orxSTATUS {.cdecl,
-    importc: "orxClock_Unregister".}
-proc getContext*(internal_pstClock: ptr orxCLOCK;
-                 internal_pfnCallback: orxCLOCK_FUNCTION): pointer {.cdecl,
-    importc: "orxClock_GetContext".}
-proc setContext*(internal_pstClock: ptr orxCLOCK;
                  internal_pfnCallback: orxCLOCK_FUNCTION;
                  internal_pContext: pointer): orxSTATUS {.cdecl,
-    importc: "orxClock_SetContext".}
+    importc: "orxClock_Unregister".}
 proc clockGet*(internal_zName: cstring): ptr orxCLOCK {.cdecl,
     importc: "orxClock_Get".}
 proc getName*(internal_pstClock: ptr orxCLOCK): cstring {.cdecl,
@@ -4237,6 +4243,8 @@ proc getTargetAnimName*(internal_pstAnimPointer: ptr orxANIMPOINTER): cstring {.
     cdecl, importc: "orxAnimPointer_GetTargetAnimName".}
 proc getCurrentAnimData*(internal_pstAnimPointer: ptr orxANIMPOINTER): ptr orxSTRUCTURE {.
     cdecl, importc: "orxAnimPointer_GetCurrentAnimData".}
+proc getActiveTime*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.
+    cdecl, importc: "orxAnimPointer_GetActiveTime".}
 proc getTime*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.cdecl,
     importc: "orxAnimPointer_GetTime".}
 proc getFrequency*(internal_pstAnimPointer: ptr orxANIMPOINTER): orxFLOAT {.
@@ -5140,8 +5148,8 @@ proc join*(internal_u32ThreadID: orxU32): orxSTATUS {.cdecl,
 proc joinAll*(): orxSTATUS {.cdecl, importc: "orxThread_JoinAll".}
 proc getName*(internal_u32ThreadID: orxU32): cstring {.cdecl,
     importc: "orxThread_GetName".}
-proc enable*(internal_u32EnableThreads: orxU32;
-             internal_u32DisableThreads: orxU32): orxSTATUS {.cdecl,
+proc enable*(internal_u64EnableThreads: orxU64;
+             internal_u64DisableThreads: orxU64): orxSTATUS {.cdecl,
     importc: "orxThread_Enable".}
 proc getCurrent*(): orxU32 {.cdecl, importc: "orxThread_GetCurrent".}
 proc threadYield*(): void {.cdecl, importc: "orxThread_Yield".}
@@ -5157,7 +5165,13 @@ proc runTask*(internal_pfnRun: orxTHREAD_FUNCTION;
               internal_pfnThen: orxTHREAD_FUNCTION;
               internal_pfnElse: orxTHREAD_FUNCTION; internal_pContext: pointer): orxSTATUS {.
     cdecl, importc: "orxThread_RunTask".}
+proc runTaskLinear*(internal_pfnRun: orxTHREAD_FUNCTION;
+                    internal_pfnThen: orxTHREAD_FUNCTION;
+                    internal_pfnElse: orxTHREAD_FUNCTION;
+                    internal_pContext: pointer): orxSTATUS {.cdecl,
+    importc: "orxThread_RunTaskLinear".}
 proc getTaskCount*(): orxU32 {.cdecl, importc: "orxThread_GetTaskCount".}
+proc getWorkerCount*(): orxU32 {.cdecl, importc: "orxThread_GetWorkerCount".}
 proc setCallbacks*(internal_pfnStart: orxTHREAD_FUNCTION;
                    internal_pfnStop: orxTHREAD_FUNCTION;
                    internal_pContext: pointer): orxSTATUS {.cdecl,
@@ -5681,14 +5695,14 @@ proc objectDelete*(internal_pstObject: ptr orxOBJECT): orxSTATUS {.cdecl,
 proc objectUpdate*(internal_pstObject: ptr orxOBJECT;
                    internal_pstClockInfo: ptr orxCLOCK_INFO): orxSTATUS {.cdecl,
     importc: "orxObject_Update".}
-proc enable*(internal_pstObject: ptr orxOBJECT; internal_bEnable: orxBOOL): void {.
+proc enable*(internal_pstObject: ptr orxOBJECT; internal_bEnable: orxBOOL): orxSTATUS {.
     cdecl, importc: "orxObject_Enable".}
 proc enableRecursive*(internal_pstObject: ptr orxOBJECT;
                       internal_bEnable: orxBOOL): void {.cdecl,
     importc: "orxObject_EnableRecursive".}
 proc isEnabled*(internal_pstObject: ptr orxOBJECT): orxBOOL {.cdecl,
     importc: "orxObject_IsEnabled".}
-proc pause*(internal_pstObject: ptr orxOBJECT; internal_bPause: orxBOOL): void {.
+proc pause*(internal_pstObject: ptr orxOBJECT; internal_bPause: orxBOOL): orxSTATUS {.
     cdecl, importc: "orxObject_Pause".}
 proc pauseRecursive*(internal_pstObject: ptr orxOBJECT; internal_bPause: orxBOOL): void {.
     cdecl, importc: "orxObject_PauseRecursive".}
@@ -6400,8 +6414,9 @@ proc removeSetFromConfig*(internal_pstTrigger: ptr orxTRIGGER;
 proc getCount*(internal_pstTrigger: ptr orxTRIGGER): orxU32 {.cdecl,
     importc: "orxTrigger_GetCount".}
 proc fire*(internal_pstTrigger: ptr orxTRIGGER; internal_zEvent: cstring;
-           internal_azRefinementList: ptr cstring; internal_u32Count: orxU32): orxSTATUS {.
-    cdecl, importc: "orxTrigger_Fire".}
+           internal_azRefinementList: ptr cstring; internal_u32Count: orxU32;
+           internal_pu32StopDepth: ptr orxU32): orxSTATUS {.cdecl,
+    importc: "orxTrigger_Fire".}
 proc pluginSetup*(): void {.cdecl, importc: "orxPlugin_Setup".}
 proc pluginInit*(): orxSTATUS {.cdecl, importc: "orxPlugin_Init".}
 proc pluginExit*(): void {.cdecl, importc: "orxPlugin_Exit".}
