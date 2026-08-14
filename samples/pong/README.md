@@ -1,86 +1,39 @@
-# Pong by Claude Code
+# Pong
 
-This sample was made by Claude Code and then a few small adjustments. The prompts were:
+A complete two-player Pong game implemented with Nim, Norx, and ORX 1.17.
 
-1. "Can you create a new example that is a the classic ping pong game from very old consoles (just two 
-  vertical bars and a bouncing ball between them) where one player can control their vertical bar using w 
-  and s key and the right side player use cursor up and down?"
+The sample keeps gameplay in a small typed Nim model and uses Norx for the engine-facing pieces: input, clock callbacks, object creation, text, and data-driven visual effects. Paddle movement and time-of-impact ball collisions share a fixed-step simulation, so gameplay remains stable when rendering frame times vary.
 
-● I'll create a classic Pong game using the Norx wrapper. Let me break this down into manageable tasks.
+## Controls
 
-● Update Todos
+- **W / S** - Move the left paddle
+- **Up / Down** - Move the right paddle
+- **Space** - Pause or resume the current rally
+- **R** - Restart the match
+- **Escape** - Quit
 
-  ⎿  ☐ Examine existing sample structure to understand project conventions 
-     ☐ Create pong.nim example with basic game setup and ORX initialization
-     ☐ Implement paddle objects (left and right vertical bars)
-     ☐ Implement ball object with physics and bouncing
-     ☐ Add keyboard input handling for W/S (left paddle) and Up/Down (right paddle)
-     ☐ Test the game to ensure it works correctly
+The first player to seven points wins.
 
-Claude then made this plan:
+## Building
 
-## Pong Game Implementation Plan
+Norx requires Nim 2.2.4 or newer and the matching ORX 1.17 dynamic library. From this directory:
 
-    Based on my analysis of the Norx codebase, I'll create a classic Pong game following these conventions:
+```bash
+nimble build
+./pong
+```
 
-    Structure
+Use `--startup-test` to initialize the complete scene, validate its input and effect configuration, run the gameplay model checks, and exit automatically after a few frames:
 
-    - Location: Create pong.nim in a new directory samples/pong/
-    - Configuration: Use .ini file for game setup (graphics, input, physics)
-    - Data: Include necessary texture files for paddles and ball
+```bash
+./pong --startup-test true
+```
 
-    Implementation Plan
+## Structure
 
-    1. Project Setup
+- `pong.nim` contains the game model, collision rules, ORX callbacks, and a small startup test.
+- `data/config/pong.ini` defines the viewport, controls, court, graphics, text, and hit effects.
 
-    - Create samples/pong/ directory structure
-    - Create pong.nim main game file
-    - Create pong.nimble package file
-    - Set up data/ directory with config and textures
+## Assets
 
-    2. Core Game Components
-
-    - Main Loop: Use standard ORX init/run/exit pattern with execute()
-    - Viewport & Camera: Standard game viewport setup
-    - Input System: Configure W/S for left paddle, UP/DOWN for right paddle
-
-    3. Game Objects
-
-    - Left Paddle: Vertical bar controlled by W/S keys
-    - Right Paddle: Vertical bar controlled by UP/DOWN arrow keys  
-    - Ball: Moving object with physics-based bouncing
-    - Boundaries: Top/bottom walls for ball collision
-
-    4. Game Logic
-
-    - Paddle Movement: Real-time input handling to move paddles up/down
-    - Ball Physics: Continuous movement with collision detection
-    - Collision System: Ball bounces off paddles and walls
-    - Score Tracking: Basic scoring when ball exits sides
-
-    5. Technical Implementation
-
-    - Use ORX's physics system for collision detection
-    - Configure input bindings in .ini file 
-    - Use object hierarchies for game components
-    - Implement update loop using clock callbacks
-
-    6. Files to Create
-
-    - samples/pong/pong.nim - Main game logic
-    - samples/pong/pong.nimble - Package configuration
-    - samples/pong/data/config/pong.ini - Game configuration
-    - samples/pong/data/texture/ - Simple paddle/ball graphics
-
-    The implementation will follow Norx conventions using {.cdecl.} pragmas, isActive() for input, and ORX's
-     object/physics systems.
-
-2. The first result was almost there, but the textures reused were square and sizes were off. And physics was a bit crazy with paddles drifting etc.
-
-   "The paddles are too small and the ball is too large. Also the paddles bounce away when hit."
-
-
-After this Claude Code got a bit confused after I told it to try to use texture "pixel" and then I ran out of tokens so I made some small adjustments:
-- Fixing ini file a bit, fixed rotation, density and Claude had accidentally removed some body references and also removed the top and bottom walls it had created in the beginning.
-- Adding two lines in pong.nim creating topWall and bottomWall. **But all the rest of the code is as generated**
-
+Sound effects are from Kenney and released under Creative Commons CC0 1.0. Source links and the original license files are included in [`data/ASSETS.md`](data/ASSETS.md).
