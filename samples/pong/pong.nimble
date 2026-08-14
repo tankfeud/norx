@@ -8,4 +8,4 @@ bin           = @["pong"]
 
 # Dependencies
 requires "nim >= 2.2.4"
-requires "norx >= 0.8.0"
+requires "norx >= 0.8.1"
