@@ -51,6 +51,14 @@ converter toBool*(x: orxBOOL): bool = orxU32(x) != 0
 converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)
   ## Converts bool to orxBOOL
 
+func isSuccess*(status: orxSTATUS): bool {.inline.} =
+  ## Returns whether an ORX operation succeeded.
+  status == STATUS_SUCCESS
+
+func isFailure*(status: orxSTATUS): bool {.inline.} =
+  ## Returns whether an ORX operation failed.
+  status == STATUS_FAILURE
+
 converter toCstring*(x: string): cstring = x.cstring
 
 converter fromCstring*(x: cstring): string = $x

@@ -217,6 +217,21 @@ if isActive("Jump"):
 The `orxTRUE` and `orxFALSE` constants remain available when translating ORX
 documentation literally, but application code normally does not need them.
 
+### Status Values
+
+ORX operations return `orxSTATUS`, which remains an enum so that callbacks and
+control-flow uses retain their original meaning. Norx supplies explicit
+predicates for conditions:
+
+```nim
+if clockRegister(clock, update, nil, MODULE_ID_MAIN,
+                 CLOCK_PRIORITY_NORMAL).isFailure:
+  return STATUS_FAILURE
+```
+
+Use `isSuccess` or `isFailure` when testing an operation. Callback return values
+remain `STATUS_SUCCESS` and `STATUS_FAILURE` as documented by ORX.
+
 ### Viewports and Cameras
 
 **Viewports** define screen regions, **Cameras** define what you see:
@@ -415,7 +430,7 @@ proc init(): orxSTATUS =
     return STATUS_FAILURE
   
   let status = clockRegister(clock, update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
-  if status != STATUS_SUCCESS:
+  if status.isFailure:
     echo "Failed to register update callback"
     return STATUS_FAILURE
   
@@ -430,7 +445,7 @@ proc exit() =
 proc bootstrap(): orxSTATUS =
   # Setup resource paths
   let result = addStorage(CONFIG_KZ_RESOURCE_GROUP, "data/config", false)
-  if result != STATUS_SUCCESS:
+  if result.isFailure:
     echo "Failed to add config storage"
     return STATUS_FAILURE
   
@@ -438,7 +453,7 @@ proc bootstrap(): orxSTATUS =
 
 # Main execution
 when isMainModule:
-  if setBootstrap(bootstrap) == STATUS_SUCCESS:
+  if setBootstrap(bootstrap).isSuccess:
     execute(init, run, exit)
   else:
     echo "Failed to set bootstrap"

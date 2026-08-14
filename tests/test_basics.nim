@@ -19,3 +19,11 @@ suite "Norx basic types":
       doAssert not compiles(block:
         var value: orxU32 = true
         discard value)
+
+  test "ORX statuses have explicit predicates":
+    check STATUS_SUCCESS.isSuccess
+    check not STATUS_SUCCESS.isFailure
+    check STATUS_FAILURE.isFailure
+    check not STATUS_FAILURE.isSuccess
+    check not STATUS_NONE.isSuccess
+    check not STATUS_NONE.isFailure
