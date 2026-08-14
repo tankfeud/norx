@@ -1,6 +1,8 @@
 import os
-import basics, wrapper, vector, objects, joystick, display
-export basics, wrapper, vector, objects, joystick, display
+import basics, wrapper, vector, objects, input, config, resources, sounds,
+       joystick, display
+export basics, wrapper, vector, objects, input, config, resources, sounds,
+       joystick, display
 
 ## This is the Norx high level wrapper module for the ORX library.
 ## You should usually only need to import this module as it exports all the others.

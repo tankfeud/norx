@@ -1,5 +1,23 @@
 import wrapper
 
+proc objectCreateFromConfig*(configId: string): ptr orxOBJECT {.inline.} =
+  ## Creates an object from a Nim string configuration ID.
+  wrapper.objectCreateFromConfig(configId.cstring)
+
+proc setTextString*(gameObject: ptr orxOBJECT;
+                    text: string): orxSTATUS {.inline.} =
+  ## Sets an object's text from a Nim string.
+  wrapper.setTextString(gameObject, text.cstring)
+
+proc addFX*(gameObject: ptr orxOBJECT; configId: string): orxSTATUS {.inline.} =
+  ## Adds a configured effect using a Nim string ID.
+  wrapper.addFX(gameObject, configId.cstring)
+
+proc addSound*(gameObject: ptr orxOBJECT;
+               configId: string): orxSTATUS {.inline.} =
+  ## Adds a configured sound using a Nim string ID.
+  wrapper.addSound(gameObject, configId.cstring)
+
 proc setPivot*(gameObject: ptr orxOBJECT; pivot: orxVECTOR): orxSTATUS {.inline.} =
   ## Sets an object's pivot from a vector value.
   var value = pivot

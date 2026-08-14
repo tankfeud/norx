@@ -4,7 +4,7 @@
 The wrapper consists of two parts:
 
 * The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is fully automatically generated from the C header files. This represents all the functionality in the ORX dynamic library.
-* The higher level files like `norx.nim`, `basics.nim`, `vector.nim`, and `objects.nim` are created by hand to use Nim style and Nim types and introduce useful overloads, templates, converters, and macros. These are kept up to date manually with new versions of ORX, but an annotation mechanism makes it easier to detect if changes need to be made.
+* Higher-level files such as `basics.nim`, `vector.nim`, `objects.nim`, and the small subsystem modules are created by hand to use Nim style and Nim types and introduce useful overloads, templates, converters, and macros. These are kept up to date manually with new versions of ORX, but an annotation mechanism makes it easier to detect if changes need to be made.
 
 The `norx.nim` module is the one you should import in your Nim code, it exports the other modules including the low level `wrapper.nim` for direct access to ORX functions and types.
 
@@ -68,7 +68,7 @@ These are the "differences" that you should be aware of when you read ORX docume
 * Norx wrappers have been stripped of "module prefixes", so in ORX you have `orxObject_SetSpeed` but in Norx it's `setSpeed`, first character lower case.
 * Some very common function names (that lots of modules share) have kept a module prefix, but in Nim style, since they would otherwise cause clashes, like `orxObject_CreateFromConfig` is in Norx `objectCreateFromConfig` and `orxObject_Create` is `objectCreate`. Same goes for `Setup`, `Init`, `Exit` and `Get` in basically all modules. You can see the list of **protectedNames** in `create_wrapper.nim`.
 * All memory allocation/deallocation of ORX things are done by ORX. If you stick to "normal" Nim code, all Nim memory is garbage collected by Nim.
-* `orxCHAR *` has been mapped to `cstring` so you can pass Nim strings into all ORX functions just fine, since they are compatible with `cstring`. Remember that Nim strings are garbage collected by Nim so passing temporary strings into ORX can be dangerous if ORX keeps that pointer around. I haven't looked at ORX source to see if that is a common pattern, I suspect not.
+* `orxCHAR *` has been mapped to `cstring`. Common APIs also have `string` overloads that convert only for the duration of the ORX call, so dynamic Nim strings can be passed without warnings. A raw `cstring` pointer must not outlive the Nim string that backs it.
 * If you get a `cstring` from ORX you can either keep it as such, but then beware that ORX decides when to deallocate it, or convert it to a Nim string using `$` but that will cause a copy of course. The positive is that you are then safe.
 * `orxBOOL` is kept as a distinct C-sized type for ABI compatibility, with converters in both directions. Use normal Nim booleans in application code: `if isActive("Quit"):` and `object.enable(true)`.
 * `orxSTATUS` remains an ORX enum because failure can represent control flow as well as an error. Use `status.isSuccess` and `status.isFailure` when a boolean predicate reads more naturally than comparing with `STATUS_SUCCESS` or `STATUS_FAILURE`.

@@ -11,7 +11,7 @@ Norx is a Nim wrapper for the ORX 2.5D game engine. The repository targets ORX 1
 
 - `src/wrapper.nim` contains low-level C bindings generated from ORX headers by Futhark. Never edit it manually.
 - `src/norx.nim` is the public entry point. Applications should import `norx`, not `wrapper`.
-- `src/basics.nim`, `src/vector.nim`, `src/objects.nim`, `src/display.nim`, and `src/joystick.nim` provide hand-written Nim APIs for C macros, inline functions, and higher-level conveniences.
+- `src/basics.nim`, `src/vector.nim`, `src/objects.nim`, and the small subsystem modules provide hand-written Nim APIs for C macros, inline functions, and higher-level conveniences.
 - `src/annotation.nim` checks hand-written translations against selected sections of the ORX headers.
 - `scripts/create_wrapper.nim` configures Futhark naming and post-processes generated bindings.
 - `samples/` and `official_samples/` exercise the public API.
@@ -67,6 +67,7 @@ Check every test and sample at the end of a change:
 ```bash
 nim check tests/test_basics.nim
 nim check tests/test_vector.nim
+nim check tests/test_strings.nim
 nim check tests/test_enum.nim
 nim c -r tests/testObject.nim
 nimble samples
