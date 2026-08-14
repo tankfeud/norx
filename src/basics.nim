@@ -45,7 +45,7 @@ converter toFloat32*(x: orxFLOAT): float32 = float32(x)
 
 converter fromFloat32*(x: float32): orxFLOAT = orxFLOAT(x)
 
-converter toBool*(x: orxBOOL): bool = cint(x) != 0
+converter toBool*(x: orxBOOL): bool = orxU32(x) != 0
   ## Converts orxBOOL to bool
 
 converter toOrxBOOL*(x: bool): orxBOOL = orxBOOL(if x: 1 else: 0)

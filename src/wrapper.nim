@@ -1047,7 +1047,7 @@ type
   orxS32* = cint
   orxS16* = cshort
   orxS8* = cschar
-  orxBOOL* = cuint
+  orxBOOL* = distinct cuint
   orxFLOAT* = cfloat
   orxDOUBLE* = cdouble
   orxCHAR* = cschar

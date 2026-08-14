@@ -58,6 +58,22 @@ proc replace(filePath: string, patterns: seq[(string, string)]) =
     content = content.replace(search, replacement)
   writeFile(filePath, content)
 
+proc makeBoolDistinct(filePath: string) =
+  ## Gives ORX booleans type safety while preserving their generated C ABI.
+  var lines = readFile(filePath).split('\n')
+  var matches = 0
+  for line in lines.mitems:
+    let stripped = line.strip()
+    if stripped.startsWith("orxBOOL* = "):
+      inc matches
+      if not stripped.startsWith("orxBOOL* = distinct "):
+        line = line.replace("orxBOOL* = ", "orxBOOL* = distinct ")
+  if matches != 1:
+    raise newException(ValueError,
+      "Expected exactly one orxBOOL definition in " & filePath &
+      ", found " & $matches)
+  writeFile(filePath, lines.join("\n"))
+
 proc replaceLines(filePath: string, startPattern: string, numLines: int, replacement: string = "") =
   ## Replace numLines starting from the line containing startPattern
   var lines = readFile(filePath).split('\n')
@@ -229,6 +245,7 @@ proc prepareFiles() =
 
 proc postProcess() =
   ## Final tweaks to wrapper.nim and other files
+  makeBoolDistinct(norxRoot / "wrapper.nim")
   replaceLines(norxRoot / "wrapper.nim", "var orxFLOAT_0*: orxFLOAT", 12)
   replaceLines(norxRoot / "wrapper.nim", "struct_orxVECTOR_t_anon0_t* {.union, bycopy.} = object", 21,
   """

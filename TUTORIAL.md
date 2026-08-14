@@ -203,6 +203,20 @@ player.setScale(vector(2.0, 2.0, 1.0))
 player.setRotation(45.0)
 ```
 
+### Booleans
+
+Norx converts between ORX's ABI-compatible `orxBOOL` type and Nim's `bool`.
+Use normal Nim conditions and boolean values while keeping the original ORX
+function names:
+
+```nim
+if isActive("Jump"):
+  discard player.enable(true)
+```
+
+The `orxTRUE` and `orxFALSE` constants remain available when translating ORX
+documentation literally, but application code normally does not need them.
+
 ### Viewports and Cameras
 
 **Viewports** define screen regions, **Cameras** define what you see:
