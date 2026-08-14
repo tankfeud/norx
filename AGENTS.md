@@ -71,6 +71,7 @@ nimble samples
 nim check samples/sample1/sample1.nim
 nim check samples/sample2/sample2.nim
 nim check samples/pong/pong.nim
+nim check samples/boulderdash/boulderdash.nim
 nim check samples/qr-code/show_qr.nim
 ```
 

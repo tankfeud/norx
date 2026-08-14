@@ -4,6 +4,10 @@ First install ORX & Nim as described in top README.
 Then run `nimble install` in each directory which will compile and install the sample binariies in release mode, or just run `nimble run` without installing the binary.
 Note that the android-native sample has its own README.md file.
 
+`boulderdash/` contains a complete small grid game with digging, collectibles, pushable and falling boulders, a timer, and restart support.
+
+`pong/` contains a complete two-player Pong game with fixed-step collision handling, scoring, pause, and restart support.
+
 ESC quits. Pressing the key below ESC (may be different depending on your keyboard, on mine it's "§" but evidently "`" on others I guess) opens the ORX console.
 
 # Compiling

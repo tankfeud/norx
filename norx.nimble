@@ -18,3 +18,5 @@ task samples, "Check that all samples compile":
   # Check official samples
   echo "Checking official_samples..."
   exec "find official_samples -name '*.nim' -exec nim check {} \\;"
+  echo "Checking boulderdash sample..."
+  exec "nim check samples/boulderdash/boulderdash.nim"
