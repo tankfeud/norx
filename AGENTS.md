@@ -65,6 +65,8 @@ When an annotation changes:
 Check every test and sample at the end of a change:
 
 ```bash
+nim check tests/test_basics.nim
+nim check tests/test_vector.nim
 nim check tests/test_enum.nim
 nim c -r tests/testObject.nim
 nimble samples

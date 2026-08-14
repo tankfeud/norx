@@ -198,9 +198,18 @@ In ORX, everything visible is an **Object**:
 let player = objectCreateFromConfig("Player")
 
 # Objects have properties
-player.setPosition(vector(100.0, 200.0, 0.0))
-player.setScale(vector(2.0, 2.0, 1.0))
+player.setPosition(newVector(100.0, 200.0))
+player.setScale(newVector(2.0, 2.0, 1.0))
 player.setRotation(45.0)
+```
+
+Vectors retain ORX's `orxVECTOR` type and function names, with value overloads
+and conventional operators for Nim expressions:
+
+```nim
+let velocity = newVector(120.0, -30.0)
+let nextPosition = player.getPosition() + velocity * deltaTime
+let direction = velocity.normalize
 ```
 
 ### Booleans
@@ -390,7 +399,7 @@ var player: ptr orxOBJECT = nil
 
 proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   # Handle input
-  var movement = vector(0.0, 0.0, 0.0)
+  var movement = newVector()
   
   if isActive("MoveLeft"):
     movement.fX = -200.0

@@ -365,24 +365,172 @@ proc cross*(pvRes: ptr orxVECTOR; pvOp1: ptr orxVECTOR; pvOp2: ptr orxVECTOR): p
   pvRes.fX = fTemp1
   pvRes
 
-# Vector constructor templates updated for tuple-based orxVECTOR type
+proc add*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Adds two vectors and returns the result by value.
+  var
+    left = op1
+    right = op2
+  discard add(addr result, addr left, addr right)
+
+proc sub*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Subtracts two vectors and returns the result by value.
+  var
+    left = op1
+    right = op2
+  discard sub(addr result, addr left, addr right)
+
+proc mulf*(op1: orxVECTOR; op2: orxFLOAT): orxVECTOR {.inline.} =
+  ## Multiplies a vector by a scalar and returns the result by value.
+  var operand = op1
+  discard mulf(addr result, addr operand, op2)
+
+proc mul*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Multiplies vector components and returns the result by value.
+  var
+    left = op1
+    right = op2
+  discard mul(addr result, addr left, addr right)
+
+proc divf*(op1: orxVECTOR; op2: orxFLOAT): orxVECTOR {.inline.} =
+  ## Divides a vector by a scalar and returns the result by value.
+  var operand = op1
+  discard divf(addr result, addr operand, op2)
+
+proc getSquareSize*(op: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets a vector's squared size from a value.
+  var operand = op
+  getSquareSize(addr operand)
+
+proc getSize*(op: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets a vector's size from a value.
+  var operand = op
+  getSize(addr operand)
+
+proc getSquareDistance*(op1, op2: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets the squared distance between two vector values.
+  var
+    left = op1
+    right = op2
+  getSquareDistance(addr left, addr right)
+
+proc getDistance*(op1, op2: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets the distance between two vector values.
+  var
+    left = op1
+    right = op2
+  getDistance(addr left, addr right)
+
+proc normalize*(op: orxVECTOR): orxVECTOR {.inline.} =
+  ## Normalizes a vector and returns the result by value.
+  var operand = op
+  discard normalize(addr result, addr operand)
+
+proc rotate2D*(op: orxVECTOR; angle: orxFLOAT): orxVECTOR {.inline.} =
+  ## Rotates a vector around the Z axis and returns the result by value.
+  var operand = op
+  discard rotate2D(addr result, addr operand, angle)
+
+proc isNull*(op: orxVECTOR): bool {.inline.} =
+  ## Returns whether all vector components are zero.
+  var operand = op
+  isNull(addr operand)
+
+proc areEqual*(op1, op2: orxVECTOR): bool {.inline.} =
+  ## Returns whether two vector values have equal components.
+  var
+    left = op1
+    right = op2
+  areEqual(addr left, addr right)
+
+proc dot*(op1, op2: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets the dot product of two vector values.
+  var
+    left = op1
+    right = op2
+  dot(addr left, addr right)
+
+proc dot2D*(op1, op2: orxVECTOR): orxFLOAT {.inline.} =
+  ## Gets the 2D dot product of two vector values.
+  var
+    left = op1
+    right = op2
+  dot2D(addr left, addr right)
+
+proc cross*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Gets the cross product of two vector values.
+  var
+    left = op1
+    right = op2
+  discard cross(addr result, addr left, addr right)
+
+proc `+`*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Adds two vectors.
+  add(op1, op2)
+
+proc `-`*(op1, op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Subtracts one vector from another.
+  sub(op1, op2)
+
+proc `-`*(op: orxVECTOR): orxVECTOR {.inline.} =
+  ## Negates a vector.
+  (fX: -op.fX, fY: -op.fY, fZ: -op.fZ)
+
+proc `*`*(op1: orxVECTOR; op2: orxFLOAT): orxVECTOR {.inline.} =
+  ## Multiplies a vector by a scalar.
+  mulf(op1, op2)
+
+proc `*`*(op1: orxFLOAT; op2: orxVECTOR): orxVECTOR {.inline.} =
+  ## Multiplies a vector by a scalar.
+  mulf(op2, op1)
+
+proc `/`*(op1: orxVECTOR; op2: orxFLOAT): orxVECTOR {.inline.} =
+  ## Divides a vector by a scalar.
+  divf(op1, op2)
+
+proc `+=`*(op1: var orxVECTOR; op2: orxVECTOR) {.inline.} =
+  ## Adds a vector in place.
+  op1 = add(op1, op2)
+
+proc `-=`*(op1: var orxVECTOR; op2: orxVECTOR) {.inline.} =
+  ## Subtracts a vector in place.
+  op1 = sub(op1, op2)
+
+proc `*=`*(op1: var orxVECTOR; op2: orxFLOAT) {.inline.} =
+  ## Multiplies a vector by a scalar in place.
+  op1 = mulf(op1, op2)
+
+proc `/=`*(op1: var orxVECTOR; op2: orxFLOAT) {.inline.} =
+  ## Divides a vector by a scalar in place.
+  op1 = divf(op1, op2)
+
 template newVECTOR*(x, y, z: untyped): orxVECTOR =
+  ## Creates an ORX vector from three components.
   (fX: x.orxFLOAT, fY: y.orxFLOAT, fZ: z.orxFLOAT)
 
+template newVECTOR*(x, y: untyped): orxVECTOR =
+  ## Creates a 2D ORX vector with a zero Z component.
+  newVECTOR(x, y, 0)
+
 template newVECTOR*(): orxVECTOR =
+  ## Creates a zero ORX vector.
   (0.orxFLOAT, 0.orxFLOAT, 0.orxFLOAT)
 
 template newSPVECTOR*(rho, theta, phi: untyped): orxSPVECTOR =
-  (fX: rho.orxFLOAT, fY: theta.orxFLOAT, fZ: phi.orxFLOAT)
+  ## Creates an ORX spherical vector.
+  (fRho: rho.orxFLOAT, fTheta: theta.orxFLOAT, fPhi: phi.orxFLOAT)
 
 template newSPVECTOR*(): orxSPVECTOR =
-  (0.orxFLOAT, 0.orxFLOAT, 0.orxFLOAT)
+  ## Creates a zero ORX spherical vector.
+  (fRho: 0.orxFLOAT, fTheta: 0.orxFLOAT, fPhi: 0.orxFLOAT)
 
 template newRGBVECTOR*(r, g, b: untyped): orxRGBVECTOR =
-  (fX: r.orxFLOAT, fY: g.orxFLOAT, fZ: b.orxFLOAT)
+  ## Creates an ORX RGB vector.
+  (fR: r.orxFLOAT, fG: g.orxFLOAT, fB: b.orxFLOAT)
 
 template newHSLVECTOR*(h, s, l: untyped): orxHSLVECTOR =
-  (fX: h.orxFLOAT, fY: s.orxFLOAT, fZ: l.orxFLOAT)
+  ## Creates an ORX HSL vector.
+  (fH: h.orxFLOAT, fS: s.orxFLOAT, fL: l.orxFLOAT)
 
 template newHSVVECTOR*(h, s, v: untyped): orxHSVVECTOR =
-  (fX: h.orxFLOAT, fY: s.orxFLOAT, fZ: v.orxFLOAT)
+  ## Creates an ORX HSV vector.
+  (fH: h.orxFLOAT, fS: s.orxFLOAT, fV: v.orxFLOAT)

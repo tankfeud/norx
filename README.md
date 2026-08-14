@@ -75,7 +75,7 @@ These are the "differences" that you should be aware of when you read ORX docume
 * Generally all ORX things are `ptr orxBLABLA` and not wrapped by Norx. If you keep such around, remember that they may disappear on you when ORX deallocates!
 * Passing procs as callbacks to ORX works fine, as long as they are marked with the Nim pragma `{.cdecl.}`, this can be seen in the examples where the update, run, exit, update procs are marked that way.
 * The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`. See `sample2` which does that. Note that this style is NOT the recommended ORX style, since that loop varies depending on platform (Android has some special parts) and normally that loop is in the ORX codebase so if ORX evolves it may change how it is supposed to work.
-* Vectors are represented as Nim tuples right now. This makes them easier to work with in Nim.
+* Vectors are represented as Nim tuples. The original pointer-based ORX operations remain available, while value overloads and arithmetic operators support expressions such as `position + velocity * deltaTime` and `direction.normalize`.
 * ORX builds three different library versions (release, debug, profile). Norx automatically selects the appropriate version based on your build configuration through `config.nims` files. See the "Library Linking Configuration" section above for details.
 * ...and well, I will add to this list as things come up.
 
