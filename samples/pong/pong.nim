@@ -65,8 +65,6 @@ type
     scores: array[Player, ptr orxOBJECT]
     status: ptr orxOBJECT
 
-  PaddleControl = tuple[upAction, downAction: string]
-
 const
   CourtTop = -202.0'f32
   CourtBottom = 202.0'f32
@@ -85,13 +83,14 @@ const
   CollisionEpsilon = 0.00001'f32
   MaximumCollisionsPerStep = 4
   WinningScore = 7
+  StartupTestFrameCount = 5
 
   BuildConfigPath = currentSourcePath().parentDir / "data" / "config"
 
   PaddleX: array[Player, float32] = [-410.0'f32, 410.0'f32]
   PaddleSections: array[Player, string] = ["LeftPaddle", "RightPaddle"]
   ScoreSections: array[Player, string] = ["LeftScore", "RightScore"]
-  PaddleControls: array[Player, PaddleControl] = [
+  PaddleControls: array[Player, tuple[upAction, downAction: string]] = [
     (upAction: "LeftUp", downAction: "LeftDown"),
     (upAction: "RightUp", downAction: "RightDown")
   ]
@@ -108,19 +107,25 @@ const
     (action: "RightDown", key: KEYBOARD_KEY_DOWN)
   ]
   ExpectedCourtChildren = 6
-  SoundSections = ["WallSound", "PaddleSound", "PointSound", "WinSound"]
+  EventSounds: array[GameEventKind, string] = [
+    "", "WallSound", "PaddleSound", "PointSound", "WinSound"
+  ]
 
 var
   game: GameModel
   scene: Scene
   coreClock: ptr orxCLOCK
-  simulationTime: float32
+  timeAccumulator: float32
   startupFrames: int
-  startupCompleted: bool
   initializationSucceeded: bool
   executionFailed: bool
 
 let startupTest = "--startup-test" in commandLineParams()
+
+template checkStartup(condition: bool; message: string) =
+  if not condition:
+    echo message
+    return false
 
 proc vec2(x, y: float32): Vec2 = Vec2(x: x, y: y)
 
@@ -148,18 +153,22 @@ proc paddleContactX(player: Player): float32 =
   else:
     PaddleX[player] - PaddleHalfWidth - BallRadius
 
+proc setPhase(model: var GameModel; phase: GamePhase; status: string) =
+  model.phase = phase
+  model.statusText = status
+  model.uiDirty = true
+
 proc prepareServe(model: var GameModel; target: Player; message: string) =
-  model.phase = phaseServing
+  model.setPhase(phaseServing, message)
   model.serveTarget = target
   model.serveTimer = ServeDelay
   model.ballPosition = vec2(0.0, 0.0)
   model.ballVelocity = vec2(0.0, 0.0)
-  model.statusText = message
-  model.uiDirty = true
 
 proc resetMatch(model: var GameModel) =
   model = GameModel()
-  model.prepareServe(playerLeft, "FIRST TO 7 - GET READY")
+  model.prepareServe(playerLeft,
+                     "FIRST TO " & $WinningScore & " - GET READY")
 
 proc launchBall(model: var GameModel) =
   let angle = ServeAngles[model.serveNumber mod ServeAngles.len] * DEG_TO_RAD
@@ -169,9 +178,7 @@ proc launchBall(model: var GameModel) =
     InitialBallSpeed * math.sin(angle)
   )
   inc model.serveNumber
-  model.phase = phasePlaying
-  model.statusText = ""
-  model.uiDirty = true
+  model.setPhase(phasePlaying, "")
 
 proc nextCollision(model: GameModel; maximumTime: float32;
                    paddleY, paddleVelocity: array[Player, float32]): Collision =
@@ -248,11 +255,9 @@ proc bounceOffPaddle(model: var GameModel; player: Player; paddleY: float32) =
 proc awardPoint(model: var GameModel; scorer: Player): GameEvent =
   inc model.scores[scorer]
   if model.scores[scorer] == WinningScore:
-    model.phase = phaseFinished
+    model.setPhase(phaseFinished, playerName(scorer) & " WINS - PRESS R")
     model.ballPosition = vec2(0.0, 0.0)
     model.ballVelocity = vec2(0.0, 0.0)
-    model.statusText = playerName(scorer) & " WINS - PRESS R"
-    model.uiDirty = true
     return GameEvent(kind: eventMatchWon, player: scorer)
 
   model.prepareServe(opponent(scorer), playerName(scorer) & " SCORES")
@@ -298,8 +303,7 @@ proc stepGame(model: var GameModel; deltaTime: float32;
     if collision.kind == collisionNone:
       model.ballPosition = model.ballPosition +
                            model.ballVelocity * remainingTime
-      remainingTime = 0.0
-      break
+      return
 
     model.ballPosition = model.ballPosition +
                          model.ballVelocity * collision.time
@@ -331,9 +335,8 @@ proc stepGame(model: var GameModel; deltaTime: float32;
                          model.ballVelocity * remainingTime
 
 proc place(gameObject: ptr orxOBJECT; position: Vec2): bool =
-  if gameObject == nil:
-    return false
-  result = gameObject.setPosition(newVector(position.x, position.y)).isSuccess
+  gameObject != nil and
+    gameObject.setPosition(newVector(position.x, position.y)).isSuccess
 
 proc syncScene(): bool =
   result = true
@@ -356,34 +359,27 @@ proc syncUI(): bool =
       echo "Could not update the ", playerName(player), " score"
       result = false
 
-  if game.statusText.len == 0:
-    if scene.status.enable(false).isFailure:
-      echo "Could not hide the status text"
-      result = false
-  else:
-    if scene.status.setTextString(game.statusText).isFailure:
-      echo "Could not update the status text"
-      result = false
-    if scene.status.enable(true).isFailure:
-      echo "Could not show the status text"
-      result = false
+  let statusVisible = game.statusText.len > 0
+  if statusVisible and scene.status.setTextString(game.statusText).isFailure:
+    echo "Could not update the status text"
+    result = false
+  if scene.status.enable(statusVisible).isFailure:
+    echo "Could not ", (if statusVisible: "show" else: "hide"),
+         " the status text"
+    result = false
   game.uiDirty = not result
 
 proc handleGameEvent(gameEvent: GameEvent) =
   case gameEvent.kind
-  of eventWallHit:
-    discard scene.ball.addSound("WallSound")
   of eventPaddleHit:
     discard scene.paddles[gameEvent.player].addFX("PaddleHit")
-    discard scene.ball.addSound("PaddleSound")
-  of eventPointScored:
+  of eventPointScored, eventMatchWon:
     discard scene.scores[gameEvent.player].addFX("ScorePulse")
-    discard scene.ball.addSound("PointSound")
-  of eventMatchWon:
-    discard scene.scores[gameEvent.player].addFX("ScorePulse")
-    discard scene.ball.addSound("WinSound")
-  of eventNone:
+  of eventNone, eventWallHit:
     discard
+  let sound = EventSounds[gameEvent.kind]
+  if sound.len > 0:
+    discard scene.ball.addSound(sound)
 
 proc readPaddleInput(): array[Player, float32] =
   for player in Player:
@@ -397,55 +393,50 @@ proc runModelChecks(): bool =
   model.resetMatch()
   model.serveTimer = FixedTimeStep * 0.5
   discard model.stepGame(FixedTimeStep)
-  if model.phase != phasePlaying or model.ballVelocity.x >= 0.0:
-    echo "Pong check failed: serve"
-    return false
+  checkStartup(model.phase == phasePlaying and model.ballVelocity.x < 0.0,
+               "Pong check failed: serve")
 
-  model.phase = phasePlaying
   model.ballPosition = vec2(0.0, CourtTop + BallRadius + 1.0)
   model.ballVelocity = vec2(0.0, -400.0)
   let wallHit = model.stepGame(FixedTimeStep)
-  if wallHit.kind != eventWallHit or model.ballVelocity.y <= 0.0:
-    echo "Pong check failed: wall bounce"
-    return false
+  checkStartup(wallHit.kind == eventWallHit and model.ballVelocity.y > 0.0,
+               "Pong check failed: wall bounce")
 
   model.ballPosition = vec2(paddleContactX(playerLeft) + 2.0, 0.0)
   model.ballVelocity = vec2(-400.0, 0.0)
   let hit = model.stepGame(FixedTimeStep)
-  if hit.kind != eventPaddleHit or hit.player != playerLeft or
-      model.ballVelocity.x <= 0.0:
-    echo "Pong check failed: paddle bounce"
-    return false
+  checkStartup(hit.kind == eventPaddleHit and hit.player == playerLeft and
+                 model.ballVelocity.x > 0.0,
+               "Pong check failed: paddle bounce")
 
   model.paddleY[playerLeft] = CourtTop + PaddleHalfHeight
   model.ballPosition = vec2(paddleContactX(playerLeft) + 2.0,
                             CourtTop + BallRadius + 2.0)
   model.ballVelocity = vec2(-400.0, -400.0)
   let cornerHit = model.stepGame(FixedTimeStep)
-  if cornerHit.kind != eventPaddleHit or
-      model.ballPosition.y < CourtTop + BallRadius:
-    echo "Pong check failed: paddle and wall corner"
-    return false
+  checkStartup(cornerHit.kind == eventPaddleHit and
+                 model.ballPosition.y >= CourtTop + BallRadius,
+               "Pong check failed: paddle and wall corner")
 
   model.resetMatch()
   model.phase = phasePlaying
   model.ballPosition = vec2(GoalX - 1.0, 0.0)
   model.ballVelocity = vec2(400.0, 0.0)
   let point = model.stepGame(FixedTimeStep)
-  if point.kind != eventPointScored or point.player != playerLeft or
-      model.scores[playerLeft] != 1 or model.phase != phaseServing:
-    echo "Pong check failed: point scoring"
-    return false
+  checkStartup(point.kind == eventPointScored and
+                 point.player == playerLeft and
+                 model.scores[playerLeft] == 1 and
+                 model.phase == phaseServing,
+               "Pong check failed: point scoring")
 
   model.scores[playerLeft] = WinningScore - 1
   model.phase = phasePlaying
   model.ballPosition = vec2(GoalX - 1.0, 0.0)
   model.ballVelocity = vec2(400.0, 0.0)
   let win = model.stepGame(FixedTimeStep)
-  if win.kind != eventMatchWon or win.player != playerLeft or
-      model.phase != phaseFinished:
-    echo "Pong check failed: match scoring"
-    return false
+  checkStartup(win.kind == eventMatchWon and win.player == playerLeft and
+                 model.phase == phaseFinished,
+               "Pong check failed: match scoring")
 
   echo "Pong model checks passed"
   result = true
@@ -462,43 +453,38 @@ proc inputConfigured(binding: InputBinding): bool =
 
 proc runEngineChecks(): bool =
   for binding in ExpectedInputBindings:
-    if not inputConfigured(binding):
-      echo "Pong check failed: incorrect input action ", binding.action
-      return false
+    checkStartup(inputConfigured(binding),
+                 "Pong check failed: incorrect input action " & binding.action)
 
   for player in Player:
-    if scene.paddles[player].getWorkingGraphic() == nil or
-        scene.scores[player].getWorkingGraphic() == nil:
-      echo "Pong check failed: missing ", playerName(player), " graphic"
-      return false
-  if scene.ball.getWorkingGraphic() == nil or
-      scene.status.getWorkingGraphic() == nil:
-    echo "Pong check failed: missing ball or status graphic"
-    return false
+    checkStartup(scene.paddles[player].getWorkingGraphic() != nil and
+                   scene.scores[player].getWorkingGraphic() != nil,
+                 "Pong check failed: missing " & playerName(player) &
+                   " graphic")
+  checkStartup(scene.ball.getWorkingGraphic() != nil and
+                 scene.status.getWorkingGraphic() != nil,
+               "Pong check failed: missing ball or status graphic")
 
   var
     child = scene.court.getOwnedChild()
     childCount = 0
   while child != nil:
-    if child.getWorkingGraphic() == nil:
-      echo "Pong check failed: missing court child graphic"
-      return false
+    checkStartup(child.getWorkingGraphic() != nil,
+                 "Pong check failed: missing court child graphic")
     inc childCount
     child = child.getOwnedSibling()
-  if childCount != ExpectedCourtChildren:
-    echo "Pong check failed: expected ", ExpectedCourtChildren,
-         " court children, got ", childCount
-    return false
+  checkStartup(childCount == ExpectedCourtChildren,
+               "Pong check failed: expected " & $ExpectedCourtChildren &
+                 " court children, got " & $childCount)
 
-  if scene.paddles[playerLeft].addFX("PaddleHit").isFailure or
-      scene.scores[playerLeft].addFX("ScorePulse").isFailure:
-    echo "Pong check failed: visual effects"
-    return false
-  for section in SoundSections:
+  checkStartup(scene.paddles[playerLeft].addFX("PaddleHit").isSuccess and
+                 scene.scores[playerLeft].addFX("ScorePulse").isSuccess,
+               "Pong check failed: visual effects")
+  for section in EventSounds:
+    if section.len == 0:
+      continue
     let sound = soundCreateFromConfig(section)
-    if sound == nil:
-      echo "Pong check failed: sound ", section
-      return false
+    checkStartup(sound != nil, "Pong check failed: sound " & section)
     discard soundDelete(sound)
   echo "Pong engine checks passed"
   result = true
@@ -527,24 +513,21 @@ proc updateGame(clockInfo: ptr orxCLOCK_INFO; context: pointer) {.cdecl.} =
 
   if hasBeenActivated("Restart"):
     game.resetMatch()
-    simulationTime = 0.0
+    timeAccumulator = 0.0
 
-  if hasBeenActivated("Pause"):
+  if hasBeenActivated("Pause") and
+      game.phase in {phasePlaying, phasePaused}:
     if game.phase == phasePlaying:
-      game.phase = phasePaused
-      game.statusText = "PAUSED"
-      game.uiDirty = true
-    elif game.phase == phasePaused:
-      game.phase = phasePlaying
-      game.statusText = ""
-      game.uiDirty = true
+      game.setPhase(phasePaused, "PAUSED")
+    else:
+      game.setPhase(phasePlaying, "")
 
   let deltaTime = min(clockInfo.fDT.float32, MaximumFrameTime)
   if game.phase in {phaseServing, phasePlaying}:
     let paddleInput = readPaddleInput()
-    simulationTime += deltaTime
-    while simulationTime >= FixedTimeStep:
-      simulationTime -= FixedTimeStep
+    timeAccumulator += deltaTime
+    while timeAccumulator >= FixedTimeStep:
+      timeAccumulator -= FixedTimeStep
       handleGameEvent(game.stepGame(FixedTimeStep, paddleInput))
 
   let sceneUpdated = syncScene()
@@ -579,8 +562,7 @@ proc init(): orxSTATUS {.cdecl.} =
 proc run(): orxSTATUS {.cdecl.} =
   if startupTest:
     inc startupFrames
-    if startupFrames >= 5:
-      startupCompleted = true
+    if startupFrames >= StartupTestFrameCount:
       return STATUS_FAILURE
   result = STATUS_SUCCESS
 
@@ -590,12 +572,11 @@ proc exit() {.cdecl.} =
   echo "Pong stopped"
 
 proc bootstrap(): orxSTATUS {.cdecl.} =
-  let configPaths = [
+  for configPath in [
     getAppDir() / "data" / "config",
     getCurrentDir() / "data" / "config",
     BuildConfigPath
-  ]
-  for configPath in configPaths:
+  ]:
     let soundPath = configPath.parentDir / "sound"
     if not fileExists(configPath / "pong.ini") or
         not fileExists(soundPath / "push.ogg"):
@@ -611,5 +592,5 @@ when isMainModule:
     quit("Could not register the bootstrap callback")
   execute(init, run, exit)
   if not initializationSucceeded or executionFailed or
-      (startupTest and not startupCompleted):
+      (startupTest and startupFrames < StartupTestFrameCount):
     quit(1)

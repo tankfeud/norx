@@ -59,7 +59,7 @@ proc playSound(configName: string) =
 
 proc tilePosition(x, y: int): orxVECTOR =
   newVector(GridLeft + TileSize * (x.float32 + 0.5'f32),
-            GridTop + TileSize * (y.float32 + 0.5'f32))
+            GridTop + TileSize * (y.float32 + 0.5'f32), 0.0)
 
 proc deleteObject(gameObject: var ptr orxOBJECT) =
   if gameObject != nil:
