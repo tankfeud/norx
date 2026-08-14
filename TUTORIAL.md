@@ -127,24 +127,25 @@ graph TB
     subgraph "Norx Layer"
         A[norx.nim] --> B[basics.nim]
         A --> C[vector.nim]
-        A --> D[display.nim]
-        A --> E[joystick.nim]
-        A --> F[wrapper.nim]
+        A --> D[objects.nim]
+        A --> E[display.nim]
+        A --> F[joystick.nim]
+        A --> G[wrapper.nim]
     end
     
     subgraph "ORX Engine"
-        F --> G[ORX C Library]
-        G --> H[Objects]
-        G --> I[Graphics]
-        G --> J[Audio]
-        G --> K[Physics]
-        G --> L[Animation]
+        G --> H[ORX C Library]
+        H --> I[Objects]
+        H --> J[Graphics]
+        H --> K[Audio]
+        H --> L[Physics]
+        H --> M[Animation]
     end
     
     subgraph "Your Game"
-        M[main.nim] --> A
-        N[game.ini] --> O[Config System]
-        O --> G
+        N[main.nim] --> A
+        O[game.ini] --> P[Config System]
+        P --> H
     end
 ```
 
@@ -211,6 +212,10 @@ let velocity = newVector(120.0, -30.0)
 let nextPosition = player.getPosition() + velocity * deltaTime
 let direction = velocity.normalize
 ```
+
+The generated pointer overloads remain available for direct translations from
+ORX documentation. Common object properties also accept and return vector
+values, so temporary variables and `addr` are usually unnecessary.
 
 ### Booleans
 

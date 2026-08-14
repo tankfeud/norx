@@ -4,7 +4,7 @@
 The wrapper consists of two parts:
 
 * The low level wrapper `wrapper.nim` created by Futhark from the ORX headers. It uses "C types" and is fully automatically generated from the C header files. This represents all the functionality in the ORX dynamic library.
-* The higher level files like `norx.nim`, `basics.nim`, `vector.nim` created by hand to use Nim style and Nim types and introduces useful Nim templates, converters and macros. These are kept up to date manually with new versions of ORX, but an annotation mechanism makes it easier to detect if changes needs to be made.
+* The higher level files like `norx.nim`, `basics.nim`, `vector.nim`, and `objects.nim` are created by hand to use Nim style and Nim types and introduce useful overloads, templates, converters, and macros. These are kept up to date manually with new versions of ORX, but an annotation mechanism makes it easier to detect if changes need to be made.
 
 The `norx.nim` module is the one you should import in your Nim code, it exports the other modules including the low level `wrapper.nim` for direct access to ORX functions and types.
 
@@ -76,6 +76,7 @@ These are the "differences" that you should be aware of when you read ORX docume
 * Passing procs as callbacks to ORX works fine, as long as they are marked with the Nim pragma `{.cdecl.}`, this can be seen in the examples where the update, run, exit, update procs are marked that way.
 * The main game loop of ORX is actually in Nim, you can find it in `norx.nim` so you could quite easily make your own loop instead of creating callbacks and calling `execute`. See `sample2` which does that. Note that this style is NOT the recommended ORX style, since that loop varies depending on platform (Android has some special parts) and normally that loop is in the ORX codebase so if ORX evolves it may change how it is supposed to work.
 * Vectors are represented as Nim tuples. The original pointer-based ORX operations remain available, while value overloads and arithmetic operators support expressions such as `position + velocity * deltaTime` and `direction.normalize`.
+* Common object vector properties have value overloads under their original ORX names. Both `object.setPosition(addr position)` and the more idiomatic `object.setPosition(position)` remain valid.
 * ORX builds three different library versions (release, debug, profile). Norx automatically selects the appropriate version based on your build configuration through `config.nims` files. See the "Library Linking Configuration" section above for details.
 * ...and well, I will add to this list as things come up.
 

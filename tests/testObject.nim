@@ -56,3 +56,25 @@ suite "Suite ORX Object":
 
     require ceilv(addr(output), addr(input)) == addr(output)
     check output == newVECTOR(2.0, -1.0, 0.0)
+
+  test "Can use object vector value overloads":
+    static:
+      doAssert compiles(block:
+        var gameObject: ptr orxOBJECT
+        let value = newVector(1, 2, 3)
+        discard gameObject.setPivot(value)
+        discard gameObject.getPivot()
+        discard gameObject.setOrigin(value)
+        discard gameObject.getOrigin()
+        discard gameObject.setSize(value)
+        discard gameObject.getSize()
+        discard gameObject.setPosition(value)
+        discard gameObject.getPosition()
+        discard gameObject.setWorldPosition(value)
+        discard gameObject.getWorldPosition()
+        discard gameObject.setScale(value)
+        discard gameObject.getScale()
+        discard gameObject.setWorldScale(value)
+        discard gameObject.getWorldScale()
+        discard gameObject.setSpeed(value)
+        discard gameObject.getSpeed())
