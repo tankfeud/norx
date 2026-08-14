@@ -66,12 +66,15 @@ proc deleteObject(gameObject: var ptr orxOBJECT) =
     discard objectDelete(gameObject)
     gameObject = nil
 
+proc removeTile(x, y: int) =
+  deleteObject(tileObjects[y][x])
+  grid[y][x] = tkEmpty
+  tileFalling[y][x] = false
+
 proc clearLevel() =
   for y in 0 ..< GridHeight:
     for x in 0 ..< GridWidth:
-      deleteObject(tileObjects[y][x])
-      grid[y][x] = tkEmpty
-      tileFalling[y][x] = false
+      removeTile(x, y)
   deleteObject(playerObject)
 
 proc readLevel(): bool =
@@ -258,11 +261,6 @@ proc resetGame(): bool =
   updateUI()
   result = true
 
-proc removeTile(x, y: int) =
-  deleteObject(tileObjects[y][x])
-  grid[y][x] = tkEmpty
-  tileFalling[y][x] = false
-
 proc moveTile(fromX, fromY, toX, toY: int; falling = false) =
   grid[toY][toX] = grid[fromY][fromX]
   grid[fromY][fromX] = tkEmpty
@@ -367,9 +365,8 @@ proc updateFallingTiles() =
         moveTile(x, y, x - 1, y + 1, true)
       elif isLoose(grid[y + 1][x]) and isEmptyAt(x + 1, y) and isEmptyAt(x + 1, y + 1):
         moveTile(x, y, x + 1, y + 1, true)
-      else:
-        if tileFalling[y][x]:
-          discard tileObjects[y][x].addSound("LandSound")
+      elif tileFalling[y][x]:
+        discard tileObjects[y][x].addSound("LandSound")
         tileFalling[y][x] = false
 
 proc runStartupChecks(): bool =
