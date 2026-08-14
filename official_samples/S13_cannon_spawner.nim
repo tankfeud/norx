@@ -51,10 +51,10 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
     
     if cannon.isEnabled():
       echo "Disabling cannon..."
-      cannon.enable(false)
+      discard cannon.enable(false)
     else:
       echo "Enabling cannon..."
-      cannon.enable(true)
+      discard cannon.enable(true)
       
     echo "Cannon new state: " & $cannon.isEnabled()
     echo "BulletSpawner enabled: " & $bulletSpawner.isEnabled()
@@ -98,7 +98,7 @@ proc init(): orxSTATUS {.cdecl.} =
   echo "BulletSpawner found via structure access"
   
   # Initially disable the cannon
-  cannon.enable(false)
+  discard cannon.enable(false)
   echo "Cannon initially disabled"
   
   # Register event handlers

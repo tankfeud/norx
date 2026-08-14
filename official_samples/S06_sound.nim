@@ -142,7 +142,7 @@ proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
 
   ## MUSIC
   if hasBeenActivated("ToggleMusic"):
-    enable( soldier, not isEnabled(soldier))
+    discard enable(soldier, not isEnabled(soldier))
 
   if hasBeenActivated("PitchUp"):
     res = setPitch( music, getPitch( music) + 0.01)
