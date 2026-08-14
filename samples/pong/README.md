@@ -4,6 +4,8 @@ A complete two-player Pong game implemented with Nim, Norx, and ORX 1.17.
 
 The sample keeps gameplay in a small typed Nim model and uses Norx for the engine-facing pieces: input, clock callbacks, object creation, text, and data-driven visual effects. Paddle movement and time-of-impact ball collisions share a fixed-step simulation, so gameplay remains stable when rendering frame times vary.
 
+Its engine boundary demonstrates direct Nim booleans and strings, explicit ORX status predicates, and value-based object positioning while retaining the original ORX API names.
+
 ## Controls
 
 - **W / S** - Move the left paddle

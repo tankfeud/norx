@@ -148,11 +148,6 @@ proc paddleContactX(player: Player): float32 =
   else:
     PaddleX[player] - PaddleHalfWidth - BallRadius
 
-proc inputActive(action: string): bool = isActive(action.cstring) == orxTRUE
-
-proc inputActivated(action: string): bool =
-  hasBeenActivated(action.cstring) == orxTRUE
-
 proc prepareServe(model: var GameModel; target: Player; message: string) =
   model.phase = phaseServing
   model.serveTarget = target
@@ -338,8 +333,7 @@ proc stepGame(model: var GameModel; deltaTime: float32;
 proc place(gameObject: ptr orxOBJECT; position: Vec2): bool =
   if gameObject == nil:
     return false
-  var worldPosition = newVECTOR(position.x, position.y, 0.0)
-  result = gameObject.setPosition(addr worldPosition) == STATUS_SUCCESS
+  result = gameObject.setPosition(newVector(position.x, position.y)).isSuccess
 
 proc syncScene(): bool =
   result = true
@@ -358,20 +352,19 @@ proc syncUI(): bool =
 
   result = true
   for player in Player:
-    if scene.scores[player].setTextString(($game.scores[player]).cstring) ==
-        STATUS_FAILURE:
+    if scene.scores[player].setTextString($game.scores[player]).isFailure:
       echo "Could not update the ", playerName(player), " score"
       result = false
 
   if game.statusText.len == 0:
-    if scene.status.enable(false) == STATUS_FAILURE:
+    if scene.status.enable(false).isFailure:
       echo "Could not hide the status text"
       result = false
   else:
-    if scene.status.setTextString(game.statusText.cstring) == STATUS_FAILURE:
+    if scene.status.setTextString(game.statusText).isFailure:
       echo "Could not update the status text"
       result = false
-    if scene.status.enable(true) == STATUS_FAILURE:
+    if scene.status.enable(true).isFailure:
       echo "Could not show the status text"
       result = false
   game.uiDirty = not result
@@ -394,9 +387,9 @@ proc handleGameEvent(gameEvent: GameEvent) =
 
 proc readPaddleInput(): array[Player, float32] =
   for player in Player:
-    if inputActive(PaddleControls[player].upAction):
+    if isActive(PaddleControls[player].upAction):
       result[player] -= 1.0
-    if inputActive(PaddleControls[player].downAction):
+    if isActive(PaddleControls[player].downAction):
       result[player] += 1.0
 
 proc runModelChecks(): bool =
@@ -462,8 +455,8 @@ proc inputConfigured(binding: InputBinding): bool =
     inputType: orxINPUT_TYPE
     inputId: orxENUM
     inputMode: orxINPUT_MODE
-  result = getBinding(binding.action.cstring, 0, addr inputType, addr inputId,
-                      addr inputMode) == STATUS_SUCCESS and
+  result = getBinding(binding.action, 0, addr inputType, addr inputId,
+                      addr inputMode).isSuccess and
            inputType == INPUT_TYPE_KEYBOARD_KEY and
            inputId == binding.key.orxENUM
 
@@ -497,12 +490,12 @@ proc runEngineChecks(): bool =
          " court children, got ", childCount
     return false
 
-  if scene.paddles[playerLeft].addFX("PaddleHit") == STATUS_FAILURE or
-      scene.scores[playerLeft].addFX("ScorePulse") == STATUS_FAILURE:
+  if scene.paddles[playerLeft].addFX("PaddleHit").isFailure or
+      scene.scores[playerLeft].addFX("ScorePulse").isFailure:
     echo "Pong check failed: visual effects"
     return false
   for section in SoundSections:
-    let sound = soundCreateFromConfig(section.cstring)
+    let sound = soundCreateFromConfig(section)
     if sound == nil:
       echo "Pong check failed: sound ", section
       return false
@@ -520,23 +513,23 @@ proc createScene(): bool =
 
   for player in Player:
     scene.paddles[player] =
-      objectCreateFromConfig(PaddleSections[player].cstring)
-    scene.scores[player] = objectCreateFromConfig(ScoreSections[player].cstring)
+      objectCreateFromConfig(PaddleSections[player])
+    scene.scores[player] = objectCreateFromConfig(ScoreSections[player])
     if scene.paddles[player] == nil or scene.scores[player] == nil:
       echo "Could not create objects for ", playerName(player), " player"
       return false
   result = true
 
 proc updateGame(clockInfo: ptr orxCLOCK_INFO; context: pointer) {.cdecl.} =
-  if inputActive("Quit"):
+  if isActive("Quit"):
     discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
     return
 
-  if inputActivated("Restart"):
+  if hasBeenActivated("Restart"):
     game.resetMatch()
     simulationTime = 0.0
 
-  if inputActivated("Pause"):
+  if hasBeenActivated("Pause"):
     if game.phase == phasePlaying:
       game.phase = phasePaused
       game.statusText = "PAUSED"
@@ -581,7 +574,7 @@ proc init(): orxSTATUS {.cdecl.} =
     return STATUS_FAILURE
   result = clockRegister(coreClock, updateGame, nil, MODULE_ID_MAIN,
                          CLOCK_PRIORITY_NORMAL)
-  initializationSucceeded = result == STATUS_SUCCESS
+  initializationSucceeded = result.isSuccess
 
 proc run(): orxSTATUS {.cdecl.} =
   if startupTest:
@@ -607,16 +600,14 @@ proc bootstrap(): orxSTATUS {.cdecl.} =
     if not fileExists(configPath / "pong.ini") or
         not fileExists(soundPath / "push.ogg"):
       continue
-    if addStorage(CONFIG_KZ_RESOURCE_GROUP, configPath.cstring, false) ==
-        STATUS_SUCCESS and
-        addStorage(SOUND_KZ_RESOURCE_GROUP, soundPath.cstring, false) ==
-          STATUS_SUCCESS:
+    if addStorage(CONFIG_KZ_RESOURCE_GROUP, configPath, false).isSuccess and
+        addStorage(SOUND_KZ_RESOURCE_GROUP, soundPath, false).isSuccess:
       return STATUS_SUCCESS
   echo "Could not find Pong config and sound data"
   result = STATUS_FAILURE
 
 when isMainModule:
-  if setBootstrap(bootstrap) == STATUS_FAILURE:
+  if setBootstrap(bootstrap).isFailure:
     quit("Could not register the bootstrap callback")
   execute(init, run, exit)
   if not initializationSucceeded or executionFailed or

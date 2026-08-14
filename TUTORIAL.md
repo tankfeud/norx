@@ -246,6 +246,20 @@ if clockRegister(clock, update, nil, MODULE_ID_MAIN,
 Use `isSuccess` or `isFailure` when testing an operation. Callback return values
 remain `STATUS_SUCCESS` and `STATUS_FAILURE` as documented by ORX.
 
+### Strings
+
+Common ORX calls accept normal Nim strings, including dynamically constructed
+values:
+
+```nim
+let section = "Player" & $playerNumber
+let player = objectCreateFromConfig(section)
+```
+
+Norx converts the argument only for the duration of the call. String pointers
+returned by ORX remain borrowed `cstring` values; copy one with `$` when it must
+outlive ORX's storage.
+
 ### Viewports and Cameras
 
 **Viewports** define screen regions, **Cameras** define what you see:
@@ -793,7 +807,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ```nim
 # Validate configuration
 let result = loadFromFile("data/config/my_game.ini")
-if result != STATUS_SUCCESS:
+if result.isFailure:
   echo "Configuration error!"
 ```
 
@@ -816,7 +830,7 @@ import unittest
 test "Player movement":
   let initialPos = player.getPosition()
   # Simulate movement
-  player.setSpeed(vector(100.0, 0.0, 0.0))
+  discard player.setSpeed(newVector(100.0, 0.0))
   # Update simulation
   clockUpdate()
   # Check result
