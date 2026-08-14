@@ -2,6 +2,8 @@
 
 A small Boulder Dash-style game implemented with Norx and ORX 1.17.
 
+The code demonstrates direct Nim booleans and strings, explicit ORX status predicates, and value-based vector properties while retaining the original ORX API names.
+
 ## Gameplay
 
 Dig through the mine, collect every cyan diamond, and then reach the green exit before time runs out. Removing dirt can cause unsupported boulders and diamonds to fall, and either one can crush the player once it is moving. The player supports a resting loose tile while standing directly underneath it, so stepping sideways releases it to fall behind. Boulders and diamonds roll off each other when an adjacent side and the diagonal cell below it are empty.

@@ -11,6 +11,8 @@ const
   GameTime = 120.0'f32
   MoveInterval = 0.11'f32
   FallInterval = 0.18'f32
+  RandomBoulderCount = 10
+  DiamondCount = 6
 
 type
   TileKind = enum
@@ -26,16 +28,16 @@ type
     gsWon
     gsLost
 
+  TileGrid = array[GridHeight, array[GridWidth, TileKind]]
+
 var
-  grid: array[GridHeight, array[GridWidth, TileKind]]
-  levelTemplate: array[GridHeight, array[GridWidth, TileKind]]
+  grid, levelTemplate: TileGrid
   tileObjects: array[GridHeight, array[GridWidth, ptr orxOBJECT]]
   tileFalling: array[GridHeight, array[GridWidth, bool]]
   playerX, playerY: int
   levelStartX, levelStartY: int
   playerObject: ptr orxOBJECT
   hudObject: ptr orxOBJECT
-  helpObject: ptr orxOBJECT
   messageObject: ptr orxOBJECT
   coreClock: ptr orxCLOCK
   score: int
@@ -51,17 +53,13 @@ var
 
 let startupTest = "--startup-test" in commandLineParams()
 
-proc inputActive(name: cstring): bool = isActive(name) == orxTRUE
-
-proc inputActivated(name: cstring): bool = hasBeenActivated(name) == orxTRUE
-
-proc playSound(configName: cstring) =
+proc playSound(configName: string) =
   if playerObject != nil:
     discard playerObject.addSound(configName)
 
 proc tilePosition(x, y: int): orxVECTOR =
-  newVECTOR(GridLeft + TileSize * (x.float32 + 0.5'f32),
-            GridTop + TileSize * (y.float32 + 0.5'f32), 0.0)
+  newVector(GridLeft + TileSize * (x.float32 + 0.5'f32),
+            GridTop + TileSize * (y.float32 + 0.5'f32))
 
 proc deleteObject(gameObject: var ptr orxOBJECT) =
   if gameObject != nil:
@@ -76,32 +74,8 @@ proc clearLevel() =
       tileFalling[y][x] = false
   deleteObject(playerObject)
 
-proc parseTile(symbol: char; x, y: int): bool =
-  case symbol
-  of ' ':
-    grid[y][x] = tkEmpty
-  of '.':
-    grid[y][x] = tkDirt
-  of '#':
-    grid[y][x] = tkWall
-  of 'O':
-    grid[y][x] = tkBoulder
-  of 'D':
-    grid[y][x] = tkDiamond
-    inc diamondsLeft
-  of 'E':
-    grid[y][x] = tkExit
-  of '@':
-    grid[y][x] = tkEmpty
-    playerX = x
-    playerY = y
-  else:
-    echo "Unknown level symbol '", symbol, "' at ", x, ",", y
-    return false
-  result = true
-
 proc readLevel(): bool =
-  if pushSection("LevelData") == STATUS_FAILURE:
+  if pushSection("LevelData").isFailure:
     echo "Could not select the LevelData config section"
     return false
   defer:
@@ -113,7 +87,7 @@ proc readLevel(): bool =
 
   for y in 0 ..< GridHeight:
     let key = "Row" & $y
-    let rowValue = getString(key.cstring)
+    let rowValue = getString(key)
     if rowValue == nil:
       echo "Missing LevelData.", key
       return false
@@ -124,23 +98,30 @@ proc readLevel(): bool =
       return false
 
     for x, symbol in row:
-      if symbol == '@':
-        inc playerCount
-      elif symbol == 'E':
+      case symbol
+      of ' ': grid[y][x] = tkEmpty
+      of '.': grid[y][x] = tkDirt
+      of '#': grid[y][x] = tkWall
+      of 'O': grid[y][x] = tkBoulder
+      of 'D':
+        grid[y][x] = tkDiamond
+        inc diamondsLeft
+      of 'E':
+        grid[y][x] = tkExit
         inc exitCount
-      if not parseTile(symbol, x, y):
+      of '@':
+        grid[y][x] = tkEmpty
+        playerX = x
+        playerY = y
+        inc playerCount
+      else:
+        echo "Unknown level symbol '", symbol, "' at ", x, ",", y
         return false
 
   if playerCount != 1 or exitCount != 1 or diamondsLeft == 0:
     echo "Level requires one player, one exit, and at least one diamond"
     return false
   result = true
-
-proc saveLevelTemplate(name: string) =
-  levelTemplate = grid
-  levelStartX = playerX
-  levelStartY = playerY
-  levelName = name
 
 proc countTemplateTiles(tile: TileKind): int =
   for row in levelTemplate:
@@ -179,7 +160,7 @@ proc placeRandomTiles(tile: TileKind; count: int; requireReachable = false): boo
   result = placed == count
 
 proc generateRandomTemplate(): bool =
-  for generationAttempt in 0 ..< 100:
+  for _ in 0 ..< 100:
     for y in 0 ..< GridHeight:
       for x in 0 ..< GridWidth:
         if x == 0 or x == GridWidth - 1 or y == 0 or y == GridHeight - 1:
@@ -197,11 +178,11 @@ proc generateRandomTemplate(): bool =
     levelTemplate[2][2] = tkEmpty
     levelTemplate[GridHeight - 2][GridWidth - 2] = tkExit
 
-    if not placeRandomTiles(tkBoulder, 10):
+    if not placeRandomTiles(tkBoulder, RandomBoulderCount):
       continue
     if not isTemplateReachable(GridWidth - 2, GridHeight - 2):
       continue
-    if not placeRandomTiles(tkDiamond, 6, true):
+    if not placeRandomTiles(tkDiamond, DiamondCount, true):
       continue
 
     inc randomCaveNumber
@@ -229,8 +210,7 @@ proc createLevelObjects(): bool =
         echo "Could not create object from config section ", section
         return false
 
-      var position = tilePosition(x, y)
-      if gameObject.setPosition(addr position) == STATUS_FAILURE:
+      if gameObject.setPosition(tilePosition(x, y)).isFailure:
         return false
       tileObjects[y][x] = gameObject
 
@@ -238,11 +218,10 @@ proc createLevelObjects(): bool =
   if playerObject == nil:
     echo "Could not create the player"
     return false
-  var position = tilePosition(playerX, playerY)
-  result = playerObject.setPosition(addr position) == STATUS_SUCCESS
+  result = playerObject.setPosition(tilePosition(playerX, playerY)).isSuccess
 
 proc setMessage(text: string; duration: float32 = 0.0'f32) =
-  discard messageObject.setTextString(text.cstring)
+  discard messageObject.setTextString(text)
   discard messageObject.enable(true)
   messageTime = duration
 
@@ -250,11 +229,16 @@ proc hideMessage() =
   discard messageObject.enable(false)
   messageTime = 0.0
 
+proc loseGame(reason: string) =
+  gameState = gsLost
+  playSound("LoseSound")
+  setMessage(reason & "! Final score: " & $score & " - press R to restart")
+
 proc updateUI() =
   let seconds = max(0, int(timeRemaining + 0.999'f32))
   let hud = levelName & "    Score: " & $score & "    Diamonds: " & $diamondsLeft &
             "    Time: " & $seconds
-  discard hudObject.setTextString(hud.cstring)
+  discard hudObject.setTextString(hud)
 
 proc resetGame(): bool =
   clearLevel()
@@ -286,14 +270,12 @@ proc moveTile(fromX, fromY, toX, toY: int; falling = false) =
   tileObjects[fromY][fromX] = nil
   tileFalling[toY][toX] = falling
   tileFalling[fromY][fromX] = false
-  var position = tilePosition(toX, toY)
-  discard tileObjects[toY][toX].setPosition(addr position)
+  discard tileObjects[toY][toX].setPosition(tilePosition(toX, toY))
 
 proc movePlayerTo(x, y: int) =
   playerX = x
   playerY = y
-  var position = tilePosition(x, y)
-  discard playerObject.setPosition(addr position)
+  discard playerObject.setPosition(tilePosition(x, y))
 
 proc tryMove(dx, dy: int): bool =
   let targetX = playerX + dx
@@ -339,22 +321,23 @@ proc tryMove(dx, dy: int): bool =
 
 proc updateMovement(deltaTime: float32) =
   moveCooldown = max(0.0'f32, moveCooldown - deltaTime)
-  let moving = inputActive("MoveUp") or inputActive("MoveDown") or
-               inputActive("MoveLeft") or inputActive("MoveRight")
-  if not moving:
+
+  var dx, dy: int
+  if isActive("MoveUp"):
+    dy = -1
+  elif isActive("MoveDown"):
+    dy = 1
+  elif isActive("MoveLeft"):
+    dx = -1
+  elif isActive("MoveRight"):
+    dx = 1
+  else:
     moveCooldown = 0.0
     return
   if moveCooldown > 0.0:
     return
 
-  if inputActive("MoveUp"):
-    discard tryMove(0, -1)
-  elif inputActive("MoveDown"):
-    discard tryMove(0, 1)
-  elif inputActive("MoveLeft"):
-    discard tryMove(-1, 0)
-  elif inputActive("MoveRight"):
-    discard tryMove(1, 0)
+  discard tryMove(dx, dy)
   moveCooldown = MoveInterval
 
 proc isLoose(tile: TileKind): bool = tile == tkBoulder or tile == tkDiamond
@@ -375,9 +358,7 @@ proc updateFallingTiles() =
       if isPlayerAt(x, y + 1):
         if tileFalling[y][x]:
           moveTile(x, y, x, y + 1, true)
-          gameState = gsLost
-          playSound("LoseSound")
-          setMessage("CRUSHED! Final score: " & $score & " - press R to restart")
+          loseGame("CRUSHED")
           return
         tileFalling[y][x] = false
       elif grid[y + 1][x] == tkEmpty:
@@ -392,159 +373,124 @@ proc updateFallingTiles() =
         tileFalling[y][x] = false
 
 proc runStartupChecks(): bool =
-  if diamondsLeft != 6:
-    echo "Startup check failed: expected six diamonds"
-    return false
+  template check(condition: bool; message: string) =
+    if not condition:
+      echo "Startup check failed: ", message
+      return false
 
-  var playerSize: orxVECTOR
-  if playerObject.getSize(addr playerSize) == nil or playerSize.fX != 64.0 or playerSize.fY != 64.0:
-    echo "Startup check failed: player texture is not using its full region"
-    return false
+  template reset() =
+    check(resetGame(), "level reset")
 
-  if not tryMove(1, 0) or grid[1][2] != tkEmpty:
-    echo "Startup check failed: player could not dig through dirt"
-    return false
+  check(diamondsLeft == DiamondCount, "expected six diamonds")
 
-  if not resetGame():
-    return false
+  let playerSize = playerObject.getSize()
+  check(playerSize.fX == 64.0 and playerSize.fY == 64.0,
+        "player texture is not using its full region")
+  check(tryMove(1, 0) and grid[1][2] == tkEmpty, "player could not dig through dirt")
+
+  reset()
   removeTile(9, 1)
   movePlayerTo(9, 1)
-  if not tryMove(1, 0) or score != 10 or diamondsLeft != 5:
-    echo "Startup check failed: diamond collection"
-    return false
+  check(tryMove(1, 0) and score == 10 and diamondsLeft == DiamondCount - 1,
+        "diamond collection")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(4, 1)
   removeTile(6, 1)
   movePlayerTo(4, 1)
-  if not tryMove(1, 0) or grid[1][6] != tkBoulder or playerX != 5:
-    echo "Startup check failed: horizontal boulder push"
-    return false
+  check(tryMove(1, 0) and grid[1][6] == tkBoulder and playerX == 5,
+        "horizontal boulder push")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(17, 13)
   movePlayerTo(17, 13)
-  if tryMove(1, 0) or gameState != gsPlaying:
-    echo "Startup check failed: exit opened too early"
-    return false
-
-  if not resetGame():
-    return false
-  removeTile(17, 13)
-  movePlayerTo(17, 13)
+  check(not tryMove(1, 0) and gameState == gsPlaying, "exit opened too early")
   diamondsLeft = 0
-  if not tryMove(1, 0) or gameState != gsWon:
-    echo "Startup check failed: open exit"
-    return false
+  check(tryMove(1, 0) and gameState == gsWon, "open exit")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(13, 3)
   moveTile(10, 1, 13, 3)
   removeTile(12, 2)
   removeTile(12, 3)
   updateFallingTiles()
-  if grid[3][12] != tkBoulder or not tileFalling[3][12]:
-    echo "Startup check failed: boulder did not roll off a diamond"
-    return false
+  check(grid[3][12] == tkBoulder and tileFalling[3][12],
+        "boulder did not roll off a diamond")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(10, 2)
   moveTile(13, 2, 10, 2)
   removeTile(9, 1)
   removeTile(9, 2)
   updateFallingTiles()
-  if grid[2][9] != tkDiamond or not tileFalling[2][9]:
-    echo "Startup check failed: diamond did not roll off a boulder"
-    return false
+  check(grid[2][9] == tkDiamond and tileFalling[2][9],
+        "diamond did not roll off a boulder")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(10, 2)
   updateFallingTiles()
-  if grid[2][10] != tkDiamond or not tileFalling[2][10]:
-    echo "Startup check failed: unsupported diamond did not fall"
-    return false
+  check(grid[2][10] == tkDiamond and tileFalling[2][10],
+        "unsupported diamond did not fall")
 
-  if not resetGame():
-    return false
+  reset()
   removeTile(13, 3)
   movePlayerTo(13, 3)
   updateFallingTiles()
-  if grid[2][13] != tkBoulder or gameState != gsPlaying:
-    echo "Startup check failed: player did not support a resting boulder"
-    return false
+  check(grid[2][13] == tkBoulder and gameState == gsPlaying,
+        "player did not support a resting boulder")
 
   removeTile(14, 3)
-  if not tryMove(1, 0):
-    echo "Startup check failed: player could not move past a boulder"
-    return false
+  check(tryMove(1, 0), "player could not move past a boulder")
   updateFallingTiles()
-  if grid[3][13] != tkBoulder or not tileFalling[3][13]:
-    echo "Startup check failed: boulder did not fall behind the player"
-    return false
+  check(grid[3][13] == tkBoulder and tileFalling[3][13],
+        "boulder did not fall behind the player")
 
   removeTile(13, 4)
   movePlayerTo(13, 4)
   updateFallingTiles()
-  if gameState != gsLost:
-    echo "Startup check failed: moving boulder did not crush the player"
-    return false
+  check(gameState == gsLost, "moving boulder did not crush the player")
 
-  let originalTemplate = levelTemplate
-  let originalStartX = levelStartX
-  let originalStartY = levelStartY
-  let originalName = levelName
-  let originalRandomCaveNumber = randomCaveNumber
+  let original = (tiles: levelTemplate, x: levelStartX, y: levelStartY,
+                  name: levelName, number: randomCaveNumber)
   for _ in 0 ..< 25:
-    if not generateRandomTemplate():
-      echo "Startup check failed: random cave generation"
-      return false
-    if countTemplateTiles(tkDiamond) != 6 or countTemplateTiles(tkBoulder) != 10 or
-        countTemplateTiles(tkExit) != 1:
-      echo "Startup check failed: random cave contents"
-      return false
+    check(generateRandomTemplate(), "random cave generation")
+    check(countTemplateTiles(tkDiamond) == DiamondCount and
+          countTemplateTiles(tkBoulder) == RandomBoulderCount and
+          countTemplateTiles(tkExit) == 1, "random cave contents")
     for x in 0 ..< GridWidth:
-      if levelTemplate[0][x] != tkWall or levelTemplate[GridHeight - 1][x] != tkWall:
-        echo "Startup check failed: random cave horizontal border"
-        return false
+      check(levelTemplate[0][x] == tkWall and levelTemplate[GridHeight - 1][x] == tkWall,
+            "random cave horizontal border")
     for y in 0 ..< GridHeight:
-      if levelTemplate[y][0] != tkWall or levelTemplate[y][GridWidth - 1] != tkWall:
-        echo "Startup check failed: random cave vertical border"
-        return false
+      check(levelTemplate[y][0] == tkWall and levelTemplate[y][GridWidth - 1] == tkWall,
+            "random cave vertical border")
       for x in 0 ..< GridWidth:
-        if levelTemplate[y][x] == tkDiamond and not isTemplateReachable(x, y):
-          echo "Startup check failed: unreachable random cave diamond"
-          return false
-  if not resetGame() or diamondsLeft != 6:
-    echo "Startup check failed: random cave could not be instantiated"
-    return false
+        check(levelTemplate[y][x] != tkDiamond or isTemplateReachable(x, y),
+              "unreachable random cave diamond")
+  check(resetGame() and diamondsLeft == DiamondCount,
+        "random cave could not be instantiated")
 
-  levelTemplate = originalTemplate
-  levelStartX = originalStartX
-  levelStartY = originalStartY
-  levelName = originalName
-  randomCaveNumber = originalRandomCaveNumber
+  levelTemplate = original.tiles
+  levelStartX = original.x
+  levelStartY = original.y
+  levelName = original.name
+  randomCaveNumber = original.number
   result = resetGame()
   if result:
     echo "Boulder Dash startup checks passed"
 
 proc updateGame(clockInfo: ptr orxCLOCK_INFO; context: pointer) {.cdecl.} =
-  if inputActive("Quit"):
+  if isActive("Quit"):
     discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
     return
 
-  if inputActivated("NewLevel"):
+  if hasBeenActivated("NewLevel"):
     if not generateRandomTemplate() or not resetGame():
       discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
     else:
       setMessage("NEW RANDOM CAVE", 1.5)
     return
 
-  if inputActivated("Restart"):
+  if hasBeenActivated("Restart"):
     if not resetGame():
       discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
     return
@@ -560,9 +506,7 @@ proc updateGame(clockInfo: ptr orxCLOCK_INFO; context: pointer) {.cdecl.} =
 
   timeRemaining = max(0.0'f32, timeRemaining - deltaTime)
   if timeRemaining <= 0.0:
-    gameState = gsLost
-    playSound("LoseSound")
-    setMessage("TIME UP! Final score: " & $score & " - press R to restart")
+    loseGame("TIME UP")
     updateUI()
     return
 
@@ -581,7 +525,7 @@ proc init(): orxSTATUS {.cdecl.} =
     return STATUS_FAILURE
 
   hudObject = objectCreateFromConfig("Hud")
-  helpObject = objectCreateFromConfig("Help")
+  let helpObject = objectCreateFromConfig("Help")
   messageObject = objectCreateFromConfig("Message")
   if hudObject == nil or helpObject == nil or messageObject == nil:
     echo "Could not create the user interface"
@@ -589,7 +533,10 @@ proc init(): orxSTATUS {.cdecl.} =
 
   if not readLevel():
     return STATUS_FAILURE
-  saveLevelTemplate("Cave 1")
+  levelTemplate = grid
+  levelStartX = playerX
+  levelStartY = playerY
+  levelName = "Cave 1"
   if not resetGame():
     return STATUS_FAILURE
   if startupTest and not runStartupChecks():
@@ -614,11 +561,11 @@ proc exit() {.cdecl.} =
 
 proc bootstrap(): orxSTATUS {.cdecl.} =
   let configPath = getCurrentDir() / "data" / "config"
-  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, configPath.cstring, false)
-  if result == STATUS_FAILURE:
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, configPath, false)
+  if result.isFailure:
     echo "Could not add config storage: ", configPath
 
 when isMainModule:
-  if setBootstrap(bootstrap) == STATUS_FAILURE:
+  if setBootstrap(bootstrap).isFailure:
     quit("Could not register the bootstrap callback")
   execute(init, run, exit)
