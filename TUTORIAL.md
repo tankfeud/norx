@@ -199,9 +199,9 @@ In ORX, everything visible is an **Object**:
 let player = objectCreateFromConfig("Player")
 
 # Objects have properties
-player.setPosition(newVector(100.0, 200.0))
-player.setScale(newVector(2.0, 2.0, 1.0))
-player.setRotation(45.0)
+discard player.setPosition(newVector(100.0, 200.0))
+discard player.setScale(newVector(2.0, 2.0, 1.0))
+discard player.setRotation(45.0)
 ```
 
 Vectors retain ORX's `orxVECTOR` type and function names, with value overloads
@@ -430,7 +430,7 @@ proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
   
   # Apply movement
   if not player.isNil:
-    player.setSpeed(movement)
+    discard player.setSpeed(movement)
   
   # Check for quit
   if isActive("Quit"):
@@ -617,8 +617,8 @@ if not animSet.isNil:
   player.linkStructure(animSet, orxSTRUCTURE_ID_ANIMSET)
 
 # Control animations
-player.setCurrentAnim("Walk")
-player.setAnimFrequency(2.0)  # 2x speed
+discard player.setCurrentAnim("Walk")
+discard player.setAnimFrequency(2.0)  # 2x speed
 ```
 
 ### Physics Integration
@@ -816,7 +816,7 @@ if result.isFailure:
 # Proper cleanup
 proc exit() =
   if not player.isNil:
-    player.setLifeTime(0.0)  # Let ORX handle cleanup
+    discard player.setLifeTime(0.0)  # Let ORX handle cleanup
   echo "Cleanup complete"
 ```
 
