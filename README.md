@@ -10,8 +10,8 @@ The `norx.nim` module is the one you should import in your Nim code, it exports 
 
 The only things you need to compile a Nim ORX game is this Nimble module and the ORX dynamic library files (`liborx[p|d].so|dll`) in a proper library path. However, for debugging etc it's more practical to also have the full ORX clone with ORX C sources etc.
 
-# Build and install ORX
-First checkout the ORX submodule and build ORX as dynamic libraries (liborx, liborxd and liborxp).
+# Build ORX
+First checkout the ORX submodule and build ORX as dynamic libraries (`liborx`, `liborxd` and `liborxp`).
 
 ## Initialize the ORX submodule
 If this is a fresh clone, run:
@@ -19,16 +19,34 @@ If this is a fresh clone, run:
 git submodule update --init
 ```
 
-This works on my Ubuntu 64 bit (after installing normal C tools needed, more specifically `sudo apt-get install gcc g++ make`):
+## Build the libraries
+This works on Ubuntu 64 bit (after installing normal C tools with `sudo apt-get install gcc g++ make`):
 
-1. After running `setup.sh` in `orx` directory, **restart shell (or logout/login) to get $ORX variable set!**. On a clean Ubuntu you will be asked to install some libraries: `sudo apt install libgl1-mesa-dev libsndfile1-dev libopenal-dev libxrandr-dev`
-2. Build with `cd code/build/linux/gmake && make config=release64` (build also `debug64` and `profile64` to get those extra libraries). Same on OSX but in `code/build/mac`. 
-3. Copy libraries **to a library path** with for example `sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/` on Linux or OSX. May need to run `sudo ldconfig` after.
+1. Run `./setup.sh` inside `orx/`. On a clean Ubuntu you will be asked to install some libraries: `sudo apt install libgl1-mesa-dev libsndfile1-dev libopenal-dev libxrandr-dev`. **Restart your shell (or logout/login) afterwards to get the `$ORX` variable set!**
+2. Build all three ORX configurations:
+   ```bash
+   cd orx/code/build/linux/gmake
+   make config=debug64
+   make config=profile64   # optional, only needed for -d:profile builds
+   make config=release64
+   ```
+   On macOS use `orx/code/build/mac` instead, and the corresponding build directory on Windows.
 
-For other platforms, or if you get into trouble, follow [official ORX instructions](https://wiki.orx-project.org/en/guides/beginners/downloading_orx) that give much more details!
+For other platforms, or if you get into trouble, follow the [official ORX instructions](https://wiki.orx-project.org/en/guides/beginners/downloading_orx) that give much more detail!
 
-NOTE for newer MacOS versions, dylib files in /usr/local/lib is not searched by macOS when running a Norx app. You can copy them to the local folder next to the app executable.
-See also https://developer.apple.com/forums/thread/736719 and https://briandfoy.github.io/macos-s-system-integrity-protection-sanitizes-your-environment/)
+## No system install needed
+Everything inside this repository — the tests and every sample — links **and runs** directly against `orx/code/lib/dynamic`. Each `config.nims` adds that directory to the linker search path and, on Linux and macOS, embeds an rpath so the resulting binaries also find the libraries at runtime. No `sudo cp` or `ldconfig` is required to work inside this repo.
+
+If you develop applications *outside* this repository you have two choices:
+
+1. Point your own `config.nims` at the repo libraries the same way this repo does (see below), or
+2. Install the ORX libraries system-wide:
+   ```bash
+   sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/
+   sudo ldconfig
+   ```
+
+NOTE for newer macOS versions: dylib files in `/usr/local/lib` are not searched by macOS when running a Norx app (system integrity protection sanitizes the environment). The rpath approach above sidesteps this; alternatively copy the dylibs next to your app executable. See <https://developer.apple.com/forums/thread/736719> and <https://briandfoy.github.io/macos-s-system-integrity-protection-sanitizes-your-environment/>.
 
 # Install Nim
 Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | sh` or see [Official download](https://nim-lang.org/install.html).
@@ -37,16 +55,28 @@ Easiest is to use Choosenim `curl https://nim-lang.org/choosenim/init.sh -sSf | 
 Install the Norx wrapper by running  `nimble install` in this directory.
 
 # Library Linking Configuration
-Norx uses a build-time linking approach through `config.nims` files. Each Norx project (including samples) contains a `config.nims` file that automatically selects the appropriate ORX library version based on your build configuration:
+Norx uses a build-time linking approach through `config.nims` files. Each Norx project (including samples) contains a `config.nims` file that adds the repository's local ORX library directory to the linker search path, embeds an rpath for runtime loading, and selects the appropriate ORX library version based on your build configuration:
 
 ```nim
+import std/os
+
+let rootDir = currentSourcePath().parentDir / "../.."
+let orxLibraryDir = normalizedPath(rootDir / "orx/code/lib/dynamic")
+
+switch("passL", "-L" & orxLibraryDir)
+
+when defined(linux) or defined(macosx):
+  switch("passL", "-Wl,-rpath," & orxLibraryDir)
+
 when defined(release):
   switch("passL", "-lorx")      # Release version
 elif defined(profile):
-  switch("passL", "-lorxp")     # Profile version  
+  switch("passL", "-lorxp")     # Profile version
 else:
   switch("passL", "-lorxd")     # Debug version (default)
 ```
+
+Adjust the `rootDir` relative path so that `orxLibraryDir` points at a directory containing the ORX dynamic libraries.
 
 ## Library Selection
 * **Debug builds** (default): Links to `liborxd` - includes debug symbols and assertions

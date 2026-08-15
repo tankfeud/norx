@@ -37,7 +37,7 @@ make config=profile64
 make config=release64
 ```
 
-Use the corresponding platform build directory on macOS or Windows. Make the resulting ORX dynamic libraries available to the system linker and runtime loader.
+Use the corresponding platform build directory on macOS or Windows. The repository `config.nims` files add `orx/code/lib/dynamic` to the linker search path and embed an rpath, so tests and samples build and run directly against that directory without installing ORX system-wide; only projects outside the repository need the libraries installed or pointed at explicitly.
 
 ## Wrapper Generation
 
@@ -73,6 +73,7 @@ nim c -r tests/testObject.nim
 nimble samples
 nim check samples/sample1/sample1.nim
 nim check samples/sample2/sample2.nim
+nim check samples/ball/ball.nim
 nim check samples/pong/pong.nim
 nim check samples/boulderdash/boulderdash.nim
 nim check samples/qr-code/show_qr.nim
