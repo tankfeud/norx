@@ -12,21 +12,21 @@ template orx2RGBA*(r, g, b, a: untyped): orxRGBA =
   ## Creates RGBA color value from components  
   rgbaSet(r, g, b, a)
 
-template rgbaR*(rgba: orxRGBA): orxU32 =
+template rgbaR*(rgba: orxRGBA): orxU8 =
   ## Extracts red component from RGBA
-  orxU32(rgba) and 0xFF
+  rgba.anon0.anon0.u8R
 
-template rgbaG*(rgba: orxRGBA): orxU32 =
+template rgbaG*(rgba: orxRGBA): orxU8 =
   ## Extracts green component from RGBA
-  (orxU32(rgba) shr 8) and 0xFF
+  rgba.anon0.anon0.u8G
 
-template rgbaB*(rgba: orxRGBA): orxU32 =
+template rgbaB*(rgba: orxRGBA): orxU8 =
   ## Extracts blue component from RGBA
-  (orxU32(rgba) shr 16) and 0xFF
+  rgba.anon0.anon0.u8B
 
-template rgbaA*(rgba: orxRGBA): orxU32 =
+template rgbaA*(rgba: orxRGBA): orxU8 =
   ## Extracts alpha component from RGBA
-  (orxU32(rgba) shr 24) and 0xFF
+  rgba.anon0.anon0.u8A
 
 const colorNormalizer* = 1.0f / 255.0f
   ## Normalizes color values

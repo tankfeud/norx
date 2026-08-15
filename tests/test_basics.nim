@@ -27,3 +27,10 @@ suite "Norx basic types":
     check not STATUS_FAILURE.isSuccess
     check not STATUS_NONE.isSuccess
     check not STATUS_NONE.isFailure
+
+  test "RGBA components can be set and extracted":
+    let rgba = rgbaSet(0xAA, 0xBB, 0xCC, 0xDD)
+    check rgbaR(rgba) == 0xAA
+    check rgbaG(rgba) == 0xBB
+    check rgbaB(rgba) == 0xCC
+    check rgbaA(rgba) == 0xDD
