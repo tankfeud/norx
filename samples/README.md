@@ -1,16 +1,47 @@
-# Some trivial samples using ORX via Futhark
-First install ORX & Nim as described in top README.
+# Samples
 
-Then run `nimble install` in each directory which will compile and install the sample binariies in release mode, or just run `nimble run` without installing the binary.
-Note that the android-native sample has its own README.md file.
+Standalone Nim programs exercising the Norx API, each in its own directory.
+Build and run a sample from its own directory — every `config.nims` links
+against the repository-local ORX libraries, so no system install is needed
+(see the top-level README for how to build ORX once).
 
-`boulderdash/` contains a complete small grid game with digging, collectibles, pushable and falling boulders, a timer, and restart support.
+## Games
 
-`pong/` contains a complete two-player Pong game with fixed-step collision handling, scoring, pause, and restart support.
+- `pong/` — a complete two-player Pong game. W/S vs arrow keys, fixed-step
+  collision handling, scoring to seven, sounds, pause and restart, plus a
+  `--startup-test true` self-test that validates the scene and game rules.
+- `boulderdash/` — a complete Boulder Dash-style grid game. Dig through dirt,
+  collect diamonds, dodge falling boulders and reach the exit before time
+  runs out, with random cave generation and CC0 Kenney art and sounds.
 
-`ball/` is a minimal, deliberately tiny example — the same code shown on the norx homepage. Build it with `nim c ball.nim` and run it from its own directory; ORX loads `ball.ini` automatically.
+## Minimal examples
 
-ESC quits. Pressing the key below ESC (may be different depending on your keyboard, on mine it's "§" but evidently "`" on others I guess) opens the ORX console.
+- `ball/` — the smallest possible Norx program (the one shown on the
+  [website](https://tankfeud.github.io/norx/)). One object, one input, one
+  update callback. ORX loads `ball.ini` automatically from the directory.
+- `sample1/` — the standard ORX pattern: `bootstrap` + `init`/`run`/`exit`
+  callbacks and a rotating logo with fade-in FX. The recommended starting
+  structure.
+- `sample2/` — the same trivial scene, but replacing ORX's `execute` loop
+  with a hand-rolled main loop in Nim. Deliberately *not* the recommended
+  ORX style; use it to understand what `execute` does for you.
 
-# Compiling
-A Nim debug build `nim c -d:debug xxx.nim` will use `liborxd.so|dylib|dll`, a release build `nim c -d:release xxx.nim` will use `liborx.so|dylib|dll` and if you build with `nim c -d:profile xxx.nim ` it will use `liborxp.so|dylib|dll`.
+## Utilities
+
+- `qr-code/` — renders a QR code on screen using the `qrcode` Nim package,
+  demonstrating creating many small objects at runtime from configuration.
+
+## Official tutorial ports
+
+- `official/` — Nim ports of the official ORX C tutorials (objects, clocks,
+  viewports, animation, physics, sound, FX, scrolling, locale, spawners,
+  lighting), contributed by @jseb.
+
+## Notes
+
+- ESC quits in most samples. The key below ESC (`` ` `` on many keyboards)
+  opens the ORX console for live inspection.
+- A debug build uses `liborxd`, a release build `-d:release` uses `liborx`,
+  and `-d:profile` uses `liborxp` — selected automatically by `config.nims`.
+- The `android-native/` sample needs the Android SDK/NDK and has its own
+  README.

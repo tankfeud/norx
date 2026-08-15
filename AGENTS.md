@@ -14,7 +14,7 @@ Norx is a Nim wrapper for the ORX 2.5D game engine. The repository targets ORX 1
 - `src/basics.nim`, `src/vector.nim`, `src/objects.nim`, and the small subsystem modules provide hand-written Nim APIs for C macros, inline functions, and higher-level conveniences.
 - `src/annotation.nim` checks hand-written translations against selected sections of the ORX headers.
 - `scripts/create_wrapper.nim` configures Futhark naming and post-processes generated bindings.
-- `samples/` and `official_samples/` exercise the public API.
+- `samples/` (including `samples/official/` tutorial ports) exercises the public API.
 
 ORX owns ORX objects and their memory. Nim strings can be passed to `cstring` parameters, but a pointer must not outlive the Nim string that backs it. C callbacks must use `{.cdecl.}`.
 

@@ -1,201 +1,214 @@
 # Norx Game Development Tutorial
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Installation and Setup](#installation-and-setup)
 3. [Project Structure](#project-structure)
 4. [Core Concepts](#core-concepts)
-5. [Building Your First Game](#building-your-first-game)
-6. [Configuration System](#configuration-system)
-7. [Advanced Features](#advanced-features)
-8. [Build and Run Process](#build-and-run-process)
-9. [Debugging and Testing](#debugging-and-testing)
-10. [Resources and Next Steps](#resources-and-next-steps)
+5. [Configuration](#configuration)
+6. [Input](#input)
+7. [Clocks](#clocks)
+8. [Text and UI](#text-and-ui)
+9. [Sounds and FX](#sounds-and-fx)
+10. [Physics](#physics)
+11. [Spawning](#spawning)
+12. [Animations](#animations)
+13. [Building Your First Game](#building-your-first-game)
+14. [Debugging and Testing](#debugging-and-testing)
+15. [Deployment](#deployment)
+16. [Resources and Next Steps](#resources-and-next-steps)
 
 ## Introduction
 
 ### What is Norx?
 
-Norx is a **highly automated** Nim wrapper for the [ORX 2.5D game engine](https://orx-project.org/). It provides a powerful, cross-platform game development framework that combines the performance of the C99 ORX engine with the expressiveness of Nim.
+Norx is a **highly automated** Nim wrapper for the [ORX 2.5D game engine](https://orx-project.org/). It pairs the battle-tested C99 ORX engine with the expressiveness of Nim.
 
 ### What is ORX?
 
-ORX is an open-source, portable 2.5D game engine with these key features:
+ORX is an open-source, portable 2.5D game engine:
 
 - **Cross-platform**: Windows, Linux, macOS, iOS, Android
-- **Data-driven**: Configuration-based game development
-- **3D accelerated**: OpenGL/OpenGL ES rendering
-- **Comprehensive**: Audio, physics, animation, input handling
-- **Lightweight**: Minimal dependencies, high performance
+- **Data-driven**: most game content lives in INI-style configuration
+- **3D accelerated**: OpenGL / OpenGL ES rendering
+- **Comprehensive**: audio, physics, animation, FX, input, spawning
+- **Lightweight**: minimal dependencies, high performance
 - **Free**: zlib license
 
-### Why Use Norx?
+### Why use Norx?
 
-- **Nim Integration**: Leverage Nim's powerful type system and metaprogramming
-- **Automated Bindings**: Automatically generated low-level bindings stay up-to-date
-- **High-level Abstractions**: Hand-crafted Nim modules for idiomatic code
-- **Configuration-driven**: Change game behavior without recompiling
-- **Memory Safe**: Nim's garbage collection with ORX's memory management
-- **Cross-platform**: Write once, run everywhere
+- **Automated bindings**: the low-level wrapper is generated from ORX headers with Futhark
+- **Idiomatic Nim layer**: value vectors with operators, plain `bool` and `string` arguments, explicit status predicates
+- **Configuration-driven**: change game behavior without recompiling
+- **Memory safe**: Nim's ORC garbage collector plus ORX's own resource management
+- **Cross-platform**: write once, run everywhere
 
 ## Installation and Setup
 
 ### Prerequisites
 
-Before starting, ensure you have:
+- Nim 2.2.4 or newer (via [choosenim](https://nim-lang.org/install.html) or your package manager)
 - A C compiler (GCC, Clang, or MSVC)
-- Git for version control
-- Basic knowledge of Nim programming
+- Git
 
-### Step 1: Install Nim
-
-```bash
-# Using choosenim (recommended)
-curl https://nim-lang.org/choosenim/init.sh -sSf | sh
-
-# Or download from official site
-# https://nim-lang.org/install.html
-```
-
-### Step 2: Clone and Setup ORX
+### Clone the repository
 
 ```bash
-# Clone the Norx repository
-git clone https://github.com/gokr/norx.git
+git clone https://github.com/tankfeud/norx.git
 cd norx
-
-# Initialize the ORX submodule
 git submodule update --init
 ```
 
-### Step 3: Build ORX Libraries
+### Build ORX
 
 ```bash
-# Navigate to ORX directory
+# Prepare the ORX submodule; installs dependencies and generates orxBuild.h
 cd orx
-
-# Run setup (installs dependencies and generates orxBuild.h)
 ./setup.sh
+# IMPORTANT: restart your shell (or logout/login) afterwards to get $ORX set!
 
-# IMPORTANT: Restart your shell or logout/login to get $ORX variable set!
-
-# Build the libraries
-cd code/build/linux/gmake  # or code/build/mac on macOS
-make config=release64
+# Build the three library flavors
+cd code/build/linux/gmake   # or code/build/mac on macOS
 make config=debug64
-make config=profile64
+make config=profile64       # optional, only needed for -d:profile builds
+make config=release64
 ```
 
-### Step 4: Install ORX Libraries
+On a clean Ubuntu, `setup.sh` asks you to install some packages, typically:
+`sudo apt install libgl1-mesa-dev libsndfile1-dev libopenal-dev libxrandr-dev`.
+
+**No system-wide install is needed.** Every test and sample in this repository
+links and runs directly against `orx/code/lib/dynamic`: each `config.nims`
+adds that directory to the linker search path and embeds an rpath. Only
+projects *outside* the repository need the libraries installed or pointed at
+explicitly — see [Deployment](#deployment).
+
+### Install Norx
 
 ```bash
-# Copy libraries to system path
-sudo cp -a $ORX/lib/dynamic/liborx* /usr/local/lib/
-
-# Update library cache (Linux only)
-sudo ldconfig
-```
-
-**Note for macOS**: Due to System Integrity Protection, you may need to copy libraries to your project directory instead of /usr/local/lib.
-
-### Step 5: Install Norx
-
-```bash
-# Return to norx directory
-cd ..
-
-# Install Norx package
+# Back in the repository root
 nimble install
 ```
 
-### Step 6: Test Installation
+### Run a sample
 
 ```bash
-# Test with sample project
-cd samples/sample1
-nimble run
+cd samples/ball
+nim c ball.nim
+./ball         # hold the right arrow key
 ```
 
-If successful, you should see a window with a rotating logo!
+If successful you see a dark window with a pulsing yellow ball that moves
+while you hold the key. `samples/pong` and `samples/boulderdash` are complete
+games in the same directory.
 
 ## Project Structure
 
-### Norx Architecture
+### Repository layout
 
-```mermaid
-graph TB
-    subgraph "Norx Layer"
-        A[norx.nim] --> B[basics.nim]
-        A --> C[vector.nim]
-        A --> D[objects.nim]
-        A --> E[display.nim]
-        A --> F[joystick.nim]
-        A --> G[wrapper.nim]
-    end
-    
-    subgraph "ORX Engine"
-        G --> H[ORX C Library]
-        H --> I[Objects]
-        H --> J[Graphics]
-        H --> K[Audio]
-        H --> L[Physics]
-        H --> M[Animation]
-    end
-    
-    subgraph "Your Game"
-        N[main.nim] --> A
-        O[game.ini] --> P[Config System]
-        P --> H
-    end
+```
+norx/
+├── src/                # The Norx wrapper (import "norx")
+│   ├── norx.nim        #   public entry point, exports the others
+│   ├── wrapper.nim     #   Futhark-generated low-level bindings
+│   ├── basics.nim      #   booleans, statuses, math constants
+│   ├── vector.nim      #   vector values and operators
+│   ├── objects.nim     #   object value/string overloads
+│   └── ...             #   input, config, sounds, resources, ...
+├── tests/              # Regression tests
+├── samples/            # Standalone samples and games
+│   ├── ball/           #   the smallest possible program
+│   ├── pong/           #   complete two-player Pong
+│   └── boulderdash/    #   complete grid game
+├── official/          # Nim ports of the official ORX tutorials
+└── orx/                # ORX 1.17 Git submodule
 ```
 
-### Directory Structure
+### Your own project layout
 
 ```
 your-game/
 ├── src/
-│   └── main.nim              # Your game code
+│   └── my_game.nim         # Your game code
 ├── data/
 │   ├── config/
-│   │   └── game.ini          # Game configuration
-│   ├── texture/              # Image files
-│   ├── sound/                # Audio files
-│   └── font/                 # Font files
-├── config.nims               # Build configuration
-├── game.nimble               # Package definition
+│   │   └── my_game.ini     # Game configuration
+│   ├── texture/            # Image files
+│   ├── sound/              # Audio files
+│   └── font/               # Font files
+├── config.nims             # Build configuration
+├── my_game.nimble          # Package definition
 └── README.md
 ```
 
-### Key Files
-
-- **main.nim**: Your game's entry point
-- **game.ini**: Configuration file defining game behavior
-- **config.nims**: Build settings and library linking
-- **game.nimble**: Package metadata and dependencies
-
 ## Core Concepts
 
-### The ORX Game Loop
+### The ORX game loop
 
 ```mermaid
 flowchart LR
-    A[Start] --> B[Initialize]
-    B --> C[Main Loop]
-    C --> D[Handle Events]
-    D --> E[Update Game Logic]
+    A[Start] --> B[bootstrap]
+    B --> C[init]
+    C --> D[Main Loop]
+    D --> E[update callbacks]
     E --> F[Render Frame]
     F --> G{Continue?}
-    G -->|Yes| C
-    G -->|No| H[Cleanup]
-    H --> I[Exit]
+    G -->|Yes| D
+    G -->|No| H[exit]
 ```
 
-### Objects and Scenes
+Your game provides four functions to `execute`:
+
+- `init`: called after ORX modules are ready — create viewports, objects,
+  and register callbacks. Return `STATUS_FAILURE` to abort startup.
+- `run`: called once per frame. Return `STATUS_FAILURE` to stop the game.
+- `exit`: called before shutdown — release what you created.
+- `bootstrap`: called before configuration loads — add resource storage
+  locations. Register it with `setBootstrap` before `execute`.
+
+Callbacks passed to ORX must be marked `{.cdecl.}`. A global `{.push cdecl.}`
+is the convenient way to mark a whole section of code.
+
+### The smallest program
+
+`ball.nim` from `samples/ball/` is a complete Norx program:
+
+```nim
+import norx
+
+var ball: ptr orxOBJECT
+
+proc update(info: ptr orxCLOCK_INFO,
+            ctx: pointer) {.cdecl.} =
+  let dt = info.fDT.float32
+  if isActive("MoveRight"):   # nim bools, nim strings
+    let speed = newVector(340.0, 0.0)
+    discard ball.setPosition(
+      ball.getPosition() + speed * dt)  # value vectors
+
+proc init(): orxSTATUS {.cdecl.} =
+  discard viewportCreateFromConfig("MainViewport")
+  ball = objectCreateFromConfig("Ball")
+  clockRegister(clockGet(CLOCK_KZ_CORE), update,
+                nil, MODULE_ID_MAIN,
+                CLOCK_PRIORITY_NORMAL)
+
+proc run(): orxSTATUS {.cdecl.} = STATUS_SUCCESS
+proc exit() {.cdecl.} = discard
+
+execute(init, run, exit)
+```
+
+It loads `ball.ini` automatically from its own directory. Everything visible
+on screen comes from the `[Ball]` section in that file.
+
+### Objects and scenes
 
 In ORX, everything visible is an **Object**:
 
 ```nim
-# Create an object from configuration
+# Create an object from a configuration section
 let player = objectCreateFromConfig("Player")
 
 # Objects have properties
@@ -204,13 +217,31 @@ discard player.setScale(newVector(2.0, 2.0, 1.0))
 discard player.setRotation(45.0)
 ```
 
-Vectors retain ORX's `orxVECTOR` type and function names, with value overloads
+A **Scene** is just an object whose children are created from config:
+
+```ini
+[Scene]
+ChildList = Sky # Player # Enemies
+
+[Player]
+Graphic = PlayerGraphic
+Position = (0, 0, 0)
+```
+
+```nim
+discard objectCreateFromConfig("Scene")  # creates Sky, Player, Enemies
+```
+
+### Vectors
+
+Vectors keep ORX's `orxVECTOR` type and function names, with value overloads
 and conventional operators for Nim expressions:
 
 ```nim
 let velocity = newVector(120.0, -30.0)
 let nextPosition = player.getPosition() + velocity * deltaTime
 let direction = velocity.normalize
+let distance = getDistance(player.getPosition(), enemy.getPosition())
 ```
 
 The generated pointer overloads remain available for direct translations from
@@ -231,9 +262,9 @@ if isActive("Jump"):
 The `orxTRUE` and `orxFALSE` constants remain available when translating ORX
 documentation literally, but application code normally does not need them.
 
-### Status Values
+### Status values
 
-ORX operations return `orxSTATUS`, which remains an enum so that callbacks and
+ORX operations return `orxSTATUS`, which remains an enum so callbacks and
 control-flow uses retain their original meaning. Norx supplies explicit
 predicates for conditions:
 
@@ -243,8 +274,8 @@ if clockRegister(clock, update, nil, MODULE_ID_MAIN,
   return STATUS_FAILURE
 ```
 
-Use `isSuccess` or `isFailure` when testing an operation. Callback return values
-remain `STATUS_SUCCESS` and `STATUS_FAILURE` as documented by ORX.
+Use `isSuccess` or `isFailure` when testing an operation. Callback return
+values remain `STATUS_SUCCESS` and `STATUS_FAILURE` as documented by ORX.
 
 ### Strings
 
@@ -254,69 +285,366 @@ values:
 ```nim
 let section = "Player" & $playerNumber
 let player = objectCreateFromConfig(section)
+discard player.setTextString("Score: " & $score)
+discard player.addSound("JumpSound")
+discard player.addFX("Bump")
 ```
 
 Norx converts the argument only for the duration of the call. String pointers
-returned by ORX remain borrowed `cstring` values; copy one with `$` when it must
-outlive ORX's storage.
+returned by ORX remain borrowed `cstring` values; copy one with `$` when it
+must outlive ORX's storage.
 
-### Viewports and Cameras
+### Viewports and cameras
 
 **Viewports** define screen regions, **Cameras** define what you see:
 
-```mermaid
-graph LR
-    A[3D World] --> B[Camera]
-    B --> C[Viewport]
-    C --> D[Screen]
-    
-    subgraph "Camera Properties"
-        E[Position]
-        F[Rotation]
-        G[Zoom]
-        H[Frustum]
-    end
-    
-    subgraph "Viewport Properties"
-        I[Size]
-        J[Position]
-        K[Background Color]
-    end
+```ini
+[MainViewport]
+Camera          = MainCamera
+BackgroundColor = (8, 12, 24)
+
+[MainCamera]
+FrustumWidth    = 960
+FrustumHeight   = 540
+FrustumFar      = 2
+FrustumNear     = 0
+Position        = (0, 0, -1)
 ```
 
-### Configuration System
+```nim
+discard viewportCreateFromConfig("MainViewport")
+```
 
-ORX uses INI-style configuration files:
+Keep `FrustumWidth`/`FrustumHeight` in sync with `[Display] ScreenWidth`/
+`ScreenHeight` for a 1:1 pixel mapping, or reference them dynamically as
+shown in [Configuration](#configuration).
+
+## Configuration
+
+ORX uses INI-style configuration files for almost everything.
+
+### Sections, keys, values
 
 ```ini
 [Display]
-Title = My Game
+Title       = My Game
 ScreenWidth = 1280
 ScreenHeight = 720
+VSync       = true
 
-[MainViewport]
-Camera = MainCamera
+[Player]
+Graphic   = PlayerGraphic
+Position  = (100, 200, 0)
+Speed     = (150, 0, 0)
+
+[PlayerGraphic]
+Texture   = player.png
+Pivot     = center
+```
+
+Comments start with `;`. Vectors are comma-separated tuples, lists use `#` as
+the separator, and booleans are `true`/`false`.
+
+### Inheritance
+
+Any section can inherit from another by appending `@ParentSection` to its
+name:
+
+```ini
+[EnemyGraphic]
+Texture = enemy.png
+Pivot   = center
+Color   = (255, 255, 255)
+
+[Enemy]
+Graphic = EnemyGraphic
+Health  = 100
+Speed   = (50, 0, 0)
+
+[FastEnemy@Enemy]
+Speed = (100, 0, 0)   ; override the parent value
+
+[AngryEnemy@Enemy]
+Color = (255, 80, 80) ; inherited by EnemyGraphic too, via @
+Graphic = @           ; reuse the same graphic, override its color
+```
+
+### References and dynamic values
+
+Use `@Section.Key` to reference another value, and compute at load time:
+
+```ini
+[Display]
+ScreenWidth  = 960
+ScreenHeight = 540
 
 [MainCamera]
-FrustumWidth = 1280
-FrustumHeight = 720
-Position = (0, 0, -1)
+FrustumWidth  = @Display.ScreenWidth
+FrustumHeight = @Display.ScreenHeight
+
+[Player]
+Scale = (1.5 * @Display.ScreenWidth / 960, 1, 1)
+```
+
+### ChildList
+
+Parent objects create their children from a list:
+
+```ini
+[Scene]
+ChildList = Sky # Player # Enemy1 # Enemy2
+
+[Enemy1]
+Graphic   = EnemyGraphic
+Position  = (100, 100, 0)
+
+[Enemy2]
+Graphic   = EnemyGraphic
+Position  = (700, 100, 0)
+```
+
+## Input
+
+### Edge-triggered vs level
+
+Norx input functions accept plain strings:
+
+```nim
+if hasBeenActivated("Jump"):   # pressed this frame only
+  doJump()
+
+if isActive("MoveRight"):      # held down right now
+  moveRight(dt)
+
+if hasBeenDeactivated("Run"):  # released this frame
+  stopRunning()
+
+if hasNewStatus("Pause"):      # pressed or released this frame
+  togglePause()
+```
+
+### Analog values
+
+```nim
+let throttle = getValue("Throttle")  # 0..1, works for keys, buttons and axes
+```
+
+### Bindings
+
+```ini
+[Input]
+SetList = MainInput
+
+[MainInput]
+KEY_ESCAPE  = Quit
+KEY_SPACE   = Jump
+KEY_W       = MoveUp
+KEY_S       = MoveDown
+KEY_A       = MoveLeft
+KEY_D       = MoveRight
+MOUSE_LEFT  = Fire
+JOY_A_1     = Jump     ; first gamepad, A button
+JOY_LX_1    = MoveX    ; first gamepad, left stick X axis
+```
+
+## Clocks
+
+### The core clock
+
+The core clock ticks once per frame. Register update callbacks on it in
+`init`:
+
+```nim
+discard clockRegister(clockGet(CLOCK_KZ_CORE), update, nil,
+                      MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+```
+
+`update` receives the elapsed frame time:
+
+```nim
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
+  let dt = clockInfo.fDT.float32     # seconds since last frame
+  let t = clockInfo.fTime.float32    # accumulated time on this clock
+```
+
+### Custom clocks
+
+Additional clocks tick at their own fixed rates and can be time-stretched:
+
+```ini
+[PhysicsClock]
+TickSize = 0.01   ; 100 Hz
+```
+
+```nim
+let physicsClock = clockCreateFromConfig("PhysicsClock")
+discard clockRegister(physicsClock, fixedUpdate, nil,
+                      MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+
+# Slow-motion and fast-forward from the core clock callback:
+if isActive("SlowMo"):
+  discard physicsClock.setModifier(CLOCK_MODIFIER_MULTIPLY, 0.25)
+else:
+  discard physicsClock.setModifier(CLOCK_MODIFIER_MULTIPLY, 1.0)
+```
+
+## Text and UI
+
+Text is an object whose graphic is a text graphic. Use both `Graphic = @`
+and `Text = @`:
+
+```ini
+[Hud]
+Graphic   = @
+Text      = @
+Locale    = false
+String    = Score: 0
+Position  = (-300, -220, -0.5)
+Pivot     = center
+Scale     = 1.5
+Color     = (235, 240, 255)
+```
+
+```nim
+discard hud.setTextString("Score: " & $score)
+```
+
+`Locale = false` uses the string literally; with locale enabled the value is
+a translation key. Hide messages with `hud.enable(false)`.
+
+## Sounds and FX
+
+Sounds and visual effects are also data-driven. The configuration for Pong's
+paddle hit looks like this:
+
+```ini
+[PaddleSound]
+Sound       = push.ogg
+KeepInCache = true
+Volume      = 0.3
+
+[PaddleHit]
+SlotList    = PaddleHitScale
+DoNotCache  = true
+
+[PaddleHitScale]
+Type        = scale
+StartTime   = 0
+EndTime     = 0.12
+Curve       = sine
+StartValue  = (1, 1, 1)
+EndValue    = (1.18, 1.18, 1)
+```
+
+Trigger both from Nim:
+
+```nim
+discard ball.addSound("PaddleSound")
+discard paddle.addFX("PaddleHit")
+```
+
+ORX stops the sound when its owner is deleted, and `DoNotCache` keeps the FX
+fresh when it is re-added every frame.
+
+## Physics
+
+### Bodies and parts
+
+Attach a body with one or more parts to give an object physical presence:
+
+```ini
+[Physics]
+Gravity        = (0, -981, 0)
+DimensionRatio = 0.01
 
 [Player]
 Graphic = PlayerGraphic
-Position = (100, 200, 0)
-Speed = (150, 0, 0)
+Body    = PlayerBody
 
-[PlayerGraphic]
-Texture = player.png
-Pivot = center
+[PlayerBody]
+Dynamic       = true
+PartList      = PlayerPart
+
+[PlayerPart]
+Type          = box
+TopLeft       = (-16, -16, 0)
+BottomRight   = (16, 16, 0)
+Restitution   = 0.2
+Friction      = 0.8
+SelfFlags     = 0x0001   ; who I am
+CheckMask     = 0xFFFF   ; who I collide with
+Solid         = true
+```
+
+Static bodies (`Dynamic = false`) are walls and floors. Two objects collide
+when `(A.SelfFlags & B.CheckMask) and (A.CheckMask & B.SelfFlags)`.
+
+Not every game needs ORX physics: both Pong and Boulder Dash implement their
+own fixed-step movement and collision rules in plain Nim while using ORX for
+rendering, input and sound. That is a perfectly idiomatic Norx choice.
+
+### Collision events
+
+```nim
+proc physicsHandler(event: ptr orxEVENT): orxSTATUS {.cdecl.} =
+  if event.eID == ord(PHYSICS_EVENT_CONTACT_ADD):
+    let a = cast[ptr orxOBJECT](event.hRecipient)
+    let b = cast[ptr orxOBJECT](event.hSender)
+    discard a.addFX("Bump")
+    discard b.addFX("Bump")
+  result = STATUS_SUCCESS
+
+# in init:
+discard addHandler(EVENT_TYPE_PHYSICS, physicsHandler)
+```
+
+## Spawning
+
+Spawners create objects in waves, defined entirely in config:
+
+```ini
+[EnemySpawner]
+Spawner     = @
+Object      = Enemy
+TotalObject = 10
+WaveSize    = 5
+WaveDelay   = 1.0
+
+[Scene]
+ChildList = Player # EnemySpawner
+```
+
+```nim
+let spawner = spawnerCreateFromConfig("EnemySpawner")
+spawner.enable(true)   # returns void — no discard needed
+```
+
+## Animations
+
+Animation sets cycle through textures defined in config:
+
+```ini
+[PlayerAnimations]
+KeyDuration = 0.1
+KeyData1    = walk_01.png
+KeyData2    = walk_02.png
+KeyData3    = walk_03.png
+KeyData4    = walk_04.png
+```
+
+```nim
+let animSet = animSetCreateFromConfig("PlayerAnimations")
+if animSet != nil:
+  discard player.linkStructure(cast[ptr orxSTRUCTURE](animSet))
+discard player.setCurrentAnim("Walk")
+discard player.setAnimFrequency(2.0)  # 2x speed
 ```
 
 ## Building Your First Game
 
 Let's create a simple game step by step.
 
-### Step 1: Create Project Structure
+### Step 1: Create the project
 
 ```bash
 mkdir my-game
@@ -324,9 +652,9 @@ cd my-game
 mkdir -p src data/config data/texture
 ```
 
-### Step 2: Create Package File
+### Step 2: Create the package file
 
-Create `my-game.nimble`:
+Create `my_game.nimble`:
 
 ```nim
 # Package
@@ -334,39 +662,53 @@ version       = "0.1.0"
 author        = "Your Name"
 description   = "My first Norx game"
 license       = "MIT"
+srcDir        = "src"
 installDirs   = @["data"]
 bin           = @["my_game"]
 
 # Dependencies
-requires "nim >= 2.0.0"
-requires "norx >= 0.7.0"
+requires "nim >= 2.2.4"
+requires "norx >= 0.8.1"
 ```
 
-### Step 3: Create Build Configuration
+### Step 3: Create the build configuration
 
-Create `config.nims`:
+Create `config.nims`. Inside the Norx repository nothing special is needed,
+but an independent project points at the ORX library directory:
 
 ```nim
-# Link to appropriate ORX library based on build type
+import std/os
+
+let rootDir = currentSourcePath().parentDir
+let orxLibraryDir = normalizedPath(rootDir / "/path/to/orx/code/lib/dynamic")
+
+switch("path", rootDir / "src")
+switch("passL", "-L" & orxLibraryDir)
+
+when defined(linux) or defined(macosx):
+  switch("passL", "-Wl,-rpath," & orxLibraryDir)
+
 when defined(release):
   switch("passL", "-lorx")      # Release version
 elif defined(profile):
-  switch("passL", "-lorxp")     # Profile version  
+  switch("passL", "-lorxp")     # Profile version
 else:
   switch("passL", "-lorxd")     # Debug version (default)
 ```
 
-### Step 4: Create Game Configuration
+Replace `/path/to/orx` with the actual location of your ORX checkout. If you
+installed ORX system-wide instead, you only need the three `-lorx*` lines.
+
+### Step 4: Create the game configuration
 
 Create `data/config/my_game.ini`:
 
 ```ini
 [Display]
-Title = My First Norx Game
-ScreenWidth = 800
+Title        = My First Norx Game
+ScreenWidth  = 800
 ScreenHeight = 600
-VSync = true
-Smoothing = true
+VSync        = true
 
 [Resource]
 Texture = ./data/texture
@@ -375,35 +717,30 @@ Texture = ./data/texture
 SetList = MainInput
 
 [MainInput]
-KEY_ESCAPE = Quit
-KEY_SPACE = Jump
-KEY_LEFT = MoveLeft
-KEY_RIGHT = MoveRight
+KEY_ESCAPE  = Quit
+KEY_LEFT    = MoveLeft
+KEY_RIGHT   = MoveRight
 
 [MainViewport]
 Camera = MainCamera
 
 [MainCamera]
-FrustumWidth = 800
+FrustumWidth  = 800
 FrustumHeight = 600
-FrustumFar = 2
-FrustumNear = 0
-Position = (0, 0, -1)
-
-[Scene]
-ChildList = Player
+FrustumFar    = 2
+FrustumNear   = 0
+Position      = (0, 0, -1)
 
 [Player]
-Graphic = PlayerGraphic
-Position = (0, 0, 0)
-Scale = (1, 1, 1)
+Graphic   = PlayerGraphic
+Position  = (0, 0, 0)
 
 [PlayerGraphic]
-Texture = player.png
-Pivot = center
+Texture   = player.png
+Pivot     = center
 ```
 
-### Step 5: Create Game Code
+### Step 5: Create the game code
 
 Create `src/my_game.nim`:
 
@@ -417,312 +754,140 @@ import norx
 var player: ptr orxOBJECT = nil
 
 proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
-  # Handle input
-  var movement = newVector()
-  
+  let dt = clockInfo.fDT.float32
+
   if isActive("MoveLeft"):
-    movement.fX = -200.0
+    discard player.setSpeed(newVector(-200.0, 0.0))
   elif isActive("MoveRight"):
-    movement.fX = 200.0
-  
-  if isActive("Jump"):
-    movement.fY = -300.0
-  
-  # Apply movement
-  if not player.isNil:
-    discard player.setSpeed(movement)
-  
-  # Check for quit
+    discard player.setSpeed(newVector(200.0, 0.0))
+  else:
+    discard player.setSpeed(newVector())
+
   if isActive("Quit"):
     discard eventSendShort(EVENT_TYPE_SYSTEM, SYSTEM_EVENT_CLOSE.orxU32)
 
 proc init(): orxSTATUS =
   echo "Starting My First Norx Game"
-  
-  # Create viewport
-  let viewport = viewportCreateFromConfig("MainViewport")
-  if viewport.isNil:
+
+  if viewportCreateFromConfig("MainViewport") == nil:
     echo "Failed to create viewport"
     return STATUS_FAILURE
-  
-  # Create player
+
   player = objectCreateFromConfig("Player")
   if player.isNil:
     echo "Failed to create player"
     return STATUS_FAILURE
-  
-  # Register update callback
-  let clock = clockGet(CLOCK_KZ_CORE)
-  if clock.isNil:
-    echo "Failed to get core clock"
-    return STATUS_FAILURE
-  
-  let status = clockRegister(clock, update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
-  if status.isFailure:
+
+  if clockRegister(clockGet(CLOCK_KZ_CORE), update, nil,
+                   MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL).isFailure:
     echo "Failed to register update callback"
     return STATUS_FAILURE
-  
+
   echo "Game initialized successfully"
   return STATUS_SUCCESS
 
 proc run(): orxSTATUS = STATUS_SUCCESS
 
-proc exit() = 
+proc exit() =
   echo "Game exiting"
 
 proc bootstrap(): orxSTATUS =
-  # Setup resource paths
-  let result = addStorage(CONFIG_KZ_RESOURCE_GROUP, "data/config", false)
-  if result.isFailure:
+  if addStorage(CONFIG_KZ_RESOURCE_GROUP, "data/config", false).isFailure:
     echo "Failed to add config storage"
     return STATUS_FAILURE
-  
   return STATUS_SUCCESS
 
 # Main execution
 when isMainModule:
-  if setBootstrap(bootstrap).isSuccess:
-    execute(init, run, exit)
-  else:
-    echo "Failed to set bootstrap"
-  
-  quit(0)
+  if setBootstrap(bootstrap).isFailure:
+    quit("Failed to set bootstrap")
+  execute(init, run, exit)
 ```
 
-### Step 6: Add Assets
+### Step 6: Add assets
 
-Add a `player.png` image to `data/texture/` directory.
+Put a `player.png` in `data/texture/`. ORX's built-in `pixel` texture works
+for simple placeholders while you are looking for art:
 
-### Step 7: Build and Run
+```ini
+[PlayerGraphic]
+Texture = pixel
+Color   = (255, 213, 74)
+Size    = (32, 32, 0)
+```
+
+### Step 7: Build and run
 
 ```bash
-# Build and run
-nim c -r src/my_game.nim
-
-# Or using nimble
-nimble run
+# From the project root
+nimble build
+./my_game
 ```
 
-Congratulations! You've created your first Norx game with basic input handling and object management.
+Congratulations! You've created your first Norx game with input handling,
+objects, a camera and a data-driven configuration.
 
-## Configuration System
+## Debugging and Testing
 
-### Configuration Hierarchy
+### ORX logging
 
-ORX uses a hierarchical configuration system:
-
-```mermaid
-graph TD
-    A[Game Config] --> B[Object Definitions]
-    A --> C[Display Settings]
-    A --> D[Input Mappings]
-    A --> E[Resource Paths]
-    
-    B --> F[Graphics]
-    B --> G[Physics]
-    B --> H[Animation]
-    B --> I[Sound]
-    
-    F --> J[Textures]
-    F --> K[Colors]
-    F --> L[Transforms]
-```
-
-### Configuration Features
-
-#### References and Inheritance
-```ini
-[BaseEnemy]
-Graphic = EnemyGraphic
-Health = 100
-Speed = (50, 0, 0)
-
-[FastEnemy]
-UseParent = BaseEnemy
-Speed = (100, 0, 0)  # Override parent value
-
-[SlowEnemy]
-UseParent = BaseEnemy
-Speed = (25, 0, 0)
-```
-
-#### Dynamic Values
-```ini
-[Player]
-Position = (400, 300, 0)  # Center of 800x600 screen
-Scale = (@Display.ScreenWidth / 800, @Display.ScreenHeight / 600, 1)
-```
-
-#### Lists and Arrays
-```ini
-[Scene]
-ChildList = Player # Enemy1 # Enemy2 # Powerup
-
-[Enemy1]
-Graphic = EnemyGraphic
-Position = (100, 100, 0)
-
-[Enemy2]
-Graphic = EnemyGraphic
-Position = (700, 100, 0)
-```
-
-### Common Configuration Patterns
-
-#### Responsive Display
-```ini
-[Display]
-ScreenWidth = 1920
-ScreenHeight = 1080
-Title = My Game
-FullScreen = false
-VSync = true
-
-[MainCamera]
-FrustumWidth = @Display.ScreenWidth
-FrustumHeight = @Display.ScreenHeight
-```
-
-#### Input Mapping
-```ini
-[MainInput]
-KEY_ESCAPE = Quit
-KEY_SPACE = Jump
-KEY_W = MoveUp
-KEY_S = MoveDown
-KEY_A = MoveLeft
-KEY_D = MoveRight
-MOUSE_LEFT = Fire
-JOYSTICK_1_A = Jump
-```
-
-#### Animation Configuration
-```ini
-[PlayerWalk]
-KeyDuration = 0.1
-KeyData1 = walk_01.png
-KeyData2 = walk_02.png
-KeyData3 = walk_03.png
-KeyData4 = walk_04.png
-```
-
-## Advanced Features
-
-### Animation System
+A debug build (`liborxd`) is far more talkative than release and writes
+`<program>-debug.log` next to your binary. Log levels are set in code:
 
 ```nim
-# Create animation set
-let animSet = animSetCreateFromConfig("PlayerAnimations")
-if not animSet.isNil:
-  player.linkStructure(animSet, orxSTRUCTURE_ID_ANIMSET)
-
-# Control animations
-discard player.setCurrentAnim("Walk")
-discard player.setAnimFrequency(2.0)  # 2x speed
+# Show only errors, or everything, from a debug build
+internal_orxDebug_SetFlags(DEBUG_KU32_STATIC_MASK_DEBUG, DEBUG_KU32_STATIC_MASK_USER_ALL)
 ```
 
-### Physics Integration
+### The ORX console
 
-```ini
-[Player]
-Graphic = PlayerGraphic
-Body = PlayerBody
+Press the key below Escape (`` ` `` on many keyboards) while a game runs to
+open ORX's built-in console for live config editing and inspection.
 
-[PlayerBody]
-Dynamic = true
-PartList = PlayerPart
+### Startup self-tests
 
-[PlayerPart]
-Type = box
-TopLeft = (-16, -16, 0)
-BottomRight = (16, 16, 0)
+Pong and Boulder Dash ship a `--startup-test` mode: they initialize the full
+scene, validate the game model and engine wiring, and exit automatically with
+a non-zero status on failure. The skeleton looks like this:
+
+```nim
+let startupTest = "--startup-test" in commandLineParams()
+var startupFrames = 0
+
+proc init(): orxSTATUS {.cdecl.} =
+  # create everything...
+  if startupTest and not runSelfChecks():
+    return STATUS_FAILURE
+  result = clockRegister(clockGet(CLOCK_KZ_CORE), update, nil,
+                         MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL)
+
+proc run(): orxSTATUS {.cdecl.} =
+  if startupTest:
+    inc startupFrames
+    if startupFrames >= 5:
+      return STATUS_FAILURE
+  result = STATUS_SUCCESS
 ```
 
-### Sound System
+Run `./pong --startup-test true` after every change for a cheap smoke test.
 
-```ini
-[PlayerSound]
-SoundList = FootstepsSound # JumpSound
+## Deployment
 
-[FootstepsSound]
-Sound = footsteps.ogg
-Loop = true
-Volume = 0.5
+### Bundling libraries
 
-[JumpSound]
-Sound = jump.wav
-Volume = 0.8
-```
+Your game links against a shared ORX library. For distribution:
 
-### Visual Effects
+- **Linux**: ship `liborx.so` next to the executable and embed a relative
+  rpath with `-Wl,-rpath,$ORIGIN`, or install the library system-wide.
+- **Windows**: ship `liborx.dll` next to the `.exe`.
+- **macOS**: ship `liborx.dylib` inside your app bundle; newer macOS versions
+  do not search `/usr/local/lib`.
 
-```ini
-[PlayerFX]
-SlotList = FadeIn # Glow
+Also distribute your `data/` directory next to the binary, and make sure your
+`bootstrap` adds its `config` subdirectory to `CONFIG_KZ_RESOURCE_GROUP`.
 
-[FadeIn]
-Type = alpha
-Curve = smooth
-StartTime = 0
-EndTime = 1
-StartValue = 0
-EndValue = 1
+### Platform notes
 
-[Glow]
-Type = scale
-Curve = sine
-StartTime = 0
-EndTime = 2
-StartValue = (1, 1, 1)
-EndValue = (1.2, 1.2, 1)
-Loop = true
-```
-
-## Build and Run Process
-
-### Development Workflow
-
-```mermaid
-flowchart TD
-    A[Write Code] --> B[Edit Config]
-    B --> C[Build Debug]
-    C --> D[Test]
-    D --> E{Issues?}
-    E -->|Yes| F[Debug]
-    F --> A
-    E -->|No| G[Build Release]
-    G --> H[Deploy]
-```
-
-### Build Configurations
-
-#### Debug Build (Default)
-```bash
-nim c -r src/my_game.nim
-```
-- Links to `liborxd` (debug version)
-- Includes debug symbols
-- Slower but easier to debug
-
-#### Release Build
-```bash
-nim c -d:release -r src/my_game.nim
-```
-- Links to `liborx` (optimized version)
-- Smaller executable
-- Better performance
-
-#### Profile Build
-```bash
-nim c -d:profile -r src/my_game.nim
-```
-- Links to `liborxp` (profile version)
-- Includes profiling support
-- Performance monitoring
-
-### Cross-Platform Considerations
-
-#### Platform-Specific Code
 ```nim
 when defined(Windows):
   # Windows-specific code
@@ -730,209 +895,40 @@ elif defined(Linux):
   # Linux-specific code
 elif defined(MacOSX):
   # macOS-specific code
-```
-
-#### Asset Management
-```ini
-[Resource]
-Texture = ./data/texture
-Sound = ./data/sound
-Font = ./data/font
-Config = ./data/config
-```
-
-### Deployment
-
-#### Linux
-```bash
-# Build static executable
-nim c -d:release --passL:-static src/my_game.nim
-
-# Create distribution package
-tar -czf my-game-linux.tar.gz my_game data/
-```
-
-#### Windows
-```bash
-# Cross-compile from Linux
-nim c -d:mingw -d:release src/my_game.nim
-
-# Or build on Windows
-nim c -d:release src/my_game.nim
-```
-
-#### macOS
-```bash
-# Build universal binary
-nim c -d:release src/my_game.nim
-
-# Create app bundle
-mkdir -p MyGame.app/Contents/MacOS
-cp my_game MyGame.app/Contents/MacOS/
-cp -r data MyGame.app/Contents/Resources/
-```
-
-## Debugging and Testing
-
-### Debug Features
-
-#### Logging
-```nim
-# Enable debug output
-when defined(debug):
-  echo "Player position: ", player.getPosition()
-```
-
-#### Visual Debugging
-```ini
-[Display]
-ShowFPS = true
-ShowProfiler = true
-
-[Debug]
-ShowObjectBounds = true
-ShowPhysics = true
-```
-
-### Common Issues and Solutions
-
-#### Library Not Found
-```bash
-# Check library path
-ldd my_game
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-```
-
-#### Configuration Errors
-```nim
-# Validate configuration
-let result = loadFromFile("data/config/my_game.ini")
-if result.isFailure:
-  echo "Configuration error!"
-```
-
-#### Memory Issues
-```nim
-# Proper cleanup
-proc exit() =
-  if not player.isNil:
-    discard player.setLifeTime(0.0)  # Let ORX handle cleanup
-  echo "Cleanup complete"
-```
-
-### Testing Strategies
-
-#### Unit Testing
-```nim
-# Test game logic
-import unittest
-
-test "Player movement":
-  let initialPos = player.getPosition()
-  # Simulate movement
-  discard player.setSpeed(newVector(100.0, 0.0))
-  # Update simulation
-  clockUpdate()
-  # Check result
-  let newPos = player.getPosition()
-  check(newPos.fX > initialPos.fX)
-```
-
-#### Integration Testing
-```bash
-# Automated testing
-nimble test
-
-# Performance testing
-nim c -d:release -d:profile src/my_game.nim
-./my_game --benchmark
+elif defined(Android):
+  # Android-specific code — see samples/android-native
 ```
 
 ## Resources and Next Steps
 
-### Learning Resources
+### Sample projects
 
-#### Official Documentation
-- [ORX Website](https://orx-project.org/)
-- [ORX Wiki](https://orx-project.org/wiki/)
-- [Norx Repository](https://github.com/gokr/norx)
+- `samples/ball/` - the smallest possible program, shown on the website
+- `samples/pong/` - complete two-player Pong with fixed-step physics, sounds and self-tests
+- `samples/boulderdash/` - complete grid game with digging, boulders and a timer
+- `samples/official/` - Nim ports of the official ORX C tutorials
+- `samples/sample1/` and `samples/sample2/` - minimal patterns, including a custom game loop
 
-#### Sample Projects
-- `samples/` - Basic Norx examples
-- `official_samples/` - Comprehensive ORX tutorials
-- [Norx Sample](https://github.com/gokr/norxsample) - Extended example
+### Learning resources
 
-#### Community
-- ORX Discord/Forums
-- Nim Community
-- GitHub Issues for support
+- [Norx website](https://tankfeud.github.io/norx/index.html)
+- [Norx repository](https://github.com/tankfeud/norx)
+- [Norx API documentation](https://tankfeud.github.io/norx/index/norx.html)
+- [ORX website](https://orx-project.org/)
+- [ORX wiki](https://orx-project.org/wiki/)
 
-### Advanced Topics
+### Advanced topics
 
-#### Custom Shaders
-```ini
-[PlayerGraphic]
-Texture = player.png
-Shader = CustomShader
+- **Shaders**: `[PlayerGraphic] Shader = CustomShader` with `[CustomShader] Code = custom_shader.glsl`
+- **Concurrency**: use `taskpools` for background work; avoid `asyncdispatch`
+- **Localization**: ORX locales drive texts, images and sounds separately
 
-[CustomShader]
-Code = custom_shader.glsl
-```
+### Next steps
 
-#### Networking
-```nim
-# Multiplayer considerations
-when defined(multiplayer):
-  import asyncdispatch  # Note: Avoid this, use taskpools
-  import taskpools      # Recommended for concurrency
-```
-
-#### Mobile Development
-```bash
-# Android build
-nimble build-android
-
-# iOS build (requires macOS)
-nimble build-ios
-```
-
-### Performance Optimization
-
-#### Profiling
-```bash
-# Enable profiling
-nim c -d:profile --profiler:on src/my_game.nim
-```
-
-#### Memory Management
-```nim
-# Efficient object pooling
-var objectPool: seq[ptr orxOBJECT]
-
-proc getPooledObject(): ptr orxOBJECT =
-  if objectPool.len > 0:
-    result = objectPool.pop()
-  else:
-    result = objectCreate()
-```
-
-#### Asset Optimization
-- Use compressed textures
-- Optimize audio files
-- Minimize configuration complexity
-
-### Next Steps
-
-1. **Complete the Tutorials**: Work through all official samples
-2. **Build a Full Game**: Create a complete project
-3. **Contribute**: Submit improvements to Norx
-4. **Share**: Release your game to the community
-
-### Conclusion
-
-Norx provides a powerful foundation for game development, combining ORX's proven engine with Nim's modern language features. The configuration-driven approach allows rapid iteration and easy maintenance, while the cross-platform nature ensures wide compatibility.
-
-Start with simple projects, gradually explore advanced features, and don't hesitate to ask the community for help. Happy game development!
+1. **Run the samples**: build everything in `samples/`, including `samples/official/`
+2. **Build a full game**: start from Pong or Boulder Dash and reshape it
+3. **Contribute**: submit improvements to Norx
+4. **Share**: release your game to the community
 
 ---
 

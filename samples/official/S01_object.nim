@@ -1,45 +1,30 @@
-## This is an adaptation to Nim of the C tutorial creating a viewport and an object.
-## comments: jseb at finiderire.com
+## Port of the official ORX tutorial: objects.
+## Adapted to Nim by jseb at finiderire.com, modernized for Norx.
 
 #[
-  Debug compilation
-  nim c S01_object
-  (it will use S01_object.nim.cfg and liborxd.so loaded at runtime)
-  
-  Release compilation
-  nim c -d:release --skipProjcfg S01_object
-  (skip nim project cfg, liborx.so loaded at runtime)
+  Creates a viewport/camera couple and an object from configuration.
+  Play with the parameters in S01_object.ini and relaunch to see their effects.
 ]#
-import norx
 
-# We need cdecl for all functions, as they are called from C code
+import norx
+import os
+
+import S_commons
+
 {.push cdecl.}
 
 proc init(): orxSTATUS =
+  if viewportCreateFromConfig("Viewport").isNil:
+    return STATUS_FAILURE
+  if objectCreateFromConfig("Object").isNil:
+    return STATUS_FAILURE
   result = STATUS_SUCCESS
-  # for getting logs in a file , as well as terminal output, compile in debug.
-  echo """* This tutorial creates a viewport/camera couple and an object
-* You can play with the config parameters in S01_object.ini
-* After changing them, relaunch the tutorial to see their effects"""
-  
-  # Creates viewport
-  var vres = viewportCreateFromConfig("Viewport")
-  if vres.isNil:
-    return STATUS_FAILURE
 
-  # Creates object
-  var ores = objectCreateFromConfig("Object");
-  if ores.isNil:
-    return STATUS_FAILURE
+proc bootstrap(): orxSTATUS =
+  ## Adds this directory to the config search path before ORX loads config.
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, getAppDir(), false)
+  if result.isFailure:
+    echo "Could not add config storage"
 
-proc run(): orxSTATUS =
-  # Should quit?
-  if isActive("Quit"):
-    STATUS_FAILURE
-  else:
-    STATUS_SUCCESS
-
-proc exit() =
-  quit(0)
-
+discard setBootstrap(bootstrap)
 execute(init, run, exit)

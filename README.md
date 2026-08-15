@@ -90,7 +90,7 @@ The system linker automatically handles platform-specific library extensions:
 * **Windows**: `liborx.dll`, `liborxd.dll`, `liborxp.dll`
 
 # Samples
-See `samples` directory, `official_samples` directory (contributed by @jseb) or [norxsample](https://github.com/gokr/norxsample). The samples should run fine in at least Linux and OSX. The android-native sample can also be built for Android.
+See `samples` directory (including `samples/official`, the official ORX tutorials ported by @jseb) or [norxsample](https://github.com/gokr/norxsample). The samples should run fine in at least Linux and OSX. The android-native sample can also be built for Android.
 
 # Norx vs Orx
 These are the "differences" that you should be aware of when you read ORX documentation/tutorials and apply it to Norx:

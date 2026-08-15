@@ -1,194 +1,224 @@
-## Adaptation to Nim of the 11th C tutorial, about spawners.
-## original author of C tutorial: iarwain@orx-project.org
-## adaptation: jseb at finiderire.com
+## Port of the official ORX tutorial: lighting.
+## Adapted to Nim by jseb at finiderire.com, modernized for Norx.
 
 #[
-  Debug compilation
-  nim c S12_lighting
-  (it will use S12_lighting.nim.cfg and liborxd.so loaded at runtime)
+  Pixel-based lighting in shaders, with optional bump maps. The code manages
+  an array of lights (position, radius, color) and populates the fragment
+  shader's parameters at runtime; the actual lighting happens in the shader
+  defined in S12_lighting.ini.
 
-  Release compilation
-  nim c -d:release --skipProjcfg S12_lighting
-  (skip nim project cfg, liborx.so is loaded at runtime)
+  Normal maps are computed on the CPU the first time each object texture is
+  loaded, using a hash table keyed by the texture name. A production game
+  would batch this work or move it to the GPU, but doing it on object
+  creation keeps the tutorial modular: new objects can be added in config
+  with no extra knowledge of how their textures are processed.
 
-  Note from gokr:
-  The choice of the lib is made in lib.nim
-  It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
-
-  See tutorial S01_object.nim for more info about the basic object creation.
-  See tutorial S02_clock.nim for keyboard reading, configuration section retrieving, and clocks.
-  See tutorial S03_linked_frame.nim for object hierarchies, rotations and scaling.
-  See tutorial S04_anim.nim for using animations.
-  See tutorial S05_viewport.nim for viewports mysteriis.
-  See tutorial S06_sound.nim for playing sounds.
-  See tutorial S07_fx.nim for applying FX to objects.
-  See tutorial S08_physics.nim for an outlook on the physic engine.
-  See tutorial S09_scrolling.nim for the world of parallax.
-  See tutorial S10_locale.nim for speaking another language than you-know-what.
-  See tutorial S11_spawner for learning how to manage loading of .ini files (and spawn particles).
-
-  For details about Orx side , please refer to the lighting tutorial:
-  https://wiki.orx-project.org/en/tutorials/shaders/lighting
-
- This tutorial shows how to generate normal maps and use shaders for pixel-based lighting effects.
- It's only one of the many possibilities of lighting you can achieve with shaders.
-
- The code manage an array of lights, allowing to change their properties such as position or radius.
- The whole object lighting is done in the fragment shader defined in S12_lighting.ini.
-
- For performance sake, normap maps are computed for each object's texture when the object is loaded.
- This is done by CPU, but could be done on GPU:
-  - With viewports that would have textures as render target, instead of the screen.
-  - All objects would be rendered separately once with a shader which would only compute the normal maps.
- -> This technique would improve “loading/init” performances but requires more code to be written.
-
- A more efficient way would be to batch the normal map creation: loading all the texture at once and creating the associated normal maps in one pass.
- We chose to do it on objects creations instead.
- It keeps this tutorial modular and allow new objects to be added in config by users without any additional knowledge on how the textures will be processed at runtime by the code.
-
- The lighting shader is a very basic one, far from any realistic lighting, and has been kept simple so as to provide a good base for newcomers.
-
+  Controls:
+  - Left mouse button creates a new light under the cursor.
+  - Right mouse button clears all lights.
+  - +/- increase/decrease the current light radius.
+  - Space toggles alpha (makes holes in lit objects).
 ]#
 
 import strformat
-from strutils import unindent
 import norx
+import os
 
-# the shared functions
 import S_commons
 
-type light = object
-  color: orxCOLOR # orxCOLOR is a tuple defined in display.nim
-  pos: orxVECTOR
-  radius: orxFLOAT
+{.push cdecl.}
 
-const LIGHT_NUMBER = 10
-var light_list:array[LIGHT_NUMBER, light]
-var light_index:orxS32
+type
+  Light = object
+    color: orxCOLOR
+    position: orxVECTOR
+    radius: orxFLOAT
 
-# hash table for storing textures
-var texture_table:ptr orxHASHTABLE
-# and usual globals for viewport & scene
-var vp:ptr orxVIEWPORT
-var scene:ptr orxOBJECT
+const LightCount = 10
 
+var
+  lightList: array[LightCount, Light]
+  lightIndex: orxS32
+  textureTable: ptr orxHASHTABLE
+  viewport: ptr orxVIEWPORT
+  scene: ptr orxOBJECT
 
-proc clear_all_lights() :orxSTATUS =
-  # get lighting section
-  result = pushSection( "Lighting")
+proc clearLights() =
+  discard pushSection("Lighting")
+  for light in mitems(lightList):
+    var rgb: orxVECTOR
+    discard getVector("Color", addr rgb)
+    light.color.anon0.vRGB = rgb
+    light.color.fAlpha = 0.0
+    light.position = newVECTOR()
+    light.radius = getFloat("Radius")
+  discard popSection()
+  lightIndex = 0
 
-  # initialization of light array
-  for light in mitems(light_list):
-    light.color.fAlpha = 0
-    light.radius = getFloat( "Radius")
-    light.pos = newVECTOR(0.0, 0.0, 0.0)
+proc computeGreyImage(buffer: ptr orxU8, bufferSize: orxU32) =
+  let pixels = cast[ptr UncheckedArray[orxU8]](buffer)
+  var i = 0
+  while i < bufferSize.int:
+    var color: orxCOLOR
+    discard setRGBA(addr color, rgbaSet(pixels[i], pixels[i + 1],
+                                        pixels[i + 2], pixels[i + 3]))
+    let grey = 0.299 * color.anon0.vRGB.fX +
+               0.587 * color.anon0.vRGB.fY +
+               0.114 * color.anon0.vRGB.fZ
+    discard setAll(addr color.anon0.vRGB, grey)
+    let pixel = toRGBA(addr color)
+    pixels[i] = rgbaR(pixel)
+    pixels[i + 1] = rgbaG(pixel)
+    pixels[i + 2] = rgbaB(pixel)
+    pixels[i + 3] = rgbaA(pixel)
+    i += 4
 
-    # Get color as vector - using a temporary vector and then converting
-    var vRGB: orxVECTOR
-    discard getVector( "Color", addr vRGB)
-    # Convert vector to color using anon0.vRGB structure
-    light.color.anon0.vRGB = vRGB
+proc computeNormalMap(srcBuffer, dstBuffer: ptr orxU8;
+                      width, height: orxS32) =
+  let
+    src = cast[ptr UncheckedArray[orxU8]](srcBuffer)
+    dst = cast[ptr UncheckedArray[orxU8]](dstBuffer)
+  for y in 0 ..< height:
+    for x in 0 ..< width:
+      let
+        index = (y * width + x) * 4
+        leftIndex = (y * width + max(x - 1, 0)) * 4
+        rightIndex = (y * width + min(x + 1, width - 1)) * 4
+        upIndex = (max(y - 1, 0) * width + x) * 4
+        downIndex = (min(y + 1, height - 1) * width + x) * 4
+        left = orxFLOAT(src[leftIndex]) * colorNormalizer
+        right = orxFLOAT(src[rightIndex]) * colorNormalizer
+        up = orxFLOAT(src[upIndex]) * colorNormalizer
+        down = orxFLOAT(src[downIndex]) * colorNormalizer
+      var normal: orxCOLOR
+      normal.anon0.vRGB = newVector((left - right) * 0.5 + 0.5,
+                                    (down - up) * 0.5 + 0.5, 0.5)
+      normal.fAlpha = 1.0
+      let pixel = toRGBA(addr normal)
+      dst[index] = rgbaR(pixel)
+      dst[index + 1] = rgbaG(pixel)
+      dst[index + 2] = rgbaB(pixel)
+      dst[index + 3] = rgbaA(pixel)
 
-  result = popSection()
-  light_index = 0
+proc createNormalMap(texture: ptr orxTEXTURE) =
+  let name = texture.getName
+  if name.isNil or name.len == 0:
+    return
 
+  let textureHash = hash(name)
+  if textureTable.hashTableGet(textureHash).isNil:
+    let bitmap = texture.getBitmap()
+    var width, height: orxFLOAT
+    discard getBitmapSize(bitmap, addr width, addr height)
+    let bufferSize = (width * height).orxU32 * 4.orxU32
 
-proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
+    let srcBuffer = cast[ptr orxU8](allocate(bufferSize, MEMORY_TYPE_VIDEO))
+    let dstBuffer = cast[ptr orxU8](allocate(bufferSize, MEMORY_TYPE_VIDEO))
+    discard getBitmapData(bitmap, srcBuffer, bufferSize)
+    computeGreyImage(srcBuffer, bufferSize)
+    computeNormalMap(srcBuffer, dstBuffer, width.orxS32, height.orxS32)
+
+    let normalBitmap = createBitmap(width.orxU32, height.orxU32)
+    discard setBitmapData(normalBitmap, dstBuffer, bufferSize)
+    free(srcBuffer)
+    free(dstBuffer)
+
+    let normalTexture = textureCreate()
+    discard normalTexture.linkBitmap(normalBitmap, ("NM_" & $name).cstring, true)
+    discard textureTable.add(textureHash, cast[pointer](normalTexture))
+
+proc eventHandler(event: ptr orxEVENT): orxSTATUS {.cdecl.} =
+  if event.eType == EVENT_TYPE_SHADER and
+      event.eID == ord(SHADER_EVENT_SET_PARAM):
+    let payload = cast[ptr orxSHADER_EVENT_PAYLOAD](event.pstPayload)
+    if payload.s32ParamIndex <= lightIndex:
+      let paramName = $payload.zParamName
+      case paramName
+      of "UseBumpMap":
+        let sender = cast[ptr orxOBJECT](event.hSender)
+        discard pushSection(sender.getName)
+        payload.anon0.fValue = (if getBool("UseBumpMap"): 1.0 else: 0.0)
+        discard popSection()
+      of "avLightColor":
+        payload.anon0.vValue = lightList[payload.s32ParamIndex].color.anon0.vRGB
+      of "afLightAlpha":
+        payload.anon0.fValue = lightList[payload.s32ParamIndex].color.fAlpha
+      of "avLightPos":
+        payload.anon0.vValue = lightList[payload.s32ParamIndex].position
+      of "afLightRadius":
+        payload.anon0.fValue = lightList[payload.s32ParamIndex].radius
+      of "NormalMap":
+        let textureName = payload.anon0.pstValue.getName
+        payload.anon0.pstValue =
+          cast[ptr orxTEXTURE](textureTable.hashTableGet(hash(textureName)))
+      of "vScreenSize":
+        discard pushSection(DISPLAY_KZ_CONFIG_SECTION)
+        discard getVector(DISPLAY_KZ_CONFIG_FRAMEBUFFER_SIZE,
+                          addr payload.anon0.vValue)
+        discard popSection()
+      else:
+        discard
+  elif event.eType == EVENT_TYPE_TEXTURE and
+      event.eID == ord(TEXTURE_EVENT_LOAD):
+    createNormalMap(cast[ptr orxTEXTURE](event.hSender))
   result = STATUS_SUCCESS
 
-  # set shader param ?
-  if event.eType == EVENT_TYPE_SHADER and event.eID == ord(SHADER_EVENT_SET_PARAM):
-    var payload = cast[ptr orxSHADER_EVENT_PAYLOAD]( event.pstPayload)
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
+  # The current light follows the mouse, accounting for high-DPI scaling.
+  var contentScale: orxVECTOR
+  discard pushSection(DISPLAY_KZ_CONFIG_SECTION)
+  discard getVector(DISPLAY_KZ_CONFIG_CONTENT_SCALE, addr contentScale)
+  discard getPosition(addr lightList[lightIndex].position)
+  lightList[lightIndex].position =
+    mul(lightList[lightIndex].position, contentScale)
+  discard popSection()
 
-    # is active ?
-    if payload.s32ParamIndex <= light_index:
-      # Skip shader parameter handling for now
-      discard
-      #else:
-      #  echo fmt"⚠  unknown payload.zParamName: {$payload.zParamName}"
+  if hasBeenActivated("CreateLight"):
+    lightIndex = min(LightCount - 1, lightIndex + 1)
+  elif hasBeenActivated("ClearLights"):
+    clearLights()
+  elif hasBeenActivated("IncreaseRadius"):
+    lightList[lightIndex].radius += getValue("IncreaseRadius") * 0.05
+  elif hasBeenActivated("DecreaseRadius"):
+    lightList[lightIndex].radius =
+      max(0.0, lightList[lightIndex].radius - getValue("DecreaseRadius") * 0.05)
+  elif hasBeenActivated("ToggleAlpha"):
+    lightList[lightIndex].color.fAlpha = 1.5 - lightList[lightIndex].color.fAlpha
 
+proc init(): orxSTATUS =
+  echo fmt"""
+{bindingName("CreateLight")} will create a new light under the cursor.
+{bindingName("ClearLights")} will clear all the lights from the scene.
+{bindingName("IncreaseRadius")} will increase the radius of the current light.
+{bindingName("DecreaseRadius")} will decrease the radius of the current light.
+{bindingName("ToggleAlpha")} will toggle alpha on the light (ie. make holes in lit objects)."""
 
-proc display_hints() =
-  let gin = get_input_name
-  var help = fmt"""
-  {gin("CreateLight")} will create a new light under the cursor.
-  {gin("ClearLights")} will clear all the lights from the scene.
-  {gin("IncreaseRadius")} will increase the radius of the current light.
-  {gin("DecreaseRadius")} will decrease the radius of the current light.
-  {gin("ToggleAlpha")} will toggle alpha on light (ie. make holes in lit objects).
-  """
+  discard addHandler(EVENT_TYPE_SHADER, eventHandler)
+  discard addHandler(EVENT_TYPE_TEXTURE, eventHandler)
 
-  help = help.unindent
-  orxlog( help)
+  textureTable = hashTableCreate(16, HASHTABLE_KU32_FLAG_NONE, MEMORY_TYPE_MAIN)
+  viewport = viewportCreateFromConfig("Viewport")
+  scene = objectCreateFromConfig("Scene")
+  if viewport.isNil or scene.isNil:
+    return STATUS_FAILURE
 
+  clearLights()
 
-
-proc init() :orxSTATUS {.cdecl.} =
-  result = STATUS_SUCCESS
-  ## usual things
-  display_hints()
-
-  # EventHandler() will listen for shader and object events.
-  # There we'll populate shader parameters at runtime and create normal maps for new created object
-  # if the corresponding normal map isn't already available.
-  result = addHandler( EVENT_TYPE_SHADER, EventHandler)
-  result = addHandler( EVENT_TYPE_TEXTURE, EventHandler)
-
-  # create scene and viewport
-  scene = objectCreateFromConfig( "Scene")
-  vp = viewportCreateFromConfig( "Viewport")
-
-  result = clear_all_lights()
-  if result == STATUS_FAILURE:
-    echo "⚠  problem when calling clear_all_lights()"
-
-
-  # Creates hash table for storing up to 16 normal maps signatures.
-  texture_table = hashTableCreate(16, HASHTABLE_KU32_FLAG_NONE, MEMORY_TYPE_MAIN)
-
-
-
-
-# in the others tutorials , we were using a generic « run » procedure.
-# The I/O polling (keyboard, mouse…) was done in a callback function, defined in « init » proc.
-# This time, we don't have callback function , called at a certain rate (Hz) by a clock.
-# The I/O polling will be done entirely in the mainloop.
-proc mainloop() :orxSTATUS {.cdecl.} =
+  if clockRegister(clockGet(CLOCK_KZ_CORE), update, nil,
+                   MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL).isFailure:
+    return STATUS_FAILURE
   result = STATUS_SUCCESS
 
-  # current light position is the mouse position
-  discard getPosition( addr light_list[light_index].pos)
+proc exit() {.cdecl.} =
+  # This time we clean up what we created.
+  discard objectDelete(scene)
+  discard viewportDelete(viewport)
+  discard hashTableDelete(textureTable)
 
-  if hasBeenActivated( "CreateLight"):
-    light_index = min( LIGHT_NUMBER - 1, light_index + 1);
+proc bootstrap(): orxSTATUS =
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, getAppDir(), false)
+  if result.isFailure:
+    echo "Could not add config storage"
 
-  if hasBeenActivated( "ClearLights"):
-    result = clear_all_lights()
-
-  if hasBeenActivated( "IncreaseRadius"):
-    var increased = getValue( "IncreaseRadius") * 0.05
-    light_list[light_index].radius += increased
-
-  if hasBeenActivated( "DecreaseRadius"):
-    var decreased = max( 0.0, light_list[light_index].radius - getValue("DecreaseRadius") * 0.05)
-    light_list[light_index].radius = decreased
-
-  if hasBeenActivated( "ToggleAlpha"):
-    light_list[light_index].color.fAlpha = 1.5 - light_list[light_index].color.fAlpha
-
-  if hasBeenActivated( "Quit"):
-    result = STATUS_FAILURE
-
-
-
-proc main() =
-  #[ execute is declared in norx.nim , and needs 3 functions:
-      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                    runProc: proc(): orxSTATUS {.cdecl.};
-                    exitProc: proc() {.cdecl.}
-                   )
-  ]#
-  # NOTE : once again (see previous episodes), use mainloop and not the generic « run » function
-  execute(init, mainloop, exit)
-
-main()
+discard setBootstrap(bootstrap)
+execute(init, run, exit)

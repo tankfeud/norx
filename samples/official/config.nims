@@ -1,6 +1,6 @@
 import std/os
 
-let rootDir = currentSourcePath().parentDir / ".."
+let rootDir = currentSourcePath().parentDir / "../.."
 let orxLibraryDir = normalizedPath(rootDir / "orx/code/lib/dynamic")
 
 switch("path", rootDir / "src")

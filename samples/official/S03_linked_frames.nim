@@ -1,192 +1,81 @@
-## Adaptation to Nim of the C tutorial creating linked (hierarchical) frames.
-## comments: jseb at finiderire.com
+## Port of the official ORX tutorial: linked frames.
+## Adapted to Nim by jseb at finiderire.com, modernized for Norx.
 
 #[
-  Debug compilation
-  nim c S03_linked_frames
-  (it will use S03_linked_frames.nim.cfg and liborxd.so loaded at runtime)
+  All object positions, scales and rotations are stored in orxFRAME
+  structures, assembled in a hierarchy: changing a parent frame affects all
+  its children.
 
-  Release compilation
-  nim c -d:release --skipProjcfg S03_object
-  (skip nim project cfg, liborx.so loaded at runtime)
+  Here four objects are linked to a common invisible parent; two are created
+  through the object's ChildList config property, the other two are linked in
+  code. The parent follows the mouse cursor.
 
-  Note from gokr:
-  The choice of the lib is made in lib.nim
-  It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
-
-  See tutorial S01_object.nim for more info about the basic object creation.
-  See tutorial S02_clock.nim for keyboard reading, configuration section retrieving, and clocks.
-  
-  For details about Orx side , please refer to the tutorial of the C++ sample:
-  https://wiki.orx-project.org/en/tutorials/frame
-
-  Summary is:
-  All objects' positions, scales and rotations are stored in orxFRAME structures.
-  
-  These frames are assembled in a hierarchy graph :
-  changing a parent frame propertie will affect all its children.
-
-  In this tutorial, we have:
-  - four objects that we link to a common parent
-  - and a fifth one which has no parent.
-
-  The first two children are implicitly created using the object's config property ChildList.
-  The two others are created and linked in code (for didactic purposes).
-  
-  The invisible parent object will follow the mouse cursor.
-  Left shift , left control : scale up , down the parent object.
-  Left and right clicks apply a rotation to the parent object.
-
-  All these transformations will affect its four children.
-
-  This provides us with an easy way to create complex or grouped objects.
-  We can also transform them (position, scale, rotation, speed, …) very easily. 
-
+  Controls:
+  - Left/right mouse buttons rotate the parent object.
+  - Left shift / left control scale it up / down.
 ]#
 
 import strformat
 import norx
+import os
 
+import S_commons
 
-# global , for storing our invisible object.
-# (used for rotation, the 4 rotating boxes are binded to it).
-var parentObject:ptr orxObject
+{.push cdecl.}
 
+var parentObject: ptr orxOBJECT
 
-proc run(): orxSTATUS {.cdecl.} =
-  result = STATUS_SUCCESS #by default, won't quit
-  if (isActive("Quit")):
-    # Updates result
-    result = STATUS_FAILURE
+proc update(clockInfo: ptr orxCLOCK_INFO, context: pointer) =
+  let dt = clockInfo.fDT
 
-proc get_input_name(input_name: string) :cstring =
-  ## Returns the keycode corresponding to the physical key defined in .ini
-  var eType: orxINPUT_TYPE
-  var eID: orxENUM
-  var eMode: orxINPUT_MODE
-
-  var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == STATUS_SUCCESS:
-    let binding_name:cstring = getBindingName( eType, eID, eMode)
-    echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
-    return binding_name
-
-  return ("key " & input_name & " not found").cstring
-
-proc Update(clockInfo: ptr orxCLOCK_INFO, context: pointer) {.cdecl.} =
-  var status:orxSTATUS
-  
-  # when RotateLeft pressed , rotate parent object CCW
-  # the four child objects will follow
   if isActive("RotateLeft"):
-    var rot:float32 = getRotation( parentObject) - PI * clockInfo.fDT
-    status = setRotation( parentObject, rot)
-  # same principle for RotateRigh, except parent rotates CW
+    discard parentObject.setRotation(parentObject.getRotation() - PI * dt)
   if isActive("RotateRight"):
-    var rot:float32 = getRotation( parentObject) + PI * clockInfo.fDT
-    status = setRotation( parentObject, rot)
+    discard parentObject.setRotation(parentObject.getRotation() + PI * dt)
 
-  # scaling up or down if needed
   if isActive("ScaleUp"):
-    #the «mulf» function need an initialized pointer
-    # so you can put what you want in the vDummy
-    # it will be initialized at correct value by the getScale function
-    var vDummy:orxVector = (123f, 456f, 789f)
-    # of course, you need the « addr » prefix to convert variable to a ptr on it.
-    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), 1.02f)
-    status = setScale( parentObject, vScale)
-  # for scaling down, only scale factor changes, same principles appliy.
+    discard parentObject.setScale(parentObject.getScale() * 1.02)
   if isActive("ScaleDown"):
-    var vDummy:orxVector = (123f, 456f, 789f)
-    var vScale:ptr orxVECTOR = mulf( addr vDummy, getScale( parentObject, addr vDummy), 0.98f)
-    status = setScale( parentObject, vScale)
-   
-  # now, if mouse is in viewport, follow the pointer !
-  # like in the scaling, we need a pointer on an initialised vector for getting getWorldPosition to work.
-  var vWorldPos:orxVECTOR = (1f,2f,3f)
-  # getWorldPosition returns a vector if we are *inside* the display surface, nil otherwise.
-  var vMouse:ptr orxVECTOR
-  vMouse = getWorldPosition( getPosition( addr vWorldPos) #[mouse xy]#, nil, addr vWorldPos #[out]#)
-  if vMouse != nil:
-    # as you can see, vMouse has no other interest than checking we are inside the display surface
-    # echo fmt"vWorldPos{vWorldPos} == vMouse{vMouse[]}"
-    
-    # now get parent position (the invisible one)
-    var vParentPos:orxVECTOR
-    # this time we discard the output (we know we are inside the display, at this step)
-    # note: this call use getWorldPosition overriden in oobject, previous were using
-    #       overrided function in render.nim
-    discard getWorldPosition( parentObject, addr vParentPos)
+    discard parentObject.setScale(parentObject.getScale() * 0.98)
 
-    # the original tutorial was keeping z value of parent position
-    # i don't see the point here, so i've commented it
-    # vMouse.fZ = vParentPos.fZ
+  # If the mouse is over the display, move the parent (and thus its children)
+  # under the cursor. getWorldPosition returns nil when outside.
+  var mouse = newVECTOR()
+  if getWorldPosition(getPosition(addr mouse), nil, addr mouse) != nil:
+    var parentPosition: orxVECTOR
+    discard parentObject.getWorldPosition(addr parentPosition)
+    mouse.fZ = parentPosition.fZ
+    discard parentObject.setPosition(mouse)
 
-    # and move the parent to the mouse position
-    discard setPosition( parentObject, vMouse)
+proc init(): orxSTATUS =
+  echo fmt"""
+The parent object will follow the mouse.
+{bindingName("RotateLeft")} & {bindingName("RotateRight")} will rotate it.
+{bindingName("ScaleUp")} & {bindingName("ScaleDown")} will scale it."""
 
-
-proc init(): orxSTATUS {.cdecl.} =
-  var mainclock:ptr orxClock
-  var childObject:ptr orxObject
-  var inputType:orxInputType
- 
-  let inputRotateLeft = "RotateLeft".get_input_name()
-  let inputRotateRight = "RotateRight".get_input_name()
-  let inputScaleUp = "ScaleUp".get_input_name()
-  let inputScaleDown = "ScaleDown".get_input_name()
-
-  orxLOG( fmt"""
-  The parent objects will follow the mouse.
-  {inputRotateLeft} & {inputRotateRight} will rotate it.
-  {inputScaleUp} & {inputScaleDown} will scale it.
-  """)
-  
-  # Creates viewport
-  var viewport = viewportCreateFromConfig("Viewport")
-  if viewport.isNil:
+  if viewportCreateFromConfig("Viewport").isNil:
     return STATUS_FAILURE
 
-  # Creates Parent object
-  # it is not shown on the screen
-  # it is used in the config as the father of Object3 and Object4
-  parentObject = objectCreateFromConfig("ParentObject");
+  # The invisible parent is used as the father of Object3 and Object4 in config.
+  parentObject = objectCreateFromConfig("ParentObject")
+  discard objectCreateFromConfig("Object0")   # static box, not linked
 
-  # Creates all 3 test objects and links the last two to our parent object
-  # the Object0 doesn't need to be stored, discard it.
-  # it is the static box which doesn't move.
-  # it is not linked to parentObject.
-  discard objectCreateFromConfig("Object0");
+  let child1 = objectCreateFromConfig("Object1")
+  let child2 = objectCreateFromConfig("Object2")
+  if parentObject.isNil or child1.isNil or child2.isNil:
+    return STATUS_FAILURE
+  discard child1.setParent(parentObject)
+  discard child2.setParent(parentObject)
 
-  childObject = objectCreateFromConfig("Object1");
-  var status = setParent( childObject, parentObject);
-  childObject = objectCreateFromConfig("Object2");
-  status = setParent( childObject, parentObject);
-
-  # Object3 and Object4 are created and linked to parentObject with the config file ,
-  # no code is needed for them
-
-  # Gets main clock
-  mainclock = clockGet(CLOCK_KZ_CORE);
-
-  # Registers our update callback
-  # nil can replace orxNULL (defined in the C API)
-  status = clockRegister(mainclock, Update, nil, MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL);
-
+  if clockRegister(clockGet(CLOCK_KZ_CORE), update, nil,
+                   MODULE_ID_MAIN, CLOCK_PRIORITY_NORMAL).isFailure:
+    return STATUS_FAILURE
   result = STATUS_SUCCESS
 
+proc bootstrap(): orxSTATUS =
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, getAppDir(), false)
+  if result.isFailure:
+    echo "Could not add config storage"
 
-proc exit() {.cdecl.} =
-  # We're a bit lazy here so we let orx clean all our mess! :)
-  quit(0)
-
-proc Main =
-  #[ execute is declared in norx.nim , and needs 3 functions:
-      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                    runProc: proc(): orxSTATUS {.cdecl.};
-                    exitProc: proc() {.cdecl.}
-                   )
-  ]#
-  execute(init, run, exit)
-
-Main()
+discard setBootstrap(bootstrap)
+execute(init, run, exit)

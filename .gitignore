@@ -6,6 +6,19 @@ samples/ball/ball
 samples/boulderdash/boulderdash
 samples/qr-code/show_qr
 official_samples/S01_object
+samples/official/S01_object
+samples/official/S02_clock
+samples/official/S03_linked_frames
+samples/official/S04_anim
+samples/official/S05_viewport
+samples/official/S06_sound
+samples/official/S07_fx
+samples/official/S08_physics
+samples/official/S09_scrolling
+samples/official/S10_locale
+samples/official/S11_spawner
+samples/official/S12_lighting
+samples/official/S13_cannon_spawner
 scripts/create_wrapper
 src/norx
 

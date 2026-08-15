@@ -1,138 +1,75 @@
-## Adaptation to Nim of the 10th C tutorial, about localization.
-## original author of C tutorial: iarwain@orx-project.org
-## adaptation: jseb at finiderire.com
+## Port of the official ORX tutorial: localization.
+## Adapted to Nim by jseb at finiderire.com, modernized for Norx.
 
 #[
-  Debug compilation
-  nim c S10_locale
-  (it will use S10_locale.nim.cfg and liborxd.so loaded at runtime)
+  Displays the ORX logo and a localized legend. Space (or the left mouse
+  button) cycles through the available languages for the legend text.
 
-  Release compilation
-  nim c -d:release --skipProjcfg S10_locale
-  (skip nim project cfg, liborx.so is loaded at runtime)
-
-  Note from gokr:
-  The choice of the lib is made in lib.nim
-  It will use liborxd for debug build, liborx for release build and liborxp if you use -d:profile
-
-  See tutorial S01_object.nim for more info about the basic object creation.
-  See tutorial S02_clock.nim for keyboard reading, configuration section retrieving, and clocks.
-  See tutorial S03_linked_frame.nim for object hierarchies, rotations and scaling.
-  See tutorial S04_anim.nim for using animations.
-  See tutorial S05_viewport.nim for viewports mysteriis.
-  See tutorial S06_sound.nim for playing sounds.
-  See tutorial S07_fx.nim for applying FX to objects.
-  See tutorial S08_physics.nim for an outlook on the physic engine.
-  See tutorial S09_scrolling.nim for the world of parallax.
-
-  For details about Orx side , please refer to the localization tutorial (official C++ sample):
-  https://wiki.orx-project.org/en/tutorials/localization/locale
-
- This tutorial simply display orx's logo and a localized legend.
- Press space (or left mouse button) to cycle through all the availables languages for the legend's text.
-
- At this level of tutorials, you should already know this, but i leave the remarks from original tutorial.
-
- - Run function:
-   Don't put *ANY* logic code here, it's only a backbone where you can handle default core behaviors
-   (tracking exit or changing locale, for example) or profile some stuff.
-   It's directly called from the main loop.
-   It's not part of the clock system, time consistency can't be enforced.
-   For your main game execution, please create (or use an existing) clock and register your callback to it.
-
- - Event handlers:
-   When an event handler returns STATUS_SUCCESS, no other handler will be called after it for the same event.
-   On the other hand, if STATUS_FAILURE is returned, event processing will continue for this event
-   if other handlers are listening this event type.
-   We'll monitor locale events to update our legend's text when the selected language is changed.
-
- - orx_Execute():
-   Inits and executes orx using our self-defined functions (Init, Run and Exit).
-   We can of course not use this helper and handles everything manually if its
-   behavior doesn't suit our needs.
-   You can have a look at the content of orx_Execute() (which is implemented in orx.h) to have
-   a better idea on how to do this.
+  Notes from the original tutorial:
+  - run() must not contain any logic code; it is only a backbone for default
+    behaviors such as tracking exit or changing locale.
+  - When an event handler returns STATUS_SUCCESS no other handler is called
+    for that event; returning STATUS_FAILURE lets processing continue.
+  - We monitor locale events to log when the selected language changes.
 ]#
 
 import strformat
-from strutils import unindent
 import norx
+import os
 
-# the shared functions
 import S_commons
 
-var language_index:orxU32 = 0
+{.push cdecl.}
 
-proc EventHandler( event:ptr orxEVENT) :orxSTATUS {.cdecl.} =
-  result = STATUS_SUCCESS
+var languageIndex: orxU32 = 0
+
+proc localeHandler(event: ptr orxEVENT): orxSTATUS {.cdecl.} =
   if event.eID == ord(LOCALE_EVENT_SELECT_LANGUAGE):
-    var payload = cast[ptr orxLOCALE_EVENT_PAYLOAD]( event.pstPayload)
-    orxLOG( fmt"Switching to {payload.zLanguage}")
-  return result
-
-
-proc display_hints() =
-  let gin = get_input_name
-  var help = fmt"""
-    {gin("Quit")} will exit from this tutorial
-    {gin("CycleLanguage")} will cycle through all the available languages
-    *** The legend under the logo is always displayed in the current language ***
- """
-
-  help = help.unindent
-  orxlog( help)
-
-
-proc init() :orxSTATUS {.cdecl.} =
-  result = addHandler( EVENT_TYPE_LOCALE, EventHandler)
-
-  if result == STATUS_SUCCESS:
-    # create logo object and displays child
-    var logo:ptr orxObject = objectCreateFromConfig( "Logo")
-    orxLOG( fmt"=== We can get child(s) from code: {getChild(logo).repr}")
-
-    # display availables languages
-    var avail_languages:seq[cstring]
-    for i in 0..<getLanguageCount():
-      avail_languages.add( getLanguage(i))
-    orxLOG( fmt"=== Available languages : {avail_languages.repr}")
-
-    discard viewportCreateFromConfig( "Viewport")
-
-    display_hints()
-
-
-
-# in the others tutorials , we were using a generic « run » procedure.
-# the I/O polling (keyboard, mouse…) was done in a callback function, defined in « init » proc.
-# This time, we don't have callback function , called at a certain rate (Hz) by a clock.
-# The I/O polling will be done entirely in the mainloop.
-proc mainloop() :orxSTATUS {.cdecl.} =
+    let payload = cast[ptr orxLOCALE_EVENT_PAYLOAD](event.pstPayload)
+    echo fmt"Switching to {payload.zLanguage}"
   result = STATUS_SUCCESS
-  # testing both isActive (key detection) and hasNewStatus (for avoiding cycling fast in the languages)
-  if isActive("CycleLanguage") and hasNewStatus("CycleLanguage"):
-    # update language index
-    language_index.inc()
-    if language_index == getLanguageCount():
-      language_index = 0
 
-    # select it
-    discard selectLanguage( getLanguage( language_index), cast[cstring](NULL))
+proc init(): orxSTATUS =
+  if addHandler(EVENT_TYPE_LOCALE, localeHandler).isFailure:
+    return STATUS_FAILURE
+
+  # Create the logo and log its config-created child.
+  let logo = objectCreateFromConfig("Logo")
+  echo "=== We can get children from code: ", getChild(logo).repr
+
+  # Display the available languages.
+  var availableLanguages: seq[string]
+  for i in 0 ..< getLanguageCount():
+    availableLanguages.add $getLanguage(i)
+  echo "=== Available languages: ", availableLanguages.repr
+
+  if viewportCreateFromConfig("Viewport").isNil:
+    return STATUS_FAILURE
+
+  echo fmt"""
+{bindingName("Quit")} will exit from this tutorial
+{bindingName("CycleLanguage")} will cycle through all the available languages
+*** The legend under the logo is always displayed in the current language ***"""
+
+  result = STATUS_SUCCESS
+
+proc run(): orxSTATUS {.cdecl.} =
+  # This tutorial polls input in the main loop instead of a clock callback.
+  if isActive("CycleLanguage") and hasNewStatus("CycleLanguage"):
+    inc languageIndex
+    if languageIndex == getLanguageCount():
+      languageIndex = 0
+    discard selectLanguage(getLanguage(languageIndex), nil)
 
   if isActive("Quit"):
-    orxLOG( "Quit action triggered, exiting!")
-    # Sets returned value to STATUS_FAILURE, meaning we want to exit
-    result = STATUS_FAILURE
+    echo "Quit action triggered, exiting!"
+    return STATUS_FAILURE
+  result = STATUS_SUCCESS
 
+proc bootstrap(): orxSTATUS =
+  result = addStorage(CONFIG_KZ_RESOURCE_GROUP, getAppDir(), false)
+  if result.isFailure:
+    echo "Could not add config storage"
 
-proc main() =
-  #[ execute is declared in norx.nim , and needs 3 functions:
-      proc execute*(initProc: proc(): orxSTATUS {.cdecl.};
-                    runProc: proc(): orxSTATUS {.cdecl.};
-                    exitProc: proc() {.cdecl.}
-                   )
-  ]#
-  # NOTE : this time, we call mainloop (see its note) and not the generic « run » function
-  execute(init, mainloop, exit)
-
-main()
+discard setBootstrap(bootstrap)
+execute(init, run, exit)

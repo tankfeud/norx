@@ -1,32 +1,22 @@
-#[ From sample 05 (S05_Viewport.nim) , i decided to put commons sample functions
-   in a Nim module.
-   Thus, readability should be improved, as sample code will be centered on new notions.
-]#
+## Shared helpers for the official ORX tutorial ports.
 
+import strformat
 import norx
 
+proc bindingName*(action: string): string =
+  ## Returns the display name of the key bound to an input action.
+  var
+    inputType: orxINPUT_TYPE
+    inputId: orxENUM
+    inputMode: orxINPUT_MODE
+  if getBinding(action, 0, addr inputType, addr inputId, addr inputMode).isSuccess:
+    result = $getBindingName(inputType, inputId, inputMode)
+  else:
+    result = fmt"key '{action}' not found"
+
 proc run*(): orxSTATUS {.cdecl.} =
-  result = STATUS_SUCCESS #by default, won't quit
-  if (isActive("Quit")):
-    # Updates result
-    result = STATUS_FAILURE
+  ## Default run function: quits when the Quit input is active.
+  if isActive("Quit"): STATUS_FAILURE else: STATUS_SUCCESS
 
 proc exit*() {.cdecl.} =
-  # We're a bit lazy here so we let orx clean all our mess! :)
-  quit(0)
-
-
-proc get_input_name*(input_name: string) :cstring =
-  ## Returns the keycode corresponding to the physical key defined in .ini
-  var eType: orxINPUT_TYPE
-  var eID: orxENUM
-  var eMode: orxINPUT_MODE
-
-  var is_ok = getBinding(input_name, 0 #[index of desired binding]#, addr eType, addr eID, addr eMode)
-  if is_ok == STATUS_SUCCESS:
-    result = getBindingName( eType, eID, eMode)
-    #echo fmt"[get_input_name] asked for {input_name}, got binding: {binding_name}"
-  else:
-    echo "couldn't get binding"
-    result = ("key " & input_name & " not found").cstring
-
+  ## ORX cleans up the objects created by the tutorials.
