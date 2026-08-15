@@ -80,6 +80,95 @@ nim check samples/qr-code/show_qr.nim
 
 Android requires its own SDK/NDK toolchain and should be verified separately when Android-specific code changes.
 
+## Releases
+
+Norx releases use the package version as an annotated Git tag, for example `0.8.1`, and a matching GitHub release named `Norx 0.8.1`. Never move, replace, or force-push a published release tag; fix mistakes with a new release.
+
+### 1. Review the Release Range
+
+Start from a clean, synchronized default branch and fetch existing tags. Identify the previous release and inspect every commit and changed file in the range, not only the latest commit:
+
+```bash
+git status --short --branch
+git fetch origin --tags
+git log --oneline 0.8.0..HEAD
+git diff --stat 0.8.0..HEAD
+git diff 0.8.0..HEAD
+```
+
+Replace `0.8.0` with the actual previous tag. Confirm that the intended new tag and GitHub release do not already exist before continuing.
+
+### 2. Update the Changelog Carefully
+
+`CHANGELOG.md` follows Keep a Changelog. Preserve the empty `Unreleased` section and add a dated release section using the exact package version:
+
+```markdown
+## [Unreleased]
+
+## [0.8.1] - YYYY-MM-DD
+```
+
+- Derive entries from both `git log` and the actual diff since the previous tag. Do not guess, omit notable commits, or paste commit subjects without explaining their user-facing effect.
+- Organize entries under `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, or `Security` as applicable. Omit empty categories.
+- Call out breaking source or ABI changes explicitly, including required migration steps or explicit conversions.
+- Mention new public modules, helpers, overloads, supported Nim/ORX versions, sample applications, documentation, and regression coverage when relevant.
+- Keep internal cleanup out of the changelog unless it changes generated output, behavior, compatibility, or contributor workflows.
+- Update comparison links at the bottom: `Unreleased` compares the new version with `HEAD`, and the release compares the previous tag with the new tag.
+- Re-read the completed section against every commit in the release range before committing it.
+
+### 3. Bump Versions Consistently
+
+Update `version` in `norx.nimble`. Search the repository for the old version and update other constraints only when semantically required. In particular, sample packages that use APIs introduced by the release must require the new Norx version.
+
+Do not change the documented ORX version unless the submodule revision and generated wrapper actually changed. The changelog version, Nimble version, annotated tag, and GitHub release must all match exactly.
+
+### 4. Run Release Verification
+
+Run the full Verification section above. Also validate the root package and exercise complete runtime startup for the game samples:
+
+```bash
+nimble check
+nim c samples/pong/pong.nim
+./samples/pong/pong --startup-test true
+nim c samples/boulderdash/boulderdash.nim
+./samples/boulderdash/boulderdash --startup-test true
+git diff --check
+```
+
+The ORX libraries must be available to both the linker and runtime as described in Setup. Run `./build.sh` when the ORX revision, wrapper generation, or annotations changed. Run `./build.sh --docs` and commit the generated documentation when a release changes the documented public API.
+
+If a sample manifest is bumped to require the version being released, its remote `nimble check` can fail before the new tag exists. Before tagging, validate that sample against the local checkout with `nim check`, a direct `nim c`, and its startup test. Re-run remote dependency validation after the tag is published.
+
+Do not release with failed checks, unreviewed generated changes, a dirty worktree, or a local branch that has diverged from its remote.
+
+### 5. Commit, Tag, and Publish
+
+Inspect `git status`, `git diff`, and recent history before creating the release commit. Stage only the reviewed release files, commit the version bump and changelog, then push the branch before creating the tag.
+
+Create an annotated tag that points at the verified version commit:
+
+```bash
+git push origin master
+git tag -a 0.8.1 -m "Norx 0.8.1"
+git rev-parse "0.8.1^{}" HEAD
+git push origin 0.8.1
+gh release create 0.8.1 --verify-tag --latest --title "Norx 0.8.1" --notes-file /tmp/norx-release-notes.md
+```
+
+The two hashes printed by `git rev-parse` must match. Prepare `/tmp/norx-release-notes.md` from the matching changelog section before running `gh release create`. Release notes should include concise highlights, compatibility or breaking-change information, verification performed, and a full comparison link.
+
+### 6. Validate the Published Release
+
+After publication:
+
+```bash
+gh release view 0.8.1
+git ls-remote --tags origin refs/tags/0.8.1 "refs/tags/0.8.1^{}"
+git status --short --branch
+```
+
+Confirm that the release is public, non-draft, non-prerelease, marked latest when appropriate, and points to the expected commit. Confirm the branch is synchronized and the worktree is clean. Re-run sample manifest dependency checks once the new tag is available, and return the GitHub release URL.
+
 ## Coding Style
 
 - Use Nim 2.x syntax and import full modules rather than selected symbols.
