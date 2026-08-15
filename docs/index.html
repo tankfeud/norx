@@ -1,293 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norx - Nim wrapper for ORX Game Engine</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Norx is a Nim wrapper for the ORX 2.5D game engine — build cross-platform games with data-driven configuration and an idiomatic, elegant Nim API.">
+<title>Norx — Build games in Nim on the ORX 2.5D engine</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1422'/%3E%3Cpath d='M9 25V7l14 18V7' stroke='%2341d9ff' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root {
+    --bg: #0a0f18;
+    --bg-soft: #0d1422;
+    --card: #101827;
+    --card-hover: #131e30;
+    --border: #1e2b40;
+    --border-bright: #2c3d59;
+    --text: #e8eef8;
+    --muted: #93a1b8;
+    --cyan: #41d9ff;
+    --cyan-dim: rgba(65, 217, 255, .12);
+    --magenta: #ff4da6;
+    --yellow: #ffc53d;
+    --green: #6ee7a0;
+    --radius: 14px;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .container {
-            max-width: 900px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
+body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
 
-        .header h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
+::selection { background: rgba(65, 217, 255, .25); }
 
-        .header .tagline {
-            font-size: 1.3em;
-            opacity: 0.95;
-            font-weight: 300;
-        }
+a { color: inherit; }
 
-        .content {
-            padding: 50px 40px;
-        }
+/* ---------- navigation ---------- */
 
-        .intro {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 40px;
-            text-align: center;
-        }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(10, 15, 24, .78);
+    border-bottom: 1px solid var(--border);
+}
 
-        .intro a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.2s ease;
-        }
+.nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-        .intro a:hover {
-            border-bottom-color: #667eea;
-        }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -.02em;
+    flex-shrink: 0;
+}
 
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
+.brand svg { display: block; }
 
-        .feature-card {
-            padding: 30px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.brand .tag {
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    border: 1px solid rgba(65, 217, 255, .3);
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: .02em;
+}
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+.nav-links {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-            border-left-width: 6px;
-        }
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .92rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: color .15s ease, background .15s ease;
+}
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
+.nav-links a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
 
-        .feature-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 12px;
-            color: #667eea;
-            position: relative;
-            z-index: 1;
-        }
+.nav-links .github {
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+}
 
-        .feature-card p {
-            color: #666;
-            line-height: 1.7;
-            position: relative;
-            z-index: 1;
-        }
+.nav-links .github:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); }
 
-        .cta-section {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid #e0e0e0;
-        }
+/* ---------- hero ---------- */
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
+.hero {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 96px 24px 72px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 56px;
+    align-items: center;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-        }
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -180px -10vw 0;
+    background:
+        radial-gradient(640px 380px at 18% 12%, rgba(65, 217, 255, .13), transparent 65%),
+        radial-gradient(720px 420px at 85% 30%, rgba(255, 77, 166, .10), transparent 65%),
+        radial-gradient(520px 320px at 55% 95%, rgba(255, 197, 61, .06), transparent 65%);
+    pointer-events: none;
+    z-index: -1;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
+.hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(147, 161, 184, .14) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(720px 460px at 30% 15%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(720px 460px at 30% 15%, black, transparent 75%);
+    pointer-events: none;
+    z-index: -1;
+}
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--cyan);
+    border: 1px solid rgba(65, 217, 255, .35);
+    background: var(--cyan-dim);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 26px;
+}
 
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
+.eyebrow .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+}
 
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
+.hero h1 {
+    font-size: clamp(3rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -.04em;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
 
-        .links {
-            margin-top: 30px;
-            text-align: center;
-            color: #888;
-        }
+.hero h1 .grad {
+    background: linear-gradient(100deg, var(--cyan) 10%, #7aa8ff 55%, var(--magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        .links a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            margin: 0 15px;
-        }
+.hero .triad {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+}
 
-        .links a:hover {
-            text-decoration: underline;
-        }
+.hero .triad .word { color: var(--text); }
+.hero .triad .word::after { content: "  ·  "; color: var(--border-bright); }
+.hero .triad .word:last-child::after { content: none; }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
+.hero p.lede {
+    font-size: 1.12rem;
+    color: var(--muted);
+    max-width: 46ch;
+    margin-bottom: 34px;
+}
 
-            .features {
-                grid-template-columns: 1fr;
-            }
+.hero p.lede a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s ease; }
+.hero p.lede a:hover { border-bottom-color: var(--cyan); }
 
-            .content {
-                padding: 30px 20px;
-            }
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-weight: 650;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    border: 1px solid transparent;
+}
 
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+.btn-primary {
+    background: var(--yellow);
+    color: #1a1300;
+    box-shadow: 0 0 0 rgba(255, 197, 61, 0);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 197, 61, .22);
+}
+
+.btn-ghost {
+    border-color: var(--border-bright);
+    color: var(--text);
+    background: rgba(255, 255, 255, .02);
+}
+
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); transform: translateY(-2px); }
+
+.hero-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    font-family: var(--mono);
+    font-size: .76rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, .02);
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.chip b { color: var(--text); font-weight: 600; }
+
+/* ---------- code card ---------- */
+
+.code-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+.code-card:hover { border-color: var(--border-bright); }
+
+.code-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, .02);
+}
+
+.code-head .dot { width: 11px; height: 11px; border-radius: 50%; }
+.code-head .dot.r { background: #ff5f57; }
+.code-head .dot.y { background: #febc2e; }
+.code-head .dot.g { background: #28c840; }
+
+.code-head .file {
+    margin-left: 10px;
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.code-head .file:hover { color: var(--cyan); text-decoration: underline; }
+
+.code-body {
+    padding: 22px 22px 26px;
+    font-family: var(--mono);
+    font-size: .84rem;
+    line-height: 1.75;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.kw  { color: #7aa8ff; }
+.typ { color: var(--cyan); }
+.num { color: var(--yellow); }
+.str { color: var(--green); }
+.cmt { color: #7d90ab; font-style: italic; }
+.prm { color: var(--magenta); }
+
+/* ---------- sections ---------- */
+
+section {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 84px 24px 20px;
+}
+
+.section-head { max-width: 640px; margin-bottom: 46px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+.kicker {
+    font-family: var(--mono);
+    font-size: .76rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 14px;
+}
+
+.section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    letter-spacing: -.03em;
+    line-height: 1.12;
+    margin-bottom: 14px;
+}
+
+.section-head p { color: var(--muted); font-size: 1.05rem; }
+
+/* ---------- features ---------- */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+    transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.feature:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-bright);
+    background: var(--card-hover);
+}
+
+.feature .icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+    background: var(--cyan-dim);
+    border: 1px solid rgba(65, 217, 255, .25);
+}
+
+.feature:nth-child(2) .icon { background: rgba(255, 77, 166, .10); border-color: rgba(255, 77, 166, .28); }
+.feature:nth-child(3) .icon { background: rgba(255, 197, 61, .10); border-color: rgba(255, 197, 61, .30); }
+.feature:nth-child(4) .icon { background: rgba(110, 231, 160, .10); border-color: rgba(110, 231, 160, .28); }
+.feature:nth-child(5) .icon { background: rgba(122, 168, 255, .10); border-color: rgba(122, 168, 255, .28); }
+.feature:nth-child(6) .icon { background: rgba(147, 161, 184, .10); border-color: rgba(147, 161, 184, .30); }
+
+.feature h3 { font-size: 1.14rem; letter-spacing: -.01em; margin-bottom: 8px; }
+.feature p { color: var(--muted); font-size: .95rem; }
+
+.feature code {
+    font-family: var(--mono);
+    font-size: .82em;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    padding: 1px 6px;
+    border-radius: 5px;
+}
+
+/* ---------- samples ---------- */
+
+.samples-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.sample {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform .18s ease, border-color .18s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sample:hover { transform: translateY(-4px); border-color: var(--border-bright); }
+
+.sample .screen {
+    height: 168px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.sample .body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.sample h3 { font-size: 1.14rem; margin-bottom: 8px; }
+.sample p { color: var(--muted); font-size: .93rem; flex: 1; }
+
+.sample .sample-links { margin-top: 16px; display: flex; gap: 14px; }
+
+.sample .sample-links a {
+    font-family: var(--mono);
+    font-size: .8rem;
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+.sample .sample-links a:hover { text-decoration: underline; }
+
+/* mini pong court, drawn purely in CSS */
+.pong-screen { background: #070b14; }
+.pong-screen .court-line {
+    position: absolute; left: 50%; top: 12%; bottom: 12%; width: 2px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(to bottom, rgba(147,161,184,.5) 0 10px, transparent 10px 20px);
+}
+.pong-screen .paddle { position: absolute; width: 5px; height: 34px; border-radius: 3px; top: 50%; }
+.pong-screen .paddle.left { left: 12%; background: var(--cyan); transform: translateY(-70%); box-shadow: 0 0 14px var(--cyan); animation: driftL 3.2s ease-in-out infinite; }
+.pong-screen .paddle.right { right: 12%; background: var(--magenta); transform: translateY(-30%); box-shadow: 0 0 14px var(--magenta); animation: driftR 3.2s ease-in-out infinite; }
+.pong-screen .ball {
+    position: absolute; width: 7px; height: 7px; border-radius: 2px;
+    background: var(--yellow); left: 30%; top: 44%;
+    box-shadow: 0 0 12px var(--yellow);
+    animation: volley 3.2s ease-in-out infinite;
+}
+.pong-screen .score { position: absolute; top: 8%; font-family: var(--mono); font-size: 1rem; color: #cdd7e6; }
+.pong-screen .score.left { left: 38%; } .pong-screen .score.right { right: 38%; }
+
+@keyframes volley {
+    0%, 15% { left: 16%; top: 60%; }
+    45%, 55% { left: 76%; top: 30%; }
+    85%, 100% { left: 16%; top: 60%; }
+}
+@keyframes driftL {
+    0%, 100% { transform: translateY(-70%); }
+    45%, 55% { transform: translateY(-155%); }
+}
+@keyframes driftR {
+    0%, 100% { transform: translateY(-30%); }
+    45%, 55% { transform: translateY(-5%); }
+}
+
+/* mini cave grid */
+.cave-screen { background: #0a0d13; display: grid; grid-template-columns: repeat(10, 1fr); padding: 14px; gap: 0; }
+.cave-screen span { aspect-ratio: 1; }
+.cave-screen .w { background: #2b3548; }
+.cave-screen .d { background: #533d27; }
+.cave-screen .g { background: none; position: relative; }
+.cave-screen .g::after {
+    content: ""; position: absolute; inset: 26%;
+    background: var(--cyan); transform: rotate(45deg);
+    box-shadow: 0 0 8px var(--cyan);
+}
+.cave-screen .b { background: none; position: relative; }
+.cave-screen .b::after { content: ""; position: absolute; inset: 16%; border-radius: 50%; background: #8d99ad; }
+.cave-screen .p { background: none; position: relative; }
+.cave-screen .p::after { content: ""; position: absolute; inset: 12%; border-radius: 3px; background: var(--yellow); box-shadow: 0 0 10px var(--yellow); }
+
+/* terminal card hero for official samples */
+.term-screen { background: #070b14; font-family: var(--mono); font-size: .72rem; padding: 18px 18px; color: #8fe388; line-height: 1.9; }
+.term-screen .cmd::before { content: "$ "; color: var(--muted); }
+.term-screen .dim { color: #7d90ab; }
+
+/* ---------- release ---------- */
+
+.release {
+    background: linear-gradient(135deg, rgba(65, 217, 255, .07), rgba(255, 77, 166, .05));
+    border: 1px solid var(--border-bright);
+    border-radius: 20px;
+    padding: 44px 40px;
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.release .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .78rem;
+    background: var(--yellow);
+    color: #1a1300;
+    font-weight: 700;
+    padding: 5px 13px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.release h2 { font-size: 1.9rem; letter-spacing: -.02em; margin-bottom: 12px; }
+.release .rel-desc { color: var(--muted); margin-bottom: 20px; }
+
+.release ul { list-style: none; display: grid; gap: 11px; }
+.release li {
+    color: var(--muted);
+    font-size: .95rem;
+    padding-left: 26px;
+    position: relative;
+}
+.release li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 12px; height: 6px;
+    border-left: 2px solid var(--cyan);
+    border-bottom: 2px solid var(--cyan);
+    transform: rotate(-45deg);
+}
+.release li code {
+    font-family: var(--mono);
+    font-size: .84em;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    padding: 1px 6px;
+    border-radius: 5px;
+}
+
+.release .breaking {
+    margin-top: 22px;
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 197, 61, .4);
+    background: rgba(255, 197, 61, .07);
+    border-radius: 10px;
+    font-size: .9rem;
+    color: #e9ddbe;
+}
+
+.release .breaking b { color: var(--yellow); }
+
+.release-links { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
+.release-links a {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(65, 217, 255, .35);
+}
+.release-links a:hover { border-bottom-color: var(--cyan); }
+
+/* ---------- getting started ---------- */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+}
+
+.step .num {
+    font-family: var(--mono);
+    font-size: .9rem;
+    color: var(--yellow);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 14px;
+}
+
+.step h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.step p { color: var(--muted); font-size: .92rem; margin-bottom: 14px; }
+
+.step pre {
+    font-family: var(--mono);
+    font-size: .78rem;
+    background: #070b14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    color: #c7d4ea;
+}
+.step pre .cmt { font-style: normal; }
+.step pre .hl { color: var(--cyan); }
+
+/* ---------- footer ---------- */
+
+footer {
+    margin-top: 100px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+
+.footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 56px 24px 40px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 36px;
+}
+
+.footer-about p { color: var(--muted); font-size: .92rem; max-width: 34ch; margin-top: 14px; }
+
+.footer-col h4 {
+    font-family: var(--mono);
+    font-size: .76rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; display: grid; gap: 10px; }
+.footer-col a { color: var(--text); text-decoration: none; font-size: .92rem; transition: color .15s ease; }
+.footer-col a:hover { color: var(--cyan); }
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding: 20px 24px 26px;
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.footer-bottom a { color: var(--muted); }
+.footer-bottom a:hover { color: var(--cyan); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 72px; }
+    .features-grid, .samples-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+    .release { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+    .features-grid, .samples-grid, .steps { grid-template-columns: 1fr; }
+    .hero { padding-top: 56px; }
+    section { padding-top: 64px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    .release { padding: 32px 24px; }
+    .btn { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Norx</h1>
-            <div class="tagline">Nim wrapper for the ORX Game Engine</div>
+
+<nav aria-label="Main">
+    <div class="nav-inner">
+        <a class="brand" href="#top">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <rect width="32" height="32" rx="7" fill="#0d1422" stroke="#2c3d59"/>
+                <path d="M9 25V7l14 18V7" stroke="#41d9ff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            Norx
+            <span class="tag">0.8.1</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#samples">Samples</a>
+            <a href="#release">Release&nbsp;0.8.1</a>
+            <a href="#started">Get&nbsp;started</a>
+            <a href="index/norx.html">API&nbsp;docs</a>
+            <a class="github" href="https://github.com/tankfeud/norx" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<header class="hero" id="top">
+    <div class="hero-dots"></div>
+    <div>
+        <div class="eyebrow"><span class="pulse"></span>Nim × ORX 1.17 — perfect match</div>
+        <h1><span class="grad">Norx</span></h1>
+        <div class="triad"><span class="word">Fast</span><span class="word">Data-driven</span><span class="word">Elegant</span></div>
+        <p class="lede">
+            Norx brings the battle-tested <a href="https://orx-project.org/" target="_blank" rel="noopener">ORX 2.5D game engine</a>
+            to <a href="https://nim-lang.org/" target="_blank" rel="noopener">Nim</a> — with machine-generated bindings glued to
+            a hand-written, idiomatic API. Write Python-ish code, ship native binaries for desktop and Android.
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/tankfeud/norx/blob/master/TUTORIAL.md" target="_blank" rel="noopener">Read the tutorial</a>
+            <a class="btn btn-ghost" href="index/norx.html">Browse API docs</a>
+        </div>
+        <div class="hero-meta">
+            <span class="chip"><b>Norx</b> 0.8.1</span>
+            <span class="chip"><b>ORX</b> 1.17 — pinned submodule</span>
+            <span class="chip"><b>Nim</b> ≥ 2.2.4</span>
+            <span class="chip"><b>License</b> zlib</span>
+        </div>
+    </div>
+
+    <div class="code-card" aria-label="Norx example">
+        <div class="code-head">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <a class="file" href="https://github.com/tankfeud/norx/tree/master/samples/ball" target="_blank" rel="noopener">samples/ball/ball.nim — runnable as-is</a>
+        </div>
+        <div class="code-body"><span class="kw">import</span> norx
+
+<span class="kw">var</span> ball: <span class="kw">ptr</span> <span class="typ">orxOBJECT</span>
+
+<span class="kw">proc</span> update(info: <span class="kw">ptr</span> <span class="typ">orxCLOCK_INFO</span>,
+            ctx: <span class="prm">pointer</span>) {.<span class="kw">cdecl</span>.} =
+  <span class="kw">let</span> dt = info.fDT.float32
+  <span class="kw">if</span> isActive(<span class="str">"MoveRight"</span>):   <span class="cmt"># nim bools, nim strings</span>
+    <span class="kw">let</span> speed = newVector(<span class="num">340.0</span>, <span class="num">0.0</span>)
+    <span class="kw">discard</span> ball.setPosition(
+      ball.getPosition() + speed * dt)  <span class="cmt"># value vectors</span>
+
+<span class="kw">proc</span> init(): <span class="typ">orxSTATUS</span> {.<span class="kw">cdecl</span>.} =
+  <span class="kw">discard</span> viewportCreateFromConfig(<span class="str">"MainViewport"</span>)
+  ball = objectCreateFromConfig(<span class="str">"Ball"</span>)
+  clockRegister(clockGet(<span class="typ">CLOCK_KZ_CORE</span>), update,
+                <span class="kw">nil</span>, <span class="typ">MODULE_ID_MAIN</span>,
+                <span class="typ">CLOCK_PRIORITY_NORMAL</span>)
+
+<span class="kw">proc</span> run(): <span class="typ">orxSTATUS</span> {.<span class="kw">cdecl</span>.} = STATUS_SUCCESS
+<span class="kw">proc</span> exit() {.<span class="kw">cdecl</span>.} = <span class="kw">discard</span>
+
+execute(init, run, exit)</div>
+    </div>
+</header>
+
+<section id="features">
+    <div class="section-head">
+        <div class="kicker">Why Norx</div>
+        <h2>A serious engine. A joyful language. Zero compromises.</h2>
+        <p>Norx wraps all of ORX — rendering, physics, audio, animation, FX — and layers the parts Nim does best right on top.</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#41d9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M3 12h18M3 16h18M3 20h10"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            </div>
+            <h3>Data-driven by design</h3>
+            <p>Spawn a sprite, a rigid body, a sound scene or an entire HUD from one line and an INI section. Tweak values, watch the game update — no recompile.</p>
         </div>
 
-        <div class="content">
-            <div class="intro">
-                <strong>Norx</strong> brings together the best of both worlds: the power of <a href="https://orx-project.org/" target="_blank"><strong>ORX</strong></a>,
-                a mature cross-platform 2.5D game engine, with the elegance of <a href="https://nim-lang.org/" target="_blank"><strong>Nim</strong></a>,
-                a high-performance language that makes coding a joy.
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff4da6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
             </div>
+            <h3>Complete, current bindings</h3>
+            <p>Every ORX 1.17 function, generated with Futhark and guarded by source annotations, so the wrapper can never silently drift from upstream headers.</p>
+        </div>
 
-            <div class="intro">
-                Norx was created as a base for the <a href="https://www.tankfeud.com" target="_blank"><strong>Tankfeud</strong></a> game, soon to be released.
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc53d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-11 4 7 3-4 5 8H3z"/><circle cx="18.5" cy="5.5" r="2"/></svg>
             </div>
+            <h3>Idiomatic Nim layer</h3>
+            <p>Value-based vector math with <code>+</code>, <code>*</code> and friends, object property overloads, plain Nim strings and booleans — ORX idioms, Nim feel.</p>
+        </div>
 
-            <div class="features">
-                <div class="feature-card">
-                    <h3>ORX Engine</h3>
-                    <p>
-                        A solid, data-driven 2.5D game engine written in C99. Cross-platform,
-                        highly performant, and battle-tested. Perfect for creating professional games
-                        with minimal effort.
-                    </p>
-                </div>
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee7a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+            </div>
+            <h3>Type-safe interop</h3>
+            <p><code>orxBOOL</code> is a distinct ABI-sized type that converts to <code>bool</code> transparently, and every return value can be checked with <code>.isSuccess</code> / <code>.isFailure</code>.</p>
+        </div>
 
-                <div class="feature-card">
-                    <h3>Nim Language</h3>
-                    <p>
-                        Combines Python-like syntax with C-like performance. Statically typed,
-                        compiled, and ergonomic with automatic memory management. Write beautiful code that runs blazingly fast.
-                    </p>
-                </div>
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7aa8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="13" height="10" rx="1.5"/><rect x="15" y="8" width="8" height="13" rx="1.5"/><path d="M5 18h6"/></svg>
+            </div>
+            <h3>Cross-platform</h3>
+            <p>Windows, Linux, macOS and Android, driven by ORX's plugin architecture. Your Nim code stays identical; only the build flags change.</p>
+        </div>
 
-                <div class="feature-card">
-                    <h3>Data-Driven Design</h3>
-                    <p>
-                        Configure your game with simple INI files. Iterate quickly without recompiling.
-                        ORX's data-driven approach means less code and faster development.
-                    </p>
-                </div>
+        <div class="feature">
+            <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93a1b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><path d="M16 17l2 2 4-4"/></svg>
+            </div>
+            <h3>Open &amp; hackable</h3>
+            <p>zlib-licensed, no strings attached. Norx grew out of the <a href="https://www.tankfeud.com" target="_blank" rel="noopener">Tankfeud</a> game project and is developed in the open on GitHub.</p>
+        </div>
+    </div>
+</section>
 
-                <div class="feature-card">
-                    <h3>Automated Wrapper</h3>
-                    <p>
-                        Norx provides both low-level C bindings and high-level Nim abstractions.
-                        Automatically generated and carefully maintained to stay in sync with ORX.
-                    </p>
+<section id="samples">
+    <div class="section-head">
+        <div class="kicker">Showcase</div>
+        <h2>Learn from complete games, not snippets</h2>
+        <p>The repository ships with two 600-line playable demo games and ports of every official ORX C tutorial — all runnable, all tested.</p>
+    </div>
+
+    <div class="samples-grid">
+        <div class="sample">
+            <div class="screen pong-screen" aria-hidden="true">
+                <span class="score left">3</span><span class="score right">2</span>
+                <div class="court-line"></div>
+                <div class="paddle left"></div>
+                <div class="paddle right"></div>
+                <div class="ball"></div>
+            </div>
+            <div class="body">
+                <h3>Pong</h3>
+                <p>Two-player Pong with fixed-step, time-of-impact physics, sounds, pause/restart and a startup self-test that validates the whole engine wiring.</p>
+                <div class="sample-links">
+                    <a href="https://github.com/tankfeud/norx/tree/master/samples/pong" target="_blank" rel="noopener">samples/pong →</a>
                 </div>
             </div>
+        </div>
 
-            <div class="cta-section">
-                <h2>Get Started</h2>
-                <div class="cta-buttons">
-                    <a href="https://github.com/tankfeud/norx/blob/master/TUTORIAL.md" class="btn btn-primary" target="_blank">Read Tutorial</a>
-                    <a href="index/norx.html" class="btn btn-secondary">View Documentation</a>
-                    <a href="index/theindex.html" class="btn btn-secondary">Browse API Index</a>
+        <div class="sample">
+            <div class="screen cave-screen" aria-hidden="true">
+                <span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span>
+                <span class="w"></span><span class="p"></span><span class="d"></span><span class="d"></span><span></span><span class="b"></span><span></span><span class="d"></span><span class="g"></span><span class="w"></span>
+                <span class="w"></span><span class="d"></span><span class="d"></span><span class="w"></span><span></span><span></span><span></span><span></span><span></span><span class="w"></span>
+                <span class="w"></span><span class="g"></span><span class="d"></span><span class="w"></span><span></span><span class="b"></span><span></span><span></span><span></span><span class="w"></span>
+                <span class="w"></span><span></span><span></span><span class="w"></span><span></span><span></span><span></span><span></span><span class="g"></span><span class="w"></span>
+                <span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span>
+            </div>
+            <div class="body">
+                <h3>Boulder Dash</h3>
+                <p>A proper grid game: dig, collect diamonds, dodge falling boulders and reach the exit before time runs out. Features CC0 Kenney art and random caves.</p>
+                <div class="sample-links">
+                    <a href="https://github.com/tankfeud/norx/tree/master/samples/boulderdash" target="_blank" rel="noopener">samples/boulderdash →</a>
                 </div>
+            </div>
+        </div>
 
-                <div class="links">
-                    <a href="https://github.com/tankfeud/norx" target="_blank">GitHub Repository</a>
-                    <span>•</span>
-                    <a href="https://orx-project.org/" target="_blank">ORX Homepage</a>
-                    <span>•</span>
-                    <a href="https://nim-lang.org/" target="_blank">Nim Homepage</a>
+        <div class="sample">
+            <div class="screen term-screen" aria-hidden="true">
+                <div class="cmd">cd official_samples</div>
+                <div class="cmd">nim c -r S01_object.nim</div>
+                <div class="dim">* Object tutorial — ORX 1.17.0-dev</div>
+                <div class="cmd">nim c -r S08_physics.nim</div>
+                <div class="dim">* Physics tutorial — 100 bouncing boxes</div>
+                <div class="cmd">cd ../samples/pong &amp;&amp; ./pong</div>
+            </div>
+            <div class="body">
+                <h3>Tutorial ports &amp; more</h3>
+                <p>Thirteen faithful Nim ports of the official ORX tutorials — objects, clocks, input, physics, FX, scrolling, sound and spawners — plus smaller exploratory samples.</p>
+                <div class="sample-links">
+                    <a href="https://github.com/tankfeud/norx/tree/master/official_samples" target="_blank" rel="noopener">official_samples →</a>
+                    <a href="https://github.com/tankfeud/norx/tree/master/samples" target="_blank" rel="noopener">samples →</a>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<section id="release">
+    <div class="release">
+        <div>
+            <span class="badge">Latest — Aug 2026</span>
+            <h2>Norx 0.8.1</h2>
+            <p class="rel-desc">
+                The API-polish release: everything that once felt like "C with Nim syntax"
+                now feels like Nim.
+            </p>
+            <div class="release-links">
+                <a href="https://github.com/tankfeud/norx/releases/tag/0.8.1" target="_blank" rel="noopener">Release notes →</a>
+                <a href="https://github.com/tankfeud/norx/blob/master/CHANGELOG.md" target="_blank" rel="noopener">Changelog →</a>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li>Value-oriented vector math: <code>newVector(x, y)</code> plus real operators — no more pointer juggling for everyday work</li>
+                <li>Object properties as values: <code>getPosition()</code>, <code>setScale(...)</code>, <code>getSpeed()</code> and friends take and return <code>orxVECTOR</code></li>
+                <li>Plain Nim strings for input names, config sections, text, FX and sounds</li>
+                <li>Distinct, ABI-safe <code>orxBOOL</code> with automatic boolean conversion</li>
+                <li>Explicit status predicates: <code>.isSuccess</code> and <code>.isFailure</code></li>
+                <li>Two complete game samples: Pong and Boulder Dash</li>
+            </ul>
+            <div class="breaking">
+                <b>Heads up:</b> <code>orxBOOL</code> is no longer an integer alias.
+                Code that treated it as a number needs an explicit conversion — boolean use is unchanged.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="started">
+    <div class="section-head center">
+        <div class="kicker">Get started</div>
+        <h2>From zero to bouncing objects in minutes</h2>
+        <p>All you need is Nim 2.2.4 or newer — ORX 1.17 comes along as a pinned Git submodule.</p>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <span class="num">01 /</span>
+            <h3>Clone &amp; prepare ORX</h3>
+            <p>Fetch the wrapper and initialize the pinned ORX 1.17 submodule:</p>
+            <pre>git clone https://github.com/tankfeud/norx.git
+<span class="hl">cd</span> norx
+git submodule update <span class="hl">--init</span>
+<span class="cmt"># build ORX locally per README —
+# no system install needed</span></pre>
+        </div>
+        <div class="step">
+            <span class="num">02 /</span>
+            <h3>Install</h3>
+            <p>Grab Norx from the Nimble registry:</p>
+            <pre>nimble install norx
+
+<span class="cmt"># requires Nim ≥ 2.2.4</span></pre>
+        </div>
+        <div class="step">
+            <span class="num">03 /</span>
+            <h3>Run the samples</h3>
+            <p>Start tiny, then play the full games — samples run from their own directory:</p>
+            <pre><span class="hl">cd</span> samples/ball
+nim c ball.nim
+./ball            <span class="cmt"># hold → to move</span>
+
+<span class="hl">cd</span> ../pong
+nimble build && ./pong</pre>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-about">
+            <a class="brand" href="#top">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect width="32" height="32" rx="7" fill="#101827" stroke="#2c3d59"/>
+                    <path d="M9 25V7l14 18V7" stroke="#41d9ff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Norx
+            </a>
+            <p>A Nim wrapper for the ORX 2.5D game engine, built for the Tankfeud project and shared with everyone under the zlib license.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Project</h4>
+            <ul>
+                <li><a href="https://github.com/tankfeud/norx" target="_blank" rel="noopener">GitHub repository</a></li>
+                <li><a href="https://github.com/tankfeud/norx/releases" target="_blank" rel="noopener">Releases</a></li>
+                <li><a href="https://github.com/tankfeud/norx/blob/master/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                <li><a href="https://github.com/tankfeud/norx/issues" target="_blank" rel="noopener">Issues</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Documentation</h4>
+            <ul>
+                <li><a href="https://github.com/tankfeud/norx/blob/master/TUTORIAL.md" target="_blank" rel="noopener">Tutorial</a></li>
+                <li><a href="index/norx.html">API reference</a></li>
+                <li><a href="index/theindex.html">API index</a></li>
+                <li><a href="https://orx-project.org/wiki/" target="_blank" rel="noopener">ORX wiki</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Ecosystem</h4>
+            <ul>
+                <li><a href="https://nim-lang.org/" target="_blank" rel="noopener">Nim language</a></li>
+                <li><a href="https://orx-project.org/" target="_blank" rel="noopener">ORX engine</a></li>
+                <li><a href="https://nimble.directory/pkg/norx" target="_blank" rel="noopener">Nimble package</a></li>
+                <li><a href="https://www.tankfeud.com" target="_blank" rel="noopener">Tankfeud</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>Norx is licensed under <a href="https://github.com/tankfeud/norx/blob/master/LICENSE" target="_blank" rel="noopener">zlib</a> · ORX is licensed under zlib · Sample assets © Kenney, CC0</span>
+        <span>Built with <a href="https://nim-lang.org/" target="_blank" rel="noopener">Nim</a> and <a href="https://orx-project.org/" target="_blank" rel="noopener">ORX</a></span>
+    </div>
+</footer>
+
 </body>
 </html>

@@ -8,6 +8,8 @@ Note that the android-native sample has its own README.md file.
 
 `pong/` contains a complete two-player Pong game with fixed-step collision handling, scoring, pause, and restart support.
 
+`ball/` is a minimal, deliberately tiny example — the same code shown on the norx homepage. Build it with `nim c ball.nim` and run it from its own directory; ORX loads `ball.ini` automatically.
+
 ESC quits. Pressing the key below ESC (may be different depending on your keyboard, on mine it's "§" but evidently "`" on others I guess) opens the ORX console.
 
 # Compiling
